@@ -1,10 +1,14 @@
 # Astro Starter Kit: Basics
 
-```sh
-npm create astro@latest -- --template basics
-```
+## Integrations
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This project includes the following dependencies as NPM packages:
+
+- [GSAP](https://www.npmjs.com/package/gsap) (GreenSock Animation Platform)
+- [Lenis](https://www.npmjs.com/package/@studio-freight/lenis) (Smooth scrolling)
+- [Tailwindcss](https://www.npmjs.com/package/tailwindcss) (Utility-first CSS framework, integrated with Astro)
+
+All are installed locally and not via CDN.
 
 ## 🚀 Project Structure
 
