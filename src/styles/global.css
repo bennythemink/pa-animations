@@ -1,5 +1,25 @@
 @import 'tailwindcss';
 
+@layer base {
+  body {
+    font-family: 'Lateef', serif;
+    font-weight: 200;
+    letter-spacing: -0.01em;
+    line-height: 0.95;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 0.85;
+  }
+}
+
 @theme extend {
   --text-10xl: 10rem;
   --text-10xl--line-height: 1;
