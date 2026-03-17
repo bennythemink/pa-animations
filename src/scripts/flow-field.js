@@ -123,6 +123,7 @@ const canvas = document.getElementById('flow')
 const ctx = canvas.getContext('2d')
 const container = canvas.parentElement
 const heroTextEl = document.getElementById('hero-text')
+const heroTextChildren = heroTextEl ? Array.from(heroTextEl.querySelectorAll('h1, h2')) : []
 let W, H
 
 // Per-point offset arrays for smooth mouse attraction
@@ -209,20 +210,18 @@ function draw(now) {
     HERO_B
   } = CONFIG
 
-  // ── Compute hero text rect relative to canvas ──
-  let textRect = null
-  if (heroTextEl) {
+  // ── Compute hero text rects relative to canvas ──
+  const textRects = []
+  if (heroTextChildren.length > 0) {
     const canvasRect = container.getBoundingClientRect()
-    const tRect = heroTextEl.getBoundingClientRect()
-    textRect = {
-      left: tRect.left - canvasRect.left,
-      top: tRect.top - canvasRect.top,
-      right: tRect.right - canvasRect.left,
-      bottom: tRect.bottom - canvasRect.top,
-      cx: (tRect.left + tRect.right) / 2 - canvasRect.left,
-      cy: (tRect.top + tRect.bottom) / 2 - canvasRect.top,
-      halfW: tRect.width / 2,
-      halfH: tRect.height / 2
+    for (const el of heroTextChildren) {
+      const tRect = el.getBoundingClientRect()
+      textRects.push({
+        left: tRect.left - canvasRect.left,
+        top: tRect.top - canvasRect.top,
+        right: tRect.right - canvasRect.left,
+        bottom: tRect.bottom - canvasRect.top
+      })
     }
   }
 
@@ -264,28 +263,32 @@ function draw(now) {
       // ── Text repulsion ──
       let ttx = 0,
         tty = 0
-      if (textRect) {
-        // Signed distance from point to text rect edges
-        const clampX = Math.max(textRect.left, Math.min(hx, textRect.right))
-        const clampY = Math.max(textRect.top, Math.min(hy, textRect.bottom))
+      for (const tr of textRects) {
+        const clampX = Math.max(tr.left, Math.min(hx, tr.right))
+        const clampY = Math.max(tr.top, Math.min(hy, tr.bottom))
         const tdx = hx - clampX
         const tdy = hy - clampY
         const tDist = Math.sqrt(tdx * tdx + tdy * tdy)
-        if (tDist < TEXT_REPULSION.RADIUS && tDist > 0) {
+
+        if (tDist > 0 && tDist < TEXT_REPULSION.RADIUS) {
+          // Outside rect but within radius — push away from nearest edge
           const tFalloff = 1 - tDist / TEXT_REPULSION.RADIUS
           const tPull = tFalloff * tFalloff * TEXT_REPULSION.PULL
-          ttx = -(tdx / tDist) * tPull * -1
-          tty = -(tdy / tDist) * tPull * -1
-          // Push away: negate because we want repulsion
-          ttx = (tdx / tDist) * tPull
-          tty = (tdy / tDist) * tPull
-        } else if (tDist === 0 && textRect.right - textRect.left > 0) {
-          // Point is inside the text rect — push outward from center
-          const fromCx = hx - textRect.cx
-          const fromCy = hy - textRect.cy
-          const cDist = Math.sqrt(fromCx * fromCx + fromCy * fromCy) || 1
-          ttx = (fromCx / cDist) * TEXT_REPULSION.PULL
-          tty = (fromCy / cDist) * TEXT_REPULSION.PULL
+          ttx += (tdx / tDist) * tPull
+          tty += (tdy / tDist) * tPull
+        } else if (tDist === 0) {
+          // Inside the rect — push toward nearest edge
+          const dLeft = hx - tr.left
+          const dRight = tr.right - hx
+          const dTop = hy - tr.top
+          const dBottom = tr.bottom - hy
+          const minH = Math.min(dLeft, dRight)
+          const minV = Math.min(dTop, dBottom)
+          if (minH < minV) {
+            ttx += dLeft < dRight ? -TEXT_REPULSION.PULL : TEXT_REPULSION.PULL
+          } else {
+            tty += dTop < dBottom ? -TEXT_REPULSION.PULL : TEXT_REPULSION.PULL
+          }
         }
       }
       const tEase = ttx !== 0 || tty !== 0 ? TEXT_REPULSION.EASE_IN : TEXT_REPULSION.EASE_OUT
