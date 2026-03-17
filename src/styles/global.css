@@ -43,4 +43,25 @@
   --text-19xl--line-height: 1;
   --text-20xl: 30rem;
   --text-20xl--line-height: 1;
+
+  --color-pixel-cream: #cab38f;
+  --color-pixel-light-cream: #eae7e4;
+
+  --color-pixel-blue: #63a3d2;
+  --color-pixel-dark-blue: #386b92;
+
+  --color-pixel-red: #e9504c;
+  --color-pixel-dark-red: #8c291c;
+
+  --color-pixel-pink: #e38093;
+  --color-pixel-light-pink: #ecc9d9;
+
+  --color-pixel-orange: #f09339;
+  --color-pixel-light-orange: #f4b865;
+
+  --color-pixel-yellow: #f5c844;
+  --color-pixel-light-yellow: #f5c844;
+
+  --color-pixel-green: #479f82;
+  --color-pixel-dark-green: #2a6351;
 }
