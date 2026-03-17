@@ -35,6 +35,10 @@ const CONFIG = {
   HERO_G: 121,
   HERO_B: 146,
 
+  // Grid padding — inset from canvas edges (px)
+  PADDING_X: 80, // horizontal inset (0 = no padding)
+  PADDING_Y: 0, // vertical inset (0 = no padding)
+
   // Performance
   FPS_CAP: 0 // 0 = uncapped; set e.g. 30 to save CPU
 }
@@ -137,8 +141,10 @@ function resize() {
   H = canvas.height = rect.height
 
   // Rebuild offset arrays
-  cols = Math.ceil(W / CONFIG.GRID_SPACING)
-  rows = Math.ceil(H / CONFIG.GRID_SPACING)
+  const usableW = W - CONFIG.PADDING_X * 2
+  const usableH = H - CONFIG.PADDING_Y * 2
+  cols = Math.max(1, Math.ceil(usableW / CONFIG.GRID_SPACING))
+  rows = Math.max(1, Math.ceil(usableH / CONFIG.GRID_SPACING))
   const count = cols * rows
   offsetsX = new Float32Array(count)
   offsetsY = new Float32Array(count)
@@ -242,11 +248,14 @@ function draw(now) {
   ctx.lineWidth = LINE_WIDTH
   ctx.lineCap = 'butt'
 
+  const padX = CONFIG.PADDING_X
+  const padY = CONFIG.PADDING_Y
+
   let idx = 0
   for (let col = 0; col < cols; col++) {
-    const hx = GRID_SPACING / 2 + col * GRID_SPACING
+    const hx = padX + GRID_SPACING / 2 + col * GRID_SPACING
     for (let row = 0; row < rows; row++) {
-      const hy = GRID_SPACING / 2 + row * GRID_SPACING
+      const hy = padY + GRID_SPACING / 2 + row * GRID_SPACING
 
       // ── Mouse interaction (positional pull/push) ──
       let tx = 0,
