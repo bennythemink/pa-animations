@@ -1,214 +1,223 @@
 <section id="process-wrapper" class="relative h-screen overflow-hidden bg-pixel-light-cream">
-  <div id="process-track" class="flex h-screen relative items-end pb-32">
-    <!-- Block 1: Our process -->
-    <div class="shrink-0 w-screen pl-32 relative">
-      <div
-        class="process-rect absolute"
-        style="width:120px;height:180px;top:-220px;left:60px"
-        data-color="red"
-        data-anim="grow-h"
-      >
+  <div id="process-track" class="flex h-screen relative items-center">
+    <!-- Block 1: Our process — vertically centered -->
+    <div class="shrink-0 w-[50vw] sm:w-[55vw] pl-8 sm:pl-32 flex items-center h-full">
+      <div>
+        <h2 class="text-2xl sm:text-3xl text-pixel-dark-green mb-4">Our process</h2>
+        <h3 class="text-5xl sm:text-10xl mb-10">Simple, clear, and safe.</h3>
+        <p class="max-w-xs text-lg sm:text-3xl">
+          Our process reflects how proud outcomes are actually achieved: slow down just enough to clarify the promise
+          and remove risk, apply care through design and build, and stay responsible beyond launch. Here's what that
+          looks like in practice.
+        </p>
       </div>
-      <div
-        class="process-rect absolute"
-        style="width:80px;height:60px;top:-100px;left:220px"
-        data-color="yellow"
-        data-anim="grow-w"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:60px;height:140px;top:-280px;left:320px"
-        data-color="blue"
-        data-anim="grow-h-ttb"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:100px;height:50px;top:-60px;left:420px"
-        data-color="orange"
-        data-anim="grow-w-rtl"
-      >
-      </div>
-
-      <h3 class="text-3xl italic mb-4">Our process</h3>
-      <p class="max-w-xs text-2xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula nulla vel magna fringilla tincidunt.
-      </p>
     </div>
 
-    <!-- Block 2: 1. Discover & define -->
-    <div class="shrink-0 w-[70vw] pl-16 relative">
-      <div
-        class="process-rect absolute"
-        style="width:160px;height:200px;top:-260px;left:40px"
-        data-color="green"
-        data-anim="grow-h"
-      >
+    <!-- Block 2: 1. Discover & define — vertically centered -->
+    <div class="shrink-0 w-[90vw] sm:w-[70vw] pl-8 sm:pl-16 flex items-center h-full">
+      <div class="flex items-center gap-0">
+        <div
+          id="discover-rects"
+          class="relative shrink-0 w-[800px] h-[120px] origin-left scale-50 sm:scale-100 -mt-10 sm:-mt-45"
+        >
+          <div
+            class="process-rect absolute top-0 left-0 w-[200px] h-[80px]"
+            data-color="blue"
+            data-anim="grow-h"
+            data-w="200"
+            data-h="80"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-[40px] left-[200px] w-[200px] h-[40px]"
+            data-color="orange"
+            data-anim="grow-w"
+            data-w="200"
+            data-h="40"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-[80px] left-[200px] w-[200px] h-[40px]"
+            data-color="pink"
+            data-anim="grow-h-ttb"
+            data-w="200"
+            data-h="40"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-[40px] left-[400px] w-[200px] h-[40px]"
+            data-color="light-orange"
+            data-anim="grow-w-rtl"
+            data-w="200"
+            data-h="40"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-0 left-[600px] w-[200px] h-[40px]"
+            data-color="green"
+            data-anim="grow-w"
+            data-w="200"
+            data-h="40"
+          >
+          </div>
+        </div>
+        <div class="pl-4 sm:pl-8">
+          <h4 class="text-3xl sm:text-6xl mb-4">
+            <span class="text-pixel-green">1.</span> Discover &amp; define
+          </h4>
+          <p class="max-w-sm text-lg sm:text-3xl">
+            Before a line of design or code is written, you'll have full clarity on scope, timelines, cost, and what
+            success looks like. No ambiguity carried forward.
+          </p>
+        </div>
       </div>
-      <div
-        class="process-rect absolute"
-        style="width:100px;height:80px;top:-120px;left:260px"
-        data-color="pink"
-        data-anim="grow-w"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:70px;height:160px;top:-300px;left:400px"
-        data-color="cream"
-        data-anim="grow-h-ttb"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:140px;height:60px;top:-80px;left:500px"
-        data-color="dark-blue"
-        data-anim="grow-w-rtl"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:90px;height:120px;top:-240px;left:620px"
-        data-color="light-orange"
-        data-anim="grow-h"
-      >
-      </div>
-
-      <h3 class="text-5xl mb-4">
-        <span class="text-pixel-green">1.</span> Discover &amp; define
-      </h3>
-      <p class="max-w-sm text-2xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.
-      </p>
     </div>
 
-    <!-- Block 3: 2. Design -->
-    <div class="shrink-0 w-[60vw] pl-16 relative">
-      <div
-        class="process-rect absolute"
-        style="width:130px;height:170px;top:-230px;left:50px"
-        data-color="orange"
-        data-anim="grow-h"
-      >
+    <!-- Block 3: 2. Design — just below center -->
+    <div class="shrink-0 w-[90vw] sm:w-[60vw] pl-8 sm:pl-16 flex items-center h-full pt-24">
+      <div class="flex items-center gap-0">
+        <div class="relative shrink-0 w-[90px] h-[85px] sm:w-[180px] sm:h-[170px] origin-left scale-50 sm:scale-100">
+          <div
+            class="process-rect absolute top-0 left-0 w-[90px] h-[100px]"
+            data-color="cream"
+            data-anim="grow-w"
+            data-w="90"
+            data-h="100"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-[100px] left-0 w-[90px] h-[70px]"
+            data-color="dark-blue"
+            data-anim="grow-h"
+            data-w="90"
+            data-h="70"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-0 left-[90px] w-[90px] h-[80px]"
+            data-color="pink"
+            data-anim="grow-h-ttb"
+            data-w="90"
+            data-h="80"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-[80px] left-[90px] w-[90px] h-[90px]"
+            data-color="dark-red"
+            data-anim="grow-w-rtl"
+            data-w="90"
+            data-h="90"
+          >
+          </div>
+        </div>
+        <div class="pl-4 sm:pl-8">
+          <h4 class="text-3xl sm:text-6xl mb-4">
+            <span class="text-pixel-red">2.</span> Design
+          </h4>
+          <p class="max-w-sm text-lg sm:text-3xl">
+            You'll see and sign off on designs that reflect your brand and your users before development begins. No
+            surprises later.
+          </p>
+        </div>
       </div>
-      <div
-        class="process-rect absolute"
-        style="width:90px;height:70px;top:-90px;left:230px"
-        data-color="dark-red"
-        data-anim="grow-w"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:80px;height:150px;top:-280px;left:350px"
-        data-color="yellow"
-        data-anim="grow-h-ttb"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:110px;height:55px;top:-70px;left:460px"
-        data-color="light-pink"
-        data-anim="grow-w-rtl"
-      >
-      </div>
-
-      <h3 class="text-5xl mb-4">
-        <span class="text-pixel-green">2.</span> Design
-      </h3>
-      <p class="max-w-sm text-2xl">
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Duis aute irure dolor in reprehenderit in
-        voluptate velit.
-      </p>
     </div>
 
-    <!-- Block 4: 3. Build & test -->
-    <div class="shrink-0 w-[70vw] pl-16 relative">
-      <div
-        class="process-rect absolute"
-        style="width:150px;height:190px;top:-250px;left:30px"
-        data-color="blue"
-        data-anim="grow-h"
-      >
+    <!-- Block 4: 3. Build & test — about 1/3 from top -->
+    <div class="shrink-0 w-[90vw] sm:w-[70vw] pl-8 sm:pl-16 flex items-start h-full pt-[33vh]">
+      <div class="flex items-center gap-0">
+        <div class="relative shrink-0 w-[110px] h-[95px] sm:w-[220px] sm:h-[190px] origin-left scale-50 sm:scale-100">
+          <div
+            class="process-rect absolute top-0 left-0 w-[110px] h-[110px]"
+            data-color="orange"
+            data-anim="grow-h"
+            data-w="110"
+            data-h="110"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-[110px] left-0 w-[110px] h-[80px]"
+            data-color="yellow"
+            data-anim="grow-w"
+            data-w="110"
+            data-h="80"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-0 left-[110px] w-[110px] h-[100px]"
+            data-color="green"
+            data-anim="grow-h-ttb"
+            data-w="110"
+            data-h="100"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-[100px] left-[110px] w-[110px] h-[90px]"
+            data-color="pink"
+            data-anim="grow-w-rtl"
+            data-w="110"
+            data-h="90"
+          >
+          </div>
+        </div>
+        <div class="pl-4 sm:pl-8">
+          <h4 class="text-3xl sm:text-6xl mb-4">
+            <span class="text-pixel-yellow">3.</span> Build &amp; test
+          </h4>
+          <p class="max-w-sm text-lg sm:text-3xl">
+            You'll stay close to the work through regular previews, thorough testing, and your own review. We build
+            iteratively and share progress, no big reveals.
+          </p>
+        </div>
       </div>
-      <div
-        class="process-rect absolute"
-        style="width:85px;height:90px;top:-130px;left:240px"
-        data-color="red"
-        data-anim="grow-w"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:75px;height:145px;top:-270px;left:380px"
-        data-color="dark-green"
-        data-anim="grow-h-ttb"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:120px;height:65px;top:-85px;left:500px"
-        data-color="cream"
-        data-anim="grow-w-rtl"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:95px;height:110px;top:-220px;left:600px"
-        data-color="pink"
-        data-anim="grow-h"
-      >
-      </div>
-
-      <h3 class="text-5xl mb-4">
-        <span class="text-pixel-green">3.</span> Build &amp; test
-      </h3>
-      <p class="max-w-sm text-2xl">
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa. Nemo enim ipsam voluptatem quia voluptas sit
-        aspernatur.
-      </p>
     </div>
 
-    <!-- Block 5: 4. Launch & beyond -->
-    <div class="shrink-0 w-[70vw] pl-16 relative">
-      <div
-        class="process-rect absolute"
-        style="width:140px;height:180px;top:-240px;left:60px"
-        data-color="light-orange"
-        data-anim="grow-h"
-      >
+    <!-- Block 5: 4. Launch & beyond — vertically centered -->
+    <div class="shrink-0 w-[90vw] sm:w-[70vw] pl-8 sm:pl-16 flex items-center h-full">
+      <div class="flex items-center gap-0">
+        <div class="relative shrink-0 w-[95px] h-[90px] sm:w-[190px] sm:h-[180px] origin-left scale-50 sm:scale-100">
+          <div
+            class="process-rect absolute top-0 left-0 w-[100px] h-[100px]"
+            data-color="light-orange"
+            data-anim="grow-h"
+            data-w="100"
+            data-h="100"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-0 left-[100px] w-[90px] h-[100px]"
+            data-color="dark-blue"
+            data-anim="grow-w"
+            data-w="90"
+            data-h="100"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-[100px] left-0 w-[100px] h-[80px]"
+            data-color="dark-green"
+            data-anim="grow-h-ttb"
+            data-w="100"
+            data-h="80"
+          >
+          </div>
+          <div
+            class="process-rect absolute top-[100px] left-[100px] w-[90px] h-[80px]"
+            data-color="yellow"
+            data-anim="grow-w-rtl"
+            data-w="90"
+            data-h="80"
+          >
+          </div>
+        </div>
+        <div class="pl-4 sm:pl-8">
+          <h4 class="text-3xl sm:text-6xl mb-4">
+            <span class="text-pixel-pink">4.</span> Launch &amp; beyond
+          </h4>
+          <p class="max-w-sm text-lg sm:text-3xl">
+            You'll launch with confidence, not crossed fingers. And after launch, we stay involved, supporting and
+            resolving issues until the solution performs as intended.
+          </p>
+        </div>
       </div>
-      <div
-        class="process-rect absolute"
-        style="width:100px;height:75px;top:-100px;left:250px"
-        data-color="dark-blue"
-        data-anim="grow-w"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:65px;height:155px;top:-290px;left:400px"
-        data-color="green"
-        data-anim="grow-h-ttb"
-      >
-      </div>
-      <div
-        class="process-rect absolute"
-        style="width:130px;height:50px;top:-65px;left:520px"
-        data-color="yellow"
-        data-anim="grow-w-rtl"
-      >
-      </div>
-
-      <h3 class="text-5xl mb-4">
-        <span class="text-pixel-green">4.</span> Launch &amp; beyond
-      </h3>
-      <p class="max-w-sm text-2xl">
-        Quis autem vel eum iure reprehenderit qui in ea voluptate velit. Neque porro quisquam est qui dolorem ipsum quia
-        dolor sit amet.
-      </p>
     </div>
   </div>
 </section>
@@ -283,13 +292,11 @@
     }
   })
 
-  // Animate rectangles — each reveals once and stays visible
-  const rects = document.querySelectorAll<HTMLElement>('.process-rect')
-
-  rects.forEach((rect) => {
+  // Helper to build from/to vars for a rect
+  function buildRectVars(rect: HTMLElement) {
     const anim = rect.dataset.anim
-    const w = rect.style.width
-    const h = rect.style.height
+    const w = rect.dataset.w + 'px'
+    const h = rect.dataset.h + 'px'
 
     let fromVars: gsap.TweenVars = { opacity: 0 }
     let toVars: gsap.TweenVars = { opacity: 1, duration: 0.6, ease: 'power2.out' }
@@ -313,6 +320,31 @@
         break
     }
 
+    return { fromVars, toVars }
+  }
+
+  // Discover rects — animate on section entry (vertical scroll)
+  const discoverContainer = document.getElementById('discover-rects')!
+  const discoverRects = discoverContainer.querySelectorAll<HTMLElement>('.process-rect')
+
+  discoverRects.forEach((rect, i) => {
+    const { fromVars, toVars } = buildRectVars(rect)
+    gsap.fromTo(rect, fromVars, {
+      ...toVars,
+      delay: i * 0.12,
+      scrollTrigger: {
+        trigger: wrapper,
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      }
+    })
+  })
+
+  // All other rects — animate via horizontal containerAnimation
+  const otherRects = document.querySelectorAll<HTMLElement>('.process-rect:not(#discover-rects .process-rect)')
+
+  otherRects.forEach((rect) => {
+    const { fromVars, toVars } = buildRectVars(rect)
     gsap.fromTo(rect, fromVars, {
       ...toVars,
       scrollTrigger: {
