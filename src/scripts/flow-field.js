@@ -141,8 +141,14 @@ let textOffsetsX, textOffsetsY, textHeroSmoothed
 
 function resize() {
   const rect = container.getBoundingClientRect()
-  W = canvas.width = rect.width
-  H = canvas.height = rect.height
+  const dpr = window.devicePixelRatio || 1
+  W = rect.width
+  H = rect.height
+  canvas.width = W * dpr
+  canvas.height = H * dpr
+  canvas.style.width = W + 'px'
+  canvas.style.height = H + 'px'
+  ctx.scale(dpr, dpr)
 
   // Rebuild offset arrays
   const usableW = W - CONFIG.PADDING_X * 2
@@ -157,7 +163,8 @@ function resize() {
   textOffsetsY = new Float32Array(count)
   textHeroSmoothed = new Float32Array(count) // smoothed text colour influence
 }
-window.addEventListener('resize', resize)
+
+new ResizeObserver(() => resize()).observe(container)
 resize()
 
 // ── MOUSE TRACKING (relative to container) ────────────────────────
