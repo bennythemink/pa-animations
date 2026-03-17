@@ -221,28 +221,26 @@ function draw(now) {
     HERO_B
   } = CONFIG
 
-  // ── Compute hero text rect relative to canvas ──
+  // ── Compute hero text rects relative to canvas (per element) ──
   const textRects = []
   if (heroTextChildren.length > 0) {
     const canvasRect = container.getBoundingClientRect()
-    let combinedLeft = Infinity,
-      combinedTop = Infinity
-    let combinedRight = -Infinity,
-      combinedBottom = -Infinity
     for (const el of heroTextChildren) {
       const tRect = el.getBoundingClientRect()
-      combinedLeft = Math.min(combinedLeft, tRect.left - canvasRect.left)
-      combinedTop = Math.min(combinedTop, tRect.top - canvasRect.top)
-      combinedRight = Math.max(combinedRight, tRect.right - canvasRect.left)
-      combinedBottom = Math.max(combinedBottom, tRect.bottom - canvasRect.top)
+      const left = tRect.left - canvasRect.left
+      const top = tRect.top - canvasRect.top
+      const right = tRect.right - canvasRect.left
+      const bottom = tRect.bottom - canvasRect.top
+      // Skip elements fully outside the canvas (+radius buffer)
+      if (
+        right < -TEXT_REPULSION.RADIUS ||
+        left > W + TEXT_REPULSION.RADIUS ||
+        bottom < -TEXT_REPULSION.RADIUS ||
+        top > H + TEXT_REPULSION.RADIUS
+      )
+        continue
+      textRects.push({ left, top, right, bottom })
     }
-    // Single combined rect covering all text elements and gaps
-    textRects.push({
-      left: combinedLeft,
-      top: combinedTop,
-      right: combinedRight,
-      bottom: combinedBottom
-    })
   }
 
   ctx.clearRect(0, 0, W, H)
