@@ -7,23 +7,24 @@ import vectorSvg from '../assets/vector.svg?url'
 
 <Layout>
   <div id="hero-wrapper" class="relative h-screen overflow-hidden">
-    <div id="hero-track" class="flex h-screen w-[200vw] relative">
-      <div class="h-full w-screen bg-[#eae7e4]"></div>
-      <div class="h-full w-screen"></div>
-      <div id="flow-container" class="absolute top-0 left-[90vw] w-[30vw] h-full">
-        <canvas id="flow" class="block w-full h-full"></canvas>
+    <div id="hero-track" class="flex h-screen relative items-center">
+      <div id="hero-text" class="pointer-events-none shrink-0 whitespace-nowrap pl-32 flex items-center gap-8">
+        <h1 class="text-10xl font-['IBM_Plex_Sans']">
+          Clear promises
+          <img src={plusSvg} alt="plus" class="inline-block h-[1.25em] mx-2 align-middle" />
+          Careful craft
+          <img src={equalsSvg} alt="equals" class="inline-block h-[1.25em] mx-2 align-middle" />
+          Proud outcomes
+          <img src={vectorSvg} alt="vector" class="inline-block h-[1.25em] mx-2 align-middle" />
+        </h1>
+        <h2 class="text-8xl">We are Pixel Agency, a practitioner-led, refreshing 🍊 digital partner.</h2>
       </div>
-    </div>
-    <div id="hero-text" class="pointer-events-none absolute inset-0 flex items-center justify-center">
-      <h1 class="text-10xl font-['IBM_Plex_Sans']">
-        Clear promises
-        <img src={plusSvg} alt="plus" class="inline h-[1em] mx-2" />
-        Careful craft
-        <img src={equalsSvg} alt="equals" class="inline h-[1em] mx-2" />
-        Proud outcomes
-        <img src={vectorSvg} alt="vector" class="inline h-[1em] mx-2" />
-      </h1>
-      <h2 class="text-4xl mt-4">We are Pixel Agency, a practitioner-led, refreshing 🍊 digital partner.</h2>
+      <div id="track-flow" class="h-full shrink-0">
+        <div id="flow-container" class="w-full h-full">
+          <canvas id="flow" class="block w-full h-full"></canvas>
+        </div>
+      </div>
+      <div id="track-bg-2" class="h-full shrink-0"></div>
     </div>
   </div>
 </Layout>
@@ -44,6 +45,31 @@ import vectorSvg from '../assets/vector.svg?url'
     lenis.raf(time * 1000)
   })
   gsap.ticker.lagSmoothing(0)
+
+  // Dynamically size track panels based on hero text width
+  function sizeTrack() {
+    const heroText = document.getElementById('hero-text')!
+    const textWidth = heroText.scrollWidth
+    const vw = window.innerWidth
+    const flowWidth = vw * 0.75 // 30vw for the flow field
+    const extraTrack = vw // one full screen beyond the flow field
+
+    const totalWidth = textWidth + flowWidth + extraTrack
+
+    const trackFlow = document.getElementById('track-flow')!
+    const trackBg2 = document.getElementById('track-bg-2')!
+    const heroTrack = document.getElementById('hero-track')!
+
+    trackFlow.style.width = `${flowWidth}px`
+    trackBg2.style.width = `${extraTrack}px`
+    heroTrack.style.width = `${totalWidth}px`
+
+    ScrollTrigger.refresh()
+    window.dispatchEvent(new Event('resize'))
+  }
+
+  sizeTrack()
+  window.addEventListener('resize', sizeTrack)
 
   gsap.to('#hero-track', {
     x: () => -(document.querySelector('#hero-track')!.scrollWidth - window.innerWidth),
