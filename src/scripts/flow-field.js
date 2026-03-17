@@ -7,8 +7,11 @@
 const CONFIG = {
   // Grid
   GRID_SPACING: 40, // px between vectors (was 28 — 30% fewer vectors)
-  LINE_LENGTH: 34, // drawn length of each line
-  LINE_WIDTH: 4.5, // stroke thickness
+  // LINE_LENGTH: 34, // drawn length of each line
+  // LINE_WIDTH: 4.5, // stroke thickness
+
+  LINE_LENGTH: 51, // drawn length of each line
+  LINE_WIDTH: 8, // stroke thickness
 
   // Colour — #00A180
   COLOR_R: 0,
