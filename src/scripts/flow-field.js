@@ -110,14 +110,25 @@ function simplex2(x, y) {
   return 70 * (n0 + n1 + n2) // returns -1 … 1
 }
 
+// ── TEXT REPULSION CONFIG ────────────────────────────────────
+const TEXT_REPULSION = {
+  RADIUS: 120, // px — repulsion radius around text edges
+  PULL: 100, // max displacement
+  EASE_IN: 0.06,
+  EASE_OUT: 0.03
+}
+
 // ── CANVAS SETUP ────────────────────────────────────────────
 const canvas = document.getElementById('flow')
 const ctx = canvas.getContext('2d')
 const container = canvas.parentElement
+const heroTextEl = document.getElementById('hero-text')
 let W, H
 
 // Per-point offset arrays for smooth mouse attraction
 let cols, rows, offsetsX, offsetsY, heroSmoothed
+// Per-point offset arrays for text repulsion
+let textOffsetsX, textOffsetsY
 
 function resize() {
   const rect = container.getBoundingClientRect()
@@ -131,6 +142,8 @@ function resize() {
   offsetsX = new Float32Array(count)
   offsetsY = new Float32Array(count)
   heroSmoothed = new Float32Array(count) // smoothed hero influence per point
+  textOffsetsX = new Float32Array(count)
+  textOffsetsY = new Float32Array(count)
 }
 window.addEventListener('resize', resize)
 resize()
@@ -196,6 +209,23 @@ function draw(now) {
     HERO_B
   } = CONFIG
 
+  // ── Compute hero text rect relative to canvas ──
+  let textRect = null
+  if (heroTextEl) {
+    const canvasRect = container.getBoundingClientRect()
+    const tRect = heroTextEl.getBoundingClientRect()
+    textRect = {
+      left: tRect.left - canvasRect.left,
+      top: tRect.top - canvasRect.top,
+      right: tRect.right - canvasRect.left,
+      bottom: tRect.bottom - canvasRect.top,
+      cx: (tRect.left + tRect.right) / 2 - canvasRect.left,
+      cy: (tRect.top + tRect.bottom) / 2 - canvasRect.top,
+      halfW: tRect.width / 2,
+      halfH: tRect.height / 2
+    }
+  }
+
   ctx.clearRect(0, 0, W, H)
   const isHero = MOUSE_MODE === 'hero'
   if (!isHero) {
@@ -231,14 +261,45 @@ function draw(now) {
       offsetsX[idx] += (tx - offsetsX[idx]) * ease
       offsetsY[idx] += (ty - offsetsY[idx]) * ease
 
+      // ── Text repulsion ──
+      let ttx = 0,
+        tty = 0
+      if (textRect) {
+        // Signed distance from point to text rect edges
+        const clampX = Math.max(textRect.left, Math.min(hx, textRect.right))
+        const clampY = Math.max(textRect.top, Math.min(hy, textRect.bottom))
+        const tdx = hx - clampX
+        const tdy = hy - clampY
+        const tDist = Math.sqrt(tdx * tdx + tdy * tdy)
+        if (tDist < TEXT_REPULSION.RADIUS && tDist > 0) {
+          const tFalloff = 1 - tDist / TEXT_REPULSION.RADIUS
+          const tPull = tFalloff * tFalloff * TEXT_REPULSION.PULL
+          ttx = -(tdx / tDist) * tPull * -1
+          tty = -(tdy / tDist) * tPull * -1
+          // Push away: negate because we want repulsion
+          ttx = (tdx / tDist) * tPull
+          tty = (tdy / tDist) * tPull
+        } else if (tDist === 0 && textRect.right - textRect.left > 0) {
+          // Point is inside the text rect — push outward from center
+          const fromCx = hx - textRect.cx
+          const fromCy = hy - textRect.cy
+          const cDist = Math.sqrt(fromCx * fromCx + fromCy * fromCy) || 1
+          ttx = (fromCx / cDist) * TEXT_REPULSION.PULL
+          tty = (fromCy / cDist) * TEXT_REPULSION.PULL
+        }
+      }
+      const tEase = ttx !== 0 || tty !== 0 ? TEXT_REPULSION.EASE_IN : TEXT_REPULSION.EASE_OUT
+      textOffsetsX[idx] += (ttx - textOffsetsX[idx]) * tEase
+      textOffsetsY[idx] += (tty - textOffsetsY[idx]) * tEase
+
       // Smooth the hero influence over time (same ease curve)
       const heroEase = heroTarget > heroSmoothed[idx] ? MOUSE_EASE_IN : MOUSE_EASE_OUT
       heroSmoothed[idx] += (heroTarget - heroSmoothed[idx]) * heroEase
       const hi = heroSmoothed[idx] // smoothed hero influence
 
-      // Final drawn position = home + offset
-      const px = hx + offsetsX[idx]
-      const py = hy + offsetsY[idx]
+      // Final drawn position = home + mouse offset + text offset
+      const px = hx + offsetsX[idx] + textOffsetsX[idx]
+      const py = hy + offsetsY[idx] + textOffsetsY[idx]
 
       // Angle from noise (sample at home position for stability)
       const angle = simplex2(hx * NOISE_SCALE, hy * NOISE_SCALE + time) * Math.PI
