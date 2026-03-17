@@ -127,7 +127,11 @@ const canvas = document.getElementById('flow')
 const ctx = canvas.getContext('2d')
 const container = canvas.parentElement
 const heroTextEl = document.getElementById('hero-text')
-const heroTextChildren = heroTextEl ? Array.from(heroTextEl.querySelectorAll('h1, h2')) : []
+const heroH2El = document.getElementById('hero-h2')
+const heroTextChildren = [
+  ...(heroTextEl ? Array.from(heroTextEl.querySelectorAll('h1, h2')) : []),
+  ...(heroH2El ? Array.from(heroH2El.querySelectorAll('h2')) : [])
+]
 let W, H
 
 // Per-point offset arrays for smooth mouse attraction
