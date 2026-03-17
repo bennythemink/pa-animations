@@ -133,7 +133,7 @@ let W, H
 // Per-point offset arrays for smooth mouse attraction
 let cols, rows, offsetsX, offsetsY, heroSmoothed
 // Per-point offset arrays for text repulsion
-let textOffsetsX, textOffsetsY
+let textOffsetsX, textOffsetsY, textHeroSmoothed
 
 function resize() {
   const rect = container.getBoundingClientRect()
@@ -151,6 +151,7 @@ function resize() {
   heroSmoothed = new Float32Array(count) // smoothed hero influence per point
   textOffsetsX = new Float32Array(count)
   textOffsetsY = new Float32Array(count)
+  textHeroSmoothed = new Float32Array(count) // smoothed text colour influence
 }
 window.addEventListener('resize', resize)
 resize()
@@ -281,6 +282,7 @@ function draw(now) {
       // ── Text repulsion ──
       let ttx = 0,
         tty = 0
+      let textHeroTarget = 0 // text colour influence (0–1)
       for (const tr of textRects) {
         const clampX = Math.max(tr.left, Math.min(hx, tr.right))
         const clampY = Math.max(tr.top, Math.min(hy, tr.bottom))
@@ -294,6 +296,7 @@ function draw(now) {
           const tPull = tFalloff * tFalloff * TEXT_REPULSION.PULL
           ttx += (tdx / tDist) * tPull
           tty += (tdy / tDist) * tPull
+          textHeroTarget = Math.max(textHeroTarget, tFalloff)
         } else if (tDist === 0) {
           // Inside the rect — push toward nearest edge
           const dLeft = hx - tr.left
@@ -307,16 +310,21 @@ function draw(now) {
           } else {
             tty += dTop < dBottom ? -TEXT_REPULSION.PULL : TEXT_REPULSION.PULL
           }
+          textHeroTarget = 1
         }
       }
       const tEase = ttx !== 0 || tty !== 0 ? TEXT_REPULSION.EASE_IN : TEXT_REPULSION.EASE_OUT
       textOffsetsX[idx] += (ttx - textOffsetsX[idx]) * tEase
       textOffsetsY[idx] += (tty - textOffsetsY[idx]) * tEase
 
+      // Smooth text colour influence
+      const textHeroEase = textHeroTarget > textHeroSmoothed[idx] ? TEXT_REPULSION.EASE_IN : TEXT_REPULSION.EASE_OUT
+      textHeroSmoothed[idx] += (textHeroTarget - textHeroSmoothed[idx]) * textHeroEase
+
       // Smooth the hero influence over time (same ease curve)
       const heroEase = heroTarget > heroSmoothed[idx] ? MOUSE_EASE_IN : MOUSE_EASE_OUT
       heroSmoothed[idx] += (heroTarget - heroSmoothed[idx]) * heroEase
-      const hi = heroSmoothed[idx] // smoothed hero influence
+      const hi = Math.max(heroSmoothed[idx], textHeroSmoothed[idx]) // combined influence
 
       // Final drawn position = home + mouse offset + text offset
       const px = hx + offsetsX[idx] + textOffsetsX[idx]
