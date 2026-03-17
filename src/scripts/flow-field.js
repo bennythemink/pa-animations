@@ -214,13 +214,31 @@ function draw(now) {
   const textRects = []
   if (heroTextChildren.length > 0) {
     const canvasRect = container.getBoundingClientRect()
+    let combinedLeft = Infinity,
+      combinedTop = Infinity
+    let combinedRight = -Infinity,
+      combinedBottom = -Infinity
     for (const el of heroTextChildren) {
       const tRect = el.getBoundingClientRect()
-      textRects.push({
+      const r = {
         left: tRect.left - canvasRect.left,
         top: tRect.top - canvasRect.top,
         right: tRect.right - canvasRect.left,
         bottom: tRect.bottom - canvasRect.top
+      }
+      textRects.push(r)
+      combinedLeft = Math.min(combinedLeft, r.left)
+      combinedTop = Math.min(combinedTop, r.top)
+      combinedRight = Math.max(combinedRight, r.right)
+      combinedBottom = Math.max(combinedBottom, r.bottom)
+    }
+    // Add combined rect to cover gap between h1 and h2
+    if (textRects.length > 1) {
+      textRects.push({
+        left: combinedLeft,
+        top: combinedTop,
+        right: combinedRight,
+        bottom: combinedBottom
       })
     }
   }
