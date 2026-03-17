@@ -3,10 +3,43 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout>
-  <section class="min-h-screen min-w-screen flex items-center justify-center">
-    <div class="flex flex-col items-center justify-center">
+  <div id="hero-wrapper" class="relative h-screen overflow-hidden">
+    <div id="hero-track" class="flex h-screen w-[300vw]">
+      <div class="h-full w-screen bg-[#eae7e4]"></div>
+      <div class="h-full w-screen bg-[#d0e8f2]"></div>
+      <div class="h-full w-screen bg-[#fdf6e3]"></div>
+    </div>
+    <div id="hero-text" class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
       <h1 class="text-9xl font-bold font-['IBM_Plex_Sans']">Pixel Agency.</h1>
       <h2 class="text-4xl mt-4">A refreshing 🍊 digital partner</h2>
     </div>
-  </section>
+  </div>
 </Layout>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import Lenis from 'lenis'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  const lenis = new Lenis()
+
+  lenis.on('scroll', ScrollTrigger.update)
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000)
+  })
+  gsap.ticker.lagSmoothing(0)
+
+  gsap.to('#hero-track', {
+    x: () => -(document.querySelector('#hero-track')!.scrollWidth - window.innerWidth),
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero-wrapper',
+      pin: true,
+      scrub: 1,
+      end: () => `+=${document.querySelector('#hero-track')!.scrollWidth - window.innerWidth}`
+    }
+  })
+</script>
