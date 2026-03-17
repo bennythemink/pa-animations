@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@theme {
+@theme extend {
   --text-10xl: 10rem;
   --text-10xl--line-height: 1;
   --text-11xl: 12rem;
