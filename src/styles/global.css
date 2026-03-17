@@ -20,6 +20,14 @@
   }
 }
 
+@layer utilities {
+  .heading-style {
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 0.85;
+  }
+}
+
 @theme extend {
   --text-10xl: 10rem;
   --text-10xl--line-height: 1;
@@ -60,7 +68,7 @@
   --color-pixel-light-orange: #f4b865;
 
   --color-pixel-yellow: #f5c844;
-  --color-pixel-light-yellow: #f5c844;
+  --color-pixel-light-yellow: #fcebad;
 
   --color-pixel-green: #479f82;
   --color-pixel-dark-green: #2a6351;
