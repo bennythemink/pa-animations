@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro'
+import plusSvg from '../assets/plus.svg?url'
+import equalsSvg from '../assets/equals.svg?url'
+import vectorSvg from '../assets/vector.svg?url'
+---
+
+<Layout>
+  <div id="hero-wrapper" class="relative h-screen overflow-hidden">
+    <div id="hero-track" class="flex h-screen w-[200vw] relative">
+      <div class="h-full w-screen bg-[#eae7e4]"></div>
+      <div class="h-full w-screen"></div>
+      <div id="flow-container" class="absolute top-0 left-[90vw] w-[30vw] h-full">
+        <canvas id="flow" class="block w-full h-full"></canvas>
+      </div>
+    </div>
+    <div id="hero-text" class="pointer-events-none absolute inset-0 flex items-center justify-center">
+      <h1 class="text-9xl font-['IBM_Plex_Sans']">
+        Clear promises
+        <img src={plusSvg} alt="plus" class="inline h-[1em] mx-2" />
+        Careful craft
+        <img src={equalsSvg} alt="equals" class="inline h-[1em] mx-2" />
+        Proud outcomes
+        <img src={vectorSvg} alt="vector" class="inline h-[1em] mx-2" />
+      </h1>
+      <h2 class="text-4xl mt-4">We are Pixel Agency, a practitioner-led, refreshing 🍊 digital partner.</h2>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import Lenis from 'lenis'
+  import '../scripts/flow-field.js'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  const lenis = new Lenis()
+
+  lenis.on('scroll', ScrollTrigger.update)
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000)
+  })
+  gsap.ticker.lagSmoothing(0)
+
+  gsap.to('#hero-track', {
+    x: () => -(document.querySelector('#hero-track')!.scrollWidth - window.innerWidth),
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero-wrapper',
+      pin: true,
+      scrub: 1,
+      end: () => `+=${document.querySelector('#hero-track')!.scrollWidth - window.innerWidth}`
+    }
+  })
+</script>
