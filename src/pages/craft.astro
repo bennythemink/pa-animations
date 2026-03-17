@@ -18,8 +18,10 @@ import vectorSvg from '../assets/vector.svg?url'
           <img src={vectorSvg} alt="vector" class="inline-block h-[1.25em] mx-2 align-middle" />
         </h1>
       </div>
-      <div id="hero-h2" class="pointer-events-none shrink-0 flex items-center z-10">
-        <h2 class="text-8xl whitespace-normal max-w-screen text-center px-16">We are Pixel Agency, a practitioner-led, refreshing 🍊 digital partner.</h2>
+      <div id="hero-h2" class="pointer-events-none shrink-0 w-screen flex items-center z-10">
+        <h2 class="text-6xl whitespace-normal max-w-screen text-center px-16">
+          We are Pixel Agency, a practitioner-led, refreshing 🍊 digital partner.
+        </h2>
       </div>
       <div id="track-flow" class="h-full shrink-0">
         <div id="flow-container" class="w-full h-full">
@@ -90,17 +92,14 @@ import vectorSvg from '../assets/vector.svg?url'
         const trackX = -self.progress * totalScroll
         const vw = window.innerWidth
 
-        // h2's natural left edge position in the track
+        // h2's natural position in the track
         const h2Left = heroH2.offsetLeft
-        const h2Width = heroH2.offsetWidth
-        // Where the h2 center naturally sits on screen after track translation
-        const h2ScreenCenter = h2Left + h2Width / 2 + trackX
-        const vpCenter = vw / 2
+        const h2ScreenLeft = h2Left + trackX
 
-        // Once h2 center reaches viewport center, pin it there
-        if (h2ScreenCenter < vpCenter) {
-          const offset = vpCenter - h2ScreenCenter
-          heroH2.style.transform = `translateX(${offset}px)`
+        // Pin h2 once its left edge reaches the viewport's left side
+        // At that point the full w-screen div fits exactly in the viewport
+        if (h2ScreenLeft <= 0) {
+          heroH2.style.transform = `translateX(${-h2ScreenLeft}px)`
         } else {
           heroH2.style.transform = ''
         }
