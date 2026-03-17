@@ -113,7 +113,7 @@ function simplex2(x, y) {
 // ── TEXT REPULSION CONFIG ────────────────────────────────────
 const TEXT_REPULSION = {
   RADIUS: 120, // px — repulsion radius around text edges
-  PULL: 100, // max displacement
+  PULL: 150, // max displacement
   EASE_IN: 0.06,
   EASE_OUT: 0.03
 }
@@ -210,7 +210,7 @@ function draw(now) {
     HERO_B
   } = CONFIG
 
-  // ── Compute hero text rects relative to canvas ──
+  // ── Compute hero text rect relative to canvas ──
   const textRects = []
   if (heroTextChildren.length > 0) {
     const canvasRect = container.getBoundingClientRect()
@@ -220,27 +220,18 @@ function draw(now) {
       combinedBottom = -Infinity
     for (const el of heroTextChildren) {
       const tRect = el.getBoundingClientRect()
-      const r = {
-        left: tRect.left - canvasRect.left,
-        top: tRect.top - canvasRect.top,
-        right: tRect.right - canvasRect.left,
-        bottom: tRect.bottom - canvasRect.top
-      }
-      textRects.push(r)
-      combinedLeft = Math.min(combinedLeft, r.left)
-      combinedTop = Math.min(combinedTop, r.top)
-      combinedRight = Math.max(combinedRight, r.right)
-      combinedBottom = Math.max(combinedBottom, r.bottom)
+      combinedLeft = Math.min(combinedLeft, tRect.left - canvasRect.left)
+      combinedTop = Math.min(combinedTop, tRect.top - canvasRect.top)
+      combinedRight = Math.max(combinedRight, tRect.right - canvasRect.left)
+      combinedBottom = Math.max(combinedBottom, tRect.bottom - canvasRect.top)
     }
-    // Add combined rect to cover gap between h1 and h2
-    if (textRects.length > 1) {
-      textRects.push({
-        left: combinedLeft,
-        top: combinedTop,
-        right: combinedRight,
-        bottom: combinedBottom
-      })
-    }
+    // Single combined rect covering all text elements and gaps
+    textRects.push({
+      left: combinedLeft,
+      top: combinedTop,
+      right: combinedRight,
+      bottom: combinedBottom
+    })
   }
 
   ctx.clearRect(0, 0, W, H)
