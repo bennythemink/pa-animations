@@ -1,0 +1,388 @@
+---
+interface Props {
+  conversation: { role: 'user' | 'ai'; text: string }[]
+  id: string
+  placeholder?: string
+}
+
+const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
+---
+
+<div id={id} class="pixel-chatbot" data-conversation={JSON.stringify(conversation)} data-placeholder={placeholder}>
+  <div class="pixel-chatbot__messages" data-messages></div>
+  <div class="pixel-chatbot__input-bar">
+    <div class="pixel-chatbot__input">
+      <span class="pixel-chatbot__input-text pixel-chatbot__input-text--placeholder" data-input-text>{placeholder}</span
+      >
+      <span class="pixel-chatbot__cursor"></span>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  /* ── Container ── */
+  .pixel-chatbot {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.5;
+  }
+
+  /* ── Messages area ── */
+  .pixel-chatbot__messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* ── Message rows ── */
+  .pixel-chatbot__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+  .pixel-chatbot__row--user {
+    justify-content: flex-end;
+  }
+  .pixel-chatbot__row--ai {
+    justify-content: flex-start;
+  }
+
+  /* ── Avatar squares ── */
+  .pixel-chatbot__avatar {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.325rem;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+  .pixel-chatbot__avatar--user {
+    background: #f472b6;
+  }
+  .pixel-chatbot__avatar--ai {
+    background: #60a5fa;
+  }
+
+  /* ── Message bubbles ── */
+  .pixel-chatbot__bubble {
+    border-radius: 0.875rem;
+    padding: 0.5rem 0.875rem;
+    max-width: 75%;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    word-break: break-word;
+  }
+  .pixel-chatbot__bubble--user {
+    background: #fce7f3;
+    color: #1f2937;
+  }
+  .pixel-chatbot__bubble--ai {
+    background: #dbeafe;
+    color: #1f2937;
+  }
+
+  /* ── Typing dots ── */
+  .pixel-chatbot__dots {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    height: 1.25rem;
+    padding: 0 0.125rem;
+  }
+  .pixel-chatbot__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: pixel-chatbot-bounce 1.4s infinite ease-in-out both;
+  }
+  .pixel-chatbot__dot--user {
+    background: #f472b6;
+  }
+  .pixel-chatbot__dot--ai {
+    background: #60a5fa;
+  }
+  .pixel-chatbot__dot:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+  .pixel-chatbot__dot:nth-child(3) {
+    animation-delay: 0.32s;
+  }
+
+  /* ── Input bar ── */
+  .pixel-chatbot__input-bar {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #e5e7eb;
+  }
+  .pixel-chatbot__input {
+    display: flex;
+    align-items: center;
+    background: #f3f4f6;
+    border-radius: 9999px;
+    padding: 0.625rem 1rem;
+  }
+  .pixel-chatbot__input-text {
+    flex: 1;
+    font-size: 0.8125rem;
+    min-height: 1.25rem;
+    line-height: 1.25rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .pixel-chatbot__input-text--placeholder {
+    color: #9ca3af;
+  }
+  .pixel-chatbot__input-text--typing {
+    color: #1f2937;
+  }
+
+  .pixel-chatbot__cursor {
+    width: 1.5px;
+    height: 1rem;
+    background: #6b7280;
+    margin-left: 1px;
+    flex-shrink: 0;
+    animation: pixel-chatbot-blink 1s step-end infinite;
+  }
+
+  /* ── Utility ── */
+  .pixel-chatbot__hidden {
+    display: none !important;
+  }
+
+  /* ── Keyframes ── */
+  @keyframes pixel-chatbot-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  @keyframes pixel-chatbot-bounce {
+    0%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-5px);
+    }
+  }
+</style>
+
+<script>
+  // ── Animation-phase thresholds (within each message's 0→1 progress segment) ──
+  const PHASES = {
+    user: {
+      TYPING_END: 0.4, // 0 → .40 : text typed into input bar
+      PAUSE_END: 0.5, // .40 → .50 : full text visible (pause)
+      REVEAL: 0.65 // .50 → .65 : "sending" dots then message appears
+    },
+    ai: {
+      REVEAL: 0.5 // 0 → .50 : thinking dots  |  .50 → 1 : message shown
+    }
+  }
+
+  function initPixelChatbot(container: HTMLElement) {
+    const conversation: { role: 'user' | 'ai'; text: string }[] = JSON.parse(container.dataset.conversation || '[]')
+    const placeholder = container.dataset.placeholder || 'Ask Pixel Assist...'
+    const messagesEl = container.querySelector('[data-messages]')!
+    const inputTextEl = container.querySelector('[data-input-text]')!
+
+    const N = conversation.length
+    if (N === 0) return
+
+    // ── Weight messages proportionally by text length ──
+    const totalChars = conversation.reduce((s, m) => s + m.text.length, 0)
+    const raw = conversation.map((m) => {
+      const charW = totalChars > 0 ? m.text.length / totalChars : 1 / N
+      return Math.max(0.5 / N, charW)
+    })
+    const wSum = raw.reduce((a, b) => a + b, 0)
+    const weights = raw.map((w) => w / wSum)
+
+    // Cumulative progress thresholds: [0, w0, w0+w1, …, 1]
+    const thresholds = [0]
+    for (let i = 0; i < N; i++) thresholds.push(thresholds[i] + weights[i])
+    thresholds[N] = 1
+
+    // ── DOM helpers ──
+    function makeRow(role: string) {
+      const r = document.createElement('div')
+      r.className = `pixel-chatbot__row pixel-chatbot__row--${role}`
+      return r
+    }
+
+    function makeAvatar(role: string) {
+      const a = document.createElement('div')
+      a.className = `pixel-chatbot__avatar pixel-chatbot__avatar--${role}`
+      return a
+    }
+
+    function makeBubble(role: string, child: HTMLElement | string) {
+      const b = document.createElement('div')
+      b.className = `pixel-chatbot__bubble pixel-chatbot__bubble--${role}`
+      if (typeof child === 'string') b.textContent = child
+      else b.appendChild(child)
+      return b
+    }
+
+    function makeDots(role: string) {
+      const wrap = document.createElement('div')
+      wrap.className = 'pixel-chatbot__dots'
+      for (let i = 0; i < 3; i++) {
+        const d = document.createElement('span')
+        d.className = `pixel-chatbot__dot pixel-chatbot__dot--${role}`
+        wrap.appendChild(d)
+      }
+      return wrap
+    }
+
+    function assembleRow(role: string, child: HTMLElement | string) {
+      const row = makeRow(role)
+      const avatar = makeAvatar(role)
+      const bubble = makeBubble(role, child)
+      if (role === 'user') {
+        row.appendChild(bubble)
+        row.appendChild(avatar)
+      } else {
+        row.appendChild(avatar)
+        row.appendChild(bubble)
+      }
+      return row
+    }
+
+    // ── Pre-create all elements (hidden) ──
+    const els = conversation.map((msg) => {
+      const dotsRow = assembleRow(msg.role, makeDots(msg.role))
+      dotsRow.classList.add('pixel-chatbot__hidden')
+      messagesEl.appendChild(dotsRow)
+
+      const msgRow = assembleRow(msg.role, msg.text)
+      msgRow.classList.add('pixel-chatbot__hidden')
+      messagesEl.appendChild(msgRow)
+
+      return { dotsRow, msgRow }
+    })
+
+    // ── State tracking (skip DOM writes when nothing changed) ──
+    let prevKey = ''
+
+    function show(el: HTMLElement) {
+      el.classList.remove('pixel-chatbot__hidden')
+    }
+    function hide(el: HTMLElement) {
+      el.classList.add('pixel-chatbot__hidden')
+    }
+
+    // ── Core progress function ──
+    function setProgress(p: number) {
+      p = Math.max(0, Math.min(1, p))
+
+      // Determine active message index & local sub-progress
+      let activeIdx = N
+      let localP = 1
+      for (let i = 0; i < N; i++) {
+        if (p < thresholds[i + 1]) {
+          activeIdx = i
+          localP = weights[i] > 0 ? (p - thresholds[i]) / weights[i] : 1
+          break
+        }
+      }
+
+      // Quick diff — skip if nothing changed
+      const key = `${activeIdx}|${(localP * 1000) | 0}`
+      if (key === prevKey) return
+      prevKey = key
+
+      let inputText = ''
+      let isPlaceholder = true
+
+      for (let i = 0; i < N; i++) {
+        const { dotsRow, msgRow } = els[i]
+        const msg = conversation[i]
+
+        if (i < activeIdx) {
+          // Fully revealed
+          hide(dotsRow)
+          show(msgRow)
+        } else if (i === activeIdx) {
+          if (msg.role === 'user') {
+            const ph = PHASES.user
+            if (localP < ph.TYPING_END) {
+              // Characters typed into input bar
+              const chars = Math.ceil((localP / ph.TYPING_END) * msg.text.length)
+              inputText = msg.text.substring(0, chars)
+              isPlaceholder = false
+              hide(dotsRow)
+              hide(msgRow)
+            } else if (localP < ph.PAUSE_END) {
+              // Full text in input (brief pause)
+              inputText = msg.text
+              isPlaceholder = false
+              hide(dotsRow)
+              hide(msgRow)
+            } else if (localP < ph.REVEAL) {
+              // "Sending" dots, input cleared
+              show(dotsRow)
+              hide(msgRow)
+            } else {
+              // Message bubble revealed
+              hide(dotsRow)
+              show(msgRow)
+            }
+          } else {
+            const ph = PHASES.ai
+            // AI message
+            if (localP < ph.REVEAL) {
+              // Thinking dots
+              show(dotsRow)
+              hide(msgRow)
+            } else {
+              // Message revealed
+              hide(dotsRow)
+              show(msgRow)
+            }
+          }
+        } else {
+          // Future — hidden
+          hide(dotsRow)
+          hide(msgRow)
+        }
+      }
+
+      // ── Update input bar ──
+      if (isPlaceholder) {
+        inputTextEl.textContent = placeholder
+        inputTextEl.classList.add('pixel-chatbot__input-text--placeholder')
+        inputTextEl.classList.remove('pixel-chatbot__input-text--typing')
+      } else {
+        inputTextEl.textContent = inputText
+        inputTextEl.classList.remove('pixel-chatbot__input-text--placeholder')
+        inputTextEl.classList.add('pixel-chatbot__input-text--typing')
+      }
+
+      // ── Auto-scroll messages to bottom ──
+      messagesEl.scrollTop = messagesEl.scrollHeight
+    }
+
+    // Expose setProgress on the DOM element so the parent page can call it
+    ;(container as any).setProgress = setProgress
+    setProgress(0)
+  }
+
+  // Initialize every chatbot instance on the page
+  document.querySelectorAll<HTMLElement>('.pixel-chatbot').forEach(initPixelChatbot)
+</script>

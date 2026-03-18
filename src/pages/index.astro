@@ -1,19 +1,58 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import PixelAssistChatbot from '../components/PixelAssistChatbot.astro'
+import plusSvg from '../assets/plus.svg?url'
+import equalsSvg from '../assets/equals.svg?url'
+import vectorSvg from '../assets/vector.svg?url'
+
+const conversation = [
+  { role: 'user' as const, text: 'What does Pixel Agency do?' },
+  {
+    role: 'ai' as const,
+    text: 'We design, build, and grow digital products. A practitioner-led team delivering strategy, design, and technology.'
+  },
+  { role: 'user' as const, text: 'What makes you different?' },
+  {
+    role: 'ai' as const,
+    text: 'Every team member is hands-on — senior practitioners from strategy through to deployment. No middlemen.'
+  },
+  { role: 'user' as const, text: 'Can you help with our website?' },
+  {
+    role: 'ai' as const,
+    text: 'Absolutely. From discovery to launch and beyond — design, development, and ongoing optimisation.'
+  }
+]
 ---
 
 <Layout>
   <div id="hero-wrapper" class="relative h-screen overflow-hidden">
-    <div id="hero-track" class="flex h-screen w-[200vw] relative">
-      <div class="h-full w-screen bg-[#eae7e4]"></div>
-      <div class="h-full w-screen"></div>
-      <div id="flow-container" class="absolute top-0 left-[90vw] w-[30vw] h-full">
-        <canvas id="flow" class="block w-full h-full"></canvas>
+    <div id="hero-track" class="flex h-screen relative items-center">
+      <div id="hero-text" class="pointer-events-none shrink-0 whitespace-nowrap pl-32 flex items-center gap-8">
+        <h1 class="text-5xl sm:text-10xl">
+          Clear promises
+          <img src={plusSvg} alt="plus" class="inline-block h-[1.25em] mx-2 align-middle" />
+          Careful craft
+          <img src={equalsSvg} alt="equals" class="inline-block h-[1.25em] mx-2 align-middle" />
+          Proud outcomes
+          <img src={vectorSvg} alt="vector" class="inline-block h-[1.25em] mx-2 align-middle" />
+        </h1>
       </div>
-    </div>
-    <div id="hero-text" class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-      <h1 class="text-9xl font-bold font-['IBM_Plex_Sans']">Pixel Agency.</h1>
-      <h2 class="text-4xl mt-4">A refreshing 🍊 digital partner. Cutting through the noise.</h2>
+      <div id="hero-h2" class="pointer-events-none shrink-0 w-screen flex items-center justify-center z-10">
+        <h2 class="text-4xl sm:text-6xl whitespace-normal max-w-screen text-center px-16">
+          We are Pixel Agency, a practitioner-led, refreshing 🍊 digital partner.
+        </h2>
+      </div>
+      <div id="track-flow" class="h-full shrink-0">
+        <div id="flow-container" class="w-full h-full">
+          <canvas id="flow" class="block w-full h-full"></canvas>
+        </div>
+      </div>
+      <div id="track-chatbot" class="h-full shrink-0 flex items-center justify-center">
+        <div class="w-105 h-145">
+          <PixelAssistChatbot id="craft-chatbot" conversation={conversation} />
+        </div>
+      </div>
+      <div id="track-bg-2" class="h-full shrink-0"></div>
     </div>
   </div>
 </Layout>
@@ -35,14 +74,76 @@ import Layout from '../layouts/Layout.astro'
   })
   gsap.ticker.lagSmoothing(0)
 
-  gsap.to('#hero-track', {
-    x: () => -(document.querySelector('#hero-track')!.scrollWidth - window.innerWidth),
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#hero-wrapper',
-      pin: true,
-      scrub: 1,
-      end: () => `+=${document.querySelector('#hero-track')!.scrollWidth - window.innerWidth}`
-    }
+  // Dynamically size track panels based on hero text + h2 width
+  function sizeTrack() {
+    const heroText = document.getElementById('hero-text')!
+    const heroH2 = document.getElementById('hero-h2')!
+    const textWidth = heroText.scrollWidth
+    const h2Width = heroH2.scrollWidth
+    const vw = window.innerWidth
+    const flowWidth = vw * 1
+    const chatbotWidth = vw * 1.5
+    const extraTrack = vw
+
+    const totalWidth = textWidth + h2Width + flowWidth + chatbotWidth + extraTrack
+
+    const trackFlow = document.getElementById('track-flow')!
+    const trackChatbot = document.getElementById('track-chatbot')!
+    const trackBg2 = document.getElementById('track-bg-2')!
+    const heroTrack = document.getElementById('hero-track')!
+
+    trackFlow.style.width = `${flowWidth}px`
+    trackChatbot.style.width = `${chatbotWidth}px`
+    trackBg2.style.width = `${extraTrack}px`
+    heroTrack.style.width = `${totalWidth}px`
+
+    ScrollTrigger.refresh()
+  }
+
+  document.fonts.ready.then(() => {
+    sizeTrack()
+    initScrollTrigger()
   })
+  window.addEventListener('resize', sizeTrack)
+
+  const heroH2 = document.getElementById('hero-h2')!
+
+  function initScrollTrigger() {
+    gsap.to('#hero-track', {
+      x: () => -(document.querySelector('#hero-track')!.scrollWidth - window.innerWidth),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero-wrapper',
+        pin: true,
+        scrub: 1,
+        end: () => `+=${document.querySelector('#hero-track')!.scrollWidth - window.innerWidth}`,
+        onUpdate(self) {
+          const totalScroll = document.querySelector('#hero-track')!.scrollWidth - window.innerWidth
+          const trackX = -self.progress * totalScroll
+          const vw = window.innerWidth
+
+          // h2's natural position in the track
+          const h2Left = heroH2.offsetLeft
+          const h2ScreenLeft = h2Left + trackX
+
+          // Pin h2 once its left edge reaches the viewport's left side
+          if (h2ScreenLeft <= 0) {
+            heroH2.style.transform = `translateX(${-h2ScreenLeft}px)`
+          } else {
+            heroH2.style.transform = ''
+          }
+
+          // ── Chatbot scroll progress ──
+          const chatPanel = document.getElementById('track-chatbot')!
+          const chatLeft = chatPanel.offsetLeft
+          const chatW = chatPanel.offsetWidth
+          const chatScreenLeft = chatLeft + trackX
+          const rawP = (vw - chatScreenLeft) / (vw + chatW)
+          const chatP = Math.max(0, Math.min(1, (rawP - 0.15) / 0.7))
+          const chatEl = document.getElementById('craft-chatbot') as any
+          if (chatEl?.setProgress) chatEl.setProgress(chatP)
+        }
+      }
+    })
+  }
 </script>

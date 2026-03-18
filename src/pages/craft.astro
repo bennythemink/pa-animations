@@ -1,8 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import PixelAssistChatbot from '../components/PixelAssistChatbot.astro'
 import plusSvg from '../assets/plus.svg?url'
 import equalsSvg from '../assets/equals.svg?url'
 import vectorSvg from '../assets/vector.svg?url'
+
+const conversation = [
+  { role: 'user' as const, text: 'What does Pixel Agency do?' },
+  {
+    role: 'ai' as const,
+    text: 'We design, build, and grow digital products. A practitioner-led team delivering strategy, design, and technology.'
+  },
+  { role: 'user' as const, text: 'What makes you different?' },
+  {
+    role: 'ai' as const,
+    text: 'Every team member is hands-on — senior practitioners from strategy through to deployment. No middlemen.'
+  },
+  { role: 'user' as const, text: 'Can you help with our website?' },
+  {
+    role: 'ai' as const,
+    text: 'Absolutely. From discovery to launch and beyond — design, development, and ongoing optimisation.'
+  }
+]
 ---
 
 <Layout>
@@ -26,6 +45,11 @@ import vectorSvg from '../assets/vector.svg?url'
       <div id="track-flow" class="h-full shrink-0">
         <div id="flow-container" class="w-full h-full">
           <canvas id="flow" class="block w-full h-full"></canvas>
+        </div>
+      </div>
+      <div id="track-chatbot" class="h-full shrink-0 flex items-center justify-center">
+        <div class="w-105 h-145">
+          <PixelAssistChatbot id="craft-chatbot" conversation={conversation} />
         </div>
       </div>
       <div id="track-bg-2" class="h-full shrink-0"></div>
@@ -58,15 +82,18 @@ import vectorSvg from '../assets/vector.svg?url'
     const h2Width = heroH2.scrollWidth
     const vw = window.innerWidth
     const flowWidth = vw * 1
+    const chatbotWidth = vw * 1.5
     const extraTrack = vw
 
-    const totalWidth = textWidth + h2Width + flowWidth + extraTrack
+    const totalWidth = textWidth + h2Width + flowWidth + chatbotWidth + extraTrack
 
     const trackFlow = document.getElementById('track-flow')!
+    const trackChatbot = document.getElementById('track-chatbot')!
     const trackBg2 = document.getElementById('track-bg-2')!
     const heroTrack = document.getElementById('hero-track')!
 
     trackFlow.style.width = `${flowWidth}px`
+    trackChatbot.style.width = `${chatbotWidth}px`
     trackBg2.style.width = `${extraTrack}px`
     heroTrack.style.width = `${totalWidth}px`
 
@@ -105,6 +132,16 @@ import vectorSvg from '../assets/vector.svg?url'
           } else {
             heroH2.style.transform = ''
           }
+
+          // ── Chatbot scroll progress ──
+          const chatPanel = document.getElementById('track-chatbot')!
+          const chatLeft = chatPanel.offsetLeft
+          const chatW = chatPanel.offsetWidth
+          const chatScreenLeft = chatLeft + trackX
+          const rawP = (vw - chatScreenLeft) / (vw + chatW)
+          const chatP = Math.max(0, Math.min(1, (rawP - 0.15) / 0.7))
+          const chatEl = document.getElementById('craft-chatbot') as any
+          if (chatEl?.setProgress) chatEl.setProgress(chatP)
         }
       }
     })
