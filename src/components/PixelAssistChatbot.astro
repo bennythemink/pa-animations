@@ -185,9 +185,9 @@ const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
   // ── Animation-phase thresholds (within each message's 0→1 progress segment) ──
   const PHASES = {
     user: {
-      TYPING_END: 0.4, // 0 → .40 : text typed into input bar
-      PAUSE_END: 0.5, // .40 → .50 : full text visible (pause)
-      REVEAL: 0.65 // .50 → .65 : "sending" dots then message appears
+      TYPING_END: 0.65, // 0 → .65 : text typed into input bar
+      PAUSE_END: 0.72, // .65 → .72 : full text visible (pause)
+      REVEAL: 0.85 // .72 → .85 : "sending" dots then message appears
     },
     ai: {
       DOTS_END: 0.25, // 0 → .25 : thinking dots
@@ -290,8 +290,11 @@ const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
     }
 
     // ── Core progress function ──
+    const DELAY = 0.1 // reserve first 10% of progress as dead space before conversation starts
     function setProgress(p: number) {
       p = Math.max(0, Math.min(1, p))
+      // Remap: 0→DELAY = nothing, DELAY→1 = full conversation
+      p = p <= DELAY ? 0 : (p - DELAY) / (1 - DELAY)
 
       // Determine active message index & local sub-progress
       let activeIdx = N
