@@ -6,11 +6,17 @@ import equalsSvg from '../assets/equals.svg?url'
 import vectorSvg from '../assets/vector.svg?url'
 
 const assistConversation = [
-  { role: 'user' as const, text: 'Is your cash ISA suitable for a pensioner on a budget?' },
+  { role: 'user' as const, text: 'What exactly is Pixel Assist?' },
   {
     role: 'ai' as const,
-    text: 'Great question! Our Easy Access Cash ISA has no minimum deposit and lets you withdraw anytime — perfect for flexible budgeting.'
-  }
+    text: 'Pixel Assist is an AI-powered assistant that lives on your website. It learns your content and answers visitor questions instantly — 24/7, no waiting.'
+  },
+  { role: 'user' as const, text: 'How does it help convert visitors into customers?' },
+  {
+    role: 'ai' as const,
+    text: 'It guides visitors to the right information at the right moment — answering objections, recommending products, and nudging them toward enquiry forms or checkout. Think of it as a knowledgeable sales assistant that never sleeps.'
+  },
+  { role: 'user' as const, text: 'Great, thank you very much!' }
 ]
 ---
 
@@ -61,10 +67,6 @@ const assistConversation = [
   <div id="assist-wrapper" class="relative h-screen overflow-hidden">
     <div id="assist-track" class="flex h-screen relative items-center">
       <!-- Panel 1: intro text -->
-      <!-- <div class="shrink-0 h-full flex items-center px-24">
-        <h2 class="text-3xl sm:text-4xl mb-8">Our AI service</h2>
-        <h3 class="text-6xl sm:text-9xl mb-10 sm:mb-12">Introducing Pixel Assist</h3>
-      </div> -->
 
       <div class="shrink-0 w-[50vw] sm:w-[55vw] pl-8 sm:pl-32 flex items-center h-full">
         <div id="assist-intro">
