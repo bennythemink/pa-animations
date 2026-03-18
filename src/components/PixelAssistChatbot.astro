@@ -63,7 +63,6 @@ const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
   .pixel-chatbot__avatar {
     width: 1.75rem;
     height: 1.75rem;
-    border-radius: 0.325rem;
     flex-shrink: 0;
     margin-top: 0.125rem;
   }
@@ -191,7 +190,8 @@ const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
       REVEAL: 0.65 // .50 → .65 : "sending" dots then message appears
     },
     ai: {
-      REVEAL: 0.5 // 0 → .50 : thinking dots  |  .50 → 1 : message shown
+      DOTS_END: 0.25, // 0 → .25 : thinking dots
+      REVEAL: 1.0 // .25 → 1 : text streams in character by character
     }
   }
 
@@ -274,7 +274,9 @@ const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
       msgRow.classList.add('pixel-chatbot__hidden')
       messagesEl.appendChild(msgRow)
 
-      return { dotsRow, msgRow }
+      const bubble = msgRow.querySelector('.pixel-chatbot__bubble')!
+
+      return { dotsRow, msgRow, bubble, fullText: msg.text }
     })
 
     // ── State tracking (skip DOM writes when nothing changed) ──
@@ -311,13 +313,14 @@ const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
       let isPlaceholder = true
 
       for (let i = 0; i < N; i++) {
-        const { dotsRow, msgRow } = els[i]
+        const { dotsRow, msgRow, bubble, fullText } = els[i]
         const msg = conversation[i]
 
         if (i < activeIdx) {
           // Fully revealed
           hide(dotsRow)
           show(msgRow)
+          bubble.textContent = fullText
         } else if (i === activeIdx) {
           if (msg.role === 'user') {
             const ph = PHASES.user
@@ -346,14 +349,17 @@ const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
           } else {
             const ph = PHASES.ai
             // AI message
-            if (localP < ph.REVEAL) {
+            if (localP < ph.DOTS_END) {
               // Thinking dots
               show(dotsRow)
               hide(msgRow)
             } else {
-              // Message revealed
+              // Streaming text in character by character
               hide(dotsRow)
               show(msgRow)
+              const streamP = (localP - ph.DOTS_END) / (ph.REVEAL - ph.DOTS_END)
+              const chars = Math.ceil(streamP * fullText.length)
+              bubble.textContent = fullText.substring(0, chars)
             }
           }
         } else {
