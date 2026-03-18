@@ -290,7 +290,7 @@ const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
     }
 
     // ── Core progress function ──
-    const DELAY = 0.1 // reserve first 10% of progress as dead space before conversation starts
+    const DELAY = 0.05 // reserve first 5% of progress as dead space before conversation starts
     function setProgress(p: number) {
       p = Math.max(0, Math.min(1, p))
       // Remap: 0→DELAY = nothing, DELAY→1 = full conversation
