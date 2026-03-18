@@ -213,29 +213,93 @@ const assistConversation = [
       }
     })
 
-    // ── PIXEL ASSIST horizontal scroll ──
-    gsap.to('#assist-track', {
-      x: () => -(document.querySelector('#assist-track')!.scrollWidth - window.innerWidth),
-      ease: 'none',
+    // ── PIXEL ASSIST horizontal scroll (timeline with chatbot pause) ──
+    const assistTrack = document.querySelector('#assist-track')! as HTMLElement
+    const chatPanel = document.getElementById('assist-chatbot-panel')!
+    const vwNow = window.innerWidth
+
+    // Total distance the track needs to travel
+    const totalTravel = assistTrack.scrollWidth - vwNow
+
+    // Distance to scroll so the chatbot panel is centered on screen
+    const chatCenterOffset = chatPanel.offsetLeft + chatPanel.offsetWidth / 2
+    const xToChatCenter = Math.min(totalTravel, Math.max(0, chatCenterOffset - vwNow / 2))
+
+    // Remaining distance after the chatbot center
+    const xAfterChat = totalTravel - xToChatCenter
+
+    // Proportion of the horizontal travel for each phase
+    const phasePre = totalTravel > 0 ? xToChatCenter / totalTravel : 0
+    const phasePost = totalTravel > 0 ? xAfterChat / totalTravel : 0
+
+    // Extra scroll distance allocated to the chatbot conversation pause
+    const chatPauseDist = vwNow * 2
+
+    // Total scroll distance = horizontal travel + chatbot pause
+    const assistScrollDist = totalTravel + chatPauseDist
+
+    // Timeline durations proportional to scroll distance
+    const durPre = totalTravel > 0 ? xToChatCenter / assistScrollDist : 0
+    const durPause = chatPauseDist / assistScrollDist
+    const durPost = totalTravel > 0 ? xAfterChat / assistScrollDist : 0
+
+    const assistTl = gsap.timeline({
       scrollTrigger: {
         trigger: '#assist-wrapper',
         pin: true,
         scrub: 1,
-        end: () => `+=${document.querySelector('#assist-track')!.scrollWidth - window.innerWidth}`,
-        onUpdate(self) {
-          const totalScroll = document.querySelector('#assist-track')!.scrollWidth - window.innerWidth
-          const trackX = -self.progress * totalScroll
-          const vw = window.innerWidth
+        end: () => `+=${assistScrollDist}`
+      }
+    })
 
-          // ── Assist chatbot scroll progress ──
-          const chatPanel = document.getElementById('assist-chatbot-panel')!
-          const chatLeft = chatPanel.offsetLeft
-          const chatW = chatPanel.offsetWidth
-          const chatScreenLeft = chatLeft + trackX
-          const rawP = (vw - chatScreenLeft) / (vw + chatW)
-          const chatP = Math.max(0, Math.min(1, (rawP - 0.15) / 0.7))
+    // Phase 1: scroll track to center chatbot on screen
+    if (xToChatCenter > 0) {
+      assistTl.to('#assist-track', {
+        x: -xToChatCenter,
+        ease: 'none',
+        duration: durPre
+      })
+    }
+
+    // Phase 2: hold track still — the chatbot conversation plays here
+    // We add a dummy tween (0 movement) to consume timeline duration
+    assistTl.to('#assist-track', {
+      x: -xToChatCenter,
+      ease: 'none',
+      duration: durPause
+    })
+
+    // Phase 3: resume scrolling to the end
+    if (xAfterChat > 0) {
+      assistTl.to('#assist-track', {
+        x: -totalTravel,
+        ease: 'none',
+        duration: durPost
+      })
+    }
+
+    // Drive chatbot progress from the pause phase (phase 2)
+    const pauseStart = durPre
+    const pauseEnd = durPre + durPause
+
+    ScrollTrigger.create({
+      trigger: '#assist-wrapper',
+      scrub: 1,
+      start: 'top top',
+      end: () => `+=${assistScrollDist}`,
+      onUpdate(self) {
+        const p = self.progress
+        // Map pause phase to chatbot 0→1
+        if (p >= pauseStart && p <= pauseEnd && durPause > 0) {
+          const chatP = (p - pauseStart) / durPause
           const chatEl = document.getElementById('assist-chatbot') as any
           if (chatEl?.setProgress) chatEl.setProgress(chatP)
+        } else if (p < pauseStart) {
+          const chatEl = document.getElementById('assist-chatbot') as any
+          if (chatEl?.setProgress) chatEl.setProgress(0)
+        } else {
+          const chatEl = document.getElementById('assist-chatbot') as any
+          if (chatEl?.setProgress) chatEl.setProgress(1)
         }
       }
     })
