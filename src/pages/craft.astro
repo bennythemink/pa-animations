@@ -5,21 +5,11 @@ import plusSvg from '../assets/plus.svg?url'
 import equalsSvg from '../assets/equals.svg?url'
 import vectorSvg from '../assets/vector.svg?url'
 
-const conversation = [
-  { role: 'user' as const, text: 'What does Pixel Agency do?' },
+const assistConversation = [
+  { role: 'user' as const, text: 'Is your cash ISA suitable for a pensioner on a budget?' },
   {
     role: 'ai' as const,
-    text: 'We design, build, and grow digital products. A practitioner-led team delivering strategy, design, and technology.'
-  },
-  { role: 'user' as const, text: 'What makes you different?' },
-  {
-    role: 'ai' as const,
-    text: 'Every team member is hands-on — senior practitioners from strategy through to deployment. No middlemen.'
-  },
-  { role: 'user' as const, text: 'Can you help with our website?' },
-  {
-    role: 'ai' as const,
-    text: 'Absolutely. From discovery to launch and beyond — design, development, and ongoing optimisation.'
+    text: 'Great question! Our Easy Access Cash ISA has no minimum deposit and lets you withdraw anytime — perfect for flexible budgeting.'
   }
 ]
 ---
@@ -47,12 +37,80 @@ const conversation = [
           <canvas id="flow" class="block w-full h-full"></canvas>
         </div>
       </div>
-      <div id="track-chatbot" class="h-full shrink-0 flex items-center justify-center">
-        <div class="w-105 h-145">
-          <PixelAssistChatbot id="craft-chatbot" conversation={conversation} />
+      <div id="track-bg-2" class="h-full shrink-0"></div>
+    </div>
+  </div>
+
+  <!-- ══════ PROBLEM — vertical scroll section ══════ -->
+  <section id="problem" class="min-h-screen flex flex-col justify-center px-16 py-24">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <h2 class="text-4xl sm:text-7xl">The problem with digital right now</h2>
+      <p class="text-xl sm:text-2xl leading-relaxed">
+        Most agencies sell big promises and hand the work to juniors. Timelines slip, budgets balloon, and what gets
+        delivered rarely matches what was sold. You end up managing the agency instead of your business.
+      </p>
+      <p class="text-xl sm:text-2xl leading-relaxed">
+        Meanwhile, your customers expect instant, intelligent experiences — and they're not getting them. Support queues
+        grow, conversion stalls, and your team burns out answering the same questions over and over.
+      </p>
+      <p class="text-xl sm:text-2xl leading-relaxed">It doesn't have to be this way.</p>
+    </div>
+  </section>
+
+  <!-- ══════ PIXEL ASSIST — horizontal scroll ══════ -->
+  <div id="assist-wrapper" class="relative h-screen overflow-hidden">
+    <div id="assist-track" class="flex h-screen relative items-center">
+      <!-- Panel 1: intro text -->
+      <div id="assist-intro" class="shrink-0 h-full flex items-center px-24">
+        <p class="text-lg sm:text-xl italic whitespace-nowrap">Introducing Pixel Assist</p>
+      </div>
+
+      <!-- Panel 2: yellow card -->
+      <div id="assist-card-1" class="shrink-0 h-full flex items-center">
+        <div class="w-64 sm:w-80 aspect-square bg-amber-400 rounded-lg flex items-end p-6">
+          <p class="text-lg sm:text-xl font-bold leading-tight">Your customers<br />have questions.</p>
         </div>
       </div>
-      <div id="track-bg-2" class="h-full shrink-0"></div>
+
+      <!-- Panel 3: blue card -->
+      <div id="assist-card-2" class="shrink-0 h-full flex items-center ml-6">
+        <div class="w-64 sm:w-96 aspect-square bg-sky-400 rounded-lg flex items-start p-6">
+          <p class="text-lg sm:text-xl font-bold leading-tight">
+            Right now,<br />they're not getting<br />instant answers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Panel 4: hero heading -->
+      <div id="assist-heading" class="shrink-0 h-full flex items-center px-16">
+        <h2 class="text-5xl sm:text-8xl leading-none whitespace-nowrap">Pixel assist<br />changes that.</h2>
+      </div>
+
+      <!-- Panel 5: chatbot demo -->
+      <div id="assist-chatbot-panel" class="shrink-0 h-full flex items-center justify-center">
+        <div class="w-72 h-96">
+          <PixelAssistChatbot id="assist-chatbot" conversation={assistConversation} placeholder="Ask a question" />
+        </div>
+      </div>
+
+      <!-- Panel 6: description text -->
+      <div id="assist-description" class="shrink-0 h-full flex items-center px-16">
+        <div class="max-w-sm space-y-4">
+          <p class="text-sm sm:text-base leading-relaxed">
+            Our managed, AI-powered assistant learns your content and answers customer questions instantly — helping
+            people make faster decisions while reducing repetitive support work for your team.
+          </p>
+          <p class="text-sm sm:text-base leading-relaxed">
+            It's like having a digital expert and sales person on your website, 24/7.
+          </p>
+          <a href="#" class="text-sm sm:text-base font-bold underline inline-flex items-center gap-1">
+            Learn more 🟦
+          </a>
+        </div>
+      </div>
+
+      <!-- Trailing spacer -->
+      <div id="assist-end" class="shrink-0 h-full"></div>
     </div>
   </div>
 </Layout>
@@ -74,76 +132,114 @@ const conversation = [
   })
   gsap.ticker.lagSmoothing(0)
 
-  // Dynamically size track panels based on hero text + h2 width
-  function sizeTrack() {
+  // ── HERO horizontal scroll sizing ──
+  function sizeHeroTrack() {
     const heroText = document.getElementById('hero-text')!
     const heroH2 = document.getElementById('hero-h2')!
     const textWidth = heroText.scrollWidth
     const h2Width = heroH2.scrollWidth
     const vw = window.innerWidth
     const flowWidth = vw * 1
-    const chatbotWidth = vw * 1.5
     const extraTrack = vw
 
-    const totalWidth = textWidth + h2Width + flowWidth + chatbotWidth + extraTrack
+    const totalWidth = textWidth + h2Width + flowWidth + extraTrack
 
     const trackFlow = document.getElementById('track-flow')!
-    const trackChatbot = document.getElementById('track-chatbot')!
     const trackBg2 = document.getElementById('track-bg-2')!
     const heroTrack = document.getElementById('hero-track')!
 
     trackFlow.style.width = `${flowWidth}px`
-    trackChatbot.style.width = `${chatbotWidth}px`
     trackBg2.style.width = `${extraTrack}px`
     heroTrack.style.width = `${totalWidth}px`
-
-    ScrollTrigger.refresh()
   }
 
-  document.fonts.ready.then(() => {
-    sizeTrack()
-    initScrollTrigger()
-  })
-  window.addEventListener('resize', sizeTrack)
+  // ── PIXEL ASSIST horizontal scroll sizing ──
+  function sizeAssistTrack() {
+    const vw = window.innerWidth
+    const assistEnd = document.getElementById('assist-end')!
+    const assistTrack = document.getElementById('assist-track')!
+
+    assistEnd.style.width = `${vw}px`
+
+    const children = assistTrack.children
+    let totalWidth = 0
+    for (let i = 0; i < children.length; i++) {
+      totalWidth += (children[i] as HTMLElement).offsetWidth
+    }
+    assistTrack.style.width = `${totalWidth}px`
+  }
+
+  function sizeAllTracks() {
+    sizeHeroTrack()
+    sizeAssistTrack()
+  }
 
   const heroH2 = document.getElementById('hero-h2')!
 
-  function initScrollTrigger() {
+  function initScrollTriggers() {
+    // ── HERO horizontal scroll ──
     gsap.to('#hero-track', {
       x: () => -(document.querySelector('#hero-track')!.scrollWidth - window.innerWidth),
       ease: 'none',
       scrollTrigger: {
         trigger: '#hero-wrapper',
         pin: true,
-        scrub: 1,
+        scrub: true,
         end: () => `+=${document.querySelector('#hero-track')!.scrollWidth - window.innerWidth}`,
         onUpdate(self) {
           const totalScroll = document.querySelector('#hero-track')!.scrollWidth - window.innerWidth
           const trackX = -self.progress * totalScroll
           const vw = window.innerWidth
 
-          // h2's natural position in the track
           const h2Left = heroH2.offsetLeft
           const h2ScreenLeft = h2Left + trackX
 
-          // Pin h2 once its left edge reaches the viewport's left side
           if (h2ScreenLeft <= 0) {
             heroH2.style.transform = `translateX(${-h2ScreenLeft}px)`
           } else {
             heroH2.style.transform = ''
           }
+        }
+      }
+    })
 
-          // ── Chatbot scroll progress ──
-          const chatPanel = document.getElementById('track-chatbot')!
+    // ── PIXEL ASSIST horizontal scroll ──
+    gsap.to('#assist-track', {
+      x: () => -(document.querySelector('#assist-track')!.scrollWidth - window.innerWidth),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#assist-wrapper',
+        pin: true,
+        scrub: 1,
+        end: () => `+=${document.querySelector('#assist-track')!.scrollWidth - window.innerWidth}`,
+        onUpdate(self) {
+          const totalScroll = document.querySelector('#assist-track')!.scrollWidth - window.innerWidth
+          const trackX = -self.progress * totalScroll
+          const vw = window.innerWidth
+
+          // ── Assist chatbot scroll progress ──
+          const chatPanel = document.getElementById('assist-chatbot-panel')!
           const chatLeft = chatPanel.offsetLeft
           const chatW = chatPanel.offsetWidth
           const chatScreenLeft = chatLeft + trackX
           const rawP = (vw - chatScreenLeft) / (vw + chatW)
           const chatP = Math.max(0, Math.min(1, (rawP - 0.15) / 0.7))
-          const chatEl = document.getElementById('craft-chatbot') as any
+          const chatEl = document.getElementById('assist-chatbot') as any
           if (chatEl?.setProgress) chatEl.setProgress(chatP)
         }
       }
     })
   }
+
+  document.fonts.ready.then(() => {
+    sizeAllTracks()
+    initScrollTriggers()
+    ScrollTrigger.refresh()
+    lenis.resize()
+  })
+  window.addEventListener('resize', () => {
+    sizeAllTracks()
+    ScrollTrigger.refresh()
+    lenis.resize()
+  })
 </script>
