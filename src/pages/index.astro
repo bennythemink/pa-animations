@@ -620,6 +620,10 @@ const assistConversation = [
 
   gsap.registerPlugin(ScrollTrigger)
 
+  // Prevent the browser from restoring the previous scroll position on reload
+  history.scrollRestoration = 'manual'
+  window.scrollTo(0, 0)
+
   const lenis = new Lenis()
   lenis.stop() // lock scroll during puzzle
 
@@ -904,6 +908,7 @@ const assistConversation = [
       el.style.pointerEvents = 'auto'
       el.classList.add('logo-link')
       el.addEventListener('click', () => {
+        window.scrollTo(0, 0)
         window.location.reload()
       })
       document.body.appendChild(el)
@@ -918,6 +923,9 @@ const assistConversation = [
 
     // Hide skip button
     skipBtn.style.display = 'none'
+
+    // Ensure we're at the top of the page before revealing content
+    window.scrollTo(0, 0)
 
     // Initialise layout and ScrollTrigger while content is still at opacity: 0
     // (opacity: 0 preserves layout, so all measurements are valid)
