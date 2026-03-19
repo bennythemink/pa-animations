@@ -4,367 +4,367 @@
    ============================================================ */
 
 export function initFlowField() {
+  // ── CONFIG ──────────────────────────────────────────────────
+  const CONFIG = {
+    // Grid
+    GRID_SPACING: 40, // px between vectors (was 28 — 30% fewer vectors)
+    // LINE_LENGTH: 34, // drawn length of each line
+    // LINE_WIDTH: 4.5, // stroke thickness
 
-// ── CONFIG ──────────────────────────────────────────────────
-const CONFIG = {
-  // Grid
-  GRID_SPACING: 40, // px between vectors (was 28 — 30% fewer vectors)
-  // LINE_LENGTH: 34, // drawn length of each line
-  // LINE_WIDTH: 4.5, // stroke thickness
+    LINE_LENGTH: 51, // drawn length of each line
+    LINE_WIDTH: 8, // stroke thickness
 
-  LINE_LENGTH: 51, // drawn length of each line
-  LINE_WIDTH: 8, // stroke thickness
+    // Colour — #00A180
+    COLOR_R: 0,
+    COLOR_G: 161,
+    COLOR_B: 128,
+    OPACITY: 0.35, // base alpha (overlaps compound to darker tones)
 
-  // Colour — #00A180
-  COLOR_R: 0,
-  COLOR_G: 161,
-  COLOR_B: 128,
-  OPACITY: 0.35, // base alpha (overlaps compound to darker tones)
+    // Noise
+    NOISE_SCALE: 0.0015, // lower = smoother / larger swirls (neighbors stay coherent)
+    TIME_SPEED: 0.00015, // animation speed (slower, more gentle)
 
-  // Noise
-  NOISE_SCALE: 0.0015, // lower = smoother / larger swirls (neighbors stay coherent)
-  TIME_SPEED: 0.00015, // animation speed (slower, more gentle)
+    // Mouse interaction (positional)
+    MOUSE_MODE: 'hero', // ← 'attract', 'repel', or 'hero'
+    MOUSE_RADIUS: 300, // px — radius of influence
+    MOUSE_PULL: 50, // max px a point is displaced toward/away from cursor
+    MOUSE_EASE_IN: 0.08, // how fast points move toward target offset
+    MOUSE_EASE_OUT: 0.035, // how fast points spring back (slower = more organic)
 
-  // Mouse interaction (positional)
-  MOUSE_MODE: 'hero', // ← 'attract', 'repel', or 'hero'
-  MOUSE_RADIUS: 300, // px — radius of influence
-  MOUSE_PULL: 50, // max px a point is displaced toward/away from cursor
-  MOUSE_EASE_IN: 0.08, // how fast points move toward target offset
-  MOUSE_EASE_OUT: 0.035, // how fast points spring back (slower = more organic)
+    // Hero-mode highlight colour — #F37992
+    HERO_R: 243,
+    HERO_G: 121,
+    HERO_B: 146,
 
-  // Hero-mode highlight colour — #F37992
-  HERO_R: 243,
-  HERO_G: 121,
-  HERO_B: 146,
+    // Grid padding — inset from canvas edges (px)
+    PADDING_X: 80, // horizontal inset (0 = no padding)
+    PADDING_Y: 0, // vertical inset (0 = no padding)
 
-  // Grid padding — inset from canvas edges (px)
-  PADDING_X: 80, // horizontal inset (0 = no padding)
-  PADDING_Y: 0, // vertical inset (0 = no padding)
-
-  // Performance
-  FPS_CAP: 0 // 0 = uncapped; set e.g. 30 to save CPU
-}
-
-// ── SIMPLEX NOISE (public-domain, compact) ──────────────────
-const _F2 = 0.5 * (Math.sqrt(3) - 1)
-const _G2 = (3 - Math.sqrt(3)) / 6
-const _grad = [
-  [1, 1],
-  [-1, 1],
-  [1, -1],
-  [-1, -1],
-  [1, 0],
-  [-1, 0],
-  [0, 1],
-  [0, -1]
-]
-const _perm = new Uint8Array(512)
-const _permMod8 = new Uint8Array(512)
-
-;(function seedNoise() {
-  const p = new Uint8Array(256)
-  for (let i = 0; i < 256; i++) p[i] = i
-  for (let i = 255; i > 0; i--) {
-    const j = (Math.random() * (i + 1)) | 0
-    ;[p[i], p[j]] = [p[j], p[i]]
+    // Performance
+    FPS_CAP: 0 // 0 = uncapped; set e.g. 30 to save CPU
   }
-  for (let i = 0; i < 512; i++) {
-    _perm[i] = p[i & 255]
-    _permMod8[i] = _perm[i] & 7
-  }
-})()
 
-function simplex2(x, y) {
-  const s = (x + y) * _F2
-  const i = Math.floor(x + s),
-    j = Math.floor(y + s)
-  const t = (i + j) * _G2
-  const X0 = i - t,
-    Y0 = j - t
-  const x0 = x - X0,
-    y0 = y - Y0
-  const i1 = x0 > y0 ? 1 : 0,
-    j1 = x0 > y0 ? 0 : 1
-  const x1 = x0 - i1 + _G2,
-    y1 = y0 - j1 + _G2
-  const x2 = x0 - 1 + 2 * _G2,
-    y2 = y0 - 1 + 2 * _G2
-  const ii = i & 255,
-    jj = j & 255
+  // ── SIMPLEX NOISE (public-domain, compact) ──────────────────
+  const _F2 = 0.5 * (Math.sqrt(3) - 1)
+  const _G2 = (3 - Math.sqrt(3)) / 6
+  const _grad = [
+    [1, 1],
+    [-1, 1],
+    [1, -1],
+    [-1, -1],
+    [1, 0],
+    [-1, 0],
+    [0, 1],
+    [0, -1]
+  ]
+  const _perm = new Uint8Array(512)
+  const _permMod8 = new Uint8Array(512)
 
-  let n0 = 0,
-    n1 = 0,
-    n2 = 0
-  let t0 = 0.5 - x0 * x0 - y0 * y0
-  if (t0 > 0) {
-    t0 *= t0
-    const g = _grad[_permMod8[ii + _perm[jj]]]
-    n0 = t0 * t0 * (g[0] * x0 + g[1] * y0)
-  }
-  let t1 = 0.5 - x1 * x1 - y1 * y1
-  if (t1 > 0) {
-    t1 *= t1
-    const g = _grad[_permMod8[ii + i1 + _perm[jj + j1]]]
-    n1 = t1 * t1 * (g[0] * x1 + g[1] * y1)
-  }
-  let t2 = 0.5 - x2 * x2 - y2 * y2
-  if (t2 > 0) {
-    t2 *= t2
-    const g = _grad[_permMod8[ii + 1 + _perm[jj + 1]]]
-    n2 = t2 * t2 * (g[0] * x2 + g[1] * y2)
-  }
-  return 70 * (n0 + n1 + n2) // returns -1 … 1
-}
-
-// ── TEXT REPULSION CONFIG ────────────────────────────────────
-const TEXT_REPULSION = {
-  RADIUS: 120, // px — repulsion radius around text edges
-  PULL: 150, // max displacement
-  EASE_IN: 0.06,
-  EASE_OUT: 0.03
-}
-
-// ── CANVAS SETUP ────────────────────────────────────────────
-const canvas = document.getElementById('flow')
-const ctx = canvas.getContext('2d')
-const container = canvas.parentElement
-const heroTextEl = document.getElementById('hero-text')
-const heroH2El = document.getElementById('hero-h2')
-const heroTextChildren = [
-  ...(heroTextEl ? Array.from(heroTextEl.querySelectorAll('h1, h2')) : []),
-  ...(heroH2El ? Array.from(heroH2El.querySelectorAll('h2')) : [])
-]
-let W, H
-
-// Per-point offset arrays for smooth mouse attraction
-let cols, rows, offsetsX, offsetsY, heroSmoothed
-// Per-point offset arrays for text repulsion
-let textOffsetsX, textOffsetsY, textHeroSmoothed
-
-function resize() {
-  const rect = container.getBoundingClientRect()
-  const dpr = window.devicePixelRatio || 1
-  W = rect.width
-  H = rect.height
-  canvas.width = W * dpr
-  canvas.height = H * dpr
-  canvas.style.width = W + 'px'
-  canvas.style.height = H + 'px'
-  ctx.scale(dpr, dpr)
-
-  // Rebuild offset arrays
-  const usableW = W - CONFIG.PADDING_X * 2
-  const usableH = H - CONFIG.PADDING_Y * 2
-  cols = Math.max(1, Math.ceil(usableW / CONFIG.GRID_SPACING))
-  rows = Math.max(1, Math.ceil(usableH / CONFIG.GRID_SPACING))
-  const count = cols * rows
-  offsetsX = new Float32Array(count)
-  offsetsY = new Float32Array(count)
-  heroSmoothed = new Float32Array(count) // smoothed hero influence per point
-  textOffsetsX = new Float32Array(count)
-  textOffsetsY = new Float32Array(count)
-  textHeroSmoothed = new Float32Array(count) // smoothed text colour influence
-}
-
-new ResizeObserver(() => resize()).observe(container)
-resize()
-
-// ── MOUSE TRACKING (relative to container) ────────────────────────
-let mx = -9999,
-  my = -9999
-
-function updateMouse(clientX, clientY) {
-  const rect = container.getBoundingClientRect()
-  mx = clientX - rect.left
-  my = clientY - rect.top
-}
-
-window.addEventListener('mousemove', (e) => {
-  updateMouse(e.clientX, e.clientY)
-})
-window.addEventListener('mouseleave', () => {
-  mx = -9999
-  my = -9999
-})
-window.addEventListener(
-  'touchmove',
-  (e) => {
-    const t = e.touches[0]
-    updateMouse(t.clientX, t.clientY)
-  },
-  { passive: true }
-)
-window.addEventListener('touchend', () => {
-  mx = -9999
-  my = -9999
-})
-
-// ── ANIMATION LOOP ──────────────────────────────────────────
-let lastFrame = 0
-const minInterval = CONFIG.FPS_CAP > 0 ? 1000 / CONFIG.FPS_CAP : 0
-
-function draw(now) {
-  requestAnimationFrame(draw)
-
-  // FPS cap
-  if (minInterval && now - lastFrame < minInterval) return
-  lastFrame = now
-
-  const time = now * CONFIG.TIME_SPEED
-  const {
-    GRID_SPACING,
-    LINE_LENGTH,
-    LINE_WIDTH,
-    COLOR_R,
-    COLOR_G,
-    COLOR_B,
-    OPACITY,
-    NOISE_SCALE,
-    MOUSE_MODE,
-    MOUSE_RADIUS,
-    MOUSE_PULL,
-    MOUSE_EASE_IN,
-    MOUSE_EASE_OUT,
-    HERO_R,
-    HERO_G,
-    HERO_B
-  } = CONFIG
-
-  // ── Compute hero text rects relative to canvas (per element) ──
-  const textRects = []
-  if (heroTextChildren.length > 0) {
-    const canvasRect = container.getBoundingClientRect()
-    for (const el of heroTextChildren) {
-      const tRect = el.getBoundingClientRect()
-      const left = tRect.left - canvasRect.left
-      const top = tRect.top - canvasRect.top
-      const right = tRect.right - canvasRect.left
-      const bottom = tRect.bottom - canvasRect.top
-      // Skip elements fully outside the canvas (+radius buffer)
-      if (
-        right < -TEXT_REPULSION.RADIUS ||
-        left > W + TEXT_REPULSION.RADIUS ||
-        bottom < -TEXT_REPULSION.RADIUS ||
-        top > H + TEXT_REPULSION.RADIUS
-      )
-        continue
-      textRects.push({ left, top, right, bottom })
+  ;(function seedNoise() {
+    const p = new Uint8Array(256)
+    for (let i = 0; i < 256; i++) p[i] = i
+    for (let i = 255; i > 0; i--) {
+      const j = (Math.random() * (i + 1)) | 0
+      ;[p[i], p[j]] = [p[j], p[i]]
     }
+    for (let i = 0; i < 512; i++) {
+      _perm[i] = p[i & 255]
+      _permMod8[i] = _perm[i] & 7
+    }
+  })()
+
+  function simplex2(x, y) {
+    const s = (x + y) * _F2
+    const i = Math.floor(x + s),
+      j = Math.floor(y + s)
+    const t = (i + j) * _G2
+    const X0 = i - t,
+      Y0 = j - t
+    const x0 = x - X0,
+      y0 = y - Y0
+    const i1 = x0 > y0 ? 1 : 0,
+      j1 = x0 > y0 ? 0 : 1
+    const x1 = x0 - i1 + _G2,
+      y1 = y0 - j1 + _G2
+    const x2 = x0 - 1 + 2 * _G2,
+      y2 = y0 - 1 + 2 * _G2
+    const ii = i & 255,
+      jj = j & 255
+
+    let n0 = 0,
+      n1 = 0,
+      n2 = 0
+    let t0 = 0.5 - x0 * x0 - y0 * y0
+    if (t0 > 0) {
+      t0 *= t0
+      const g = _grad[_permMod8[ii + _perm[jj]]]
+      n0 = t0 * t0 * (g[0] * x0 + g[1] * y0)
+    }
+    let t1 = 0.5 - x1 * x1 - y1 * y1
+    if (t1 > 0) {
+      t1 *= t1
+      const g = _grad[_permMod8[ii + i1 + _perm[jj + j1]]]
+      n1 = t1 * t1 * (g[0] * x1 + g[1] * y1)
+    }
+    let t2 = 0.5 - x2 * x2 - y2 * y2
+    if (t2 > 0) {
+      t2 *= t2
+      const g = _grad[_permMod8[ii + 1 + _perm[jj + 1]]]
+      n2 = t2 * t2 * (g[0] * x2 + g[1] * y2)
+    }
+    return 70 * (n0 + n1 + n2) // returns -1 … 1
   }
 
-  ctx.clearRect(0, 0, W, H)
-  const isHero = MOUSE_MODE === 'hero'
-  if (!isHero) {
-    ctx.strokeStyle = `rgba(${COLOR_R},${COLOR_G},${COLOR_B},${OPACITY})`
+  // ── TEXT REPULSION CONFIG ────────────────────────────────────
+  const TEXT_REPULSION = {
+    RADIUS: 120, // px — repulsion radius around text edges
+    PULL: 150, // max displacement
+    EASE_IN: 0.06,
+    EASE_OUT: 0.03
   }
-  ctx.lineWidth = LINE_WIDTH
-  ctx.lineCap = 'butt'
 
-  const padX = CONFIG.PADDING_X
-  const padY = CONFIG.PADDING_Y
+  // ── CANVAS SETUP ────────────────────────────────────────────
+  const canvas = document.getElementById('flow')
+  const ctx = canvas.getContext('2d')
+  const container = canvas.parentElement
+  const heroTextEl = document.getElementById('hero-text')
+  const heroH2El = document.getElementById('hero-h2')
+  const heroTextChildren = [
+    ...(heroTextEl ? Array.from(heroTextEl.querySelectorAll('h1, h2')) : []),
+    ...(heroH2El ? Array.from(heroH2El.querySelectorAll('h2')) : [])
+  ]
+  let W, H
 
-  let idx = 0
-  for (let col = 0; col < cols; col++) {
-    const hx = padX + GRID_SPACING / 2 + col * GRID_SPACING
-    for (let row = 0; row < rows; row++) {
-      const hy = padY + GRID_SPACING / 2 + row * GRID_SPACING
+  // Per-point offset arrays for smooth mouse attraction
+  let cols, rows, offsetsX, offsetsY, heroSmoothed
+  // Per-point offset arrays for text repulsion
+  let textOffsetsX, textOffsetsY, textHeroSmoothed
 
-      // ── Mouse interaction (positional pull/push) ──
-      let tx = 0,
-        ty = 0
-      const dx = mx - hx,
-        dy = my - hy
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      let heroTarget = 0 // target influence this frame (0–1)
-      if (dist < MOUSE_RADIUS && dist > 0) {
-        const falloff = 1 - dist / MOUSE_RADIUS
-        const pull = falloff * falloff * MOUSE_PULL // quadratic falloff
-        const sign = MOUSE_MODE === 'repel' || isHero ? -1 : 1
-        tx = sign * (dx / dist) * pull
-        ty = sign * (dy / dist) * pull
-        if (isHero) heroTarget = falloff
+  function resize() {
+    const rect = container.getBoundingClientRect()
+    const dpr = window.devicePixelRatio || 1
+    W = rect.width
+    H = rect.height
+    canvas.width = W * dpr
+    canvas.height = H * dpr
+    canvas.style.width = W + 'px'
+    canvas.style.height = H + 'px'
+    ctx.scale(dpr, dpr)
+
+    // Rebuild offset arrays
+    const usableW = W - CONFIG.PADDING_X * 2
+    const usableH = H - CONFIG.PADDING_Y * 2
+    cols = Math.max(1, Math.ceil(usableW / CONFIG.GRID_SPACING))
+    rows = Math.max(1, Math.ceil(usableH / CONFIG.GRID_SPACING))
+    const count = cols * rows
+    offsetsX = new Float32Array(count)
+    offsetsY = new Float32Array(count)
+    heroSmoothed = new Float32Array(count) // smoothed hero influence per point
+    textOffsetsX = new Float32Array(count)
+    textOffsetsY = new Float32Array(count)
+    textHeroSmoothed = new Float32Array(count) // smoothed text colour influence
+  }
+
+  new ResizeObserver(() => resize()).observe(container)
+  resize()
+
+  // ── MOUSE TRACKING (relative to container) ────────────────────────
+  let mx = -9999,
+    my = -9999
+
+  function updateMouse(clientX, clientY) {
+    const rect = container.getBoundingClientRect()
+    mx = clientX - rect.left
+    my = clientY - rect.top
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    updateMouse(e.clientX, e.clientY)
+  })
+  window.addEventListener('mouseleave', () => {
+    mx = -9999
+    my = -9999
+  })
+  window.addEventListener(
+    'touchmove',
+    (e) => {
+      const t = e.touches[0]
+      updateMouse(t.clientX, t.clientY)
+    },
+    { passive: true }
+  )
+  window.addEventListener('touchend', () => {
+    mx = -9999
+    my = -9999
+  })
+
+  // ── ANIMATION LOOP ──────────────────────────────────────────
+  let lastFrame = 0
+  const minInterval = CONFIG.FPS_CAP > 0 ? 1000 / CONFIG.FPS_CAP : 0
+
+  function draw(now) {
+    requestAnimationFrame(draw)
+
+    // FPS cap
+    if (minInterval && now - lastFrame < minInterval) return
+    lastFrame = now
+
+    const time = now * CONFIG.TIME_SPEED
+    const {
+      GRID_SPACING,
+      LINE_LENGTH,
+      LINE_WIDTH,
+      COLOR_R,
+      COLOR_G,
+      COLOR_B,
+      OPACITY,
+      NOISE_SCALE,
+      MOUSE_MODE,
+      MOUSE_RADIUS,
+      MOUSE_PULL,
+      MOUSE_EASE_IN,
+      MOUSE_EASE_OUT,
+      HERO_R,
+      HERO_G,
+      HERO_B
+    } = CONFIG
+
+    // ── Compute hero text rects relative to canvas (per element) ──
+    const textRects = []
+    if (heroTextChildren.length > 0) {
+      const canvasRect = container.getBoundingClientRect()
+      for (const el of heroTextChildren) {
+        const tRect = el.getBoundingClientRect()
+        const left = tRect.left - canvasRect.left
+        const top = tRect.top - canvasRect.top
+        const right = tRect.right - canvasRect.left
+        const bottom = tRect.bottom - canvasRect.top
+        // Skip elements fully outside the canvas (+radius buffer)
+        if (
+          right < -TEXT_REPULSION.RADIUS ||
+          left > W + TEXT_REPULSION.RADIUS ||
+          bottom < -TEXT_REPULSION.RADIUS ||
+          top > H + TEXT_REPULSION.RADIUS
+        )
+          continue
+        textRects.push({ left, top, right, bottom })
       }
+    }
 
-      // Smooth lerp — ease in when attracting, ease out when returning
-      const ease = tx !== 0 || ty !== 0 ? MOUSE_EASE_IN : MOUSE_EASE_OUT
-      offsetsX[idx] += (tx - offsetsX[idx]) * ease
-      offsetsY[idx] += (ty - offsetsY[idx]) * ease
+    ctx.clearRect(0, 0, W, H)
+    const isHero = MOUSE_MODE === 'hero'
+    if (!isHero) {
+      ctx.strokeStyle = `rgba(${COLOR_R},${COLOR_G},${COLOR_B},${OPACITY})`
+    }
+    ctx.lineWidth = LINE_WIDTH
+    ctx.lineCap = 'butt'
 
-      // ── Text repulsion ──
-      let ttx = 0,
-        tty = 0
-      let textHeroTarget = 0 // text colour influence (0–1)
-      for (const tr of textRects) {
-        const clampX = Math.max(tr.left, Math.min(hx, tr.right))
-        const clampY = Math.max(tr.top, Math.min(hy, tr.bottom))
-        const tdx = hx - clampX
-        const tdy = hy - clampY
-        const tDist = Math.sqrt(tdx * tdx + tdy * tdy)
+    const padX = CONFIG.PADDING_X
+    const padY = CONFIG.PADDING_Y
 
-        if (tDist > 0 && tDist < TEXT_REPULSION.RADIUS) {
-          // Outside rect but within radius — push away from nearest edge
-          const tFalloff = 1 - tDist / TEXT_REPULSION.RADIUS
-          const tPull = tFalloff * tFalloff * TEXT_REPULSION.PULL
-          ttx += (tdx / tDist) * tPull
-          tty += (tdy / tDist) * tPull
-          textHeroTarget = Math.max(textHeroTarget, tFalloff)
-        } else if (tDist === 0) {
-          // Inside the rect — push toward nearest edge
-          const dLeft = hx - tr.left
-          const dRight = tr.right - hx
-          const dTop = hy - tr.top
-          const dBottom = tr.bottom - hy
-          const minH = Math.min(dLeft, dRight)
-          const minV = Math.min(dTop, dBottom)
-          if (minH < minV) {
-            ttx += dLeft < dRight ? -TEXT_REPULSION.PULL : TEXT_REPULSION.PULL
-          } else {
-            tty += dTop < dBottom ? -TEXT_REPULSION.PULL : TEXT_REPULSION.PULL
-          }
-          textHeroTarget = 1
+    let idx = 0
+    for (let col = 0; col < cols; col++) {
+      const hx = padX + GRID_SPACING / 2 + col * GRID_SPACING
+      for (let row = 0; row < rows; row++) {
+        const hy = padY + GRID_SPACING / 2 + row * GRID_SPACING
+
+        // ── Mouse interaction (positional pull/push) ──
+        let tx = 0,
+          ty = 0
+        const dx = mx - hx,
+          dy = my - hy
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        let heroTarget = 0 // target influence this frame (0–1)
+        if (dist < MOUSE_RADIUS && dist > 0) {
+          const falloff = 1 - dist / MOUSE_RADIUS
+          const pull = falloff * falloff * MOUSE_PULL // quadratic falloff
+          const sign = MOUSE_MODE === 'repel' || isHero ? -1 : 1
+          tx = sign * (dx / dist) * pull
+          ty = sign * (dy / dist) * pull
+          if (isHero) heroTarget = falloff
         }
+
+        // Smooth lerp — ease in when attracting, ease out when returning
+        const ease = tx !== 0 || ty !== 0 ? MOUSE_EASE_IN : MOUSE_EASE_OUT
+        offsetsX[idx] += (tx - offsetsX[idx]) * ease
+        offsetsY[idx] += (ty - offsetsY[idx]) * ease
+
+        // ── Text repulsion ──
+        let ttx = 0,
+          tty = 0
+        let textHeroTarget = 0 // text colour influence (0–1)
+        for (const tr of textRects) {
+          const clampX = Math.max(tr.left, Math.min(hx, tr.right))
+          const clampY = Math.max(tr.top, Math.min(hy, tr.bottom))
+          const tdx = hx - clampX
+          const tdy = hy - clampY
+          const tDist = Math.sqrt(tdx * tdx + tdy * tdy)
+
+          if (tDist > 0 && tDist < TEXT_REPULSION.RADIUS) {
+            // Outside rect but within radius — push away from nearest edge
+            const tFalloff = 1 - tDist / TEXT_REPULSION.RADIUS
+            const tPull = tFalloff * tFalloff * TEXT_REPULSION.PULL
+            ttx += (tdx / tDist) * tPull
+            tty += (tdy / tDist) * tPull
+            textHeroTarget = Math.max(textHeroTarget, tFalloff)
+          } else if (tDist === 0) {
+            // Inside the rect — push toward nearest edge
+            const dLeft = hx - tr.left
+            const dRight = tr.right - hx
+            const dTop = hy - tr.top
+            const dBottom = tr.bottom - hy
+            const minH = Math.min(dLeft, dRight)
+            const minV = Math.min(dTop, dBottom)
+            if (minH < minV) {
+              ttx += dLeft < dRight ? -TEXT_REPULSION.PULL : TEXT_REPULSION.PULL
+            } else {
+              tty += dTop < dBottom ? -TEXT_REPULSION.PULL : TEXT_REPULSION.PULL
+            }
+            textHeroTarget = 1
+          }
+        }
+        const tEase = ttx !== 0 || tty !== 0 ? TEXT_REPULSION.EASE_IN : TEXT_REPULSION.EASE_OUT
+        textOffsetsX[idx] += (ttx - textOffsetsX[idx]) * tEase
+        textOffsetsY[idx] += (tty - textOffsetsY[idx]) * tEase
+
+        // Smooth text colour influence
+        const textHeroEase = textHeroTarget > textHeroSmoothed[idx] ? TEXT_REPULSION.EASE_IN : TEXT_REPULSION.EASE_OUT
+        textHeroSmoothed[idx] += (textHeroTarget - textHeroSmoothed[idx]) * textHeroEase
+
+        // Smooth the hero influence over time (same ease curve)
+        const heroEase = heroTarget > heroSmoothed[idx] ? MOUSE_EASE_IN : MOUSE_EASE_OUT
+        heroSmoothed[idx] += (heroTarget - heroSmoothed[idx]) * heroEase
+        const hi = Math.max(heroSmoothed[idx], textHeroSmoothed[idx]) // combined influence
+
+        // Final drawn position = home + mouse offset + text offset
+        const px = hx + offsetsX[idx] + textOffsetsX[idx]
+        const py = hy + offsetsY[idx] + textOffsetsY[idx]
+
+        // Angle from noise (sample at home position for stability)
+        const angle = simplex2(hx * NOISE_SCALE, hy * NOISE_SCALE + time) * Math.PI
+
+        // ── Hero mode: tint colour based on proximity ──
+        if (isHero && hi > 0.001) {
+          const r = Math.round(COLOR_R + (HERO_R - COLOR_R) * hi)
+          const g = Math.round(COLOR_G + (HERO_G - COLOR_G) * hi)
+          const b = Math.round(COLOR_B + (HERO_B - COLOR_B) * hi)
+          ctx.strokeStyle = `rgba(${r},${g},${b},${OPACITY})`
+        } else if (isHero) {
+          ctx.strokeStyle = `rgba(${COLOR_R},${COLOR_G},${COLOR_B},${OPACITY})`
+        }
+
+        // Draw each vector individually so alpha stacks on overlap
+        const ex = px + Math.cos(angle) * LINE_LENGTH
+        const ey = py + Math.sin(angle) * LINE_LENGTH
+        ctx.beginPath()
+        ctx.moveTo(px, py)
+        ctx.lineTo(ex, ey)
+        ctx.stroke()
+
+        idx++
       }
-      const tEase = ttx !== 0 || tty !== 0 ? TEXT_REPULSION.EASE_IN : TEXT_REPULSION.EASE_OUT
-      textOffsetsX[idx] += (ttx - textOffsetsX[idx]) * tEase
-      textOffsetsY[idx] += (tty - textOffsetsY[idx]) * tEase
-
-      // Smooth text colour influence
-      const textHeroEase = textHeroTarget > textHeroSmoothed[idx] ? TEXT_REPULSION.EASE_IN : TEXT_REPULSION.EASE_OUT
-      textHeroSmoothed[idx] += (textHeroTarget - textHeroSmoothed[idx]) * textHeroEase
-
-      // Smooth the hero influence over time (same ease curve)
-      const heroEase = heroTarget > heroSmoothed[idx] ? MOUSE_EASE_IN : MOUSE_EASE_OUT
-      heroSmoothed[idx] += (heroTarget - heroSmoothed[idx]) * heroEase
-      const hi = Math.max(heroSmoothed[idx], textHeroSmoothed[idx]) // combined influence
-
-      // Final drawn position = home + mouse offset + text offset
-      const px = hx + offsetsX[idx] + textOffsetsX[idx]
-      const py = hy + offsetsY[idx] + textOffsetsY[idx]
-
-      // Angle from noise (sample at home position for stability)
-      const angle = simplex2(hx * NOISE_SCALE, hy * NOISE_SCALE + time) * Math.PI
-
-      // ── Hero mode: tint colour based on proximity ──
-      if (isHero && hi > 0.001) {
-        const r = Math.round(COLOR_R + (HERO_R - COLOR_R) * hi)
-        const g = Math.round(COLOR_G + (HERO_G - COLOR_G) * hi)
-        const b = Math.round(COLOR_B + (HERO_B - COLOR_B) * hi)
-        ctx.strokeStyle = `rgba(${r},${g},${b},${OPACITY})`
-      } else if (isHero) {
-        ctx.strokeStyle = `rgba(${COLOR_R},${COLOR_G},${COLOR_B},${OPACITY})`
-      }
-
-      // Draw each vector individually so alpha stacks on overlap
-      const ex = px + Math.cos(angle) * LINE_LENGTH
-      const ey = py + Math.sin(angle) * LINE_LENGTH
-      ctx.beginPath()
-      ctx.moveTo(px, py)
-      ctx.lineTo(ex, ey)
-      ctx.stroke()
-
-      idx++
     }
   }
-}
 
-requestAnimationFrame(draw)
+  requestAnimationFrame(draw)
+} // end initFlowField
