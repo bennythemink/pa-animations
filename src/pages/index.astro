@@ -898,12 +898,14 @@ const assistConversation = [
     const fixedSize = TILE_SIZE * 0.5
 
     ;[tileP, tileA].forEach((el, i) => {
+      gsap.killTweensOf(el)
       gsap.set(el, { clearProps: 'all' })
       el.style.position = 'fixed'
       el.style.left = CORNER_PAD + 'px'
       el.style.top = (i === 0 ? CORNER_PAD : CORNER_PAD + fixedSize + PA_GAP) + 'px'
       el.style.width = fixedSize + 'px'
       el.style.height = fixedSize + 'px'
+      el.style.opacity = '1'
       el.style.zIndex = '10000'
       el.style.pointerEvents = 'auto'
       el.classList.add('logo-link')
