@@ -38,17 +38,21 @@ const assistConversation = [
           <img src={vectorSvg} alt="vector" class="inline-block h-[1.25em] mx-2 align-middle" />
         </h1>
       </div>
-      <div id="hero-h2" class="pointer-events-none shrink-0 w-screen flex items-center justify-center z-10">
-        <h2 class="text-4xl sm:text-6xl whitespace-normal max-w-screen text-center px-16">
-          We are Pixel Agency, a practitioner-led, refreshing 🍊 digital partner.
-        </h2>
-      </div>
+      <div id="hero-h2-spacer" class="shrink-0 w-screen"></div>
       <div id="track-flow" class="h-full shrink-0">
         <div id="flow-container" class="w-full h-full">
           <canvas id="flow" class="block w-full h-full"></canvas>
         </div>
       </div>
       <div id="track-bg-2" class="h-full shrink-0"></div>
+    </div>
+    <div
+      id="hero-h2"
+      class="pointer-events-none absolute inset-0 flex items-center justify-center z-10 will-change-transform"
+    >
+      <h2 class="text-4xl sm:text-6xl whitespace-normal max-w-screen text-center px-16">
+        We are Pixel Agency, a refreshing 🍊 digital partner.
+      </h2>
     </div>
   </div>
 
@@ -167,10 +171,9 @@ const assistConversation = [
   // ── HERO horizontal scroll sizing ──
   function sizeHeroTrack() {
     const heroText = document.getElementById('hero-text')!
-    const heroH2 = document.getElementById('hero-h2')!
     const textWidth = heroText.scrollWidth
-    const h2Width = heroH2.scrollWidth
     const vw = window.innerWidth
+    const h2Width = vw // spacer is 1 viewport wide
     const flowWidth = vw * 1
     const extraTrack = vw
 
@@ -207,6 +210,7 @@ const assistConversation = [
   }
 
   const heroH2 = document.getElementById('hero-h2')!
+  const heroH2Spacer = document.getElementById('hero-h2-spacer')!
 
   function initScrollTriggers() {
     // ── HERO horizontal scroll ──
@@ -223,13 +227,16 @@ const assistConversation = [
           const trackX = -self.progress * totalScroll
           const vw = window.innerWidth
 
-          const h2Left = heroH2.offsetLeft
-          const h2ScreenLeft = h2Left + trackX
+          // Spacer's natural position in the track → where the h2 would be
+          const spacerLeft = heroH2Spacer.offsetLeft
+          const spacerScreenLeft = spacerLeft + trackX
 
-          if (h2ScreenLeft <= 0) {
-            heroH2.style.transform = `translateX(${-h2ScreenLeft}px)`
+          // Position the absolutely-placed h2 to match the spacer;
+          // cap at x: 0 once it reaches the left edge (the "pin")
+          if (spacerScreenLeft <= 0) {
+            gsap.set(heroH2, { x: 0 })
           } else {
-            heroH2.style.transform = ''
+            gsap.set(heroH2, { x: spacerScreenLeft })
           }
         }
       }
