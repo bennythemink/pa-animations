@@ -222,14 +222,10 @@ const assistConversation = [
         pin: true,
         scrub: true,
         end: () => `+=${document.querySelector('#hero-track')!.scrollWidth - window.innerWidth}`,
-        onUpdate(self) {
-          const totalScroll = document.querySelector('#hero-track')!.scrollWidth - window.innerWidth
-          const trackX = -self.progress * totalScroll
-          const vw = window.innerWidth
-
-          // Spacer's natural position in the track → where the h2 would be
-          const spacerLeft = heroH2Spacer.offsetLeft
-          const spacerScreenLeft = spacerLeft + trackX
+        onUpdate() {
+          // Use getBoundingClientRect for the spacer's actual screen position
+          // (offsetLeft + manual trackX is unreliable on Chrome mobile)
+          const spacerScreenLeft = heroH2Spacer.getBoundingClientRect().left
 
           // Position the absolutely-placed h2 to match the spacer;
           // cap at x: 0 once it reaches the left edge (the "pin")
