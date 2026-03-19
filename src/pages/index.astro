@@ -1232,6 +1232,15 @@ const assistConversation = [
       // Kill any standalone tweens on puzzle tiles
       gsap.killTweensOf('.puzzle-tile')
       gsap.killTweensOf('#puzzle')
+      // Immediately hide all non-P/A tiles
+      const refs = (puzzleTl as any)?._puzzleRefs
+      if (refs) {
+        refs.tileEls.forEach((el: HTMLElement) => {
+          if (el !== refs.tileP && el !== refs.tileA) {
+            gsap.set(el, { opacity: 0 })
+          }
+        })
+      }
       onPuzzleComplete()
     })
   })
