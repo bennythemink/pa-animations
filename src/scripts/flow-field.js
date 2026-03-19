@@ -3,6 +3,8 @@
    Zero dependencies. ~3 KB.
    ============================================================ */
 
+export function initFlowField() {
+
 // ── CONFIG ──────────────────────────────────────────────────
 const CONFIG = {
   // Grid
