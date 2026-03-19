@@ -125,7 +125,7 @@ const assistConversation = [
       </div>
 
       <!-- Trailing spacer -->
-      <div id="assist-end" class="shrink-0 h-full"></div>
+      <div id="assist-end" class="shrink-0 h-full w-0"></div>
     </div>
   </div>
 
@@ -190,11 +190,7 @@ const assistConversation = [
 
   // ── PIXEL ASSIST horizontal scroll sizing ──
   function sizeAssistTrack() {
-    const vw = window.innerWidth
-    const assistEnd = document.getElementById('assist-end')!
     const assistTrack = document.getElementById('assist-track')!
-
-    assistEnd.style.width = `${vw}px`
 
     const children = assistTrack.children
     let totalWidth = 0
