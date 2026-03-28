@@ -3,21 +3,47 @@
    Zero dependencies. ~3 KB.
    ============================================================ */
 
-export function initFlowField() {
+// ── COLOUR PALETTE ──────────────────────────────────────────
+const COLORS = {
+  green: { r: 0, g: 161, b: 128 }, // #00A180
+  pink: { r: 243, g: 121, b: 146 }, // #F37992
+  yellow: { r: 232, g: 196, b: 47 }, // #e8c42f
+  red: { r: 221, g: 122, b: 140 }, // #dd7a8c
+  blue: { r: 100, g: 152, b: 201 }, // #6498c9
+  orange: { r: 240, g: 147, b: 57 }, // #f09339
+  beige: { r: 202, g: 179, b: 143 }, // #cab38f
+  gold: { r: 255, g: 215, b: 0 }, // #FFD700
+  burntGold: { r: 212, g: 170, b: 42 } // #D4AA2A
+}
+
+// ── SPACING PRESETS ─────────────────────────────────────────
+const SPACING = {
+  normal: 40, // current default (px between vectors)
+  compact: 30, // moderately closer together
+  tight: 20 // 50% closer together
+}
+
+export function initFlowField(options = {}) {
+  const { colorChangeOnInteraction = false, spacing = 'compact', color = 'green', highlightColor = 'pink' } = options
+
+  const baseColor = COLORS[color] || COLORS.green
+  const heroColor = COLORS[highlightColor] || COLORS.pink
+  const gridSpacing = SPACING[spacing] || SPACING.compact
+
   // ── CONFIG ──────────────────────────────────────────────────
   const CONFIG = {
     // Grid
-    GRID_SPACING: 40, // px between vectors (was 28 — 30% fewer vectors)
+    GRID_SPACING: gridSpacing,
     // LINE_LENGTH: 34, // drawn length of each line
     // LINE_WIDTH: 4.5, // stroke thickness
 
     LINE_LENGTH: 51, // drawn length of each line
     LINE_WIDTH: 8, // stroke thickness
 
-    // Colour — #00A180
-    COLOR_R: 0,
-    COLOR_G: 161,
-    COLOR_B: 128,
+    // Colour
+    COLOR_R: baseColor.r,
+    COLOR_G: baseColor.g,
+    COLOR_B: baseColor.b,
     OPACITY: 0.35, // base alpha (overlaps compound to darker tones)
 
     // Noise
@@ -31,10 +57,10 @@ export function initFlowField() {
     MOUSE_EASE_IN: 0.08, // how fast points move toward target offset
     MOUSE_EASE_OUT: 0.035, // how fast points spring back (slower = more organic)
 
-    // Hero-mode highlight colour — #F37992
-    HERO_R: 243,
-    HERO_G: 121,
-    HERO_B: 146,
+    // Hero-mode highlight colour
+    HERO_R: heroColor.r,
+    HERO_G: heroColor.g,
+    HERO_B: heroColor.b,
 
     // Grid padding — inset from canvas edges (px)
     PADDING_X: 80, // horizontal inset (0 = no padding)
@@ -344,7 +370,7 @@ export function initFlowField() {
         const angle = simplex2(hx * NOISE_SCALE, hy * NOISE_SCALE + time) * Math.PI
 
         // ── Hero mode: tint colour based on proximity ──
-        if (isHero && hi > 0.001) {
+        if (colorChangeOnInteraction && isHero && hi > 0.001) {
           const r = Math.round(COLOR_R + (HERO_R - COLOR_R) * hi)
           const g = Math.round(COLOR_G + (HERO_G - COLOR_G) * hi)
           const b = Math.round(COLOR_B + (HERO_B - COLOR_B) * hi)
