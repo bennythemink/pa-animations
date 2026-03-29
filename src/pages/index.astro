@@ -15,8 +15,7 @@ const assistConversation = [
   {
     role: 'ai' as const,
     text: 'It guides visitors to the right information at the right moment — answering objections, recommending products, and nudging them toward enquiry forms or checkout. Think of it as a knowledgeable sales assistant that never sleeps.'
-  },
-  { role: 'user' as const, text: 'Great, love this! Thank you very much!' }
+  }
 ]
 ---
 
@@ -926,7 +925,7 @@ const assistConversation = [
 
     // Initialise layout and ScrollTrigger while content is still at opacity: 0
     // (opacity: 0 preserves layout, so all measurements are valid)
-    initFlowField({ color: 'red', spacing: 'tight' })
+    initFlowField({ color: 'pink', spacing: 'tight' })
     sizeAllTracks()
     initScrollTriggers()
     ScrollTrigger.refresh()
