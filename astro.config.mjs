@@ -1,11 +1,27 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config'
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: 'IBM Plex Sans',
+      cssVariable: '--font-ibm-plex-sans',
+      weights: [400, 500, 600, 700],
+      styles: ['normal']
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'Lateef',
+      cssVariable: '--font-lateef',
+      weights: [200],
+      styles: ['normal']
+    }
+  ],
   vite: {
     plugins: [tailwindcss()]
   }
-});
+})

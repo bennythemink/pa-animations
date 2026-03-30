@@ -2,7 +2,7 @@
 
 @layer base {
   body {
-    font-family: 'Lateef', serif;
+    font-family: var(--font-lateef);
     font-weight: 200;
     letter-spacing: -0.01em;
     line-height: 0.95;
@@ -14,7 +14,7 @@
   h4,
   h5,
   h6 {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: var(--font-ibm-plex-sans);
     letter-spacing: -0.03em;
     line-height: 0.85;
   }
@@ -22,13 +22,16 @@
 
 @layer utilities {
   .heading-style {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: var(--font-ibm-plex-sans);
     letter-spacing: -0.03em;
     line-height: 0.85;
   }
 }
 
 @theme extend {
+  --font-sans: var(--font-ibm-plex-sans);
+  --font-serif: var(--font-lateef);
+
   --text-10xl: 10rem;
   --text-10xl--line-height: 1;
   --text-11xl: 12rem;
