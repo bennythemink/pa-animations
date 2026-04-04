@@ -25,7 +25,7 @@ const navLinks = [
     >
       {
         navLinks.map((link) => (
-          <a href={link.href} class="underline underline-offset-2 hover:no-underline transition-all">
+          <a href={link.href} class="nav-link underline underline-offset-2 hover:no-underline transition-all">
             {link.label}
           </a>
         ))
@@ -127,3 +127,12 @@ const navLinks = [
     link.addEventListener('click', () => closeMenu())
   })
 </script>
+
+<style>
+  .nav-link {
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover {
+    color: var(--accent-bgc);
+  }
+</style>
