@@ -15,6 +15,15 @@ import Footer from '../components/Footer.astro'
     <Font cssVariable="--font-ibm-plex-sans" />
     <Font cssVariable="--font-lateef" />
     <title>Pixel Agency</title>
+    {/* Pick a random flow-field accent colour on every page load.
+        Inline (non-module) so it runs synchronously before any deferred scripts.
+        Pages and the footer both read document.documentElement.dataset.accentColor. */}
+    <script is:inline>
+      ;(function () {
+        var keys = ['green', 'pink', 'yellow', 'red', 'blue', 'orange', 'beige', 'gold', 'burntGold']
+        document.documentElement.dataset.accentColor = keys[Math.floor(Math.random() * keys.length)]
+      })()
+    </script>
   </head>
   <body class="m-0 min-h-screen bg-pixel-off-white">
     <slot />

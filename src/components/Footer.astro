@@ -103,6 +103,9 @@ const year = new Date().getFullYear()
   import { initFlowField } from '../scripts/flow-field.ts'
   import type { FlowFieldOptions } from '../scripts/flow-field.ts'
   const canvas = document.getElementById('footer-flow') as HTMLCanvasElement
-  const color = (canvas.dataset.color ?? 'blue') as FlowFieldOptions['color']
+  // Prefer the page-level random accent colour; fall back to explicit prop, then 'blue'.
+  const color = (document.documentElement.dataset.accentColor ||
+    canvas.dataset.color ||
+    'blue') as FlowFieldOptions['color']
   initFlowField({ canvasId: 'footer-flow', color, padding: { top: 80 } })
 </script>

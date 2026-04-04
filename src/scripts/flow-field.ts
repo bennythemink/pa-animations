@@ -16,6 +16,9 @@ const COLORS = {
   burntGold: { r: 212, g: 170, b: 42 } // #D4AA2A
 }
 
+/** All valid colour keys, exported for use in other scripts. */
+export const COLOR_KEYS = Object.keys(COLORS) as (keyof typeof COLORS)[]
+
 // ── SPACING PRESETS ─────────────────────────────────────────
 const SPACING = {
   normal: 40, // current default (px between vectors)
