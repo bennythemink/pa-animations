@@ -92,8 +92,8 @@ const year = new Date().getFullYear()
   </a>
 
   {/* ── Row 3: Flow field canvas ───────────────────────────── */}
-  <div class="overflow-x-clip">
-    <div class="-ml-[30px] w-[calc(100%+30px)] h-50 lg:h-100">
+  <div class="overflow-x-clip overflow-y-clip h-50 lg:h-100">
+    <div class="-ml-[30px] w-[calc(100%+30px)] h-[calc(100%+30px)]">
       <canvas id="footer-flow" data-color={flowFieldColor} class="block w-full h-full"></canvas>
     </div>
   </div>
