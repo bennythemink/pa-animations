@@ -6,7 +6,7 @@ interface Props {
   flowFieldColor?: FlowFieldOptions['color']
 }
 
-const { flowFieldColor = 'blue' } = Astro.props
+const { flowFieldColor } = Astro.props
 const year = new Date().getFullYear()
 ---
 
@@ -94,7 +94,7 @@ const year = new Date().getFullYear()
   {/* ── Row 3: Flow field canvas ───────────────────────────── */}
   <div class="overflow-x-clip overflow-y-clip h-50 lg:h-100">
     <div class="-ml-[30px] w-[calc(100%+30px)] h-[calc(100%+30px)]">
-      <canvas id="footer-flow" data-color={flowFieldColor} class="block w-full h-full"></canvas>
+      <canvas id="footer-flow" data-color={flowFieldColor || undefined} class="block w-full h-full"></canvas>
     </div>
   </div>
 </footer>
@@ -103,9 +103,9 @@ const year = new Date().getFullYear()
   import { initFlowField } from '../scripts/flow-field.ts'
   import type { FlowFieldOptions } from '../scripts/flow-field.ts'
   const canvas = document.getElementById('footer-flow') as HTMLCanvasElement
-  // Prefer the page-level random accent colour; fall back to explicit prop, then 'blue'.
-  const color = (document.documentElement.dataset.accentColor ||
-    canvas.dataset.color ||
+  // Explicit prop wins → random accent colour → default 'blue'
+  const color = (canvas.dataset.color ||
+    document.documentElement.dataset.accentColor ||
     'blue') as FlowFieldOptions['color']
   initFlowField({ canvasId: 'footer-flow', color, padding: { top: 80 } })
 </script>
