@@ -2,7 +2,7 @@
 
 @layer base {
   html {
-    font-size: 16px;
+    font-size: 18px;
     @variant sm {
       font-size: 24px;
     }

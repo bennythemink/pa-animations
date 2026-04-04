@@ -23,7 +23,7 @@ import ContactForm from '../components/ContactForm.astro'
 
     {/* Block 2: What you can contact us about */}
     <div
-      class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col justify-center gap-6 p-10 lg:p-16"
+      class="col-span-full sm:col-start-7 sm:col-span-6 flex flex-col justify-center gap-6 p-10 sm:p-16"
       style="background-color: #EBE7E4;"
     >
       <h2
@@ -34,21 +34,21 @@ import ContactForm from '../components/ContactForm.astro'
       </h2>
       <div class="flex flex-col gap-4">
         <p>People typically reach out to us when they:</p>
-        <ul class="flex flex-col gap-2">
+        <ul class="flex flex-col gap-2 pl-2 sm:pl-3">
           <li class="flex items-start gap-3">
-            <span class="mt-[0.35em] shrink-0 w-2 h-2 bg-current" style="background-color: var(--accent-bgc);"></span>
+            <span class="mt-[0.20em] shrink-0 w-2 h-2 bg-current" style="background-color: var(--accent-bgc);"></span>
             <span>Have a digital problem but need clarity before committing</span>
           </li>
           <li class="flex items-start gap-3">
-            <span class="mt-[0.35em] shrink-0 w-2 h-2" style="background-color: var(--accent-bgc);"></span>
+            <span class="mt-[0.20em] shrink-0 w-2 h-2" style="background-color: var(--accent-bgc);"></span>
             <span>Want to sense-check an idea or approach</span>
           </li>
           <li class="flex items-start gap-3">
-            <span class="mt-[0.35em] shrink-0 w-2 h-2" style="background-color: var(--accent-bgc);"></span>
+            <span class="mt-[0.20em] shrink-0 w-2 h-2" style="background-color: var(--accent-bgc);"></span>
             <span>Need experienced guidance on a project or decision</span>
           </li>
           <li class="flex items-start gap-3">
-            <span class="mt-[0.35em] shrink-0 w-2 h-2" style="background-color: var(--accent-bgc);"></span>
+            <span class="mt-[0.20em] shrink-0 w-2 h-2" style="background-color: var(--accent-bgc);"></span>
             <span>Are exploring a website, app, or system build</span>
           </li>
         </ul>
@@ -61,7 +61,7 @@ import ContactForm from '../components/ContactForm.astro'
   </Grid>
 
   {/* ── Contact form (24px gap above) ── */}
-  <div class="mt-6">
+  <div class="mt-4 sm:mt-6">
     <Grid>
       <ContactForm title="Get in touch" />
     </Grid>
