@@ -1,0 +1,9 @@
+---
+interface Props {
+  conversation: { role: 'user' | 'ai'; text: string }[]
+  id: string
+  placeholder?: string
+}
+
+const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
+---

@@ -23,19 +23,34 @@ const SPACING = {
   tight: 20 // 50% closer together
 }
 
-export function initFlowField(options = {}) {
+export interface FlowFieldOptions {
+  /** ID of the canvas element to render into. Default: 'flow' */
+  canvasId?: string
+  /** Animation speed multiplier, 0–1. 1 = full speed. Default: 0.5 */
+  speed?: number
+  /** Base colour of the flow field vectors. Default: 'green' */
+  color?: keyof typeof COLORS
+  /** Highlight colour used for mouse/text interaction tinting. Default: 'pink' */
+  highlightColor?: keyof typeof COLORS
+  /** Grid spacing preset. Default: 'compact' */
+  spacing?: keyof typeof SPACING
+  /** Whether vectors change colour on mouse interaction. Default: false */
+  colorChangeOnInteraction?: boolean
+}
+
+export function initFlowField(options: FlowFieldOptions = {}): void {
   const {
     colorChangeOnInteraction = false,
-    spacing = 'compact',
+    spacing = 'tight',
     color = 'green',
     highlightColor = 'pink',
     canvasId = 'flow',
     speed = 0.5
   } = options
 
-  const baseColor = COLORS[color] || COLORS.green
-  const heroColor = COLORS[highlightColor] || COLORS.pink
-  const gridSpacing = SPACING[spacing] || SPACING.compact
+  const baseColor = COLORS[color]
+  const heroColor = COLORS[highlightColor]
+  const gridSpacing = SPACING[spacing]
   const clampedSpeed = Math.min(1, Math.max(0, speed))
 
   // ── CONFIG ──────────────────────────────────────────────────
@@ -107,7 +122,7 @@ export function initFlowField(options = {}) {
     }
   })()
 
-  function simplex2(x, y) {
+  function simplex2(x: number, y: number): number {
     const s = (x + y) * _F2
     const i = Math.floor(x + s),
       j = Math.floor(y + s)
@@ -158,21 +173,22 @@ export function initFlowField(options = {}) {
   }
 
   // ── CANVAS SETUP ────────────────────────────────────────────
-  const canvas = document.getElementById(canvasId)
-  const ctx = canvas.getContext('2d')
-  const container = canvas.parentElement
+  const canvas = document.getElementById(canvasId) as HTMLCanvasElement
+  const ctx = canvas.getContext('2d')!
+  const container = canvas.parentElement!
   const heroTextEl = document.getElementById('hero-text')
   const heroH2El = document.getElementById('hero-h2')
-  const heroTextChildren = [
+  const heroTextChildren: Element[] = [
     ...(heroTextEl ? Array.from(heroTextEl.querySelectorAll('h1, h2')) : []),
     ...(heroH2El ? Array.from(heroH2El.querySelectorAll('h2')) : [])
   ]
-  let W, H
+  let W: number, H: number
 
   // Per-point offset arrays for smooth mouse attraction
-  let cols, rows, offsetsX, offsetsY, heroSmoothed
+  let cols: number, rows: number
+  let offsetsX: Float32Array, offsetsY: Float32Array, heroSmoothed: Float32Array
   // Per-point offset arrays for text repulsion
-  let textOffsetsX, textOffsetsY, textHeroSmoothed
+  let textOffsetsX: Float32Array, textOffsetsY: Float32Array, textHeroSmoothed: Float32Array
 
   function resize() {
     const rect = container.getBoundingClientRect()
@@ -206,7 +222,7 @@ export function initFlowField(options = {}) {
   let mx = -9999,
     my = -9999
 
-  function updateMouse(clientX, clientY) {
+  function updateMouse(clientX: number, clientY: number) {
     const rect = container.getBoundingClientRect()
     mx = clientX - rect.left
     my = clientY - rect.top
@@ -236,7 +252,7 @@ export function initFlowField(options = {}) {
   let lastFrame = 0
   const minInterval = CONFIG.FPS_CAP > 0 ? 1000 / CONFIG.FPS_CAP : 0
 
-  function draw(now) {
+  function draw(now: number) {
     requestAnimationFrame(draw)
 
     // FPS cap
@@ -264,7 +280,7 @@ export function initFlowField(options = {}) {
     } = CONFIG
 
     // ── Compute hero text rects relative to canvas (per element) ──
-    const textRects = []
+    const textRects: { left: number; top: number; right: number; bottom: number }[] = []
     if (heroTextChildren.length > 0) {
       const canvasRect = container.getBoundingClientRect()
       for (const el of heroTextChildren) {

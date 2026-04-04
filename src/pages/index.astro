@@ -610,7 +610,7 @@ const assistConversation = [
   import { gsap } from 'gsap'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
   import Lenis from 'lenis'
-  import { initFlowField } from '../scripts/flow-field.js'
+  import { initFlowField } from '../scripts/flow-field.ts'
 
   gsap.registerPlugin(ScrollTrigger)
 
@@ -925,7 +925,7 @@ const assistConversation = [
 
     // Initialise layout and ScrollTrigger while content is still at opacity: 0
     // (opacity: 0 preserves layout, so all measurements are valid)
-    initFlowField({ color: 'pink', spacing: 'tight', speed: 0.5 })
+    initFlowField({ color: 'pink', speed: 0.5 })
     sizeAllTracks()
     initScrollTriggers()
     ScrollTrigger.refresh()
