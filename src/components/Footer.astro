@@ -1,9 +1,78 @@
 ---
-interface Props {
-  conversation: { role: 'user' | 'ai'; text: string }[]
-  id: string
-  placeholder?: string
-}
-
-const { conversation, id, placeholder = 'Ask Pixel Assist...' } = Astro.props
+import Grid from './Grid.astro'
 ---
+
+<footer class="bg-pixel-off-white">
+  {/* ── Row 1: Content grid ────────────────────────────────── */}
+  <div class="py-10">
+    <Grid>
+      {/* Block 1: Company info */}
+      <div class="col-span-full lg:col-start-2 lg:col-span-3 flex flex-col gap-3">
+        <p class="text-sm">© 2026 Pixel Agency. All Rights Reserved.</p>
+        <ul class="flex flex-col gap-1">
+          <li><a href="#" class="text-sm text-black/40 hover:text-black transition-colors">Privacy Policy</a></li>
+          <li>
+            <a href="#" class="text-sm text-black/40 hover:text-black transition-colors">Terms &amp; Conditions</a>
+          </li>
+          <li><a href="#" class="text-sm text-black/40 hover:text-black transition-colors">Site Map</a></li>
+        </ul>
+        <div>
+          <p class="text-sm font-medium">Melbourne, Australia</p>
+          <p class="text-sm text-black/60">AEDT</p>
+        </div>
+      </div>
+
+      {/* Block 2: Contact info */}
+      <div class="col-span-full lg:col-start-5 lg:col-span-3 flex flex-col gap-3">
+        <p class="text-sm">We'd love to chat, here is<br />how you can reach us:</p>
+        <ul class="flex flex-col gap-1">
+          <li class="text-sm">
+            <span class="font-medium">Email</span>{' '}
+            <a href="mailto:hello@pixelagency.com.au" class="hover:underline underline-offset-2"
+              >hello@pixelagency.com.au</a
+            >
+          </li>
+          <li class="text-sm">
+            <span class="font-medium">Call</span>{' '}
+            <a href="tel:+61400000000" class="hover:underline underline-offset-2">+61 400 000 000</a>
+          </li>
+          <li class="text-sm">
+            <a href="#" class="inline-flex items-center gap-1.5 hover:underline underline-offset-2">
+              <span>📅</span> Book a meeting
+            </a>
+          </li>
+          <li class="text-sm"><a href="#" class="hover:underline underline-offset-2">Linked in</a></li>
+          <li class="text-sm"><a href="#" class="hover:underline underline-offset-2">Instagram</a></li>
+        </ul>
+      </div>
+
+      {/* Block 3: Nav links */}
+      <div class="col-span-full lg:col-start-11 lg:col-span-2 flex flex-col gap-1">
+        <a href="#" class="text-sm hover:underline underline-offset-2">Services</a>
+        <a href="#" class="text-sm hover:underline underline-offset-2">Pixel Assist</a>
+        <a href="#" class="text-sm hover:underline underline-offset-2">Case Studies</a>
+        <a href="#" class="text-sm hover:underline underline-offset-2">About</a>
+        <a href="#" class="text-sm hover:underline underline-offset-2">Contact</a>
+      </div>
+    </Grid>
+  </div>
+
+  {/* ── Row 2: Pixel Agency display text ──────────────────── */}
+  <a
+    href="/"
+    class="block text-center font-sans font-normal leading-none my-10 text-black no-underline"
+    style="font-size: clamp(80px, 17vw, 246px);"
+  >
+    Pixel Agency
+  </a>
+
+  {/* ── Row 3: Flow field canvas ───────────────────────────── */}
+  <div class="w-full h-[200px] lg:h-[400px]">
+    <canvas id="footer-flow" class="block w-full h-full"></canvas>
+  </div>
+</footer>
+
+<script>
+  import { initFlowField } from '../scripts/flow-field.ts'
+  initFlowField({ canvasId: 'footer-flow', color: 'blue', speed: 0.5 })
+</script>
