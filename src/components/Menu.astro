@@ -1,0 +1,119 @@
+---
+const navLinks = [
+  { label: 'Services', href: '/services' },
+  { label: 'Pixel Assist', href: '/pixel-assist' },
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' }
+]
+---
+
+{/* ── Sticky header ── */}
+<header class="sticky top-0 z-40 px-5 pt-5 bg-pixel-off-white">
+  <div class="max-w-360 mx-auto flex items-start justify-between">
+    {/* Logo: P + A stacked, linked to homepage */}
+    <a href="/" class="flex flex-col" aria-label="Pixel Agency homepage">
+      <img src="/Letters/P.svg" alt="" aria-hidden="true" class="lg:w-12 w-6" />
+      <img src="/Letters/A.svg" alt="" aria-hidden="true" class="lg:w-12 w-6 mt-0.5 lg:mt-1" />
+    </a>
+
+    {/* Desktop nav — hidden on mobile */}
+    <nav class="hidden lg:flex items-start gap-6 font-sans font-normal" aria-label="Main navigation">
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="underline underline-offset-2 hover:no-underline transition-all">
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    {/* Mobile menu trigger — hidden on desktop */}
+    <button id="menu-open" class="lg:hidden font-sans font-normal" aria-expanded="false" aria-controls="mobile-menu">
+      Menu
+    </button>
+  </div>
+</header>
+
+{/* ── Mobile full-screen overlay ── */}
+<div
+  id="mobile-menu"
+  role="dialog"
+  aria-label="Site navigation"
+  aria-modal="true"
+  hidden
+  class="fixed inset-0 z-50 flex flex-col px-[20px] pt-5 pb-10"
+  style="background-color: var(--accent-bgc);"
+>
+  {/* Overlay header row: logo + close button */}
+  <div class="flex items-start justify-between shrink-0">
+    <a href="/" class="flex flex-col" aria-label="Pixel Agency homepage">
+      <img src="/Letters/P.svg" alt="" aria-hidden="true" class="w-[55px]" />
+      <img src="/Letters/A.svg" alt="" aria-hidden="true" class="w-[55px]" />
+    </a>
+    <button id="menu-close" class="font-sans font-normal" aria-label="Close navigation menu"> Close </button>
+  </div>
+
+  {/* Nav links — centred vertically in remaining space */}
+  <nav class="flex flex-col justify-center flex-1 gap-4" aria-label="Main navigation">
+    {
+      navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="font-sans font-normal text-black"
+          style="font-size: clamp(2.5rem, 12vw, 5rem); line-height: 0.85; letter-spacing: -0.03em;"
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+</div>
+
+<script>
+  import { gsap } from 'gsap'
+
+  const overlay = document.getElementById('mobile-menu')!
+  const openBtn = document.getElementById('menu-open')!
+  const closeBtn = document.getElementById('menu-close')!
+  const navItems = overlay.querySelectorAll('nav a')
+
+  function openMenu() {
+    overlay.hidden = false
+    document.body.style.overflow = 'hidden'
+    openBtn.setAttribute('aria-expanded', 'true')
+
+    gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+    gsap.fromTo(
+      navItems,
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', stagger: 0.07, delay: 0.1 }
+    )
+  }
+
+  function closeMenu() {
+    openBtn.setAttribute('aria-expanded', 'false')
+    gsap.to(overlay, {
+      opacity: 0,
+      duration: 0.25,
+      ease: 'power2.in',
+      onComplete: () => {
+        overlay.hidden = true
+        document.body.style.overflow = ''
+      }
+    })
+  }
+
+  openBtn.addEventListener('click', openMenu)
+  closeBtn.addEventListener('click', closeMenu)
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !overlay.hidden) closeMenu()
+  })
+
+  // Close when a nav link is followed (closes overlay before navigation)
+  navItems.forEach((link) => {
+    link.addEventListener('click', () => closeMenu())
+  })
+</script>
