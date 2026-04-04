@@ -9,7 +9,7 @@ const navLinks = [
 ---
 
 {/* ── Sticky header ── */}
-<header class="sticky top-0 z-40 px-5 pt-5 bg-pixel-off-white">
+<header class="sticky top-0 z-40 px-5 pt-5">
   <div class="max-w-360 mx-auto flex items-start justify-between">
     {/* Logo: P + A stacked, linked to homepage */}
     <a href="/" class="flex flex-col" aria-label="Pixel Agency homepage">
@@ -18,7 +18,11 @@ const navLinks = [
     </a>
 
     {/* Desktop nav — hidden on mobile */}
-    <nav class="hidden lg:flex items-start gap-6 font-sans font-normal" aria-label="Main navigation">
+    <nav
+      class="hidden lg:flex items-start gap-6 font-sans font-normal p-2"
+      style="background-color: rgb(255 255 255 / 33%);"
+      aria-label="Main navigation"
+    >
       {
         navLinks.map((link) => (
           <a href={link.href} class="underline underline-offset-2 hover:no-underline transition-all">
@@ -29,7 +33,13 @@ const navLinks = [
     </nav>
 
     {/* Mobile menu trigger — hidden on desktop */}
-    <button id="menu-open" class="lg:hidden font-sans font-normal" aria-expanded="false" aria-controls="mobile-menu">
+    <button
+      id="menu-open"
+      class="lg:hidden font-sans font-normal p-1.5"
+      style="background-color: rgb(255 255 255 / 33%);"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
       Menu
     </button>
   </div>
@@ -42,16 +52,16 @@ const navLinks = [
   aria-label="Site navigation"
   aria-modal="true"
   hidden
-  class="fixed inset-0 z-50 flex flex-col px-[20px] pt-5 pb-10"
+  class="fixed inset-0 z-50 flex flex-col px-5 pt-5 pb-10"
   style="background-color: var(--accent-bgc);"
 >
   {/* Overlay header row: logo + close button */}
   <div class="flex items-start justify-between shrink-0">
     <a href="/" class="flex flex-col" aria-label="Pixel Agency homepage">
-      <img src="/Letters/P.svg" alt="" aria-hidden="true" class="w-[55px]" />
-      <img src="/Letters/A.svg" alt="" aria-hidden="true" class="w-[55px]" />
+      <img src="/Letters/P.svg" alt="" aria-hidden="true" class="w-6" />
+      <img src="/Letters/A.svg" alt="" aria-hidden="true" class="w-6 mt-0.5" />
     </a>
-    <button id="menu-close" class="font-sans font-normal" aria-label="Close navigation menu"> Close </button>
+    <button id="menu-close" class="font-sans font-normal p-1.5" aria-label="Close navigation menu"> Close </button>
   </div>
 
   {/* Nav links — centred vertically in remaining space */}
