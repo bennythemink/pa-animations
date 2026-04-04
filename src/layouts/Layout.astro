@@ -2,6 +2,7 @@
 import '../styles/global.css'
 import { Font } from 'astro:assets'
 import Footer from '../components/Footer.astro'
+import { COLOR_KEYS } from '../scripts/flow-field.ts'
 ---
 
 <!doctype html>
@@ -15,14 +16,13 @@ import Footer from '../components/Footer.astro'
     <Font cssVariable="--font-ibm-plex-sans" />
     <Font cssVariable="--font-lateef" />
     <title>Pixel Agency</title>
-    {/* Pick a random flow-field accent colour on every page load.
-        Inline (non-module) so it runs synchronously before any deferred scripts.
-        Pages and the footer both read document.documentElement.dataset.accentColor. */}
-    <script is:inline>
-      ;(function () {
-        var keys = ['green', 'pink', 'yellow', 'red', 'blue', 'orange', 'beige', 'gold', 'burntGold']
-        document.documentElement.dataset.accentColor = keys[Math.floor(Math.random() * keys.length)]
-      })()
+    {
+      /* Pick a random flow-field accent colour on every page load.
+        Keys sourced from flow-field.ts at build time via define:vars.
+        Inline so it runs synchronously before any deferred scripts. */
+    }
+    <script define:vars={{ colorKeys: COLOR_KEYS }} is:inline>
+      document.documentElement.dataset.accentColor = colorKeys[Math.floor(Math.random() * colorKeys.length)]
     </script>
   </head>
   <body class="m-0 min-h-screen bg-pixel-off-white">
