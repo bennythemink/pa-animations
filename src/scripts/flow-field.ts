@@ -19,6 +19,14 @@ const COLORS = {
 /** All valid colour keys, exported for use in other scripts. */
 export const COLOR_KEYS = Object.keys(COLORS) as (keyof typeof COLORS)[]
 
+/** Maps each colour key to a CSS rgb() string. Used to set the --accent-bgc CSS variable. */
+export const COLORS_RGB = Object.fromEntries(
+  Object.entries(COLORS).map(([k, v]) => [
+    k,
+    `rgb(${(v as { r: number; g: number; b: number }).r},${(v as { r: number; g: number; b: number }).g},${(v as { r: number; g: number; b: number }).b})`
+  ])
+) as Record<string, string>
+
 // ── SPACING PRESETS ─────────────────────────────────────────
 const SPACING = {
   normal: 40, // current default (px between vectors)

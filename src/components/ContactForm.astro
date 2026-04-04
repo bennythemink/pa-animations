@@ -6,7 +6,7 @@ interface Props {
   backgroundColor?: string
 }
 
-const { title, backgroundColor = 'var(--color-pixel-pink)' } = Astro.props
+const { title, backgroundColor } = Astro.props
 
 // ── Replace with your deployed Google Apps Script web app URL ──
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
@@ -15,7 +15,11 @@ const FORM_ENDPOINT = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
 const uid = Math.random().toString(36).slice(2, 8)
 ---
 
-<div class="col-span-full p-10 lg:px-16 lg:py-14" style={`background-color: ${backgroundColor}`} data-contact-form-root>
+<div
+  class="col-span-full p-10 lg:px-16 lg:py-14"
+  style={backgroundColor ? `background-color: ${backgroundColor}` : 'background-color: var(--accent-bgc)'}
+  data-contact-form-root
+>
   {/* ── Title ── */}
   <h2
     id={`cf-${uid}-heading`}
