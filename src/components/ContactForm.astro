@@ -1,0 +1,228 @@
+---
+interface Props {
+  /** Heading text, e.g. "Discuss a similar challenge" */
+  title: string
+  /** Any CSS color value passed from the page, e.g. 'var(--color-pixel-pink)' or '#e38093' */
+  backgroundColor?: string
+}
+
+const { title, backgroundColor = 'var(--color-pixel-pink)' } = Astro.props
+
+// ── Replace with your deployed Google Apps Script web app URL ──
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
+
+// Unique prefix so multiple instances on the same page don't clash
+const uid = Math.random().toString(36).slice(2, 8)
+---
+
+<div class="col-span-full p-10 lg:px-16 lg:py-14" style={`background-color: ${backgroundColor}`} data-contact-form-root>
+  {/* ── Title ── */}
+  <h2
+    id={`cf-${uid}-heading`}
+    class="leading-[0.85] tracking-[-0.03em] mb-10 lg:mb-12"
+    style="font-size: clamp(30px, 5.5vw, 80px);"
+  >
+    {title}
+  </h2>
+
+  {/* ── Form ── */}
+  <form
+    id={`cf-${uid}`}
+    data-contact-form
+    data-endpoint={FORM_ENDPOINT}
+    novalidate
+    aria-labelledby={`cf-${uid}-heading`}
+    class="grid grid-cols-1 gap-4 lg:grid-cols-10"
+  >
+    {/* Name */}
+    <div class="lg:col-span-5 flex flex-col gap-1">
+      <label for={`cf-${uid}-name`} class="sr-only">Full name</label>
+      <input
+        type="text"
+        id={`cf-${uid}-name`}
+        name="name"
+        placeholder="Full name"
+        autocomplete="name"
+        aria-required="true"
+        aria-describedby={`cf-${uid}-name-err`}
+        class="bg-white/20 px-4 py-3 text-black placeholder:text-black/50 outline-none focus:bg-white/30 transition-colors"
+      />
+      <p id={`cf-${uid}-name-err`} data-error="name" role="alert" class="hidden text-xs text-black/80">
+        Please enter your name.
+      </p>
+    </div>
+
+    {/* Organisation */}
+    <div class="lg:col-span-5 flex flex-col gap-1">
+      <label for={`cf-${uid}-org`} class="sr-only">Organisation</label>
+      <input
+        type="text"
+        id={`cf-${uid}-org`}
+        name="organisation"
+        placeholder="Organisation"
+        autocomplete="organization"
+        class="bg-white/20 px-4 py-3 text-black placeholder:text-black/50 outline-none focus:bg-white/30 transition-colors"
+      />
+    </div>
+
+    {/* Email */}
+    <div class="lg:col-span-5 flex flex-col gap-1">
+      <label for={`cf-${uid}-email`} class="sr-only">Email address</label>
+      <input
+        type="email"
+        id={`cf-${uid}-email`}
+        name="email"
+        placeholder="Email address"
+        autocomplete="email"
+        aria-describedby={`cf-${uid}-email-err`}
+        class="bg-white/20 px-4 py-3 text-black placeholder:text-black/50 outline-none focus:bg-white/30 transition-colors"
+      />
+      <p id={`cf-${uid}-email-err`} data-error="email" role="alert" class="hidden text-xs text-black/80">
+        Please enter an email address or phone number.
+      </p>
+    </div>
+
+    {/* Phone */}
+    <div class="lg:col-span-5 flex flex-col gap-1">
+      <label for={`cf-${uid}-phone`} class="sr-only">Phone number</label>
+      <input
+        type="tel"
+        id={`cf-${uid}-phone`}
+        name="phone"
+        placeholder="Phone number"
+        autocomplete="tel"
+        aria-describedby={`cf-${uid}-phone-err`}
+        class="bg-white/20 px-4 py-3 text-black placeholder:text-black/50 outline-none focus:bg-white/30 transition-colors"
+      />
+      <p id={`cf-${uid}-phone-err`} data-error="phone" role="alert" class="hidden text-xs text-black/80">
+        Please enter a phone number or email address.
+      </p>
+    </div>
+
+    {/* Message */}
+    <div class="lg:col-span-10 flex flex-col gap-1">
+      <label for={`cf-${uid}-message`} class="sr-only">What would you like to discuss?</label>
+      <textarea
+        id={`cf-${uid}-message`}
+        name="message"
+        placeholder="What would you like to discuss?"
+        rows="6"
+        class="bg-white/20 px-4 py-3 text-black placeholder:text-black/50 outline-none focus:bg-white/30 transition-colors resize-none"
+      ></textarea>
+    </div>
+
+    {/* Submit row */}
+    <div class="lg:col-span-10 flex justify-end items-center gap-6 pt-2">
+      <p data-error="form" role="alert" aria-live="polite" class="hidden text-sm text-black/80">
+        Oops, something went wrong. Please try again or email us directly:&nbsp;<a
+          href="mailto:hello@pixelagency.com.au"
+          class="underline underline-offset-2">hello@pixelagency.com.au</a
+        >
+      </p>
+      <button
+        type="submit"
+        class="flex items-center gap-2 text-white underline underline-offset-2 hover:no-underline transition-all cursor-pointer disabled:opacity-60"
+      >
+        <span data-submit-label>Submit form</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+          <path
+            d="M3 8h10M9 4l4 4-4 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+  </form>
+
+  {/* ── Success message ── */}
+  <p data-success role="status" aria-live="polite" class="hidden text-black">
+    Thank you, we will be in touch shortly. Have a good day.
+  </p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[data-contact-form]').forEach((form) => {
+    const root = form.closest<HTMLElement>('[data-contact-form-root]')!
+    const endpoint = form.dataset.endpoint!
+
+    const nameInput = form.querySelector<HTMLInputElement>('[name="name"]')!
+    const emailInput = form.querySelector<HTMLInputElement>('[name="email"]')!
+    const phoneInput = form.querySelector<HTMLInputElement>('[name="phone"]')!
+    const orgInput = form.querySelector<HTMLInputElement>('[name="organisation"]')
+    const msgInput = form.querySelector<HTMLTextAreaElement>('[name="message"]')
+    const submitBtn = form.querySelector<HTMLButtonElement>('[type="submit"]')!
+    const submitLbl = submitBtn.querySelector<HTMLElement>('[data-submit-label]')!
+
+    const nameErr = form.querySelector<HTMLElement>('[data-error="name"]')!
+    const emailErr = form.querySelector<HTMLElement>('[data-error="email"]')!
+    const phoneErr = form.querySelector<HTMLElement>('[data-error="phone"]')!
+    const formErr = form.querySelector<HTMLElement>('[data-error="form"]')!
+    const successEl = root.querySelector<HTMLElement>('[data-success]')!
+
+    function showError(el: HTMLElement, visible: boolean) {
+      el.classList.toggle('hidden', !visible)
+    }
+
+    function setLoading(loading: boolean) {
+      form.querySelectorAll<HTMLElement>('input, textarea').forEach((el) => {
+        ;(el as HTMLInputElement).disabled = loading
+      })
+      submitBtn.disabled = loading
+      submitLbl.textContent = loading ? 'Sending…' : 'Submit form'
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+
+      // Reset errors
+      showError(nameErr, false)
+      showError(emailErr, false)
+      showError(phoneErr, false)
+      showError(formErr, false)
+
+      // Validate
+      let firstInvalid: HTMLElement | null = null
+
+      if (!nameInput.value.trim()) {
+        showError(nameErr, true)
+        firstInvalid ??= nameInput
+      }
+
+      const hasContact = emailInput.value.trim() || phoneInput.value.trim()
+      if (!hasContact) {
+        showError(emailErr, true)
+        showError(phoneErr, true)
+        firstInvalid ??= emailInput
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus()
+        return
+      }
+
+      setLoading(true)
+
+      try {
+        const data = new URLSearchParams({
+          name: nameInput.value.trim(),
+          organisation: orgInput?.value.trim() ?? '',
+          email: emailInput.value.trim(),
+          phone: phoneInput.value.trim(),
+          message: msgInput?.value.trim() ?? ''
+        })
+
+        // Google Apps Script requires no-cors; response will be opaque.
+        // Network failures (no internet) still throw and are caught below.
+        await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: data })
+
+        form.classList.add('hidden')
+        successEl.classList.remove('hidden')
+      } catch {
+        showError(formErr, true)
+        setLoading(false)
+      }
+    })
+  })
+</script>
