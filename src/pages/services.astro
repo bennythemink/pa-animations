@@ -69,7 +69,7 @@ const services = [
   <section class="py-12 lg:py-20">
     <Grid>
       {/* Left: body copy */}
-      <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4 font-serif">
+      <div id="services-intro" class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4 font-serif">
         {
           /* Invisible spacer — matches height of "Our services" label to align first paragraph with first service link */
         }
@@ -115,33 +115,37 @@ const services = [
     <Grid>
       {/* Left: cream background text block */}
       <div
-        class="col-span-full lg:col-start-1 lg:col-span-6 lg:self-start lg:sticky lg:top-30 flex flex-col gap-6 p-10 lg:p-16"
+        id="services-blurb"
+        class="col-span-full lg:col-start-1 lg:col-span-6 lg:self-start lg:sticky lg:top-30 lg:grid lg:grid-cols-subgrid"
         style="background-color: #EAE7E4;"
       >
-        <p class="font-sans text-[18px] lg:text-[40px]" style="color: #00A180; letter-spacing: 0; line-height: 1.1;">
-          How our services work together
-        </p>
-        <h2 class="text-3xl lg:text-[80px]">
-          From uncertainty<br />to outcomes.
-        </h2>
-        <div class="flex flex-col gap-4 font-serif mt-3.5 lg:mt-12">
-          <p>
-            Most digital work fails long before anything is built — often due to unclear direction, rushed decisions, or
-            a lack of experienced guidance early on.
+        {/* Inner content inset to match services-intro left edge */}
+        <div class="col-span-full lg:col-start-2 lg:col-span-5 flex flex-col gap-6 p-10 lg:py-16 lg:pr-16 lg:pl-0">
+          <p class="font-sans text-[18px] lg:text-[40px]" style="color: #00A180; letter-spacing: 0; line-height: 1.1;">
+            How our services work together
           </p>
-          <p>
-            Our approach is intentionally structured to reduce that risk. We help clients clarify the problem first,
-            design solutions that make sense for real users, build them properly, and provide ongoing guidance when
-            decisions continue beyond launch.
-          </p>
-          <p>
-            Not every project requires every service. This framework simply reflects how strong digital outcomes are
-            typically achieved.
-          </p>
-          <p>
-            We keep responsibility close to the work, so decisions are made by the people who will ultimately stand
-            behind the result.
-          </p>
+          <h2 class="text-3xl lg:text-[80px]">
+            From uncertainty<br />to outcomes.
+          </h2>
+          <div class="flex flex-col gap-4 font-serif mt-3.5 lg:mt-12">
+            <p>
+              Most digital work fails long before anything is built — often due to unclear direction, rushed decisions,
+              or a lack of experienced guidance early on.
+            </p>
+            <p>
+              Our approach is intentionally structured to reduce that risk. We help clients clarify the problem first,
+              design solutions that make sense for real users, build them properly, and provide ongoing guidance when
+              decisions continue beyond launch.
+            </p>
+            <p>
+              Not every project requires every service. This framework simply reflects how strong digital outcomes are
+              typically achieved.
+            </p>
+            <p>
+              We keep responsibility close to the work, so decisions are made by the people who will ultimately stand
+              behind the result.
+            </p>
+          </div>
         </div>
       </div>
 
