@@ -16,14 +16,14 @@ const uid = Math.random().toString(36).slice(2, 8)
 ---
 
 <div
-  class="col-span-full p-10 lg:px-16 lg:py-14"
+  class="col-span-full py-10 lg:py-14 grid grid-cols-12 gap-5 mb-9 sm:mb-12"
   style={backgroundColor ? `background-color: ${backgroundColor}` : 'background-color: var(--accent-bgc)'}
   data-contact-form-root
 >
   {/* ── Title ── */}
   <h2
     id={`cf-${uid}-heading`}
-    class="leading-[0.85] tracking-[-0.03em] mb-10 lg:mb-12"
+    class="col-start-2 col-span-10 leading-[0.85] tracking-[-0.03em] mb-10 lg:mb-12"
     style="font-size: clamp(30px, 5.5vw, 80px);"
   >
     {title}
@@ -36,10 +36,10 @@ const uid = Math.random().toString(36).slice(2, 8)
     data-endpoint={FORM_ENDPOINT}
     novalidate
     aria-labelledby={`cf-${uid}-heading`}
-    class="grid grid-cols-1 gap-4 lg:grid-cols-12"
+    class="col-start-2 col-span-10 grid grid-cols-1 gap-[20px] lg:grid-cols-2"
   >
     {/* Name */}
-    <div class="lg:col-start-2 lg:col-span-5 flex flex-col gap-1">
+    <div class="flex flex-col gap-1">
       <label for={`cf-${uid}-name`} class="sr-only">Full name</label>
       <input
         type="text"
@@ -57,7 +57,7 @@ const uid = Math.random().toString(36).slice(2, 8)
     </div>
 
     {/* Organisation */}
-    <div class="lg:col-start-7 lg:col-span-5 flex flex-col gap-1">
+    <div class="flex flex-col gap-1">
       <label for={`cf-${uid}-org`} class="sr-only">Organisation</label>
       <input
         type="text"
@@ -70,7 +70,7 @@ const uid = Math.random().toString(36).slice(2, 8)
     </div>
 
     {/* Email */}
-    <div class="lg:col-start-2 lg:col-span-5 flex flex-col gap-1">
+    <div class="flex flex-col gap-1">
       <label for={`cf-${uid}-email`} class="sr-only">Email address</label>
       <input
         type="email"
@@ -87,7 +87,7 @@ const uid = Math.random().toString(36).slice(2, 8)
     </div>
 
     {/* Phone */}
-    <div class="lg:col-start-7 lg:col-span-5 flex flex-col gap-1">
+    <div class="flex flex-col gap-1">
       <label for={`cf-${uid}-phone`} class="sr-only">Phone number</label>
       <input
         type="tel"
@@ -104,7 +104,7 @@ const uid = Math.random().toString(36).slice(2, 8)
     </div>
 
     {/* Message */}
-    <div class="lg:col-start-2 lg:col-span-10 flex flex-col gap-1">
+    <div class="lg:col-span-2 flex flex-col gap-1">
       <label for={`cf-${uid}-message`} class="sr-only">What would you like to discuss?</label>
       <textarea
         id={`cf-${uid}-message`}
@@ -116,7 +116,7 @@ const uid = Math.random().toString(36).slice(2, 8)
     </div>
 
     {/* Submit row */}
-    <div class="lg:col-start-2 lg:col-span-10 flex justify-end items-center gap-6 pt-2">
+    <div class="lg:col-span-2 flex justify-end items-center gap-6 pt-2">
       <p data-error="form" role="alert" aria-live="polite" class="hidden text-sm text-black/80">
         Oops, something went wrong. Please try again or email us directly:&nbsp;<a
           href="mailto:hello@pixelagency.com.au"
@@ -141,7 +141,7 @@ const uid = Math.random().toString(36).slice(2, 8)
   </form>
 
   {/* ── Success message ── */}
-  <p data-success role="status" aria-live="polite" class="hidden text-black">
+  <p data-success role="status" aria-live="polite" class="col-start-2 col-span-10 hidden text-black">
     Thank you, we will be in touch shortly. Have a good day.
   </p>
 </div>
