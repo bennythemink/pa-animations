@@ -925,7 +925,7 @@ const assistConversation = [
 
     // Initialise layout and ScrollTrigger while content is still at opacity: 0
     // (opacity: 0 preserves layout, so all measurements are valid)
-    initFlowField({ color: 'pink', speed: 0.5 })
+    initFlowField({ color: 'pink', speed: 0.5, padding: { left: 80, right: 80 } })
     sizeAllTracks()
     initScrollTriggers()
     ScrollTrigger.refresh()

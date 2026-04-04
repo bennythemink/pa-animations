@@ -36,6 +36,8 @@ export interface FlowFieldOptions {
   spacing?: keyof typeof SPACING
   /** Whether vectors change colour on mouse interaction. Default: false */
   colorChangeOnInteraction?: boolean
+  /** Per-side canvas inset in px. Unspecified sides default to 0. */
+  padding?: { top?: number; right?: number; bottom?: number; left?: number }
 }
 
 export function initFlowField(options: FlowFieldOptions = {}): void {
@@ -45,8 +47,14 @@ export function initFlowField(options: FlowFieldOptions = {}): void {
     color = 'green',
     highlightColor = 'pink',
     canvasId = 'flow',
-    speed = 0.5
+    speed = 0.5,
+    padding
   } = options
+
+  const PAD_TOP = padding?.top ?? 0
+  const PAD_RIGHT = padding?.right ?? 0
+  const PAD_BOTTOM = padding?.bottom ?? 0
+  const PAD_LEFT = padding?.left ?? 0
 
   const baseColor = COLORS[color]
   const heroColor = COLORS[highlightColor]
@@ -84,10 +92,6 @@ export function initFlowField(options: FlowFieldOptions = {}): void {
     HERO_R: heroColor.r,
     HERO_G: heroColor.g,
     HERO_B: heroColor.b,
-
-    // Grid padding — inset from canvas edges (px)
-    PADDING_X: 80, // horizontal inset (0 = no padding)
-    PADDING_Y: 0, // vertical inset (0 = no padding)
 
     // Performance
     FPS_CAP: 0 // 0 = uncapped; set e.g. 30 to save CPU
@@ -202,8 +206,8 @@ export function initFlowField(options: FlowFieldOptions = {}): void {
     ctx.scale(dpr, dpr)
 
     // Rebuild offset arrays
-    const usableW = W - CONFIG.PADDING_X * 2
-    const usableH = H - CONFIG.PADDING_Y * 2
+    const usableW = W - PAD_LEFT - PAD_RIGHT
+    const usableH = H - PAD_TOP - PAD_BOTTOM
     cols = Math.max(1, Math.ceil(usableW / CONFIG.GRID_SPACING))
     rows = Math.max(1, Math.ceil(usableH / CONFIG.GRID_SPACING))
     const count = cols * rows
@@ -309,8 +313,8 @@ export function initFlowField(options: FlowFieldOptions = {}): void {
     ctx.lineWidth = LINE_WIDTH
     ctx.lineCap = 'butt'
 
-    const padX = CONFIG.PADDING_X
-    const padY = CONFIG.PADDING_Y
+    const padX = PAD_LEFT
+    const padY = PAD_TOP
 
     let idx = 0
     for (let col = 0; col < cols; col++) {
