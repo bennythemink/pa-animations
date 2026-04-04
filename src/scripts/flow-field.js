@@ -24,11 +24,19 @@ const SPACING = {
 }
 
 export function initFlowField(options = {}) {
-  const { colorChangeOnInteraction = false, spacing = 'compact', color = 'green', highlightColor = 'pink' } = options
+  const {
+    colorChangeOnInteraction = false,
+    spacing = 'compact',
+    color = 'green',
+    highlightColor = 'pink',
+    canvasId = 'flow',
+    speed = 0.5
+  } = options
 
   const baseColor = COLORS[color] || COLORS.green
   const heroColor = COLORS[highlightColor] || COLORS.pink
   const gridSpacing = SPACING[spacing] || SPACING.compact
+  const clampedSpeed = Math.min(1, Math.max(0, speed))
 
   // ── CONFIG ──────────────────────────────────────────────────
   const CONFIG = {
@@ -48,7 +56,7 @@ export function initFlowField(options = {}) {
 
     // Noise
     NOISE_SCALE: 0.0015, // lower = smoother / larger swirls (neighbors stay coherent)
-    TIME_SPEED: 0.00015, // animation speed (slower, more gentle)
+    TIME_SPEED: 0.00015 * clampedSpeed, // animation speed scaled by speed option (0–1, 1 = full speed)
 
     // Mouse interaction (positional)
     MOUSE_MODE: 'hero', // ← 'attract', 'repel', or 'hero'
@@ -150,7 +158,7 @@ export function initFlowField(options = {}) {
   }
 
   // ── CANVAS SETUP ────────────────────────────────────────────
-  const canvas = document.getElementById('flow')
+  const canvas = document.getElementById(canvasId)
   const ctx = canvas.getContext('2d')
   const container = canvas.parentElement
   const heroTextEl = document.getElementById('hero-text')
