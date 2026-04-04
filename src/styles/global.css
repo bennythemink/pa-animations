@@ -21,17 +21,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-ibm-plex-sans);
-    letter-spacing: -0.03em;
-    line-height: 0.85;
-  }
-}
-
-@layer utilities {
-  .heading-style {
-    font-family: var(--font-ibm-plex-sans);
-    letter-spacing: -0.03em;
-    line-height: 0.85;
+    @apply font-sans font-normal leading-[0.85] tracking-[-0.03em];
   }
 }
 
