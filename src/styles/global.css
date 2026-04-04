@@ -1,6 +1,13 @@
 @import 'tailwindcss';
 
 @layer base {
+  html {
+    font-size: 16px;
+    @variant sm {
+      font-size: 24px;
+    }
+  }
+
   body {
     font-family: var(--font-lateef);
     font-weight: 200;
