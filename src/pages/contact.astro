@@ -2,18 +2,68 @@
 import Layout from '../layouts/Layout.astro'
 import Grid from '../components/Grid.astro'
 import ContactForm from '../components/ContactForm.astro'
-import type { FlowFieldOptions } from '../scripts/flow-field.ts'
-
-interface Props {
-  flowFieldColor?: FlowFieldOptions['color']
-}
-
-const { flowFieldColor = 'blue' } = Astro.props
 ---
 
 <Layout>
-  <h1 class="text-4xl font-bold mb-6">Contact Us</h1>
+  {/* ── Text blocks row ── */}
   <Grid>
-    <ContactForm title="Get in touch" />
+    {/* Block 1: Intro copy */}
+    <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col justify-center gap-6 py-10 lg:py-16">
+      <h1 class="font-sans font-normal leading-[0.85] tracking-[-0.03em]" style="font-size: clamp(36px, 5vw, 72px);">
+        Let's talk,<br />no sales pitch<br />required.
+      </h1>
+      <div class="flex flex-col gap-4 font-serif text-base leading-snug">
+        <p>
+          If you're facing a digital challenge, exploring an idea, or unsure where to begin, we're always happy to have
+          a conversation.
+        </p>
+        <p>You'll speak directly with experienced practitioners who can help you think things through.</p>
+      </div>
+    </div>
+
+    {/* Block 2: What you can contact us about */}
+    <div
+      class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col justify-center gap-6 p-10 lg:p-16"
+      style="background-color: #EBE7E4;"
+    >
+      <h2
+        class="font-sans font-normal leading-[0.85] tracking-[-0.03em]"
+        style="color: var(--accent-bgc); font-size: clamp(28px, 3.5vw, 52px);"
+      >
+        What you can<br />contact us about
+      </h2>
+      <div class="flex flex-col gap-4 font-serif text-base leading-snug">
+        <p>People typically reach out to us when they:</p>
+        <ul class="flex flex-col gap-2">
+          <li class="flex items-start gap-3">
+            <span class="mt-[0.35em] shrink-0 w-2 h-2 bg-current" style="background-color: var(--accent-bgc);"></span>
+            <span>Have a digital problem but need clarity before committing</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-[0.35em] shrink-0 w-2 h-2" style="background-color: var(--accent-bgc);"></span>
+            <span>Want to sense-check an idea or approach</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-[0.35em] shrink-0 w-2 h-2" style="background-color: var(--accent-bgc);"></span>
+            <span>Need experienced guidance on a project or decision</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-[0.35em] shrink-0 w-2 h-2" style="background-color: var(--accent-bgc);"></span>
+            <span>Are exploring a website, app, or system build</span>
+          </li>
+        </ul>
+        <p>
+          If you're unsure whether we're the right fit, that's okay — the first conversation is about understanding, not
+          selling.
+        </p>
+      </div>
+    </div>
   </Grid>
+
+  {/* ── Contact form (24px gap above) ── */}
+  <div class="mt-6">
+    <Grid>
+      <ContactForm title="Get in touch" />
+    </Grid>
+  </div>
 </Layout>
