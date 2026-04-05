@@ -37,17 +37,23 @@ import Vector from '@components/signs/Vector.astro'
   <section class="pb-16 lg:pb-24">
     <Grid>
       <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-2">
-        <div class="w-full aspect-[4/3]" style="background-color: #d4834a;"></div>
+        <a href="/case-studies/eel" class="underline underline-offset-2 hover:no-underline"
+          ><div class="w-full aspect-[4/3]" style="background-color: #d4834a;"></div></a
+        >
         <div class="flex items-center justify-between font-sans text-xs">
-          <a href="#" class="underline underline-offset-2 hover:no-underline">Case study</a>
-          <span class="text-black/40">Short caption</span>
+          <a href="/case-studies/eel" class="underline underline-offset-2 hover:no-underline">Case study</a>
+          <span class="text-black/40">Explorers Early Learning</span>
         </div>
       </div>
+
       <div class="col-span-full lg:col-start-6 lg:col-span-7 flex flex-col gap-2 mt-6 lg:mt-0">
-        <div class="w-full aspect-[4/3]" style="background-color: #1e2235;"></div>
+        <a href="/case-studies/simple" class="underline underline-offset-2 hover:no-underline"
+          ><div class="w-full aspect-[4/3]" style="background-color: #1e2235;"></div>
+        </a>
+
         <div class="flex items-center justify-between font-sans text-xs">
-          <a href="#" class="underline underline-offset-2 hover:no-underline">Case study</a>
-          <span class="text-black/40">Short caption</span>
+          <a href="/case-studies/simple" class="underline underline-offset-2 hover:no-underline">Case study</a>
+          <span class="text-black/40">Simple.io</span>
         </div>
       </div>
     </Grid>
@@ -81,14 +87,15 @@ import Vector from '@components/signs/Vector.astro'
   {/* ── Our approach ── */}
   <section class="py-12 lg:py-20">
     <Grid>
-      <div class="col-span-full lg:col-start-2 lg:col-span-5 flex flex-col gap-5">
-        <p class="font-sans text-xs tracking-widest" style="color: #00A180;">Our approach</p>
-        <h2 style="font-size: clamp(1.5rem, 3vw, 2.8rem); line-height: 1.15;">
-          Every design decision we make is deliberate <Vector size={28} desktopSize={40} /> in service of the people using
+      <div class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-col gap-5">
+        <p class="font-sans text-lg lg:text-4xl text-pixel-red">Our approach</p>
+        <h2 class="text-3xl lg:text-7xl leading-none">
+          Every design decision we make is deliberate <Vector size={28} desktopSize={80} /> in service of the people using
           the product and the outcomes it needs to deliver.
         </h2>
       </div>
       <div
+        id="floater"
         class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col gap-4 p-8 font-sans text-sm mt-6 lg:mt-0"
         style="background-color: var(--accent-bgc);"
       >
