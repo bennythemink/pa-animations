@@ -1,10 +1,134 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import Grid from '@components/Grid.astro'
+import ContactForm from '@components/ContactForm.astro'
+import Vector from '@components/signs/Vector.astro'
 ---
 
 <Layout
-  title="Website, App & Brand Design Services"
-  description="Brand, website, and application design focused on clarity, usability, and engagement. Human-centred digital design that supports real business outcomes."
+  title="Design"
+  description="Digital experiences designed for the people who use them, not just the screens they're on."
 >
-  <!-- Page content goes here -->
+  {/* ── Hero ── */}
+  <section class="pt-10 pb-12 lg:pt-16 lg:pb-20">
+    <Grid>
+      <div class="col-span-full lg:col-start-2 lg:col-span-5">
+        <h1 style="font-size: clamp(4rem, 10vw, 9rem);">Design</h1>
+      </div>
+      <div class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col gap-4 mt-4 lg:mt-0">
+        <p class="font-sans" style="font-size: clamp(1rem, 1.8vw, 1.35rem); line-height: 1.2;">
+          Digital experiences designed for the people who use them, not just the screens they're on.
+        </p>
+        <div class="font-serif flex flex-col gap-3 mt-2">
+          <p>
+            Good design is more than how something looks. It's how clearly it communicates, how easily it's used, and
+            how well it supports the outcome you're trying to achieve.
+          </p>
+          <p>
+            We design brands, websites, and applications that balance clarity, usability, and personality — grounded in
+            how real people use digital products, and proud to put our name on the result.
+          </p>
+        </div>
+      </div>
+    </Grid>
+  </section>
+
+  {/* ── Case studies ── */}
+  <section class="pb-16 lg:pb-24">
+    <Grid>
+      <div class="col-span-full lg:col-start-1 lg:col-span-5 flex flex-col gap-2">
+        <div class="w-full aspect-[4/3]" style="background-color: #d4834a;"></div>
+        <div class="flex items-center justify-between font-sans text-xs">
+          <a href="#" class="underline underline-offset-2 hover:no-underline">Case study</a>
+          <span class="text-black/40">Short caption</span>
+        </div>
+      </div>
+      <div class="col-span-full lg:col-start-6 lg:col-span-7 flex flex-col gap-2 mt-6 lg:mt-0">
+        <div class="w-full aspect-[4/3]" style="background-color: #1e2235;"></div>
+        <div class="flex items-center justify-between font-sans text-xs">
+          <a href="#" class="underline underline-offset-2 hover:no-underline">Case study</a>
+          <span class="text-black/40">Short caption</span>
+        </div>
+      </div>
+    </Grid>
+  </section>
+
+  {/* ── We design ── */}
+  <section class="py-12 lg:py-20">
+    <Grid>
+      <div class="col-span-full lg:col-start-2 lg:col-span-4">
+        <h2 style="font-size: clamp(2rem, 5vw, 4rem);">We design:</h2>
+      </div>
+      <ul
+        class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col justify-center gap-3 font-sans text-sm mt-6 lg:mt-0"
+      >
+        <li class="flex items-center gap-3">
+          <span class="shrink-0 w-[12px] h-[12px]" style="background-color: var(--accent-bgc);"></span>
+          Brands and identities
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="shrink-0 w-[12px] h-[12px]" style="background-color: var(--accent-bgc);"></span>
+          Websites and digital products
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="shrink-0 w-[12px] h-[12px]" style="background-color: var(--accent-bgc);"></span>
+          Applications and platforms
+        </li>
+      </ul>
+    </Grid>
+  </section>
+
+  {/* ── Our approach ── */}
+  <section class="py-12 lg:py-20">
+    <Grid>
+      <div class="col-span-full lg:col-start-2 lg:col-span-5 flex flex-col gap-5">
+        <p class="font-sans text-xs tracking-widest" style="color: #00A180;">Our approach</p>
+        <h2 style="font-size: clamp(1.5rem, 3vw, 2.8rem); line-height: 1.15;">
+          Every design decision we make is deliberate <Vector size={28} desktopSize={40} /> in service of the people using
+          the product and the outcomes it needs to deliver.
+        </h2>
+      </div>
+      <div
+        class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col gap-4 p-8 font-sans text-sm mt-6 lg:mt-0"
+        style="background-color: var(--accent-bgc);"
+      >
+        <p>Grounded in your users' needs and the strategy behind the work</p>
+        <p>Favours clarity and ease of use, not visual complexity</p>
+        <p>Expressive without being distracting — personality in service of purpose</p>
+        <p>Considered from end-to-end, not just at the surface</p>
+      </div>
+    </Grid>
+  </section>
+
+  {/* ── Who this is for / not for ── */}
+  <section class="py-12 lg:py-20">
+    <Grid>
+      <div
+        class="col-span-full lg:col-start-1 lg:col-span-6 p-8 flex flex-col gap-4"
+        style="background-color: #EAE7E4;"
+      >
+        <h3 class="font-sans text-xl">Who this is for</h3>
+        <ul class="flex flex-col gap-3 font-serif">
+          <li>Organisations that want their digital presence to work harder for their users and their business</li>
+          <li>Teams building new digital products or platforms who need design that holds up end-to-end</li>
+          <li>Businesses that want design balancing form and function — not one at the expense of the other</li>
+        </ul>
+      </div>
+      <div
+        class="col-span-full lg:col-start-7 lg:col-span-6 p-8 flex flex-col gap-4 mt-5 lg:mt-0"
+        style="background-color: #EAE7E4;"
+      >
+        <h3 class="font-sans text-xl">Who this is <em>not</em> for</h3>
+        <ul class="flex flex-col gap-3 font-serif">
+          <li>Projects where the design is already complete and ready for development</li>
+          <li>Engagements where usability and user outcomes are secondary to speed or cost</li>
+        </ul>
+      </div>
+    </Grid>
+  </section>
+
+  {/* ── CTA + Form ── */}
+  <Grid>
+    <ContactForm title="Let's talk about what you're trying to achieve." />
+  </Grid>
 </Layout>
