@@ -4,6 +4,18 @@ import { Font } from 'astro:assets'
 import Footer from '@components/Footer.astro'
 import Menu from '@components/Menu.astro'
 import { COLOR_KEYS, COLORS_RGB } from '@scripts/flow-field.ts'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = 'Pixel Agency',
+  description = 'Pixel Agency — digital strategy, design, and development studio based in Melbourne, Australia.'
+} = Astro.props
+
+const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
 ---
 
 <!doctype html>
@@ -14,9 +26,10 @@ import { COLOR_KEYS, COLORS_RGB } from '@scripts/flow-field.ts'
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
     <Font cssVariable="--font-ibm-plex-sans" />
     <Font cssVariable="--font-lateef" />
-    <title>Pixel Agency</title>
+    <title>{pageTitle}</title>
     {
       /* Pick a random flow-field accent colour on every page load.
         Keys sourced from flow-field.ts at build time via define:vars.
