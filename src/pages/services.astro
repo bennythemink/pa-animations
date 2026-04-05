@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Grid from '../components/Grid.astro'
+import EqualSign from '../components/EqualSign.astro'
 
 const services = [
   {
@@ -152,7 +153,7 @@ const services = [
       {/* Right: service cards — horizontal scroll on mobile, stacked on desktop */}
       <div id="service-cards" class="col-span-full lg:col-start-7 lg:col-span-6">
         <div
-          class="flex items-stretch overflow-x-auto snap-x snap-mandatory lg:flex-col lg:overflow-x-clip -mr-5 lg:mr-0 pr-5 lg:pr-0 gap-3 lg:gap-5 pb-6 lg:pb-0"
+          class="flex items-stretch overflow-x-auto snap-x snap-mandatory lg:flex-col lg:overflow-x-clip w-[calc(100vw-20px)] lg:w-auto pr-5 lg:pr-0 gap-3 lg:gap-5 pb-6 lg:pb-0"
         >
           {
             services.map((s) => (
@@ -192,12 +193,10 @@ const services = [
   <section class="py-16 lg:py-24">
     <Grid>
       {/* Left: headline */}
-      <div class="col-span-full lg:col-start-2 lg:col-span-5">
-        <h2 style="font-size: clamp(1.75rem, 3.5vw, 3rem);">
-          Not sure where to start?&nbsp;<span
-            class="inline-block w-[0.7em] h-[0.7em] align-middle"
-            style="background-color: var(--accent-bgc);">=</span
-          >That's exactly where we help.
+      <div class="col-span-full lg:col-start-2 lg:col-span-6">
+        <h2 class="text-4xl leading-tight">
+          Not sure where to start? <br />
+          <EqualSign /> That's exactly where we help.
         </h2>
       </div>
 

@@ -42,13 +42,14 @@ const year = new Date().getFullYear()
 
       {/* Nav links — mobile: 1st row left (col-span-6); desktop: col 11–12 row 1 */}
       <div
+        id="footer-nav-links"
         class="col-span-6 order-1 flex flex-col gap-1 text-base sm:text-lg lg:col-start-11 lg:col-span-2 lg:row-start-1 lg:order-1"
       >
-        <a href="/services" class="hover:underline underline-offset-2">Services</a>
-        <a href="/pixel-assist" class="hover:underline underline-offset-2">Pixel Assist</a>
-        <a href="/case-studies" class="hover:underline underline-offset-2">Case Studies</a>
-        <a href="/about" class="hover:underline underline-offset-2">About</a>
-        <a href="/contact" class="hover:underline underline-offset-2">Contact</a>
+        <a href="/services" class="footer-nav-link hover:underline underline-offset-2">Services</a>
+        <a href="/pixel-assist" class="footer-nav-link hover:underline underline-offset-2">Pixel Assist</a>
+        <a href="/case-studies" class="footer-nav-link hover:underline underline-offset-2">Case Studies</a>
+        <a href="/about" class="footer-nav-link hover:underline underline-offset-2">About</a>
+        <a href="/contact" class="footer-nav-link hover:underline underline-offset-2">Contact</a>
       </div>
 
       {/* Melbourne/AEDT — mobile: 1st row right (col-span-6, text-right); desktop: col 2–4 row 3 */}
@@ -98,6 +99,15 @@ const year = new Date().getFullYear()
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-nav-link {
+    transition: color 0.2s ease;
+  }
+  .footer-nav-link:hover {
+    color: var(--accent-bgc);
+  }
+</style>
 
 <script>
   import { initFlowField } from '../scripts/flow-field.ts'
