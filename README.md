@@ -48,3 +48,19 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Project Specific Information
+
+| Weight | Name             |
+| :----- | :--------------- |
+| 100    | Thin             |
+| 200    | Extralight       |
+| 300    | Light            |
+| 400    | Regular (normal) |
+| 500    | Medium           |
+| 600    | Semibold         |
+| 700    | Bold             |
+| 800    | Extrabold        |
+| 900    | Black            |
+
+Tailwind utility classes follow the same naming: font-thin, font-extralight, font-light, font-normal, font-medium, font-semibold, font-bold, font-extrabold, font-black.

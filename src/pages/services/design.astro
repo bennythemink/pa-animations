@@ -101,25 +101,42 @@ import Vector from '@components/signs/Vector.astro'
   </section>
 
   {/* ── Who this is for / not for ── */}
-  <section class="py-12 lg:py-20">
+  <!-- <section class="py-12 lg:py-20"> -->
+  <section class="mb-6">
     <Grid>
-      <div class="col-span-full lg:col-start-2 lg:col-span-5 p-8 flex flex-col gap-4 bg-white">
-        <h3 class="font-sans text-xl">Who this is for</h3>
-        <ul class="flex flex-col gap-3 font-serif">
-          <li>Organisations that want their digital presence to work harder for their users and their business</li>
-          <li>Teams building new digital products or platforms who need design that holds up end-to-end</li>
-          <li>Businesses that want design balancing form and function — not one at the expense of the other</li>
-        </ul>
+      {/* Who this is for */}
+      <div class="col-span-full lg:col-start-2 lg:col-span-5 p-8 bg-white">
+        <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 h-full">
+          <h3 class="text-xl lg:text-4xl mb-6 lg:mb-0 font-light">Who this is for</h3>
+          <ul class="flex flex-col">
+            <li class="pb-3 border-b border-black/20">
+              Organisations that want their digital presence to work harder for their users and their business
+            </li>
+            <li class="pb-3 border-b border-black/20">
+              Teams building new digital products or platforms who need design that holds up end-to-end
+            </li>
+            <li class="pb-3 border-b border-black/20">
+              Businesses that want design balancing form and function — not one at the expense of the other
+            </li>
+          </ul>
+        </div>
       </div>
-      <div
-        class="col-span-full lg:col-start-7 lg:col-span-5 p-8 flex flex-col gap-4 mt-5 lg:mt-0"
-        style="background-color: #EAE7E4;"
-      >
-        <h3 class="text-xl">Who this is <span class="underline">not</span> for</h3>
-        <ul class="flex flex-col gap-3 font-serif">
-          <li>Projects where the design is already complete and ready for development</li>
-          <li>Engagements where usability and user outcomes are secondary to speed or cost</li>
-        </ul>
+
+      {/* Who this is not for */}
+      <div class="col-span-full lg:col-start-7 lg:col-span-5 p-8 mt-5 lg:mt-0" style="background-color: #EAE7E4;">
+        <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 h-full">
+          <h3 class="text-xl lg:text-4xl mb-6 lg:mb-0 font-light">
+            Who this is <span class="underline">not</span> for
+          </h3>
+          <ul class="flex flex-col">
+            <li class="pb-3 border-b border-black/20">
+              Projects where the design is already complete and ready for development
+            </li>
+            <li class="pb-3 border-b border-black/20">
+              Engagements where usability and user outcomes are secondary to speed or cost
+            </li>
+          </ul>
+        </div>
       </div>
     </Grid>
   </section>

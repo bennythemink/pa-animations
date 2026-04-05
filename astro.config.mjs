@@ -10,15 +10,15 @@ export default defineConfig({
       provider: fontProviders.google(),
       name: 'IBM Plex Sans',
       cssVariable: '--font-ibm-plex-sans',
-      weights: [400, 500, 600, 700],
+      weights: [200, 300, 400, 500, 600, 700],
       styles: ['normal'],
-      display: 'optional'
+      display: 'fallback'
     },
     {
       provider: fontProviders.google(),
       name: 'Lateef',
       cssVariable: '--font-lateef',
-      weights: [200],
+      weights: [200, 300, 400],
       styles: ['normal'],
       display: 'optional'
     }
