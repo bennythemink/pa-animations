@@ -1,4 +1,12 @@
-<span class="inline-flex items-center justify-center w-6 lg:w-8 h-6 lg:h-8 align-middle leading-none mb-2">
+---
+interface Props {
+  size?: number
+  desktopSize?: number
+}
+const { size = 24, desktopSize = 32 } = Astro.props
+---
+
+<span class="sign inline-flex items-center justify-center align-middle leading-none mb-2">
   <svg
     width="276"
     height="276"
@@ -12,3 +20,16 @@
       fill="var(--accent-bgc)"></path>
   </svg>
 </span>
+
+<style define:vars={{ size, desktopSize }}>
+  .sign {
+    width: calc(var(--size) * 1px);
+    height: calc(var(--size) * 1px);
+  }
+  @media (min-width: 1024px) {
+    .sign {
+      width: calc(var(--desktopSize) * 1px);
+      height: calc(var(--desktopSize) * 1px);
+    }
+  }
+</style>
