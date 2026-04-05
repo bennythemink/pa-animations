@@ -2,6 +2,8 @@
 import Layout from '@layouts/Layout.astro'
 import Grid from '@components/Grid.astro'
 import EqualSign from '@components/EqualSign.astro'
+import { Image } from 'astro:assets'
+import servicesHero from '@assets/pa-services-placeholder.png'
 
 const services = [
   {
@@ -59,13 +61,7 @@ const services = [
 
   {/* ── Hero image ── */}
   <div class="w-full">
-    <img
-      src="/pa-services-placeholder.png"
-      alt="A tablet displaying a data areas interface"
-      width="1440"
-      height="456"
-      class="w-full block object-cover"
-    />
+    <Image src={servicesHero} alt="A tablet displaying a data areas interface" class="w-full block object-cover" />
   </div>
 
   {/* ── Intro + services list ── */}
