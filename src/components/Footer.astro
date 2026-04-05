@@ -1,6 +1,6 @@
 ---
-import Grid from './Grid.astro'
-import type { FlowFieldOptions } from '../scripts/flow-field.ts'
+import Grid from '@components/Grid.astro'
+import type { FlowFieldOptions } from '@scripts/flow-field.ts'
 
 interface Props {
   flowFieldColor?: FlowFieldOptions['color']
@@ -110,8 +110,8 @@ const year = new Date().getFullYear()
 </style>
 
 <script>
-  import { initFlowField } from '../scripts/flow-field.ts'
-  import type { FlowFieldOptions } from '../scripts/flow-field.ts'
+  import { initFlowField } from '@scripts/flow-field.ts'
+  import type { FlowFieldOptions } from '@scripts/flow-field.ts'
   const canvas = document.getElementById('footer-flow') as HTMLCanvasElement
   // Explicit prop wins → random accent colour → default 'blue'
   const color = (canvas.dataset.color ||

@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import PixelAssistChatbot from '../components/PixelAssistChatbot.astro'
-import plusSvg from '../assets/plus.svg?url'
-import equalsSvg from '../assets/equals.svg?url'
-import vectorSvg from '../assets/vector.svg?url'
+import Layout from '@layouts/Layout.astro'
+import PixelAssistChatbot from '@components/PixelAssistChatbot.astro'
+import plusSvg from '@assets/plus.svg?url'
+import equalsSvg from '@assets/equals.svg?url'
+import vectorSvg from '@assets/vector.svg?url'
 
 const assistConversation = [
   { role: 'user' as const, text: 'What exactly is Pixel Assist?' },
@@ -610,7 +610,7 @@ const assistConversation = [
   import { gsap } from 'gsap'
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
   import Lenis from 'lenis'
-  import { initFlowField } from '../scripts/flow-field.ts'
+  import { initFlowField } from '@scripts/flow-field.ts'
 
   gsap.registerPlugin(ScrollTrigger)
 
