@@ -73,7 +73,7 @@ const services = [
         {
           /* Invisible spacer — matches height of "Our services" label to align first paragraph with first service link */
         }
-        <h1 aria-hidden="true" class="font-sans text-xs hidden lg:block invisible">Our services</h1>
+        <p aria-hidden="true" class="font-sans text-xs tracking-widest mb-4 hidden lg:block invisible">Our services</p>
         <p>
           Digital projects rarely follow a straight line. Some start with a clear brief. Others start with a problem
           that needs unpacking. Most land somewhere in between.
@@ -90,7 +90,7 @@ const services = [
       </div>
 
       {/* Right: services list */}
-      <div class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col">
+      <div id="services-list" class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col">
         <p class="font-sans text-xs tracking-widest text-black/50 mb-4">Our services</p>
         {
           services.map((s) => (
