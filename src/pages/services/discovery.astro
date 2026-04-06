@@ -2,8 +2,10 @@
 import Layout from '@layouts/Layout.astro'
 import Grid from '@components/Grid.astro'
 import HeroSection from '@components/services/HeroSection.astro'
+import OurApproachSection from '@components/services/OurApproachSection.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 import ContactForm from '@components/ContactForm.astro'
+import Plus from '@components/signs/Plus.astro'
 
 const pageTitle = 'Discovery + direction'
 const tagline =
@@ -33,9 +35,13 @@ const whoNotFor = [
 >
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
 
-  {/* ── Who it's for / not for ── */}
+  <OurApproachSection>
+    Through structured workshops <Plus size={28} desktopSize={80} /> collaborative sessions, we work with you to understand
+    the problem properly before any solution is shaped.
+  </OurApproachSection>
+
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
-  {/* ── CTA + Form ── */}
+
   <Grid>
     <ContactForm title="Let's talk about what you're trying to achieve." />
   </Grid>

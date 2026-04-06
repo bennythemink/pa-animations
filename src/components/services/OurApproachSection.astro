@@ -1,0 +1,14 @@
+---
+import Grid from '@components/Grid.astro'
+---
+
+<section id="approach-section" class="pb-12 lg:pb-20">
+  <Grid>
+    <div class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-col gap-5">
+      <p class="font-sans font-normal text-lg lg:text-4xl text-pixel-red">Our approach</p>
+      <h2 id="approach-text" class="text-3xl lg:text-7xl leading-none">
+        <slot />
+      </h2>
+    </div>
+  </Grid>
+</section>

@@ -4,6 +4,7 @@ import Grid from '@components/Grid.astro'
 import ContactForm from '@components/ContactForm.astro'
 import Vector from '@components/signs/Vector.astro'
 import WhoSection from '@components/services/WhoSection.astro'
+import OurApproachSection from '@components/services/OurApproachSection.astro'
 
 const whoFor = [
   'Organisations that want their digital presence to work harder for their users and their business',
@@ -97,17 +98,10 @@ const whoNotFor = [
   </section>
 
   {/* ── Our approach ── */}
-  <section id="approach-section" class="pb-12 lg:pb-20">
-    <Grid>
-      <div class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-col gap-5">
-        <p class="font-sans font-normal text-lg lg:text-4xl text-pixel-red">Our approach</p>
-        <h2 id="approach-text" class="text-3xl lg:text-7xl leading-none">
-          Every design decision we make is deliberate <Vector size={28} desktopSize={80} /> in service of the people using
-          the product and the outcomes it needs to deliver.
-        </h2>
-      </div>
-    </Grid>
-  </section>
+  <OurApproachSection>
+    Every design decision we make is deliberate <Vector size={28} desktopSize={80} /> in service of the people using the product
+    and the outcomes it needs to deliver.
+  </OurApproachSection>
 
   <section id="approach-points" class="py-12 lg:py-20">
     <div class="grid grid-cols-12 px-5 max-w-360 mx-auto w-full">
