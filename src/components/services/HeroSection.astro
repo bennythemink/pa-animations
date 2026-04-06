@@ -16,8 +16,8 @@ const { title, tagline, paragraphs } = Astro.props
       <h1 class="text-7xl lg:text-[140px] p-0">{title}</h1>
     </div>
     <div class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col gap-4 mt-4 lg:mt-6">
-      <h2 class="text-lg lg:text-3xl">{tagline}</h2>
-      <div class="flex flex-col gap-3 mt-2 text-lg leading-[0.76]">
+      <h2 class="text-lg lg:text-3xl leading-[1.04]">{tagline}</h2>
+      <div class="flex flex-col gap-3 mt-2 font-serif text-lg leading-[0.76]">
         {paragraphs.map((p) => <p>{p}</p>)}
       </div>
     </div>
