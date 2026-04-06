@@ -1,0 +1,30 @@
+---
+import Grid from '@components/Grid.astro'
+
+interface Props {
+  title: string
+  items: string[]
+}
+
+const { title, items } = Astro.props
+---
+
+<section class="py-12 lg:py-20">
+  <Grid>
+    <div class="col-span-full lg:col-start-2 lg:col-span-4">
+      <h2 style="font-size: clamp(2rem, 5vw, 4rem);">{title}</h2>
+    </div>
+    <ul
+      class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col justify-center gap-3 font-sans text-lg lg:text-2xl mt-6 lg:mt-0"
+    >
+      {
+        items.map((item) => (
+          <li class="flex items-center gap-3 border-b-2 border-[#e6e2df] py-2 lg:py-4">
+            <span class="shrink-0 w-[12px] h-[12px]" style="background-color: var(--accent-bgc);" />
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </Grid>
+</section>
