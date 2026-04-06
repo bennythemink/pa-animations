@@ -85,7 +85,7 @@ import Vector from '@components/signs/Vector.astro'
   </section>
 
   {/* ── Our approach ── */}
-  <section class="mb-48 lg:mb-80">
+  <section id="approach-section" class="mb-48 lg:mb-80">
     <Grid>
       <div class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-col gap-5">
         <p class="font-sans font-normal text-lg lg:text-4xl text-pixel-red">Our approach</p>
@@ -153,3 +153,50 @@ import Vector from '@components/signs/Vector.astro'
     <ContactForm title="Let's talk about what you're trying to achieve." />
   </Grid>
 </Layout>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  let ctx: gsap.Context | null = null
+
+  function init() {
+    ctx?.revert()
+    ctx = null
+
+    const floater = document.getElementById('floater')
+    const approachSection = document.getElementById('approach-section')
+    if (!floater || !approachSection) return
+
+    ctx = gsap.context(() => {
+      const mm = gsap.matchMedia()
+      mm.add('(min-width: 1024px)', () => {
+        gsap.to(floater, {
+          y: -280,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: approachSection,
+            start: 'bottom bottom',
+            end: 'bottom top',
+            scrub: true,
+            markers: true
+          }
+        })
+      })
+    })
+
+    ScrollTrigger.refresh()
+  }
+
+  // Call immediately for initial page load (astro:page-load may have already fired)
+  init()
+
+  // Re-init on subsequent navigations via ClientRouter
+  document.addEventListener('astro:page-load', init)
+  document.addEventListener('astro:before-swap', () => {
+    ctx?.revert()
+    ctx = null
+  })
+</script>
