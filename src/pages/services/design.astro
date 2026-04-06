@@ -85,7 +85,7 @@ import Vector from '@components/signs/Vector.astro'
   </section>
 
   {/* ── Our approach ── */}
-  <section id="approach-section" class="mb-48 lg:mb-80">
+  <section id="approach-section" class="">
     <Grid>
       <div class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-col gap-5">
         <p class="font-sans font-normal text-lg lg:text-4xl text-pixel-red">Our approach</p>
@@ -96,13 +96,15 @@ import Vector from '@components/signs/Vector.astro'
       </div>
       <div
         id="floater"
-        class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col gap-4 p-8 font-sans text-sm mt-6 lg:mt-0"
+        class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col px-[30px] py-[32px] lg:w-[460px] lg:px-[48px] lg:py-[60px] font-sans text-sm mt-6 lg:mt-0"
         style="background-color: var(--accent-bgc);"
       >
         <p>Grounded in your users' needs and the strategy behind the work</p>
-        <p>Favours clarity and ease of use, not visual complexity</p>
-        <p>Expressive without being distracting — personality in service of purpose</p>
-        <p>Considered from end-to-end, not just at the surface</p>
+        <p class="border-t border-black/20 pt-4 mt-4">Favours clarity and ease of use, not visual complexity</p>
+        <p class="border-t border-black/20 pt-4 mt-4">
+          Expressive without being distracting — personality in service of purpose
+        </p>
+        <p class="border-t border-black/20 pt-4 mt-4">Considered from end-to-end, not just at the surface</p>
       </div>
     </Grid>
   </section>
@@ -181,7 +183,7 @@ import Vector from '@components/signs/Vector.astro'
             start: 'bottom bottom',
             end: 'bottom top',
             scrub: true,
-            markers: true
+            markers: false
           }
         })
       })
