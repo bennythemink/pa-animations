@@ -96,7 +96,7 @@ import Vector from '@components/signs/Vector.astro'
       </div>
       <div
         id="floater"
-        class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col px-[30px] py-[32px] lg:w-[460px] lg:px-[48px] lg:py-[60px] font-sans text-sm mt-6 lg:mt-0"
+        class="col-span-full lg:col-start-7 lg:col-span-5 relative z-10 flex flex-col px-[30px] py-[32px] lg:w-[460px] lg:px-[48px] lg:py-[60px] font-sans text-sm mt-6 lg:mt-0"
         style="background-color: var(--accent-bgc);"
       >
         <p>Grounded in your users' needs and the strategy behind the work</p>
@@ -111,7 +111,7 @@ import Vector from '@components/signs/Vector.astro'
 
   {/* ── Who this is for / not for ── */}
   <!-- <section class="py-12 lg:py-20"> -->
-  <section class="mb-6">
+  <section id="who" class="mb-6 relative z-0 lg:-mt-[230px]">
     <Grid>
       {/* Who this is for */}
       <div class="col-span-full lg:col-start-2 lg:col-span-5 p-8 bg-white">
