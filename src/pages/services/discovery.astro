@@ -1,10 +1,42 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import Grid from '@components/Grid.astro'
+import HeroSection from '@components/services/HeroSection.astro'
+import WhoSection from '@components/services/WhoSection.astro'
+import ContactForm from '@components/ContactForm.astro'
+
+const pageTitle = 'Discovery and direction'
+const tagline =
+  'Jumping into delivery before the problem is clearly defined is one of the most common and costly mistakes in digital work.'
+const paragraphs = [
+  'Discovery and direction is designed for organisations that know something needs to change, but need help understanding exactly what that change should be, what it will realistically take, and whether the investment is worth making.',
+  'We give you the clarity to move forward with confidence — or the insight to know when not to.'
+]
+
+const whoFor = [
+  'You have an early-stage product or platform idea that needs shaping',
+  'Your stakeholders have competing views and need alignment',
+  'You have a problem but no clear solution yet',
+  'Your team needs to build a business case or prepare for a funding conversation',
+  'You’re about to invest in a build and want to reduce the risk of getting it wrong'
+]
+
+const whoNotFor = [
+  'Projects with a fully defined scope that are ready for immediate build',
+  'Teams seeking validation of a solution they’ve already decided on'
+]
 ---
 
 <Layout
   title="Digital Discovery & Strategy"
   description="Structured discovery workshops to clarify digital problems, define solutions, and assess scope, timelines, and investment. Build confidence before committing to delivery."
 >
-  <!-- Page content goes here -->
+  <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
+
+  {/* ── Who it's for / not for ── */}
+  <WhoSection forItems={whoFor} notForItems={whoNotFor} />
+  {/* ── CTA + Form ── */}
+  <Grid>
+    <ContactForm title="Let's talk about what you're trying to achieve." />
+  </Grid>
 </Layout>
