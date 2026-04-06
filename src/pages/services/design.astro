@@ -205,7 +205,7 @@ import Vector from '@components/signs/Vector.astro'
       // Approach points: clip-path reveal animations
       if (approachPoints && cardGrounded && cardFocused && cardExpressive && cardConsidered) {
         gsap.set(cardGrounded, { clipPath: 'inset(0% 0% 100% 0%)' })
-        gsap.set(cardFocused, { clipPath: 'inset(0% 0% 100% 0%)' })
+        gsap.set(cardFocused, { clipPath: 'inset(100% 0% 0% 0%)' })
         gsap.set(cardExpressive, { clipPath: 'inset(0% 100% 0% 0%)' })
         gsap.set(cardConsidered, { clipPath: 'inset(0% 0% 0% 100%)' })
 
