@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets'
+import Grid from '@components/Grid.astro'
+
+interface CaseStudy {
+  image: ImageMetadata
+  link: string
+  title: string
+}
+
+interface Props {
+  first: CaseStudy
+  second: CaseStudy
+}
+
+const { first, second } = Astro.props
+---
+
+<section class="pb-16 lg:pb-24">
+  <Grid>
+    <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-2">
+      <a href={first.link} class="underline underline-offset-2 hover:no-underline">
+        <Image src={first.image} alt={first.title} class="w-full aspect-[4/3] object-cover" />
+      </a>
+      <div class="flex items-center justify-between font-sans text-xs">
+        <a href={first.link} class="underline underline-offset-2 hover:no-underline">Case study</a>
+        <span class="text-black/40">{first.title}</span>
+      </div>
+    </div>
+
+    <div class="col-span-full lg:col-start-6 lg:col-span-7 flex flex-col gap-2 mt-6 lg:mt-0">
+      <a href={second.link} class="underline underline-offset-2 hover:no-underline">
+        <Image src={second.image} alt={second.title} class="w-full aspect-[4/3] object-cover" />
+      </a>
+      <div class="flex items-center justify-between font-sans text-xs">
+        <a href={second.link} class="underline underline-offset-2 hover:no-underline">Case study</a>
+        <span class="text-black/40">{second.title}</span>
+      </div>
+    </div>
+  </Grid>
+</section>
