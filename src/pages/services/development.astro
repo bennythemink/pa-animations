@@ -1,10 +1,45 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import Grid from '@components/Grid.astro'
+import HeroSection from '@components/services/HeroSection.astro'
+import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
+import WhoSection from '@components/services/WhoSection.astro'
+import ContactForm from '@components/ContactForm.astro'
+
+const pageTitle = 'Development'
+const tagline = 'Digital solutions built to last.'
+const paragraphs = [
+  'Whether it’s a website, a mobile application, or a custom digital system, what you need is something that actually solves your business problem — built to be reliable, maintainable, and fit for real-world use.',
+  'We build with longevity in mind, not to hit a deadline and move on. Our focus is on making sensible technical decisions that serve your business now and don’t create problems later.'
+]
+
+const whatWeBuild = [
+  'Marketing, retail, and content-driven websites',
+  'Mobile and web applications',
+  'Custom digital platforms and systems',
+  'Integrations and automation',
+  'AI powered tools and solutions'
+]
+
+const whoFor = [
+  'Organisations that need a reliable, long-term digital solution — not the cheapest build that ships and breaks',
+  'Teams building websites, apps, or custom systems who want quality and maintainability',
+  'Clients who value doing it properly over doing it quickly'
+]
+
+const whoNotFor = ['Projects where speed is the only priority and stability can wait']
 ---
 
 <Layout
   title="Website & Application Development Services"
   description="Scalable website and application development built to solve real business problems. Reliable, maintainable digital solutions delivered by experienced practitioners."
 >
-  <!-- Page content goes here -->
+  <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
+
+  <WhatWeDoSection title="We develop:" items={whatWeBuild} />
+  <WhoSection forItems={whoFor} notForItems={whoNotFor} />
+
+  <Grid>
+    <ContactForm title="Let's talk about what you're trying to achieve." />
+  </Grid>
 </Layout>
