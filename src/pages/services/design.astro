@@ -97,24 +97,6 @@ import Vector from '@components/signs/Vector.astro'
     </Grid>
   </section>
 
-  {/* floater — sits between sections, overlaps who section on desktop */}
-  <!-- <div class="relative z-10">
-    <Grid>
-      <div
-        id="floater"
-        class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col px-[30px] py-[32px] lg:w-[460px] lg:px-[48px] lg:py-[60px] font-sans text-sm"
-        style="background-color: var(--accent-bgc);"
-      >
-        <p>Grounded in your users' needs and the strategy behind the work</p>
-        <p class="border-t border-black/20 pt-4 mt-4">Favours clarity and ease of use, not visual complexity</p>
-        <p class="border-t border-black/20 pt-4 mt-4">
-          Expressive without being distracting — personality in service of purpose
-        </p>
-        <p class="border-t border-black/20 pt-4 mt-4">Considered from end-to-end, not just at the surface</p>
-      </div>
-    </Grid>
-  </div> -->
-
   <section id="approach-points" class="py-12 lg:py-20">
     <div class="grid grid-cols-12 px-5 max-w-360 mx-auto w-full">
       <div
@@ -210,7 +192,6 @@ import Vector from '@components/signs/Vector.astro'
     ctx?.revert()
     ctx = null
 
-    const floater = document.getElementById('floater')
     const approachSection = document.getElementById('approach-section')
     const approachText = document.getElementById('approach-text')
     const approachPoints = document.getElementById('approach-points')
@@ -253,21 +234,6 @@ import Vector from '@components/signs/Vector.astro'
           scrollTrigger: { trigger: cardConsidered, start: 'top 85%', once: true }
         })
       }
-
-      const mm = gsap.matchMedia()
-      mm.add('(min-width: 1024px)', () => {
-        gsap.to(floater, {
-          y: -280,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: approachText,
-            start: 'bottom bottom-=100',
-            end: 'bottom top',
-            scrub: true,
-            markers: false
-          }
-        })
-      })
     })
 
     ScrollTrigger.refresh()
