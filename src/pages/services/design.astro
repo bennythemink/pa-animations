@@ -85,7 +85,7 @@ import Vector from '@components/signs/Vector.astro'
   </section>
 
   {/* ── Our approach ── */}
-  <section id="approach-section" class="">
+  <section id="approach-section" class="pb-12 lg:pb-20">
     <Grid>
       <div class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-col gap-5">
         <p class="font-sans font-normal text-lg lg:text-4xl text-pixel-red">Our approach</p>
@@ -94,9 +94,15 @@ import Vector from '@components/signs/Vector.astro'
           the product and the outcomes it needs to deliver.
         </h2>
       </div>
+    </Grid>
+  </section>
+
+  {/* floater — sits between sections, overlaps who section on desktop */}
+  <!-- <div class="relative z-10">
+    <Grid>
       <div
         id="floater"
-        class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col px-[30px] py-[32px] lg:w-[460px] lg:px-[48px] lg:py-[60px] font-sans text-sm mt-6 lg:mt-0"
+        class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col px-[30px] py-[32px] lg:w-[460px] lg:px-[48px] lg:py-[60px] font-sans text-sm"
         style="background-color: var(--accent-bgc);"
       >
         <p>Grounded in your users' needs and the strategy behind the work</p>
@@ -107,6 +113,43 @@ import Vector from '@components/signs/Vector.astro'
         <p class="border-t border-black/20 pt-4 mt-4">Considered from end-to-end, not just at the surface</p>
       </div>
     </Grid>
+  </div> -->
+
+  <section id="approach-points" class="py-12 lg:py-20">
+    <div class="grid grid-cols-12 px-5 max-w-360 mx-auto w-full">
+      <div
+        id="card-grounded"
+        class="col-span-full lg:col-start-2 lg:col-span-5 p-8 flex flex-col justify-between min-h-[200px]"
+        style="background-color: #c07888;"
+      >
+        <p class="font-sans text-4xl lg:text-5xl">Grounded</p>
+        <p class="text-right font-sans text-xs mt-8">in your users' needs and the strategy behind the work</p>
+      </div>
+      <div
+        id="card-focused"
+        class="col-span-full lg:col-start-2 lg:col-span-5 p-8 flex flex-col justify-between min-h-[200px]"
+        style="background-color: #e0b8cc;"
+      >
+        <p class="font-sans text-4xl lg:text-5xl">Focused</p>
+        <p class="text-right font-sans text-xs mt-8">on clarity and ease of use, not visual complexity</p>
+      </div>
+      <div
+        id="card-expressive"
+        class="col-span-full lg:col-start-7 lg:col-span-5 lg:row-start-2 lg:row-span-2 p-8 flex flex-col justify-between min-h-[200px]"
+        style="background-color: #3a9e80;"
+      >
+        <p class="font-sans text-4xl lg:text-5xl">Expressive</p>
+        <p class="text-right font-sans text-xs mt-8">without being distracting, personality in service of purpose</p>
+      </div>
+      <div
+        id="card-considered"
+        class="col-span-full lg:col-start-2 lg:col-span-5 p-8 flex flex-col justify-between min-h-[200px]"
+        style="background-color: #6888b8;"
+      >
+        <p class="font-sans text-4xl lg:text-5xl">Considered</p>
+        <p class="text-right font-sans text-xs mt-8">from end-to-end, not just at the surface</p>
+      </div>
+    </div>
   </section>
 
   {/* ── Who this is for / not for ── */}
@@ -171,9 +214,34 @@ import Vector from '@components/signs/Vector.astro'
     const floater = document.getElementById('floater')
     const approachSection = document.getElementById('approach-section')
     const approachText = document.getElementById('approach-text')
+    const approachPoints = document.getElementById('approach-points')
+    const cardGrounded = document.getElementById('card-grounded')
+    const cardFocused = document.getElementById('card-focused')
+    const cardExpressive = document.getElementById('card-expressive')
+    const cardConsidered = document.getElementById('card-considered')
     if (!floater || !approachSection || !approachText) return
 
     ctx = gsap.context(() => {
+      // Approach points: clip-path reveal animations
+      if (approachPoints && cardGrounded && cardFocused && cardExpressive && cardConsidered) {
+        gsap.set(cardGrounded, { clipPath: 'inset(100% 0% 0% 0%)' })
+        gsap.set(cardFocused, { clipPath: 'inset(0% 0% 100% 0%)' })
+        gsap.set(cardExpressive, { clipPath: 'inset(0% 100% 0% 0%)' })
+        gsap.set(cardConsidered, { clipPath: 'inset(0% 0% 0% 100%)' })
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: approachPoints,
+            start: 'top 75%',
+            once: true
+          }
+        })
+        tl.to(cardGrounded, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out' }, 0)
+        tl.to(cardFocused, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out' }, 0.15)
+        tl.to(cardExpressive, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out' }, 0.3)
+        tl.to(cardConsidered, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out' }, 0.45)
+      }
+
       const mm = gsap.matchMedia()
       mm.add('(min-width: 1024px)', () => {
         gsap.to(floater, {
