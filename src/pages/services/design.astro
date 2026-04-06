@@ -218,27 +218,40 @@ import Vector from '@components/signs/Vector.astro'
     const cardFocused = document.getElementById('card-focused')
     const cardExpressive = document.getElementById('card-expressive')
     const cardConsidered = document.getElementById('card-considered')
-    if (!floater || !approachSection || !approachText) return
+    if (!approachSection || !approachText) return
 
     ctx = gsap.context(() => {
       // Approach points: clip-path reveal animations
       if (approachPoints && cardGrounded && cardFocused && cardExpressive && cardConsidered) {
-        gsap.set(cardGrounded, { clipPath: 'inset(100% 0% 0% 0%)' })
+        gsap.set(cardGrounded, { clipPath: 'inset(0% 0% 100% 0%)' })
         gsap.set(cardFocused, { clipPath: 'inset(0% 0% 100% 0%)' })
         gsap.set(cardExpressive, { clipPath: 'inset(0% 100% 0% 0%)' })
         gsap.set(cardConsidered, { clipPath: 'inset(0% 0% 0% 100%)' })
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: approachPoints,
-            start: 'top 75%',
-            once: true
-          }
+        gsap.to(cardGrounded, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: cardGrounded, start: 'top 85%', once: true }
         })
-        tl.to(cardGrounded, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out' }, 0)
-        tl.to(cardFocused, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out' }, 0.15)
-        tl.to(cardExpressive, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out' }, 0.3)
-        tl.to(cardConsidered, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'power2.out' }, 0.45)
+        gsap.to(cardFocused, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: cardFocused, start: 'top 85%', once: true }
+        })
+        gsap.to(cardExpressive, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: cardExpressive, start: 'top 85%', once: true }
+        })
+        gsap.to(cardConsidered, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: cardConsidered, start: 'top 85%', once: true }
+        })
       }
 
       const mm = gsap.matchMedia()
