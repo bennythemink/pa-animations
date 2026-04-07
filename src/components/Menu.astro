@@ -1,4 +1,10 @@
 ---
+interface Props {
+  position?: 'sticky' | 'fixed'
+}
+
+const { position = 'sticky' } = Astro.props
+
 const serviceLinks = [
   { label: 'Discovery + direction', href: '/services/discovery' },
   { label: 'Design', href: '/services/design' },
@@ -17,7 +23,7 @@ const navLinks = [
 ---
 
 {/* ── Sticky header ── */}
-<header class="sticky top-0 z-40 px-5 pt-5">
+<header class={`${position === 'fixed' ? 'fixed left-0 right-0' : 'sticky'} top-0 z-40 px-5 pt-5`}>
   <div class="max-w-360 mx-auto flex items-start justify-between">
     {/* Logo: P + A stacked, linked to homepage */}
     <a href="/" class="flex flex-col" aria-label="Pixel Agency homepage">

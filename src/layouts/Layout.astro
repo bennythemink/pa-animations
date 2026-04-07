@@ -8,11 +8,13 @@ import { COLOR_KEYS, COLORS_RGB } from '@scripts/flow-field.ts'
 interface Props {
   title?: string
   description?: string
+  position?: 'sticky' | 'fixed'
 }
 
 const {
   title = 'Pixel Agency',
-  description = 'Pixel Agency — digital strategy, design, and development studio based in Melbourne, Australia.'
+  description = 'Pixel Agency — digital strategy, design, and development studio based in Melbourne, Australia.',
+  position = 'sticky'
 } = Astro.props
 
 const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
@@ -42,7 +44,7 @@ const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
     </script>
   </head>
   <body class="m-0 min-h-screen bg-pixel-off-white">
-    <Menu />
+    <Menu position={position} />
     <slot />
     <Footer />
   </body>

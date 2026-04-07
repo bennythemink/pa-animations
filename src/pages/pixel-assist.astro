@@ -17,57 +17,64 @@ const includes = [
 <Layout
   title="Pixel Assist | AI Knowledge Assistant for Websites"
   description="Turn your website into an expert. Pixel Assist is a managed, AI-powered knowledge assistant that answers customer questions instantly, reduces support load, and speeds up decisions."
+  position="fixed"
 >
   {/* ── Hero: pinned scroll section with parallax chat bubbles ── */}
   <section id="pa-hero" class="relative h-screen overflow-hidden bg-pixel-off-white">
-
     {/* ── Back bubble layer (z-1, behind text) ── */}
     <div
       class="pa-bubble pa-bubble--back hidden lg:block"
       data-speed="0.6"
       style="top: 35%; left: 5%; background-color: #c9b97a;"
-    >What is the warranty period?</div>
+    >
+      What is the warranty period?
+    </div>
 
-    <div
-      class="pa-bubble pa-bubble--back"
-      data-speed="0.4"
-      style="top: 14%; right: 8%; background-color: #e8c728;"
-    >What's the difference between these products?</div>
+    <div class="pa-bubble pa-bubble--back" data-speed="0.4" style="top: 14%; right: 8%; background-color: #e8c728;">
+      What's the difference between these products?
+    </div>
 
     {/* ── Text layer (z-2, centred) ── */}
-    <div class="absolute inset-0 flex flex-col items-center justify-center z-2 px-6 pointer-events-none">
-      <h1 id="pa-h1" class="font-sans text-base lg:text-xl underline underline-offset-4 mb-4 text-center">Introducing Pixel Assist</h1>
+    <div
+      class="fixed inset-0 flex flex-col items-center justify-center z-2 px-6 pointer-events-none"
+      id="pa-text-layer"
+    >
+      <h1 id="pa-h1" class="font-sans text-base lg:text-xl underline underline-offset-4 mb-4 text-center">
+        Introducing Pixel Assist
+      </h1>
       <div class="relative w-full max-w-[1000px]">
         <h2
           id="pa-phrase-1"
           class="pa-phrase text-center leading-[0.9] tracking-[-0.03em]"
           style="font-size: clamp(2.2rem, 7vw, 6.5rem);"
-        >Your customers have questions.</h2>
+        >
+          Your customers have questions.
+        </h2>
         <h2
           id="pa-phrase-2"
           class="pa-phrase absolute inset-0 text-center leading-[0.9] tracking-[-0.03em] opacity-0"
           style="font-size: clamp(2.2rem, 7vw, 6.5rem);"
-        >But hard to find answers result in customer drop-offs and lost business.</h2>
+        >
+          But hard to find answers result in customer drop-offs and lost business.
+        </h2>
         <h2
           id="pa-phrase-3"
           class="pa-phrase absolute inset-0 text-center leading-[0.9] tracking-[-0.03em] opacity-0"
           style="font-size: clamp(2.2rem, 7vw, 6.5rem);"
-        >What if we could offer instant answers &amp; convert those customers?</h2>
+        >
+          What if we could offer instant answers &amp; convert those customers?
+        </h2>
       </div>
     </div>
 
     {/* ── Front bubble layer (z-3, in front of text) ── */}
-    <div
-      class="pa-bubble pa-bubble--front"
-      data-speed="1.0"
-      style="top: 55%; left: 8%; background-color: #7ea0c4;"
-    >Does this meet compliance requirements?</div>
+    <div class="pa-bubble pa-bubble--front" data-speed="1.0" style="top: 55%; left: 8%; background-color: #7ea0c4;">
+      Does this meet compliance requirements?
+    </div>
 
-    <div
-      class="pa-bubble pa-bubble--front"
-      data-speed="0.8"
-      style="top: 72%; right: 8%; background-color: #4d9e8e;"
-    >Which option is right for my situation?</div>
+    <div class="pa-bubble pa-bubble--front" data-speed="0.8" style="top: 72%; right: 8%; background-color: #4d9e8e;">
+      Which option is right for my situation?
+    </div>
 
     {/* ── Typing indicator (fades in during phase 2) ── */}
     <div
@@ -89,7 +96,9 @@ const includes = [
       class="pa-bubble pa-bubble--front opacity-0"
       data-speed="0.5"
       style="top: 90%; right: 12%; background-color: #c9b97a;"
-    >For a new.....</div>
+    >
+      For a new.....
+    </div>
 
     {/* Decorative squares */}
     <div
@@ -97,13 +106,15 @@ const includes = [
       class="pa-square pa-bubble--front opacity-0"
       data-speed="0.9"
       style="top: 78%; right: 3%; background-color: #4d9e8e;"
-    ></div>
+    >
+    </div>
     <div
       id="pa-square-tan"
       class="pa-square pa-bubble--front opacity-0"
       data-speed="0.6"
       style="top: 88%; right: 22%; background-color: #c9b97a;"
-    ></div>
+    >
+    </div>
   </section>
 
   <section class="py-6">
@@ -158,8 +169,12 @@ const includes = [
     max-width: 200px;
     will-change: transform;
   }
-  .pa-bubble--back { z-index: 1; }
-  .pa-bubble--front { z-index: 3; }
+  .pa-bubble--back {
+    z-index: 1;
+  }
+  .pa-bubble--front {
+    z-index: 3;
+  }
   .pa-square {
     position: absolute;
     width: 20px;
@@ -195,6 +210,7 @@ const includes = [
   // ── Scoped context for cleanup ──
   const ctx = gsap.context(() => {
     const hero = document.getElementById('pa-hero')!
+    const textLayer = document.getElementById('pa-text-layer')!
     const h1 = document.getElementById('pa-h1')!
     const phrase1 = document.getElementById('pa-phrase-1')!
     const phrase2 = document.getElementById('pa-phrase-2')!
@@ -215,87 +231,137 @@ const includes = [
         end: '+=300%',
         pin: true,
         scrub: 1,
+        onLeave: () => {
+          textLayer.style.display = 'none'
+        },
+        onEnterBack: () => {
+          textLayer.style.display = ''
+        }
       }
     })
 
     // ── Bubble parallax (runs across entire timeline) ──
     allBubbles.forEach((bubble) => {
       const speed = parseFloat(bubble.dataset.speed || '0.5')
-      tl.to(bubble, {
-        y: () => -window.innerHeight * speed * 1.5,
-        ease: 'none',
-      }, 0)
+      tl.to(
+        bubble,
+        {
+          y: () => -window.innerHeight * speed * 1.5,
+          ease: 'none'
+        },
+        0
+      )
     })
 
     // ── Phase 1 → Phase 2 text transition (~25–35%) ──
     // Fade out h1
-    tl.to(h1, {
-      opacity: 0,
-      duration: 0.08,
-      ease: 'power1.inOut',
-    }, 0.18)
+    tl.to(
+      h1,
+      {
+        opacity: 0,
+        duration: 0.08,
+        ease: 'power1.inOut'
+      },
+      0.18
+    )
 
     // Fade out phrase 1
-    tl.to(phrase1, {
-      opacity: 0,
-      duration: 0.08,
-      ease: 'power1.inOut',
-    }, 0.25)
+    tl.to(
+      phrase1,
+      {
+        opacity: 0,
+        duration: 0.08,
+        ease: 'power1.inOut'
+      },
+      0.25
+    )
 
     // Fade in phrase 2
-    tl.to(phrase2, {
-      opacity: 1,
-      duration: 0.08,
-      ease: 'power1.inOut',
-    }, 0.30)
+    tl.to(
+      phrase2,
+      {
+        opacity: 1,
+        duration: 0.08,
+        ease: 'power1.inOut'
+      },
+      0.3
+    )
 
     // Typing indicator fades in
-    tl.to(typing, {
-      opacity: 1,
-      duration: 0.06,
-      ease: 'power1.inOut',
-    }, 0.35)
+    tl.to(
+      typing,
+      {
+        opacity: 1,
+        duration: 0.06,
+        ease: 'power1.inOut'
+      },
+      0.35
+    )
 
     // ── Phase 2 → Phase 3 text transition (~58–68%) ──
     // Fade out phrase 2
-    tl.to(phrase2, {
-      opacity: 0,
-      duration: 0.08,
-      ease: 'power1.inOut',
-    }, 0.58)
+    tl.to(
+      phrase2,
+      {
+        opacity: 0,
+        duration: 0.08,
+        ease: 'power1.inOut'
+      },
+      0.58
+    )
 
     // Fade in phrase 3
-    tl.to(phrase3, {
-      opacity: 1,
-      duration: 0.08,
-      ease: 'power1.inOut',
-    }, 0.63)
+    tl.to(
+      phrase3,
+      {
+        opacity: 1,
+        duration: 0.08,
+        ease: 'power1.inOut'
+      },
+      0.63
+    )
 
     // Late-entering elements fade in
-    tl.to(bubbleLate, {
-      opacity: 1,
-      duration: 0.10,
-      ease: 'power1.inOut',
-    }, 0.55)
+    tl.to(
+      bubbleLate,
+      {
+        opacity: 1,
+        duration: 0.1,
+        ease: 'power1.inOut'
+      },
+      0.55
+    )
 
-    tl.to(squareTeal, {
-      opacity: 1,
-      duration: 0.08,
-      ease: 'power1.inOut',
-    }, 0.58)
+    tl.to(
+      squareTeal,
+      {
+        opacity: 1,
+        duration: 0.08,
+        ease: 'power1.inOut'
+      },
+      0.58
+    )
 
-    tl.to(squareTan, {
-      opacity: 1,
-      duration: 0.08,
-      ease: 'power1.inOut',
-    }, 0.60)
+    tl.to(
+      squareTan,
+      {
+        opacity: 1,
+        duration: 0.08,
+        ease: 'power1.inOut'
+      },
+      0.6
+    )
 
     // Typing indicator fades out in phase 3
-    tl.to(typing, {
-      opacity: 0,
-      duration: 0.06,
-      ease: 'power1.inOut',
-    }, 0.65)
+    tl.to(
+      typing,
+      {
+        opacity: 0,
+        duration: 0.06,
+        ease: 'power1.inOut'
+      },
+      0.65
+    )
 
     // ── Mobile adjustments ──
     ScrollTrigger.matchMedia({
@@ -329,8 +395,12 @@ const includes = [
   })
 
   // Clean up on Astro page transitions
-  document.addEventListener('astro:before-swap', () => {
-    ctx.revert()
-    lenis.destroy()
-  }, { once: true })
+  document.addEventListener(
+    'astro:before-swap',
+    () => {
+      ctx.revert()
+      lenis.destroy()
+    },
+    { once: true }
+  )
 </script>
