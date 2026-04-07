@@ -5,6 +5,7 @@ import ContactForm from '@components/ContactForm.astro'
 import Vector from '@components/signs/Vector.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 import OurApproachSection from '@components/services/OurApproachSection.astro'
+import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
 
 const whoFor = [
   'Organisations that want their digital presence to work harder for their users and their business',
@@ -103,43 +104,17 @@ const whoNotFor = [
     and the outcomes it needs to deliver.
   </OurApproachSection>
 
-  <section id="approach-points" class="py-12 lg:py-20">
-    <div class="grid grid-cols-12 px-5 max-w-360 mx-auto w-full">
-      <div
-        id="card-grounded"
-        class="col-span-full lg:col-start-2 lg:col-span-5 grid grid-cols-1 lg:grid-cols-5 gap-x-[20px] p-[12px] lg:p-[30px] min-h-[200px]"
-        style="background-color: #c07888;"
-      >
-        <p class="lg:col-start-1 lg:col-span-4 font-sans text-4xl lg:text-5xl">Grounded</p>
-        <p class="lg:col-start-3 lg:col-span-3 lg:row-start-2 text-right font-sans text-xs mt-6 lg:mt-12">
-          in your users' needs and the strategy behind the work
-        </p>
-      </div>
-      <div
-        id="card-focused"
-        class="col-span-full lg:col-start-2 lg:col-span-5 p-8 flex flex-col justify-between min-h-[200px]"
-        style="background-color: #e0b8cc;"
-      >
-        <p class="font-sans text-4xl lg:text-5xl">Focused</p>
-        <p class="text-right font-sans text-xs mt-8">on clarity and ease of use, not visual complexity</p>
-      </div>
-      <div
-        id="card-expressive"
-        class="col-span-full lg:col-start-7 lg:col-span-5 lg:row-start-3 p-8 flex flex-col justify-between min-h-[200px]"
-        style="background-color: #3a9e80;"
-      >
-        <p class="font-sans text-4xl lg:text-5xl">Expressive</p>
-        <p class="text-right font-sans text-xs mt-8">without being distracting, personality in service of purpose</p>
-      </div>
-      <div
-        id="card-considered"
-        class="col-span-full bg-pixel-blue lg:col-start-2 lg:col-span-5 lg:row-start-4 p-8 flex flex-col justify-between min-h-[200px]"
-      >
-        <p class="font-sans text-4xl lg:text-5xl">Considered</p>
-        <p class="text-right font-sans text-xs mt-8">from end-to-end, not just at the surface</p>
-      </div>
-    </div>
-  </section>
+  <ApproachPointsSection
+    cards={[
+      { title: 'Grounded', description: "in your users' needs and the strategy behind the work" },
+      { title: 'Focused', description: 'on clarity and ease of use, not visual complexity' },
+      {
+        title: 'Expressive',
+        description: 'without being distracting, personality in service of purpose'
+      },
+      { title: 'Considered', description: 'from end-to-end, not just at the surface' }
+    ]}
+  />
 
   {/* ── Who this is for / not for ── */}
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
