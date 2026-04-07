@@ -1,13 +1,66 @@
 ---
 import ContactForm from '@components/ContactForm.astro'
+import EqualSign from '@components/signs/Equals.astro'
 import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
+
+const includes = [
+  'Setup and training on your content',
+  'Australian-based hosting',
+  'Ongoing optimisation and tuning',
+  'Monitoring and maintenance, support and improvements',
+  'Monthly reporting on trends and insights from your knowledge base',
+  'Privacy first approach to PII and sensitive data'
+]
 ---
 
 <Layout
   title="Pixel Assist | AI Knowledge Assistant for Websites"
   description="Turn your website into an expert. Pixel Assist is a managed, AI-powered knowledge assistant that answers customer questions instantly, reduces support load, and speeds up decisions."
 >
+  <Grid />
+
+  {/* ── Pricing section ── */}
+  <section class="py-12 lg:py-20">
+    <Grid>
+      {/* Label */}
+      <p class="col-span-full lg:col-start-2 font-sans text-base lg:text-4xl text-pixel-blue">Pricing</p>
+
+      {/* Heading */}
+
+      <div id="price" class="col-span-full lg:col-start-2 lg:col-span-5 lg:row-start-2">
+        <h2 class="leading-[0.9] tracking-[-0.03em] mb-6 text-3xl lg:text-7xl">Simple, predictable pricing</h2>
+        <p class="flex gap-3 font-sans text-xl lg:text-3xl mb-10 lg:mt-10">
+          <EqualSign size={28} desktopSize={50} />From $599 per month + onboarding
+        </p>
+      </div>
+
+      {/* Includes card */}
+      <div
+        id="includes"
+        class="bg-pixel-cream col-span-full lg:col-span-5 lg:col-start-7 lg:row-start-2 flex flex-col px-5 lg:px-11 py-7 lg:pt-14 lg:pb-16"
+      >
+        {/* Card header */}
+        <div class="px-5 py-4 bg-pixel-cream">
+          <p class="font-sans text-xl lg:text-4xl text-white">Every implementation includes:</p>
+        </div>
+
+        {/* Card list */}
+        <ul class="flex flex-col font-sans px-5 text-xl lg:text-3xl">
+          {
+            includes.map((item, i) => (
+              <li class={`py-4 ${i < includes.length - 1 ? 'border-b border-white/80' : ''}`}>{item}</li>
+            ))
+          }
+        </ul>
+        <p class="font-sans text-xs text-black leading-[1.4] mt-3 px-5">
+          Onboarding is scoped based on the size and complexity of your knowledge base. Designed to cost less than even
+          a few hours of support time each month.
+        </p>
+      </div>
+    </Grid>
+  </section>
+
   <Grid>
     <ContactForm
       title="Make your knowledge easier to access"
