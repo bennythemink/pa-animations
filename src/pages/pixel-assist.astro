@@ -115,6 +115,90 @@ const includes = [
       style="top: 88%; right: 22%; background-color: #c9b97a;"
     >
     </div>
+
+    {/* ── Phase 2 bubbles ── */}
+    <div
+      class="pa-bubble pa-bubble--back"
+      data-speed="1.8"
+      data-phase="2"
+      style="top: 130%; left: 3%; background-color: #e8c728;"
+    >
+      How do I get started?
+    </div>
+    <div
+      class="pa-bubble pa-bubble--front"
+      data-speed="2.2"
+      data-phase="2"
+      style="top: 140%; right: 25%; background-color: #7ea0c4;"
+    >
+      Can I integrate with my CRM?
+    </div>
+    <div
+      class="pa-bubble pa-bubble--back"
+      data-speed="2.0"
+      data-phase="2"
+      style="top: 135%; left: 20%; background-color: #4d9e8e;"
+    >
+      What languages do you support?
+    </div>
+    <div
+      class="pa-bubble pa-bubble--front"
+      data-speed="1.6"
+      data-phase="2"
+      style="top: 125%; right: 5%; background-color: #c9b97a;"
+    >
+      Is my data secure?
+    </div>
+    <div
+      class="pa-bubble pa-bubble--back"
+      data-speed="1.9"
+      data-phase="2"
+      style="top: 145%; left: 45%; background-color: #7ea0c4;"
+    >
+      How accurate are the answers?
+    </div>
+
+    {/* ── Phase 3 bubbles ── */}
+    <div
+      class="pa-bubble pa-bubble--front"
+      data-speed="2.4"
+      data-phase="3"
+      style="top: 170%; left: 2%; background-color: #e8c728;"
+    >
+      Can it handle technical questions?
+    </div>
+    <div
+      class="pa-bubble pa-bubble--back"
+      data-speed="2.0"
+      data-phase="3"
+      style="top: 160%; right: 3%; background-color: #4d9e8e;"
+    >
+      What about compliance content?
+    </div>
+    <div
+      class="pa-bubble pa-bubble--front"
+      data-speed="2.6"
+      data-phase="3"
+      style="top: 175%; left: 30%; background-color: #c9b97a;"
+    >
+      Does it learn over time?
+    </div>
+    <div
+      class="pa-bubble pa-bubble--back"
+      data-speed="2.2"
+      data-phase="3"
+      style="top: 180%; right: 18%; background-color: #7ea0c4;"
+    >
+      Can visitors ask follow-ups?
+    </div>
+    <div
+      class="pa-bubble pa-bubble--front"
+      data-speed="2.1"
+      data-phase="3"
+      style="top: 165%; left: 60%; background-color: #e8c728;"
+    >
+      How quickly can we go live?
+    </div>
   </section>
 
   <section class="py-6">
@@ -246,7 +330,7 @@ const includes = [
       tl.to(
         bubble,
         {
-          y: () => -window.innerHeight * speed * 1.5,
+          y: () => -window.innerHeight * speed * 2,
           ease: 'none'
         },
         0
@@ -362,6 +446,8 @@ const includes = [
       },
       0.65
     )
+
+    // ── Phase 2 & 3 bubbles: no fade needed, they enter/exit naturally via parallax ──
 
     // ── Mobile adjustments ──
     ScrollTrigger.matchMedia({
