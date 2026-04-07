@@ -19,13 +19,11 @@ const { title, tagline, paragraphs, stack = false } = Astro.props
     </div>
     <div
       class={`col-span-full flex flex-col gap-4 mt-4 ${
-        stack
-          ? 'lg:col-start-2 lg:col-span-10 lg:row-start-2 lg:grid lg:grid-cols-2 lg:gap-x-5'
-          : 'lg:col-start-7 lg:col-span-5 lg:mt-6'
+        stack ? 'lg:col-start-7 lg:col-span-5 lg:row-start-2 lg:mt-6' : 'lg:col-start-7 lg:col-span-5 lg:mt-6'
       }`}
     >
       <h2 class="text-lg lg:text-3xl leading-[1.04]">{tagline}</h2>
-      <div class={`flex flex-col gap-3 mt-2 font-serif text-lg leading-[0.76] ${stack ? 'lg:mt-0' : ''}`}>
+      <div class="flex flex-col gap-3 mt-2 font-serif text-lg leading-[0.76]">
         {paragraphs.map((p) => <p>{p}</p>)}
       </div>
     </div>
