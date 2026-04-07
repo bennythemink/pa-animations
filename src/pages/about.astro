@@ -2,6 +2,8 @@
 import Layout from '@layouts/Layout.astro'
 import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
 import WhoSection from '@components/services/WhoSection.astro'
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
 
 /**
  * WhoSection variables
@@ -60,4 +62,8 @@ const whoNotFor = [
     forItems={whoFor}
     notForItems={whoNotFor}
   />
+
+  <Grid>
+    <ContactForm title="Let's talk about what you're trying to achieve." />
+  </Grid>
 </Layout>
