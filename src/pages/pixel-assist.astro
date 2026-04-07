@@ -107,41 +107,25 @@ const includes = [
       For a new.....
     </div>
 
-    {/* Decorative squares */}
-    <div
-      id="pa-square-teal"
-      class="pa-square pa-bubble--front opacity-0"
-      data-speed="0.9"
-      style="top: 78%; right: 3%; background-color: #4d9e8e;"
-    >
-    </div>
-    <div
-      id="pa-square-tan"
-      class="pa-square pa-bubble--front opacity-0"
-      data-speed="0.6"
-      style="top: 88%; right: 22%; background-color: #c9b97a;"
-    >
-    </div>
-
     {/* ── Phase 4: Chatbot conversation UI ── */}
-    <div id="pa-chatbot" class="absolute z-4 opacity-0" style="right: 8%; top: 38%; width: min(340px, 80vw);">
+    <div id="pa-chatbot" class="absolute z-4 opacity-0" style="right: 16%; top: 30%; width: min(340px, 80vw);">
       {/* User message row */}
       <div class="flex items-start gap-2.5 justify-end mb-3">
         <div
-          class="rounded-xl px-3.5 py-2.5 font-sans text-[0.8125rem] leading-[1.45]"
-          style="background: #d1fae5; color: #1f2937;"
+          class="rounded-xl px-3.5 py-2.5 font-sans text-[0.8125rem] leading-[1.45] bg-pixel-light-pink"
+          style="color: #1f2937;"
         >
           What is Pixel Assist?
         </div>
-        <div class="w-7 h-7 shrink-0 mt-0.5" style="background: #4d9e8e;"></div>
+        <div class="w-7 h-7 shrink-0 mt-0.5 bg-pixel-pink"></div>
       </div>
       {/* AI response row */}
       <div class="flex items-start gap-2.5">
-        <div class="w-7 h-7 shrink-0 mt-0.5" style="background: #60a5fa;"></div>
+        <div class="w-7 h-7 shrink-0 mt-0.5 bg-pixel-blue"></div>
         <div
           id="pa-ai-bubble"
-          class="rounded-xl px-3.5 py-2.5 font-sans text-[0.8125rem] leading-[1.45]"
-          style="background: #dbeafe; color: #1f2937;"
+          class="rounded-xl px-3.5 py-2.5 font-sans text-[0.8125rem] leading-[1.45] bg-pixel-light-blue"
+          style="color: #1f2937;"
         >
           <span id="pa-ai-dots" class="flex items-center gap-[0.3rem] h-5 px-0.5">
             <span class="pa-dot"></span>
