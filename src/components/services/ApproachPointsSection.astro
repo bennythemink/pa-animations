@@ -173,12 +173,19 @@ const uid = Math.random().toString(36).slice(2, 8)
   function initSection(section: HTMLElement): Instance {
     const cards = Array.from(section.querySelectorAll<HTMLElement>('[data-approach-card]'))
 
-    // Randomise col-start for solo cards on each page load
-    cards.forEach((card) => {
-      if (card.dataset.solo === 'true') {
-        card.style.setProperty('--col-start', Math.random() < 0.5 ? '2' : '7')
+    // Randomise col-start for solo cards, guaranteeing at least one in each column
+    const soloCards = cards.filter((c) => c.dataset.solo === 'true')
+    if (soloCards.length > 0) {
+      // Assign randomly first
+      const starts = soloCards.map(() => (Math.random() < 0.5 ? '2' : '7'))
+      // If all ended up the same column, flip one random card to the other
+      const allSame = starts.every((s) => s === starts[0])
+      if (allSame && soloCards.length > 1) {
+        const flipIdx = Math.floor(Math.random() * soloCards.length)
+        starts[flipIdx] = starts[0] === '2' ? '7' : '2'
       }
-    })
+      soloCards.forEach((card, i) => card.style.setProperty('--col-start', starts[i]))
+    }
 
     equaliseHeights(cards)
 
