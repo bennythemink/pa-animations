@@ -164,8 +164,14 @@ const includes = [
     <div class="pa-bubble pa-bubble--back" data-speed="1.3" style="top: 250%; left: 55%; background-color: #e8c728;">
       What languages do you support?
     </div>
-    <div class="pa-bubble pa-bubble--front" data-speed="1.0" style="top: 270%; left: 2%; background-color: #4d9e8e;">
+    <div class="pa-bubble pa-bubble--front" data-speed="1.0" style="top: 260%; left: 2%; background-color: #4d9e8e;">
       Can it handle technical questions?
+    </div>
+    <div class="pa-bubble pa-bubble--back" data-speed="1.15" style="top: 240%; right: 18%; background-color: #e8c728;">
+      What reporting is included?
+    </div>
+    <div class="pa-bubble pa-bubble--front" data-speed="1.05" style="top: 275%; left: 15%; background-color: #4d9e8e;">
+      Can I customise the responses?
     </div>
 
     {/* Late Phase 2 → Phase 3 */}
@@ -188,6 +194,15 @@ const includes = [
     </div>
     <div class="pa-bubble pa-bubble--front" data-speed="0.9" style="top: 380%; left: 50%; background-color: #c9b97a;">
       Is there an API available?
+    </div>
+    <div class="pa-bubble pa-bubble--back" data-speed="1.05" style="top: 360%; right: 30%; background-color: #7ea0c4;">
+      How does onboarding work?
+    </div>
+    <div class="pa-bubble pa-bubble--front" data-speed="0.95" style="top: 390%; left: 60%; background-color: #c9b97a;">
+      What's the uptime guarantee?
+    </div>
+    <div class="pa-bubble pa-bubble--back" data-speed="1.1" style="top: 410%; right: 10%; background-color: #e8c728;">
+      Who manages the knowledge base?
     </div>
 
     {/* Phase 3 → 4 */}
@@ -381,16 +396,16 @@ const includes = [
       )
     })
 
-    // ── Phase 1 → Phase 2 text transition (~25–35%) ──
+    // ── Phase 1 → Phase 2 text transition (~0.15–0.22) ──
     // Fade out h1
     tl.to(
       h1,
       {
         opacity: 0,
-        duration: 0.08,
+        duration: 0.06,
         ease: 'power1.inOut'
       },
-      0.18
+      0.13
     )
 
     // Fade out phrase 1
@@ -398,10 +413,10 @@ const includes = [
       phrase1,
       {
         opacity: 0,
-        duration: 0.08,
+        duration: 0.06,
         ease: 'power1.inOut'
       },
-      0.25
+      0.17
     )
 
     // Fade in phrase 2
@@ -409,10 +424,10 @@ const includes = [
       phrase2,
       {
         opacity: 1,
-        duration: 0.08,
+        duration: 0.06,
         ease: 'power1.inOut'
       },
-      0.3
+      0.21
     )
 
     // Typing indicator fades in
@@ -420,22 +435,22 @@ const includes = [
       typing,
       {
         opacity: 1,
-        duration: 0.06,
+        duration: 0.04,
         ease: 'power1.inOut'
       },
-      0.35
+      0.26
     )
 
-    // ── Phase 2 → Phase 3 text transition (~58–68%) ──
+    // ── Phase 2 → Phase 3 text transition (~0.37–0.44) ──
     // Fade out phrase 2
     tl.to(
       phrase2,
       {
         opacity: 0,
-        duration: 0.08,
+        duration: 0.06,
         ease: 'power1.inOut'
       },
-      0.58
+      0.37
     )
 
     // Fade in phrase 3
@@ -443,10 +458,10 @@ const includes = [
       phrase3,
       {
         opacity: 1,
-        duration: 0.08,
+        duration: 0.06,
         ease: 'power1.inOut'
       },
-      0.63
+      0.42
     )
 
     // Late-entering elements fade in
@@ -454,30 +469,30 @@ const includes = [
       bubbleLate,
       {
         opacity: 1,
-        duration: 0.1,
+        duration: 0.08,
         ease: 'power1.inOut'
       },
-      0.55
+      0.38
     )
 
     tl.to(
       squareTeal,
       {
         opacity: 1,
-        duration: 0.08,
+        duration: 0.06,
         ease: 'power1.inOut'
       },
-      0.58
+      0.40
     )
 
     tl.to(
       squareTan,
       {
         opacity: 1,
-        duration: 0.08,
+        duration: 0.06,
         ease: 'power1.inOut'
       },
-      0.6
+      0.42
     )
 
     // Typing indicator fades out in phase 3
@@ -485,16 +500,16 @@ const includes = [
       typing,
       {
         opacity: 0,
-        duration: 0.06,
+        duration: 0.04,
         ease: 'power1.inOut'
       },
-      0.65
+      0.46
     )
 
     // ── Phase 3 → Phase 4 transition ──
-    // Chatbot enters from below (0.58 → 0.78)
-    tl.to(chatbot, { opacity: 1, duration: 0.02, ease: 'power1.in' }, 0.58)
-    tl.to(chatbot, { y: 0, duration: 0.2, ease: 'none' }, 0.58)
+    // Chatbot enters from below (0.45 → 0.65)
+    tl.to(chatbot, { opacity: 1, duration: 0.02, ease: 'power1.in' }, 0.45)
+    tl.to(chatbot, { y: 0, duration: 0.2, ease: 'none' }, 0.45)
 
     // Fade out phrase 3
     tl.to(
@@ -504,7 +519,7 @@ const includes = [
         duration: 0.06,
         ease: 'power1.inOut'
       },
-      0.73
+      0.57
     )
 
     // Fade in phase 4 text
@@ -515,14 +530,14 @@ const includes = [
         duration: 0.06,
         ease: 'power1.inOut'
       },
-      0.77
+      0.62
     )
 
-    // AI typing dots → text streaming (0.83 → 0.97)
+    // AI typing dots → text streaming (0.70 → 0.90)
     tl.to(
       {},
       {
-        duration: 0.14,
+        duration: 0.20,
         ease: 'none',
         onUpdate: function () {
           const p = this.progress()
@@ -537,7 +552,7 @@ const includes = [
           }
         }
       },
-      0.83
+      0.70
     )
 
     // ── Mobile adjustments ──
