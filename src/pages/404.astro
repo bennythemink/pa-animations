@@ -1,0 +1,61 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Grid from '@components/Grid.astro'
+import ContactForm from '@components/ContactForm.astro'
+
+const topLevelLinks = [
+  { label: 'Services', href: '/services' },
+  { label: 'Pixel Assist', href: '/pixel-assist' },
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' }
+]
+---
+
+<Layout title="404 — Page not found">
+  <main class="max-w-360 mx-auto px-5 grid grid-cols-12 gap-5 pt-20 lg:pt-28 pb-16">
+    {/* ── Title ── */}
+    <h1
+      class="col-start-1 col-span-12 lg:col-start-2 lg:col-span-10 leading-[0.9] tracking-[-0.03em] mb-4"
+      style="font-size: clamp(2.5rem, 8vw, 8rem);"
+    >
+      404 page not found
+    </h1>
+
+    {/* ── Subtitle ── */}
+    <p class="col-start-1 col-span-12 lg:col-start-2 lg:col-span-6 font-sans text-base leading-[1.5] mb-12 lg:mb-16">
+      Looks like you are lost, try the links below or contact us directly.
+    </p>
+
+    {/* ── Top-level page links ── */}
+    <nav
+      class="col-start-1 col-span-12 lg:col-start-2 lg:col-span-10 flex flex-wrap gap-4 mb-20 lg:mb-28 font-sans"
+      aria-label="Site navigation"
+    >
+      {
+        topLevelLinks.map((link) => (
+          <a
+            href={link.href}
+            class="page-link underline underline-offset-2 hover:no-underline transition-all"
+            style="font-size: clamp(1.25rem, 3vw, 2.5rem);"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </main>
+
+  <Grid>
+    <ContactForm title="Let's talk about what you're trying to achieve." />
+  </Grid>
+
+  <style>
+    .page-link {
+      transition: color 0.2s ease;
+    }
+    .page-link:hover {
+      color: var(--accent-bgc);
+    }
+  </style>
+</Layout>
