@@ -1,6 +1,14 @@
 ---
+const serviceLinks = [
+  { label: 'Discovery + direction', href: '/services/discovery' },
+  { label: 'Design', href: '/services/design' },
+  { label: 'Development', href: '/services/development' },
+  { label: 'Digital consulting', href: '/services/digital-consulting' },
+  { label: 'AI', href: '/services/ai' }
+]
+
 const navLinks = [
-  { label: 'Services', href: '/services' },
+  { label: 'Services', href: '/services', hasDropdown: true },
   { label: 'Pixel Assist', href: '/pixel-assist' },
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'About', href: '/about' },
@@ -24,11 +32,44 @@ const navLinks = [
       aria-label="Main navigation"
     >
       {
-        navLinks.map((link) => (
-          <a href={link.href} class="nav-link underline underline-offset-2 hover:no-underline transition-all">
-            {link.label}
-          </a>
-        ))
+        navLinks.map((link) =>
+          link.hasDropdown ? (
+            <div class="relative" id="services-dropdown-wrapper">
+              <button
+                id="services-dropdown-btn"
+                class="nav-link underline underline-offset-2 hover:no-underline transition-all flex items-center gap-1 cursor-pointer"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="services-dropdown"
+              >
+                {link.label}
+              </button>
+              <ul
+                id="services-dropdown"
+                role="menu"
+                hidden
+                class="absolute top-full left-0 mt-1 flex flex-col py-2 font-sans font-normal whitespace-nowrap"
+                style="background-color: rgb(255 255 255 / 95%); backdrop-filter: blur(4px);"
+              >
+                {serviceLinks.map((s) => (
+                  <li role="none">
+                    <a
+                      href={s.href}
+                      role="menuitem"
+                      class="block px-4 py-1.5 hover:underline underline-offset-2 transition-colors"
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <a href={link.href} class="nav-link underline underline-offset-2 hover:no-underline transition-all">
+              {link.label}
+            </a>
+          )
+        )
       }
     </nav>
 
@@ -68,13 +109,30 @@ const navLinks = [
   <nav class="flex flex-col justify-center flex-1 gap-4" aria-label="Main navigation">
     {
       navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="font-sans font-normal text-black"
-          style="font-size: clamp(2.5rem, 12vw, 5rem); line-height: 0.85; letter-spacing: -0.03em;"
-        >
-          {link.label}
-        </a>
+        <div>
+          <a
+            href={link.href}
+            class="font-sans font-normal text-black"
+            style="font-size: clamp(2.5rem, 12vw, 5rem); line-height: 0.85; letter-spacing: -0.03em;"
+          >
+            {link.label}
+          </a>
+          {link.hasDropdown && (
+            <ul class="flex flex-col gap-1 mt-2 ml-6">
+              {serviceLinks.map((s) => (
+                <li>
+                  <a
+                    href={s.href}
+                    class="font-sans font-normal text-black/70 hover:text-black transition-colors"
+                    style="font-size: clamp(1rem, 4vw, 1.5rem); line-height: 1.2;"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       ))
     }
   </nav>
@@ -114,6 +172,34 @@ const navLinks = [
     })
   }
 
+  // ── Desktop services dropdown ──────────────────────────
+  const dropdownBtn = document.getElementById('services-dropdown-btn') as HTMLButtonElement | null
+  const dropdown = document.getElementById('services-dropdown') as HTMLUListElement | null
+  const dropdownWrapper = document.getElementById('services-dropdown-wrapper') as HTMLElement | null
+
+  if (dropdownBtn && dropdown && dropdownWrapper) {
+    function openDropdown() {
+      dropdown!.hidden = false
+      dropdownBtn!.setAttribute('aria-expanded', 'true')
+    }
+    function closeDropdown() {
+      dropdown!.hidden = true
+      dropdownBtn!.setAttribute('aria-expanded', 'false')
+    }
+
+    dropdownWrapper.addEventListener('mouseenter', openDropdown)
+    dropdownWrapper.addEventListener('mouseleave', closeDropdown)
+
+    // Close when a dropdown link is clicked
+    dropdown.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeDropdown))
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdownWrapper.contains(e.target as Node)) closeDropdown()
+    })
+  }
+
+  // ── Mobile menu ──────────────────────────────────────────
   openBtn.addEventListener('click', openMenu)
   closeBtn.addEventListener('click', closeMenu)
 
