@@ -6,7 +6,15 @@ import OurApproachSection from '@components/services/OurApproachSection.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 import ContactForm from '@components/ContactForm.astro'
 import Plus from '@components/signs/Plus.astro'
+import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
+import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
 
+import mbImage from '@assets/mb.png'
+import iphoneImage from '@assets/iphone.png'
+
+/**
+ * HeroSection variables
+ */
 const pageTitle = 'Discovery + direction'
 const tagline =
   'Jumping into delivery before the problem is clearly defined is one of the most common and costly mistakes in digital work.'
@@ -15,6 +23,25 @@ const paragraphs = [
   'We give you the clarity to move forward with confidence — or the insight to know when not to.'
 ]
 
+/**
+ * CaseStudiesSection variables
+ */
+
+const first = {
+  title: 'Explorers Early Learning',
+  link: '/case-studies/eel',
+  image: mbImage
+}
+
+const second = {
+  title: 'Insulation.com.au',
+  link: '/case-studies/insulation',
+  image: iphoneImage
+}
+
+/**
+ * WhoSection variables
+ */
 const whoFor = [
   'You have an early-stage product or platform idea that needs shaping',
   'Your stakeholders have competing views and need alignment',
@@ -30,15 +57,33 @@ const whoNotFor = [
 ---
 
 <Layout
-  title="Digital Discovery & Strategy"
+  title="Discovery + direction"
   description="Structured discovery workshops to clarify digital problems, define solutions, and assess scope, timelines, and investment. Build confidence before committing to delivery."
 >
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
+
+  <CaseStudiesSection first={first} second={second} />
 
   <OurApproachSection>
     Through structured workshops <Plus size={28} desktopSize={80} /> collaborative sessions, we work with you to understand
     the problem properly before any solution is shaped.
   </OurApproachSection>
+
+  <ApproachPointsSection
+    title={{ text: 'How? By', colour: 'pixel-blue' }}
+    cards={[
+      { title: 'Understanding', description: 'the problem space and its real impact on the business and its users' },
+      { title: 'Clarifying', description: 'the goals, constraints, and what success actually looks like' },
+      {
+        title: 'Exploring',
+        description: 'and assessing possible solution paths — honestly, not optimistically'
+      },
+      {
+        title: 'Defining',
+        description: 'the scope, timelines, and investment ranges so decisions can be made with confidence'
+      }
+    ]}
+  />
 
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
 
