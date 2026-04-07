@@ -107,11 +107,13 @@ const whoNotFor = [
     <div class="grid grid-cols-12 px-5 max-w-360 mx-auto w-full">
       <div
         id="card-grounded"
-        class="col-span-full lg:col-start-2 lg:col-span-5 p-8 flex flex-col justify-between min-h-[200px]"
+        class="col-span-full lg:col-start-2 lg:col-span-5 grid grid-cols-1 lg:grid-cols-5 gap-x-[20px] p-[12px] lg:p-[30px] min-h-[200px]"
         style="background-color: #c07888;"
       >
-        <p class="font-sans text-4xl lg:text-5xl">Grounded</p>
-        <p class="text-right font-sans text-xs mt-8">in your users' needs and the strategy behind the work</p>
+        <p class="lg:col-start-1 lg:col-span-4 font-sans text-4xl lg:text-5xl">Grounded</p>
+        <p class="lg:col-start-3 lg:col-span-3 lg:row-start-2 text-right font-sans text-xs mt-6 lg:mt-12">
+          in your users' needs and the strategy behind the work
+        </p>
       </div>
       <div
         id="card-focused"
@@ -169,6 +171,14 @@ const whoNotFor = [
     const cardConsidered = document.getElementById('card-considered')
     if (!approachSection || !approachText) return
 
+    // Equalise card heights on desktop only
+    const cards = [cardGrounded, cardFocused, cardExpressive, cardConsidered].filter(Boolean) as HTMLElement[]
+    cards.forEach((c) => (c.style.height = ''))
+    if (window.innerWidth >= 1024) {
+      const maxH = Math.max(...cards.map((c) => c.offsetHeight))
+      cards.forEach((c) => (c.style.height = `${maxH}px`))
+    }
+
     ctx = gsap.context(() => {
       // Approach points: clip-path reveal animations
       if (approachPoints && cardGrounded && cardFocused && cardExpressive && cardConsidered) {
@@ -209,6 +219,8 @@ const whoNotFor = [
 
   // Call immediately for initial page load (astro:page-load may have already fired)
   init()
+
+  window.addEventListener('resize', init)
 
   // Re-init on subsequent navigations via ClientRouter
   document.addEventListener('astro:page-load', init)
