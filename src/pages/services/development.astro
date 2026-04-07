@@ -5,7 +5,17 @@ import HeroSection from '@components/services/HeroSection.astro'
 import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 import ContactForm from '@components/ContactForm.astro'
+import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
+import OurApproachSection from '@components/services/OurApproachSection.astro'
+import Vector from '@components/signs/Vector.astro'
 
+import mbImage from '@assets/mb.png'
+import iphoneImage from '@assets/iphone.png'
+import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
+
+/**
+ * HeroSection variables
+ */
 const pageTitle = 'Development'
 const tagline = 'Digital solutions built to last.'
 const paragraphs = [
@@ -13,16 +23,58 @@ const paragraphs = [
   'We build with longevity in mind, not to hit a deadline and move on. Our focus is on making sensible technical decisions that serve your business now and don’t create problems later.'
 ]
 
+/**
+ * CaseStudiesSection variables
+ */
+
+const first = {
+  title: 'Explorers Early Learning',
+  link: '/case-studies/eel',
+  image: mbImage
+}
+
+const second = {
+  title: 'Insulation.com.au',
+  link: '/case-studies/insulation',
+  image: iphoneImage
+}
+
+/**
+ * ApproachPointsSection variables
+ */
+const approachPointsTitle = { text: 'Our development approach prioritises', colour: 'pixel-blue' }
+const approachPointsCards = [
+  {
+    title: 'Clear architecture + maintainability ',
+    description: 'so the solution can be supported and evolved after launch'
+  },
+  {
+    title: 'Scalability + performance',
+    description: 'so it holds up as your needs grow'
+  },
+  {
+    title: 'Security + long-term reliability',
+    description: 'so you’re not fixing problems six months after go-live'
+  },
+  {
+    title: 'Close collaboration',
+    description: 'with design and stakeholders throughout, so intention and execution stay aligned'
+  }
+]
+
+/**
+ * WhatWeDoSection variables
+ */
 const whatWeBuild = [
-  'Marketing, retail, and content-driven websites',
-  'Mobile and web applications',
-  'Custom digital platforms and systems',
-  'Integrations and automation',
-  'AI powered tools and solutions'
+  'Marketing, retail, & content-driven websites',
+  'Mobile & web applications',
+  'Custom digital platforms & systems',
+  'Integrations & automation',
+  'AI powered tools & solutions'
 ]
 
 const whoFor = [
-  'Organisations that need a reliable, long-term digital solution — not the cheapest build that ships and breaks',
+  'Organisations that need a reliable, long-term digital solution, not the cheapest build that ships and breaks',
   'Teams building websites, apps, or custom systems who want quality and maintainability',
   'Clients who value doing it properly over doing it quickly'
 ]
@@ -36,7 +88,20 @@ const whoNotFor = ['Projects where speed is the only priority and stability can 
 >
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
 
+  <CaseStudiesSection first={first} second={second} />
+
   <WhatWeDoSection title="We develop:" items={whatWeBuild} />
+
+  <OurApproachSection>
+    <p>
+      You work directly with the people building your solution <Vector size={28} desktopSize={80} /> no sales hand-offs, no
+      off-shore teams taking the brief second-hand.
+    </p>
+    <p>That means fewer surprises, clearer decisions, and a build that stays true to the original intent.</p>
+  </OurApproachSection>
+
+  <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
+
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
 
   <Grid>

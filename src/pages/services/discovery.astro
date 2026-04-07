@@ -40,6 +40,23 @@ const second = {
 }
 
 /**
+ * ApproachPointsSection variables
+ */
+const approachPointsTitle = { text: 'We do this by', colour: 'pixel-blue' }
+const approachPointsCards = [
+  { title: 'Understanding', description: 'the problem space and its real impact on the business and its users' },
+  { title: 'Clarifying', description: 'the goals, constraints, and what success actually looks like' },
+  {
+    title: 'Exploring',
+    description: 'and assessing possible solution paths — honestly, not optimistically'
+  },
+  {
+    title: 'Defining',
+    description: 'the scope, timelines, and investment ranges so decisions can be made with confidence'
+  }
+]
+
+/**
  * WhoSection variables
  */
 const whoFor = [
@@ -69,21 +86,7 @@ const whoNotFor = [
     the problem properly before any solution is shaped.
   </OurApproachSection>
 
-  <ApproachPointsSection
-    title={{ text: 'We do this by', colour: 'pixel-blue' }}
-    cards={[
-      { title: 'Understanding', description: 'the problem space and its real impact on the business and its users' },
-      { title: 'Clarifying', description: 'the goals, constraints, and what success actually looks like' },
-      {
-        title: 'Exploring',
-        description: 'and assessing possible solution paths — honestly, not optimistically'
-      },
-      {
-        title: 'Defining',
-        description: 'the scope, timelines, and investment ranges so decisions can be made with confidence'
-      }
-    ]}
-  />
+  <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
 
   <div
     class="flex items-center justify-center min-h-[500px] bg-black/5 text-black/40 font-sans text-lg lg:text-3xl my-4 lg:my-8"
