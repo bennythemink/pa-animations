@@ -35,15 +35,16 @@ const navLinks = [
         navLinks.map((link) =>
           link.hasDropdown ? (
             <div class="relative" id="services-dropdown-wrapper">
-              <button
+              <a
+                href={link.href}
                 id="services-dropdown-btn"
-                class="nav-link underline underline-offset-2 hover:no-underline transition-all flex items-center gap-1 cursor-pointer"
+                class="nav-link underline underline-offset-2 hover:no-underline transition-all flex items-center gap-1"
                 aria-haspopup="true"
                 aria-expanded="false"
                 aria-controls="services-dropdown"
               >
                 {link.label}
-              </button>
+              </a>
               <ul
                 id="services-dropdown"
                 role="menu"
@@ -173,25 +174,44 @@ const navLinks = [
   }
 
   // ── Desktop services dropdown ──────────────────────────
-  const dropdownBtn = document.getElementById('services-dropdown-btn') as HTMLButtonElement | null
+  const dropdownBtn = document.getElementById('services-dropdown-btn') as HTMLAnchorElement | null
   const dropdown = document.getElementById('services-dropdown') as HTMLUListElement | null
   const dropdownWrapper = document.getElementById('services-dropdown-wrapper') as HTMLElement | null
 
   if (dropdownBtn && dropdown && dropdownWrapper) {
+    let closeTimer: ReturnType<typeof setTimeout> | null = null
+
     function openDropdown() {
+      if (closeTimer) {
+        clearTimeout(closeTimer)
+        closeTimer = null
+      }
       dropdown!.hidden = false
       dropdownBtn!.setAttribute('aria-expanded', 'true')
     }
     function closeDropdown() {
-      dropdown!.hidden = true
-      dropdownBtn!.setAttribute('aria-expanded', 'false')
+      closeTimer = setTimeout(() => {
+        dropdown!.hidden = true
+        dropdownBtn!.setAttribute('aria-expanded', 'false')
+      }, 150)
     }
 
     dropdownWrapper.addEventListener('mouseenter', openDropdown)
     dropdownWrapper.addEventListener('mouseleave', closeDropdown)
+    dropdown.addEventListener('mouseenter', openDropdown)
+    dropdown.addEventListener('mouseleave', closeDropdown)
 
     // Close when a dropdown link is clicked
-    dropdown.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeDropdown))
+    dropdown.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        if (closeTimer) {
+          clearTimeout(closeTimer)
+          closeTimer = null
+        }
+        dropdown!.hidden = true
+        dropdownBtn!.setAttribute('aria-expanded', 'false')
+      })
+    )
 
     // Close when clicking outside
     document.addEventListener('click', (e) => {
