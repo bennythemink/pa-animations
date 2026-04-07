@@ -60,9 +60,9 @@ function assignColour(raw?: string): string {
   return colour
 }
 
-// Auto-placement: 1 card per row (alternating col 2 / col 7),
-// pair two cards on the same row every 4th row when ≥2 cards remain.
-// If a title is present, the first card pairs with it at row 1 col 7.
+// Auto-placement: 1 card per row by default, randomly pairing two cards on a row.
+// If a title is present, the first card pairs with it at row 1 col 7 and
+// subsequent rows use the normal algorithm.
 interface LayoutCard extends ApproachCard {
   colour: string
   colStart: number
@@ -89,9 +89,43 @@ if (title && cards.length > 0) {
   rowNum = 2
 }
 
+// Pre-decide which rows will be pairs using a ~30% chance, ensuring at least
+// one pair when there are ≥4 remaining cards so the layout stays varied.
+const remainingOnEntry = cards.length - idx
+const pairRows = new Set<number>()
+{
+  let r = rowNum
+  let i = idx
+  while (i < cards.length) {
+    const rem = cards.length - i
+    if (rem >= 2 && Math.random() < 0.3) {
+      pairRows.add(r)
+      i += 2
+    } else {
+      i += 1
+    }
+    r++
+  }
+  // If no pairs were picked and there were enough cards, force one random pair row
+  if (pairRows.size === 0 && remainingOnEntry >= 4) {
+    // Pick a random row index that has ≥2 cards ahead of it
+    let checkRow = rowNum
+    let checkIdx = idx
+    const eligible: number[] = []
+    while (checkIdx < cards.length) {
+      if (cards.length - checkIdx >= 2) eligible.push(checkRow)
+      checkIdx += 1
+      checkRow++
+    }
+    if (eligible.length > 0) {
+      pairRows.add(eligible[Math.floor(Math.random() * eligible.length)])
+    }
+  }
+}
+
 while (idx < cards.length) {
   const remaining = cards.length - idx
-  const makePair = remaining >= 2 && rowNum % 4 === 0
+  const makePair = remaining >= 2 && pairRows.has(rowNum)
 
   if (makePair) {
     layoutCards.push({

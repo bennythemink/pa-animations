@@ -1,10 +1,41 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
 ---
 
 <Layout
   title="About Us"
   description="Learn how Pixel Agency works. A practitioner-led digital agency focused on clarity, collaboration, and delivering real outcomes through thoughtful design and development."
 >
-  <!-- Page content goes here -->
+  <ApproachPointsSection
+    title={{ text: 'What we believe', colour: 'pixel-green' }}
+    ,
+    cards={[
+      {
+        title: 'Quality',
+        description:
+          'is not about perfection or polish for its own sake. It’s about doing the work properly — making considered decisions, paying attention to detail, and building things that last. You’ll see this in everything we deliver.'
+      },
+      {
+        title: 'Honesty',
+        description:
+          'We believe honest conversations lead to better outcomes. We’re upfront about trade-offs, risks, and limitations — and we’d rather be clear early than fix problems later. You’ll always know where things stand.'
+      },
+      {
+        title: 'Partnership',
+        description:
+          'The best work happens when responsibility is shared. We work with you, not at arm’s length — taking ownership and caring about the result as much as you do. We’re in this together.'
+      },
+      {
+        title: 'Simplicity',
+        description:
+          'Complex problems don’t need complicated answers. We aim to make things easier to understand, easier to use, and easier to maintain — for everyone involved.'
+      },
+      {
+        title: 'Delight',
+        description:
+          'Great digital work should feel good to use. We look for moments of clarity, care, and thoughtfulness that make the experience more enjoyable — without getting in the way of what matters.'
+      }
+    ]}
+  />
 </Layout>
