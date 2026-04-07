@@ -1,10 +1,108 @@
 ---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
+import HeroSection from '@components/services/HeroSection.astro'
 import Layout from '@layouts/Layout.astro'
+
+import mbImage from '@assets/mb.png'
+import iphoneImage from '@assets/iphone.png'
+import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
+import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
+import OurApproachSection from '@components/services/OurApproachSection.astro'
+import Plus from '@components/signs/Plus.astro'
+import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
+import WhoSection from '@components/services/WhoSection.astro'
+
+/**
+ * HeroSection variables
+ */
+const pageTitle = 'AI Services'
+const tagline =
+  'Practical AI strategy and implementation to drive innovation, improve efficiency, and make data-driven decisions.'
+const paragraphs = [
+  'We help organisations leverage AI to drive innovation, improve efficiency, and make data-driven decisions. Our AI services include strategy, implementation, and ongoing support to ensure successful adoption and measurable impact.'
+]
+
+/**
+ * CaseStudiesSection variables
+ */
+
+const first = {
+  title: 'Insulation.com.au AI Assistant',
+  link: '/case-studies/pixel-assist-insulation',
+  image: mbImage
+}
+
+const second = {
+  title: 'Acoustic Risk AI Risk Assessment Tool',
+  link: '/case-studies/sonata-ai',
+  image: iphoneImage
+}
+
+/**
+ * WhatWeDoSection variables
+ */
+const aiServices = [
+  'AI Assistant for customer support and lead generation',
+  'AI strategy development and roadmap planning',
+  'Custom AI solution design and implementation',
+  'AI integration with existing systems and workflows',
+  'Ongoing AI support, maintenance, and optimization'
+]
+
+/**
+ * ApproachPointsSection variables
+ */
+const approachPointsTitle = { text: 'Our AI services provide', colour: 'pixel-blue' }
+const approachPointsCards = [
+  {
+    title: 'TBD',
+    description: 'TBD'
+  },
+  {
+    title: 'TBD',
+    description: 'TBD'
+  },
+  {
+    title: 'TBD',
+    description: 'TBD'
+  },
+  {
+    title: 'TBD',
+    description: 'TBD'
+  }
+]
+
+/**
+ * WhoSection variables
+ */
+const whoFor = ['TBD', 'TBD', 'TBD']
+
+const whoNotFor = ['TBD', 'TBD', 'TBD']
 ---
 
 <Layout
   title="AI Services"
   description="Practical AI strategy and implementation to drive innovation, improve efficiency, and make data-driven decisions. Leveraging AI for measurable impact."
 >
-  <!-- Page content goes here -->
+  <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
+  <CaseStudiesSection first={first} second={second} />
+
+  <WhatWeDoSection title="Our AI services:" items={aiServices} />
+
+  <OurApproachSection>
+    <p>
+      We focus on practical AI solutions that deliver real value, not just flashy demos. Our approach is grounded in
+      understanding your unique challenges <Plus size={28} desktopSize={80} /> goals. We design AI implementations that are
+      aligned with your long-term vision.
+    </p>
+  </OurApproachSection>
+
+  <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
+
+  <WhoSection forItems={whoFor} notForItems={whoNotFor} />
+
+  <Grid>
+    <ContactForm title="Let's talk about what you're trying to achieve." />
+  </Grid>
 </Layout>

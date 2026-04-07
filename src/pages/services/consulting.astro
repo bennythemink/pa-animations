@@ -1,10 +1,117 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import Grid from '@components/Grid.astro'
+import HeroSection from '@components/services/HeroSection.astro'
+import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
+import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
+
+import OurApproachSection from '@components/services/OurApproachSection.astro'
+import Vector from '@components/signs/Vector.astro'
+import Plus from '@components/signs/Plus.astro'
+import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
+import WhoSection from '@components/services/WhoSection.astro'
+
+import mbImage from '@assets/mb.png'
+import iphoneImage from '@assets/iphone.png'
+import ContactForm from '@components/ContactForm.astro'
+
+/**
+ * HeroSection variables
+ */
+const pageTitle = 'Consulting'
+const tagline = 'Senior guidance when the decisions that matter most need to be right.'
+const paragraphs = [
+  'Not every digital challenge requires a build. Sometimes the most valuable thing is having experienced people in the room — people who understand the complexity, can see the trade-offs clearly, and will tell you what they actually think.',
+  'Our consulting services support organisations at critical decision points. We help you make better digital choices and move forward with confidence — whether that’s shaping strategy, leading delivery, or providing a trusted second opinion.',
+  'We do not do advisory theatre. We’re comfortable saying no when something won’t add value — even when that means less work for us.'
+]
+
+/**
+ * CaseStudiesSection variables
+ */
+
+const first = {
+  title: 'Explorers Early Learning',
+  link: '/case-studies/eel',
+  image: mbImage
+}
+
+const second = {
+  title: 'Insulation.com.au',
+  link: '/case-studies/insulation',
+  image: iphoneImage
+}
+
+/**
+ * WhatWeDoSection variables
+ */
+const whatWeConsultOn = [
+  'Virtual CTO & senior technical leadership',
+  'Product management & decision frameworks',
+  'Project & delivery oversight',
+  'Process automation & system improvement',
+  'Early-stage support for founders and startups, including company setup, contract support, and internal tooling'
+]
+
+/**
+ * ApproachPointsSection variables
+ */
+const approachPointsTitle = { text: 'Our consulting provides', colour: 'pixel-blue' }
+const approachPointsCards = [
+  {
+    title: 'Honest, practical advice',
+    description: 'including when the answer is ‘don’t build this’'
+  },
+  {
+    title: 'Clear explanations ',
+    description: 'of trade-offs, risks, and what each path actually means for your business'
+  },
+  {
+    title: 'Steady support',
+    description: 'through complex or high-risk decisions, not just input at the start'
+  }
+]
+
+/**
+ * WhoSection variables
+ */
+const whoFor = [
+  'Organisations that need senior digital guidance without the cost of a full-time hire',
+  'Teams navigating complex delivery or technical decisions and needing experienced input',
+  'Founders and startups who need honest digital leadership at the early stage'
+]
+
+const whoNotFor = [
+  'Businesses looking for someone to validate decisions already made, rather than challenge them',
+  'Teams unwilling to hear difficult truths about their current direction'
+]
 ---
 
 <Layout
   title="Digital Consulting Services"
   description="Experienced digital leadership to support strategy, delivery, autonomy, and long-term decision-making. Navigate complexity with confidence."
 >
-  <!-- Page content goes here -->
+  <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
+  <CaseStudiesSection first={first} second={second} />
+
+  <WhatWeDoSection title="We consult on:" items={whatWeConsultOn} />
+
+  <OurApproachSection>
+    <p>
+      When you work with us in a consulting capacity, you get a trusted advisor <Plus size={28} desktopSize={80} /> an extension
+      of your team, not a report and a handshake.
+    </p>
+  </OurApproachSection>
+
+  <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
+
+  <OurApproachSection label="Our goal" labelColour="pixel-green">
+    Is not dependency <Vector size={28} desktopSize={80} /> it’s clarity, capability, and progress.
+  </OurApproachSection>
+
+  <WhoSection forItems={whoFor} notForItems={whoNotFor} />
+
+  <Grid>
+    <ContactForm title="Let's talk about what you're trying to achieve." />
+  </Grid>
 </Layout>
