@@ -4,9 +4,16 @@ import Grid from '@components/Grid.astro'
 interface Props {
   forItems: string[]
   notForItems: string[]
+  forTitle?: string
+  notForTitle?: string
 }
 
-const { forItems, notForItems } = Astro.props
+const {
+  forItems,
+  notForItems,
+  forTitle = 'Who this is for',
+  notForTitle = 'Who this is <span class="underline">not</span> for'
+} = Astro.props
 ---
 
 <section id="who" class="mb-6">
@@ -14,7 +21,7 @@ const { forItems, notForItems } = Astro.props
     {/* Who this is for */}
     <div class="col-span-full lg:col-start-2 lg:col-span-5 p-8 bg-white">
       <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 h-full">
-        <h3 class="text-xl lg:text-4xl mb-6 lg:mb-0 font-light">Who this is for</h3>
+        <h3 class="text-xl lg:text-4xl mb-6 lg:mb-0 font-light" set:html={forTitle} />
         <ul class="flex flex-col">
           {forItems.map((item, i) => <li class={`border-b border-black/20 ${i === 0 ? 'pb-3' : 'py-3'}`}>{item}</li>)}
         </ul>
@@ -24,9 +31,7 @@ const { forItems, notForItems } = Astro.props
     {/* Who this is not for */}
     <div class="col-span-full lg:col-start-7 lg:col-span-5 p-8 mt-5 lg:mt-0" style="background-color: #EAE7E4;">
       <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 h-full">
-        <h3 class="text-xl lg:text-4xl mb-6 lg:mb-0 font-light">
-          Who this is <span class="underline">not</span> for
-        </h3>
+        <h3 class="text-xl lg:text-4xl mb-6 lg:mb-0 font-light" set:html={notForTitle} />
         <ul class="flex flex-col">
           {
             notForItems.map((item, i) => (

@@ -1,6 +1,21 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
+import WhoSection from '@components/services/WhoSection.astro'
+
+/**
+ * WhoSection variables
+ */
+const whoFor = [
+  'Value clarity and thoughtful decision-making over speed for its own sake',
+  'Want a trusted partner, not just a vendor who executes and moves on',
+  'Care about outcomes, not just whether something shipped'
+]
+
+const whoNotFor = [
+  'You’re looking for the cheapest or fastest option, regardless of quality',
+  'You want execution without discussion, challenge, or honest input'
+]
 ---
 
 <Layout
@@ -37,5 +52,12 @@ import ApproachPointsSection from '@components/services/ApproachPointsSection.as
           'Great digital work should feel good to use. We look for moments of clarity, care, and thoughtfulness that make the experience more enjoyable — without getting in the way of what matters.'
       }
     ]}
+  />
+
+  <WhoSection
+    forTitle="We work best with organisations that"
+    notForTitle='We’re probably <span class="underline">not</span> the right fit if'
+    forItems={whoFor}
+    notForItems={whoNotFor}
   />
 </Layout>
