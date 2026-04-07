@@ -65,6 +65,13 @@ const includes = [
           What if we could offer instant answers &amp; convert those customers?
         </h2>
       </div>
+
+      {/* ── Phase 4 text — left-aligned ── */}
+      <div id="pa-phase-4" class="absolute inset-0 flex items-center opacity-0 px-6 lg:px-[10%]">
+        <h2 class="leading-[0.9] tracking-[-0.03em]" style="font-size: clamp(2.5rem, 8vw, 7rem);">
+          Meet<br /><span style="color: var(--accent-bgc);">Pixel Assist</span>
+        </h2>
+      </div>
     </div>
 
     {/* ── Front bubble layer (z-3, in front of text) ── */}
@@ -114,6 +121,36 @@ const includes = [
       data-speed="0.6"
       style="top: 88%; right: 22%; background-color: #c9b97a;"
     >
+    </div>
+
+    {/* ── Phase 4: Chatbot conversation UI ── */}
+    <div id="pa-chatbot" class="absolute z-4 opacity-0" style="right: 8%; top: 38%; width: min(340px, 80vw);">
+      {/* User message row */}
+      <div class="flex items-start gap-2.5 justify-end mb-3">
+        <div
+          class="rounded-xl px-3.5 py-2.5 font-sans text-[0.8125rem] leading-[1.45]"
+          style="background: #d1fae5; color: #1f2937;"
+        >
+          What is Pixel Assist?
+        </div>
+        <div class="w-7 h-7 shrink-0 mt-0.5" style="background: #4d9e8e;"></div>
+      </div>
+      {/* AI response row */}
+      <div class="flex items-start gap-2.5">
+        <div class="w-7 h-7 shrink-0 mt-0.5" style="background: #60a5fa;"></div>
+        <div
+          id="pa-ai-bubble"
+          class="rounded-xl px-3.5 py-2.5 font-sans text-[0.8125rem] leading-[1.45]"
+          style="background: #dbeafe; color: #1f2937;"
+        >
+          <span id="pa-ai-dots" class="flex items-center gap-[0.3rem] h-5 px-0.5">
+            <span class="pa-dot"></span>
+            <span class="pa-dot" style="animation-delay: 0.16s;"></span>
+            <span class="pa-dot" style="animation-delay: 0.32s;"></span>
+          </span>
+          <span id="pa-ai-text" class="hidden"></span>
+        </div>
+      </div>
     </div>
 
     {/* ── Scrolling bubbles — staggered to ensure constant on-screen presence ── */}
@@ -232,6 +269,23 @@ const includes = [
     align-items: center;
     justify-content: center;
   }
+  .pa-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #60a5fa;
+    animation: pa-dot-bounce 1.4s infinite ease-in-out both;
+  }
+  @keyframes pa-dot-bounce {
+    0%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-5px);
+    }
+  }
 </style>
 
 <script>
@@ -261,6 +315,16 @@ const includes = [
     const bubbleLate = document.getElementById('pa-bubble-late')!
     const squareTeal = document.getElementById('pa-square-teal')!
     const squareTan = document.getElementById('pa-square-tan')!
+    const phase4 = document.getElementById('pa-phase-4')!
+    const chatbot = document.getElementById('pa-chatbot')!
+    const aiDots = document.getElementById('pa-ai-dots')!
+    const aiText = document.getElementById('pa-ai-text')!
+
+    const AI_RESPONSE =
+      'A managed, AI-powered knowledge assistant for your website. It learns your content \u2014 products, documentation, specifications, policies, FAQs, and internal knowledge \u2014 and uses it to answer questions in plain language, in real time.'
+
+    // Push chatbot below viewport initially
+    gsap.set(chatbot, { y: window.innerHeight * 1.5 })
 
     // Collect all bubbles for parallax
     const allBubbles = hero.querySelectorAll<HTMLElement>('[data-speed]')
@@ -270,7 +334,7 @@ const includes = [
       scrollTrigger: {
         trigger: hero,
         start: 'top top',
-        end: '+=300%',
+        end: '+=400%',
         pin: true,
         scrub: 1,
         onLeave: () => {
@@ -403,6 +467,55 @@ const includes = [
         ease: 'power1.inOut'
       },
       0.65
+    )
+
+    // ── Phase 3 → Phase 4 transition ──
+    // Chatbot enters from below (0.58 → 0.78)
+    tl.to(chatbot, { opacity: 1, duration: 0.02, ease: 'power1.in' }, 0.58)
+    tl.to(chatbot, { y: 0, duration: 0.2, ease: 'none' }, 0.58)
+
+    // Fade out phrase 3
+    tl.to(
+      phrase3,
+      {
+        opacity: 0,
+        duration: 0.06,
+        ease: 'power1.inOut'
+      },
+      0.73
+    )
+
+    // Fade in phase 4 text
+    tl.to(
+      phase4,
+      {
+        opacity: 1,
+        duration: 0.06,
+        ease: 'power1.inOut'
+      },
+      0.77
+    )
+
+    // AI typing dots → text streaming (0.83 → 0.97)
+    tl.to(
+      {},
+      {
+        duration: 0.14,
+        ease: 'none',
+        onUpdate: function () {
+          const p = this.progress()
+          if (p > 0) {
+            aiDots.style.display = 'none'
+            aiText.classList.remove('hidden')
+            aiText.textContent = AI_RESPONSE.substring(0, Math.ceil(p * AI_RESPONSE.length))
+          } else {
+            aiDots.style.display = ''
+            aiText.classList.add('hidden')
+            aiText.textContent = ''
+          }
+        }
+      },
+      0.83
     )
 
     // ── Mobile adjustments ──
