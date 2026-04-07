@@ -86,7 +86,7 @@ const whoNotFor = ['Projects where speed is the only priority and stability can 
   title="Website & Application Development Services"
   description="Scalable website and application development built to solve real business problems. Reliable, maintainable digital solutions delivered by experienced practitioners."
 >
-  <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
+  <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} stack={true} />
 
   <CaseStudiesSection first={first} second={second} />
 
@@ -101,6 +101,12 @@ const whoNotFor = ['Projects where speed is the only priority and stability can 
   </OurApproachSection>
 
   <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
+
+  <div
+    class="flex items-center justify-center min-h-[500px] bg-black/5 text-black/40 font-sans text-lg lg:text-3xl my-4 lg:my-8"
+  >
+    Placeholder
+  </div>
 
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
 
