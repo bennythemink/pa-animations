@@ -1,12 +1,66 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Grid from '@components/Grid.astro'
+import HeroSection from '@components/services/HeroSection.astro'
 import ContactForm from '@components/ContactForm.astro'
 import Vector from '@components/signs/Vector.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 import OurApproachSection from '@components/services/OurApproachSection.astro'
 import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
 
+import mbImage from '@assets/mb.png'
+import iphoneImage from '@assets/iphone.png'
+import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
+import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
+
+/**
+ * HeroSection variables
+ */
+const pageTitle = 'Design'
+const tagline = "Digital experiences designed for the people who use them, not just the screens they're on."
+const paragraphs = [
+  "Good design is more than how something looks. It's how clearly it communicates, how easily it's used, and how well it supports the outcome you're trying to achieve.",
+  'We design brands, websites, and applications that balance clarity, usability, and personality, grounded in how real people use digital products, and proud to put our name on the result.'
+]
+
+/**
+ * CaseStudiesSection variables
+ */
+
+const first = {
+  title: 'Explorers Early Learning',
+  link: '/case-studies/eel',
+  image: mbImage
+}
+
+const second = {
+  title: 'Insulation.com.au',
+  link: '/case-studies/insulation',
+  image: iphoneImage
+}
+
+/**
+ * WhatWeDoSection variables
+ */
+const whatWeBuild = ['Brands & identities', 'Websites & digital products', 'Applications & platforms']
+
+/**
+ * ApproachPointsSection variables
+ */
+const approachPointsTitle = { text: 'Our design is', colour: 'pixel-blue' }
+const approachPointsCards = [
+  { title: 'Grounded', description: "in your users' needs and the strategy behind the work" },
+  { title: 'Focused', description: 'on clarity and ease of use, not visual complexity' },
+  {
+    title: 'Expressive',
+    description: 'without being distracting, personality in service of purpose'
+  },
+  { title: 'Considered', description: 'from end-to-end, not just at the surface' }
+]
+
+/**
+ * WhoSection variables
+ */
 const whoFor = [
   'Organisations that want their digital presence to work harder for their users and their business',
   'Teams building new digital products or platforms who need design that holds up end-to-end',
@@ -23,80 +77,11 @@ const whoNotFor = [
   title="Design"
   description="Digital experiences designed for the people who use them, not just the screens they're on."
 >
-  {/* ── Hero ── */}
-  <section class="pt-10 pb-12 lg:pt-16 lg:pb-20">
-    <Grid>
-      <div class="col-span-full lg:col-start-2 lg:col-span-5">
-        <h1 class="text-7xl lg:text-[140px] p-0">Design</h1>
-      </div>
-      <div class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col gap-4 mt-4 lg:mt-6">
-        <h2 class="text-lg lg:text-3xl">
-          Digital experiences designed for the people who use them, not just the screens they're on.
-        </h2>
-        <div class="flex flex-col gap-3 mt-2 text-lg leading-[0.76]">
-          <p>
-            Good design is more than how something looks. It's how clearly it communicates, how easily it's used, and
-            how well it supports the outcome you're trying to achieve.
-          </p>
-          <p>
-            We design brands, websites, and applications that balance clarity, usability, and personality — grounded in
-            how real people use digital products, and proud to put our name on the result.
-          </p>
-        </div>
-      </div>
-    </Grid>
-  </section>
+  <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
 
-  {/* ── Case studies ── */}
-  <section class="pb-16 lg:pb-24">
-    <Grid>
-      <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-2">
-        <a href="/case-studies/eel" class="underline underline-offset-2 hover:no-underline"
-          ><div class="w-full aspect-[4/3]" style="background-color: #d4834a;"></div></a
-        >
-        <div class="flex items-center justify-between font-sans text-xs">
-          <a href="/case-studies/eel" class="underline underline-offset-2 hover:no-underline">Case study</a>
-          <span class="text-black/40">Explorers Early Learning</span>
-        </div>
-      </div>
+  <CaseStudiesSection first={first} second={second} />
 
-      <div class="col-span-full lg:col-start-6 lg:col-span-7 flex flex-col gap-2 mt-6 lg:mt-0">
-        <a href="/case-studies/simple" class="underline underline-offset-2 hover:no-underline"
-          ><div class="w-full aspect-[4/3]" style="background-color: #1e2235;"></div>
-        </a>
-
-        <div class="flex items-center justify-between font-sans text-xs">
-          <a href="/case-studies/simple" class="underline underline-offset-2 hover:no-underline">Case study</a>
-          <span class="text-black/40">Simple.io</span>
-        </div>
-      </div>
-    </Grid>
-  </section>
-
-  {/* ── We design ── */}
-  <section class="py-12 lg:py-20">
-    <Grid>
-      <div class="col-span-full lg:col-start-2 lg:col-span-4">
-        <h2 style="font-size: clamp(2rem, 5vw, 4rem);">We design:</h2>
-      </div>
-      <ul
-        class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col justify-center gap-3 font-sans text-lg lg:text-2xl mt-6 lg:mt-0"
-      >
-        <li class="flex items-center gap-3 border-b-2 border-[#e6e2df] py-2 lg:py-4">
-          <span class="shrink-0 w-[12px] h-[12px]" style="background-color: var(--accent-bgc);"></span>
-          Brands and identities
-        </li>
-        <li class="flex items-center gap-3 border-b-2 border-[#e6e2df] py-2 lg:py-4">
-          <span class="shrink-0 w-[12px] h-[12px]" style="background-color: var(--accent-bgc);"></span>
-          Websites and digital products
-        </li>
-        <li class="flex items-center gap-3 border-b-2 border-[#e6e2df] py-2 lg:py-4">
-          <span class="shrink-0 w-[12px] h-[12px]" style="background-color: var(--accent-bgc);"></span>
-          Applications and platforms
-        </li>
-      </ul>
-    </Grid>
-  </section>
+  <WhatWeDoSection title="We design:" items={whatWeBuild} />
 
   {/* ── Our approach ── */}
   <OurApproachSection>
@@ -104,17 +89,7 @@ const whoNotFor = [
     and the outcomes it needs to deliver.
   </OurApproachSection>
 
-  <ApproachPointsSection
-    cards={[
-      { title: 'Grounded', description: "in your users' needs and the strategy behind the work" },
-      { title: 'Focused', description: 'on clarity and ease of use, not visual complexity' },
-      {
-        title: 'Expressive',
-        description: 'without being distracting, personality in service of purpose'
-      },
-      { title: 'Considered', description: 'from end-to-end, not just at the surface' }
-    ]}
-  />
+  <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
 
   {/* ── Who this is for / not for ── */}
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
