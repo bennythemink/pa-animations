@@ -65,8 +65,8 @@ const includes = [
           <span
             >What if we could offer <span class="pa-highlight" id="pa-hl-1">instant answers</span> &amp; <span
               class="pa-highlight"
-              id="pa-hl-2">convert those customers</span
-            >?</span
+              id="pa-hl-2">convert</span
+            > those <span class="pa-highlight" id="pa-hl-3">customers</span>?</span
           >
         </h2>
       </div>
@@ -351,8 +351,9 @@ const includes = [
   }
   .pa-highlight {
     background: linear-gradient(var(--accent-bgc) 0 0) no-repeat;
-    background-size: 0% 0.35em;
-    background-position: 0 88%;
+    background-size: 0% 1.15em;
+    background-position: 0 95%;
+    padding: 0 0.1em;
   }
   .pa-dot {
     width: 6px;
@@ -406,6 +407,7 @@ const includes = [
     const aiText = document.getElementById('pa-ai-text')!
     const hl1 = document.getElementById('pa-hl-1')!
     const hl2 = document.getElementById('pa-hl-2')!
+    const hl3 = document.getElementById('pa-hl-3')!
 
     const AI_RESPONSE =
       'A managed, AI-powered knowledge assistant for your website. It learns your content \u2014 products, documentation, specifications, policies, FAQs, and internal knowledge \u2014 and uses it to answer questions in plain language, in real time.'
@@ -525,14 +527,20 @@ const includes = [
     // Highlight sweeps — scroll-scrubbed, staggered
     tl.fromTo(
       hl1,
-      { backgroundSize: '0% 0.35em' },
-      { backgroundSize: '100% 0.35em', duration: 0.04, ease: 'none' },
+      { backgroundSize: '0% 1.15em' },
+      { backgroundSize: '100% 1.15em', duration: 0.04, ease: 'none' },
       0.44
     )
     tl.fromTo(
       hl2,
-      { backgroundSize: '0% 0.35em' },
-      { backgroundSize: '100% 0.35em', duration: 0.04, ease: 'none' },
+      { backgroundSize: '0% 1.15em' },
+      { backgroundSize: '100% 1.15em', duration: 0.04, ease: 'none' },
+      0.49
+    )
+    tl.fromTo(
+      hl3,
+      { backgroundSize: '0% 1.15em' },
+      { backgroundSize: '100% 1.15em', duration: 0.04, ease: 'none' },
       0.49
     )
 
