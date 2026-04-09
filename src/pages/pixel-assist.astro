@@ -170,8 +170,17 @@ const includes = [
     <div class="pa-bubble pa-bubble--back" data-speed="1.15" style="top: 240%; right: 13%; background-color: #e8c728;">
       What reporting is included?
     </div>
-    <div class="pa-bubble pa-bubble--front" data-speed="1.05" style="top: 275%; left: 15%; background-color: #4d9e8e;">
+    <div class="pa-bubble pa-bubble--front bg-pixel-orange" data-speed="1.05" style="top: 275%; left: 15%; ">
       Can I customise the responses?
+    </div>
+    <div class="pa-bubble pa-bubble--back" data-speed="1.25" style="top: 210%; right: 30%; background-color: #7ea0c4;">
+      How does onboarding work?
+    </div>
+    <div class="pa-bubble pa-bubble--back bg-pixel-blue" data-speed="1.1" style="top: 250%; left: 42%;">
+      What's the uptime guarantee?
+    </div>
+    <div class="pa-bubble pa-bubble--back" data-speed="1.2" style="top: 290%; right: 5%; background-color: #e8c728;">
+      Who manages the knowledge base?
     </div>
 
     {/* Late Phase 2 → Phase 3 */}
@@ -181,90 +190,53 @@ const includes = [
     <div class="pa-bubble pa-bubble--back" data-speed="1.2" style="top: 330%; left: 35%; background-color: #c9b97a;">
       Does it learn over time?
     </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.0" style="top: 350%; right: 25%; background-color: #e8c728;">
-      What about compliance content?
-    </div>
 
     {/* Phase 3 */}
     <div class="pa-bubble pa-bubble--front" data-speed="1.1" style="top: 370%; left: 8%; background-color: #4d9e8e;">
       Can visitors ask follow-ups?
     </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.0" style="top: 400%; right: 3%; background-color: #7ea0c4;">
-      How quickly can we go live?
-    </div>
-    <div class="pa-bubble pa-bubble--front" data-speed="0.9" style="top: 380%; left: 50%; background-color: #c9b97a;">
-      Is there an API available?
-    </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.05" style="top: 360%; right: 30%; background-color: #7ea0c4;">
-      How does onboarding work?
-    </div>
-    <div class="pa-bubble pa-bubble--front" data-speed="0.95" style="top: 390%; left: 60%; background-color: #c9b97a;">
-      What's the uptime guarantee?
-    </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.1" style="top: 410%; right: 10%; background-color: #e8c728;">
-      Who manages the knowledge base?
-    </div>
-
-    {/* Phase 3 → 4 */}
-    <div class="pa-bubble pa-bubble--back" data-speed="0.9" style="top: 420%; right: 18%; background-color: #e8c728;">
-      What reporting is included?
-    </div>
-    <div class="pa-bubble pa-bubble--front" data-speed="0.9" style="top: 440%; left: 15%; background-color: #4d9e8e;">
-      Can I customise the responses?
-    </div>
-
-    {/* Phase 4 */}
-    <div class="pa-bubble pa-bubble--back" data-speed="0.9" style="top: 460%; right: 30%; background-color: #7ea0c4;">
-      How does onboarding work?
-    </div>
-    <div class="pa-bubble pa-bubble--front" data-speed="0.8" style="top: 470%; left: 60%; background-color: #c9b97a;">
-      What's the uptime guarantee?
-    </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="0.85" style="top: 480%; right: 10%; background-color: #e8c728;">
-      Who manages the knowledge base?
-    </div>
   </section>
-
-  <section class="py-6">
-    <Grid>
-      <div id="price" class="col-span-full lg:col-start-2 lg:col-span-5 lg:row-start-2">
-        <p class="col-span-full lg:col-start-2 font-sans text-base lg:text-4xl text-pixel-blue pb-4 lg:pb-7">Pricing</p>
-        <h2 class="leading-[0.9] tracking-[-0.03em] mb-6 text-3xl lg:text-7xl">Simple, predictable pricing</h2>
-        <p class="flex gap-3 font-sans text-xl lg:text-3xl mb-10 lg:mt-10">
-          <EqualSign size={28} desktopSize={50} />From $599 per month + onboarding
-        </p>
-      </div>
-
-      <div
-        id="includes"
-        class="bg-pixel-cream col-span-full lg:col-span-5 lg:col-start-7 lg:row-start-2 flex flex-col px-5 lg:px-11 py-7 lg:pt-14 lg:pb-16"
-      >
-        <div class="px-5 py-4 bg-pixel-cream">
-          <p class="font-sans text-xl lg:text-4xl text-white">Every implementation includes:</p>
-        </div>
-
-        <ul class="flex flex-col font-sans px-5 text-xl lg:text-3xl">
-          {
-            includes.map((item, i) => (
-              <li class={`py-4 ${i < includes.length - 1 ? 'border-b border-white/80' : ''}`}>{item}</li>
-            ))
-          }
-        </ul>
-        <p class="font-sans text-xs text-black leading-[1.4] mt-3 px-5">
-          Onboarding is scoped based on the size and complexity of your knowledge base. Designed to cost less than even
-          a few hours of support time each month.
-        </p>
-      </div>
-    </Grid>
-  </section>
-
-  <Grid>
-    <ContactForm
-      title="Make your knowledge easier to access"
-      description="Your team already has the answers. Pixel Assist simply makes them instantly available to everyone who needs them.<br/><br/>If you’d like to explore whether it’s a fit for your organisation, we’d love to chat."
-    />
-  </Grid>
 </Layout>
+
+<section class="py-6">
+  <Grid>
+    <div id="price" class="col-span-full lg:col-start-2 lg:col-span-5 lg:row-start-2">
+      <p class="col-span-full lg:col-start-2 font-sans text-base lg:text-4xl text-pixel-blue pb-4 lg:pb-7">Pricing</p>
+      <h2 class="leading-[0.9] tracking-[-0.03em] mb-6 text-3xl lg:text-7xl">Simple, predictable pricing</h2>
+      <p class="flex gap-3 font-sans text-xl lg:text-3xl mb-10 lg:mt-10">
+        <EqualSign size={28} desktopSize={50} />From $599 per month + onboarding
+      </p>
+    </div>
+
+    <div
+      id="includes"
+      class="bg-pixel-cream col-span-full lg:col-span-5 lg:col-start-7 lg:row-start-2 flex flex-col px-5 lg:px-11 py-7 lg:pt-14 lg:pb-16"
+    >
+      <div class="px-5 py-4 bg-pixel-cream">
+        <p class="font-sans text-xl lg:text-4xl text-white">Every implementation includes:</p>
+      </div>
+
+      <ul class="flex flex-col font-sans px-5 text-xl lg:text-3xl">
+        {
+          includes.map((item, i) => (
+            <li class={`py-4 ${i < includes.length - 1 ? 'border-b border-white/80' : ''}`}>{item}</li>
+          ))
+        }
+      </ul>
+      <p class="font-sans text-xs text-black leading-[1.4] mt-3 px-5">
+        Onboarding is scoped based on the size and complexity of your knowledge base. Designed to cost less than even a
+        few hours of support time each month.
+      </p>
+    </div>
+  </Grid>
+</section>
+
+<Grid>
+  <ContactForm
+    title="Make your knowledge easier to access"
+    description="Your team already has the answers. Pixel Assist simply makes them instantly available to everyone who needs them.<br/><br/>If you’d like to explore whether it’s a fit for your organisation, we’d love to chat."
+  />
+</Grid>
 
 <style>
   .pa-bubble {
