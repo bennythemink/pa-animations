@@ -196,48 +196,79 @@ const includes = [
       Can visitors ask follow-ups?
     </div>
   </section>
-</Layout>
 
-<section class="py-6">
-  <Grid>
-    <div id="price" class="col-span-full lg:col-start-2 lg:col-span-5 lg:row-start-2">
-      <p class="col-span-full lg:col-start-2 font-sans text-base lg:text-4xl text-pixel-blue pb-4 lg:pb-7">Pricing</p>
-      <h2 class="leading-[0.9] tracking-[-0.03em] mb-6 text-3xl lg:text-7xl">Simple, predictable pricing</h2>
-      <p class="flex gap-3 font-sans text-xl lg:text-3xl mb-10 lg:mt-10">
-        <EqualSign size={28} desktopSize={50} />From $599 per month + onboarding
-      </p>
-    </div>
+  <section class="py-16 lg:py-24">
+    <Grid>
+      <div
+        class="col-span-12 text-center py-7.5 lg:py-24 bg-pixel-off-cream font-sans text-xl lg:text-3xl leading-[1.2] lg:leading-[1.04] tracking-[-0.04em]"
+      >
+        <p class="">
+          Most websites store knowledge.<br />
+          Very few make it easy to use.
+        </p>
+        <p class="mt-8 lg:mt-12">
+          Product details live in PDFs.<br />
+          Policies sit across multiple pages.<br />
+          Support teams answer the same questions<br />
+          every day.
+        </p>
+        <p class="mt-8 lg:mt-12">
+          When information is hard to access,<br />
+          people slow down — or leave.<br />
+          Decisions get delayed.
+        </p>
+        <p class="mt-8 lg:mt-12">
+          Support costs increase.<br />
+          Opportunities are lost.
+        </p>
+        <p class="mt-8 lg:mt-12">
+          Your website should remove friction,<br />
+          not create it.
+        </p>
+      </div>
+    </Grid>
+  </section>
 
-    <div
-      id="includes"
-      class="bg-pixel-cream col-span-full lg:col-span-5 lg:col-start-7 lg:row-start-2 flex flex-col px-5 lg:px-11 py-7 lg:pt-14 lg:pb-16"
-    >
-      <div class="px-5 py-4 bg-pixel-cream">
-        <p class="font-sans text-xl lg:text-4xl text-white">Every implementation includes:</p>
+  <section class="py-6">
+    <Grid>
+      <div id="price" class="col-span-full lg:col-start-2 lg:col-span-5 lg:row-start-2">
+        <p class="col-span-full lg:col-start-2 font-sans text-base lg:text-4xl text-pixel-blue pb-4 lg:pb-7">Pricing</p>
+        <h2 class="leading-[0.9] tracking-[-0.03em] mb-6 text-3xl lg:text-7xl">Simple, predictable pricing</h2>
+        <p class="flex gap-3 font-sans text-xl lg:text-3xl mb-10 lg:mt-10">
+          <EqualSign size={28} desktopSize={50} />From $599 per month + onboarding
+        </p>
       </div>
 
-      <ul class="flex flex-col font-sans px-5 text-xl lg:text-3xl">
-        {
-          includes.map((item, i) => (
-            <li class={`py-4 ${i < includes.length - 1 ? 'border-b border-white/80' : ''}`}>{item}</li>
-          ))
-        }
-      </ul>
-      <p class="font-sans text-xs text-black leading-[1.4] mt-3 px-5">
-        Onboarding is scoped based on the size and complexity of your knowledge base. Designed to cost less than even a
-        few hours of support time each month.
-      </p>
-    </div>
+      <div
+        id="includes"
+        class="bg-pixel-cream col-span-full lg:col-span-5 lg:col-start-7 lg:row-start-2 flex flex-col px-5 lg:px-11 py-7 lg:pt-14 lg:pb-16"
+      >
+        <div class="px-5 py-4 bg-pixel-cream">
+          <p class="font-sans text-xl lg:text-4xl text-white">Every implementation includes:</p>
+        </div>
+
+        <ul class="flex flex-col font-sans px-5 text-xl lg:text-3xl">
+          {
+            includes.map((item, i) => (
+              <li class={`py-4 ${i < includes.length - 1 ? 'border-b border-white/80' : ''}`}>{item}</li>
+            ))
+          }
+        </ul>
+        <p class="font-sans text-xs text-black leading-[1.4] mt-3 px-5">
+          Onboarding is scoped based on the size and complexity of your knowledge base. Designed to cost less than even
+          a few hours of support time each month.
+        </p>
+      </div>
+    </Grid>
+  </section>
+
+  <Grid>
+    <ContactForm
+      title="Make your knowledge easier to access"
+      description="Your team already has the answers. Pixel Assist simply makes them instantly available to everyone who needs them.<br/><br/>If you’d like to explore whether it’s a fit for your organisation, we’d love to chat."
+    />
   </Grid>
-</section>
-
-<Grid>
-  <ContactForm
-    title="Make your knowledge easier to access"
-    description="Your team already has the answers. Pixel Assist simply makes them instantly available to everyone who needs them.<br/><br/>If you’d like to explore whether it’s a fit for your organisation, we’d love to chat."
-  />
-</Grid>
-
+</Layout>
 <style>
   .pa-bubble {
     position: absolute;
