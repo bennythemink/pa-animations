@@ -7,6 +7,7 @@ import Layout from '@layouts/Layout.astro'
 import fletcherImg from '@assets/fletcher-pixel-assist.webp'
 import Plus from '@components/signs/Plus.astro'
 import Equals from '@components/signs/Equals.astro'
+import ApproachPointsSectionStyled from '@components/services/ApproachPointsSectionStyled.astro'
 
 const includes = [
   'Setup and training on your content',
@@ -15,6 +16,40 @@ const includes = [
   'Monitoring and maintenance, support and improvements',
   'Monthly reporting on trends and insights from your knowledge base',
   'Privacy first approach to PII and sensitive data'
+]
+
+/**
+ * ApproachPointsSection variables
+ */
+const benefitsTitle = { text: 'Benefits', colour: 'pixel-green' }
+const benefitsCards = [
+  {
+    title: 'Improve customer experience',
+    description: 'Give people instant answers without forcing them to search or contact support.'
+  },
+  {
+    title: 'Speed up decisions',
+    description: 'Help customers, buyers, and stakeholders choose faster with clear, accurate information.'
+  },
+  {
+    title: 'Convert more visitors',
+    description:
+      'When your website actively helps people find what they need, they’re more likely to stay, engage, and convert.'
+  },
+  {
+    title: 'Reduce repetitive enquiries',
+    description: 'Free your team from answering the same questions again and again.'
+  },
+  { title: 'Increase consistency', description: 'Ensure everyone receives the same, correct information every time.' },
+  {
+    title: 'Scale support without hiring',
+    description: 'Serve more people without increasing headcount.'
+  },
+  {
+    title: 'Differentiate your brand',
+    description:
+      'Be known as the easiest organisation to work with. When information flows freely, business moves faster.'
+  }
 ]
 ---
 
@@ -237,6 +272,8 @@ const includes = [
       </div>
     </Grid>
   </section>
+
+  <ApproachPointsSectionStyled title={benefitsTitle} cards={benefitsCards} style="benefits" />
 
   <section id="who" class="py-16 lg:py-24">
     <Grid>
