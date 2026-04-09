@@ -5,6 +5,8 @@ import EqualSign from '@components/signs/Equals.astro'
 import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
 import fletcherImg from '@assets/fletcher-pixel-assist.webp'
+import Plus from '@components/signs/Plus.astro'
+import Equals from '@components/signs/Equals.astro'
 
 const includes = [
   'Setup and training on your content',
@@ -304,14 +306,14 @@ const includes = [
         <div class="col-span-12 lg:col-span-3 flex flex-col items-center justify-end">
           <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em]">
             We implemented Pixel Assist to answer product and compliance questions instantly
-            <span class="inline-block w-[10px] h-[10px] bg-pixel-red mx-1 translate-y-[1px]"></span>
+            <Plus size={20} desktopSize={30} />
             make technical information easier to access, reduce repetitive support requests, and help customers choose products
             with confidence.
           </p>
           <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em] mt-4">
-            The result is a faster, smoother experience for users — and a website that actively supports decision-making
-            rather than simply hosting information. The same approach can be configured for any organisation with
-            complex knowledge.
+            The result <Equals size={20} desktopSize={30} /> is a faster, smoother experience for users — and a website that
+            actively supports decision-making rather than simply hosting information. The same approach can be configured
+            for any organisation with complex knowledge.
           </p>
         </div>
       </div>
