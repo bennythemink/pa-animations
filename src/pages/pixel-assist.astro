@@ -21,7 +21,7 @@ const includes = [
 /**
  * Benefits variables
  */
-const benefitsTitle = { text: 'Benefits', colour: 'pixel-green' }
+const benefitsTitle = { text: 'What are its benefits?', colour: 'pixel-green' }
 const benefitsCards = [
   {
     title: 'Improve customer experience',
@@ -105,8 +105,9 @@ const benefitsCards = [
             >What if we could offer <span class="pa-highlight" id="pa-hl-1">instant </span><span
               class="pa-highlight"
               id="pa-hl-1-1">answers</span
-            > &amp; <span class="pa-highlight" id="pa-hl-2">convert</span> those <span class="pa-highlight" id="pa-hl-3"
-              >customers</span
+            > &amp; <span class="pa-highlight" id="pa-hl-2">convert</span> those potential <span
+              class="pa-highlight"
+              id="pa-hl-3">customers</span
             >?</span
           >
         </h2>
@@ -275,7 +276,91 @@ const benefitsCards = [
     </Grid>
   </section>
 
+  <section id="how">
+    <Grid>
+      <div class="col-span-12 lg:col-start-2 lg:col-span-5">
+        <h2 class="leading-[0.9] tracking-[-0.03em] mb-6 text-3xl lg:text-7xl">Sounds great, how does it work?</h2>
+      </div>
+      <div
+        class="col-span-12 lg:col-start-7 lg:col-span-5 text-[16px] lg:text-[24px] tracking-[-0.01em] font-sans text-base leading-[1.5]"
+      >
+        <p class="">
+          Instead of digging through multiple pages, documents, menus, or contacting support, user's are presented with
+          a familiar chat like interface that surfaces the information they need quickly and efficiently.<br /><br />
+        </p>
+        <p class="">
+          The system leverages advanced AI to understand queries and provide accurate, context-aware responses. It can
+          be tailored to your brand language and tone, ensuring a consistent user experience.<br /><br />
+        </p>
+        <p class="">
+          Fast, accurate responses reduces support costs, improves customer satisfaction, and helps convert visitors
+          into customers.
+        </p>
+      </div>
+    </Grid>
+  </section>
+
   <FeatureCards title={benefitsTitle} cards={benefitsCards} style="left-aligned" />
+
+  <section id="managed" class="py-16 lg:py-24">
+    <Grid>
+      <div class="col-span-full py-10 lg:py-14 grid grid-cols-12 gap-5 bg-pixel-off-cream">
+        <div class="col-span-12 lg:col-start-2 lg:col-span-10 py-10 lg:py-14">
+          <div class="col-span-12 lg:col-start-2 lg:col-span-10">
+            <h2 class="font-sans font-normal text-4xl lg:text-6xl leading-[0.95] tracking-[-0.03em] mb-10 lg:mb-16">
+              Simple.&nbsp; Managed.&nbsp; Low&nbsp;risk.
+            </h2>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4">
+              {
+                [
+                  {
+                    num: '1.',
+                    title: 'Ingest your knowledge',
+                    desc: 'We securely collect your website content, documents, and resources.',
+                    colour: '#c9b97a'
+                  },
+                  {
+                    num: '2.',
+                    title: 'Train the advisor',
+                    desc: 'The system learns your terminology, products, and processes using modern AI models.',
+                    colour: '#e8c728'
+                  },
+                  {
+                    num: '3.',
+                    title: 'Deploy to your site',
+                    desc: 'We integrate the advisor directly into your website experience.',
+                    colour: '#e9504c'
+                  },
+                  {
+                    num: '4.',
+                    title: 'Continuously improve',
+                    desc: 'We monitor performance, refine accuracy, and optimise over time.',
+                    colour: '#7ea0c4'
+                  }
+                ].map((step) => (
+                  <div
+                    class="flex flex-col justify-between p-3 lg:p-5 min-h-[180px] lg:min-h-[220px]"
+                    style={`background-color: ${step.colour};`}
+                  >
+                    <p class="font-sans text-xs lg:text-sm">{step.num}</p>
+                    <div>
+                      <p class="font-sans font-normal text-base lg:text-xl leading-[1.15] mb-2 lg:mb-3">{step.title}</p>
+                      <p class="font-sans text-[11px] lg:text-xs leading-[1.4]">{step.desc}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+
+            <p class="font-sans text-xl lg:text-3xl leading-[1.2] tracking-[-0.03em] mt-10 lg:mt-16">
+              We've designed Pixel Assist to be straightforward and low effort for your team.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Grid>
+  </section>
 
   <section id="who" class="py-16 lg:py-24">
     <Grid>
@@ -323,10 +408,10 @@ const benefitsCards = [
       <div class="col-span-full py-10 lg:py-14 grid grid-cols-12 gap-5 bg-pixel-off-cream">
         {/* Left: Case study label + heading + description */}
         <div class="col-span-12 lg:col-start-2 lg:col-span-3">
-          <p class="font-sans font-normal lg:text-4xl text-[#c9b58d] pb-4 lg:pb-7">Case study</p>
-          <h2 class="font-sans font-normal text-4xl lg:text-6xl leading-[0.95] tracking-[-0.03em] mb-6 lg:mb-10">
+          <h2 class="font-sans font-normal lg:text-4xl text-[#c9b58d] pb-4 lg:pb-7">Case study</h2>
+          <h3 class="font-sans font-normal text-4xl lg:text-6xl leading-[0.95] tracking-[-0.03em] mb-6 lg:mb-10">
             Fletcher Insulation
-          </h2>
+          </h3>
           <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em]">
             Fletcher Insulation manages a large catalogue of technical products supported by datasheets, compliance
             documentation, and specifications. For trades, architects, and project teams, finding the right information
@@ -348,9 +433,11 @@ const benefitsCards = [
             with confidence.
           </p>
           <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em] mt-4">
-            The result <Equals size={20} desktopSize={30} /> is a faster, smoother experience for users — and a website that
-            actively supports decision-making rather than simply hosting information. The same approach can be configured
-            for any organisation with complex knowledge.
+            The result is a faster, smoother experience for users — and a website that actively supports decision-making
+            rather than simply hosting information.
+          </p>
+          <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em] mt-4">
+            The same approach can be configured for any organisation with complex knowledge.
           </p>
         </div>
       </div>
@@ -360,10 +447,10 @@ const benefitsCards = [
   <section id="pricing" class="mb-2 sm:mb-6">
     <Grid>
       <div id="price" class="col-span-full lg:col-start-2 lg:col-span-5 lg:row-start-2">
-        <p class="col-span-full lg:col-start-2 font-sans font-normal lg:text-4xl text-pixel-blue pb-4 lg:pb-7">
+        <h2 class="col-span-full lg:col-start-2 font-sans font-normal lg:text-4xl text-pixel-blue pb-4 lg:pb-7">
           Pricing
-        </p>
-        <h2 class="leading-[0.9] tracking-[-0.03em] mb-6 text-3xl lg:text-7xl">Simple, predictable pricing</h2>
+        </h2>
+        <h3 class="leading-[0.9] tracking-[-0.03em] mb-6 text-3xl lg:text-7xl">Simple, predictable pricing</h3>
         <p class="flex gap-3 font-sans text-xl lg:text-3xl mb-10 lg:mt-10">
           <EqualSign size={28} desktopSize={50} />From $599 per month + onboarding
         </p>
