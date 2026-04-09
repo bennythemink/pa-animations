@@ -233,11 +233,7 @@ const includes = [
     <Grid>
       {/* Left: Who is Pixel Assist for */}
       <div class="col-span-12 lg:col-start-2 lg:col-span-5">
-        <h2
-          class="font-sans font-normal text-[16px] lg:text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-red mb-6 lg:mb-10"
-        >
-          Who is Pixel Assist for?
-        </h2>
+        <h2 class="font-sans font-normal lg:text-4xl text-pixel-red pb-4 lg:pb-7">Who is Pixel Assist for?</h2>
         <div class="font-serif font-extralight text-[16px] lg:text-[24px] leading-[0.76] tracking-[-0.01em]">
           <p>
             Common examples include manufacturers and wholesalers, education and training providers, professional
@@ -264,7 +260,7 @@ const includes = [
               'Frequent support questions'
             ].map((item) => (
               <li class="flex items-center gap-3 font-sans font-normal text-[20px] lg:text-[30px] leading-[1.2] lg:leading-[1.28] tracking-[-0.04em]">
-                <span class="shrink-0 w-[12px] h-[12px]" style="background-color: var(--accent-bgc);" />
+                <span class="shrink-0 w-[12px] h-[12px] bg-pixel-red" />
                 {item}
               </li>
             ))
@@ -277,7 +273,9 @@ const includes = [
   <section id="pricing" class="py-6">
     <Grid>
       <div id="price" class="col-span-full lg:col-start-2 lg:col-span-5 lg:row-start-2">
-        <p class="col-span-full lg:col-start-2 font-sans text-base lg:text-4xl text-pixel-blue pb-4 lg:pb-7">Pricing</p>
+        <p class="col-span-full lg:col-start-2 font-sans font-normal lg:text-4xl text-pixel-blue pb-4 lg:pb-7">
+          Pricing
+        </p>
         <h2 class="leading-[0.9] tracking-[-0.03em] mb-6 text-3xl lg:text-7xl">Simple, predictable pricing</h2>
         <p class="flex gap-3 font-sans text-xl lg:text-3xl mb-10 lg:mt-10">
           <EqualSign size={28} desktopSize={50} />From $599 per month + onboarding
