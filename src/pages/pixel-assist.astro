@@ -7,7 +7,7 @@ import Layout from '@layouts/Layout.astro'
 import fletcherImg from '@assets/fletcher-pixel-assist.webp'
 import Plus from '@components/signs/Plus.astro'
 import Equals from '@components/signs/Equals.astro'
-import ApproachPointsSectionStyled from '@components/services/ApproachPointsSectionStyled.astro'
+import FeatureCards from '@components/services/FeatureCards.astro'
 
 const includes = [
   'Setup and training on your content',
@@ -273,7 +273,7 @@ const benefitsCards = [
     </Grid>
   </section>
 
-  <ApproachPointsSectionStyled title={benefitsTitle} cards={benefitsCards} style="benefits" />
+  <FeatureCards title={benefitsTitle} cards={benefitsCards} style="left-aligned" />
 
   <section id="who" class="py-16 lg:py-24">
     <Grid>

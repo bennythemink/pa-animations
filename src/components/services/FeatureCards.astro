@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-interface ApproachCard {
+interface Card {
   title: string
   description: string
   /** Hex colour OR a pixel colour var name e.g. 'pixel-blue', 'pixel-light-pink' */
@@ -17,8 +17,8 @@ interface SectionTitle {
 
 interface Props {
   title?: SectionTitle
-  cards: ApproachCard[]
-  style?: 'default' | 'benefits'
+  cards: Card[]
+  style?: 'default' | 'left-aligned'
 }
 
 const { title, cards, style = 'default' } = Astro.props
@@ -64,7 +64,7 @@ function assignColour(raw?: string): string {
 // Auto-placement: 1 card per row by default, randomly pairing two cards on a row.
 // If a title is present, the first card pairs with it at row 1 col 7 and
 // subsequent rows use the normal algorithm.
-interface LayoutCard extends ApproachCard {
+interface LayoutCard extends Card {
   colour: string
   colStart: number
   colSpan: number
@@ -187,7 +187,7 @@ const uid = Math.random().toString(36).slice(2, 8)
           class="approach-card col-span-full grid grid-cols-1 lg:grid-cols-5 gap-x-[20px] p-[12px] lg:p-[30px] min-h-[200px]"
           style={`background-color: ${card.colour}; --col-start: ${card.colStart}; --col-span: ${card.colSpan}; --row-start: ${card.rowStart};`}
         >
-          {style === 'benefits' ? (
+          {style === 'left-aligned' ? (
             <>
               <p class="lg:col-span-5 font-sans text-4xl lg:text-5xl">{card.title}</p>
               <p class="lg:col-span-3 lg:row-start-2 font-sans text-xs mt-6 lg:mt-12">{card.description}</p>
