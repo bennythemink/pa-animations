@@ -305,9 +305,9 @@ const uid = Math.random().toString(36).slice(2, 8)
     ScrollTrigger.refresh()
   }
 
-  init()
+  requestAnimationFrame(() => init())
 
-  document.addEventListener('astro:page-load', init)
+  document.addEventListener('astro:page-load', () => requestAnimationFrame(() => init()))
   document.addEventListener('astro:before-swap', () => {
     instances.forEach(({ ctx, resizeHandler }) => {
       ctx.revert()
