@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets'
 import ContactForm from '@components/ContactForm.astro'
 import EqualSign from '@components/signs/Equals.astro'
 import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
+import fletcherImg from '@assets/fletcher-pixel-assist.webp'
 
 const includes = [
   'Setup and training on your content',
@@ -239,7 +241,6 @@ const includes = [
       {/* Left: Who is Pixel Assist for */}
       <div class="col-span-12 lg:col-start-2 lg:col-span-5">
         <h2 class="font-sans font-normal lg:text-4xl text-pixel-red pb-4 lg:pb-7">Who is Pixel Assist for?</h2>
-        <!-- <div class="font-serif font-extralight text-[16px] lg:text-[24px] leading-[0.76] tracking-[-0.01em]"> -->
         <div class="text-[16px] lg:text-[24px] tracking-[-0.01em] font-sans text-base leading-[1.5]">
           <p>
             Common examples include manufacturers and wholesalers, education and training providers, professional
@@ -276,67 +277,43 @@ const includes = [
     </Grid>
   </section>
 
+  <!-- bg-pixel-off-cream -->
+
   <section id="case-study" class="py-16 lg:py-24">
     <Grid>
-      {/* Left: Case study label + heading + description */}
-      <div class="col-span-12 lg:col-start-2 lg:col-span-3">
-        <p class="font-sans font-normal lg:text-4xl text-pixel-light-orange pb-4 lg:pb-7">Case study</p>
-        <h2 class="font-sans font-normal text-4xl lg:text-6xl leading-[0.95] tracking-[-0.03em] mb-6 lg:mb-10">
-          Fletcher<br />Insulation
-        </h2>
-        <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em]">
-          Fletcher Insulation manages a large catalogue of technical products supported by datasheets, compliance
-          documentation, and specifications. For trades, architects, and project teams, finding the right information
-          often meant searching across multiple pages or contacting support.
-        </p>
-      </div>
-
-      {/* Middle: Branded example / chatbot UI placeholder */}
-      <div class="col-span-12 lg:col-span-4 flex items-center justify-center">
-        <div
-          class="w-full max-w-[340px] bg-white rounded-2xl shadow-md overflow-hidden border border-black/8"
-          style="min-height: 340px;"
-        >
-          {/* Chat header */}
-          <div class="flex items-start gap-2.5 justify-end px-4 pt-5 pb-3">
-            <div
-              class="rounded-xl px-3.5 py-2.5 font-sans text-[0.8125rem] leading-[1.45] bg-pixel-light-pink"
-              style="color: #1f2937;"
-            >
-              What exactly is Pixel Assist?
-            </div>
-            <div class="w-7 h-7 shrink-0 mt-0.5 bg-pixel-pink"></div>
-          </div>
-
-          {/* Placeholder image area */}
-          <div class="mx-4 mb-4 rounded-xl bg-black/8 flex items-center justify-center" style="min-height: 200px;">
-            <p class="font-sans text-sm text-black/30 text-center px-4">branded example</p>
-          </div>
-
-          {/* Input bar */}
-          <div class="px-4 pb-5">
-            <div
-              class="flex items-center rounded-full border border-black/12 px-4 py-2.5 font-sans text-sm text-black/30 bg-white"
-            >
-              Ask a question
-            </div>
-          </div>
+      <div class="col-span-full py-10 lg:py-14 grid grid-cols-12 gap-5 mb-9 sm:mb-12 bg-pixel-off-cream">
+        {/* Left: Case study label + heading + description */}
+        <div class="col-span-12 lg:col-start-2 lg:col-span-3">
+          <p class="font-sans font-normal lg:text-4xl text-pixel-light-orange pb-4 lg:pb-7">Case study</p>
+          <h2 class="font-sans font-normal text-4xl lg:text-6xl leading-[0.95] tracking-[-0.03em] mb-6 lg:mb-10">
+            Fletcher Insulation
+          </h2>
+          <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em]">
+            Fletcher Insulation manages a large catalogue of technical products supported by datasheets, compliance
+            documentation, and specifications. For trades, architects, and project teams, finding the right information
+            often meant searching across multiple pages or contacting support.
+          </p>
         </div>
-      </div>
 
-      {/* Right: Results copy */}
-      <div class="col-span-12 lg:col-span-4 flex flex-col items-center justify-end">
-        <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em]">
-          We implemented Pixel Assist to answer product and compliance questions instantly
-          <span class="inline-block w-[10px] h-[10px] bg-pixel-red mx-1 translate-y-[1px]"></span>
-          make technical information easier to access, reduce repetitive support requests, and help customers choose products
-          with confidence.
-        </p>
-        <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em] mt-4">
-          The result is a faster, smoother experience for users — and a website that actively supports decision-making
-          rather than simply hosting information. The same approach can be configured for any organisation with complex
-          knowledge.
-        </p>
+        {/* Middle: Branded example image */}
+        <div class="col-span-12 lg:col-span-4 flex items-end justify-center">
+          <Image src={fletcherImg} alt="Fletcher Insulation — Pixel Assist chatbot UI" />
+        </div>
+
+        {/* Right: Results copy */}
+        <div class="col-span-12 lg:col-span-3 flex flex-col items-center justify-end">
+          <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em]">
+            We implemented Pixel Assist to answer product and compliance questions instantly
+            <span class="inline-block w-[10px] h-[10px] bg-pixel-red mx-1 translate-y-[1px]"></span>
+            make technical information easier to access, reduce repetitive support requests, and help customers choose products
+            with confidence.
+          </p>
+          <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em] mt-4">
+            The result is a faster, smoother experience for users — and a website that actively supports decision-making
+            rather than simply hosting information. The same approach can be configured for any organisation with
+            complex knowledge.
+          </p>
+        </div>
       </div>
     </Grid>
   </section>
@@ -383,6 +360,7 @@ const includes = [
     />
   </Grid>
 </Layout>
+
 <style>
   .pa-bubble {
     position: absolute;
