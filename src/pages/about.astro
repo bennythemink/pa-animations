@@ -158,9 +158,12 @@ const sectionCards = [
         <h2 class="text-4xl lg:text-[140px] leading-[0.95] tracking-[-0.03em] whitespace-nowrap pb-10 lg:pb-16">
           Experienced people who care deeply about the work.
         </h2>
-        <div class="flex gap-10 lg:gap-16">
-          {/* Left: body text (stays in view) */}
-          <div class="shrink-0 w-[260px] lg:w-[300px] flex flex-col gap-4 font-serif text-xs lg:text-sm leading-[1.5]">
+        <div class="flex gap-5">
+          {/* Left: body text — spans grid cols 2–6 */}
+          <div
+            class="shrink-0 flex flex-col gap-4 font-serif text-xs lg:text-sm leading-[1.5]"
+            style="width: calc(5 * (100% - 11 * 20px) / 12 + 6.6 * 20px);"
+          >
             <p>
               Pixel Agency is a team of industry veterans who have come together to do what we enjoy most: building
               high-quality digital products that solve real business and user problems.
@@ -205,14 +208,15 @@ const sectionCards = [
         </div>
       </div>
     </div>
-
-    <WhoSection
-      forTitle="We work best with organisations that"
-      notForTitle='We’re probably <span class="underline">not</span> the right fit if'
-      forItems={whoFor}
-      notForItems={whoNotFor}
-    />
   </section>
+
+  <WhoSection
+    forTitle="We work best with organisations that"
+    notForTitle='We’re probably <span class="underline">not</span> the right fit if'
+    forItems={whoFor}
+    notForItems={whoNotFor}
+  />
+
   <script>
     import { gsap } from 'gsap'
     import { ScrollTrigger } from 'gsap/ScrollTrigger'
