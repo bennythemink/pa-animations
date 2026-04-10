@@ -2,6 +2,8 @@
 import Layout from '@layouts/Layout.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 import FeatureCards from '@components/services/FeatureCards.astro'
+import Grid from '@components/Grid.astro'
+import Plus from '@components/signs/Plus.astro'
 
 /**
  * WhoSection variables
@@ -54,6 +56,32 @@ const cards = [
   title="About Us"
   description="Learn how Pixel Agency works. A practitioner-led digital agency focused on clarity, collaboration, and delivering real outcomes through thoughtful design and development."
 >
+  <section class="pt-10 pb-12 lg:pt-16 lg:pb-20">
+    <Grid>
+      <div class="col-span-full lg:col-start-2 lg:col-span-6">
+        <h1 class="text-7xl lg:text-[80px] p-0">Senior digital thinking, carefully delivered.</h1>
+      </div>
+      <div class="col-span-full flex flex-col gap-4 mt-4 lg:mt-0 lg:col-start-8 lg:col-span-4">
+        <div class="flex flex-col gap-3 mt-2 lg:mt-0 font-serif text-lg lg:text-2xl leading-[0.76]">
+          <p>
+            Pixel Agency is a digital design, development, and consulting partner for organisations that need clarity,
+            confidence, and outcomes from their digital work.
+          </p>
+          <p>
+            We design and build websites, applications, and systems <Plus desktopSize={28} /> provide the senior guidance
+            needed to make good decisions along the way. Whether you’re shaping an idea, navigating complexity, or delivering
+            something critical, our role is to help you move forward with purpose and care.
+          </p>
+          <p>
+            We’re practitioners first. That means you work directly with the people doing the thinking and the building,
+            not through a sales layer or handovers. The result is better conversations, better decisions, and work that
+            holds up over time.
+          </p>
+        </div>
+      </div>
+    </Grid>
+  </section>
+
   <FeatureCards title={cardsTitle} cards={cards} />
 
   <WhoSection
