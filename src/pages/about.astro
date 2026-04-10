@@ -4,6 +4,7 @@ import WhoSection from '@components/services/WhoSection.astro'
 import FeatureCards from '@components/services/FeatureCards.astro'
 import Grid from '@components/Grid.astro'
 import Plus from '@components/signs/Plus.astro'
+import SectionCards from '@components/SectionCards.astro'
 
 /**
  * WhoSection variables
@@ -50,6 +51,61 @@ const cards = [
       'Great digital work should feel good to use. We look for moments of clarity, care, and thoughtfulness that make the experience more enjoyable — without getting in the way of what matters.'
   }
 ]
+
+/**
+ * SectionCards variables
+ */
+
+const sectionCardsTitle = { text: 'Our process', colour: 'pixel-pink' }
+const sectionText = {
+  tagline: 'A clear path from uncertainty to outcomes.',
+  description: [
+    'Our process is designed to reduce risk, build confidence, and create momentum, without unnecessary ceremony. While every engagement is different, most follow a familiar flow.'
+  ]
+}
+
+const sectionCards = [
+  {
+    title: 'Discovery & direction',
+    description: [
+      'We start by understanding the problem, the people involved, and the context around it. This often involves workshops, research, and exploration to get to the heart of what’s needed — without jumping to solutions or commitments too early.'
+    ],
+    url: '/services/discovery-direction',
+    colour: '#63a3d2'
+  },
+  {
+    title: 'Design',
+    description: [
+      'With a clear direction, we design the experience — whether that’s a brand, a website, an application, or a system. Our designs are grounded in user needs and strategic goals, balancing form and function to create something that works well and feels right.'
+    ],
+    url: '/services/design',
+    colour: '#cab38f'
+  },
+  {
+    title: 'Development',
+    description: [
+      'We build digital products that are reliable, maintainable, and fit for real-world use. Our development process is careful and deliberate, focused on quality over speed — because we know that how something is built matters just as much as what is built.'
+    ],
+    url: '/services/development',
+    colour: '#e38093'
+  },
+  {
+    title: 'Consulting',
+    description: [
+      "Not every challenge requires a build. We provide experienced digital leadership to support strategy, delivery, autonomy, and long-term decision-making. Whether that's as a virtual CTO, delivery lead, or trusted advisor, we're here to help you navigate complexity with confidence."
+    ],
+    url: '/services/digital-consulting',
+    colour: '#f09339'
+  },
+  {
+    title: 'AI',
+    description: [
+      'We help organisations leverage AI to drive innovation, improve efficiency, and make data-driven decisions. Our AI services include strategy, implementation, and ongoing support to ensure successful adoption and measurable impact.'
+    ],
+    url: '/services/ai',
+    colour: '#479f82'
+  }
+]
 ---
 
 <Layout
@@ -81,6 +137,8 @@ const cards = [
       </div>
     </Grid>
   </section>
+
+  <SectionCards title={sectionCardsTitle} text={sectionText} cards={sectionCards} displayTextBackground={false} />
 
   <FeatureCards title={cardsTitle} cards={cards} />
 

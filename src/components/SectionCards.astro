@@ -1,0 +1,99 @@
+---
+import Grid from './Grid.astro'
+
+interface Card {
+  title: string
+  description: string[]
+  url: string
+  /** Hex colour OR a pixel colour var name e.g. 'pixel-blue', 'pixel-light-pink' */
+  colour?: string
+}
+
+interface SectionTitle {
+  text: string
+  /** Hex colour OR a pixel colour var name e.g. 'pixel-blue', 'pixel-light-pink' */
+  colour?: string
+}
+
+interface SectionText {
+  tagline: string
+  description: string[]
+}
+
+interface Props {
+  title: SectionTitle
+  text: SectionText
+  cards: Card[]
+  displayTextBackground?: boolean
+}
+
+const { title, text, cards, displayTextBackground = true } = Astro.props
+---
+
+<Grid>
+  {/* Left: cream background text block */}
+  <div
+    id="section-cards-intro"
+    class="col-span-full lg:col-start-1 lg:col-span-6 lg:self-start lg:sticky lg:top-30 lg:grid lg:grid-cols-subgrid"
+    style={displayTextBackground ? 'background-color: #EAE7E4;' : ''}
+  >
+    {/* Inner content inset to match services-intro left edge */}
+    <div
+      class:list={[
+        'col-span-full lg:col-start-2 lg:col-span-5 flex flex-col gap-6 lg:pr-16 lg:pl-0',
+        displayTextBackground ? 'p-10 lg:py-16' : 'px-10 lg:px-0'
+      ]}
+    >
+      <h2 class="font-sans text-[18px] lg:text-[40px]" style="color: #00A180; letter-spacing: 0; line-height: 1.1;">
+        {title.text}
+      </h2>
+      <h3 class="text-3xl lg:text-[80px]">
+        {text.tagline}
+      </h3>
+      <div class="flex flex-col gap-4 font-serif mt-3.5 lg:mt-12">
+        {text.description.map((line) => <p>{line}</p>)}
+      </div>
+    </div>
+  </div>
+
+  {/* Right: service cards — horizontal scroll on mobile, stacked on desktop */}
+  <div id="service-cards" class="col-span-full lg:col-start-7 lg:col-span-6">
+    <div
+      class="flex items-stretch overflow-x-auto snap-x snap-mandatory lg:flex-col lg:overflow-x-clip w-[calc(100vw-20px)] lg:w-auto pr-5 lg:pr-0 gap-3 lg:gap-5 pb-6 lg:pb-0"
+    >
+      {
+        cards.map((card) => (
+          <div
+            class="shrink-0 snap-start w-[300px] min-h-[300px] lg:w-auto lg:h-[464px] flex flex-col pt-5 px-5 lg:px-8 pb-5 justify-between"
+            style={`background-color: ${card.colour};`}
+          >
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="text-[40px]">{card.title}</h3>
+              <a
+                href={card.url}
+                class="hidden lg:inline font-sans text-sm underline underline-offset-2 hover:no-underline transition-all shrink-0"
+              >
+                Learn more
+              </a>
+            </div>
+            <div class="pt-4 flex flex-col gap-3">
+              {/* <h4 class="font-sans text-2xl font-normal text-white" style="opacity: 0.8;">
+                {card.tagline}
+              </h4> */}
+
+              {card.description.map((line) => (
+                <p class="font-serif max-w-[540px]" style="opacity: 0.7;">
+                  {line}
+                </p>
+              ))}
+
+              <a href={card.url} class="lg:hidden font-sans text-sm underline underline-offset-2 self-start">
+                Learn more
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Grid>
