@@ -8,6 +8,7 @@ import ContactForm from '@components/ContactForm.astro'
 import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
 import OurApproachSection from '@components/services/OurApproachSection.astro'
 import Vector from '@components/signs/Vector.astro'
+import FeatureCards from '@components/services/FeatureCards.astro'
 
 import mbImage from '@assets/mb.png'
 import iphoneImage from '@assets/iphone.png'
@@ -42,8 +43,8 @@ const second = {
 /**
  * ApproachPointsSection variables
  */
-const approachPointsTitle = { text: 'Our development approach prioritises', colour: 'pixel-blue' }
-const approachPointsCards = [
+const cardsTitle = { text: 'Our development approach prioritises', colour: 'pixel-blue' }
+const cards = [
   {
     title: 'Clear architecture + maintainability ',
     description: 'so the solution can be supported and evolved after launch'
@@ -103,7 +104,7 @@ const whoNotFor = ['Projects where speed is the only priority and stability can 
     <p>That means fewer surprises, clearer decisions, and a build that stays true to the original intent.</p>
   </OurApproachSection>
 
-  <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
+  <FeatureCards title={cardsTitle} cards={cards} />
 
   <div
     class="flex items-center justify-center min-h-[500px] bg-black/5 text-black/40 font-sans text-lg lg:text-3xl my-4 lg:my-8"

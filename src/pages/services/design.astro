@@ -6,12 +6,13 @@ import ContactForm from '@components/ContactForm.astro'
 import Vector from '@components/signs/Vector.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 import OurApproachSection from '@components/services/OurApproachSection.astro'
-import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
 
 import mbImage from '@assets/mb.png'
 import iphoneImage from '@assets/iphone.png'
 import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
 import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
+
+import FeatureCards from '@components/services/FeatureCards.astro'
 
 /**
  * HeroSection variables
@@ -45,10 +46,10 @@ const second = {
 const whatWeBuild = ['Brands & identities', 'Websites & digital products', 'Applications & platforms']
 
 /**
- * ApproachPointsSection variables
+ * FeatureCards variables
  */
-const approachPointsTitle = { text: 'Our design is', colour: 'pixel-blue' }
-const approachPointsCards = [
+const cardsTitle = { text: 'Our design is', colour: 'pixel-blue' }
+const cards = [
   { title: 'Grounded', description: "in your users' needs and the strategy behind the work" },
   { title: 'Focused', description: 'on clarity and ease of use, not visual complexity' },
   {
@@ -89,7 +90,7 @@ const whoNotFor = [
     and the outcomes it needs to deliver.
   </OurApproachSection>
 
-  <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
+  <FeatureCards title={cardsTitle} cards={cards} />
 
   {/* ── Who this is for / not for ── */}
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />

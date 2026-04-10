@@ -8,7 +8,7 @@ import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
 import OurApproachSection from '@components/services/OurApproachSection.astro'
 import Vector from '@components/signs/Vector.astro'
 import Plus from '@components/signs/Plus.astro'
-import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
+import FeatureCards from '@components/services/FeatureCards.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 
 import mbImage from '@assets/mb.png'
@@ -56,8 +56,8 @@ const whatWeConsultOn = [
 /**
  * ApproachPointsSection variables
  */
-const approachPointsTitle = { text: 'Our consulting provides', colour: 'pixel-blue' }
-const approachPointsCards = [
+const cardsTitle = { text: 'Our consulting provides', colour: 'pixel-blue' }
+const cards = [
   {
     title: 'Honest, practical advice',
     description: 'including when the answer is ‘don’t build this’'
@@ -103,7 +103,7 @@ const whoNotFor = [
     </p>
   </OurApproachSection>
 
-  <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
+  <FeatureCards title={cardsTitle} cards={cards} />
 
   <OurApproachSection label="Our goal" labelColour="pixel-green">
     Is not dependency <Vector size={28} desktopSize={80} /> it’s clarity, capability, and progress.

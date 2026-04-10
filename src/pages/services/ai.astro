@@ -10,7 +10,7 @@ import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
 import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
 import OurApproachSection from '@components/services/OurApproachSection.astro'
 import Plus from '@components/signs/Plus.astro'
-import ApproachPointsSection from '@components/services/ApproachPointsSection.astro'
+import FeatureCards from '@components/services/FeatureCards.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 
 /**
@@ -51,10 +51,10 @@ const aiServices = [
 ]
 
 /**
- * ApproachPointsSection variables
+ * FeatureCards variables
  */
-const approachPointsTitle = { text: 'Our AI services provide', colour: 'pixel-blue' }
-const approachPointsCards = [
+const cardsTitle = { text: 'Our AI services provide', colour: 'pixel-blue' }
+const cards = [
   {
     title: 'TBD',
     description: 'TBD'
@@ -98,7 +98,7 @@ const whoNotFor = ['TBD', 'TBD', 'TBD']
     </p>
   </OurApproachSection>
 
-  <ApproachPointsSection title={approachPointsTitle} cards={approachPointsCards} />
+  <FeatureCards title={cardsTitle} cards={cards} />
 
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
 
