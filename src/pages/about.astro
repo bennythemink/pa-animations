@@ -134,8 +134,8 @@ const sectionCards = [
   <SectionCards title={sectionCardsTitle} text={sectionText} cards={sectionCards} displayTextBackground={false} />
 
   <section id="team" class="bg-pixel-off-cream overflow-hidden">
-    {/* Header area — uses Grid to align with other sections */}
-    <div class="pt-16 lg:pt-24 pb-10 lg:pb-16">
+    {/* Header label — uses Grid to align with other sections */}
+    <div class="pt-16 lg:pt-24">
       <Grid>
         <div class="col-span-full lg:col-start-2 lg:col-span-10">
           <p
@@ -144,9 +144,6 @@ const sectionCards = [
           >
             Our team
           </p>
-          <h2 class="text-4xl lg:text-[80px] leading-[0.95] tracking-[-0.03em] max-w-[1200px]">
-            Experienced people who care deeply about the work.
-          </h2>
         </div>
       </Grid>
     </div>
@@ -155,109 +152,112 @@ const sectionCards = [
     <div id="team-scroll-wrapper" class="relative max-w-360 mx-auto px-5">
       <div
         id="team-scroll-inner"
-        class="flex gap-10 lg:gap-16 pb-16 lg:pb-24"
+        class="flex flex-col pb-16 lg:pb-24"
         style="padding-left: calc((100% - 11 * 20px) / 12 + 20px);"
       >
-        {/* Left: body text (stays in view) */}
-        <div class="shrink-0 w-[260px] lg:w-[300px] flex flex-col gap-4 font-serif text-xs lg:text-sm leading-[1.5]">
-          <p>
-            Pixel Agency is a team of industry veterans who have come together to do what we enjoy most: building
-            high-quality digital products that solve real business and user problems.
-          </p>
-          <p>
-            We've deliberately built a business that prioritises the work over self-interest. We focus on quality,
-            long-term value, and fair outcomes — not sales targets or inflated promises.
-          </p>
-          <p>
-            That's why you won't find salespeople here. Instead, you'll work directly with the experts shaping and
-            delivering your project.
-          </p>
-          <p>It's a more honest way of working — and one that leads to better results.</p>
-        </div>
+        <h2 class="text-4xl lg:text-[140px] leading-[0.95] tracking-[-0.03em] whitespace-nowrap pb-10 lg:pb-16">
+          Experienced people who care deeply about the work.
+        </h2>
+        <div class="flex gap-10 lg:gap-16">
+          {/* Left: body text (stays in view) */}
+          <div class="shrink-0 w-[260px] lg:w-[300px] flex flex-col gap-4 font-serif text-xs lg:text-sm leading-[1.5]">
+            <p>
+              Pixel Agency is a team of industry veterans who have come together to do what we enjoy most: building
+              high-quality digital products that solve real business and user problems.
+            </p>
+            <p>
+              We've deliberately built a business that prioritises the work over self-interest. We focus on quality,
+              long-term value, and fair outcomes — not sales targets or inflated promises.
+            </p>
+            <p>
+              That's why you won't find salespeople here. Instead, you'll work directly with the experts shaping and
+              delivering your project.
+            </p>
+            <p>It's a more honest way of working — and one that leads to better results.</p>
+          </div>
 
-        {/* Team member cards */}
-        <div class="flex shrink-0">
-          {
-            [
-              { name: 'Benny', role: 'Founder', colour: '#f09339' },
-              { name: 'Benny', role: 'Founder', colour: '#63a3d2' },
-              { name: 'Benny', role: 'Founder', colour: '#e9504c' },
-              { name: 'Benny', role: 'Founder', colour: '#cab38f' },
-              { name: 'Benny', role: 'Founder', colour: '#e38093' },
-              { name: 'Benny', role: 'Founder', colour: '#7ea0c4' },
-              { name: 'Benny', role: 'Founder', colour: '#e8c728' },
-              { name: 'Benny', role: 'Founder', colour: '#00A180' },
-              { name: 'Benny', role: 'Founder', colour: '#4d9e8e' },
-              { name: 'Benny', role: 'Founder', colour: '#cab38f' }
-            ].map((member) => (
-              <div
-                class="shrink-0 w-[140px] lg:w-[240px] h-[140px] lg:h-[240px] flex items-end p-3 lg:p-4"
-                style={`background-color: ${member.colour};`}
-              >
-                <p class="font-sans text-xs lg:text-sm">
-                  {member.name}, {member.role}
-                </p>
-              </div>
-            ))
-          }
+          {/* Team member cards */}
+          <div class="flex shrink-0">
+            {
+              [
+                { name: 'Benny', role: 'Founder', colour: '#f09339' },
+                { name: 'Benny', role: 'Founder', colour: '#63a3d2' },
+                { name: 'Benny', role: 'Founder', colour: '#e9504c' },
+                { name: 'Benny', role: 'Founder', colour: '#cab38f' },
+                { name: 'Benny', role: 'Founder', colour: '#e38093' },
+                { name: 'Benny', role: 'Founder', colour: '#7ea0c4' },
+                { name: 'Benny', role: 'Founder', colour: '#e8c728' },
+                { name: 'Benny', role: 'Founder', colour: '#00A180' },
+                { name: 'Benny', role: 'Founder', colour: '#4d9e8e' },
+                { name: 'Benny', role: 'Founder', colour: '#cab38f' }
+              ].map((member) => (
+                <div
+                  class="shrink-0 w-[140px] lg:w-[240px] h-[140px] lg:h-[240px] flex items-end p-3 lg:p-4"
+                  style={`background-color: ${member.colour};`}
+                >
+                  <p class="font-sans text-xs lg:text-sm">
+                    {member.name}, {member.role}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
     </div>
+
+    <WhoSection
+      forTitle="We work best with organisations that"
+      notForTitle='We’re probably <span class="underline">not</span> the right fit if'
+      forItems={whoFor}
+      notForItems={whoNotFor}
+    />
   </section>
+  <script>
+    import { gsap } from 'gsap'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+    import Lenis from 'lenis'
 
-  <FeatureCards title={cardsTitle} cards={cards} />
+    gsap.registerPlugin(ScrollTrigger)
 
-  <WhoSection
-    forTitle="We work best with organisations that"
-    notForTitle='We’re probably <span class="underline">not</span> the right fit if'
-    forItems={whoFor}
-    notForItems={whoNotFor}
-  />
-</Layout>
-<script>
-  import { gsap } from 'gsap'
-  import { ScrollTrigger } from 'gsap/ScrollTrigger'
-  import Lenis from 'lenis'
-
-  gsap.registerPlugin(ScrollTrigger)
-
-  // ── Lenis smooth scroll ──
-  const lenis = new Lenis()
-  lenis.on('scroll', ScrollTrigger.update)
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000)
-  })
-  gsap.ticker.lagSmoothing(0)
-
-  // ── Horizontal scroll for team section ──
-  const ctx = gsap.context(() => {
-    const wrapper = document.getElementById('team-scroll-wrapper')!
-    const inner = document.getElementById('team-scroll-inner')!
-
-    // Calculate how far we need to scroll horizontally
-    const getScrollAmount = () => inner.scrollWidth - wrapper.offsetWidth
-
-    gsap.to(inner, {
-      x: () => -getScrollAmount(),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: wrapper,
-        start: 'top 20%',
-        end: () => `+=${getScrollAmount()}`,
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true
-      }
+    // ── Lenis smooth scroll ──
+    const lenis = new Lenis()
+    lenis.on('scroll', ScrollTrigger.update)
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000)
     })
-  })
+    gsap.ticker.lagSmoothing(0)
 
-  // Clean up on Astro page transitions
-  document.addEventListener(
-    'astro:before-swap',
-    () => {
-      ctx.revert()
-      lenis.destroy()
-    },
-    { once: true }
-  )
-</script>
+    // ── Horizontal scroll for team section ──
+    const ctx = gsap.context(() => {
+      const wrapper = document.getElementById('team-scroll-wrapper')!
+      const inner = document.getElementById('team-scroll-inner')!
+
+      // Calculate how far we need to scroll horizontally
+      const getScrollAmount = () => inner.scrollWidth - wrapper.offsetWidth
+
+      gsap.to(inner, {
+        x: () => -getScrollAmount(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: wrapper,
+          start: 'top 20%',
+          end: () => `+=${getScrollAmount()}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true
+        }
+      })
+    })
+
+    // Clean up on Astro page transitions
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        ctx.revert()
+        lenis.destroy()
+      },
+      { once: true }
+    )
+  </script>
+</Layout>
