@@ -152,17 +152,18 @@ const sectionCards = [
     <div id="team-scroll-wrapper" class="relative max-w-360 mx-auto px-5">
       <div
         id="team-scroll-inner"
-        class="flex flex-col pb-16 lg:pb-24"
+        class="flex flex-col pb-16 lg:pb-12"
         style="padding-left: calc((100% - 11 * 20px) / 12 + 20px);"
       >
-        <h2 class="text-4xl lg:text-[140px] leading-[0.95] tracking-[-0.03em] whitespace-nowrap pb-10 lg:pb-16">
+        <h2 class="text-4xl lg:text-[140px] leading-[0.95] tracking-[-0.03em] whitespace-nowrap pb-10">
           Experienced people who care deeply about the work.
         </h2>
         <div class="flex gap-5">
-          {/* Left: body text — spans grid cols 2–6 */}
+          {/* Left: body text — col-span-4 width, right margin fills to keep cards in place */}
           <div
-            class="shrink-0 flex flex-col gap-4 font-serif text-xs lg:text-sm leading-[1.5]"
-            style="width: calc(5 * (100% - 11 * 20px) / 12 + 6.6 * 20px);"
+            id="team-text"
+            class="shrink-0 flex flex-col gap-4 font-serif text-base lg:text-lg leading-[1.5]"
+            style="width: calc(4 * (100% - 11 * 20px) / 12 + 3 * 20px); margin-right: calc(1 * (100% - 11 * 20px) / 12 + 4.6 * 20px - 20px);"
           >
             <p>
               Pixel Agency is a team of industry veterans who have come together to do what we enjoy most: building
