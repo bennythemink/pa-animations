@@ -136,26 +136,21 @@ const sectionCards = [
   <section id="team" class="bg-pixel-off-cream overflow-hidden mt-6">
     {/* Content + horizontal scroll area */}
     <div id="team-scroll-wrapper" class="relative max-w-360 mx-auto px-5 pt-16 lg:pt-14">
-      <div
-        id="team-scroll-inner"
-        class="flex flex-col pb-16 lg:pb-12"
-        style="padding-left: calc((100% - 11 * 20px) / 12 + 20px);"
-      >
+      <div id="team-scroll-inner" class="flex flex-col pb-16 lg:pb-12">
         <p
           class="font-sans text-[18px] lg:text-[40px] text-pixel-orange mb-4 lg:mb-6"
           style="letter-spacing: 0; line-height: 1.1;"
         >
           Our team
         </p>
-        <h2 class="text-4xl lg:text-[140px] leading-[0.95] tracking-[-0.03em] whitespace-nowrap pb-10">
+        <h2 class="text-4xl lg:text-[140px] leading-[0.95] tracking-[-0.03em] lg:whitespace-nowrap pb-6 lg:pb-10">
           Experienced people who care deeply about the work.
         </h2>
-        <div class="flex gap-5">
-          {/* Left: body text — col-span-4 width, right margin fills to keep cards in place */}
+        <div class="flex flex-col lg:flex-row lg:gap-5">
+          {/* Left: body text — col-span-4 width on desktop */}
           <div
             id="team-text"
-            class="shrink-0 flex flex-col gap-4 font-serif text-base lg:text-lg leading-[1.5]"
-            style="width: calc(4 * (100% - 11 * 20px) / 12 + 3 * 20px); margin-right: calc(1 * (100% - 11 * 20px) / 12 + 4.6 * 20px - 20px);"
+            class="shrink-0 flex flex-col gap-4 font-serif text-base lg:text-lg leading-[1.5] mb-8 lg:mb-0"
           >
             <p>
               Pixel Agency is a team of industry veterans who have come together to do what we enjoy most: building
@@ -173,7 +168,7 @@ const sectionCards = [
           </div>
 
           {/* Team member cards */}
-          <div class="flex shrink-0" style="padding-right: calc((100% - 16 * 20px) / 12 + 20px);">
+          <div id="team-cards" class="flex shrink-0 overflow-x-auto lg:overflow-visible -mx-5 px-5 lg:mx-0 lg:px-0">
             {
               [
                 { name: 'Benny', role: 'Founder', colour: '#f09339' },
@@ -212,6 +207,28 @@ const sectionCards = [
     notForItems={whoNotFor}
   />
 
+  <style>
+    #team-cards {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    #team-cards::-webkit-scrollbar {
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      #team-scroll-inner {
+        padding-left: calc((100% - 11 * 20px) / 12 + 20px);
+      }
+      #team-text {
+        width: calc(4 * (100% - 11 * 20px) / 12 + 3 * 20px);
+        margin-right: calc(1 * (100% - 11 * 20px) / 12 + 4.6 * 20px - 20px);
+      }
+      #team-cards {
+        padding-right: calc((100% - 16 * 20px) / 12 + 20px);
+      }
+    }
+  </style>
+
   <script>
     import { gsap } from 'gsap'
     import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -227,30 +244,34 @@ const sectionCards = [
     })
     gsap.ticker.lagSmoothing(0)
 
-    // ── Horizontal scroll for team section ──
+    // ── Horizontal scroll for team section (desktop only) ──
     const ctx = gsap.context(() => {
-      const wrapper = document.getElementById('team-scroll-wrapper')!
-      const inner = document.getElementById('team-scroll-inner')!
+      ScrollTrigger.matchMedia({
+        '(min-width: 1024px)': () => {
+          const wrapper = document.getElementById('team-scroll-wrapper')!
+          const inner = document.getElementById('team-scroll-inner')!
 
-      // Calculate how far we need to scroll horizontally
-      const getScrollAmount = () => inner.scrollWidth - wrapper.offsetWidth
-      const pause = 500 // px of scroll distance for the pause
+          // Calculate how far we need to scroll horizontally
+          const getScrollAmount = () => inner.scrollWidth - wrapper.offsetWidth
+          const pause = 500 // px of scroll distance for the pause
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: wrapper,
-          start: 'top 20%',
-          end: () => `+=${getScrollAmount() + pause * 2}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: wrapper,
+              start: 'top 20%',
+              end: () => `+=${getScrollAmount() + pause * 2}`,
+              pin: true,
+              scrub: 1,
+              invalidateOnRefresh: true
+            }
+          })
+
+          // Pause at start, then scroll, then pause at end
+          tl.to(inner, { x: 0, duration: pause })
+          tl.to(inner, { x: () => -getScrollAmount(), duration: getScrollAmount(), ease: 'none' })
+          tl.to(inner, { x: () => -getScrollAmount(), duration: pause })
         }
       })
-
-      // Pause at start, then scroll, then pause at end
-      tl.to(inner, { x: 0, duration: pause })
-      tl.to(inner, { x: () => -getScrollAmount(), duration: getScrollAmount(), ease: 'none' })
-      tl.to(inner, { x: () => -getScrollAmount(), duration: pause })
     })
 
     // Clean up on Astro page transitions
