@@ -58,7 +58,7 @@ const cards = [
 
 const sectionCardsTitle = { text: 'Our process', colour: 'pixel-pink' }
 const sectionText = {
-  tagline: 'A clear path from uncertainty to outcomes.',
+  tagline: 'A clear path<br/> from<br/> uncertainty to outcomes.',
   description: [
     'Our process is designed to reduce risk, build confidence, and create momentum, without unnecessary ceremony. While every engagement is different, most follow a familiar flow.'
   ]
@@ -66,44 +66,37 @@ const sectionText = {
 
 const sectionCards = [
   {
-    title: 'Discovery & direction',
+    title: '1. Discovery + direction',
     description: [
-      'We start by understanding the problem, the people involved, and the context around it. This often involves workshops, research, and exploration to get to the heart of what’s needed — without jumping to solutions or commitments too early.'
+      'Before any solution is shaped, you’ll leave the first phase knowing exactly what problem we’re solving, why it matters, and what success looks like.',
+      'Through structured conversations and collaborative workshops, we work with you to unpack the challenge, understand who it affects, and clarify the path forward. No ambiguity carried into delivery.'
     ],
-    url: '/services/discovery-direction',
+    url: '/services/discovery',
     colour: '#63a3d2'
   },
   {
-    title: 'Design',
+    title: '2. Design',
     description: [
-      'With a clear direction, we design the experience — whether that’s a brand, a website, an application, or a system. Our designs are grounded in user needs and strategic goals, balancing form and function to create something that works well and feels right.'
+      'You’ll see and approve designs that reflect your brand, your users, and your business goals before development begins. Design is where strategy becomes tangible — and where the gap between what was intended and what gets built is closed.'
     ],
     url: '/services/design',
     colour: '#cab38f'
   },
   {
-    title: 'Development',
+    title: '3. Development',
     description: [
-      'We build digital products that are reliable, maintainable, and fit for real-world use. Our development process is careful and deliberate, focused on quality over speed — because we know that how something is built matters just as much as what is built.'
+      'You’ll stay close to the build throughout. Because designers and developers work closely together, the gap between intention and execution stays small — and the final result stays true to the original vision. We build things that are robust, maintainable, and ready for the real world.'
     ],
     url: '/services/development',
     colour: '#e38093'
   },
   {
-    title: 'Consulting',
+    title: '4. Ongoing guidance',
     description: [
-      "Not every challenge requires a build. We provide experienced digital leadership to support strategy, delivery, autonomy, and long-term decision-making. Whether that's as a virtual CTO, delivery lead, or trusted advisor, we're here to help you navigate complexity with confidence."
+      'After launch, you’ll have a team that stays involved — supporting you through consulting, delivery oversight, or virtual CTO-style guidance as your needs evolve. Sometimes that means building more. Other times it means knowing when not to. The goal is always steady progress, supported by experience.'
     ],
-    url: '/services/digital-consulting',
+    url: '/services/consulting',
     colour: '#f09339'
-  },
-  {
-    title: 'AI',
-    description: [
-      'We help organisations leverage AI to drive innovation, improve efficiency, and make data-driven decisions. Our AI services include strategy, implementation, and ongoing support to ensure successful adoption and measurable impact.'
-    ],
-    url: '/services/ai',
-    colour: '#479f82'
   }
 ]
 ---
@@ -112,7 +105,7 @@ const sectionCards = [
   title="About Us"
   description="Learn how Pixel Agency works. A practitioner-led digital agency focused on clarity, collaboration, and delivering real outcomes through thoughtful design and development."
 >
-  <section class="pt-10 pb-12 lg:pt-16 lg:pb-20">
+  <section id="hero" class="pt-10 pb-12 lg:pt-16 lg:pb-20">
     <Grid>
       <div class="col-span-full lg:col-start-2 lg:col-span-6">
         <h1 class="text-7xl lg:text-[80px] p-0">Senior digital thinking, carefully delivered.</h1>
