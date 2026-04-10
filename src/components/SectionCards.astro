@@ -41,12 +41,12 @@ const { title, text, cards, displayTextBackground = true } = Astro.props
     <div
       class:list={[
         'col-span-full lg:col-start-2 lg:col-span-5 flex flex-col gap-6 lg:pr-16 lg:pl-0',
-        displayTextBackground ? 'p-10 lg:py-16' : 'px-10 lg:px-0'
+        displayTextBackground ? 'py-10 lg:py-16' : ''
       ]}
     >
       <h2
-        class="font-sans text-[18px] lg:text-[40px]"
-        style="color: #00A180; letter-spacing: 0; line-height: 1.1;"
+        class="font-sans text-base lg:text-[40px]"
+        style="color: #357563; letter-spacing: 0; line-height: 1.1;"
         set:html={title.text}
       />
       <h3 class="text-3xl lg:text-[80px]" set:html={text.tagline} />
