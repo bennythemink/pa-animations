@@ -159,7 +159,7 @@ const sectionCards = [
           {/* Left: body text — col-span-4 width on desktop */}
           <div
             id="team-text"
-            class="shrink-0 flex flex-col gap-4 font-serif font-extralight lg:font-normal text-base lg:text-lg leading-[0.85] lg:leading-[1.5] tracking-[-0.01em] lg:tracking-normal mb-8 lg:mb-0"
+            class="shrink-0 flex flex-col gap-4 font-serif font-extralight lg:font-normal text-base lg:text-lg leading-[0.85] lg:leading-[1.04] tracking-[-0.01em] lg:tracking-[-0.04em] mb-8 lg:mb-0"
           >
             <p>
               Pixel Agency is a team of industry veterans focused on building high-quality digital products that solve
@@ -216,6 +216,28 @@ const sectionCards = [
   </section>
 
   <FeatureCards title={cardsTitle} cards={cards} style="left-aligned" />
+
+  <section id="experience" class="py-12 lg:py-20">
+    <Grid>
+      <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-6">
+        <h2 class="text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-brown">Experience and perspective</h2>
+        <div class="flex flex-col gap-4 font-serif leading-[0.76]">
+          <p>
+            Our team brings over 20 years of experience delivering digital projects across a wide range of industries —
+            from TAFE institutes and established businesses in traditional sectors to startups and global organisations
+            operating at scale.
+          </p>
+          <p>
+            That breadth means we adapt to your context without losing our standard of care. And it gives us the
+            confidence to be selective, honest, and deeply involved — rather than stretched thin or transactional.
+          </p>
+        </div>
+      </div>
+      <div class="col-span-full lg:col-start-7 lg:col-span-5 mt-8 lg:mt-0">
+        <div class="w-full aspect-[4/3] bg-gray-200">placeholder</div>
+      </div>
+    </Grid>
+  </section>
 
   <WhoSection
     forTitle="We work best with organisations that"
