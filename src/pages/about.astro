@@ -5,6 +5,8 @@ import FeatureCards from '@components/services/FeatureCards.astro'
 import Grid from '@components/Grid.astro'
 import Plus from '@components/signs/Plus.astro'
 import SectionCards from '@components/SectionCards.astro'
+import { Image } from 'astro:assets'
+import aboutImage from '@assets/pa-about-reduced.webp'
 
 /**
  * WhoSection variables
@@ -131,6 +133,13 @@ const sectionCards = [
     </Grid>
   </section>
 
+  <Image
+    src={aboutImage}
+    alt=""
+    class="w-full h-[288px] lg:h-[456px] object-cover mb-4 lg:mb-24"
+    widths={[768, 1440, 2560]}
+  />
+
   <SectionCards title={sectionCardsTitle} text={sectionText} cards={sectionCards} displayTextBackground={false} />
 
   <section id="team" class="bg-pixel-off-cream overflow-hidden mt-6">
@@ -171,24 +180,36 @@ const sectionCards = [
           <div id="team-cards" class="flex shrink-0 overflow-x-auto lg:overflow-visible -mx-5 px-5 lg:mx-0 lg:px-0">
             {
               [
-                { name: 'Benny', role: 'Founder', colour: '#f09339' },
-                { name: 'Benny', role: 'Founder', colour: '#63a3d2' },
-                { name: 'Benny', role: 'Founder', colour: '#e9504c' },
-                { name: 'Benny', role: 'Founder', colour: '#cab38f' },
-                { name: 'Benny', role: 'Founder', colour: '#e38093' },
-                { name: 'Benny', role: 'Founder', colour: '#7ea0c4' },
-                { name: 'Benny', role: 'Founder', colour: '#e8c728' },
-                { name: 'Benny', role: 'Founder', colour: '#00A180' },
-                { name: 'Benny', role: 'Founder', colour: '#4d9e8e' },
-                { name: 'Benny', role: 'Founder', colour: '#cab38f' }
+                { name: 'Benny', role: 'Principle Nerd', colour: 'bg-pixel-green', image: 'benny' },
+                { name: 'Julio', role: 'UX/UI Nerd', colour: 'bg-pixel-blue', image: 'julio' },
+                { name: 'Dave', role: 'Web Nerd', colour: 'bg-pixel-red', image: 'dave' },
+                { name: 'Alyssa', role: 'Finance Nerd', colour: 'bg-pixel-pink', image: 'alyssa' },
+                { name: 'Christiaan', role: 'Web Nerd', colour: 'bg-pixel-yellow', image: 'christiaan' },
+                { name: 'Aaron', role: 'Data Nerd', colour: 'bg-pixel-cream', image: 'aaron' },
+                { name: 'Harvin', role: 'App Nerd', colour: 'bg-pixel-red', image: 'harvin' },
+                { name: 'Johnny', role: 'App Nerd', colour: 'bg-pixel-orange', image: 'jong' },
+                { name: 'Stephan', role: 'UX/UI Nerd', colour: 'bg-pixel-light-pink', image: 'stephan' },
+                { name: 'Stuart', role: 'Cloud Nerd', colour: 'bg-pixel-green', image: 'stuart' },
+                { name: 'Hoang', role: 'AI Nerd', colour: 'bg-pixel-yellow', image: '' },
+                { name: 'Gabreilla', role: 'Digital Artist', colour: 'bg-pixel-pink', image: '' }
               ].map((member) => (
                 <div
-                  class="shrink-0 w-[140px] lg:w-[240px] h-[140px] lg:h-[240px] flex items-end p-3 lg:p-4"
-                  style={`background-color: ${member.colour};`}
+                  class={`shrink-0 w-[140px] lg:w-[240px] h-[140px] lg:h-[240px] relative overflow-hidden flex flex-col items-center ${member.colour}`}
                 >
-                  <p class="font-sans text-xs lg:text-sm">
-                    {member.name}, {member.role}
-                  </p>
+                  {member.image && (
+                    <img
+                      src={`/team/${member.image}.webp`}
+                      alt={member.name}
+                      class="w-[50%] h-[50%] object-contain mt-3 lg:mt-5"
+                    />
+                  )}
+                  <div class="absolute bottom-0 left-0 right-0 p-3 lg:p-4">
+                    <p class="font-sans text-xs lg:text-sm">
+                      {member.name}
+                      <br />
+                      {member.role}
+                    </p>
+                  </div>
                 </div>
               ))
             }
