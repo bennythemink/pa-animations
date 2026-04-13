@@ -40,27 +40,6 @@ function resolveColour(raw: string): string | null {
   return null
 }
 
-const usedHex = new Set<string>()
-
-function pickRandom(): string {
-  const available = pixelColourValues.filter((c) => !usedHex.has(c))
-  const pool = available.length > 0 ? available : pixelColourValues
-  return pool[Math.floor(Math.random() * pool.length)]
-}
-
-function assignColour(raw?: string): string {
-  if (raw) {
-    const resolved = resolveColour(raw)
-    if (resolved) {
-      usedHex.add(resolved)
-      return resolved
-    }
-  }
-  const colour = pickRandom()
-  usedHex.add(colour)
-  return colour
-}
-
 // Auto-placement: 1 card per row by default, randomly pairing two cards on a row.
 // If a title is present, the first card pairs with it at row 1 col 7 and
 // subsequent rows use the normal algorithm.
@@ -80,7 +59,7 @@ if (title && cards.length > 0) {
   // Title occupies row 1 col 2; first card pairs with it at row 1 col 7
   layoutCards.push({
     ...cards[0],
-    colour: assignColour(cards[0].colour),
+    colour: '',
     colStart: 7,
     colSpan: 5,
     rowStart: 1,
@@ -131,7 +110,7 @@ while (idx < cards.length) {
   if (makePair) {
     layoutCards.push({
       ...cards[idx],
-      colour: assignColour(cards[idx].colour),
+      colour: '',
       colStart: 2,
       colSpan: 5,
       rowStart: rowNum,
@@ -139,7 +118,7 @@ while (idx < cards.length) {
     })
     layoutCards.push({
       ...cards[idx + 1],
-      colour: assignColour(cards[idx + 1].colour),
+      colour: '',
       colStart: 7,
       colSpan: 5,
       rowStart: rowNum,
@@ -150,7 +129,7 @@ while (idx < cards.length) {
     const colStart = rowNum % 2 === 1 ? 2 : 7
     layoutCards.push({
       ...cards[idx],
-      colour: assignColour(cards[idx].colour),
+      colour: '',
       colStart,
       colSpan: 5,
       rowStart: rowNum,
@@ -167,7 +146,12 @@ const titleColour = title?.colour ? (resolveColour(title.colour) ?? 'inherit') :
 const uid = Math.random().toString(36).slice(2, 8)
 ---
 
-<section id="approach-points" data-approach-section class="py-12 lg:py-20">
+<section
+  id="approach-points"
+  data-approach-section
+  data-colour-pool={JSON.stringify(pixelColourValues)}
+  class="py-12 lg:py-20"
+>
   <div class="grid grid-cols-12 px-5 max-w-360 mx-auto w-full">
     {
       title && (
@@ -185,7 +169,7 @@ const uid = Math.random().toString(36).slice(2, 8)
           data-approach-card
           data-solo={card.solo ? 'true' : undefined}
           class="approach-card col-span-full grid grid-cols-1 lg:grid-cols-5 gap-x-[20px] p-[12px] lg:p-[30px] min-h-[200px]"
-          style={`background-color: ${card.colour}; --col-start: ${card.colStart}; --col-span: ${card.colSpan}; --row-start: ${card.rowStart};`}
+          style={`--col-start: ${card.colStart}; --col-span: ${card.colSpan}; --row-start: ${card.rowStart};`}
         >
           {style === 'left-aligned' ? (
             <>
@@ -252,8 +236,24 @@ const uid = Math.random().toString(36).slice(2, 8)
     return a
   }
 
+  function assignRandomColours(section: HTMLElement, cards: HTMLElement[]) {
+    const pool: string[] = JSON.parse(section.dataset.colourPool || '[]')
+    if (pool.length === 0) return
+    const used = new Set<string>()
+    cards.forEach((card) => {
+      const available = pool.filter((c) => !used.has(c))
+      const pick = available.length > 0 ? available : pool
+      const colour = pick[Math.floor(Math.random() * pick.length)]
+      used.add(colour)
+      card.style.backgroundColor = colour
+    })
+  }
+
   function initSection(section: HTMLElement): Instance {
     const cards = Array.from(section.querySelectorAll<HTMLElement>('[data-approach-card]'))
+
+    // Assign random background colours on each page load
+    assignRandomColours(section, cards)
 
     // Randomise col-start for solo cards, guaranteeing at least one in each column
     const soloCards = cards.filter((c) => c.dataset.solo === 'true')
