@@ -138,25 +138,26 @@ const sectionCards = [
 
   <Image src={aboutImage} alt="" class="w-full h-[288px] lg:h-[456px] object-cover" widths={[768, 1440, 2560]} />
 
-  <section id="pov" class="relative overflow-hidden">
-    <div id="pov-pin" class="h-screen flex items-center justify-center">
-      <div class="grid grid-cols-12 gap-5 px-5 max-w-360 mx-auto w-full items-center relative">
-        <!-- "Our" word -->
-        <div id="pov-our" class="col-span-full flex justify-center lg:justify-center">
-          <span class="font-sans text-[80px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
-            >Our</span
-          >
-        </div>
-        <!-- "POV" word -->
-        <div id="pov-pov" class="col-span-full flex justify-center lg:justify-center">
-          <span class="font-sans text-[80px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
-            >POV</span
-          >
+  <section id="pov" class="relative">
+    <div id="pov-container" class="relative py-16 lg:py-24 pb-[400px] lg:pb-[500px]">
+      <div class="grid grid-cols-12 gap-5 px-5 max-w-360 mx-auto w-full relative">
+        <!-- Words row -->
+        <div class="col-span-full relative h-[80px] lg:h-[200px]">
+          <div id="pov-our" class="absolute top-0 left-1/2">
+            <span class="font-sans text-[80px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
+              >Our</span
+            >
+          </div>
+          <div id="pov-pov" class="absolute top-0 left-1/2">
+            <span class="font-sans text-[80px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
+              >POV</span
+            >
+          </div>
         </div>
         <!-- Body text -->
         <div
           id="pov-text"
-          class="col-span-full lg:col-start-5 lg:col-span-4 flex flex-col gap-5 font-serif leading-[0.76] text-base lg:text-lg opacity-0"
+          class="col-span-full lg:col-start-5 lg:col-span-4 flex flex-col gap-5 font-serif leading-[0.76] text-base lg:text-lg mt-10 lg:mt-16"
         >
           <p>
             Pixel Agency creates digital work worth standing behind — where the people who shape the promise also design
@@ -316,15 +317,11 @@ const sectionCards = [
     @media (min-width: 1024px) {
       #pov-our,
       #pov-pov {
-        position: absolute;
-        top: 40px;
-        left: 50%;
-        will-change: transform, left;
+        will-change: transform;
       }
       #pov-text {
         position: absolute;
-        top: 40px;
-        opacity: 0;
+        top: 0;
         will-change: transform, opacity;
       }
     }
@@ -391,30 +388,37 @@ const sectionCards = [
       ScrollTrigger.matchMedia({
         // Desktop animation
         '(min-width: 1024px)': () => {
-          const pin = document.getElementById('pov-pin')!
+          const container = document.getElementById('pov-container')!
           const ourEl = document.getElementById('pov-our')!
           const povEl = document.getElementById('pov-pov')!
           const textEl = document.getElementById('pov-text')!
 
           const grid = ourEl.closest('.grid')!
 
-          // Set initial positions via GSAP so it owns the transform state
-          gsap.set(ourEl, { xPercent: -110, yPercent: 0 })
-          gsap.set(povEl, { xPercent: 10, yPercent: 0 })
-          gsap.set(textEl, { yPercent: 0, y: 200, opacity: 0 })
+          // Set initial positions: both words centered, side by side
+          gsap.set(ourEl, { xPercent: -110 })
+          gsap.set(povEl, { xPercent: 10 })
+
+          // Calculate text width to span cols 5–8
+          const getTextWidth = () => {
+            const gridRect = grid.getBoundingClientRect()
+            const contentW = gridRect.width - 40 // subtract px-5 padding both sides
+            const colW = (contentW - 11 * 20) / 12
+            return 4 * colW + 3 * 20 // 4 cols + 3 gaps
+          }
+          gsap.set(textEl, { opacity: 0, y: 200, left: '50%', xPercent: -50, width: getTextWidth() })
 
           const tl = gsap.timeline({
             scrollTrigger: {
-              trigger: pin,
-              start: 'top top',
-              end: '+=150%',
-              pin: true,
+              trigger: container,
+              start: 'top bottom',
+              end: 'top top',
               scrub: 1,
               invalidateOnRefresh: true
             }
           })
 
-          // Animate "Our" to col 2 left edge — stay vertically centered
+          // Split words apart
           tl.to(
             ourEl,
             {
@@ -424,13 +428,11 @@ const sectionCards = [
                 return colW + 20
               },
               xPercent: 0,
-              yPercent: 0,
               duration: 1,
               ease: 'power2.inOut'
             },
             0
           )
-          // Animate "POV" to end at col 11 — stay top-aligned
           tl.to(
             povEl,
             {
@@ -441,39 +443,40 @@ const sectionCards = [
                 return 10 * colW + 10 * 20 + colW - povSpan.offsetWidth
               },
               xPercent: 0,
-              yPercent: 0,
               duration: 1,
               ease: 'power2.inOut'
             },
             0
           )
 
-          // Fade in and slide up body text
+          // Fade in body text, move up to align with words
           tl.to(
             textEl,
             {
               opacity: 1,
               y: 0,
-              duration: 1,
+              left: '50%',
+              xPercent: -50,
+              width: () => getTextWidth(),
+              duration: 0.6,
               ease: 'power2.out'
             },
-            0.3
+            0.5
           )
         },
 
         // Mobile: simpler animation
         '(max-width: 1023px)': () => {
-          const pin = document.getElementById('pov-pin')!
+          const container = document.getElementById('pov-container')!
           const textEl = document.getElementById('pov-text')!
 
-          gsap.set(textEl, { opacity: 0, y: 80 })
+          gsap.set(textEl, { opacity: 0, y: 40 })
 
           const tl = gsap.timeline({
             scrollTrigger: {
-              trigger: pin,
-              start: 'top top',
-              end: '+=100%',
-              pin: true,
+              trigger: container,
+              start: 'top bottom',
+              end: 'top 30%',
               scrub: 1
             }
           })
