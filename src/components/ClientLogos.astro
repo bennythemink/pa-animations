@@ -124,7 +124,7 @@ const logoData = clients ?? defaultClients
 ---
 
 <div
-  class="client-logos-marquee overflow-hidden relative my-6 lg:my-8 h-8 select-none"
+  class="client-logos-marquee overflow-hidden relative my-6 lg:my-12 h-8 select-none"
   data-speed={speed}
   data-interactive={interactive ? 'true' : 'false'}
 >
@@ -133,7 +133,7 @@ const logoData = clients ?? defaultClients
       logoData.map((client, i) => (
         <button
           type="button"
-          class="marquee-item flex-shrink-0 px-[10px] lg:px-[12px] cursor-pointer appearance-none bg-transparent border-0 p-0"
+          class="marquee-item shrink-0 px-[10px] lg:px-[12px] cursor-pointer appearance-none bg-transparent border-0 p-0"
           data-links={JSON.stringify(client.links || [])}
           data-name={client.name}
           data-industry={client.industry || ''}

@@ -22,10 +22,10 @@ const year = new Date().getFullYear()
       <div
         class="col-span-full order-3 flex flex-col-reverse gap-3 text-base sm:text-lg lg:col-start-2 lg:col-span-3 lg:row-start-1 lg:flex-col lg:self-start"
       >
-        <p class="text-black/40 lg:text-black leading-none">
+        <p class="text-black/40 lg:text-black leading-none font-sans text-base">
           © {year} Pixel Agency. All Rights Reserved.
         </p>
-        <ul class="flex flex-col leading-none">
+        <ul class="flex flex-col font-sans text-base">
           <li>
             <a href="/privacy-policy" class="text-black/40 hover:text-black transition-colors">Privacy Policy</a>
           </li>
@@ -43,7 +43,7 @@ const year = new Date().getFullYear()
       {/* Nav links — mobile: 1st row left (col-span-6); desktop: col 11–12 row 1 */}
       <div
         id="footer-nav-links"
-        class="col-span-6 order-1 flex flex-col gap-1 leading-none text-base sm:text-lg lg:col-start-11 lg:col-span-2 lg:row-start-1 lg:order-1 lg:self-start"
+        class="col-span-6 order-1 flex flex-col gap-1 text-base font-sans font-normal sm:text-lg lg:col-start-11 lg:col-span-2 lg:row-start-1 lg:order-1 lg:self-start"
       >
         <a href="/services" class="footer-nav-link hover:underline underline-offset-2">Services</a>
         <a href="/pixel-assist" class="footer-nav-link hover:underline underline-offset-2">Pixel Assist</a>
@@ -54,7 +54,7 @@ const year = new Date().getFullYear()
 
       {/* Melbourne/AEDT — mobile: 1st row right (col-span-6, text-right); desktop: col 2–4 row 3 */}
       <div
-        class="col-span-6 order-1 text-right leading-none text-base sm:text-lg lg:col-start-2 lg:col-span-3 lg:row-start-2 lg:order-3 lg:text-left"
+        class="col-span-6 order-1 text-right font-sans text-base lg:col-start-2 lg:col-span-3 lg:row-start-2 lg:order-3 lg:text-left"
       >
         <p class="font-semibold">Melbourne, Australia</p>
         <p class="text-black/60">AEDT</p>
@@ -62,22 +62,25 @@ const year = new Date().getFullYear()
 
       {/* Contact block — mobile: 2nd row; desktop: col 5–7 row 1 */}
       <div
-        class="col-span-full order-2 flex flex-col gap-3 text-base sm:text-lg lg:col-start-5 lg:col-span-3 lg:row-start-1 lg:order-1 lg:self-start"
+        class="col-span-full order-2 mt-[28px] flex flex-col gap-3 font-serif text-base sm:text-lg lg:col-start-5 lg:col-span-3 lg:row-start-1 lg:order-1 lg:self-start lg:mt-0"
       >
-        <p class="leading-none">We'd love to chat, here is<br />how you can reach us:</p>
+        <p class="leading-none font-serif text-2xl">
+          We'd love to chat, here is<br />how you can reach us:
+        </p>
         <ul class="flex flex-col gap-1">
           <li>
-            <span class="font-bold">Email</span>{' '}
-            <a href="mailto:hello@pixelagency.com.au" class="hover:underline underline-offset-2"
+            <span class="font-semibold font-sans text-base">Email</span>{' '}
+            <a href="mailto:hello@pixelagency.com.au" class="hover:underline underline-offset-2 font-sans text-base"
               >hello@pixelagency.com.au</a
             >
           </li>
           <li>
-            <span class="font-bold">Call</span>{' '}
-            <a href="tel:+61400000000" class="hover:underline underline-offset-2">+61 400 000 000</a>
+            <span class="font-semibold font-sans text-base">Call</span>{' '}
+            <a href="tel:+61400000000" class="hover:underline underline-offset-2 font-sans text-base">+61 400 000 000</a
+            >
           </li>
-          <li><a href="#" class="hover:underline underline-offset-2">LinkedIn</a></li>
-          <li><a href="#" class="hover:underline underline-offset-2">Instagram</a></li>
+          <li><a href="#" class="hover:underline underline-offset-2 font-sans text-base">LinkedIn</a></li>
+          <li><a href="#" class="hover:underline underline-offset-2 font-sans text-base">Instagram</a></li>
         </ul>
       </div>
     </Grid>
