@@ -55,7 +55,7 @@ const navLinks = [
                 id="services-dropdown"
                 role="menu"
                 hidden
-                class="absolute top-full left-0 mt-1 flex flex-col py-2 font-sans font-normal whitespace-nowrap"
+                class="absolute top-full left-0 flex flex-col pt-3 pb-2 font-sans font-normal whitespace-nowrap"
                 style="background-color: rgb(255 255 255 / 95%); backdrop-filter: blur(4px);"
               >
                 {serviceLinks.map((s) => (
@@ -204,8 +204,6 @@ const navLinks = [
 
     dropdownWrapper.addEventListener('mouseenter', openDropdown)
     dropdownWrapper.addEventListener('mouseleave', closeDropdown)
-    dropdown.addEventListener('mouseenter', openDropdown)
-    dropdown.addEventListener('mouseleave', closeDropdown)
 
     // Close when a dropdown link is clicked
     dropdown.querySelectorAll('a').forEach((a) =>
