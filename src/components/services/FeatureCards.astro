@@ -189,6 +189,11 @@ const uid = Math.random().toString(36).slice(2, 8)
 </section>
 
 <style>
+  /* Hide cards before JS inits so they never flash visible */
+  .approach-card {
+    clip-path: inset(100% 0% 0% 0%);
+  }
+
   @media (min-width: 1024px) {
     .approach-card {
       grid-column: var(--col-start) / span var(--col-span);
@@ -272,14 +277,18 @@ const uid = Math.random().toString(36).slice(2, 8)
     // Shuffle clip directions so each page load gets a different assignment
     const directions = shuffle(CLIP_DIRECTIONS)
 
+    // Set clip-path immediately (before any ScrollTrigger measures positions)
+    cards.forEach((card, i) => {
+      card.style.clipPath = directions[i % directions.length]
+    })
+
     const ctx = gsap.context(() => {
       cards.forEach((card, i) => {
-        gsap.set(card, { clipPath: directions[i % directions.length] })
         gsap.to(card, {
           clipPath: 'inset(0% 0% 0% 0%)',
           duration: 0.9,
           ease: 'power2.out',
-          scrollTrigger: { trigger: card, start: 'top 85%', once: true }
+          scrollTrigger: { trigger: card, start: 'top 85%', once: true, invalidateOnRefresh: true }
         })
       })
     })
