@@ -9,6 +9,7 @@ import { Image } from 'astro:assets'
 import aboutImage from '@assets/pa-about-reduced.webp'
 import ClientLogos from '@components/ClientLogos.astro'
 import Callout from '@components/Callout.astro'
+import ContactForm from '@components/ContactForm.astro'
 
 /**
  * WhoSection variables
@@ -311,7 +312,9 @@ const sectionCards = [
     notForItems={whoNotFor}
   />
 
-  <Callout />
+  <!-- <Callout /> -->
+
+  <ContactForm />
 
   <style>
     #team-cards {

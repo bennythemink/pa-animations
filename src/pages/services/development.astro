@@ -1,6 +1,5 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import Grid from '@components/Grid.astro'
 import HeroSection from '@components/services/HeroSection.astro'
 import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
 import WhoSection from '@components/services/WhoSection.astro'
@@ -113,7 +112,5 @@ const whoNotFor = ['Projects where speed is the only priority and stability can 
 
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
 
-  <Grid>
-    <ContactForm title="Let's talk about what you're trying to achieve." />
-  </Grid>
+  <ContactForm title="Let's talk about what you're trying to achieve." />
 </Layout>

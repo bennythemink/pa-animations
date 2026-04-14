@@ -1,6 +1,5 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import Grid from '@components/Grid.astro'
 import HeroSection from '@components/services/HeroSection.astro'
 import ContactForm from '@components/ContactForm.astro'
 import Vector from '@components/signs/Vector.astro'
@@ -96,7 +95,5 @@ const whoNotFor = [
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
 
   {/* ── CTA + Form ── */}
-  <Grid>
-    <ContactForm title="Let's talk about what you're trying to achieve." />
-  </Grid>
+  <ContactForm title="Let's talk about what you're trying to achieve." />
 </Layout>
