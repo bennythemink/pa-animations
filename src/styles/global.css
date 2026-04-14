@@ -1,18 +1,15 @@
 @import 'tailwindcss';
 
 @layer base {
-  html {
-    font-size: 18px;
-    @variant sm {
-      font-size: 24px;
-    }
-  }
-
   body {
     font-family: var(--font-lateef);
     font-weight: 200;
+    font-size: 18px;
     letter-spacing: -0.01em;
     line-height: 0.95;
+    @variant sm {
+      font-size: 24px;
+    }
   }
 
   h1,
