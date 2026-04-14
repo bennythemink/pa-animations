@@ -1,14 +1,14 @@
 ---
 interface Props {
   url?: string
-  linkText?: string
+  label?: string
   useAccentAsHoverColour?: boolean
   alwaysUnderline?: boolean
 }
 
 const {
   url = '/contact',
-  linkText = 'Get in touch →',
+  label = 'Get in touch →',
   useAccentAsHoverColour = true,
   alwaysUnderline = false
 } = Astro.props
@@ -20,7 +20,7 @@ const {
     'cta-link font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base transition-colors',
     alwaysUnderline ? 'underline' : 'no-underline hover:underline',
     useAccentAsHoverColour && 'cta-accent-hover'
-  ]}>{linkText}</a
+  ]}>{label}</a
 >
 
 <style>
