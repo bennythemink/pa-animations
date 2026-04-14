@@ -108,8 +108,6 @@ const sectionCards = [
   title="About Us"
   description="Learn how Pixel Agency works. A practitioner-led digital agency focused on clarity, collaboration, and delivering real outcomes through thoughtful design and development."
 >
-  <section id="pov"></section>
-
   <section id="hero" class="pt-10 pb-12 lg:pt-16 lg:pb-20">
     <Grid>
       <div class="col-span-full lg:col-start-2 lg:col-span-6">
@@ -144,6 +142,47 @@ const sectionCards = [
     class="w-full h-[288px] lg:h-[456px] object-cover mb-4 lg:mb-24"
     widths={[768, 1440, 2560]}
   />
+
+  <section id="pov" class="relative overflow-hidden">
+    <div id="pov-pin" class="h-screen flex items-center justify-center">
+      <div class="grid grid-cols-12 gap-5 px-5 max-w-360 mx-auto w-full items-center relative">
+        <!-- "Our" word -->
+        <div id="pov-our" class="col-span-full flex justify-center lg:justify-center">
+          <span class="font-sans text-[80px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
+            >Our</span
+          >
+        </div>
+        <!-- "POV" word -->
+        <div id="pov-pov" class="col-span-full flex justify-center lg:justify-center">
+          <span class="font-sans text-[80px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
+            >POV</span
+          >
+        </div>
+        <!-- Body text -->
+        <div
+          id="pov-text"
+          class="col-span-full lg:col-start-5 lg:col-span-4 flex flex-col gap-5 font-serif leading-[0.76] text-base lg:text-lg opacity-0"
+        >
+          <p>
+            Pixel Agency creates digital work worth standing behind — where the people who shape the promise also design
+            and build the outcome, with care for the business and the people who use it. In short, we do not believe in
+            the sales theatre, so we have no sales team.
+          </p>
+          <p>
+            We believe too much digital work is shaped by sales theatre, rushed promises, and hand-offs that dilute
+            responsibility. The result is work that ships, but no one truly owns — and no one is proud of.
+          </p>
+          <p>
+            We take a different approach. At Pixel Agency, responsibility stays close to the work. We speak honestly,
+            challenge ideas that won't add value, and say no when the fit isn't right. We prioritise long-term
+            partnerships over short-term wins and take pride in delivering work we're happy to put our name on.
+          </p>
+          <p>This belief is not a positioning exercise — it's how we operate.</p>
+          <p>It shapes our decisions, our relationships, and the quality of what we create.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="how" class="py-12 lg:py-20">
     <Grid>
@@ -278,6 +317,35 @@ const sectionCards = [
   />
 
   <style>
+    /* POV section */
+    #pov-our,
+    #pov-pov {
+      will-change: transform, left;
+    }
+    #pov-text {
+      will-change: transform, opacity;
+    }
+    /* On mobile, show "Our" and "POV" inline */
+    @media (max-width: 1023px) {
+      #pov-our,
+      #pov-pov {
+        display: inline;
+      }
+      #pov-our {
+        margin-right: 0.15em;
+      }
+      #pov .grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+      #pov .grid > div:first-child,
+      #pov .grid > div:nth-child(2) {
+        display: inline;
+      }
+    }
+
     #team-cards {
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -316,6 +384,133 @@ const sectionCards = [
 
     // ── Horizontal scroll for team section (desktop only) ──
     const ctx = gsap.context(() => {
+      // ── POV section animation ──
+      ScrollTrigger.matchMedia({
+        // Desktop animation
+        '(min-width: 1024px)': () => {
+          const pin = document.getElementById('pov-pin')!
+          const ourEl = document.getElementById('pov-our')!
+          const povEl = document.getElementById('pov-pov')!
+          const textEl = document.getElementById('pov-text')!
+
+          // Position "Our" and "POV" on the same line, centered
+          gsap.set([ourEl, povEl], {
+            position: 'absolute',
+            top: '50%',
+            yPercent: -50
+          })
+          gsap.set(ourEl, { left: '50%', xPercent: -110 })
+          gsap.set(povEl, { left: '50%', xPercent: 10 })
+          gsap.set(textEl, { position: 'absolute', top: '50%', yPercent: -50, opacity: 0, y: 200 })
+
+          // Calculate target positions based on grid
+          // col-start-2 means left edge at (1/12 * 100%) of the grid
+          // col 11 end means right edge at (11/12 * 100%) of the grid
+          const grid = ourEl.closest('.grid')!
+          const computeTargets = () => {
+            const gridRect = grid.getBoundingClientRect()
+            const colW = (gridRect.width - 11 * 20) / 12 // 12 cols, 11 gaps of 20px
+            const ourTarget = colW + 20 // start of col 2
+            const ourSpan = ourEl.querySelector('span')!
+            const povSpan = povEl.querySelector('span')!
+            const povTarget = gridRect.width - povSpan.offsetWidth - (colW + 20) // end at col 11
+
+            return {
+              ourX: ourTarget - gridRect.width / 2 + ourSpan.offsetWidth / 2,
+              povX: povTarget - gridRect.width / 2 + povSpan.offsetWidth / 2
+            }
+          }
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: pin,
+              start: 'top top',
+              end: '+=150%',
+              pin: true,
+              scrub: 1,
+              invalidateOnRefresh: true
+            }
+          })
+
+          // Animate words apart
+          tl.to(
+            ourEl,
+            {
+              left: () => {
+                const t = computeTargets()
+                const grid2 = ourEl.closest('.grid')!
+                const gridRect = grid2.getBoundingClientRect()
+                const colW = (gridRect.width - 11 * 20) / 12
+                return colW + 20
+              },
+              xPercent: 0,
+              duration: 1,
+              ease: 'power2.inOut'
+            },
+            0
+          )
+          tl.to(
+            povEl,
+            {
+              left: () => {
+                const grid2 = povEl.closest('.grid')!
+                const gridRect = grid2.getBoundingClientRect()
+                const colW = (gridRect.width - 11 * 20) / 12
+                const povSpan = povEl.querySelector('span')!
+                // End of col 11 = start of col 11 + col width
+                // Start of col 11 = 10 * colW + 10 * 20
+                return 10 * colW + 10 * 20 + colW - povSpan.offsetWidth
+              },
+              xPercent: 0,
+              duration: 1,
+              ease: 'power2.inOut'
+            },
+            0
+          )
+
+          // Fade in and slide up body text
+          tl.to(
+            textEl,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: 'power2.out'
+            },
+            0.3
+          )
+        },
+
+        // Mobile: simpler animation
+        '(max-width: 1023px)': () => {
+          const pin = document.getElementById('pov-pin')!
+          const textEl = document.getElementById('pov-text')!
+
+          gsap.set(textEl, { opacity: 0, y: 80 })
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: pin,
+              start: 'top top',
+              end: '+=100%',
+              pin: true,
+              scrub: 1
+            }
+          })
+
+          tl.to(
+            textEl,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: 'power2.out'
+            },
+            0.2
+          )
+        }
+      })
+
       ScrollTrigger.matchMedia({
         '(min-width: 1024px)': () => {
           const wrapper = document.getElementById('team-scroll-wrapper')!
