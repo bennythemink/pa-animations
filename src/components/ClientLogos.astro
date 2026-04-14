@@ -116,7 +116,7 @@ const logoData = clients ?? defaultClients
 ---
 
 <div
-  class="client-logos-marquee overflow-hidden relative my-[26px] h-8 select-none"
+  class="client-logos-marquee overflow-hidden relative my-6 lg:my-8 h-8 select-none"
   data-speed={speed}
   data-interactive={interactive ? 'true' : 'false'}
 >
@@ -302,6 +302,16 @@ const logoData = clients ?? defaultClients
       scheduleHide()
     })
 
+    // Show popup on hover over logo
+    container.addEventListener('mouseover', (e) => {
+      if (!interactive) return
+      const btn = (e.target as HTMLElement).closest<HTMLElement>('.marquee-item')
+      if (!btn) return
+      cancelHide()
+      paused = true
+      showPopup(btn)
+    })
+
     // Popup logic
     function showPopup(btn: HTMLElement) {
       const name = btn.dataset.name || ''
@@ -365,18 +375,19 @@ const logoData = clients ?? defaultClients
 
     function clickHandler(e: Event) {
       if (!interactive) return
-
       const btn = (e.target as HTMLElement).closest<HTMLElement>('.marquee-item')
       if (!btn) return
 
-      // Toggle popup
+      // Toggle popup on click/tap (primarily for mobile)
       if (!popup.classList.contains('hidden')) {
         const currentName = popup.querySelector('.popup-name')!.textContent
         if (currentName === btn.dataset.name) {
           hidePopup()
+          paused = false
           return
         }
       }
+      paused = true
       showPopup(btn)
     }
 
