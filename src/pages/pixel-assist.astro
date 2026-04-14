@@ -367,9 +367,10 @@ const benefitsCards = [
   <section id="who" class="py-16 lg:py-24">
     <Grid>
       {/* Left: Who is Pixel Assist for */}
-      <div class="col-span-12 lg:col-start-2 lg:col-span-5">
+      <div class="col-span-12 lg:col-start-2 lg:col-span-4">
         <h2 class="font-sans font-normal lg:text-4xl text-pixel-red pb-4 lg:pb-7">Who is Pixel Assist for?</h2>
-        <div class="text-[16px] lg:text-[24px] tracking-[-0.01em] font-sans text-base leading-[1.5]">
+        <!-- <div class="text-[16px] lg:text-[24px] tracking-[-0.01em] font-sans text-base leading-[1.5]"> -->
+        <div class="lg:text-[24px]">
           <p>
             Common examples include manufacturers and wholesalers, education and training providers, professional
             services firms, SaaS and technology platforms, and internal knowledge bases and portals.
@@ -409,16 +410,25 @@ const benefitsCards = [
     <Grid>
       <div class="col-span-full py-10 lg:py-14 grid grid-cols-12 gap-5 bg-pixel-off-cream">
         {/* Left: Case study label + heading + description */}
-        <div class="col-span-12 lg:col-start-2 lg:col-span-3">
-          <h2 class="font-sans font-normal lg:text-4xl text-[#c9b58d] pb-4 lg:pb-7">Case study</h2>
-          <h3 class="font-sans font-normal text-4xl lg:text-6xl leading-[0.95] tracking-[-0.03em] mb-6 lg:mb-10">
-            Fletcher Insulation
-          </h3>
-          <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em]">
-            Fletcher Insulation manages a large catalogue of technical products supported by datasheets, compliance
-            documentation, and specifications. For trades, architects, and project teams, finding the right information
-            often meant searching across multiple pages or contacting support.
-          </p>
+        <div class="col-span-12 lg:col-start-2 lg:col-span-3 flex flex-col items-start justify-between">
+          <div class="">
+            <h2 class="font-sans font-normal lg:text-4xl text-[#c9b58d] pb-4 lg:pb-7">Case study</h2>
+            <h3 class="font-sans font-normal text-4xl lg:text-6xl leading-[0.95] tracking-[-0.03em] mb-6 lg:mb-10">
+              Fletcher Insulation
+            </h3>
+          </div>
+          <div class="">
+            <p>
+              Fletcher Insulation manages a large catalogue of technical products supported by datasheets, compliance
+              documentation, and specifications. For trades, architects, and project teams, finding the right
+              information often meant searching across multiple pages or contacting support.
+            </p><br />
+            <p>
+              We implemented Pixel Assist to answer product and compliance questions instantly and make technical
+              information easier to access, reduce repetitive support requests, and help customers choose products with
+              confidence.
+            </p>
+          </div>
         </div>
 
         {/* Middle: Branded example image */}
@@ -428,19 +438,11 @@ const benefitsCards = [
 
         {/* Right: Results copy */}
         <div class="col-span-12 lg:col-span-3 flex flex-col items-center justify-end">
-          <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em]">
-            We implemented Pixel Assist to answer product and compliance questions instantly
-            <Plus size={20} desktopSize={30} />
-            make technical information easier to access, reduce repetitive support requests, and help customers choose products
-            with confidence.
-          </p>
-          <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em] mt-4">
+          <p>
             The result is a faster, smoother experience for users — and a website that actively supports decision-making
             rather than simply hosting information.
           </p>
-          <p class="font-sans text-sm lg:text-base leading-[1.5] tracking-[-0.01em] mt-4">
-            The same approach can be configured for any organisation with complex knowledge.
-          </p>
+          <p>The same approach can be configured for any organisation with complex knowledge.</p>
         </div>
       </div>
     </Grid>
@@ -450,7 +452,7 @@ const benefitsCards = [
     <Grid>
       <div
         id="price"
-        class="col-span-full lg:col-start-2 lg:col-span-5 lg:row-start-2 lg:sticky lg:top-10 lg:self-start"
+        class="col-span-full lg:col-start-2 lg:col-span-6 lg:row-start-2 lg:sticky lg:top-10 lg:self-start"
       >
         <h2 class="col-span-full lg:col-start-2 font-sans font-normal lg:text-4xl text-pixel-blue pb-4 lg:pb-7">
           Pricing
@@ -463,7 +465,7 @@ const benefitsCards = [
 
       <div
         id="includes"
-        class="bg-pixel-cream col-span-full lg:col-span-5 lg:col-start-7 lg:row-start-2 flex flex-col px-5 lg:px-11 py-7 lg:pt-14 lg:pb-16"
+        class="bg-pixel-cream col-span-full lg:col-span-5 lg:col-start-8 lg:row-start-2 flex flex-col px-5 lg:px-11 py-7 lg:pt-14 lg:pb-16"
       >
         <div class="px-5 py-4 bg-pixel-cream">
           <p class="font-sans text-xl lg:text-4xl text-white">Every implementation includes:</p>
