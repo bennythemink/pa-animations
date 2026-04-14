@@ -136,12 +136,7 @@ const sectionCards = [
     </Grid>
   </section>
 
-  <Image
-    src={aboutImage}
-    alt=""
-    class="w-full h-[288px] lg:h-[456px] object-cover mb-4 lg:mb-24"
-    widths={[768, 1440, 2560]}
-  />
+  <Image src={aboutImage} alt="" class="w-full h-[288px] lg:h-[456px] object-cover" widths={[768, 1440, 2560]} />
 
   <section id="pov" class="relative overflow-hidden">
     <div id="pov-pin" class="h-screen flex items-center justify-center">
@@ -318,12 +313,20 @@ const sectionCards = [
 
   <style>
     /* POV section */
-    #pov-our,
-    #pov-pov {
-      will-change: transform, left;
-    }
-    #pov-text {
-      will-change: transform, opacity;
+    @media (min-width: 1024px) {
+      #pov-our,
+      #pov-pov {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        will-change: transform, left;
+      }
+      #pov-text {
+        position: absolute;
+        top: 40px;
+        opacity: 0;
+        will-change: transform, opacity;
+      }
     }
     /* On mobile, show "Our" and "POV" inline */
     @media (max-width: 1023px) {
@@ -393,33 +396,12 @@ const sectionCards = [
           const povEl = document.getElementById('pov-pov')!
           const textEl = document.getElementById('pov-text')!
 
-          // Position "Our" and "POV" on the same line, centered
-          gsap.set([ourEl, povEl], {
-            position: 'absolute',
-            top: '50%',
-            yPercent: -50
-          })
-          gsap.set(ourEl, { left: '50%', xPercent: -110 })
-          gsap.set(povEl, { left: '50%', xPercent: 10 })
-          gsap.set(textEl, { position: 'absolute', top: '50%', yPercent: -50, opacity: 0, y: 200 })
-
-          // Calculate target positions based on grid
-          // col-start-2 means left edge at (1/12 * 100%) of the grid
-          // col 11 end means right edge at (11/12 * 100%) of the grid
           const grid = ourEl.closest('.grid')!
-          const computeTargets = () => {
-            const gridRect = grid.getBoundingClientRect()
-            const colW = (gridRect.width - 11 * 20) / 12 // 12 cols, 11 gaps of 20px
-            const ourTarget = colW + 20 // start of col 2
-            const ourSpan = ourEl.querySelector('span')!
-            const povSpan = povEl.querySelector('span')!
-            const povTarget = gridRect.width - povSpan.offsetWidth - (colW + 20) // end at col 11
 
-            return {
-              ourX: ourTarget - gridRect.width / 2 + ourSpan.offsetWidth / 2,
-              povX: povTarget - gridRect.width / 2 + povSpan.offsetWidth / 2
-            }
-          }
+          // Set initial positions via GSAP so it owns the transform state
+          gsap.set(ourEl, { xPercent: -110, yPercent: 0 })
+          gsap.set(povEl, { xPercent: 10, yPercent: 0 })
+          gsap.set(textEl, { yPercent: 0, y: 200, opacity: 0 })
 
           const tl = gsap.timeline({
             scrollTrigger: {
@@ -432,36 +414,34 @@ const sectionCards = [
             }
           })
 
-          // Animate words apart
+          // Animate "Our" to col 2 left edge — stay vertically centered
           tl.to(
             ourEl,
             {
               left: () => {
-                const t = computeTargets()
-                const grid2 = ourEl.closest('.grid')!
-                const gridRect = grid2.getBoundingClientRect()
+                const gridRect = grid.getBoundingClientRect()
                 const colW = (gridRect.width - 11 * 20) / 12
                 return colW + 20
               },
               xPercent: 0,
+              yPercent: 0,
               duration: 1,
               ease: 'power2.inOut'
             },
             0
           )
+          // Animate "POV" to end at col 11 — stay top-aligned
           tl.to(
             povEl,
             {
               left: () => {
-                const grid2 = povEl.closest('.grid')!
-                const gridRect = grid2.getBoundingClientRect()
+                const gridRect = grid.getBoundingClientRect()
                 const colW = (gridRect.width - 11 * 20) / 12
                 const povSpan = povEl.querySelector('span')!
-                // End of col 11 = start of col 11 + col width
-                // Start of col 11 = 10 * colW + 10 * 20
                 return 10 * colW + 10 * 20 + colW - povSpan.offsetWidth
               },
               xPercent: 0,
+              yPercent: 0,
               duration: 1,
               ease: 'power2.inOut'
             },
