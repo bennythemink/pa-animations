@@ -159,16 +159,19 @@ const logoData = clients ?? defaultClients
     role="dialog"
     aria-hidden="true"
   >
-    <p class="popup-name font-sans text-base font-medium text-white mb-3"></p>
-    <div class="popup-details grid gap-y-2 font-sans text-xs text-white" style="grid-template-columns: auto 1fr;">
+    <p class="popup-name font-sans text-lg font-medium text-white mb-3"></p>
+    <div class="popup-details grid gap-y-2 font-sans text-lg text-white" style="grid-template-columns: auto 1fr;">
       <span class="text-white/50">Sector</span>
       <span class="popup-industry-value"></span>
       <span class="text-white/50">Services</span>
       <span class="popup-services-row flex flex-wrap items-center gap-2"></span>
       <span class="text-white/50">Overview</span>
       <span class="popup-description text-white/90 leading-snug"></span>
+      <span class="popup-case-studies-row contents hidden"
+        ><span class="text-white/50">Case studies</span>
+        <span class="popup-links flex font-sans text-lg flex-wrap gap-x-4 gap-y-1"></span></span
+      >
     </div>
-    <div class="popup-links flex flex-wrap gap-x-4 gap-y-1 mt-3 hidden"></div>
   </div>
 </div>
 
@@ -352,6 +355,7 @@ const logoData = clients ?? defaultClients
       popup.querySelector('.popup-description')!.textContent = description
 
       // Show/hide case study links
+      const caseStudiesRow = popup.querySelector<HTMLElement>('.popup-case-studies-row')!
       const linksContainer = popup.querySelector<HTMLElement>('.popup-links')!
       linksContainer.innerHTML = ''
       const links: { url: string; title?: string }[] = JSON.parse(btn.dataset.links || '[]')
@@ -360,12 +364,12 @@ const logoData = clients ?? defaultClients
           const a = document.createElement('a')
           a.href = link.url
           a.textContent = link.title || 'See more'
-          a.className = 'font-sans text-xs text-white underline'
+          a.className = ' text-white underline'
           linksContainer.appendChild(a)
         })
-        linksContainer.classList.remove('hidden')
+        caseStudiesRow.classList.remove('hidden')
       } else {
-        linksContainer.classList.add('hidden')
+        caseStudiesRow.classList.add('hidden')
       }
 
       // Use accent colour
