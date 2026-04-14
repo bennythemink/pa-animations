@@ -1,0 +1,53 @@
+---
+interface Props {
+  url?: string
+  linkText?: string
+  useAccentAsHoverColour?: boolean
+  alwaysUnderline?: boolean
+}
+
+const {
+  url = '/contact',
+  linkText = 'Get in touch →',
+  useAccentAsHoverColour = true,
+  alwaysUnderline = false
+} = Astro.props
+---
+
+<a
+  href={url}
+  class:list={[
+    'cta-link font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base transition-colors',
+    alwaysUnderline ? 'underline' : 'no-underline hover:underline',
+    useAccentAsHoverColour && 'cta-accent-hover'
+  ]}>{linkText}</a
+>
+
+<style>
+  .cta-accent-hover:hover {
+    background-color: var(--accent-bgc);
+    color: var(--cta-hover-text, #fff);
+  }
+</style>
+
+{useAccentAsHoverColour && (
+  <script is:inline>
+    (function() {
+      function setCtaHoverText() {
+        var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim();
+        var match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
+        if (!match) return;
+        var r = parseInt(match[1]) / 255;
+        var g = parseInt(match[2]) / 255;
+        var b = parseInt(match[3]) / 255;
+        // sRGB relative luminance
+        r = r <= 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4);
+        g = g <= 0.03928 ? g / 12.92 : Math.pow((g + 0.055) / 1.055, 2.4);
+        b = b <= 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4);
+        var L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        document.documentElement.style.setProperty('--cta-hover-text', L > 0.4 ? '#000' : '#fff');
+      }
+      setCtaHoverText();
+    })();
+  </script>
+)}

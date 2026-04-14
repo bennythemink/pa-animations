@@ -5,6 +5,7 @@ import Equals from '@components/signs/Equals.astro'
 import Plus from '@components/signs/Plus.astro'
 import { Image } from 'astro:assets'
 import mbImage from '@assets/mb.png'
+import CTA from '@components/CTA.astro'
 
 interface CaseStudy {
   title: string
@@ -113,17 +114,23 @@ const remaining = caseStudies.slice(1)
         </p>
       </div>
       <div class="col-span-full lg:col-start-4 lg:col-span-6 mt-8 lg:mt-12 text-center">
-        <p class="font-serif text-base lg:text-lg leading-[0.76]">
-          We work deliberately on the kind of work we believe in — and we're selective about who we work with. The case
-          studies here reflect clarity, collaboration, and outcomes our organisation is built to deliver. Beautiful
-          things are a trust we take seriously, grounded in the practicality or strategic rigour that makes them work.
+        <p>
+          These case studies are about the clients who trusted us with their challenges — and what became possible when
+          the right partnership was in place.
         </p>
-        <a
+        <p>
+          They show how clarity, collaboration, and experienced guidance come together to deliver meaningful results. If
+          any of these resonate with your situation, we’d be glad to talk.
+        </p>
+        <p>Every project here is work we were proud to take on — and proud to deliver.</p>
+        <!-- <a
           href="/contact"
-          class="inline-block mt-6 text-sm underline underline-offset-4 hover:opacity-70 transition-opacity"
-        >
-          Get in touch
-        </a>
+          class="mt-6 font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base hover:underline"
+          >Get in touch →</a
+        > -->
+        <div class="mt-6">
+          <CTA/>
+        </div>
       </div>
     </Grid>
   </section>
@@ -153,17 +160,17 @@ const remaining = caseStudies.slice(1)
           class="case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col p-2 lg:pl-4 pt-2 bg-pixel-blue transition-[height,padding-top] duration-300 ease-in-out overflow-hidden"
         >
           <h2 class="text-base transition-[font-size] duration-300 ease-in-out shrink-0">Case Study Title</h2>
-          <div class="mt-4 flex flex-col gap-3 text-sm font-serif leading-[0.76]">
+          <div class="mt-4 flex flex-col gap-3">
             <div>
-              <p class="opacity-50 text-xs mb-1">Sector</p>
+              <h4 class="opacity-50 mb-1">Sector</h4>
               <p>Technology / AI</p>
             </div>
             <div>
-              <p class="opacity-50 text-xs mb-1">Services</p>
+              <h4 class="opacity-50 mb-1">Services</h4>
               <p>Discovery, Design, Development</p>
             </div>
             <div>
-              <p class="opacity-50 text-xs mb-1">Overview</p>
+              <h4 class="opacity-50 mb-1">Overview</h4>
               <p>
                 A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold
                 — from positioning through to product interface.
@@ -171,8 +178,7 @@ const remaining = caseStudies.slice(1)
             </div>
             <a
               href="/case-studies/sonata-ai"
-              class="mt-2 text-xs font-sans uppercase tracking-wider hover:opacity-70 transition-opacity"
-              >View case study</a
+              class="mt-2 font-sans underline underline-offset-2 hover:opacity-70 transition-opacity">View case study</a
             >
           </div>
         </div>
