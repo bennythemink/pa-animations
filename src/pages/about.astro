@@ -139,17 +139,17 @@ const sectionCards = [
   <Image src={aboutImage} alt="" class="w-full h-[288px] lg:h-[456px] object-cover" widths={[768, 1440, 2560]} />
 
   <section id="pov" class="relative">
-    <div id="pov-container" class="relative py-16 lg:py-24 pb-[400px] lg:pb-[500px]">
+    <div id="pov-container" class="relative py-10 lg:py-24 lg:pb-[500px]">
       <div class="grid grid-cols-12 gap-5 px-5 max-w-360 mx-auto w-full relative">
         <!-- Words row -->
-        <div class="col-span-full relative h-[80px] lg:h-[200px]">
-          <div id="pov-our" class="absolute top-0 left-1/2">
-            <span class="font-sans text-[80px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
+        <div class="col-span-full relative lg:h-[200px]">
+          <div id="pov-our" class="inline lg:absolute lg:top-0 lg:left-1/2">
+            <span class="font-sans text-[40px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
               >Our</span
             >
           </div>
-          <div id="pov-pov" class="absolute top-0 left-1/2">
-            <span class="font-sans text-[80px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
+          <div id="pov-pov" class="inline lg:absolute lg:top-0 lg:left-1/2">
+            <span class="font-sans text-[40px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
               >POV</span
             >
           </div>
@@ -157,7 +157,7 @@ const sectionCards = [
         <!-- Body text -->
         <div
           id="pov-text"
-          class="col-span-full lg:col-start-5 lg:col-span-4 flex flex-col gap-5 font-serif leading-[0.76] text-base lg:text-lg mt-10 lg:mt-0"
+          class="col-span-full lg:col-start-5 lg:col-span-4 flex flex-col gap-5 font-serif leading-[0.76] text-base lg:text-lg mt-6 lg:mt-0"
         >
           <p>
             Pixel Agency creates digital work worth standing behind — where the people who shape the promise also design
@@ -327,22 +327,8 @@ const sectionCards = [
     }
     /* On mobile, show "Our" and "POV" inline */
     @media (max-width: 1023px) {
-      #pov-our,
-      #pov-pov {
-        display: inline;
-      }
       #pov-our {
         margin-right: 0.15em;
-      }
-      #pov .grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-      }
-      #pov .grid > div:first-child,
-      #pov .grid > div:nth-child(2) {
-        display: inline;
       }
     }
 
@@ -465,33 +451,8 @@ const sectionCards = [
           )
         },
 
-        // Mobile: simpler animation
-        '(max-width: 1023px)': () => {
-          const container = document.getElementById('pov-container')!
-          const textEl = document.getElementById('pov-text')!
-
-          gsap.set(textEl, { opacity: 0, y: 40 })
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: container,
-              start: 'top bottom',
-              end: 'top 30%',
-              scrub: 1
-            }
-          })
-
-          tl.to(
-            textEl,
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: 'power2.out'
-            },
-            0.2
-          )
-        }
+        // Mobile: no animation
+        '(max-width: 1023px)': () => {}
       })
 
       ScrollTrigger.matchMedia({
