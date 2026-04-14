@@ -58,7 +58,7 @@ const services = [
   <section class="pt-10 pb-8 lg:pt-16 lg:pb-20">
     <Grid>
       <div class="col-span-full lg:col-start-2 lg:col-span-9">
-        <h1 style="font-size: clamp(2.5rem, 6vw, 5.5rem);">Wherever you're starting from, there's a path forward.</h1>
+        <h2 style="font-size: clamp(2.5rem, 6vw, 5.5rem);">Wherever you're starting from, there's a path forward.</h2>
       </div>
     </Grid>
   </section>
@@ -94,7 +94,7 @@ const services = [
 
       {/* Right: services list */}
       <div id="services-list" class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col">
-        <p class="font-sans text-xs tracking-widest text-black/50 mb-4">Our services</p>
+        <h1 class="font-sans text-base tracking-widest text-black/50 mb-4">Our services</h1>
         {
           services.map((s) => (
             <a
@@ -124,7 +124,10 @@ const services = [
       >
         {/* Inner content inset to match services-intro left edge */}
         <div class="col-span-full lg:col-start-2 lg:col-span-5 flex flex-col gap-6 p-10 lg:py-16 lg:pr-16 lg:pl-0">
-          <p class="font-sans text-[18px] lg:text-[40px]" style="color: #00A180; letter-spacing: 0; line-height: 1.1;">
+          <p
+            class="font-sans font-normal text-[18px] lg:text-[40px]"
+            style="color: #00A180; letter-spacing: 0; line-height: 1.1;"
+          >
             How our services work together
           </p>
           <h2 class="text-3xl lg:text-[80px]">
@@ -173,7 +176,7 @@ const services = [
                   </a>
                 </div>
                 <div class="pt-4 flex flex-col gap-3">
-                  <h4 class="font-sans text-2xl font-normal text-white" style="opacity: 0.8;">
+                  <h4 class="font-sans text-2xl lg:text-3xl font-normal text-white" style="opacity: 0.8;">
                     {s.tagline}
                   </h4>
                   <p class="font-serif max-w-[540px]" style="opacity: 0.7;">
@@ -196,7 +199,7 @@ const services = [
     <Grid>
       {/* Left: headline */}
       <div class="col-span-full lg:col-start-2 lg:col-span-6">
-        <h2 class="text-4xl leading-tight">
+        <h2 class="text-3xl lg:text-[40px] leading-tight">
           Not sure where to start? <br />
           <Equals /> That's exactly where we help.
         </h2>
@@ -209,9 +212,15 @@ const services = [
           it through. No sales pitch — just practical discussion and honest advice about what your situation actually
           needs.
         </p>
-        <a href="/contact" class="font-sans self-start underline underline-offset-2 hover:no-underline transition-all">
+        <a
+          href="/contact"
+          class="mt-6 font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base hover:underline"
+          >Let's find a path forward →</a
+        >
+
+        <!-- <a href="/contact" class="font-sans self-start underline underline-offset-2 hover:no-underline transition-all">
           Let's find a path forward →
-        </a>
+        </a> -->
       </div>
     </Grid>
   </section>
