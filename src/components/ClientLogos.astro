@@ -136,7 +136,7 @@ const logoData = clients ?? defaultClients
           <img
             src={client.src}
             alt={client.name}
-            class="h-5 lg:h-8 w-auto max-w-none object-contain pointer-events-none"
+            class="h-5 lg:h-7 w-auto max-w-none object-contain pointer-events-none"
             loading="eager"
             decoding="async"
           />
@@ -155,6 +155,7 @@ const logoData = clients ?? defaultClients
     <p class="popup-industry font-sans text-xs text-white/70 mb-3"></p>
     <ul class="popup-services font-sans text-xs text-white list-none p-0 m-0 flex flex-wrap gap-2 mb-3"></ul>
     <p class="popup-description font-sans text-xs text-white/90 leading-snug"></p>
+    <a class="popup-link font-sans text-xs text-white underline mt-3 hidden" href="#">See more</a>
   </div>
 </div>
 
@@ -175,7 +176,7 @@ const logoData = clients ?? defaultClients
   }
 
   .logo-popup {
-    border-radius: 6px;
+    border-radius: 0;
   }
 
   .popup-services li {
@@ -268,9 +269,13 @@ const logoData = clients ?? defaultClients
     // Start animation immediately — it'll just wait until setWidth > 0
     raf = requestAnimationFrame(tick)
 
-    // Pause on hover
+    // Pause on hover (marquee and popup)
     container.addEventListener('mouseenter', () => (paused = true))
     container.addEventListener('mouseleave', () => {
+      paused = false
+    })
+    popup.addEventListener('mouseenter', () => (paused = true))
+    popup.addEventListener('mouseleave', () => {
       paused = false
       hidePopup()
     })
@@ -294,6 +299,18 @@ const logoData = clients ?? defaultClients
       })
 
       popup.querySelector('.popup-description')!.textContent = description
+
+      // Show/hide "see more" link
+      const linkEl = popup.querySelector<HTMLAnchorElement>('.popup-link')!
+      const url = btn.dataset.url
+      if (url && url.length > 0) {
+        linkEl.href = url
+        linkEl.classList.remove('hidden')
+        linkEl.classList.add('inline-block')
+      } else {
+        linkEl.classList.add('hidden')
+        linkEl.classList.remove('inline-block')
+      }
 
       // Use accent colour
       const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
@@ -329,12 +346,6 @@ const logoData = clients ?? defaultClients
 
       const btn = (e.target as HTMLElement).closest<HTMLElement>('.marquee-item')
       if (!btn) return
-
-      const url = btn.dataset.url
-      if (url) {
-        window.location.href = url
-        return
-      }
 
       // Toggle popup
       if (!popup.classList.contains('hidden')) {
