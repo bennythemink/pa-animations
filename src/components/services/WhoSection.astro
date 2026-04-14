@@ -21,7 +21,7 @@ const {
     {/* Who this is for */}
     <div class="col-span-full lg:col-start-2 lg:col-span-5 p-8 bg-white">
       <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 h-full">
-        <h3 class="text-xl lg:text-4xl mb-6 lg:mb-0 font-light" set:html={forTitle} />
+        <h3 class="text-xl lg:text-3xl 2xl:text-4xl mb-6 lg:mb-0 font-light" set:html={forTitle} />
         <ul class="flex flex-col">
           {
             forItems.map((item, i) => (
@@ -37,7 +37,7 @@ const {
     {/* Who this is not for */}
     <div class="col-span-full lg:col-start-7 lg:col-span-5 p-8 mt-5 lg:mt-0" style="background-color: #EAE7E4;">
       <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 h-full">
-        <h3 class="text-xl lg:text-4xl mb-6 lg:mb-0 font-light" set:html={notForTitle} />
+        <h3 class="text-xl lg:text-3xl 2xl:text-4xl mb-6 lg:mb-0 font-light" set:html={notForTitle} />
         <ul class="flex flex-col">
           {
             notForItems.map((item, i) => (
