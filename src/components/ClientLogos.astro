@@ -1,0 +1,404 @@
+---
+interface ClientLogo {
+  src: string
+  name: string
+  industry?: string
+  services?: string[]
+  description?: string
+  url?: string
+}
+
+interface Props {
+  speed?: 'slow' | 'normal' | 'fast'
+  interactive?: boolean
+  clients?: ClientLogo[]
+}
+
+const { speed = 'normal', interactive = true, clients } = Astro.props
+
+const defaultClients: ClientLogo[] = [
+  {
+    src: '/client-logos/snowyhydro.svg',
+    name: 'Snowy Hydro',
+    industry: 'Energy',
+    services: ['Design', 'Development'],
+    description: 'Brand refresh and digital platform for renewable energy provider.'
+  },
+  {
+    src: '/client-logos/nsw-health.svg',
+    name: 'NSW Health',
+    industry: 'Government / Health',
+    services: ['Consulting', 'Design', 'Development'],
+    description: 'Digital health tools for clinicians and patients across NSW.'
+  },
+  {
+    src: '/client-logos/medibank.svg',
+    name: 'Medibank',
+    industry: 'Health Insurance',
+    services: ['Design', 'Development'],
+    description: 'Streamlined digital experiences for member health journeys.'
+  },
+  {
+    src: '/client-logos/yarra-trams.svg',
+    name: 'Yarra Trams',
+    industry: 'Transport',
+    services: ['Design', 'Development'],
+    description: "Passenger-focused digital tools for Melbourne's tram network."
+  },
+  {
+    src: '/client-logos/myob.svg',
+    name: 'MYOB',
+    industry: 'Fintech / SaaS',
+    services: ['Design', 'Development'],
+    description: "Product design for Australia's leading business management platform."
+  },
+  {
+    src: '/client-logos/bega.svg',
+    name: 'Bega',
+    industry: 'FMCG / Food',
+    services: ['Design', 'Development'],
+    description: 'Digital brand experience for an iconic Australian food company.'
+  },
+  {
+    src: '/client-logos/parramatta.svg',
+    name: 'City of Parramatta',
+    industry: 'Government',
+    services: ['Consulting', 'Design', 'Development'],
+    description: "Citizen-centred digital services for western Sydney's CBD council."
+  },
+  {
+    src: '/client-logos/bhn.svg',
+    name: 'Better Health Network',
+    industry: 'Healthcare',
+    services: ['Design', 'Development'],
+    description: 'Accessible digital platform for community health services.',
+    url: '/case-studies/bhn'
+  },
+  {
+    src: '/client-logos/samsung.svg',
+    name: 'Samsung',
+    industry: 'Technology',
+    services: ['Design', 'Development'],
+    description: 'Campaign and product launch experiences for consumer electronics.'
+  },
+  {
+    src: '/client-logos/paspaley.svg',
+    name: 'Paspaley',
+    industry: 'Luxury / Jewellery',
+    services: ['Design', 'Development'],
+    description: "Premium e-commerce experience for Australia's finest pearls."
+  },
+  {
+    src: '/client-logos/cub.svg',
+    name: 'Carlton & United Breweries',
+    industry: 'Beverages',
+    services: ['Design', 'Development'],
+    description: "Digital brand experiences across CUB's portfolio of beer brands."
+  },
+  {
+    src: '/client-logos/eel.svg',
+    name: 'Explorers Early Learning',
+    industry: 'Education / Childcare',
+    services: ['Design', 'Development'],
+    description: 'Family-friendly digital platform for early learning centres.',
+    url: '/case-studies/eel'
+  },
+  {
+    src: '/client-logos/carsales.svg',
+    name: 'Carsales',
+    industry: 'Automotive / Marketplace',
+    services: ['Design', 'Development'],
+    description: "Product design for Australia's largest online automotive marketplace."
+  }
+]
+
+const logoData = clients ?? defaultClients
+---
+
+<div
+  class="client-logos-marquee overflow-hidden relative my-[26px] h-8 select-none"
+  data-speed={speed}
+  data-interactive={interactive ? 'true' : 'false'}
+>
+  <div class="marquee-track flex items-center" aria-label="Client logos">
+    {
+      logoData.map((client, i) => (
+        <button
+          type="button"
+          class="marquee-item flex-shrink-0 px-[10px] lg:px-[12px] cursor-pointer appearance-none bg-transparent border-0 p-0"
+          data-url={client.url || ''}
+          data-name={client.name}
+          data-industry={client.industry || ''}
+          data-services={JSON.stringify(client.services || [])}
+          data-description={client.description || ''}
+          aria-label={client.name}
+        >
+          <img
+            src={client.src}
+            alt={client.name}
+            class="h-5 lg:h-8 w-auto max-w-none object-contain pointer-events-none"
+            loading="eager"
+            decoding="async"
+          />
+        </button>
+      ))
+    }
+  </div>
+
+  <!-- Popup -->
+  <div
+    class="logo-popup fixed z-50 hidden px-6 py-5 shadow-lg max-w-xs pointer-events-auto"
+    role="dialog"
+    aria-hidden="true"
+  >
+    <p class="popup-name font-sans text-base font-medium text-white mb-1"></p>
+    <p class="popup-industry font-sans text-xs text-white/70 mb-3"></p>
+    <ul class="popup-services font-sans text-xs text-white list-none p-0 m-0 flex flex-wrap gap-2 mb-3"></ul>
+    <p class="popup-description font-sans text-xs text-white/90 leading-snug"></p>
+  </div>
+</div>
+
+<style>
+  .client-logos-marquee {
+    --marquee-gap: 0px;
+  }
+
+  .marquee-track {
+    gap: var(--marquee-gap);
+    will-change: transform;
+  }
+
+  .marquee-item:focus-visible {
+    outline: 2px solid var(--accent-bgc, #63a3d2);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  .logo-popup {
+    border-radius: 6px;
+  }
+
+  .popup-services li {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
+</style>
+
+<script>
+  const SPEEDS: Record<string, number> = {
+    slow: 0.3,
+    normal: 0.6,
+    fast: 1.2
+  }
+
+  interface MarqueeInstance {
+    raf: number
+    resizeHandler: () => void
+    clickHandler: (e: Event) => void
+    outsideClickHandler: (e: Event) => void
+    escHandler: (e: KeyboardEvent) => void
+  }
+
+  let instances: MarqueeInstance[] = []
+
+  function initMarquee(container: HTMLElement): MarqueeInstance {
+    const track = container.querySelector<HTMLElement>('.marquee-track')!
+    const popup = container.querySelector<HTMLElement>('.logo-popup')!
+    const speed = SPEEDS[container.dataset.speed || 'normal'] || SPEEDS.normal
+    const interactive = container.dataset.interactive === 'true'
+
+    const items = Array.from(track.querySelectorAll<HTMLElement>('.marquee-item'))
+
+    // Wrap originals in a measurable container so we get exact set width
+    const setWrapper = document.createElement('div')
+    setWrapper.style.display = 'flex'
+    setWrapper.style.alignItems = 'center'
+    setWrapper.style.flexShrink = '0'
+    items.forEach((item) => setWrapper.appendChild(item))
+    track.prepend(setWrapper)
+
+    // Wait for all images inside the set to load before measuring
+    const imgs = Array.from(setWrapper.querySelectorAll<HTMLImageElement>('img'))
+    const imgLoaded = imgs.map((img) =>
+      img.complete
+        ? Promise.resolve()
+        : new Promise<void>((res) => {
+            img.onload = () => res()
+            img.onerror = () => res()
+          })
+    )
+
+    let x = 0
+    let raf = 0
+    let paused = false
+    let setWidth = 0
+
+    function tick() {
+      if (!paused && setWidth > 0) {
+        x -= speed
+        if (Math.abs(x) >= setWidth) {
+          x += setWidth
+        }
+        track.style.transform = `translate3d(${x}px, 0, 0)`
+      }
+      raf = requestAnimationFrame(tick)
+    }
+
+    function buildClones() {
+      // Remove any existing clones
+      track.querySelectorAll<HTMLElement>('.marquee-clone').forEach((el) => el.remove())
+
+      setWidth = setWrapper.offsetWidth
+      if (setWidth === 0) return
+
+      const clonesNeeded = Math.ceil((window.innerWidth * 2) / setWidth) + 1
+      for (let c = 0; c < clonesNeeded; c++) {
+        const clone = setWrapper.cloneNode(true) as HTMLElement
+        clone.classList.add('marquee-clone')
+        clone.setAttribute('aria-hidden', 'true')
+        track.appendChild(clone)
+      }
+    }
+
+    Promise.all(imgLoaded).then(() => {
+      buildClones()
+    })
+
+    // Start animation immediately — it'll just wait until setWidth > 0
+    raf = requestAnimationFrame(tick)
+
+    // Pause on hover
+    container.addEventListener('mouseenter', () => (paused = true))
+    container.addEventListener('mouseleave', () => {
+      paused = false
+      hidePopup()
+    })
+
+    // Popup logic
+    function showPopup(btn: HTMLElement) {
+      const name = btn.dataset.name || ''
+      const industry = btn.dataset.industry || ''
+      const services: string[] = JSON.parse(btn.dataset.services || '[]')
+      const description = btn.dataset.description || ''
+
+      popup.querySelector('.popup-name')!.textContent = name
+      popup.querySelector('.popup-industry')!.textContent = industry
+
+      const servicesList = popup.querySelector('.popup-services')!
+      servicesList.innerHTML = ''
+      services.forEach((s) => {
+        const li = document.createElement('li')
+        li.textContent = s
+        servicesList.appendChild(li)
+      })
+
+      popup.querySelector('.popup-description')!.textContent = description
+
+      // Use accent colour
+      const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+      popup.style.backgroundColor = accent || '#63a3d2'
+
+      // Position near clicked item
+      const rect = btn.getBoundingClientRect()
+      popup.classList.remove('hidden')
+      popup.setAttribute('aria-hidden', 'false')
+
+      const popupRect = popup.getBoundingClientRect()
+      let left = rect.left + rect.width / 2 - popupRect.width / 2
+      let top = rect.top - popupRect.height - 10
+
+      // Keep within viewport
+      if (left < 8) left = 8
+      if (left + popupRect.width > window.innerWidth - 8) left = window.innerWidth - 8 - popupRect.width
+      if (top < 8) {
+        top = rect.bottom + 10
+      }
+
+      popup.style.left = `${left}px`
+      popup.style.top = `${top}px`
+    }
+
+    function hidePopup() {
+      popup.classList.add('hidden')
+      popup.setAttribute('aria-hidden', 'true')
+    }
+
+    function clickHandler(e: Event) {
+      if (!interactive) return
+
+      const btn = (e.target as HTMLElement).closest<HTMLElement>('.marquee-item')
+      if (!btn) return
+
+      const url = btn.dataset.url
+      if (url) {
+        window.location.href = url
+        return
+      }
+
+      // Toggle popup
+      if (!popup.classList.contains('hidden')) {
+        const currentName = popup.querySelector('.popup-name')!.textContent
+        if (currentName === btn.dataset.name) {
+          hidePopup()
+          return
+        }
+      }
+      showPopup(btn)
+    }
+
+    function outsideClickHandler(e: Event) {
+      if (
+        !popup.classList.contains('hidden') &&
+        !popup.contains(e.target as Node) &&
+        !(e.target as HTMLElement).closest('.marquee-item')
+      ) {
+        hidePopup()
+      }
+    }
+
+    function escHandler(e: KeyboardEvent) {
+      if (e.key === 'Escape') hidePopup()
+    }
+
+    container.addEventListener('click', clickHandler)
+    document.addEventListener('click', outsideClickHandler)
+    document.addEventListener('keydown', escHandler)
+
+    function resizeHandler() {
+      hidePopup()
+    }
+
+    window.addEventListener('resize', resizeHandler)
+
+    return { raf, resizeHandler, clickHandler, outsideClickHandler, escHandler }
+  }
+
+  function init() {
+    // Cleanup previous instances
+    instances.forEach(({ raf, resizeHandler, outsideClickHandler, escHandler }) => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('resize', resizeHandler)
+      document.removeEventListener('click', outsideClickHandler)
+      document.removeEventListener('keydown', escHandler)
+    })
+    instances = []
+
+    document.querySelectorAll<HTMLElement>('.client-logos-marquee').forEach((el) => {
+      instances.push(initMarquee(el))
+    })
+  }
+
+  requestAnimationFrame(() => init())
+
+  document.addEventListener('astro:page-load', () => requestAnimationFrame(() => init()))
+  document.addEventListener('astro:before-swap', () => {
+    instances.forEach(({ raf, resizeHandler, outsideClickHandler, escHandler }) => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('resize', resizeHandler)
+      document.removeEventListener('click', outsideClickHandler)
+      document.removeEventListener('keydown', escHandler)
+    })
+    instances = []
+  })
+</script>
