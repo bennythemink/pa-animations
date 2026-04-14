@@ -138,52 +138,47 @@ const sectionCards = [
 
   <Image src={aboutImage} alt="" class="w-full h-[288px] lg:h-[456px] object-cover" widths={[768, 1440, 2560]} />
 
-  <section id="pov" class="relative">
-    <div id="pov-container" class="relative py-10 lg:py-24 lg:pb-[500px]">
-      <div class="grid grid-cols-12 gap-5 px-5 max-w-360 mx-auto w-full relative">
-        <!-- Words row -->
-        <div class="col-span-full relative lg:h-[200px]">
-          <div id="pov-our" class="inline lg:absolute lg:top-0 lg:left-1/2">
-            <span class="font-sans text-[40px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
-              >Our</span
-            >
-          </div>
-          <div id="pov-pov" class="inline lg:absolute lg:top-0 lg:left-1/2">
-            <span class="font-sans text-[40px] lg:text-[200px] leading-[0.85] tracking-[-0.03em] text-pixel-blue"
-              >POV</span
-            >
-          </div>
-        </div>
-        <!-- Body text -->
-        <div
-          id="pov-text"
-          class="col-span-full lg:col-start-5 lg:col-span-4 flex flex-col gap-5 font-serif leading-[0.76] text-base lg:text-lg mt-6 lg:mt-0"
-        >
-          <p>
-            Pixel Agency creates digital work worth standing behind — where the people who shape the promise also design
-            and build the outcome, with care for the business and the people who use it. In short, we do not believe in
-            the sales theatre, so we have no sales team.
-          </p>
-          <p>
-            We believe too much digital work is shaped by sales theatre, rushed promises, and hand-offs that dilute
-            responsibility. The result is work that ships, but no one truly owns — and no one is proud of.
-          </p>
-          <p>
-            We take a different approach. At Pixel Agency, responsibility stays close to the work. We speak honestly,
-            challenge ideas that won't add value, and say no when the fit isn't right. We prioritise long-term
-            partnerships over short-term wins and take pride in delivering work we're happy to put our name on.
-          </p>
-          <p>This belief is not a positioning exercise — it's how we operate.</p>
-          <p>It shapes our decisions, our relationships, and the quality of what we create.</p>
-        </div>
+  <section id="pov" class="py-12 lg:py-20">
+    <Grid>
+      <div class="col-span-full lg:col-start-2">
+        <h2 class="text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-blue">Our POV</h2>
       </div>
-    </div>
+      <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
+        <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">
+          Work worth standing behind, with no sales theatre.
+        </h3>
+      </div>
+      <div
+        class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col gap-6 mt-6 lg:mt-0 font-serif leading-[0.76]"
+      >
+        <p>
+          Pixel Agency creates digital work worth standing behind — where the people who shape the promise also design
+          and build the outcome, with care for the business and the people who use it. In short, we do not believe in
+          the sales theatre, so we have no sales team.
+        </p>
+        <p>
+          We believe too much digital work is shaped by sales theatre, rushed promises, and hand-offs that dilute
+          responsibility. The result is work that ships, but no one truly owns — and no one is proud of.
+        </p>
+        <p>
+          We take a different approach. At Pixel Agency, responsibility stays close to the work. We speak honestly,
+          challenge ideas that won’t add value, and say no when the fit isn’t right. We prioritise long-term
+          partnerships over short-term wins and take pride in delivering work we’re happy to put our name on.
+        </p>
+        <p>
+          This belief is not a positioning exercise — it’s how we operate. It shapes our decisions, our relationships,
+          and the quality of what we create.
+        </p>
+      </div>
+    </Grid>
   </section>
 
   <section id="how" class="py-12 lg:py-20">
     <Grid>
-      <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
+      <div class="col-span-full lg:col-start-2">
         <h2 class="text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-dark-red">How we work</h2>
+      </div>
+      <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
         <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">
           Thoughtful, collaborative, <Plus size={24} desktopSize={84} /> outcome-focused.
         </h3>
@@ -313,25 +308,6 @@ const sectionCards = [
   />
 
   <style>
-    /* POV section */
-    @media (min-width: 1024px) {
-      #pov-our,
-      #pov-pov {
-        will-change: transform;
-      }
-      #pov-text {
-        position: absolute;
-        top: 0;
-        will-change: transform, opacity;
-      }
-    }
-    /* On mobile, show "Our" and "POV" inline */
-    @media (max-width: 1023px) {
-      #pov-our {
-        margin-right: 0.15em;
-      }
-    }
-
     #team-cards {
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -370,91 +346,6 @@ const sectionCards = [
 
     // ── Horizontal scroll for team section (desktop only) ──
     const ctx = gsap.context(() => {
-      // ── POV section animation ──
-      ScrollTrigger.matchMedia({
-        // Desktop animation
-        '(min-width: 1024px)': () => {
-          const container = document.getElementById('pov-container')!
-          const ourEl = document.getElementById('pov-our')!
-          const povEl = document.getElementById('pov-pov')!
-          const textEl = document.getElementById('pov-text')!
-
-          const grid = ourEl.closest('.grid')!
-
-          // Set initial positions: both words centered, side by side
-          gsap.set(ourEl, { xPercent: -110 })
-          gsap.set(povEl, { xPercent: 10 })
-
-          // Calculate text width to span cols 5–8
-          const getTextWidth = () => {
-            const gridRect = grid.getBoundingClientRect()
-            const contentW = gridRect.width - 40 // subtract px-5 padding both sides
-            const colW = (contentW - 11 * 20) / 12
-            return 4 * colW + 3 * 20 // 4 cols + 3 gaps
-          }
-          gsap.set(textEl, { opacity: 0, y: 200, left: '50%', xPercent: -50, width: getTextWidth() })
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: container,
-              start: 'top bottom',
-              end: 'top top',
-              scrub: 1,
-              invalidateOnRefresh: true
-            }
-          })
-
-          // Split words apart
-          tl.to(
-            ourEl,
-            {
-              left: () => {
-                const gridRect = grid.getBoundingClientRect()
-                const colW = (gridRect.width - 11 * 20) / 12
-                return colW + 20
-              },
-              xPercent: 0,
-              duration: 1,
-              ease: 'power2.inOut'
-            },
-            0
-          )
-          tl.to(
-            povEl,
-            {
-              left: () => {
-                const gridRect = grid.getBoundingClientRect()
-                const colW = (gridRect.width - 40 - 11 * 20) / 12
-                const povSpan = povEl.querySelector('span')!
-                return 11 * colW + 10 * 20 - povSpan.offsetWidth
-              },
-              xPercent: 0,
-              duration: 1,
-              ease: 'power2.inOut'
-            },
-            0
-          )
-
-          // Fade in body text, move up to align with words
-          tl.to(
-            textEl,
-            {
-              opacity: 1,
-              y: 0,
-              left: '50%',
-              xPercent: -50,
-              width: () => getTextWidth(),
-              duration: 0.6,
-              ease: 'power2.out'
-            },
-            0.5
-          )
-        },
-
-        // Mobile: no animation
-        '(max-width: 1023px)': () => {}
-      })
-
       ScrollTrigger.matchMedia({
         '(min-width: 1024px)': () => {
           const wrapper = document.getElementById('team-scroll-wrapper')!
