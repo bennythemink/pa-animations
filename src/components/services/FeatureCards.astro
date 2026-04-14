@@ -174,14 +174,12 @@ const uid = Math.random().toString(36).slice(2, 8)
           {style === 'left-aligned' ? (
             <>
               <p class="lg:col-span-5 font-sans text-4xl lg:text-5xl">{card.title}</p>
-              <p class="lg:col-span-3 lg:row-start-2 font-sans text-xs mt-6 lg:mt-12">{card.description}</p>
+              <p class="lg:col-span-3 lg:row-start-2 mt-6 lg:mt-12">{card.description}</p>
             </>
           ) : (
             <>
               <p class="lg:col-start-1 lg:col-span-4 font-sans text-4xl lg:text-5xl">{card.title}</p>
-              <p class="lg:col-start-3 lg:col-span-3 lg:row-start-2 text-right font-sans text-xs mt-6 lg:mt-12">
-                {card.description}
-              </p>
+              <p class="lg:col-start-3 lg:col-span-3 lg:row-start-2 text-right mt-6 lg:mt-12">{card.description}</p>
             </>
           )}
         </div>

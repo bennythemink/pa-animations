@@ -115,7 +115,7 @@ const sectionCards = [
         <h1 class="text-7xl lg:text-[80px] p-0">Senior digital thinking, carefully delivered.</h1>
       </div>
       <div class="col-span-full flex flex-col gap-4 mt-4 lg:mt-0 lg:col-start-8 lg:col-span-4">
-        <div class="flex flex-col gap-3 mt-2 lg:mt-0 font-serif text-lg lg:text-2xl leading-[0.76]">
+        <div class="flex flex-col gap-3 mt-2 lg:mt-0">
           <p>
             Pixel Agency is a digital design, development, and consulting partner for organisations that need clarity,
             confidence, and outcomes from their digital work.
@@ -142,16 +142,14 @@ const sectionCards = [
   <section id="pov" class="py-12 lg:py-20">
     <Grid>
       <div class="col-span-full lg:col-start-2">
-        <h2 class="text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-blue">Our POV</h2>
+        <h2 class="section-header text-pixel-blue">Our POV</h2>
       </div>
       <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
         <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">
           Work worth standing behind, with no sales theatre.
         </h3>
       </div>
-      <div
-        class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col gap-6 mt-6 lg:mt-0 font-serif leading-[0.76]"
-      >
+      <div class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col gap-6 mt-6 lg:mt-0">
         <p>
           Pixel Agency creates digital work worth standing behind — where the people who shape the promise also design
           and build the outcome, with care for the business and the people who use it. In short, we do not believe in
@@ -177,7 +175,7 @@ const sectionCards = [
   <section id="how" class="py-12 lg:py-20">
     <Grid>
       <div class="col-span-full lg:col-start-2">
-        <h2 class="text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-dark-red">How we work</h2>
+        <h2 class="section-header text-pixel-dark-red">How we work</h2>
       </div>
       <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
         <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">
@@ -185,13 +183,13 @@ const sectionCards = [
         </h3>
       </div>
       <div class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col gap-6 mt-6 lg:mt-0">
-        <p class="font-serif leading-[0.76]">
+        <p>
           From the first conversation through to delivery, you work directly with experienced designers, developers, and
           digital specialists who are actively involved in your project. No handovers. No junior teams receiving a
           second-hand brief.
         </p>
         <div class="w-full h-[254px] bg-gray-200">Placeholder</div>
-        <p class="font-serif leading-[0.76]">
+        <p>
           We operate as a senior, flexible team — bringing together the right people for each engagement and taking
           ownership beyond the brief. You get clear thinking, honest advice, and a team that adapts as your project
           evolves.
@@ -206,24 +204,16 @@ const sectionCards = [
     {/* Content + horizontal scroll area */}
     <div id="team-scroll-wrapper" class="relative max-w-360 mx-auto px-5 pt-16 lg:pt-14">
       <div id="team-scroll-inner" class="flex flex-col pb-16 lg:pb-12">
-        <h2
-          class="font-sans text-[18px] lg:text-[40px] text-pixel-orange mb-4 lg:mb-6 leading-[1.04] tracking-[-0.04em]"
-          style="letter-spacing: 0; line-height: 1.1;"
-        >
-          Our team
-        </h2>
+        <h2 class="section-header text-pixel-orange mb-4 lg:mb-6">Our team</h2>
         <h3 class="text-2xl lg:text-[140px] leading-[0.95] tracking-[-0.03em] lg:whitespace-nowrap pb-6 lg:pb-10">
           Experienced people who care deeply about the work.
         </h3>
         <div class="flex flex-col lg:flex-row lg:gap-5">
           {/* Left: body text — col-span-4 width on desktop */}
-          <div
-            id="team-text"
-            class="shrink-0 flex flex-col gap-4 font-serif font-extralight lg:font-normal text-base lg:text-lg leading-[0.85] lg:leading-[1.04] tracking-[-0.01em] lg:tracking-[-0.04em] mb-8 lg:mb-0"
-          >
+          <div id="team-text" class="shrink-0 flex flex-col gap-4 mb-8 lg:mb-0">
             <p>
               Pixel Agency is a team of industry veterans focused on building high-quality digital products that solve
-              real business <Plus size={20} desktopSize={24} /> user problems.
+              real business and user problems.
             </p>
             <p>
               We prioritise quality and long-term value over sales targets, which is why you'll work directly with the
@@ -275,7 +265,7 @@ const sectionCards = [
     </div>
   </section>
 
-  <FeatureCards title={cardsTitle} cards={cards} style="left-aligned" />
+  <FeatureCards title={cardsTitle} cards={cards} />
 
   <section id="experience" class="py-12 lg:py-20">
     <Grid>
@@ -283,8 +273,7 @@ const sectionCards = [
         <h2 class="text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-brown">Our experience</h2>
       </div>
       <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-6">
-        <!-- <h2 class="text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-brown">Experience and perspective</h2> -->
-        <div class="flex flex-col gap-4 font-serif leading-[0.76]">
+        <div class="flex flex-col gap-4">
           <p>
             Our team brings over 20 years of experience delivering digital projects across a wide range of industries —
             from TAFE institutes and established businesses in traditional sectors to startups and global organisations
