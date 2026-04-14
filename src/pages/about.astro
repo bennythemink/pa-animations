@@ -438,9 +438,9 @@ const sectionCards = [
             {
               left: () => {
                 const gridRect = grid.getBoundingClientRect()
-                const colW = (gridRect.width - 11 * 20) / 12
+                const colW = (gridRect.width - 40 - 11 * 20) / 12
                 const povSpan = povEl.querySelector('span')!
-                return 10 * colW + 10 * 20 + colW - povSpan.offsetWidth
+                return 11 * colW + 10 * 20 - povSpan.offsetWidth
               },
               xPercent: 0,
               duration: 1,
