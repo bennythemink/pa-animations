@@ -269,15 +269,37 @@ const logoData = clients ?? defaultClients
     // Start animation immediately — it'll just wait until setWidth > 0
     raf = requestAnimationFrame(tick)
 
+    let hideTimer: ReturnType<typeof setTimeout> | null = null
+
+    function scheduleHide() {
+      if (hideTimer) clearTimeout(hideTimer)
+      hideTimer = setTimeout(() => {
+        paused = false
+        hidePopup()
+      }, 100)
+    }
+
+    function cancelHide() {
+      if (hideTimer) {
+        clearTimeout(hideTimer)
+        hideTimer = null
+      }
+    }
+
     // Pause on hover (marquee and popup)
-    container.addEventListener('mouseenter', () => (paused = true))
-    container.addEventListener('mouseleave', () => {
-      paused = false
+    container.addEventListener('mouseenter', () => {
+      cancelHide()
+      paused = true
     })
-    popup.addEventListener('mouseenter', () => (paused = true))
+    container.addEventListener('mouseleave', () => {
+      scheduleHide()
+    })
+    popup.addEventListener('mouseenter', () => {
+      cancelHide()
+      paused = true
+    })
     popup.addEventListener('mouseleave', () => {
-      paused = false
-      hidePopup()
+      scheduleHide()
     })
 
     // Popup logic
