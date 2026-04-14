@@ -3,6 +3,8 @@ import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
 import Equals from '@components/signs/Equals.astro'
 import Plus from '@components/signs/Plus.astro'
+import { Image } from 'astro:assets'
+import mbImage from '@assets/mb.png'
 
 interface CaseStudy {
   title: string
@@ -131,47 +133,78 @@ const remaining = caseStudies.slice(1)
     <Grid>
       <!-- Heading row -->
       <div class="col-span-full lg:col-start-2 lg:col-span-4">
-        <h1 class="text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-orange">Case Studies</h1>
+        <h1 class="text-base lg:text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-orange">Case Studies</h1>
       </div>
       <div class="col-span-full lg:col-start-7 lg:col-span-5 mt-4 lg:mt-0">
-        <p class="font-serif text-base lg:text-lg leading-[0.76]">
+        <p class="font-serif text-3xl leading-[0.76]">
           Each project reflects work we were proud to take on — and proud to deliver.
         </p>
       </div>
-    </Grid>
 
-    <!-- Featured case study -->
-    <div class="grid grid-cols-12 lg:col-start-2 gap-5 px-5 max-w-360 mx-auto w-full mt-8 lg:mt-12">
-      <!-- Featured image -->
-      <a href={`/case-studies/${featured.slug}`} class="col-span-full lg:col-span-7 relative group">
-        <div class="w-full aspect-[4/3] bg-gray-800"></div>
-        <div class={`${featured.colour} px-3 py-2`}>
-          <p class="text-xs lg:text-sm font-sans">{featured.title}</p>
+      {/* case study cards */}
+      <div
+        class="case-study-card col-span-full lg:col-start-2 lg:col-span-5 h-67 lg:h-138 bg-pixel-blue relative overflow-hidden"
+      >
+        <div class="w-full h-full">
+          <Image src={mbImage} alt="Case study" class="w-full h-full object-cover" />
         </div>
-      </a>
-      <!-- Featured detail card -->
-      <div class="col-span-full lg:col-span-5 bg-pixel-pink p-6 lg:p-8 flex flex-col justify-between">
-        <div>
-          <p class="font-sans text-xs lg:text-sm uppercase tracking-wide opacity-50 mb-1">data studio | AI / SaaS</p>
-          <h2 class="text-2xl lg:text-3xl leading-[1.1] tracking-[-0.02em] mb-6">{featured.title}</h2>
-          <div class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-4 text-sm lg:text-base font-serif leading-[0.76]">
-            <p class="opacity-50">Sector</p>
-            <p>{featured.sector}</p>
-            <p class="opacity-50">Services</p>
-            <p>{featured.services}</p>
-            <p class="opacity-50">Overview</p>
-            <p>{featured.overview}</p>
-          </div>
-        </div>
-        <a
-          href={`/case-studies/${featured.slug}`}
-          class="inline-block mt-6 text-xs lg:text-sm font-sans uppercase tracking-wider font-medium hover:opacity-70 transition-opacity"
+
+        <div
+          class="case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex items-start p-2 lg:pl-4 pt-2 bg-pixel-blue transition-[height] duration-300 ease-in-out"
         >
-          View case study
-        </a>
+          <h2 class="text-base transition-[font-size] duration-300 ease-in-out">Case Study Title</h2>
+        </div>
       </div>
-    </div>
+    </Grid>
   </section>
+
+  <style>
+    .case-study-overlay.expanded {
+      height: 100%;
+    }
+    .case-study-overlay.expanded h2 {
+      font-size: 36px;
+    }
+  </style>
+
+  <script>
+    function initCaseStudyCards() {
+      const cards = document.querySelectorAll<HTMLElement>('.case-study-card')
+
+      cards.forEach((card) => {
+        const overlay = card.querySelector<HTMLElement>('.case-study-overlay')!
+
+        // Desktop: hover
+        card.addEventListener('mouseenter', () => {
+          overlay.classList.add('expanded')
+        })
+        card.addEventListener('mouseleave', () => {
+          overlay.classList.remove('expanded')
+        })
+
+        // Mobile: tap to toggle
+        card.addEventListener('click', (e) => {
+          if (window.matchMedia('(hover: hover)').matches) return
+          e.preventDefault()
+          overlay.classList.toggle('expanded')
+        })
+      })
+
+      // Close on tap outside (mobile)
+      document.addEventListener('click', (e) => {
+        if (window.matchMedia('(hover: hover)').matches) return
+        const target = e.target as HTMLElement
+        if (!target.closest('.case-study-card')) {
+          document.querySelectorAll('.case-study-overlay.expanded').forEach((el) => {
+            el.classList.remove('expanded')
+          })
+        }
+      })
+    }
+
+    initCaseStudyCards()
+    document.addEventListener('astro:after-swap', initCaseStudyCards)
+  </script>
 
   <!-- Callout -->
   <section id="callout" class="py-16 lg:py-24">
