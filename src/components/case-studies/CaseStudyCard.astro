@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets'
+
+interface Props {
+  title: string
+  slug: string
+  industry: string[]
+  services: string[]
+  overview: string
+  colour: string
+  image: ImageMetadata
+}
+
+const { title, slug, industry, services, overview, colour, image } = Astro.props
+---
+
+<div class={`case-study-card h-67 lg:h-138 ${colour} relative overflow-hidden`}>
+  <div class="absolute inset-0">
+    <Image src={image} alt={title} class="w-full h-full object-cover" />
+  </div>
+
+  <div
+    class="case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col pt-2 bg-pixel-blue transition-[height,padding-top,padding-bottom] duration-300 ease-in-out overflow-hidden"
+  >
+    <h2 class="text-base transition-[font-size,padding-left] duration-300 ease-in-out shrink-0 px-2 lg:px-4">
+      {title}
+    </h2>
+    <div class="case-study-content mt-8 grid gap-y-2 gap-x-3" style="grid-template-columns: auto 1fr;">
+      <div class="col-span-full flex flex-wrap items-center gap-2">
+        {industry.map((i) => <span class="meta-data">{i}</span>)}
+      </div>
+      <div class="col-span-full flex flex-wrap items-center gap-2">
+        {services.map((s) => <span class="meta-data">{s}</span>)}
+      </div>
+    </div>
+
+    <div class="case-study-content mt-auto">
+      <p>
+        {overview}
+      </p>
+      <a
+        href={`/case-studies/${slug}`}
+        class="mt-2 inline-block font-sans text-base underline underline-offset-2 hover:opacity-70 transition-opacity"
+        >View case study</a
+      >
+    </div>
+  </div>
+</div>
+
+<style>
+  .case-study-overlay {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @media (min-width: 1024px) {
+    .case-study-overlay {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .case-study-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 1024px) {
+    .case-study-content {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+  .case-study-overlay.expanded {
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 24px;
+  }
+  @media (min-width: 1024px) {
+    .case-study-overlay.expanded {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+  .case-study-overlay.expanded h2 {
+    font-size: 36px;
+    padding-left: 16px;
+  }
+  @media (min-width: 1024px) {
+    .case-study-overlay.expanded h2 {
+      padding-left: 40px;
+    }
+  }
+  .meta-data {
+    color: var(--color-white);
+    background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+    padding-block: calc(var(--spacing) * 1);
+    padding-inline: calc(var(--spacing) * 2);
+    display: inline-block;
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+</style>
+
+<script>
+  function initCaseStudyCards() {
+    const cards = document.querySelectorAll<HTMLElement>('.case-study-card')
+
+    cards.forEach((card) => {
+      const overlay = card.querySelector<HTMLElement>('.case-study-overlay')!
+
+      card.addEventListener('mouseenter', () => {
+        overlay.classList.add('expanded')
+      })
+      card.addEventListener('mouseleave', () => {
+        overlay.classList.remove('expanded')
+      })
+
+      card.addEventListener('click', (e) => {
+        if (window.matchMedia('(hover: hover)').matches) return
+        e.preventDefault()
+        overlay.classList.toggle('expanded')
+      })
+    })
+
+    document.addEventListener('click', (e) => {
+      if (window.matchMedia('(hover: hover)').matches) return
+      const target = e.target as HTMLElement
+      if (!target.closest('.case-study-card')) {
+        document.querySelectorAll('.case-study-overlay.expanded').forEach((el) => {
+          el.classList.remove('expanded')
+        })
+      }
+    })
+  }
+
+  initCaseStudyCards()
+  document.addEventListener('astro:after-swap', initCaseStudyCards)
+</script>

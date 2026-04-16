@@ -6,92 +6,99 @@ import Plus from '@components/signs/Plus.astro'
 import { Image } from 'astro:assets'
 import mbImage from '@assets/mb.png'
 import CTA from '@components/CTA.astro'
+import CaseStudyCard from '@components/case-studies/CaseStudyCard.astro'
 
 interface CaseStudy {
   title: string
   slug: string
-  sector: string
-  services: string
+  industry: string[]
+  services: string[]
   overview: string
   colour: string
+  image: ImageMetadata
 }
 
 const caseStudies: CaseStudy[] = [
   {
     title: 'Sonata AI',
     slug: 'sonata-ai',
-    sector: 'Technology / AI',
-    services: 'Discovery, Design, Development',
+    industry: ['Technology', 'AI'],
+    services: ['Discovery', 'Design', 'Development'],
     overview:
       'A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold — from positioning through to product interface.',
-    colour: 'bg-pixel-pink'
+    colour: 'bg-pixel-pink',
+    image: mbImage
   },
   {
     title: 'Fletcher Insulation',
     slug: 'insulation',
-    sector: 'Manufacturing',
-    services: 'Discovery, Design, Development',
+    industry: ['Manufacturing'],
+    services: ['Discovery', 'Design', 'Development'],
     overview:
       'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time — while cutting support requests by 30%.',
-    colour: 'bg-pixel-orange'
+    colour: 'bg-pixel-orange',
+    image: mbImage
   },
   {
     title: 'Better Health Network',
     slug: 'bhn',
-    sector: 'Health / Community',
-    services: 'Discovery, Design, Development',
+    industry: ['Health', 'Community'],
+    services: ['Discovery', 'Design', 'Development'],
     overview:
       'Unified three merging community health organisations online — achieving a 115% increase in total visitors within six months of launch.',
-    colour: 'bg-pixel-green'
+    colour: 'bg-pixel-green',
+    image: mbImage
   },
   {
     title: 'Dare Iced Coffee',
     slug: 'dare',
-    sector: 'FMCG',
-    services: 'Design, Development',
+    industry: ['FMCG'],
+    services: ['Design', 'Development'],
     overview:
       "Transformed Dare Iced Coffee's digital presence, delivering a 200%+ increase in time on site and a meaningful reduction in support load.",
-    colour: 'bg-pixel-red'
+    colour: 'bg-pixel-red',
+    image: mbImage
   },
   {
     title: 'Explorers Early Learning',
     slug: 'eel',
-    sector: 'Education / Childcare',
-    services: 'Discovery, Design, Development',
+    industry: ['Education', 'Childcare'],
+    services: ['Discovery', 'Design', 'Development'],
     overview:
       'Redesigned the website to drive 9% more centre tour bookings and a 24% increase in session time from prospective parents.',
-    colour: 'bg-pixel-blue'
+    colour: 'bg-pixel-blue',
+    image: mbImage
   },
   {
     title: 'Holmesglen',
     slug: 'holmesglen',
-    sector: 'Education',
-    services: 'Discovery, Design, Development',
+    industry: ['Education'],
+    services: ['Discovery', 'Design', 'Development'],
     overview:
       'Built a student-employer platform from the ground up. 1,200+ registered employers and 80+ student job placements in year one.',
-    colour: 'bg-pixel-cream'
+    colour: 'bg-pixel-cream',
+    image: mbImage
   },
   {
     title: 'VincentCare',
     slug: 'vincentcare',
-    sector: 'Not-for-profit',
-    services: 'Discovery, Design, Development',
+    industry: ['Not-for-profit'],
+    services: ['Discovery', 'Design', 'Development'],
     overview: "Redesigned VincentCare's website, achieving a 14% increase in donations and 22% longer session times.",
-    colour: 'bg-pixel-dark-green'
+    colour: 'bg-pixel-dark-green',
+    image: mbImage
   },
   {
     title: 'Yoplait',
     slug: 'yoplait',
-    sector: 'FMCG',
-    services: 'Design, Development',
+    industry: ['FMCG'],
+    services: ['Design', 'Development'],
     overview:
       "Transformed Yoplait Australia's digital presence, delivering 130% more traffic and 150% longer session times.",
-    colour: 'bg-pixel-red'
+    colour: 'bg-pixel-red',
+    image: mbImage
   }
 ]
-
-const featured = caseStudies[0]
-const remaining = caseStudies.slice(1)
 ---
 
 <Layout
@@ -149,136 +156,23 @@ const remaining = caseStudies.slice(1)
       </div>
 
       {/* case study cards */}
-      <div
-        class="case-study-card col-span-full lg:col-start-2 lg:col-span-5 h-67 lg:h-138 bg-pixel-blue relative overflow-hidden"
-      >
-        <div class="absolute inset-0">
-          <Image src={mbImage} alt="Case study" class="w-full h-full object-cover" />
-        </div>
-
-        <div
-          class="case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col pt-2 bg-pixel-blue transition-[height,padding-top,padding-bottom] duration-300 ease-in-out overflow-hidden"
-        >
-          <h2 class="text-base transition-[font-size,padding-left] duration-300 ease-in-out shrink-0 px-2 lg:px-4">
-            Case Study Title
-          </h2>
-          <div class="case-study-content mt-8 grid gap-y-2 gap-x-3" style="grid-template-columns: auto 1fr;">
-            <div class="col-span-full"><span class="meta-data">Technology AI</span></div>
-            <div class="col-span-full flex flex-wrap items-center gap-2">
-              <span class="meta-data">Discovery + direction</span>
-              <span class="meta-data">Design</span>
-              <span class="meta-data">Development</span>
-            </div>
-          </div>
-
-          <div class="case-study-content mt-auto">
-            <p>
-              A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold —
-              from positioning through to product interface.
-            </p>
-            <a
-              href="/case-studies/sonata-ai"
-              class="mt-2 inline-block font-sans text-base underline underline-offset-2 hover:opacity-70 transition-opacity"
-              >View case study</a
-            >
-          </div>
-        </div>
+      <div class="col-span-full lg:col-start-2 lg:col-span-10 grid grid-cols-1 lg:grid-cols-2 gap-5">
+        {
+          caseStudies.map((cs) => (
+            <CaseStudyCard
+              title={cs.title}
+              slug={cs.slug}
+              industry={cs.industry}
+              services={cs.services}
+              overview={cs.overview}
+              colour={cs.colour}
+              image={cs.image}
+            />
+          ))
+        }
       </div>
     </Grid>
   </section>
-
-  <style>
-    .case-study-overlay {
-      padding-left: 0;
-      padding-right: 0;
-    }
-    @media (min-width: 1024px) {
-      .case-study-overlay {
-        padding-left: 0;
-        padding-right: 0;
-      }
-    }
-    .case-study-content {
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-    @media (min-width: 1024px) {
-      .case-study-content {
-        padding-left: 40px;
-        padding-right: 40px;
-      }
-    }
-    .case-study-overlay.expanded {
-      height: 100%;
-      padding-top: 30px;
-      padding-bottom: 24px;
-    }
-    @media (min-width: 1024px) {
-      .case-study-overlay.expanded {
-        padding-top: 40px;
-        padding-bottom: 40px;
-      }
-    }
-    .case-study-overlay.expanded h2 {
-      font-size: 36px;
-      padding-left: 16px;
-    }
-    @media (min-width: 1024px) {
-      .case-study-overlay.expanded h2 {
-        padding-left: 40px;
-      }
-    }
-    .meta-data {
-      color: var(--color-white);
-      background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
-      padding-block: calc(var(--spacing) * 1) /* 0.25rem = 4px */;
-      padding-inline: calc(var(--spacing) * 2) /* 0.5rem = 8px */;
-      display: inline-block;
-      font-size: var(--text-base) /* 1rem = 16px */;
-      line-height: var(--tw-leading, var(--text-base--line-height) /* calc(1.5 / 1) ≈ 1.5 */);
-      font-family: var(--font-sans) /* var(--font-ibm-plex-sans) */;
-      font-weight: 400;
-    }
-  </style>
-
-  <script>
-    function initCaseStudyCards() {
-      const cards = document.querySelectorAll<HTMLElement>('.case-study-card')
-
-      cards.forEach((card) => {
-        const overlay = card.querySelector<HTMLElement>('.case-study-overlay')!
-
-        // Desktop: hover
-        card.addEventListener('mouseenter', () => {
-          overlay.classList.add('expanded')
-        })
-        card.addEventListener('mouseleave', () => {
-          overlay.classList.remove('expanded')
-        })
-
-        // Mobile: tap to toggle
-        card.addEventListener('click', (e) => {
-          if (window.matchMedia('(hover: hover)').matches) return
-          e.preventDefault()
-          overlay.classList.toggle('expanded')
-        })
-      })
-
-      // Close on tap outside (mobile)
-      document.addEventListener('click', (e) => {
-        if (window.matchMedia('(hover: hover)').matches) return
-        const target = e.target as HTMLElement
-        if (!target.closest('.case-study-card')) {
-          document.querySelectorAll('.case-study-overlay.expanded').forEach((el) => {
-            el.classList.remove('expanded')
-          })
-        }
-      })
-    }
-
-    initCaseStudyCards()
-    document.addEventListener('astro:after-swap', initCaseStudyCards)
-  </script>
 
   <!-- Callout -->
   <section id="callout" class="py-16 lg:py-24">
