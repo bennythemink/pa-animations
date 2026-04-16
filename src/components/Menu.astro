@@ -1,11 +1,67 @@
 ---
 import { siteConfig } from '@config/site'
 
-interface Props {
-  position?: 'sticky' | 'fixed'
+/** Name-to-hex lookup matching --color-pixel-* tokens in global.css */
+const PIXEL_COLORS: Record<string, string> = {
+  'pixel-red': '#e9504c',
+  'pixel-dark-red': '#8c291c',
+  'pixel-blue': '#63a3d2',
+  'pixel-dark-blue': '#386b92',
+  'pixel-light-blue': '#dfe9fd',
+  'pixel-green': '#479f82',
+  'pixel-dark-green': '#2a6351',
+  'pixel-orange': '#f09339',
+  'pixel-light-orange': '#f4b865',
+  'pixel-pink': '#e38093',
+  'pixel-light-pink': '#ecc9d9',
+  'pixel-yellow': '#f5c844',
+  'pixel-light-yellow': '#fcebad',
+  'pixel-cream': '#cab38f',
+  'pixel-light-cream': '#eae7e4',
+  'pixel-off-cream': '#ebe7e4',
+  'pixel-off-white': '#f5f3f2',
+  'pixel-brown': '#c9b58d'
 }
 
-const { position = 'sticky' } = Astro.props
+/** Resolve a pixel-* name or pass through a raw hex value */
+function resolveColour(value: string): string {
+  return PIXEL_COLORS[value] ?? value
+}
+
+interface LogoColourPair {
+  p: string
+  a: string
+  weight: number
+}
+
+const logoColourPairs: LogoColourPair[] = [
+  { p: 'pixel-blue', a: 'pixel-red', weight: 3 },
+  { p: 'pixel-red', a: 'pixel-blue', weight: 3 },
+  { p: 'pixel-pink', a: 'pixel-green', weight: 3 },
+  { p: 'pixel-blue', a: 'pixel-pink', weight: 3 },
+  { p: 'pixel-green', a: 'pixel-pink', weight: 2 },
+  { p: 'pixel-green', a: 'pixel-orange', weight: 2 },
+  { p: 'pixel-red', a: 'pixel-green', weight: 2 },
+  { p: 'pixel-pink', a: 'pixel-blue', weight: 2 },
+  { p: 'pixel-orange', a: 'pixel-green', weight: 1 },
+  { p: 'pixel-orange', a: 'pixel-brown', weight: 1 }
+]
+
+const resolvedPairs = logoColourPairs.map(({ p, a, weight }) => ({
+  p: resolveColour(p),
+  a: resolveColour(a),
+  weight
+}))
+
+interface Props {
+  position?: 'sticky' | 'fixed'
+  /** Override the random logo colour pair. Accepts pixel-* names or hex values. */
+  logoColors?: { p: string; a: string }
+}
+
+const { position = 'sticky', logoColors } = Astro.props
+
+const resolvedOverride = logoColors ? { p: resolveColour(logoColors.p), a: resolveColour(logoColors.a) } : undefined
 
 const serviceLinks = [
   { label: 'Discovery + direction', href: '/services/discovery' },
@@ -30,23 +86,39 @@ const navLinks = [
     {/* div-A: spans full grid, flex space-between for logo + nav */}
     <div class="col-start-1 col-span-full flex items-start justify-between">
       {/* Logo: P + A stacked, linked to homepage */}
-      <a href="/" class="flex flex-col" aria-label="Pixel Agency homepage">
-        <img
-          src="/Letters/P.svg"
-          alt=""
-          aria-hidden="true"
+      <a
+        href="/"
+        class="flex flex-col"
+        aria-label="Pixel Agency homepage"
+        id="logo-link"
+        data-logo-override={resolvedOverride ? JSON.stringify(resolvedOverride) : undefined}
+      >
+        <svg
+          id="logo-p"
           width="276"
           height="276"
+          viewBox="0 0 276 276"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
           class="w-6 h-6 lg:w-[52px] lg:h-[52px]"
-        />
-        <img
-          src="/Letters/A.svg"
-          alt=""
-          aria-hidden="true"
+        >
+          <path
+            d="M275.998 185.158L219.987 185.167C185.103 188.816 157.911 218.312 157.91 254.162V276H0V80.3775H76.0742C91.1097 80.3779 101.728 102.462 101.728 117.498C101.728 145.934 124.78 168.987 153.217 168.987C181.654 168.987 204.707 145.934 204.707 117.498C204.707 89.0608 181.654 66.0081 153.217 66.0081H0V0H276L275.998 185.158Z"
+            fill="var(--logo-p-color, #FD3F44)"></path>
+        </svg>
+        <svg
+          id="logo-a"
           width="276"
           height="276"
+          viewBox="0 0 276 276"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
           class="w-6 h-6 lg:w-[52px] lg:h-[52px] mt-0.5 lg:mt-1"
-        />
+        >
+          <path
+            d="M276 275.998L174.35 276V196.297C174.349 192.329 171.133 189.114 167.166 189.113C163.197 189.113 159.98 192.329 159.979 196.297V276L0 275.998V138.001H167.166C195.607 138 218.664 114.943 218.664 86.5014C218.663 58.0601 195.607 35.0039 167.166 35.0035C138.724 35.0035 115.666 58.0599 115.666 86.5014C115.666 101.539 105.046 123.628 90.0082 123.629H0V0H276V275.998Z"
+            fill="var(--logo-a-color, #4BA5D7)"></path>
+        </svg>
       </a>
 
       {/* div-B: wraps desktop nav links */}
@@ -189,6 +261,43 @@ const navLinks = [
     <p class="text-sm">&copy; {new Date().getFullYear()} Pixel Agency. All Rights Reserved.</p>
   </div>
 </div>
+
+{/* ── Logo colour picker — runs synchronously to avoid flash ── */}
+<script define:vars={{ pairs: resolvedPairs }} is:inline>
+  function pickLogoColors() {
+    var logo = document.getElementById('logo-link')
+    if (!logo) return
+
+    var override = logo.dataset.logoOverride
+    var pColor, aColor
+
+    if (override) {
+      var parsed = JSON.parse(override)
+      pColor = parsed.p
+      aColor = parsed.a
+    } else {
+      var totalWeight = 0
+      for (var i = 0; i < pairs.length; i++) totalWeight += pairs[i].weight
+      var r = Math.random() * totalWeight
+      var cumulative = 0
+      var picked = pairs[0]
+      for (var i = 0; i < pairs.length; i++) {
+        cumulative += pairs[i].weight
+        if (r < cumulative) {
+          picked = pairs[i]
+          break
+        }
+      }
+      pColor = picked.p
+      aColor = picked.a
+    }
+
+    document.documentElement.style.setProperty('--logo-p-color', pColor)
+    document.documentElement.style.setProperty('--logo-a-color', aColor)
+  }
+  pickLogoColors()
+  document.addEventListener('astro:after-swap', pickLogoColors)
+</script>
 
 <script>
   import { gsap } from 'gsap'

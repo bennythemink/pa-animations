@@ -9,12 +9,15 @@ interface Props {
   title?: string
   description?: string
   position?: 'sticky' | 'fixed'
+  /** Override the random logo colour pair. Pass { p: '#hex', a: '#hex' }. */
+  logoColors?: { p: string; a: string }
 }
 
 const {
   title = 'Pixel Agency',
   description = 'Pixel Agency — digital strategy, design, and development studio based in Melbourne, Australia.',
-  position = 'sticky'
+  position = 'sticky',
+  logoColors
 } = Astro.props
 
 const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
@@ -44,7 +47,7 @@ const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
     </script>
   </head>
   <body class="m-0 min-h-screen bg-pixel-off-white">
-    <Menu position={position} />
+    <Menu position={position} logoColors={logoColors} />
     <slot />
     <Footer />
   </body>
