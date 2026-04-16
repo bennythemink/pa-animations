@@ -154,21 +154,33 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
       </div>
 
       {/* industry filters */}
-      <div id="industry-filters" class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-wrap gap-3 mt-6 lg:mt-12">
+      <div
+        id="industry-filters"
+        class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-wrap justify-end gap-3 mt-6 lg:mt-36"
+      >
         {
           allIndustries.map((ind) => (
-            <label class="flex items-center gap-2 cursor-pointer font-sans text-base select-none">
-              <input type="checkbox" value={ind} class="industry-checkbox accent-pixel-orange" />
+            <label class="industry-filter cursor-pointer font-sans font-normal inline-block bg-white px-4 py-2 text-base transition-colors select-none">
+              <input type="checkbox" value={ind} class="industry-checkbox sr-only" />
               {ind}
             </label>
           ))
         }
       </div>
 
+      <div class="col-span-full lg:col-start-2 lg:col-span-10 flex justify-end">
+        <button
+          id="clear-filters"
+          type="button"
+          class="font-sans text-base underline underline-offset-2 hover:opacity-70 transition-opacity hover:cursor-pointer"
+          >clear</button
+        >
+      </div>
+
       {/* case study cards */}
       <div
         id="case-study-grid"
-        class="col-span-full lg:col-start-2 lg:col-span-10 grid grid-cols-1 lg:grid-cols-2 gap-5 mt-6 lg:mt-36"
+        class="col-span-full lg:col-start-2 lg:col-span-10 grid grid-cols-1 lg:grid-cols-2 gap-5"
       >
         {
           caseStudies.map((cs) => (
@@ -201,6 +213,17 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
     </Grid>
   </section>
 
+  <style>
+    .industry-filter:hover {
+      background-color: var(--accent-bgc);
+      color: #fff;
+    }
+    .industry-filter.active {
+      background-color: var(--accent-bgc);
+      color: #fff;
+    }
+  </style>
+
   <script>
     function initIndustryFilters() {
       const checkboxes = document.querySelectorAll<HTMLInputElement>('.industry-checkbox')
@@ -210,6 +233,13 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
         const selected = Array.from(checkboxes)
           .filter((cb) => cb.checked)
           .map((cb) => cb.value)
+
+        checkboxes.forEach((cb) => {
+          const label = cb.closest('.industry-filter')
+          if (label) {
+            label.classList.toggle('active', cb.checked)
+          }
+        })
 
         cards.forEach((card) => {
           if (selected.length === 0) {
@@ -223,6 +253,14 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
       }
 
       checkboxes.forEach((cb) => cb.addEventListener('change', applyFilters))
+
+      const clearBtn = document.querySelector<HTMLButtonElement>('#clear-filters')
+      clearBtn?.addEventListener('click', () => {
+        checkboxes.forEach((cb) => {
+          cb.checked = false
+        })
+        applyFilters()
+      })
     }
 
     initIndustryFilters()
