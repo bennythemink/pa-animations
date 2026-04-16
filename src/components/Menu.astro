@@ -23,73 +23,85 @@ const navLinks = [
 ---
 
 {/* ── Sticky header ── */}
-<header class={`${position === 'fixed' ? 'fixed left-0 right-0' : 'sticky'} top-0 z-40 px-5 pt-5`}>
-  <div class="max-w-360 mx-auto flex items-start justify-between">
-    {/* Logo: P + A stacked, linked to homepage */}
-    <a href="/" class="flex flex-col" aria-label="Pixel Agency homepage">
-      <img src="/Letters/P.svg" alt="" aria-hidden="true" width="276" height="276" class="lg:w-12 w-6" />
-      <img src="/Letters/A.svg" alt="" aria-hidden="true" width="276" height="276" class="lg:w-12 w-6 mt-0.5 lg:mt-1" />
-    </a>
+<header class={`${position === 'fixed' ? 'fixed left-0 right-0' : 'sticky'} top-0 z-40 pt-5`}>
+  <div class="grid grid-cols-12 gap-5 px-5 max-w-360 mx-auto w-full">
+    {/* div-A: spans full grid, flex space-between for logo + nav */}
+    <div class="col-start-1 col-span-full flex items-start justify-between">
+      {/* Logo: P + A stacked, linked to homepage */}
+      <a href="/" class="flex flex-col" aria-label="Pixel Agency homepage">
+        <img src="/Letters/P.svg" alt="" aria-hidden="true" width="276" height="276" class="lg:w-12 w-6" />
+        <img
+          src="/Letters/A.svg"
+          alt=""
+          aria-hidden="true"
+          width="276"
+          height="276"
+          class="lg:w-12 w-6 mt-0.5 lg:mt-1"
+        />
+      </a>
 
-    {/* Desktop nav — hidden on mobile */}
-    <nav
-      class="hidden lg:flex items-start gap-6 font-sans font-normal p-2"
-      style="background-color: rgb(255 255 255 / 33%);"
-      aria-label="Main navigation"
-    >
-      {
-        navLinks.map((link) =>
-          link.hasDropdown ? (
-            <div class="relative" id="services-dropdown-wrapper">
-              <a
-                href={link.href}
-                id="services-dropdown-btn"
-                class="nav-link underline underline-offset-2 hover:no-underline transition-all flex items-center gap-1"
-                aria-haspopup="true"
-                aria-expanded="false"
-                aria-controls="services-dropdown"
-              >
-                {link.label}
-              </a>
-              <ul
-                id="services-dropdown"
-                role="menu"
-                hidden
-                class="absolute top-full left-0 flex flex-col pt-3 pb-2 font-sans font-normal whitespace-nowrap"
-                style="background-color: rgb(255 255 255 / 95%); backdrop-filter: blur(4px);"
-              >
-                {serviceLinks.map((s) => (
-                  <li role="none">
-                    <a
-                      href={s.href}
-                      role="menuitem"
-                      class="sub-link block px-4 py-1.5 hover:underline underline-offset-2 transition-colors"
-                    >
-                      {s.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <a href={link.href} class="nav-link underline underline-offset-2 hover:no-underline transition-all">
-              {link.label}
-            </a>
-          )
-        )
-      }
-    </nav>
+      {/* div-B: wraps desktop nav links */}
+      <div class="hidden lg:block">
+        <nav
+          class="flex items-start gap-6 font-sans font-normal p-2"
+          style="background-color: rgb(255 255 255 / 33%);"
+          aria-label="Main navigation"
+        >
+          {
+            navLinks.map((link) =>
+              link.hasDropdown ? (
+                <div class="relative" id="services-dropdown-wrapper">
+                  <a
+                    href={link.href}
+                    id="services-dropdown-btn"
+                    class="nav-link underline underline-offset-2 hover:no-underline transition-all flex items-center gap-1"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-controls="services-dropdown"
+                  >
+                    {link.label}
+                  </a>
+                  <ul
+                    id="services-dropdown"
+                    role="menu"
+                    hidden
+                    class="absolute top-full left-0 flex flex-col pt-3 pb-2 font-sans font-normal whitespace-nowrap"
+                    style="background-color: rgb(255 255 255 / 95%); backdrop-filter: blur(4px);"
+                  >
+                    {serviceLinks.map((s) => (
+                      <li role="none">
+                        <a
+                          href={s.href}
+                          role="menuitem"
+                          class="sub-link block px-4 py-1.5 hover:underline underline-offset-2 transition-colors"
+                        >
+                          {s.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <a href={link.href} class="nav-link underline underline-offset-2 hover:no-underline transition-all">
+                  {link.label}
+                </a>
+              )
+            )
+          }
+        </nav>
+      </div>
 
-    {/* Mobile menu trigger — hidden on desktop */}
-    <button
-      id="menu-open"
-      class="lg:hidden font-sans font-normal p-1.5 hover:cursor-pointer"
-      style="background-color: rgb(255 255 255 / 33%);"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-    >
-      Menu
-    </button>
+      {/* Mobile menu trigger — hidden on desktop */}
+      <button
+        id="menu-open"
+        class="lg:hidden font-sans font-normal p-1.5 hover:cursor-pointer"
+        style="background-color: rgb(255 255 255 / 33%);"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        Menu
+      </button>
+    </div>
   </div>
 </header>
 
@@ -109,7 +121,9 @@ const navLinks = [
       <img src="/Letters/P.svg" alt="" aria-hidden="true" width="276" height="276" class="w-6" />
       <img src="/Letters/A.svg" alt="" aria-hidden="true" width="276" height="276" class="w-6 mt-0.5" />
     </a>
-    <button id="menu-close" class="font-sans font-normal p-1.5" aria-label="Close navigation menu"> Close </button>
+    <button id="menu-close" class="font-sans font-normal p-1.5 hover:cursor-pointer" aria-label="Close navigation menu">
+      Close
+    </button>
   </div>
 
   {/* Nav links — centred vertically in remaining space */}
