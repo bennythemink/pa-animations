@@ -1,6 +1,7 @@
 ---
 import Grid from '@components/Grid.astro'
 import type { FlowFieldOptions } from '@scripts/flow-field.ts'
+import { siteConfig } from '@config/site'
 
 interface Props {
   flowFieldColor?: FlowFieldOptions['color']
@@ -70,13 +71,14 @@ const year = new Date().getFullYear()
         <ul class="flex flex-col gap-1">
           <li>
             <span class="font-semibold font-sans text-base">Email</span>{' '}
-            <a href="mailto:hello@pixelagency.com.au" class="hover:underline underline-offset-2 font-sans text-base"
-              >hello@pixelagency.com.au</a
+            <a href={`mailto:${siteConfig.email}`} class="hover:underline underline-offset-2 font-sans text-base"
+              >{siteConfig.email}</a
             >
           </li>
           <li>
             <span class="font-semibold font-sans text-base">Call</span>{' '}
-            <a href="tel:+61400000000" class="hover:underline underline-offset-2 font-sans text-base">+61 400 000 000</a
+            <a href={`tel:${siteConfig.phone}`} class="hover:underline underline-offset-2 font-sans text-base"
+              >{siteConfig.phone}</a
             >
           </li>
           <li><a href="#" class="hover:underline underline-offset-2 font-sans text-base">LinkedIn</a></li>

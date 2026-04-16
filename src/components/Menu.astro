@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '@config/site'
+
 interface Props {
   position?: 'sticky' | 'fixed'
 }
@@ -129,7 +131,7 @@ const navLinks = [
     </a>
     <button
       id="menu-close"
-      class="font-sans font-normal p-1.5 hover:cursor-pointer underline underline-offset-2"
+      class="font-sans font-normal p-1.5 hover:cursor-pointer underline underline-offset-2 text-black/50"
       aria-label="Close navigation menu"
     >
       Close
@@ -149,7 +151,7 @@ const navLinks = [
             {link.label}
           </a>
           {link.hasDropdown && (
-            <ul class="flex flex-col gap-1 mt-2 ml-6">
+            <ul class="flex flex-col gap-1 mt-2 ml-8">
               {serviceLinks.map((s) => (
                 <li>
                   <a
@@ -167,6 +169,25 @@ const navLinks = [
       ))
     }
   </nav>
+
+  {/* Footer info */}
+  <div class="shrink-0 flex flex-col gap-6 font-sans font-normal text-black text-base">
+    <div class="flex flex-col gap-1">
+      <p>
+        <span class="font-medium">Call</span>
+        <a href={`tel:${siteConfig.phone}`} class="hover:underline underline-offset-2">{siteConfig.phone}</a>
+      </p>
+      <p>
+        <span class="font-medium">Email</span>
+        <a href={`mailto:${siteConfig.email}`} class="hover:underline underline-offset-2">{siteConfig.email}</a>
+      </p>
+    </div>
+    <div class="flex flex-col gap-0.5">
+      <p class="font-medium">Melbourne, Australia</p>
+      <p>AEDT</p>
+    </div>
+    <p class="text-sm">&copy; {new Date().getFullYear()} Pixel Agency. All Rights Reserved.</p>
+  </div>
 </div>
 
 <script>
@@ -183,11 +204,6 @@ const navLinks = [
     openBtn.setAttribute('aria-expanded', 'true')
 
     gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' })
-    gsap.fromTo(
-      navItems,
-      { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', stagger: 0.07, delay: 0.1 }
-    )
   }
 
   function closeMenu() {
