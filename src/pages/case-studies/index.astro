@@ -129,7 +129,7 @@ const remaining = caseStudies.slice(1)
           >Get in touch →</a
         > -->
         <div class="mt-6">
-          <CTA/>
+          <CTA />
         </div>
       </div>
     </Grid>
@@ -160,23 +160,17 @@ const remaining = caseStudies.slice(1)
           class="case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col p-2 lg:pl-4 pt-2 bg-pixel-blue transition-[height,padding-top] duration-300 ease-in-out overflow-hidden"
         >
           <h2 class="text-base transition-[font-size] duration-300 ease-in-out shrink-0">Case Study Title</h2>
-          <div class="mt-4 flex flex-col gap-3">
-            <div>
-              <h4 class="opacity-50 mb-1">Sector</h4>
-              <p>Technology / AI</p>
-            </div>
-            <div>
-              <h4 class="opacity-50 mb-1">Services</h4>
-              <p>Discovery, Design, Development</p>
-            </div>
-            <div>
-              <h4 class="opacity-50 mb-1">Overview</h4>
-              <p>
-                A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold
-                — from positioning through to product interface.
-              </p>
-            </div>
-
+          <div class="mt-4 grid gap-y-2 gap-x-3" style="grid-template-columns: auto 1fr;">
+            <span class="opacity-50">Sector</span>
+            <span>Technology / AI</span>
+            <span class="opacity-50">Services</span>
+            <span>Discovery, Design, Development</span>
+            <span class="opacity-50">Overview</span>
+            <span>
+              A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold —
+              from positioning through to product interface.
+            </span>
+            <span></span>
             <a
               href="/case-studies/sonata-ai"
               class="mt-2 font-sans underline underline-offset-2 hover:opacity-70 transition-opacity">View case study</a
@@ -249,8 +243,8 @@ const remaining = caseStudies.slice(1)
           If you're facing a similar challenge, we'd be happy to talk it through.
         </p>
         <div class="mt-6">
-              <CTA label="Discuss a problem" />
-            </div>
+          <CTA label="Discuss a problem" />
+        </div>
       </div>
     </Grid>
   </section>
