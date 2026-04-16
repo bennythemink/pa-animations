@@ -162,9 +162,13 @@ const remaining = caseStudies.slice(1)
           <h2 class="text-base transition-[font-size] duration-300 ease-in-out shrink-0">Case Study Title</h2>
           <div class="mt-4 grid gap-y-2 gap-x-3" style="grid-template-columns: auto 1fr;">
             <span class="opacity-50">Sector</span>
-            <span>Technology / AI</span>
+            <span><span class="meta-data">Technology AI</span></span>
             <span class="opacity-50">Services</span>
-            <span>Discovery, Design, Development</span>
+            <span class="flex flex-wrap items-center gap-2">
+              <span class="meta-data">Discovery + direction</span>
+              <span class="meta-data">Design</span>
+              <span class="meta-data">Development</span>
+            </span>
             <span class="opacity-50">Overview</span>
             <span>
               A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold —
@@ -193,6 +197,17 @@ const remaining = caseStudies.slice(1)
     }
     .case-study-overlay.expanded h2 {
       font-size: 36px;
+    }
+    .meta-data {
+      color: var(--color-white);
+      background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+      padding-block: calc(var(--spacing) * 1) /* 0.25rem = 4px */;
+      padding-inline: calc(var(--spacing) * 2) /* 0.5rem = 8px */;
+      display: inline-block;
+      font-size: var(--text-base) /* 1rem = 16px */;
+      line-height: var(--tw-leading, var(--text-base--line-height) /* calc(1.5 / 1) ≈ 1.5 */);
+      font-family: var(--font-sans) /* var(--font-ibm-plex-sans) */;
+      font-weight: 400;
     }
   </style>
 
