@@ -9,8 +9,8 @@ const serviceLinks = [
   { label: 'Discovery + direction', href: '/services/discovery' },
   { label: 'Design', href: '/services/design' },
   { label: 'Development', href: '/services/development' },
-  { label: 'Consulting', href: '/services/consulting' },
-  { label: 'AI', href: '/services/ai' }
+  { label: 'AI', href: '/services/ai' },
+  { label: 'Consulting', href: '/services/consulting' }
 ]
 
 const navLinks = [
@@ -51,7 +51,7 @@ const navLinks = [
       <div class="hidden lg:block">
         <nav
           class="flex items-start gap-6 font-sans font-normal p-2"
-          style="background-color: rgb(255 255 255 / 33%);"
+          style="background-color: rgb(255 255 255 / 95%);"
           aria-label="Main navigation"
         >
           {
@@ -102,7 +102,7 @@ const navLinks = [
       <button
         id="menu-open"
         class="lg:hidden font-sans font-normal p-1.5 hover:cursor-pointer"
-        style="background-color: rgb(255 255 255 / 33%);"
+        style="background-color: rgb(255 255 255 / 95%);"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
@@ -124,11 +124,14 @@ const navLinks = [
 >
   {/* Overlay header row: logo + close button */}
   <div class="flex items-start justify-between shrink-0">
-    <a href="/" class="flex flex-col" aria-label="Pixel Agency homepage">
-      <img src="/Letters/P.svg" alt="" aria-hidden="true" width="276" height="276" class="w-6" />
-      <img src="/Letters/A.svg" alt="" aria-hidden="true" width="276" height="276" class="w-6 mt-0.5" />
+    <a href="/" class="flex flex-col font-sans text-2xl font-normal" aria-label="Pixel Agency homepage"
+      >Pixel Agency
     </a>
-    <button id="menu-close" class="font-sans font-normal p-1.5 hover:cursor-pointer" aria-label="Close navigation menu">
+    <button
+      id="menu-close"
+      class="font-sans font-normal p-1.5 hover:cursor-pointer underline underline-offset-2"
+      aria-label="Close navigation menu"
+    >
       Close
     </button>
   </div>
@@ -140,8 +143,8 @@ const navLinks = [
         <div>
           <a
             href={link.href}
-            class="font-sans font-normal text-black"
-            style="font-size: clamp(2.5rem, 12vw, 5rem); line-height: 0.85; letter-spacing: -0.03em;"
+            class="font-sans font-normal text-black text-3xl hover:underline underline-offset-2"
+            style="line-height: 0.85; letter-spacing: -0.03em;"
           >
             {link.label}
           </a>
@@ -151,8 +154,8 @@ const navLinks = [
                 <li>
                   <a
                     href={s.href}
-                    class="sub-link font-sans font-normal text-black/70 transition-colors"
-                    style="font-size: clamp(1rem, 4vw, 1.5rem); line-height: 1.2;"
+                    class="font-sans font-normal text-xl text-black/70 hover:underline underline-offset-2 "
+                    style="line-height: 1.2;"
                   >
                     {s.label}
                   </a>
