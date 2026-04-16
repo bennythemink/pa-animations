@@ -99,6 +99,8 @@ const caseStudies: CaseStudy[] = [
     image: mbImage
   }
 ]
+
+const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sort()
 ---
 
 <Layout
@@ -151,8 +153,23 @@ const caseStudies: CaseStudy[] = [
         </p>
       </div>
 
+      {/* industry filters */}
+      <div id="industry-filters" class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-wrap gap-3 mt-6 lg:mt-12">
+        {
+          allIndustries.map((ind) => (
+            <label class="flex items-center gap-2 cursor-pointer font-sans text-base select-none">
+              <input type="checkbox" value={ind} class="industry-checkbox accent-pixel-orange" />
+              {ind}
+            </label>
+          ))
+        }
+      </div>
+
       {/* case study cards */}
-      <div class="col-span-full lg:col-start-2 lg:col-span-10 grid grid-cols-1 lg:grid-cols-2 gap-5 mt-6 lg:mt-36">
+      <div
+        id="case-study-grid"
+        class="col-span-full lg:col-start-2 lg:col-span-10 grid grid-cols-1 lg:grid-cols-2 gap-5 mt-6 lg:mt-36"
+      >
         {
           caseStudies.map((cs) => (
             <CaseStudyCard
@@ -183,4 +200,32 @@ const caseStudies: CaseStudy[] = [
       </div>
     </Grid>
   </section>
+
+  <script>
+    function initIndustryFilters() {
+      const checkboxes = document.querySelectorAll<HTMLInputElement>('.industry-checkbox')
+      const cards = document.querySelectorAll<HTMLElement>('.case-study-card')
+
+      function applyFilters() {
+        const selected = Array.from(checkboxes)
+          .filter((cb) => cb.checked)
+          .map((cb) => cb.value)
+
+        cards.forEach((card) => {
+          if (selected.length === 0) {
+            card.style.display = ''
+            return
+          }
+          const industries: string[] = JSON.parse(card.dataset.industries || '[]')
+          const match = selected.some((s) => industries.includes(s))
+          card.style.display = match ? '' : 'none'
+        })
+      }
+
+      checkboxes.forEach((cb) => cb.addEventListener('change', applyFilters))
+    }
+
+    initIndustryFilters()
+    document.addEventListener('astro:after-swap', initIndustryFilters)
+  </script>
 </Layout>

@@ -14,7 +14,10 @@ interface Props {
 const { title, slug, industry, services, overview, colour, image } = Astro.props
 ---
 
-<div class={`case-study-card h-67 lg:h-138 ${colour} relative overflow-hidden`}>
+<div
+  class={`case-study-card h-67 lg:h-138 ${colour} relative overflow-hidden`}
+  data-industries={JSON.stringify(industry)}
+>
   <div class="absolute inset-0">
     <Image src={image} alt={title} class="w-full h-full object-cover" />
   </div>
