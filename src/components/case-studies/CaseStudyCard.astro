@@ -20,7 +20,7 @@ const { title, slug, industry, services, overview, colour, image } = Astro.props
   </div>
 
   <div
-    class="case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col pt-2 bg-pixel-blue transition-[height,padding-top,padding-bottom] duration-300 ease-in-out overflow-hidden"
+    class={`case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col pt-2 ${colour} transition-[height,padding-top,padding-bottom] duration-300 ease-in-out overflow-hidden`}
   >
     <h2 class="text-base transition-[font-size,padding-left] duration-300 ease-in-out shrink-0 px-2 lg:px-4">
       {title}
