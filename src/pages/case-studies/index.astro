@@ -157,27 +157,27 @@ const remaining = caseStudies.slice(1)
         </div>
 
         <div
-          class="case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col p-2 lg:pl-4 pt-2 bg-pixel-blue transition-[height,padding-top] duration-300 ease-in-out overflow-hidden"
+          class="case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col p-2 lg:pl-4 pt-2 bg-pixel-blue transition-[height] duration-300 ease-in-out overflow-hidden"
         >
           <h2 class="text-base transition-[font-size] duration-300 ease-in-out shrink-0">Case Study Title</h2>
-          <div class="mt-4 grid gap-y-2 gap-x-3" style="grid-template-columns: auto 1fr;">
-            <span class="opacity-50">Sector</span>
-            <span><span class="meta-data">Technology AI</span></span>
-            <span class="opacity-50">Services</span>
-            <span class="flex flex-wrap items-center gap-2">
+          <div class="mt-8 grid gap-y-2 gap-x-3" style="grid-template-columns: auto 1fr;">
+            <div class="col-span-full"><span class="meta-data">Technology AI</span></div>
+            <div class="col-span-full flex flex-wrap items-center gap-2">
               <span class="meta-data">Discovery + direction</span>
               <span class="meta-data">Design</span>
               <span class="meta-data">Development</span>
-            </span>
-            <span class="opacity-50">Overview</span>
-            <span>
+            </div>
+          </div>
+
+          <div class="mt-auto">
+            <p>
               A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold —
               from positioning through to product interface.
-            </span>
-            <span></span>
+            </p>
             <a
               href="/case-studies/sonata-ai"
-              class="mt-2 font-sans underline underline-offset-2 hover:opacity-70 transition-opacity">View case study</a
+              class="mt-2 inline-block font-sans underline underline-offset-2 hover:opacity-70 transition-opacity"
+              >View case study</a
             >
           </div>
         </div>
@@ -189,10 +189,16 @@ const remaining = caseStudies.slice(1)
     .case-study-overlay.expanded {
       height: 100%;
       padding-top: 30px;
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: 24px;
     }
     @media (min-width: 1024px) {
       .case-study-overlay.expanded {
         padding-top: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 40px;
       }
     }
     .case-study-overlay.expanded h2 {
