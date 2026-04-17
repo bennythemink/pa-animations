@@ -18,8 +18,8 @@ const { title, items } = Astro.props
       class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col justify-center gap-3 font-sans text-lg lg:text-2xl mt-6 lg:mt-0"
     >
       {
-        items.map((item) => (
-          <li class="flex items-start gap-3 border-b-2 border-[#e6e2df] py-2 lg:py-4">
+        items.map((item, i) => (
+          <li class:list={['flex items-start gap-3 border-b-2 border-[#e6e2df] py-2 lg:py-4', i === 0 && 'lg:pt-0']}>
             <span
               class="shrink-0 w-[12px] h-[12px] mt-[5px] lg:mt-[9px]"
               style="background-color: var(--accent-bgc);"
