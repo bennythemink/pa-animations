@@ -11,6 +11,7 @@ interface CaseStudyItem {
 
 interface Props {
   items?: CaseStudyItem[]
+  size?: 'default' | 'small'
 }
 
 const defaultItems: CaseStudyItem[] = [
@@ -26,19 +27,24 @@ const defaultItems: CaseStudyItem[] = [
   }
 ]
 
-const { items = defaultItems } = Astro.props
+const { items = defaultItems, size = 'default' } = Astro.props
 
 function getImageSrc(image: ImageMetadata | string): string {
   return typeof image === 'string' ? image : image.src
 }
 
-const BANNER_HEIGHT_MOBILE = 40
-const BANNER_HEIGHT_DESKTOP = 48
+const BANNER_HEIGHT_MOBILE = size === 'small' ? 34 : 40
+const BANNER_HEIGHT_DESKTOP = size === 'small' ? 34 : 48
+const IMAGE_HEIGHT_SMALL = 280
+const containerStyle = size === 'small' ? `height: ${IMAGE_HEIGHT_SMALL + items.length * 34}px;` : undefined
+const containerClass =
+  size === 'small' ? 'relative w-full overflow-hidden' : 'relative w-full overflow-hidden h-[500px] lg:h-[700px]'
 ---
 
 <div
   id="case-study-drawer"
-  class="relative w-full overflow-hidden h-[500px] lg:h-[700px]"
+  class={containerClass}
+  style={containerStyle}
   data-count={items.length}
   data-banner-height-mobile={BANNER_HEIGHT_MOBILE}
   data-banner-height-desktop={BANNER_HEIGHT_DESKTOP}
