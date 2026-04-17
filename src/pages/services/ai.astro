@@ -11,15 +11,16 @@ import OurApproachSection from '@components/services/OurApproachSection.astro'
 import Plus from '@components/signs/Plus.astro'
 import FeatureCards from '@components/services/FeatureCards.astro'
 import WhoSection from '@components/services/WhoSection.astro'
+import Callout from '@components/Callout.astro'
 
 /**
  * HeroSection variables
  */
-const pageTitle = 'AI Services'
-const tagline =
-  'Practical AI strategy and implementation to drive innovation, improve efficiency, and make data-driven decisions.'
+const pageTitle = 'AI'
+const tagline = 'Practical AI, delivered by the people doing the work.'
 const paragraphs = [
-  'We help organisations leverage AI to drive innovation, improve efficiency, and make data-driven decisions. Our AI services include strategy, implementation, and ongoing support to ensure successful adoption and measurable impact.'
+  "AI is changing how digital products are built and how businesses operate. The hard part for most organisations is working out where it actually fits, what's worth investing in, and how to build something that holds up once the novelty wears off.",
+  "Our AI service covers strategy and advisory, custom builds, and workflow automation. The work is grounded in your real business problems, shaped by people who've delivered complex digital systems before, and honest about what AI can and can't do today."
 ]
 
 /**
@@ -42,52 +43,64 @@ const second = {
  * WhatWeDoSection variables
  */
 const aiServices = [
-  'AI Assistant for customer support and lead generation',
-  'AI strategy development and roadmap planning',
-  'Custom AI solution design and implementation',
-  'AI integration with existing systems and workflows',
-  'Ongoing AI support, maintenance, and optimization'
+  'AI strategy and senior advisory',
+  'Custom AI-powered tools, copilots, and features',
+  'Workflow automation and intelligent agents'
 ]
 
 /**
  * FeatureCards variables
  */
-const cardsTitle = { text: 'Our AI services provide', colour: 'pixel-blue' }
+const cardsTitle = { text: 'Our AI services is', colour: 'pixel-blue' }
 const cards = [
   {
-    title: 'TBD',
-    description: 'TBD'
+    title: 'Grounded',
+    description: 'in your real business problem, not a solution looking for one.'
   },
   {
-    title: 'TBD',
-    description: 'TBD'
+    title: 'Honest',
+    description: "about what AI can and can't do today, including the trade-offs, risks, and limitations."
   },
   {
-    title: 'TBD',
-    description: 'TBD'
+    title: 'Sensible',
+    description:
+      "in its technical foundations, so the solution is reliable, maintainable, and doesn't break the first time the underlying model changes"
   },
   {
-    title: 'TBD',
-    description: 'TBD'
+    title: 'Focused',
+    description: 'on outcomes you can measure, so the investment is justified, and the impact is clear.'
   }
 ]
 
 /**
  * WhoSection variables
  */
-const whoFor = ['TBD', 'TBD', 'TBD']
+const whoFor = [
+  'Organisations that know AI is relevant to them but need help figuring out where and how',
+  'Teams looking for honest guidance before committing to significant AI investment',
+  'Businesses that want AI solutions built properly, not prototypes dressed up as products'
+]
 
-const whoNotFor = ['TBD', 'TBD', 'TBD']
+const whoNotFor = [
+  "Projects driven by 'we need an AI story' rather than a real problem to solve",
+  'Teams looking for the cheapest possible build, regardless of whether it holds up over time',
+  'Organisations wanting validation of a pre-chosen AI solution, rather than honest assessment'
+]
 ---
 
 <Layout
-  title="AI Services"
+  title="AI Strategy, Custom AI Builds & Automation"
   description="Practical AI strategy and implementation to drive innovation, improve efficiency, and make data-driven decisions. Leveraging AI for measurable impact."
 >
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
   <CaseStudiesSection first={first} second={second} />
 
   <WhatWeDoSection title="Our AI services:" items={aiServices} />
+
+  <Callout
+    calloutText="Looking for a fully-managed, AI-powered knowledge assistant for your website? See our dedicated product, Pixel Assist."
+    ctaText="Let's take a look →"
+  />
 
   <OurApproachSection>
     <p>
