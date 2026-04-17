@@ -26,32 +26,38 @@ function getImageSrc(image: ImageMetadata | string): string {
   return typeof image === 'string' ? image : image.src
 }
 
-const BANNER_HEIGHT = 48
+const BANNER_HEIGHT_MOBILE = 40
+const BANNER_HEIGHT_DESKTOP = 48
 ---
 
 <div
   id="case-study-drawer"
   class="relative w-full overflow-hidden h-[500px] lg:h-[700px]"
   data-count={items.length}
-  data-banner-height={BANNER_HEIGHT}
+  data-banner-height-mobile={BANNER_HEIGHT_MOBILE}
+  data-banner-height-desktop={BANNER_HEIGHT_DESKTOP}
 >
   {
     items.map((item, i) => (
       <div
         class="drawer absolute inset-x-0 bottom-0 flex flex-col"
         data-index={i}
-        style={`z-index: ${i + 1}; top: ${i * BANNER_HEIGHT}px;`}
+        style={`z-index: ${i + 1}; top: ${i * BANNER_HEIGHT_MOBILE}px;`}
       >
         <button
-          class="drawer-banner w-full text-left px-5 font-sans font-normal text-sm lg:text-base flex items-center shrink-0 hover:brightness-95 transition-[filter]"
-          style={`background-color: ${item.colour}; height: ${BANNER_HEIGHT}px;`}
+          class="drawer-banner w-full text-left px-5 font-sans font-normal text-sm lg:text-base flex items-center shrink-0 hover:brightness-95 transition-[filter] cursor-pointer"
+          style={`background-color: ${item.colour}; height: ${BANNER_HEIGHT_MOBILE}px;`}
           data-index={i}
           type="button"
         >
-          {item.title}
+          <span class="underline underline-offset-2">{item.title}</span>
         </button>
-        <a href={item.slug} class="block flex-1 overflow-hidden min-h-0">
-          <img src={getImageSrc(item.image)} alt={item.title} class="w-full h-full object-cover" />
+        <a href={item.slug} target="_blank" rel="noopener noreferrer" class="block flex-1 overflow-hidden min-h-0">
+          <img
+            src={getImageSrc(item.image)}
+            alt={item.title}
+            class="w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0"
+          />
         </a>
       </div>
     ))
@@ -67,13 +73,25 @@ const BANNER_HEIGHT = 48
 
     const drawers = container.querySelectorAll<HTMLElement>('.drawer')
     const banners = container.querySelectorAll<HTMLButtonElement>('.drawer-banner')
-    const BANNER_H = parseInt(container.dataset.bannerHeight || '48')
+    const BANNER_H_MOBILE = parseInt(container.dataset.bannerHeightMobile || '40')
+    const BANNER_H_DESKTOP = parseInt(container.dataset.bannerHeightDesktop || '48')
+    const LG_BREAKPOINT = 1024
+
+    function getBannerH() {
+      return window.innerWidth >= LG_BREAKPOINT ? BANNER_H_DESKTOP : BANNER_H_MOBILE
+    }
     const count = drawers.length
 
     let activeIndex = count - 1
 
     function updatePositions(animate = true) {
       const containerH = container!.offsetHeight
+      const BANNER_H = getBannerH()
+
+      // Update banner heights
+      banners.forEach((banner) => {
+        banner.style.height = `${BANNER_H}px`
+      })
 
       drawers.forEach((drawer, i) => {
         let targetTop: number
