@@ -22,8 +22,7 @@ const defaultItems: CaseStudyItem[] = [
     title: 'VincentCare',
     slug: '/case-studies/vincentcare',
     image: mbPlaceholder,
-    colour: '#f5c844',
-    imagePosition: '50% 100%'
+    colour: '#f5c844'
   }
 ]
 
@@ -59,7 +58,7 @@ const BANNER_HEIGHT_DESKTOP = 48
         >
           <span class="underline underline-offset-2">{item.title}</span>
         </button>
-        <a href={item.slug} target="_blank" rel="noopener noreferrer" class="block flex-1 overflow-hidden min-h-0">
+        <a href={item.slug} target="_blank" rel="noopener noreferrer" class="drawer-image block overflow-hidden">
           <img
             src={getImageSrc(item.image)}
             alt={item.title}
@@ -96,9 +95,13 @@ const BANNER_HEIGHT_DESKTOP = 48
       const containerH = container!.offsetHeight
       const BANNER_H = getBannerH()
 
-      // Update banner heights
+      // Update banner and image heights
+      const imageH = containerH - count * BANNER_H
       banners.forEach((banner) => {
         banner.style.height = `${BANNER_H}px`
+      })
+      container!.querySelectorAll<HTMLElement>('.drawer-image').forEach((link) => {
+        link.style.height = `${imageH}px`
       })
 
       drawers.forEach((drawer, i) => {
