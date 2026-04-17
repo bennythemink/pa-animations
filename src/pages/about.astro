@@ -9,6 +9,7 @@ import { Image } from 'astro:assets'
 import aboutImage from '@assets/pa-about-reduced.webp'
 import ClientLogos from '@components/home/ClientLogos.astro'
 import ContactForm from '@components/ContactForm.astro'
+import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
 
 /**
  * WhoSection variables
@@ -286,7 +287,9 @@ const sectionCards = [
         </div>
       </div>
       <div class="col-span-full lg:col-start-7 lg:col-span-5 mt-8 lg:mt-0">
-        <div class="w-full aspect-[4/3] bg-gray-200">placeholder</div>
+        <div class="w-full aspect-[4/3] bg-gray-200">
+          <CaseStudyDrawer />
+        </div>
       </div>
     </Grid>
   </section>
