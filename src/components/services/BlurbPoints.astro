@@ -4,18 +4,18 @@ import Grid from '@components/Grid.astro'
 interface Props {
   id?: string
   title?: string
-  titleColor?: string
+  labelColor?: string
   rightColumnTitle: string
   bulletPoints: string[]
 }
 
-const { id = 'who', title, titleColor = 'text-pixel-red', rightColumnTitle, bulletPoints } = Astro.props
+const { id = 'who', title, labelColor = 'text-pixel-red', rightColumnTitle, bulletPoints } = Astro.props
 ---
 
 <section id={id} class="py-16 lg:py-24">
   <Grid>
     <div class="col-span-12 lg:col-start-2 lg:col-span-4">
-      <h2 class={`font-sans font-normal lg:text-4xl ${titleColor} mb-6 lg:mb-10`}>{title}</h2>
+      <h2 class={`font-sans font-normal lg:text-4xl ${labelColor} mb-6 lg:mb-10`}>{title}</h2>
       <div class="lg:text-[24px]">
         <slot />
       </div>
@@ -28,10 +28,10 @@ const { id = 'who', title, titleColor = 'text-pixel-red', rightColumnTitle, bull
       <ul class="flex flex-col gap-5 lg:gap-7">
         {
           bulletPoints.map((item) => (
-            <li class="flex items-start gap-3 font-sans font-normal text-[20px] lg:text-[30px] leading-[1.2] lg:leading-[1.28] tracking-[-0.04em]">
+            <li class="flex items-start gap-3 font-sans font-normal text-[20px] lg:text-2xl leading-[1.2] lg:leading-[1.28] tracking-[-0.04em]">
               <span
-                class="shrink-0 w-[12px] h-[12px] mt-[5px] lg:mt-[13px]"
-                style={`background-color: var(--color-${titleColor.replace('text-', '')})`}
+                class="shrink-0 w-[12px] h-[12px] mt-[5px] lg:mt-[10px]"
+                style={`background-color: var(--color-${labelColor.replace('text-', '')})`}
               />
               {item}
             </li>
