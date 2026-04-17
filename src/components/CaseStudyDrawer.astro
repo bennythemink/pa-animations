@@ -6,6 +6,7 @@ interface CaseStudyItem {
   slug: string
   image: ImageMetadata | string
   colour: string
+  imagePosition?: string // Optional CSS object-position value for the image, e.g. 'top', 'bottom', 'left', 'right', 'center', or '50% 30%'. Defaults to 'center'.
 }
 
 interface Props {
@@ -17,7 +18,13 @@ const defaultItems: CaseStudyItem[] = [
   { title: 'Holmesglen', slug: '/case-studies/holmesglen', image: mbPlaceholder, colour: '#e38093' },
   { title: 'Dare', slug: '/case-studies/dare', image: mbPlaceholder, colour: '#63a3d2' },
   { title: 'Yoplait', slug: '/case-studies/yoplait', image: mbPlaceholder, colour: '#f09339' },
-  { title: 'VincentCare', slug: '/case-studies/vincentcare', image: mbPlaceholder, colour: '#f5c844' }
+  {
+    title: 'VincentCare',
+    slug: '/case-studies/vincentcare',
+    image: mbPlaceholder,
+    colour: '#f5c844',
+    imagePosition: '50% 100%'
+  }
 ]
 
 const { items = defaultItems } = Astro.props
@@ -57,6 +64,7 @@ const BANNER_HEIGHT_DESKTOP = 48
             src={getImageSrc(item.image)}
             alt={item.title}
             class="w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0"
+            style={`object-position: ${item.imagePosition ?? 'center'};`}
           />
         </a>
       </div>
