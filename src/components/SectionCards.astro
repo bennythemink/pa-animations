@@ -18,16 +18,24 @@ interface SectionTitle {
 interface SectionText {
   tagline: string
   description: string[]
+  /** Number of grid columns the tagline spans on desktop */
+  colSpan?: 2 | 3 | 4 | 5
 }
 
 interface Props {
-  title: SectionTitle
+  title?: SectionTitle
   text: SectionText
   cards: Card[]
   displayTextBackground?: boolean
 }
 
 const { title, text, cards, displayTextBackground = true } = Astro.props
+const taglineSpanClass: Record<number, string> = {
+  2: 'lg:col-span-2',
+  3: 'lg:col-span-3',
+  4: 'lg:col-span-4',
+  5: 'lg:col-span-5'
+}
 ---
 
 <Grid>
@@ -40,18 +48,26 @@ const { title, text, cards, displayTextBackground = true } = Astro.props
     {/* Inner content inset to match services-intro left edge */}
     <div
       class:list={[
-        'col-span-full lg:col-start-2 lg:col-span-5 flex flex-col gap-6 lg:pr-16 lg:pl-0',
+        'col-span-full lg:col-start-2 lg:col-span-5 grid grid-cols-5 gap-y-6 lg:pr-16 lg:pl-0',
         displayTextBackground ? 'py-10 lg:py-16' : ''
       ]}
     >
-      <h2
-        class="font-sans text-base lg:text-[40px]"
-        style="color: #357563; letter-spacing: 0; line-height: 1.1;"
-        set:html={title.text}
-      />
-      <h3 class="text-3xl lg:text-[80px]" set:html={text.tagline} />
-      <div class="flex flex-col gap-4 font-serif mt-3.5 lg:mt-12">
-        <!-- {text.description.map((line) => <p>{line}</p>)} -->
+      {
+        title && (
+          <h2
+            class="col-span-full font-sans text-base lg:text-[40px]"
+            style="color: #357563; letter-spacing: 0; line-height: 1.1;"
+            set:html={title.text}
+          />
+        )
+      }
+      <h3 class="col-span-full text-3xl lg:text-[80px] leading-[1.04] tracking-[-0.04em]" set:html={text.tagline} />
+      <div
+        class:list={[
+          'col-span-full flex flex-col gap-4 font-serif mt-3.5 lg:mt-12',
+          taglineSpanClass[text.colSpan ?? 4]
+        ]}
+      >
         {text.description.map((line) => <p set:html={line} />)}
       </div>
     </div>

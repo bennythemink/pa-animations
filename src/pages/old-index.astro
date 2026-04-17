@@ -5,8 +5,6 @@ import plusSvg from '@assets/plus.svg?url'
 import equalsSvg from '@assets/equals.svg?url'
 import vectorSvg from '@assets/vector.svg?url'
 import ClientLogos from '@components/ClientLogos.astro'
-import Grid from '@components/Grid.astro'
-import SectionCards from '@components/SectionCards.astro'
 
 const assistConversation = [
   { role: 'user' as const, text: 'What exactly is Pixel Assist?' },
@@ -18,62 +16,6 @@ const assistConversation = [
   {
     role: 'ai' as const,
     text: 'It guides visitors to the right information at the right moment — answering objections, recommending products, and nudging them toward enquiry forms or checkout. Think of it as a knowledgeable sales assistant that never sleeps.'
-  }
-]
-
-/**
- * SectionCards variables
- */
-
-const sectionCardsTitle = { text: 'Our process', colour: 'pixel-pink' }
-const sectionText = {
-  tagline: 'However you need to move forward, we have the right capability.',
-  description: [
-    'Whether you’re starting from scratch, improving something that exists, or navigating a complex digital challenge — there’s a service built for where you are right now.'
-  ],
-  colSpan: 3 as const
-}
-
-const sectionCards = [
-  {
-    title: 'Discovery + direction',
-    description: [
-      'Whether you’re starting from scratch, improving something that exists, or navigating a complex digital challenge — there’s a service built for where you are right now.'
-    ],
-    url: '/services/discovery',
-    colour: '#63a3d2'
-  },
-  {
-    title: 'Design',
-    description: [
-      'Digital experiences that work for your customers, not just impress them — brand, website, and product design driven by outcomes and grounded in how real people use digital products.'
-    ],
-    url: '/services/design',
-    colour: '#cab38f'
-  },
-  {
-    title: 'Development',
-    description: [
-      'Websites, apps, and systems built to last, robust, maintainable, and fit for purpose. Not over-engineered, not fragile.'
-    ],
-    url: '/services/development',
-    colour: '#e38093'
-  },
-  {
-    title: 'AI',
-    description: [
-      'AI-powered solutions that enhance your digital experiences, automate processes, and provide insights to drive better decision-making.'
-    ],
-    url: '/services/ai',
-    colour: '#00A180'
-  },
-  {
-    title: 'Consulting',
-    description: [
-      'Senior guidance on strategy, delivery, and technical decisions — from people who have seen what good and bad looks like at scale, and will tell you the difference.'
-    ],
-    url: '/services/consulting',
-    colour: '#f09339'
   }
 ]
 ---
@@ -115,36 +57,6 @@ const sectionCards = [
         </h2>
       </div>
     </div>
-
-    <section id="lets-talk">
-      <Grid>
-        <div class="col-span-full py-10 lg:py-14 grid grid-cols-12 gap-5" style="background-color: var(--accent-bgc);">
-          <div class="col-span-12 lg:col-start-2 lg:col-span-5">
-            <h2 class="text-xl lg:text-[80px] leading-[1.04] tracking-[-0.04em]">
-              Let&rsquo;s talk about what you&rsquo;re trying to&nbsp;achieve.
-            </h2>
-          </div>
-          <div
-            class="col-span-12 lg:col-start-8 lg:col-span-4 mt-6 lg:mt-0 flex flex-col justify-center text-base lg:text-2xl"
-          >
-            <p class="">
-              Whether you've got a detailed brief or just a rough idea, we're happy to have a conversation.
-            </p>
-            <p class="mt-4">
-              No pitch, no pressure, just a straight talk about what you're working on and whether we're the
-              right&nbsp;fit.
-            </p>
-            <a
-              href="/contact"
-              class="mt-6 font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base hover:underline"
-              >Let&rsquo;s talk ✉️</a
-            >
-          </div>
-        </div>
-      </Grid>
-    </section>
-
-    <SectionCards text={sectionText} cards={sectionCards} displayTextBackground={false} />
 
     <!-- ══════ PROBLEM — vertical scroll section ══════ -->
     <section id="problem" class="min-h-screen flex flex-col justify-center px-16 py-24">
