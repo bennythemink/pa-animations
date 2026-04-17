@@ -8,7 +8,8 @@ import { COLOR_KEYS, COLORS_RGB } from '@scripts/flow-field.ts'
 interface Props {
   title?: string
   description?: string
-  position?: 'sticky' | 'fixed'
+  /** Skip the menu spacer for pages with full-height heroes */
+  noMenuSpacer?: boolean
   /** Override the random logo colour pair. Pass { p: '#hex', a: '#hex' }. */
   logoColors?: { p: string; a: string }
 }
@@ -16,7 +17,7 @@ interface Props {
 const {
   title = 'Pixel Agency',
   description = 'Pixel Agency — digital strategy, design, and development studio based in Melbourne, Australia.',
-  position = 'sticky',
+  noMenuSpacer = false,
   logoColors
 } = Astro.props
 
@@ -47,7 +48,8 @@ const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
     </script>
   </head>
   <body class="m-0 min-h-screen bg-pixel-off-white">
-    <Menu position={position} logoColors={logoColors} />
+    <Menu logoColors={logoColors} />
+    {!noMenuSpacer && <div class="h-11 lg:h-[76px]" aria-hidden="true" />}
     <slot />
     <Footer />
   </body>
