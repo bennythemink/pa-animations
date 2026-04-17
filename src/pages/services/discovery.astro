@@ -8,9 +8,11 @@ import Plus from '@components/signs/Plus.astro'
 
 import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
 import FeatureCards from '@components/services/FeatureCards.astro'
+import BlurbPoints from '@components/services/BlurbPoints.astro'
 
 import mbImage from '@assets/mb.png'
 import iphoneImage from '@assets/iphone.png'
+import SectionCards from '@components/SectionCards.astro'
 
 /**
  * HeroSection variables
@@ -71,6 +73,17 @@ const whoNotFor = [
   'Projects with a fully defined scope that are ready for immediate build',
   'Teams seeking validation of a solution they’ve already decided on'
 ]
+
+const bulletPoints = [
+  'Workshop Findings - a clear record of the problem domain, what was uncovered, and the project objectives agreed upon',
+  'User Stories with Acceptance Criteria - the scope of the project written in plain language, usable by both your technical team and your business stakeholders',
+  'Timelines - a Gantt chart showing how long each phase will take, including major milestones and dependencies',
+  'Solution Map - a map of the main screens and touchpoints, so you can visualise what the system will actually entail',
+  'Wireframes - the main user flows in a visual format, showing what your users will experience',
+  'User Personas - a clear picture of who will use the solution and what they need from it',
+  'Statement of Work - everything above tied together into one document that defines the full scope, context, and agreed direction',
+  'Costings - a clear picture of the investment required, broken down by phase and deliverable, so you can make an informed decision about whether to proceed'
+]
 ---
 
 <Layout
@@ -93,6 +106,16 @@ const whoNotFor = [
   >
     Placeholder
   </div>
+
+  <BlurbPoints title="What it provides:" rightColumnTitle="Tangible deliverables include:" bulletPoints={bulletPoints}>
+    At the end of a Discovery & Direction engagement, you’ll have a clear, documented, and shareable foundation for
+    whatever comes next — whether that’s moving into delivery, seeking funding, or aligning stakeholders.
+  </BlurbPoints>
+
+  <OurApproachSection label="The result" labelColour="pixel-green">
+    A shared understanding of the problem, a defined solution direction, <Plus size={28} desktopSize={66} /> the confidence
+    to move forward, or not, on informed terms.
+  </OurApproachSection>
 
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
 
