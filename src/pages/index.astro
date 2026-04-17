@@ -7,6 +7,7 @@ import vectorSvg from '@assets/vector.svg?url'
 import ClientLogos from '@components/ClientLogos.astro'
 import Grid from '@components/Grid.astro'
 import SectionCards from '@components/SectionCards.astro'
+import CaseStudyDrawer from '@components/CaseStudyDrawer.astro'
 
 const assistConversation = [
   { role: 'user' as const, text: 'What exactly is Pixel Assist?' },
@@ -115,6 +116,12 @@ const sectionCards = [
         </h2>
       </div>
     </div>
+
+    <Grid>
+      <div class="col-span-full col-start-1 lg:col-start-2 my-6">
+        <CaseStudyDrawer />
+      </div>
+    </Grid>
 
     <SectionCards text={sectionText} cards={sectionCards} displayTextBackground={false} />
 

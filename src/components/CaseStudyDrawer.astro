@@ -1,0 +1,111 @@
+---
+import mbPlaceholder from '@assets/mb.png'
+
+interface CaseStudyItem {
+  title: string
+  slug: string
+  image: ImageMetadata | string
+  colour: string
+}
+
+interface Props {
+  items?: CaseStudyItem[]
+}
+
+const defaultItems: CaseStudyItem[] = [
+  { title: 'Baw Baw', slug: '/case-studies/bawbaw', image: mbPlaceholder, colour: '#479f82' },
+  { title: 'Holmesglen', slug: '/case-studies/holmesglen', image: mbPlaceholder, colour: '#e38093' },
+  { title: 'Dare', slug: '/case-studies/dare', image: mbPlaceholder, colour: '#63a3d2' },
+  { title: 'Yoplait', slug: '/case-studies/yoplait', image: mbPlaceholder, colour: '#f09339' },
+  { title: 'VincentCare', slug: '/case-studies/vincentcare', image: mbPlaceholder, colour: '#f5c844' }
+]
+
+const { items = defaultItems } = Astro.props
+
+function getImageSrc(image: ImageMetadata | string): string {
+  return typeof image === 'string' ? image : image.src
+}
+
+const BANNER_HEIGHT = 48
+---
+
+<div
+  id="case-study-drawer"
+  class="relative w-full overflow-hidden h-[500px] lg:h-[700px]"
+  data-count={items.length}
+  data-banner-height={BANNER_HEIGHT}
+>
+  {
+    items.map((item, i) => (
+      <div
+        class="drawer absolute inset-x-0 bottom-0 flex flex-col"
+        data-index={i}
+        style={`z-index: ${i + 1}; top: ${i * BANNER_HEIGHT}px;`}
+      >
+        <button
+          class="drawer-banner w-full text-left px-5 font-sans font-normal text-sm lg:text-base flex items-center shrink-0 hover:brightness-95 transition-[filter]"
+          style={`background-color: ${item.colour}; height: ${BANNER_HEIGHT}px;`}
+          data-index={i}
+          type="button"
+        >
+          {item.title}
+        </button>
+        <a href={item.slug} class="block flex-1 overflow-hidden min-h-0">
+          <img src={getImageSrc(item.image)} alt={item.title} class="w-full h-full object-cover" />
+        </a>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  import { gsap } from 'gsap'
+
+  function initDrawer() {
+    const container = document.getElementById('case-study-drawer')
+    if (!container) return
+
+    const drawers = container.querySelectorAll<HTMLElement>('.drawer')
+    const banners = container.querySelectorAll<HTMLButtonElement>('.drawer-banner')
+    const BANNER_H = parseInt(container.dataset.bannerHeight || '48')
+    const count = drawers.length
+
+    let activeIndex = count - 1
+
+    function updatePositions(animate = true) {
+      const containerH = container!.offsetHeight
+
+      drawers.forEach((drawer, i) => {
+        let targetTop: number
+        if (i <= activeIndex) {
+          targetTop = i * BANNER_H
+        } else {
+          const closedCount = count - activeIndex - 1
+          const posInClosed = i - activeIndex - 1
+          targetTop = containerH - (closedCount - posInClosed) * BANNER_H
+        }
+
+        if (animate) {
+          gsap.to(drawer, { top: targetTop, duration: 0.5, ease: 'power2.inOut' })
+        } else {
+          gsap.set(drawer, { top: targetTop })
+        }
+      })
+    }
+
+    banners.forEach((banner) => {
+      banner.addEventListener('click', () => {
+        const index = parseInt(banner.dataset.index || '0')
+        if (index === activeIndex) return
+        activeIndex = index
+        updatePositions()
+      })
+    })
+
+    // Set initial positions without animation
+    updatePositions(false)
+  }
+
+  initDrawer()
+  document.addEventListener('astro:page-load', initDrawer)
+</script>
