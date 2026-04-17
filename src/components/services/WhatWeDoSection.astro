@@ -19,8 +19,11 @@ const { title, items } = Astro.props
     >
       {
         items.map((item) => (
-          <li class="flex items-center gap-3 border-b-2 border-[#e6e2df] py-2 lg:py-4">
-            <span class="shrink-0 w-[12px] h-[12px]" style="background-color: var(--accent-bgc);" />
+          <li class="flex items-start gap-3 border-b-2 border-[#e6e2df] py-2 lg:py-4">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[5px] lg:mt-[9px]"
+              style="background-color: var(--accent-bgc);"
+            />
             {item}
           </li>
         ))

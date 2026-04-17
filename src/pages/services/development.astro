@@ -72,6 +72,12 @@ const whatWeBuild = [
   'AI powered tools & solutions'
 ]
 
+const whatYouEndUpWith = [
+  'Does what it’s meant to do — reliably, in the real world, for the people using it',
+  'Can be maintained, improved, and evolved over time without significant rework',
+  'Delivers value beyond launch, not just on the day it goes live'
+]
+
 /**
  * WhoSection variables
  */
@@ -104,11 +110,7 @@ const whoNotFor = ['Projects where speed is the only priority and stability can 
 
   <FeatureCards title={cardsTitle} cards={cards} />
 
-  <div
-    class="flex items-center justify-center min-h-[500px] bg-black/5 text-black/40 font-sans text-lg lg:text-3xl my-4 lg:my-8"
-  >
-    Placeholder
-  </div>
+  <WhatWeDoSection title="You get a solution that" items={whatYouEndUpWith} />
 
   <WhoSection forItems={whoFor} notForItems={whoNotFor} />
 
