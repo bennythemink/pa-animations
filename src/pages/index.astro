@@ -1,13 +1,13 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import PixelAssistChatbot from '@components/PixelAssistChatbot.astro'
 import plusSvg from '@assets/plus.svg?url'
 import equalsSvg from '@assets/equals.svg?url'
 import vectorSvg from '@assets/vector.svg?url'
-import ClientLogos from '@components/ClientLogos.astro'
 import Grid from '@components/Grid.astro'
 import SectionCards from '@components/SectionCards.astro'
-import CaseStudyDrawer from '@components/CaseStudyDrawer.astro'
+import ClientLogos from '@components/home/ClientLogos.astro'
+import PixelAssistChatbot from '@components/home/PixelAssistChatbot.astro'
+import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
 
 const assistConversation = [
   { role: 'user' as const, text: 'What exactly is Pixel Assist?' },
@@ -116,6 +116,40 @@ const sectionCards = [
         </h2>
       </div>
     </div>
+
+    <section id="difference">
+      <Grid>
+        <div class="col-span-full bg-pixel-green grid grid-cols-12 gap-5 pt-7.5 lg:pt-28 pb-7.5 lg:pb-36 my-2 lg:my-6">
+          <h3 class="col-span-full col-start-2 text-5xl lg:text-8xl">
+            You talk to the people<span class="lg:hidden"> doing the work</span>
+          </h3>
+          <h3 class="col-span-full col-start-2 lg:col-start-6 text-5xl lg:text-8xl hidden lg:block">doing the work</h3>
+          <div class="col-start-2 col-span-10 grid grid-cols-12 gap-5">
+            <h2
+              class="text-pixel-dark-green text-base lg:text-[40px] lg:col-start-1 lg:col-span-3 lg:my-20 col-span-full"
+            >
+              Our difference
+            </h2>
+            <div class="col-start-1 col-span-11 lg:col-start-6 lg:col-span-4 lg:my-20">
+              <p>
+                At Pixel Agency, there are no account managers between you and the team making your product. The people
+                you speak to are the same people who think, design, and build.
+              </p>
+              <br />
+              <p>
+                No hand-offs. No incentives to say yes when we should say no. Just clear thinking, honest advice, and
+                work we’re proud to stand behind.
+              </p>
+              <br />
+              <p>
+                The result clearer decisions, stronger outcomes, and partnerships built on trust — not transactions. All
+                without the sales-theatre.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Grid>
+    </section>
 
     <SectionCards text={sectionText} cards={sectionCards} displayTextBackground={false} />
 
