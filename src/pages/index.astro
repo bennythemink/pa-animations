@@ -130,7 +130,7 @@ const sectionCards = [
             <span id="hero-word-container" class="inline-block align-baseline text-center">
               <span id="hero-word"></span><span
                 id="hero-cursor"
-                class="inline-block w-0.5 sm:w-0.75 h-[0.9em] bg-current align-middle ml-px"></span>
+                class="inline-block w-0.5 sm:w-1.5 h-[1.2em] bg-current align-middle ml-2 -translate-y-[14px]"></span>
             </span><br />
             without the sales<br />
             <span class="whitespace-nowrap"
@@ -1048,7 +1048,13 @@ const sectionCards = [
       maxW = Math.max(maxW, measureEl.getBoundingClientRect().width)
     }
     document.body.removeChild(measureEl)
-    container.style.width = `${Math.ceil(maxW + 8)}px`
+
+    // Account for cursor width + margin so the word + cursor always fits
+    const cursorEl = document.getElementById('hero-cursor')!
+    const cursorCS = getComputedStyle(cursorEl)
+    const cursorSpace =
+      cursorEl.getBoundingClientRect().width + parseFloat(cursorCS.marginLeft) + parseFloat(cursorCS.marginRight)
+    container.style.width = `${Math.ceil(maxW + cursorSpace + 4)}px`
 
     // Align pixel bottom with visual bottom of "theatre" text
     alignPixelToText()
