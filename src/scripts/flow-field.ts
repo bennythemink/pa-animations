@@ -51,7 +51,12 @@ export interface FlowFieldOptions {
   padding?: { top?: number; right?: number; bottom?: number; left?: number }
 }
 
-export function initFlowField(options: FlowFieldOptions = {}): void {
+export interface FlowFieldController {
+  addRepulsionElement(el: Element): void
+  removeRepulsionElement(el: Element): void
+}
+
+export function initFlowField(options: FlowFieldOptions = {}): FlowFieldController {
   const {
     colorChangeOnInteraction = false,
     spacing = 'tight',
@@ -432,4 +437,14 @@ export function initFlowField(options: FlowFieldOptions = {}): void {
   }
 
   requestAnimationFrame(draw)
+
+  return {
+    addRepulsionElement(el: Element) {
+      if (!heroTextChildren.includes(el)) heroTextChildren.push(el)
+    },
+    removeRepulsionElement(el: Element) {
+      const idx = heroTextChildren.indexOf(el)
+      if (idx !== -1) heroTextChildren.splice(idx, 1)
+    }
+  }
 } // end initFlowField
