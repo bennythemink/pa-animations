@@ -136,19 +136,11 @@ const sectionCards = [
             <span class="whitespace-nowrap"
               ><span id="hero-theatre-text">theatre</span><span
                 id="hero-pixel-inline"
-                class="inline-block w-2 h-2 sm:w-3 sm:h-3 lg:w-5 lg:h-5 xl:w-6 xl:h-6 bg-pixel-green ml-0.5"
+                class="inline-block w-2 h-2 sm:w-3 sm:h-3 lg:w-5 lg:h-5 xl:w-6 xl:h-6 bg-pixel-green ml-8"
                 style="vertical-align: baseline;"></span></span
             >
           </h1>
         </div>
-      </div>
-
-      <!-- Floating pixel (detach animation target) -->
-      <div
-        id="hero-pixel-float"
-        class="absolute bg-pixel-green z-15 pointer-events-none"
-        style="opacity:0;left:-9999px;top:-9999px;width:24px;height:24px;"
-      >
       </div>
 
       <!-- Flow field canvas -->
@@ -1111,8 +1103,7 @@ const sectionCards = [
   function initHeroScroll() {
     const section = document.getElementById('hero-section')!
     const heading = document.getElementById('hero-heading')!
-    const pixelInline = document.getElementById('hero-pixel-inline')!
-    const pixelFloat = document.getElementById('hero-pixel-float')!
+    const pixel = document.getElementById('hero-pixel-inline')!
     const flowWrap = document.getElementById('hero-flow-wrap')!
     const puzzleWrap = document.getElementById('hero-puzzle-wrap')!
     const puzzleEl = document.getElementById('hero-puzzle')!
@@ -1121,13 +1112,25 @@ const sectionCards = [
     const vw = window.innerWidth
     const vh = window.innerHeight
 
-    // ── Pixel start / end positions ──
-    const sectionRect = section.getBoundingClientRect()
-    const pixelRect = pixelInline.getBoundingClientRect()
-    const pxStartX = pixelRect.left - sectionRect.left
-    const pxStartY = pixelRect.top - sectionRect.top
+    // ── Capture pixel's current position (relative to viewport) ──
+    const pixelRect = pixel.getBoundingClientRect()
+    const pxStartLeft = pixelRect.left
+    const pxStartTop = pixelRect.top
     const pxStartW = pixelRect.width
     const pxStartH = pixelRect.height
+
+    // ── Switch pixel to fixed positioning at its current visual location ──
+    pixel.style.position = 'fixed'
+    pixel.style.left = `${pxStartLeft}px`
+    pixel.style.top = `${pxStartTop}px`
+    pixel.style.width = `${pxStartW}px`
+    pixel.style.height = `${pxStartH}px`
+    pixel.style.zIndex = '15'
+    pixel.style.pointerEvents = 'none'
+    // Remove inline-block sizing classes — now absolutely sized
+    pixel.style.verticalAlign = 'unset'
+    pixel.style.transform = ''
+    pixel.style.marginLeft = '0'
 
     const pxEndW = vw < 640 ? 48 : 80
     const pxCenterX = vw / 2 - pxEndW / 2
@@ -1243,15 +1246,6 @@ const sectionCards = [
       speed: 0.5
     })
 
-    // ── Set initial float pixel state ──
-    gsap.set(pixelFloat, {
-      left: pxStartX,
-      top: pxStartY,
-      width: pxStartW,
-      height: pxStartH,
-      opacity: 0
-    })
-
     // ── Master scroll timeline ──
     const scrollDist = vh * 6
 
@@ -1259,14 +1253,14 @@ const sectionCards = [
       scrollTrigger: {
         trigger: section,
         pin: true,
-        scrub: 1,
+        scrub: 0.3,
         end: `+=${scrollDist}`,
         onUpdate(self) {
           // Only repel flow field vectors when pixel is visible in that phase
           if (self.progress > 0.08 && self.progress < 0.45) {
-            flowCtrl.addRepulsionElement(pixelFloat)
+            flowCtrl.addRepulsionElement(pixel)
           } else {
-            flowCtrl.removeRepulsionElement(pixelFloat)
+            flowCtrl.removeRepulsionElement(pixel)
           }
         }
       }
@@ -1275,14 +1269,12 @@ const sectionCards = [
     // Phase 1: H1 fades and moves up (0 → 2)
     heroTl.to(heading, { y: -vh * 0.8, opacity: 0.7, duration: 2, ease: 'power2.in' }, 0)
 
-    // Phase 2: Pixel detaches, grows, moves to center (1 → 3)
-    heroTl.to(pixelInline, { opacity: 0, duration: 0.3 }, 1)
-    heroTl.to(pixelFloat, { opacity: 1, duration: 0.3 }, 1)
+    // Phase 2: Pixel moves DOWN to center, then continues down (1 → 3)
     heroTl.to(
-      pixelFloat,
+      pixel,
       {
         left: pxCenterX,
-        top: pxCenterY,
+        top: vh * 0.8,
         width: pxEndW,
         height: pxEndW,
         duration: 2,
@@ -1296,7 +1288,7 @@ const sectionCards = [
 
     // Phase 4: Pixel travels to N-tile position (3 → 6)
     heroTl.to(
-      pixelFloat,
+      pixel,
       {
         left: nTileX,
         top: nTileY,
@@ -1313,7 +1305,7 @@ const sectionCards = [
     heroTl.to(flowWrap, { opacity: 0, duration: 1 }, 5.5)
 
     // Phase 6: Pixel fades out (6 → 6.5)
-    heroTl.to(pixelFloat, { opacity: 0, duration: 0.5 }, 6)
+    heroTl.to(pixel, { opacity: 0, duration: 0.5 }, 6)
 
     // Phase 7: Puzzle solves (7 → 9)
     const domGrid: (number | null)[] = shuffledState.slice()
