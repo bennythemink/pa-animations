@@ -1256,20 +1256,16 @@ const sectionCards = [
     // ── Master scroll timeline ──
     const scrollDist = vh * 7
 
+    // Always register pixel for repulsion — the flow field's own
+    // bounds check handles when they don't overlap
+    flowCtrl.addRepulsionElement(pixel)
+
     const heroTl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         pin: true,
         scrub: 0.3,
-        end: `+=${scrollDist}`,
-        onUpdate(self) {
-          // Repel flow field vectors while pixel passes through it
-          if (self.progress > 0.12 && self.progress < 0.25) {
-            flowCtrl.addRepulsionElement(pixel)
-          } else {
-            flowCtrl.removeRepulsionElement(pixel)
-          }
-        }
+        end: `+=${scrollDist}`
       }
     })
 
