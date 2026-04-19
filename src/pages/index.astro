@@ -1276,15 +1276,25 @@ const sectionCards = [
     // Phase 1: H1 fades and moves up (0 → 2)
     heroTl.to(heading, { y: -vh * 0.8, opacity: 0.7, duration: 2, ease: 'none' }, 0)
 
-    // Phase 2: Pixel falls straight down and grows — one continuous motion (0 → 3)
+    // Phase 2a: Pixel grows early (0 → 1)
+    heroTl.to(
+      pixel,
+      {
+        width: pxEndW,
+        height: pxEndW,
+        duration: 1,
+        ease: 'none'
+      },
+      0
+    )
+
+    // Phase 2b: Pixel falls straight down — one continuous motion (0 → 4)
     // Stays on same x-axis, never goes off-screen (stops at 75% vh)
     heroTl.to(
       pixel,
       {
         top: vh * 0.75 - pxEndW / 2,
-        width: pxEndW,
-        height: pxEndW,
-        duration: 3,
+        duration: 4,
         ease: 'none'
       },
       0
@@ -1293,11 +1303,11 @@ const sectionCards = [
     // Phase 3: Flow field slides up from below (0.5 → 2)
     heroTl.to(flowWrap, { y: '0%', duration: 1.5, ease: 'none' }, 0.5)
 
-    // Phase 4: Flow field continues up and exits through the top (3 → 4.5)
-    heroTl.to(flowWrap, { y: '-100%', duration: 1.5, ease: 'none' }, 3)
+    // Phase 4: Flow field continues up and exits through the top (2 → 4)
+    heroTl.to(flowWrap, { y: '-100%', duration: 2, ease: 'none' }, 2)
 
-    // Phase 5: Pixel fades out after FF has passed (4.5 → 5)
-    heroTl.to(pixel, { opacity: 0, duration: 0.5 }, 4.5)
+    // Phase 5: Pixel fades out after FF has passed (4 → 4.5)
+    heroTl.to(pixel, { opacity: 0, duration: 0.5 }, 4)
 
     // Phase 7: Snap pixel to N-tile position + fade in with puzzle (5.5)
     heroTl.set(pixel, { left: nTileX, top: nTileY, width: TILE_SIZE, height: TILE_SIZE }, 5.5)
