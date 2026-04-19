@@ -124,19 +124,21 @@ const sectionCards = [
     <!-- ══════ HERO — scroll-driven animation ══════ -->
     <section id="hero-section" class="relative h-screen overflow-hidden">
       <!-- H1 heading with word cycling -->
-      <div id="hero-heading" class="absolute inset-0 flex items-end pb-[12vh] z-10">
-        <div class="px-5 lg:px-20 max-w-360 mx-auto w-full">
+      <div id="hero-heading" class="absolute inset-0 flex items-center justify-center z-10">
+        <div class="px-5 lg:px-20 max-w-360 w-full text-center">
           <h1 id="hero-h1" class="text-[8vw] xl:text-[120px]" style="visibility:hidden;">
-            <span id="hero-word-container" class="inline-block align-baseline text-left"
-              ><span id="hero-word"></span><span
+            <span id="hero-word-container" class="inline-block align-baseline text-center">
+              <span id="hero-word"></span><span
                 id="hero-cursor"
-                class="inline-block w-0.5 sm:w-0.75 h-[0.75em] bg-current align-middle ml-px"></span></span
-            > without<br />
-            the sales<br />
-            theatre<span
-              id="hero-pixel-inline"
-              class="inline-block w-2 h-2 sm:w-3 sm:h-3 lg:w-5 lg:h-5 xl:w-6 xl:h-6 bg-pixel-green ml-0.5 mb-[0.05em] align-baseline"
-            ></span>
+                class="inline-block w-0.5 sm:w-0.75 h-[0.9em] bg-current align-middle ml-px"></span>
+            </span><br />
+            without the sales<br />
+            <span class="whitespace-nowrap"
+              ><span id="hero-theatre-text">theatre</span><span
+                id="hero-pixel-inline"
+                class="inline-block w-2 h-2 sm:w-3 sm:h-3 lg:w-5 lg:h-5 xl:w-6 xl:h-6 bg-pixel-green ml-0.5"
+                style="vertical-align: baseline;"></span></span
+            >
           </h1>
         </div>
       </div>
@@ -997,6 +999,30 @@ const sectionCards = [
     { text: 'Solutions', color: 'var(--color-pixel-yellow)' }
   ]
 
+  // ── HERO: Align pixel square with visual bottom of "theatre" text ──
+  function alignPixelToText() {
+    const h1 = document.getElementById('hero-h1')!
+    const pixelEl = document.getElementById('hero-pixel-inline')!
+    // Reset any previous transform
+    pixelEl.style.transform = ''
+
+    // The font metrics determine how far below baseline the glyphs extend.
+    // Use a canvas to measure the actual descent of the font at the rendered size.
+    const cs = getComputedStyle(h1)
+    const fontSize = parseFloat(cs.fontSize)
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')!
+    ctx.font = `${cs.fontWeight} ${fontSize}px ${cs.fontFamily}`
+    const metrics = ctx.measureText('theatre')
+
+    // actualBoundingBoxDescent = distance from baseline to bottom of glyphs (positive = below baseline)
+    const descent = metrics.actualBoundingBoxDescent
+
+    // The pixel is at vertical-align:baseline, so its bottom = baseline.
+    // We need to move it down by `descent` to match the glyph bottoms.
+    pixelEl.style.transform = `translateY(${descent}px)`
+  }
+
   // ── HERO: Word cycling (time-based, auto-plays on load) ──
   function initWordCycling() {
     const wordEl = document.getElementById('hero-word')!
@@ -1023,6 +1049,9 @@ const sectionCards = [
     }
     document.body.removeChild(measureEl)
     container.style.width = `${Math.ceil(maxW + 8)}px`
+
+    // Align pixel bottom with visual bottom of "theatre" text
+    alignPixelToText()
 
     // Show h1 now that container width is set
     h1.style.visibility = 'visible'
@@ -1062,12 +1091,10 @@ const sectionCards = [
 
     function cycle() {
       typeWord(() => {
-        if (wordIdx < HERO_WORDS.length - 1) {
-          deleteWord(() => {
-            wordIdx++
-            cycle()
-          })
-        }
+        deleteWord(() => {
+          wordIdx = (wordIdx + 1) % HERO_WORDS.length
+          cycle()
+        })
       })
     }
 
@@ -1528,6 +1555,7 @@ const sectionCards = [
 
   window.addEventListener('resize', () => {
     sizeAllTracks()
+    alignPixelToText()
     ScrollTrigger.refresh()
     lenis.resize()
   })
