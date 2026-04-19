@@ -1254,7 +1254,7 @@ const sectionCards = [
     })
 
     // ── Master scroll timeline ──
-    const scrollDist = vh * 6
+    const scrollDist = vh * 7
 
     const heroTl = gsap.timeline({
       scrollTrigger: {
@@ -1288,13 +1288,13 @@ const sectionCards = [
       0
     )
 
-    // Phase 2b: Pixel falls straight down — one continuous motion (0 → 4)
-    // Stays on same x-axis, never goes off-screen (stops at 75% vh)
+    // Phase 2b: Pixel falls straight down — one continuous motion (0 → 7)
+    // Stays on same x-axis, falls to 75% vh
     heroTl.to(
       pixel,
       {
         top: vh * 0.75 - pxEndW / 2,
-        duration: 4,
+        duration: 7,
         ease: 'none'
       },
       0
@@ -1303,21 +1303,22 @@ const sectionCards = [
     // Phase 3: Flow field slides up from below (0.5 → 2)
     heroTl.to(flowWrap, { y: '0%', duration: 1.5, ease: 'none' }, 0.5)
 
-    // Phase 4: Flow field continues up and exits through the top (2 → 4)
-    heroTl.to(flowWrap, { y: '-100%', duration: 2, ease: 'none' }, 2)
+    // Phase 4: Flow field continues up and fully exits off the top (2 → 4)
+    // -200% because element is 50vh tall anchored at bottom: need to clear entire viewport
+    heroTl.to(flowWrap, { y: '-200%', duration: 2, ease: 'none' }, 2)
 
-    // Phase 5: Pixel fades out after FF has passed (4 → 4.5)
-    heroTl.to(pixel, { opacity: 0, duration: 0.5 }, 4)
-
-    // Phase 7: Snap pixel to N-tile position + fade in with puzzle (5.5)
-    heroTl.set(pixel, { left: nTileX, top: nTileY, width: TILE_SIZE, height: TILE_SIZE }, 5.5)
-    heroTl.to(pixel, { opacity: 1, duration: 0.5 }, 5.5)
-    heroTl.to(puzzleWrap, { opacity: 1, duration: 1 }, 5.5)
-
-    // Phase 8: Pixel fades out (6.5 → 7)
+    // Phase 5: Pixel fades out well after FF has gone (6.5 → 7)
     heroTl.to(pixel, { opacity: 0, duration: 0.5 }, 6.5)
 
-    // Phase 7: Puzzle solves (7 → 9)
+    // Phase 6: Snap pixel to N-tile position + fade in with puzzle (7.5)
+    heroTl.set(pixel, { left: nTileX, top: nTileY, width: TILE_SIZE, height: TILE_SIZE }, 7.5)
+    heroTl.to(pixel, { opacity: 1, duration: 0.5 }, 7.5)
+    heroTl.to(puzzleWrap, { opacity: 1, duration: 1 }, 7.5)
+
+    // Phase 7: Pixel fades out (8.5 → 9)
+    heroTl.to(pixel, { opacity: 0, duration: 0.5 }, 8.5)
+
+    // Phase 8: Puzzle solves (9 → 11)
     const domGrid: (number | null)[] = shuffledState.slice()
     const moveDur = 2 / solvingMoves.length
     solvingMoves.forEach((move, i) => {
@@ -1331,13 +1332,13 @@ const sectionCards = [
           duration: moveDur,
           ease: 'power2.inOut'
         },
-        7 + i * moveDur
+        9 + i * moveDur
       )
       domGrid[move.toPos] = domGrid[move.fromPos]
       domGrid[move.fromPos] = null
     })
 
-    // Phase 8: Completion pulse (9.2 → 9.8)
+    // Phase 9: Completion pulse (11.2 → 11.8)
     heroTl.to(
       puzzleEl,
       {
@@ -1348,15 +1349,15 @@ const sectionCards = [
         ease: 'power2.out',
         transformOrigin: 'center center'
       },
-      9.2
+      11.2
     )
 
-    // Phase 9: Puzzle fades out + reveal fades in (10 → 11.5)
-    heroTl.to(puzzleWrap, { opacity: 0, duration: 1 }, 10)
-    heroTl.to(reveal, { opacity: 1, duration: 1 }, 10.5)
+    // Phase 10: Puzzle fades out + reveal fades in (12 → 13.5)
+    heroTl.to(puzzleWrap, { opacity: 0, duration: 1 }, 12)
+    heroTl.to(reveal, { opacity: 1, duration: 1 }, 12.5)
 
-    // Phase 10: Hold before unpin (11.5 → 12.5)
-    heroTl.to({}, { duration: 1 }, 11.5)
+    // Phase 11: Hold before unpin (13.5 → 14.5)
+    heroTl.to({}, { duration: 1 }, 13.5)
   }
 
   function initScrollTriggers() {
