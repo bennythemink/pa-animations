@@ -146,8 +146,8 @@ const sectionCards = [
       <!-- Flow field canvas (bottom-anchored, half-screen, slides up) -->
       <div
         id="hero-flow-wrap"
-        class="absolute left-0 right-0 bottom-0 z-5"
-        style="height:50vh;transform:translateY(100%);"
+        class="absolute bottom-0 z-5"
+        style="left:-40px;right:-40px;height:100vh;transform:translateY(100%);"
       >
         <canvas id="hero-flow" class="block w-full h-full"></canvas>
       </div>
@@ -1301,7 +1301,7 @@ const sectionCards = [
 
     // Phase 4: Flow field continues up and fully exits off the top (2 → 4)
     // -200% because element is 50vh tall anchored at bottom: need to clear entire viewport
-    heroTl.to(flowWrap, { y: '-200%', duration: 2, ease: 'none' }, 2)
+    heroTl.to(flowWrap, { y: '-100%', duration: 2, ease: 'none' }, 2)
 
     // Phase 5: Pixel fades out well after FF has gone (6.5 → 7)
     heroTl.to(pixel, { opacity: 0, duration: 0.5 }, 6.5)
