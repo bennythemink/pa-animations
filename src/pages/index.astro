@@ -1273,7 +1273,7 @@ const sectionCards = [
     })
 
     // Phase 1: H1 fades and moves up (0 → 2)
-    heroTl.to(heading, { y: -vh * 0.8, opacity: 0.7, duration: 2, ease: 'power2.in' }, 0)
+    heroTl.to(heading, { y: -vh * 0.8, opacity: 0.7, duration: 2, ease: 'none' }, 0)
 
     // Phase 2: Pixel moves to center of viewport and grows (1 → 2)
     heroTl.to(
@@ -1284,13 +1284,13 @@ const sectionCards = [
         width: pxEndW,
         height: pxEndW,
         duration: 1,
-        ease: 'power2.inOut'
+        ease: 'none'
       },
       1
     )
 
     // Phase 3: Flow field slides up from below (1.5 → 3)
-    heroTl.to(flowWrap, { y: '0%', duration: 1.5, ease: 'power2.out' }, 1.5)
+    heroTl.to(flowWrap, { y: '0%', duration: 1.5, ease: 'none' }, 1.5)
 
     // Phase 4: Pixel drops down through flow field and exits bottom (2.5 → 4)
     heroTl.to(
@@ -1298,7 +1298,7 @@ const sectionCards = [
       {
         top: vh + pxEndW,
         duration: 1.5,
-        ease: 'power2.in'
+        ease: 'none'
       },
       2.5
     )
@@ -1307,7 +1307,7 @@ const sectionCards = [
     heroTl.to(pixel, { opacity: 0, duration: 0.3 }, 4)
 
     // Phase 6: Flow field slides back down (4.5 → 5.5)
-    heroTl.to(flowWrap, { y: '100%', duration: 1, ease: 'power2.in' }, 4.5)
+    heroTl.to(flowWrap, { y: '100%', duration: 1, ease: 'none' }, 4.5)
 
     // Phase 7: Snap pixel to N-tile position + fade in with puzzle (5.5)
     heroTl.set(pixel, { left: nTileX, top: nTileY, width: TILE_SIZE, height: TILE_SIZE }, 5.5)
