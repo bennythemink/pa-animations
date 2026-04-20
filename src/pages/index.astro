@@ -754,6 +754,15 @@ const sectionCards = [
   const COLS = 6
   const ROWS = 2
 
+  // Single source of truth for puzzle size.
+  // Options: 'small' | 'medium' | 'large'
+  const HERO_PUZZLE_SIZE: 'small' | 'medium' | 'large' = 'medium'
+  const HERO_PUZZLE_SCALE: Record<'small' | 'medium' | 'large', number> = {
+    small: 1,
+    medium: 1.25,
+    large: 1.5
+  }
+
   const TILE_DEFS = [
     { id: 'P', src: '/Letters/P.svg', solvedPos: 0 },
     { id: 'I', src: '/Letters/I.svg', solvedPos: 1 },
@@ -782,15 +791,30 @@ const sectionCards = [
 
   function initPuzzle() {
     const puzzleEl = document.getElementById('hero-puzzle')!
+    const taglineTop = document.getElementById('hero-tagline-top')!
+    const taglineBottom = document.getElementById('hero-tagline-bottom')!
+    const heroCta = document.getElementById('hero-cta')!
     const vw = window.innerWidth
+    const sizeScale = HERO_PUZZLE_SCALE[HERO_PUZZLE_SIZE]
 
-    const GAP = Math.min(9, Math.max(3, Math.round(vw * 0.006)))
-    const PUZZLE_W = Math.min(Math.round(vw * 0.55), 700)
+    const baseGap = Math.min(9, Math.max(3, Math.round(vw * 0.006)))
+    const GAP = Math.max(2, Math.round(baseGap * sizeScale))
+
+    const basePuzzleW = Math.min(Math.round(vw * 0.55), 700)
+    const maxPuzzleW = Math.floor(vw * 0.92)
+    const PUZZLE_W = Math.min(Math.round(basePuzzleW * sizeScale), maxPuzzleW)
     const TILE_SIZE = Math.floor((PUZZLE_W - (COLS - 1) * GAP) / COLS)
     const PUZZLE_H = ROWS * TILE_SIZE + (ROWS - 1) * GAP
 
     puzzleEl.style.width = `${PUZZLE_W}px`
     puzzleEl.style.height = `${PUZZLE_H}px`
+
+    // Keep heading/body/CTA spacing proportional to the selected puzzle size.
+    const baseTextGap = vw >= 1024 ? 32 : 24
+    const baseCtaGap = vw >= 1024 ? 32 : 16
+    taglineTop.style.marginBottom = `${Math.round(baseTextGap * sizeScale)}px`
+    taglineBottom.style.marginTop = `${Math.round(baseTextGap * sizeScale)}px`
+    heroCta.style.marginTop = `${Math.round(baseCtaGap * sizeScale)}px`
 
     function gridToPixel(pos: number) {
       return {
@@ -881,9 +905,6 @@ const sectionCards = [
     })
 
     // Fade in surrounding text + CTA after solve completes
-    const taglineTop = document.getElementById('hero-tagline-top')!
-    const taglineBottom = document.getElementById('hero-tagline-bottom')!
-    const heroCta = document.getElementById('hero-cta')!
 
     solveTl.to([taglineTop, taglineBottom], {
       opacity: 1,
