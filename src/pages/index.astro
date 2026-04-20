@@ -1065,15 +1065,13 @@ const sectionCards = [
       return pixelInline.getBoundingClientRect()
     }
 
-    // ══════ ScrollTrigger 1: Puzzle section — fade out + pixel detach ══════
-    const puzzleScrollDist = vh * 2
-
+    // ══════ ScrollTrigger 1: Puzzle section — fade out + pixel detach (no pin) ══════
     const puzzleTl = gsap.timeline({
       scrollTrigger: {
         trigger: puzzleSection,
-        pin: true,
         scrub: 0.3,
-        end: `+=${puzzleScrollDist}`
+        start: 'top top',
+        end: 'bottom top'
       }
     })
 
