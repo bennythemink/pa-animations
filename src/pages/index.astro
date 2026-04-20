@@ -780,12 +780,28 @@ const sectionCards = [
     'var(--color-pixel-light-pink)'
   ]
 
-  const REVEAL_CLIP_DIRECTIONS = [
-    'inset(0% 0% 100% 0%)',
-    'inset(100% 0% 0% 0%)',
-    'inset(0% 100% 0% 0%)',
-    'inset(0% 0% 0% 100%)'
-  ]
+  const REVEAL_DIRECTIONS = [
+    {
+      name: 'left-to-right',
+      startClip: 'inset(0% 100% 0% 0%)',
+      endClip: 'inset(0% 0% 0% 100%)'
+    },
+    {
+      name: 'right-to-left',
+      startClip: 'inset(0% 0% 0% 100%)',
+      endClip: 'inset(0% 100% 0% 0%)'
+    },
+    {
+      name: 'bottom-to-top',
+      startClip: 'inset(100% 0% 0% 0%)',
+      endClip: 'inset(0% 0% 100% 0%)'
+    },
+    {
+      name: 'top-to-bottom',
+      startClip: 'inset(0% 0% 100% 0%)',
+      endClip: 'inset(100% 0% 0% 0%)'
+    }
+  ] as const
 
   const TILE_DEFS = [
     { id: 'P', src: '/Letters/P.svg', solvedPos: 0 },
@@ -1026,11 +1042,24 @@ const sectionCards = [
 
     let wordIdx = 0
     let colourIdx = 0
+    let lastRevealDirectionIdx = -1
 
     function getNextColour(): string {
       const col = REVEAL_RECT_COLOURS[colourIdx % REVEAL_RECT_COLOURS.length]
       colourIdx++
       return col
+    }
+
+    function getRandomRevealDirection() {
+      if (REVEAL_DIRECTIONS.length === 1) return REVEAL_DIRECTIONS[0]
+
+      let nextIdx = lastRevealDirectionIdx
+      while (nextIdx === lastRevealDirectionIdx) {
+        nextIdx = Math.floor(Math.random() * REVEAL_DIRECTIONS.length)
+      }
+
+      lastRevealDirectionIdx = nextIdx
+      return REVEAL_DIRECTIONS[nextIdx]
     }
 
     function cycle() {
@@ -1049,12 +1078,14 @@ const sectionCards = [
       const rectColour = getNextColour()
       revealRect.style.backgroundColor = rectColour
 
-      // Start: rect at 0 width (fully hidden on right)
-      revealRect.style.clipPath = 'inset(0% 100% 0% 0%)'
+      const { startClip, endClip } = getRandomRevealDirection()
+
+      // Start hidden from the selected direction
+      revealRect.style.clipPath = startClip
 
       const tl = gsap.timeline()
 
-      // Step 1: Rect grows left-to-right to cover the word (0.6s)
+      // Step 1: Rect grows to fully cover the word (0.6s)
       tl.to(
         revealRect,
         {
@@ -1078,11 +1109,11 @@ const sectionCards = [
         0.6
       )
 
-      // Step 3: Rect shrinks left-to-right to reveal the new word (0.6s)
+      // Step 3: Rect shrinks in a random direction to reveal the new word (0.6s)
       tl.to(
         revealRect,
         {
-          clipPath: 'inset(0% 0% 0% 100%)',
+          clipPath: endClip,
           duration: 0.6,
           ease: 'power2.in'
         },
