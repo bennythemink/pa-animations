@@ -763,6 +763,30 @@ const sectionCards = [
     large: 1.5
   }
 
+  // H1 animation style. Options: 'word-cycle' | 'reveal-rect'
+  const HERO_H1_ANIMATION: 'word-cycle' | 'reveal-rect' = 'reveal-rect'
+
+  // Pixel colours pool for reveal-rect animation
+  const REVEAL_RECT_COLOURS = [
+    'var(--color-pixel-blue)',
+    'var(--color-pixel-green)',
+    'var(--color-pixel-red)',
+    'var(--color-pixel-orange)',
+    'var(--color-pixel-pink)',
+    'var(--color-pixel-yellow)',
+    'var(--color-pixel-dark-blue)',
+    'var(--color-pixel-dark-green)',
+    'var(--color-pixel-light-orange)',
+    'var(--color-pixel-light-pink)'
+  ]
+
+  const REVEAL_CLIP_DIRECTIONS = [
+    'inset(0% 0% 100% 0%)',
+    'inset(100% 0% 0% 0%)',
+    'inset(0% 100% 0% 0%)',
+    'inset(0% 0% 0% 100%)'
+  ]
+
   const TILE_DEFS = [
     { id: 'P', src: '/Letters/P.svg', solvedPos: 0 },
     { id: 'I', src: '/Letters/I.svg', solvedPos: 1 },
@@ -949,6 +973,131 @@ const sectionCards = [
     pixelEl.style.transform = `translateY(${descent}px)`
   }
 
+  function initRevealRectAnimation() {
+    const wordEl = document.getElementById('hero-word')!
+    const container = document.getElementById('hero-word-container')!
+    const h1 = document.getElementById('hero-h1')!
+
+    // Create overlay rect
+    const revealRect = document.createElement('div')
+    revealRect.style.position = 'absolute'
+    revealRect.style.pointerEvents = 'none'
+    revealRect.style.zIndex = '10'
+    container.appendChild(revealRect)
+
+    // Measure max word width
+    const cs = getComputedStyle(h1)
+    const measureEl = document.createElement('span')
+    measureEl.style.visibility = 'hidden'
+    measureEl.style.position = 'absolute'
+    measureEl.style.whiteSpace = 'nowrap'
+    measureEl.style.pointerEvents = 'none'
+    measureEl.style.fontSize = cs.fontSize
+    measureEl.style.fontFamily = cs.fontFamily
+    measureEl.style.fontWeight = cs.fontWeight
+    measureEl.style.letterSpacing = cs.letterSpacing
+    document.body.appendChild(measureEl)
+
+    let maxW = 0
+    let maxH = 0
+    for (const w of HERO_WORDS) {
+      measureEl.textContent = w.text
+      const rect = measureEl.getBoundingClientRect()
+      maxW = Math.max(maxW, rect.width)
+      maxH = Math.max(maxH, rect.height)
+    }
+    document.body.removeChild(measureEl)
+
+    const maxRectWidth = Math.ceil(maxW)
+    const maxRectHeight = Math.ceil(maxH)
+
+    const cursorEl = document.getElementById('hero-cursor')!
+    // Hide cursor in reveal-rect mode
+    cursorEl.style.display = 'none'
+
+    const cursorCS = getComputedStyle(cursorEl)
+    const cursorSpace =
+      cursorEl.getBoundingClientRect().width + parseFloat(cursorCS.marginLeft) + parseFloat(cursorCS.marginRight)
+    container.style.width = `${Math.ceil(maxW + cursorSpace + 4)}px`
+    container.style.position = 'relative'
+
+    alignPixelToText()
+    h1.style.visibility = 'visible'
+
+    let wordIdx = 0
+    let colourIdx = 0
+
+    function getNextColour(): string {
+      const col = REVEAL_RECT_COLOURS[colourIdx % REVEAL_RECT_COLOURS.length]
+      colourIdx++
+      return col
+    }
+
+    function cycle() {
+      const { text, color } = HERO_WORDS[wordIdx]
+      container.style.color = color
+      wordEl.textContent = text
+
+      // Keep rect centered on the word while using a fixed max size
+      const rectTop = wordEl.offsetTop + (wordEl.offsetHeight - maxRectHeight) / 2
+      const rectLeft = wordEl.offsetLeft + (wordEl.offsetWidth - maxRectWidth) / 2
+      revealRect.style.top = `${Math.round(rectTop)}px`
+      revealRect.style.left = `${Math.round(rectLeft)}px`
+      revealRect.style.width = `${maxRectWidth}px`
+      revealRect.style.height = `${maxRectHeight}px`
+
+      const rectColour = getNextColour()
+      revealRect.style.backgroundColor = rectColour
+
+      // Start: rect at 0 width (fully hidden on right)
+      revealRect.style.clipPath = 'inset(0% 100% 0% 0%)'
+
+      const tl = gsap.timeline()
+
+      // Step 1: Rect grows left-to-right to cover the word (0.6s)
+      tl.to(
+        revealRect,
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 0.6,
+          ease: 'power2.out'
+        },
+        0
+      )
+
+      const nextWordIdx = (wordIdx + 1) % HERO_WORDS.length
+
+      // Step 2: Word is fully covered, change to next word and color
+      tl.call(
+        () => {
+          const { text, color } = HERO_WORDS[nextWordIdx]
+          container.style.color = color
+          wordEl.textContent = text
+        },
+        [],
+        0.6
+      )
+
+      // Step 3: Rect shrinks left-to-right to reveal the new word (0.6s)
+      tl.to(
+        revealRect,
+        {
+          clipPath: 'inset(0% 0% 0% 100%)',
+          duration: 0.6,
+          ease: 'power2.in'
+        },
+        0.6
+      )
+
+      tl.eventCallback('onComplete', () => {
+        wordIdx = nextWordIdx
+        cycle()
+      })
+    }
+
+    cycle()
+  }
+
   function initWordCycling() {
     const wordEl = document.getElementById('hero-word')!
     const container = document.getElementById('hero-word-container')!
@@ -978,6 +1127,9 @@ const sectionCards = [
     const cursorSpace =
       cursorEl.getBoundingClientRect().width + parseFloat(cursorCS.marginLeft) + parseFloat(cursorCS.marginRight)
     container.style.width = `${Math.ceil(maxW + cursorSpace + 4)}px`
+
+    // Ensure cursor is visible in word-cycle mode
+    cursorEl.style.display = ''
 
     alignPixelToText()
     h1.style.visibility = 'visible'
@@ -1326,7 +1478,11 @@ const sectionCards = [
   document.fonts.ready.then(() => {
     sizeAllTracks()
     initPuzzle()
-    initWordCycling()
+    if (HERO_H1_ANIMATION === 'word-cycle') {
+      initWordCycling()
+    } else {
+      initRevealRectAnimation()
+    }
     initHeroScroll()
     initScrollTriggers()
     ScrollTrigger.refresh()
