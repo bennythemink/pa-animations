@@ -1016,7 +1016,6 @@ const sectionCards = [
     const puzzleContent = document.getElementById('hero-puzzle-content')!
     const pixelDot = document.getElementById('hero-pixel-dot')!
     const ffSection = document.getElementById('hero-ff-section')!
-    const flowWrap = document.getElementById('hero-flow-wrap')!
     const h1Section = document.getElementById('hero-h1-section')!
     const pixelInline = document.getElementById('hero-pixel-inline')!
 
@@ -1060,13 +1059,14 @@ const sectionCards = [
     flowCtrl.addRepulsionElement(fallingPixel)
 
     // ── Pixel inline target position in h1 section ──
-    // We'll compute this after h1 is visible
     function getPixelInlineRect() {
       return pixelInline.getBoundingClientRect()
     }
 
-    // ══════ ScrollTrigger 1: Puzzle section — fade out + pixel detach (no pin) ══════
-    const puzzleTl = gsap.timeline({
+    // ══════ ScrollTrigger 1: Puzzle scrolls away — pixel detaches + drops to center ══════
+    // No pin. As puzzle scrolls up naturally, pixel drops from text position
+    // to center of viewport, grows, and stays there while FF scrolls past.
+    const dropTl = gsap.timeline({
       scrollTrigger: {
         trigger: puzzleSection,
         scrub: 0.3,
@@ -1075,71 +1075,33 @@ const sectionCards = [
       }
     })
 
-    // Hide the original dot, show the fixed clone
-    puzzleTl.set(pixelDot, { opacity: 0 }, 0)
-    puzzleTl.set(fallingPixel, { opacity: 1 }, 0)
+    // Hide the original dot, show the fixed clone at the same position
+    dropTl.set(pixelDot, { opacity: 0 }, 0)
+    dropTl.set(fallingPixel, { opacity: 1 }, 0)
 
-    // Puzzle content fades to 25%
-    puzzleTl.to(puzzleContent, { opacity: 0.25, duration: 1, ease: 'none' }, 0)
+    // Puzzle content fades out
+    dropTl.to(puzzleContent, { opacity: 0.25, duration: 1, ease: 'none' }, 0)
 
-    // Pixel grows
-    puzzleTl.to(
+    // Pixel grows and drops to center of viewport
+    dropTl.to(
       fallingPixel,
       {
         width: pxEndW,
         height: pxEndW,
-        duration: 1,
-        ease: 'none'
-      },
-      0
-    )
-
-    // Pixel falls straight down to bottom of viewport
-    puzzleTl.to(
-      fallingPixel,
-      {
-        top: vh + 50,
-        duration: 2,
-        ease: 'none'
-      },
-      0
-    )
-
-    // ══════ ScrollTrigger 2: FF section — pixel passes through ══════
-    const ffScrollDist = vh * 3
-
-    const ffTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ffSection,
-        pin: true,
-        scrub: 0.3,
-        end: `+=${ffScrollDist}`
-      }
-    })
-
-    // Pixel enters at top, travels through FF to center, then exits top
-    ffTl.set(fallingPixel, { top: -pxEndW, left: vw / 2 - pxEndW / 2 }, 0)
-    ffTl.to(
-      fallingPixel,
-      {
+        left: vw / 2 - pxEndW / 2,
         top: vh / 2 - pxEndW / 2,
-        duration: 1.5,
-        ease: 'none'
+        duration: 1,
+        ease: 'power2.in'
       },
       0
     )
 
-    ffTl.to(
-      fallingPixel,
-      {
-        top: vh + 50,
-        duration: 1.5,
-        ease: 'none'
-      },
-      1.5
-    )
+    // ══════ NO ScrollTrigger on FF — it scrolls naturally ══════
+    // The pixel stays fixed at center viewport (end state of dropTl)
+    // while the FF section scrolls past behind it. The flow field
+    // reacts to the pixel via repulsion.
 
-    // ══════ ScrollTrigger 3: H1 section — pixel lands on "theatre." ══════
+    // ══════ ScrollTrigger 2: H1 section — pixel lands on "theatre." ══════
     const h1ScrollDist = vh * 1.5
 
     const h1Tl = gsap.timeline({
@@ -1151,9 +1113,7 @@ const sectionCards = [
       }
     })
 
-    // On enter: pixel starts above, shrinks and lands on the inline position
-    h1Tl.set(fallingPixel, { top: -pxEndW }, 0)
-
+    // Pixel shrinks and moves from viewport center to the inline position
     h1Tl.to(
       fallingPixel,
       {
@@ -1167,7 +1127,7 @@ const sectionCards = [
       0
     )
 
-    // Once landed, hide fixed pixel as it becomes the inline one
+    // Once landed, hide fixed pixel — the inline one takes over
     h1Tl.to(fallingPixel, { opacity: 0, duration: 0.01 }, 1)
     h1Tl.set(pixelInline, { opacity: 1 }, 1)
 
