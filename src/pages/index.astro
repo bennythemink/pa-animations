@@ -80,101 +80,61 @@ const sectionCards = [
 ---
 
 <Layout noMenuSpacer>
-  <!-- ══════ PUZZLE LOADER (commented out for new hero) ══════ -->
-  <!--
-  <div class="puzzle-stage" aria-hidden="true">
-    <div id="puzzle"></div>
-    <button id="puzzle-skip" type="button">Skip</button>
-  </div>
-  -->
-
   <div id="site-content">
-    <!--
-    <div id="hero-wrapper" class="relative h-screen overflow-hidden">
-      <div id="hero-track" class="flex h-screen relative items-center">
-        <div id="hero-text" class="pointer-events-none shrink-0 whitespace-nowrap pl-32 flex items-center gap-8">
-          <h1 class="text-5xl sm:text-10xl">
-            Clear promises
-            <img src={plusSvg} alt="plus" class="inline-block h-[1.25em] mx-2 align-middle" />
-            Careful craft
-            <img src={equalsSvg} alt="equals" class="inline-block h-[1.25em] mx-2 align-middle" />
-            Proud outcomes
-            <img src={vectorSvg} alt="vector" class="inline-block h-[1.25em] mx-2 align-middle" />
-          </h1>
-        </div>
-        <div id="hero-h2-spacer" class="shrink-0 w-screen"></div>
-        <div id="track-flow" class="h-full shrink-0">
-          <div id="flow-container" class="w-full h-full">
-            <canvas id="flow" class="block w-full h-full"></canvas>
-          </div>
-        </div>
-        <div id="track-bg-2" class="h-full shrink-0"></div>
-      </div>
-      <div
-        id="hero-h2"
-        class="pointer-events-none absolute inset-0 flex items-center justify-center z-10 will-change-transform"
-      >
-        <h2 class="text-4xl sm:text-6xl whitespace-normal max-w-screen text-center px-16">
-          We are Pixel Agency, a refreshing 🍊 digital partner.
+    <!-- ══════ HERO — puzzle-first, scroll-driven ══════ -->
+
+    <!-- Section 1: Puzzle + surrounding text (visible on load) -->
+    <section id="hero-puzzle-section" class="relative h-screen flex items-center justify-center">
+      <div id="hero-puzzle-content" class="text-center">
+        <h2
+          id="hero-tagline-top"
+          class="text-2xl sm:text-4xl lg:text-5xl mb-6 sm:mb-8 font-sans font-normal tracking-[-0.03em]"
+        >
+          We are
         </h2>
+        <div id="hero-puzzle" class="relative mx-auto"></div>
+        <p
+          id="hero-tagline-bottom"
+          class="text-2xl sm:text-4xl lg:text-5xl mt-6 sm:mt-8 font-sans font-normal tracking-[-0.03em]"
+        >
+          a <span class="text-pixel-orange">refreshing</span> digital partner<span
+            id="hero-pixel-dot"
+            class="inline-block w-2 h-2 sm:w-3 sm:h-3 lg:w-4 lg:h-4 bg-pixel-green ml-1"
+            style="vertical-align: baseline;"></span>
+        </p>
+        <a
+          id="hero-cta"
+          href="/contact"
+          class="inline-block mt-6 sm:mt-8 px-5 py-2.5 text-sm sm:text-base font-sans hover:underline border border-current"
+          >Let&rsquo;s talk</a
+        >
       </div>
-    </div>
-    -->
+    </section>
 
-    <!-- ══════ HERO — scroll-driven animation ══════ -->
-    <section id="hero-section" class="relative h-screen overflow-hidden">
-      <!-- H1 heading with word cycling -->
-      <div id="hero-heading" class="absolute inset-0 flex items-center justify-center z-10">
-        <div class="px-5 lg:px-20 max-w-360 w-full text-center">
-          <h1 id="hero-h1" class="text-[8vw] xl:text-[120px]" style="visibility:hidden;">
-            <span id="hero-word-container" class="inline-block align-baseline text-center">
-              <span id="hero-word"></span><span
-                id="hero-cursor"
-                class="inline-block w-0.5 sm:w-1.5 h-[1.2em] bg-current align-middle ml-2 -translate-y-[14px]"></span>
-            </span><br />
-            without the sales<br />
-            <span class="whitespace-nowrap"
-              ><span id="hero-theatre-text">theatre</span><span
-                id="hero-pixel-inline"
-                class="inline-block w-2 h-2 sm:w-3 sm:h-3 lg:w-5 lg:h-5 xl:w-6 xl:h-6 bg-pixel-green ml-8"
-                style="vertical-align: baseline;"></span></span
-            >
-          </h1>
-        </div>
-      </div>
-
-      <!-- Flow field canvas (bottom-anchored, half-screen, slides up) -->
-      <div
-        id="hero-flow-wrap"
-        class="absolute bottom-0 z-5"
-        style="left:-40px;right:-40px;height:100vh;transform:translateY(100%);"
-      >
+    <!-- Section 2: Flow field (sits just below the fold, slides up via scroll) -->
+    <section id="hero-ff-section" class="relative h-screen overflow-hidden">
+      <div id="hero-flow-wrap" class="absolute inset-0 z-5" style="left:-40px;right:-40px;">
         <canvas id="hero-flow" class="block w-full h-full"></canvas>
       </div>
+    </section>
 
-      <!-- Puzzle -->
-      <div
-        id="hero-puzzle-wrap"
-        class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
-        style="opacity:0;"
-      >
-        <div id="hero-puzzle" class="relative"></div>
-      </div>
-
-      <!-- Reveal text + CTA -->
-      <div
-        id="hero-reveal"
-        class="absolute inset-0 flex items-center justify-center z-25 pointer-events-none"
-        style="opacity:0;"
-      >
-        <div class="text-center space-y-6 px-8">
-          <h2 class="text-2xl sm:text-4xl lg:text-6xl">We are a refreshing<br />digital partner.</h2>
-          <a
-            href="/contact"
-            class="inline-block px-6 py-3 text-base font-sans pointer-events-auto hover:underline"
-            style="background-color:var(--accent-bgc,#479f82);color:white;">Let's talk</a
+    <!-- Section 3: H1 with word cycling (scrolls into view naturally) -->
+    <section id="hero-h1-section" class="relative h-screen flex items-center justify-center">
+      <div class="px-5 lg:px-20 max-w-360 w-full text-center">
+        <h1 id="hero-h1" class="text-[8vw] xl:text-[120px]" style="visibility:hidden;">
+          <span id="hero-word-container" class="inline-block align-baseline text-center">
+            <span id="hero-word"></span><span
+              id="hero-cursor"
+              class="inline-block w-0.5 sm:w-1.5 h-[1.2em] bg-current align-middle ml-2 -translate-y-[14px]"></span>
+          </span><br />
+          without the sales<br />
+          <span class="whitespace-nowrap"
+            ><span id="hero-theatre-text">theatre</span><span
+              id="hero-pixel-inline"
+              class="inline-block w-2 h-2 sm:w-3 sm:h-3 lg:w-5 lg:h-5 xl:w-6 xl:h-6 bg-pixel-green ml-8 opacity-0"
+              style="vertical-align: baseline;"></span></span
           >
-        </div>
+        </h1>
       </div>
     </section>
 
@@ -765,56 +725,6 @@ const sectionCards = [
       opacity: 0;
     }
   }
-  /* ── Puzzle loader (commented out for new hero) ──
-  .puzzle-stage {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    z-index: 9999;
-    background: #f0efea;
-    pointer-events: none;
-  }
-  #puzzle {
-    position: relative;
-  }
-  :global(.puzzle-tile) {
-    position: absolute;
-    will-change: transform, opacity;
-  }
-  :global(.puzzle-tile img) {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: fill;
-    pointer-events: none;
-  }
-  :global(.puzzle-tile.logo-link) {
-    cursor: pointer;
-  }
-  #puzzle-skip {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 10000;
-    pointer-events: auto;
-    background: none;
-    border: none;
-    font-family: var(--font-ibm-plex-sans);
-    font-size: 14px;
-    font-weight: 600;
-    color: #386b92;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-    letter-spacing: 0.04em;
-  }
-  #puzzle-skip:hover {
-    opacity: 1;
-  }
-  */
 </style>
 
 <script>
@@ -838,9 +748,8 @@ const sectionCards = [
   })
   gsap.ticker.lagSmoothing(0)
 
-  /*
   // ══════════════════════════════════════════════════════════
-  // PUZZLE LOADER (commented out for new hero)
+  // PUZZLE — time-based auto-solve on load (2.5s)
   // ══════════════════════════════════════════════════════════
 
   const COLS = 6
@@ -861,18 +770,6 @@ const sectionCards = [
     { id: 'Y', src: '/Letters/Y.svg', solvedPos: 11 }
   ]
 
-  const SOLVED_STATE: (number | null)[] = new Array(COLS * ROWS).fill(null)
-  TILE_DEFS.forEach((def, idx) => {
-    SOLVED_STATE[def.solvedPos] = idx
-  })
-
-  function gridToPixel(pos: number, tileSize: number, gap: number) {
-    return {
-      x: (pos % COLS) * (tileSize + gap),
-      y: Math.floor(pos / COLS) * (tileSize + gap)
-    }
-  }
-
   function getAdjacentPositions(pos: number) {
     const row = Math.floor(pos / COLS)
     const col = pos % COLS
@@ -884,96 +781,111 @@ const sectionCards = [
     return adj
   }
 
-  const SHUFFLE_MOVES = 10
+  function initPuzzle() {
+    const puzzleEl = document.getElementById('hero-puzzle')!
+    const vw = window.innerWidth
 
-  function generateShuffle(numMoves: number) {
-    const state = SOLVED_STATE.slice()
-    const moves: { fromPos: number; toPos: number }[] = []
-    let emptyPos = state.indexOf(null)
+    const GAP = Math.min(9, Math.max(3, Math.round(vw * 0.006)))
+    const PUZZLE_W = Math.min(Math.round(vw * 0.55), 700)
+    const TILE_SIZE = Math.floor((PUZZLE_W - (COLS - 1) * GAP) / COLS)
+    const PUZZLE_H = ROWS * TILE_SIZE + (ROWS - 1) * GAP
+
+    puzzleEl.style.width = `${PUZZLE_W}px`
+    puzzleEl.style.height = `${PUZZLE_H}px`
+
+    function gridToPixel(pos: number) {
+      return {
+        x: (pos % COLS) * (TILE_SIZE + GAP),
+        y: Math.floor(pos / COLS) * (TILE_SIZE + GAP)
+      }
+    }
+
+    // Build solved state
+    const SOLVED_STATE: (number | null)[] = new Array(COLS * ROWS).fill(null)
+    TILE_DEFS.forEach((def, idx) => {
+      SOLVED_STATE[def.solvedPos] = idx
+    })
+
+    // Shuffle
+    const SHUFFLE_MOVES = 10
+    const shuffledState = SOLVED_STATE.slice()
+    const shuffleMoves: { fromPos: number; toPos: number }[] = []
+    let emptyPos = shuffledState.indexOf(null)
     let prevEmpty = -1
 
-    for (let i = 0; i < numMoves; i++) {
+    for (let i = 0; i < SHUFFLE_MOVES; i++) {
       const candidates = getAdjacentPositions(emptyPos).filter((p) => p !== prevEmpty)
       const tilePos = candidates[Math.floor(Math.random() * candidates.length)]
-      moves.push({ fromPos: tilePos, toPos: emptyPos })
-      state[emptyPos] = state[tilePos]
-      state[tilePos] = null
+      shuffleMoves.push({ fromPos: tilePos, toPos: emptyPos })
+      shuffledState[emptyPos] = shuffledState[tilePos]
+      shuffledState[tilePos] = null
       prevEmpty = emptyPos
       emptyPos = tilePos
     }
 
-    return { shuffledState: state, shuffleMoves: moves }
+    // Reverse = solving moves
+    const solvingMoves = shuffleMoves
+      .slice()
+      .reverse()
+      .map((m) => ({ fromPos: m.toPos, toPos: m.fromPos }))
+
+    // Create tile DOM elements (inline styles to avoid Astro scoping issues)
+    const tileEls: HTMLElement[] = TILE_DEFS.map((def) => {
+      const div = document.createElement('div')
+      div.style.position = 'absolute'
+      div.style.width = `${TILE_SIZE}px`
+      div.style.height = `${TILE_SIZE}px`
+      div.style.willChange = 'transform'
+      const img = document.createElement('img')
+      img.src = def.src
+      img.alt = def.id
+      img.draggable = false
+      img.style.width = '100%'
+      img.style.height = '100%'
+      img.style.display = 'block'
+      img.style.objectFit = 'fill'
+      img.style.pointerEvents = 'none'
+      div.appendChild(img)
+      puzzleEl.appendChild(div)
+      return div
+    })
+
+    // Position tiles at shuffled positions
+    shuffledState.forEach((tileIdx, gridPos) => {
+      if (tileIdx === null) return
+      const pos = gridToPixel(gridPos)
+      gsap.set(tileEls[tileIdx], { x: pos.x, y: pos.y })
+    })
+
+    // Auto-solve timeline (time-based, 2.5s total)
+    const domGrid: (number | null)[] = shuffledState.slice()
+    const SOLVE_DURATION = 2.5
+    const moveDur = SOLVE_DURATION / solvingMoves.length
+    const solveTl = gsap.timeline({ delay: 0.3 })
+
+    solvingMoves.forEach((move, i) => {
+      const tileIdx = domGrid[move.fromPos]!
+      const pos = gridToPixel(move.toPos)
+      solveTl.to(tileEls[tileIdx], { x: pos.x, y: pos.y, duration: moveDur, ease: 'power2.inOut' }, i * moveDur)
+      domGrid[move.toPos] = domGrid[move.fromPos]
+      domGrid[move.fromPos] = null
+    })
+
+    // Completion pulse
+    solveTl.to(puzzleEl, {
+      scale: 1.015,
+      duration: 0.25,
+      ease: 'power2.out',
+      yoyo: true,
+      repeat: 1,
+      transformOrigin: 'center center'
+    })
   }
 
-  function runPuzzle(onComplete: () => void): gsap.core.Timeline {
-    // ... puzzle animation code ...
-    return gsap.timeline()
-  }
+  // ══════════════════════════════════════════════════════════
+  // HERO: Word cycling
+  // ══════════════════════════════════════════════════════════
 
-  function reparentPA(refs: any) {
-    // ... reparent P and A tiles ...
-  }
-
-  function revealSite() {
-    // ... reveal site after puzzle ...
-  }
-  */
-
-  // ── PIXEL ASSIST horizontal scroll sizing ──
-  function sizeAssistTrack() {
-    const assistTrack = document.getElementById('assist-track')!
-
-    const children = assistTrack.children
-    let totalWidth = 0
-    for (let i = 0; i < children.length; i++) {
-      totalWidth += (children[i] as HTMLElement).offsetWidth
-    }
-    assistTrack.style.width = `${totalWidth}px`
-  }
-
-  // ── OUR PROCESS horizontal scroll sizing ──
-  function sizeProcessTrack() {
-    const processTrack = document.getElementById('process-track')!
-    const children = processTrack.children
-    let totalWidth = 0
-    for (let i = 0; i < children.length; i++) {
-      totalWidth += (children[i] as HTMLElement).offsetWidth
-    }
-    processTrack.style.width = `${totalWidth}px`
-  }
-
-  function sizeAllTracks() {
-    // sizeHeroTrack()
-    sizeAssistTrack()
-    sizeProcessTrack()
-  }
-
-  /*
-  // ── HERO horizontal scroll sizing (commented out for new hero) ──
-  function sizeHeroTrack() {
-    const heroText = document.getElementById('hero-text')!
-    const textWidth = heroText.scrollWidth
-    const vw = window.innerWidth
-    const h2Width = vw
-    const flowWidth = vw * 1
-    const extraTrack = vw
-
-    const totalWidth = textWidth + h2Width + flowWidth + extraTrack
-
-    const trackFlow = document.getElementById('track-flow')!
-    const trackBg2 = document.getElementById('track-bg-2')!
-    const heroTrack = document.getElementById('hero-track')!
-
-    trackFlow.style.width = `${flowWidth}px`
-    trackBg2.style.width = `${extraTrack}px`
-    heroTrack.style.width = `${totalWidth}px`
-  }
-
-  const heroH2 = document.getElementById('hero-h2')!
-  const heroH2Spacer = document.getElementById('hero-h2-spacer')!
-  */
-
-  // ── HERO: Word list configuration ──
   const HERO_WORDS: { text: string; color: string }[] = [
     { text: 'Sites', color: 'var(--color-pixel-blue)' },
     { text: 'Apps', color: 'var(--color-pixel-green)' },
@@ -983,37 +895,25 @@ const sectionCards = [
     { text: 'Solutions', color: 'var(--color-pixel-yellow)' }
   ]
 
-  // ── HERO: Align pixel square with visual bottom of "theatre" text ──
   function alignPixelToText() {
     const h1 = document.getElementById('hero-h1')!
     const pixelEl = document.getElementById('hero-pixel-inline')!
-    // Reset any previous transform
     pixelEl.style.transform = ''
-
-    // The font metrics determine how far below baseline the glyphs extend.
-    // Use a canvas to measure the actual descent of the font at the rendered size.
     const cs = getComputedStyle(h1)
     const fontSize = parseFloat(cs.fontSize)
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')!
     ctx.font = `${cs.fontWeight} ${fontSize}px ${cs.fontFamily}`
     const metrics = ctx.measureText('theatre')
-
-    // actualBoundingBoxDescent = distance from baseline to bottom of glyphs (positive = below baseline)
     const descent = metrics.actualBoundingBoxDescent
-
-    // The pixel is at vertical-align:baseline, so its bottom = baseline.
-    // We need to move it down by `descent` to match the glyph bottoms.
     pixelEl.style.transform = `translateY(${descent}px)`
   }
 
-  // ── HERO: Word cycling (time-based, auto-plays on load) ──
   function initWordCycling() {
     const wordEl = document.getElementById('hero-word')!
     const container = document.getElementById('hero-word-container')!
     const h1 = document.getElementById('hero-h1')!
 
-    // Measure widest word to set fixed container width (prevents text shifting)
     const cs = getComputedStyle(h1)
     const measureEl = document.createElement('span')
     measureEl.style.visibility = 'hidden'
@@ -1033,17 +933,13 @@ const sectionCards = [
     }
     document.body.removeChild(measureEl)
 
-    // Account for cursor width + margin so the word + cursor always fits
     const cursorEl = document.getElementById('hero-cursor')!
     const cursorCS = getComputedStyle(cursorEl)
     const cursorSpace =
       cursorEl.getBoundingClientRect().width + parseFloat(cursorCS.marginLeft) + parseFloat(cursorCS.marginRight)
     container.style.width = `${Math.ceil(maxW + cursorSpace + 4)}px`
 
-    // Align pixel bottom with visual bottom of "theatre" text
     alignPixelToText()
-
-    // Show h1 now that container width is set
     h1.style.visibility = 'visible'
 
     let wordIdx = 0
@@ -1091,152 +987,46 @@ const sectionCards = [
     cycle()
   }
 
-  // ── HERO: Scroll-driven animation (pixel detach → flow field → puzzle → reveal) ──
+  // ══════════════════════════════════════════════════════════
+  // HERO: Scroll-driven pixel drop + flow field
+  // ══════════════════════════════════════════════════════════
+
   function initHeroScroll() {
-    const section = document.getElementById('hero-section')!
-    const heading = document.getElementById('hero-heading')!
-    const pixel = document.getElementById('hero-pixel-inline')!
+    const puzzleSection = document.getElementById('hero-puzzle-section')!
+    const puzzleContent = document.getElementById('hero-puzzle-content')!
+    const pixelDot = document.getElementById('hero-pixel-dot')!
+    const ffSection = document.getElementById('hero-ff-section')!
     const flowWrap = document.getElementById('hero-flow-wrap')!
-    const puzzleWrap = document.getElementById('hero-puzzle-wrap')!
-    const puzzleEl = document.getElementById('hero-puzzle')!
-    const reveal = document.getElementById('hero-reveal')!
+    const h1Section = document.getElementById('hero-h1-section')!
+    const pixelInline = document.getElementById('hero-pixel-inline')!
 
-    const vw = window.innerWidth
     const vh = window.innerHeight
+    const vw = window.innerWidth
 
-    // ── Capture pixel's current position (relative to viewport) ──
-    const pixelRect = pixel.getBoundingClientRect()
-    const pxStartLeft = pixelRect.left
-    const pxStartTop = pixelRect.top
-    const pxStartW = pixelRect.width
-    const pxStartH = pixelRect.height
+    // ── Capture pixel dot's position ──
+    const dotRect = pixelDot.getBoundingClientRect()
+    const pxStartLeft = dotRect.left
+    const pxStartTop = dotRect.top
+    const pxStartW = dotRect.width
+    const pxStartH = dotRect.height
 
-    // ── Switch pixel to fixed positioning at its current visual location ──
-    pixel.style.position = 'fixed'
-    pixel.style.left = `${pxStartLeft}px`
-    pixel.style.top = `${pxStartTop}px`
-    pixel.style.width = `${pxStartW}px`
-    pixel.style.height = `${pxStartH}px`
-    pixel.style.zIndex = '15'
-    pixel.style.pointerEvents = 'none'
-    // Remove inline-block sizing classes — now absolutely sized
-    pixel.style.verticalAlign = 'unset'
-    pixel.style.transform = ''
-    pixel.style.marginLeft = '0'
-    // Reparent pixel to section so heading transforms don't drag it
-    section.appendChild(pixel)
+    // ── Create a fixed-position "falling pixel" clone ──
+    const fallingPixel = document.createElement('div')
+    fallingPixel.id = 'falling-pixel'
+    fallingPixel.style.position = 'fixed'
+    fallingPixel.style.left = `${pxStartLeft}px`
+    fallingPixel.style.top = `${pxStartTop}px`
+    fallingPixel.style.width = `${pxStartW}px`
+    fallingPixel.style.height = `${pxStartH}px`
+    fallingPixel.style.backgroundColor = 'var(--color-pixel-green)'
+    fallingPixel.style.zIndex = '50'
+    fallingPixel.style.pointerEvents = 'none'
+    fallingPixel.style.opacity = '0'
+    document.body.appendChild(fallingPixel)
 
-    const pxEndW = vw < 640 ? 48 : 80
-    const pxCenterX = vw / 2 - pxEndW / 2
-    const pxCenterY = vh / 2 - pxEndW / 2
+    const pxEndW = vw < 640 ? 32 : 64
 
-    // ── Puzzle grid ──
-    const COLS = 6
-    const ROWS = 2
-    const TILE_DEFS = [
-      { id: 'P', src: '/Letters/P.svg', solvedPos: 0 },
-      { id: 'I', src: '/Letters/I.svg', solvedPos: 1 },
-      { id: 'X', src: '/Letters/X.svg', solvedPos: 2 },
-      { id: 'E', src: '/Letters/E.svg', solvedPos: 3 },
-      { id: 'L', src: '/Letters/L.svg', solvedPos: 4 },
-      { id: 'A', src: '/Letters/A.svg', solvedPos: 6 },
-      { id: 'G', src: '/Letters/G.svg', solvedPos: 7 },
-      { id: 'E2', src: '/Letters/E-red.svg', solvedPos: 8 },
-      { id: 'N', src: '/Letters/N.svg', solvedPos: 9 },
-      { id: 'C', src: '/Letters/C.svg', solvedPos: 10 },
-      { id: 'Y', src: '/Letters/Y.svg', solvedPos: 11 }
-    ]
-
-    const GAP = Math.min(9, Math.max(3, Math.round(vw * 0.006)))
-    const PUZZLE_W = Math.min(Math.round(vw * 0.85), 900)
-    const TILE_SIZE = Math.floor((PUZZLE_W - (COLS - 1) * GAP) / COLS)
-    const PUZZLE_H = ROWS * TILE_SIZE + (ROWS - 1) * GAP
-
-    puzzleEl.style.width = `${PUZZLE_W}px`
-    puzzleEl.style.height = `${PUZZLE_H}px`
-
-    function gridToPixel(pos: number) {
-      return {
-        x: (pos % COLS) * (TILE_SIZE + GAP),
-        y: Math.floor(pos / COLS) * (TILE_SIZE + GAP)
-      }
-    }
-
-    function getAdjacentPositions(pos: number) {
-      const row = Math.floor(pos / COLS)
-      const col = pos % COLS
-      const adj: number[] = []
-      if (col > 0) adj.push(pos - 1)
-      if (col < COLS - 1) adj.push(pos + 1)
-      if (row > 0) adj.push(pos - COLS)
-      if (row < ROWS - 1) adj.push(pos + COLS)
-      return adj
-    }
-
-    const SOLVED_STATE: (number | null)[] = new Array(COLS * ROWS).fill(null)
-    TILE_DEFS.forEach((def, idx) => {
-      SOLVED_STATE[def.solvedPos] = idx
-    })
-
-    // ── Shuffle from solved → shuffled ──
-    const SHUFFLE_MOVES = 10
-    const shuffledState = SOLVED_STATE.slice()
-    const shuffleMoves: { fromPos: number; toPos: number }[] = []
-    let emptyPos = shuffledState.indexOf(null)
-    let prevEmpty = -1
-
-    for (let i = 0; i < SHUFFLE_MOVES; i++) {
-      const candidates = getAdjacentPositions(emptyPos).filter((p) => p !== prevEmpty)
-      const tilePos = candidates[Math.floor(Math.random() * candidates.length)]
-      shuffleMoves.push({ fromPos: tilePos, toPos: emptyPos })
-      shuffledState[emptyPos] = shuffledState[tilePos]
-      shuffledState[tilePos] = null
-      prevEmpty = emptyPos
-      emptyPos = tilePos
-    }
-
-    // Reverse shuffle = solving moves
-    const solvingMoves = shuffleMoves
-      .slice()
-      .reverse()
-      .map((m) => ({ fromPos: m.toPos, toPos: m.fromPos }))
-
-    // ── Create tile DOM elements ──
-    const tileEls: HTMLElement[] = TILE_DEFS.map((def) => {
-      const div = document.createElement('div')
-      div.style.position = 'absolute'
-      div.style.width = `${TILE_SIZE}px`
-      div.style.height = `${TILE_SIZE}px`
-      div.style.willChange = 'transform'
-      const img = document.createElement('img')
-      img.src = def.src
-      img.alt = def.id
-      img.draggable = false
-      img.style.width = '100%'
-      img.style.height = '100%'
-      img.style.display = 'block'
-      img.style.objectFit = 'fill'
-      img.style.pointerEvents = 'none'
-      div.appendChild(img)
-      puzzleEl.appendChild(div)
-      return div
-    })
-
-    // Position tiles at shuffled positions
-    shuffledState.forEach((tileIdx, gridPos) => {
-      if (tileIdx === null) return
-      const pos = gridToPixel(gridPos)
-      gsap.set(tileEls[tileIdx], { x: pos.x, y: pos.y })
-    })
-
-    // N tile (pos 9) screen coordinates relative to section
-    const nGrid = gridToPixel(9)
-    const puzzleScreenX = vw / 2 - PUZZLE_W / 2
-    const puzzleScreenY = vh / 2 - PUZZLE_H / 2
-    const nTileX = puzzleScreenX + nGrid.x
-    const nTileY = puzzleScreenY + nGrid.y
-
-    // ── Init flow field on hero canvas ──
+    // ── Init flow field ──
     const accentKey = (document.documentElement.dataset.accentColor || 'green') as any
     const flowCtrl = initFlowField({
       canvasId: 'hero-flow',
@@ -1247,28 +1037,36 @@ const sectionCards = [
       padding: { top: 80, bottom: 80 }
     })
 
-    // ── Master scroll timeline ──
-    const scrollDist = vh * 7
+    flowCtrl.addRepulsionElement(fallingPixel)
 
-    // Always register pixel for repulsion — the flow field's own
-    // bounds check handles when they don't overlap
-    flowCtrl.addRepulsionElement(pixel)
+    // ── Pixel inline target position in h1 section ──
+    // We'll compute this after h1 is visible
+    function getPixelInlineRect() {
+      return pixelInline.getBoundingClientRect()
+    }
 
-    const heroTl = gsap.timeline({
+    // ══════ ScrollTrigger 1: Puzzle section — fade out + pixel detach ══════
+    const puzzleScrollDist = vh * 2
+
+    const puzzleTl = gsap.timeline({
       scrollTrigger: {
-        trigger: section,
+        trigger: puzzleSection,
         pin: true,
         scrub: 0.3,
-        end: `+=${scrollDist}`
+        end: `+=${puzzleScrollDist}`
       }
     })
 
-    // Phase 1: H1 fades and moves up (0 → 2)
-    heroTl.to(heading, { y: -vh * 0.8, opacity: 0.7, duration: 2, ease: 'none' }, 0)
+    // Hide the original dot, show the fixed clone
+    puzzleTl.set(pixelDot, { opacity: 0 }, 0)
+    puzzleTl.set(fallingPixel, { opacity: 1 }, 0)
 
-    // Phase 2a: Pixel grows early (0 → 1)
-    heroTl.to(
-      pixel,
+    // Puzzle content fades to 25%
+    puzzleTl.to(puzzleContent, { opacity: 0.25, duration: 1, ease: 'none' }, 0)
+
+    // Pixel grows
+    puzzleTl.to(
+      fallingPixel,
       {
         width: pxEndW,
         height: pxEndW,
@@ -1278,123 +1076,128 @@ const sectionCards = [
       0
     )
 
-    // Phase 2b: Pixel falls straight down — one continuous motion (0 → 7)
-    // Stays on same x-axis, falls to 75% vh
-    heroTl.to(
-      pixel,
+    // Pixel falls straight down to bottom of viewport
+    puzzleTl.to(
+      fallingPixel,
       {
-        top: vh * 0.75 - pxEndW / 2,
-        duration: 7,
+        top: vh + 50,
+        duration: 2,
         ease: 'none'
       },
       0
     )
 
-    // Phase 3: Flow field slides up from below (0.5 → 2)
-    heroTl.to(flowWrap, { y: '0%', duration: 1.5, ease: 'none' }, 0.5)
+    // ══════ ScrollTrigger 2: FF section — pixel passes through ══════
+    const ffScrollDist = vh * 3
 
-    // Phase 4: Flow field continues up and fully exits off the top (2 → 4)
-    // -200% because element is 50vh tall anchored at bottom: need to clear entire viewport
-    heroTl.to(flowWrap, { y: '-100%', duration: 2, ease: 'none' }, 2)
-
-    // Phase 5: Pixel fades out well after FF has gone (6.5 → 7)
-    heroTl.to(pixel, { opacity: 0, duration: 0.5 }, 6.5)
-
-    // Phase 6: Snap pixel to N-tile position + fade in with puzzle (7.5)
-    heroTl.set(pixel, { left: nTileX, top: nTileY, width: TILE_SIZE, height: TILE_SIZE }, 7.5)
-    heroTl.to(pixel, { opacity: 1, duration: 0.5 }, 7.5)
-    heroTl.to(puzzleWrap, { opacity: 1, duration: 1 }, 7.5)
-
-    // Phase 7: Pixel fades out (8.5 → 9)
-    heroTl.to(pixel, { opacity: 0, duration: 0.5 }, 8.5)
-
-    // Phase 8: Puzzle solves (9 → 11)
-    const domGrid: (number | null)[] = shuffledState.slice()
-    const moveDur = 2 / solvingMoves.length
-    solvingMoves.forEach((move, i) => {
-      const tileIdx = domGrid[move.fromPos]!
-      const pos = gridToPixel(move.toPos)
-      heroTl.to(
-        tileEls[tileIdx],
-        {
-          x: pos.x,
-          y: pos.y,
-          duration: moveDur,
-          ease: 'power2.inOut'
-        },
-        9 + i * moveDur
-      )
-      domGrid[move.toPos] = domGrid[move.fromPos]
-      domGrid[move.fromPos] = null
+    const ffTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ffSection,
+        pin: true,
+        scrub: 0.3,
+        end: `+=${ffScrollDist}`
+      }
     })
 
-    // Phase 9: Completion pulse (11.2 → 11.8)
-    heroTl.to(
-      puzzleEl,
+    // Pixel enters at top, travels through FF to center, then exits top
+    ffTl.set(fallingPixel, { top: -pxEndW, left: vw / 2 - pxEndW / 2 }, 0)
+    ffTl.to(
+      fallingPixel,
       {
-        scale: 1.025,
-        duration: 0.3,
-        yoyo: true,
-        repeat: 1,
-        ease: 'power2.out',
-        transformOrigin: 'center center'
+        top: vh / 2 - pxEndW / 2,
+        duration: 1.5,
+        ease: 'none'
       },
-      11.2
+      0
     )
 
-    // Phase 10: Puzzle fades out + reveal fades in (12 → 13.5)
-    heroTl.to(puzzleWrap, { opacity: 0, duration: 1 }, 12)
-    heroTl.to(reveal, { opacity: 1, duration: 1 }, 12.5)
+    ffTl.to(
+      fallingPixel,
+      {
+        top: vh + 50,
+        duration: 1.5,
+        ease: 'none'
+      },
+      1.5
+    )
 
-    // Phase 11: Hold before unpin (13.5 → 14.5)
-    heroTl.to({}, { duration: 1 }, 13.5)
+    // ══════ ScrollTrigger 3: H1 section — pixel lands on "theatre." ══════
+    const h1ScrollDist = vh * 1.5
+
+    const h1Tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: h1Section,
+        pin: true,
+        scrub: 0.3,
+        end: `+=${h1ScrollDist}`
+      }
+    })
+
+    // On enter: pixel starts above, shrinks and lands on the inline position
+    h1Tl.set(fallingPixel, { top: -pxEndW }, 0)
+
+    h1Tl.to(
+      fallingPixel,
+      {
+        top: () => getPixelInlineRect().top,
+        left: () => getPixelInlineRect().left,
+        width: () => getPixelInlineRect().width,
+        height: () => getPixelInlineRect().height,
+        duration: 1,
+        ease: 'power2.out'
+      },
+      0
+    )
+
+    // Once landed, hide fixed pixel as it becomes the inline one
+    h1Tl.to(fallingPixel, { opacity: 0, duration: 0.01 }, 1)
+    h1Tl.set(pixelInline, { opacity: 1 }, 1)
+
+    // Hold
+    h1Tl.to({}, { duration: 0.5 }, 1)
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // TRACK SIZING (Assist + Process unchanged)
+  // ══════════════════════════════════════════════════════════
+
+  function sizeAssistTrack() {
+    const assistTrack = document.getElementById('assist-track')!
+    const children = assistTrack.children
+    let totalWidth = 0
+    for (let i = 0; i < children.length; i++) {
+      totalWidth += (children[i] as HTMLElement).offsetWidth
+    }
+    assistTrack.style.width = `${totalWidth}px`
+  }
+
+  function sizeProcessTrack() {
+    const processTrack = document.getElementById('process-track')!
+    const children = processTrack.children
+    let totalWidth = 0
+    for (let i = 0; i < children.length; i++) {
+      totalWidth += (children[i] as HTMLElement).offsetWidth
+    }
+    processTrack.style.width = `${totalWidth}px`
+  }
+
+  function sizeAllTracks() {
+    sizeAssistTrack()
+    sizeProcessTrack()
   }
 
   function initScrollTriggers() {
-    /*
-    // ── HERO horizontal scroll (commented out for new hero) ──
-    gsap.to('#hero-track', {
-      x: () => -(document.querySelector('#hero-track')!.scrollWidth - window.innerWidth),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#hero-wrapper',
-        pin: true,
-        scrub: true,
-        end: () => `+=${document.querySelector('#hero-track')!.scrollWidth - window.innerWidth}`,
-        onUpdate() {
-          const spacerScreenLeft = heroH2Spacer.getBoundingClientRect().left
-          if (spacerScreenLeft <= 0) {
-            gsap.set(heroH2, { x: 0 })
-          } else {
-            gsap.set(heroH2, { x: spacerScreenLeft })
-          }
-        }
-      }
-    })
-    */
-
     // ── PIXEL ASSIST horizontal scroll (timeline with chatbot pause) ──
     const assistTrack = document.querySelector('#assist-track')! as HTMLElement
     const chatPanel = document.getElementById('assist-chatbot-panel')!
     const vwNow = window.innerWidth
 
-    // Total distance the track needs to travel
     const totalTravel = assistTrack.scrollWidth - vwNow
-
-    // Distance to scroll so the chatbot panel is centered on screen
     const chatCenterOffset = chatPanel.offsetLeft + chatPanel.offsetWidth / 2
     const xToChatCenter = Math.min(totalTravel, Math.max(0, chatCenterOffset - vwNow / 2))
-
-    // Remaining distance after the chatbot center
     const xAfterChat = totalTravel - xToChatCenter
-
-    // Extra scroll distance allocated to the chatbot conversation pause
     const chatPauseDist = vwNow * 8
-
-    // Total scroll distance = horizontal travel + chatbot pause
     const assistScrollDist = totalTravel + chatPauseDist
-
-    // Timeline durations proportional to scroll distance
     const durPre = totalTravel > 0 ? xToChatCenter / assistScrollDist : 0
     const durPause = chatPauseDist / assistScrollDist
     const durPost = totalTravel > 0 ? xAfterChat / assistScrollDist : 0
@@ -1408,32 +1211,14 @@ const sectionCards = [
       }
     })
 
-    // Phase 1: scroll track to center chatbot on screen
     if (xToChatCenter > 0) {
-      assistTl.to('#assist-track', {
-        x: -xToChatCenter,
-        ease: 'none',
-        duration: durPre
-      })
+      assistTl.to('#assist-track', { x: -xToChatCenter, ease: 'none', duration: durPre })
     }
-
-    // Phase 2: hold track still — the chatbot conversation plays here
-    assistTl.to('#assist-track', {
-      x: -xToChatCenter,
-      ease: 'none',
-      duration: durPause
-    })
-
-    // Phase 3: resume scrolling to the end
+    assistTl.to('#assist-track', { x: -xToChatCenter, ease: 'none', duration: durPause })
     if (xAfterChat > 0) {
-      assistTl.to('#assist-track', {
-        x: -totalTravel,
-        ease: 'none',
-        duration: durPost
-      })
+      assistTl.to('#assist-track', { x: -totalTravel, ease: 'none', duration: durPost })
     }
 
-    // Drive chatbot progress from the pause phase (phase 2)
     const pauseStart = durPre
     const pauseEnd = durPre + durPause
 
@@ -1474,7 +1259,6 @@ const sectionCards = [
       }
     })
 
-    // Helper to build from/to vars for a rect
     function buildRectVars(rect: HTMLElement) {
       const anim = rect.dataset.anim
       const w = rect.dataset.w + 'px'
@@ -1505,7 +1289,6 @@ const sectionCards = [
       return { fromVars, toVars }
     }
 
-    // Discover rects — animate on section entry (vertical scroll)
     const discoverContainer = document.getElementById('discover-rects')!
     const discoverRects = discoverContainer.querySelectorAll<HTMLElement>('.process-rect')
 
@@ -1522,7 +1305,6 @@ const sectionCards = [
       })
     })
 
-    // All other rects — animate via horizontal containerAnimation
     const otherRects = document.querySelectorAll<HTMLElement>('.process-rect:not(#discover-rects .process-rect)')
 
     otherRects.forEach((rect) => {
@@ -1545,6 +1327,7 @@ const sectionCards = [
   // ── LAUNCH ──
   document.fonts.ready.then(() => {
     sizeAllTracks()
+    initPuzzle()
     initWordCycling()
     initHeroScroll()
     initScrollTriggers()
