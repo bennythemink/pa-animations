@@ -8,6 +8,7 @@ import SectionCards from '@components/SectionCards.astro'
 import ClientLogos from '@components/home/ClientLogos.astro'
 import PixelAssistChatbot from '@components/home/PixelAssistChatbot.astro'
 import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
+import CTA from '@components/CTA.astro'
 
 const assistConversation = [
   { role: 'user' as const, text: 'What exactly is Pixel Assist?' },
@@ -102,12 +103,10 @@ const sectionCards = [
             class="inline-block w-[0.22em] h-[0.22em] bg-pixel-green ml-[0.08em] rounded-none"
             style="vertical-align: baseline;"></span>
         </p>
-        <a
-          id="hero-cta"
-          href="/contact"
-          class="inline-block mt-6 sm:mt-8 px-5 py-2.5 text-sm sm:text-base font-sans hover:underline border border-current opacity-0"
-          >Let&rsquo;s talk</a
-        >
+
+        <div id="hero-cta" class="mt-4 lg:mt-8 opacity-0">
+          <CTA label="Discuss a problem" />
+        </div>
       </div>
     </section>
 
