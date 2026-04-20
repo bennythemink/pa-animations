@@ -173,25 +173,9 @@ const sectionCards = [
 
     <SectionCards text={sectionText} cards={sectionCards} displayTextBackground={false} />
 
-    <!-- ══════ PROBLEM — vertical scroll section ══════ -->
-    <section id="problem" class="min-h-screen flex flex-col justify-center px-16 py-24">
-      <div class="max-w-4xl mx-auto space-y-12">
-        <h2 class="text-4xl sm:text-7xl">The problem with digital right now</h2>
-        <p class="text-xl sm:text-2xl leading-relaxed">
-          Most agencies sell big promises and hand the work to juniors. Timelines slip, budgets balloon, and what gets
-          delivered rarely matches what was sold. You end up managing the agency instead of your business.
-        </p>
-        <p class="text-xl sm:text-2xl leading-relaxed">
-          Meanwhile, your customers expect instant, intelligent experiences — and they're not getting them. Support
-          queues grow, conversion stalls, and your team burns out answering the same questions over and over.
-        </p>
-        <p class="text-xl sm:text-2xl leading-relaxed">It doesn't have to be this way.</p>
-      </div>
-    </section>
-
     <!-- ══════ PIXEL ASSIST — horizontal scroll ══════ -->
     <div id="assist-wrapper" class="relative h-screen overflow-hidden">
-      <div id="assist-track" class="flex h-screen relative items-center">
+      <div id="assist-track" class="flex h-screen relative items-center bg-[#eae7e4]">
         <!-- Panel 1: intro text -->
 
         <div class="shrink-0 w-[50vw] sm:w-[55vw] pl-8 sm:pl-32 flex items-center h-full">
@@ -204,14 +188,14 @@ const sectionCards = [
         <!-- Panel 2: yellow card -->
         <div id="assist-card-1" class="shrink-0 h-full flex items-center ml-32 sm:ml-8">
           <div class="w-64 sm:w-96 aspect-square bg-pixel-yellow flex items-start pt-[38%] p-6">
-            <p class="text-2xl sm:text-3xl leading-tight">Your customers<br />have questions.</p>
+            <p class="text-2xl sm:text-3xl leading-[0.76]">Your customers<br />have questions.</p>
           </div>
         </div>
 
         <!-- Panel 3: blue card -->
         <div id="assist-card-2" class="shrink-0 h-full flex items-center ml-6">
           <div class="w-64 sm:w-96 aspect-square bg-pixel-blue flex items-start pt-[38%] p-6">
-            <p class="text-2xl sm:text-3xl leading-tight">
+            <p class="text-2xl sm:text-3xl leading-[0.76]">
               Right now,<br />they're not getting<br />instant answers.
             </p>
           </div>
@@ -219,7 +203,7 @@ const sectionCards = [
 
         <!-- Panel 4: hero heading -->
         <div id="assist-heading" class="shrink-0 h-full flex items-center px-16">
-          <h2 class="text-5xl sm:text-8xl leading-none whitespace-nowrap">Pixel assist<br />changes that.</h2>
+          <h2 class="text-5xl sm:text-8xl leading-none whitespace-nowrap">Pixel Assist<br />changes that.</h2>
         </div>
 
         <!-- Panel 5: chatbot demo -->
@@ -230,15 +214,13 @@ const sectionCards = [
         </div>
 
         <!-- Panel 6: description text -->
-        <div id="assist-description" class="shrink-0 h-full flex items-center px-16 ml-4">
-          <div class="max-w-sm space-y-4">
-            <p class="text-2xl sm:text-3xl">
+        <div id="assist-description" class="shrink-0 h-full flex items-center px-16 ml-4 leading-[0.76]">
+          <div class="max-w-sm">
+            <p class="text-2xl">
               Our managed, AI-powered assistant learns your content and answers customer questions instantly, helping
               people make faster decisions while reducing repetitive support work for your team.
             </p>
-            <p class="text-2xl sm:text-3xl">
-              It's like having a digital expert and sales person on your website, 24/7.
-            </p>
+            <p class="text-2xl">It's like having a digital expert and sales person on your website, 24/7.</p>
             <a href="#" class="text-sm sm:text-base font-bold underline inline-flex items-center gap-1"> Learn more </a>
           </div>
         </div>
