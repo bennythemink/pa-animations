@@ -88,24 +88,24 @@ const sectionCards = [
       <div id="hero-puzzle-content" class="text-center">
         <h2
           id="hero-tagline-top"
-          class="text-2xl sm:text-4xl lg:text-5xl mb-6 sm:mb-8 font-sans font-normal tracking-[-0.03em]"
+          class="text-2xl sm:text-4xl lg:text-5xl mb-6 sm:mb-8 font-sans font-normal tracking-[-0.03em] opacity-0"
         >
           We are
         </h2>
         <div id="hero-puzzle" class="relative mx-auto"></div>
         <p
           id="hero-tagline-bottom"
-          class="text-2xl sm:text-4xl lg:text-5xl mt-6 sm:mt-8 font-sans font-normal tracking-[-0.03em]"
+          class="text-2xl sm:text-4xl lg:text-5xl mt-6 sm:mt-8 font-sans font-normal tracking-[-0.03em] opacity-0"
         >
           a <span class="text-pixel-orange">refreshing</span> digital partner<span
             id="hero-pixel-dot"
-            class="inline-block w-2 h-2 sm:w-3 sm:h-3 lg:w-4 lg:h-4 bg-pixel-green ml-1"
+            class="inline-block w-[0.22em] h-[0.22em] bg-pixel-green ml-[0.08em] rounded-none"
             style="vertical-align: baseline;"></span>
         </p>
         <a
           id="hero-cta"
           href="/contact"
-          class="inline-block mt-6 sm:mt-8 px-5 py-2.5 text-sm sm:text-base font-sans hover:underline border border-current"
+          class="inline-block mt-6 sm:mt-8 px-5 py-2.5 text-sm sm:text-base font-sans hover:underline border border-current opacity-0"
           >Let&rsquo;s talk</a
         >
       </div>
@@ -857,9 +857,9 @@ const sectionCards = [
       gsap.set(tileEls[tileIdx], { x: pos.x, y: pos.y })
     })
 
-    // Auto-solve timeline (time-based, 2.5s total)
+    // Auto-solve timeline (time-based, 1s total)
     const domGrid: (number | null)[] = shuffledState.slice()
-    const SOLVE_DURATION = 2.5
+    const SOLVE_DURATION = 1
     const moveDur = SOLVE_DURATION / solvingMoves.length
     const solveTl = gsap.timeline({ delay: 0.3 })
 
@@ -880,6 +880,26 @@ const sectionCards = [
       repeat: 1,
       transformOrigin: 'center center'
     })
+
+    // Fade in surrounding text + CTA after solve completes
+    const taglineTop = document.getElementById('hero-tagline-top')!
+    const taglineBottom = document.getElementById('hero-tagline-bottom')!
+    const heroCta = document.getElementById('hero-cta')!
+
+    solveTl.to([taglineTop, taglineBottom], {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power2.out'
+    })
+    solveTl.to(
+      heroCta,
+      {
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.out'
+      },
+      '-=0.25'
+    )
   }
 
   // ══════════════════════════════════════════════════════════
