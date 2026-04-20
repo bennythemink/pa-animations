@@ -1001,31 +1001,22 @@ const sectionCards = [
     revealRect.style.zIndex = '10'
     container.appendChild(revealRect)
 
-    // Measure max word width
-    const cs = getComputedStyle(h1)
-    const measureEl = document.createElement('span')
-    measureEl.style.visibility = 'hidden'
-    measureEl.style.position = 'absolute'
-    measureEl.style.whiteSpace = 'nowrap'
-    measureEl.style.pointerEvents = 'none'
-    measureEl.style.fontSize = cs.fontSize
-    measureEl.style.fontFamily = cs.fontFamily
-    measureEl.style.fontWeight = cs.fontWeight
-    measureEl.style.letterSpacing = cs.letterSpacing
-    document.body.appendChild(measureEl)
-
+    // Measure max word size from the actual rendered element.
+    // This avoids subtle mismatches from detached measurement nodes.
     let maxW = 0
     let maxH = 0
+    const originalWordText = wordEl.textContent || ''
     for (const w of HERO_WORDS) {
-      measureEl.textContent = w.text
-      const rect = measureEl.getBoundingClientRect()
+      wordEl.textContent = w.text
+      const rect = wordEl.getBoundingClientRect()
       maxW = Math.max(maxW, rect.width)
       maxH = Math.max(maxH, rect.height)
     }
-    document.body.removeChild(measureEl)
+    wordEl.textContent = originalWordText
 
-    const maxRectWidth = Math.ceil(maxW)
-    const maxRectHeight = Math.ceil(maxH)
+    const rectBleed = 4
+    const maxRectWidth = Math.ceil(maxW) + rectBleed * 2
+    const maxRectHeight = Math.ceil(maxH) + rectBleed * 2
 
     const cursorEl = document.getElementById('hero-cursor')!
     // Hide cursor in reveal-rect mode
@@ -1034,7 +1025,7 @@ const sectionCards = [
     const cursorCS = getComputedStyle(cursorEl)
     const cursorSpace =
       cursorEl.getBoundingClientRect().width + parseFloat(cursorCS.marginLeft) + parseFloat(cursorCS.marginRight)
-    container.style.width = `${Math.ceil(maxW + cursorSpace + 4)}px`
+    container.style.width = `${Math.ceil(maxRectWidth + cursorSpace + 4)}px`
     container.style.position = 'relative'
 
     alignPixelToText()
