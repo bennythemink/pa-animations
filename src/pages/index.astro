@@ -174,70 +174,72 @@ const sectionCards = [
     <SectionCards text={sectionText} cards={sectionCards} displayTextBackground={false} />
 
     <!-- ══════ PIXEL ASSIST — horizontal scroll ══════ -->
-    <div id="assist-wrapper" class="relative h-screen overflow-hidden">
-      <div id="assist-track" class="flex h-screen relative items-center bg-[#eae7e4]">
-        <!-- Panel 1: intro text -->
+    <section id="pixel-assist">
+      <div id="assist-wrapper" class="relative h-screen overflow-hidden mt-6">
+        <div id="assist-track" class="flex h-screen relative items-center bg-[#eae7e4]">
+          <!-- Panel 1: intro text -->
 
-        <div
-          class="shrink-0 w-[50vw] sm:w-[55vw] pl-8 sm:pl-32 flex items-end h-full pb-[calc((100vh-16rem)/2)] sm:pb-[calc((100vh-24rem)/2)]"
-        >
-          <div id="assist-intro">
-            <h2 class="text-3xl sm:text-4xl mb-8">Our AI service</h2>
-            <h3 class="text-6xl sm:text-9xl">Introducing Pixel Assist.</h3>
+          <div
+            class="shrink-0 w-[50vw] sm:w-[55vw] flex items-end h-full pb-[calc((100vh-16rem)/2)] sm:pb-[calc((100vh-24rem)/2)]"
+          >
+            <div id="assist-intro">
+              <h2 class="text-3xl sm:text-4xl mb-8">Our AI service</h2>
+              <h3 class="text-6xl sm:text-9xl">Introducing Pixel Assist.</h3>
+            </div>
           </div>
-        </div>
 
-        <!-- Panel 2: yellow card -->
-        <div id="assist-card-1" class="shrink-0 h-full flex items-center ml-32 sm:ml-8">
-          <div class="w-64 sm:w-96 aspect-square bg-pixel-yellow flex items-start pt-[38%] p-6">
-            <p class="text-2xl sm:text-3xl leading-[0.76]">Your customers<br />have questions.</p>
+          <!-- Panel 2: yellow card -->
+          <div id="assist-card-1" class="shrink-0 h-full flex items-center ml-32 sm:ml-8">
+            <div class="w-64 sm:w-96 aspect-square bg-pixel-yellow flex items-start pt-[38%] p-6">
+              <p class="text-2xl sm:text-3xl leading-[0.76]">Your customers<br />have questions.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- Panel 3: blue card -->
-        <div id="assist-card-2" class="shrink-0 h-full flex items-center ml-6">
-          <div class="w-64 sm:w-96 aspect-square bg-pixel-blue flex items-start pt-[38%] p-6">
-            <p class="text-2xl sm:text-3xl leading-[0.76]">
-              Right now,<br />they're not getting<br />instant answers.
-            </p>
+          <!-- Panel 3: blue card -->
+          <div id="assist-card-2" class="shrink-0 h-full flex items-center ml-6">
+            <div class="w-64 sm:w-96 aspect-square bg-pixel-blue flex items-start pt-[38%] p-6">
+              <p class="text-2xl sm:text-3xl leading-[0.76]">
+                Right now,<br />they're not getting<br />instant answers.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <!-- Panel 4: hero heading -->
-        <div
-          id="assist-heading"
-          class="shrink-0 h-full flex items-end px-16 pb-[calc((100vh-16rem)/2)] sm:pb-[calc((100vh-24rem)/2)]"
-        >
-          <h2 class="text-5xl sm:text-8xl leading-none whitespace-nowrap">Pixel Assist<br />changes that.</h2>
-        </div>
-
-        <!-- Panel 5: chatbot demo -->
-        <div id="assist-chatbot-panel" class="shrink-0 h-full flex items-center justify-center">
-          <div class="w-72 h-96">
-            <PixelAssistChatbot id="assist-chatbot" conversation={assistConversation} placeholder="Ask a question" />
+          <!-- Panel 4: hero heading -->
+          <div
+            id="assist-heading"
+            class="shrink-0 h-full flex items-end px-16 pb-[calc((100vh-16rem)/2)] sm:pb-[calc((100vh-24rem)/2)]"
+          >
+            <h2 class="text-5xl sm:text-8xl leading-none whitespace-nowrap">Pixel Assist<br />changes that.</h2>
           </div>
-        </div>
 
-        <!-- Panel 6: description text -->
-        <div
-          id="assist-description"
-          class="shrink-0 h-full flex items-end px-16 ml-4 leading-[0.76] pb-[calc((100vh-16rem)/2)] sm:pb-[calc((100vh-24rem)/2)]"
-        >
-          <div class="max-w-sm">
-            <p class="text-2xl">
-              Our managed, AI-powered assistant learns your content and answers customer questions instantly, helping
-              people make faster decisions while reducing repetitive support work for your team.
-            </p><br />
-            <p class="text-2xl">It's like having a digital expert and sales person on your website, 24/7.</p><br />
-
-            <CTA label="Learn more" />
+          <!-- Panel 5: chatbot demo -->
+          <div id="assist-chatbot-panel" class="shrink-0 h-full flex items-center justify-center">
+            <div class="w-72 h-96">
+              <PixelAssistChatbot id="assist-chatbot" conversation={assistConversation} placeholder="Ask a question" />
+            </div>
           </div>
-        </div>
 
-        <!-- Trailing spacer -->
-        <div id="assist-end" class="shrink-0 h-full w-0"></div>
+          <!-- Panel 6: description text -->
+          <div
+            id="assist-description"
+            class="shrink-0 h-full flex items-end px-16 ml-4 leading-[0.76] pb-[calc((100vh-16rem)/2)] sm:pb-[calc((100vh-24rem)/2)]"
+          >
+            <div class="max-w-sm">
+              <p class="text-2xl">
+                Our managed, AI-powered assistant learns your content and answers customer questions instantly, helping
+                people make faster decisions while reducing repetitive support work for your team.
+              </p><br />
+              <p class="text-2xl">It's like having a digital expert and sales person on your website, 24/7.</p><br />
+
+              <CTA label="Learn more" />
+            </div>
+          </div>
+
+          <!-- Trailing spacer -->
+          <div id="assist-end" class="shrink-0 h-full w-0"></div>
+        </div>
       </div>
-    </div>
+    </section>
 
     <section id="experience" class="py-16 lg:py-24">
       <Grid>
@@ -656,6 +658,13 @@ const sectionCards = [
 </Layout>
 
 <style>
+  @media (min-width: 1024px) {
+    #assist-track {
+      /* Match Grid col-start-2 while keeping the pinned wrapper full-bleed */
+      padding-left: calc((100vw - min(100vw, 90rem)) / 2 + 20px + ((min(100vw, 90rem) - 40px - 11 * 20px) / 12) + 20px);
+    }
+  }
+
   .process-rect {
     opacity: 0;
   }
