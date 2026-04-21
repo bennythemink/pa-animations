@@ -139,32 +139,36 @@ const sectionCards = [
 
     <section id="difference">
       <Grid>
-        <div class="col-span-full bg-pixel-green grid grid-cols-12 gap-5 pt-7.5 lg:pt-28 pb-7.5 lg:pb-36 my-2 lg:my-6">
-          <h3 class="col-span-full col-start-2 text-5xl lg:text-8xl">
-            You talk to the people<span class="lg:hidden"> doing the work</span>
-          </h3>
-          <h3 class="col-span-full col-start-2 lg:col-start-6 text-5xl lg:text-8xl hidden lg:block">doing the work</h3>
-          <div class="col-start-2 col-span-10 grid grid-cols-12 gap-5">
-            <h2
-              class="text-pixel-dark-green text-base lg:text-[40px] lg:col-start-1 lg:col-span-3 lg:my-20 col-span-full"
-            >
-              Our difference
-            </h2>
-            <div class="col-start-1 col-span-11 lg:col-start-6 lg:col-span-4 lg:my-20">
-              <p>
-                At Pixel Agency, there are no account managers between you and the team making your product. The people
-                you speak to are the same people who think, design, and build.
-              </p>
-              <br />
-              <p>
-                No hand-offs. No incentives to say yes when we should say no. Just clear thinking, honest advice, and
-                work we’re proud to stand behind.
-              </p>
-              <br />
-              <p>
-                The result clearer decisions, stronger outcomes, and partnerships built on trust — not transactions. All
-                without the sales-theatre.
-              </p>
+        <div id="difference-panel" class="col-span-full bg-pixel-green pt-7.5 lg:pt-28 pb-7.5 lg:pb-36 my-2 lg:my-6">
+          <div id="difference-content" class="grid grid-cols-12 gap-5">
+            <h3 class="col-span-full col-start-2 text-5xl lg:text-8xl">
+              You talk to the people<span class="lg:hidden"> doing the work</span>
+            </h3>
+            <h3 class="col-span-full col-start-2 lg:col-start-6 text-5xl lg:text-8xl hidden lg:block">
+              doing the work
+            </h3>
+            <div class="col-start-2 col-span-10 grid grid-cols-12 gap-5">
+              <h2
+                class="text-pixel-dark-green text-base lg:text-[40px] lg:col-start-1 lg:col-span-3 lg:my-20 col-span-full"
+              >
+                Our difference
+              </h2>
+              <div class="col-start-1 col-span-11 lg:col-start-6 lg:col-span-4 lg:my-20">
+                <p>
+                  At Pixel Agency, there are no account managers between you and the team making your product. The
+                  people you speak to are the same people who think, design, and build.
+                </p>
+                <br />
+                <p>
+                  No hand-offs. No incentives to say yes when we should say no. Just clear thinking, honest advice, and
+                  work we’re proud to stand behind.
+                </p>
+                <br />
+                <p>
+                  The result clearer decisions, stronger outcomes, and partnerships built on trust — not transactions.
+                  All without the sales-theatre.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -1217,6 +1221,9 @@ const sectionCards = [
     const ffSection = document.getElementById('hero-ff-section')!
     const h1Section = document.getElementById('hero-h1-section')!
     const pixelInline = document.getElementById('hero-pixel-inline')!
+    const differenceSection = document.getElementById('difference')!
+    const differencePanel = document.getElementById('difference-panel')!
+    const differenceContent = document.getElementById('difference-content')!
 
     const vh = window.innerHeight
     const vw = window.innerWidth
@@ -1256,6 +1263,10 @@ const sectionCards = [
     })
 
     flowCtrl.addRepulsionElement(fallingPixel)
+
+    // Difference section starts hidden and is revealed by the morph transition.
+    gsap.set(differencePanel, { opacity: 0 })
+    gsap.set(differenceContent, { opacity: 0 })
 
     // ── Pixel inline target position in h1 section ──
     function getPixelInlineRect() {
@@ -1332,6 +1343,66 @@ const sectionCards = [
 
     // Hold
     h1Tl.to({}, { duration: 0.5 }, 1)
+
+    // ══════ ScrollTrigger 3: Pixel moves to center, then becomes Difference ══════
+    function lerp(start: number, end: number, progress: number) {
+      return start + (end - start) * progress
+    }
+
+    function lerpRect(
+      startRect: { left: number; top: number; width: number; height: number },
+      endRect: { left: number; top: number; width: number; height: number },
+      progress: number
+    ) {
+      return {
+        left: lerp(startRect.left, endRect.left, progress),
+        top: lerp(startRect.top, endRect.top, progress),
+        width: lerp(startRect.width, endRect.width, progress),
+        height: lerp(startRect.height, endRect.height, progress)
+      }
+    }
+
+    ScrollTrigger.create({
+      trigger: differenceSection,
+      scrub: 0.3,
+      start: 'top bottom',
+      end: 'top 35%',
+      invalidateOnRefresh: true,
+      onUpdate(self) {
+        const progress = self.progress
+        const startRect = getPixelInlineRect()
+        const midSize = Math.max(64, startRect.width * 4)
+        const midRect = {
+          left: window.innerWidth / 2 - midSize / 2,
+          top: window.innerHeight / 2 - midSize / 2,
+          width: midSize,
+          height: midSize
+        }
+        const endRect = differencePanel.getBoundingClientRect()
+
+        let rect = startRect
+        if (progress <= 0.4) {
+          rect = lerpRect(startRect, midRect, progress / 0.4)
+        } else {
+          rect = lerpRect(midRect, endRect, (progress - 0.4) / 0.6)
+        }
+
+        const panelOpacity = progress <= 0.72 ? 0 : (progress - 0.72) / 0.28
+        const contentOpacity = progress <= 0.86 ? 0 : (progress - 0.86) / 0.14
+        const pixelOpacity = progress >= 0.92 ? 1 - (progress - 0.92) / 0.08 : 1
+
+        gsap.set(pixelInline, { opacity: progress <= 0.02 ? 1 : 0 })
+        gsap.set(fallingPixel, {
+          opacity: Math.max(0, pixelOpacity),
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height
+        })
+        gsap.set(differencePanel, { opacity: Math.max(0, Math.min(1, panelOpacity)) })
+        gsap.set(differenceContent, { opacity: Math.max(0, Math.min(1, contentOpacity)) })
+      }
+    })
   }
 
   // ══════════════════════════════════════════════════════════
