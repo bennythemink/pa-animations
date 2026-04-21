@@ -11,15 +11,10 @@ import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
 import CTA from '@components/CTA.astro'
 
 const assistConversation = [
-  { role: 'user' as const, text: 'What exactly is Pixel Assist?' },
+  { role: 'user' as const, text: 'What is Pixel Assist and will it help convert visitors into customers?' },
   {
     role: 'ai' as const,
-    text: 'Pixel Assist is an AI-powered assistant that lives on your website. It learns your content and answers visitor questions instantly — 24/7, with no waiting. It can handle everything from simple FAQs to complex product, technical, and conformance inquiries, effectively acting as a technical and support assistant for your site at all times.'
-  },
-  { role: 'user' as const, text: 'How does it help convert visitors into customers?' },
-  {
-    role: 'ai' as const,
-    text: 'It guides visitors to the right information at the right moment — answering objections, recommending products, and nudging them toward enquiry forms or checkout. Think of it as a knowledgeable sales assistant that never sleeps.'
+    text: 'It’s an AI assistant on your website that learns your content and gives instant answers 24/7. It captures leads and nudges visitors toward enquiry or checkout, turning more visits into qualified conversations and conversions.'
   }
 ]
 
@@ -1446,7 +1441,7 @@ const sectionCards = [
     const chatCenterOffset = chatPanel.offsetLeft + chatPanel.offsetWidth / 2
     const xToChatCenter = Math.min(totalTravel, Math.max(0, chatCenterOffset - vwNow / 2))
     const xAfterChat = totalTravel - xToChatCenter
-    const chatPauseDist = vwNow * 8
+    const chatPauseDist = vwNow * 4.8
     const assistScrollDist = totalTravel + chatPauseDist
     const durPre = totalTravel > 0 ? xToChatCenter / assistScrollDist : 0
     const durPause = chatPauseDist / assistScrollDist
