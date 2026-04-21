@@ -1383,13 +1383,15 @@ const sectionCards = [
         let rect = startRect
         if (progress <= 0.4) {
           rect = lerpRect(startRect, midRect, progress / 0.4)
+        } else if (progress <= 0.9) {
+          rect = lerpRect(midRect, endRect, (progress - 0.4) / 0.5)
         } else {
-          rect = lerpRect(midRect, endRect, (progress - 0.4) / 0.6)
+          rect = endRect
         }
 
-        const panelOpacity = progress <= 0.72 ? 0 : (progress - 0.72) / 0.28
-        const contentOpacity = progress <= 0.86 ? 0 : (progress - 0.86) / 0.14
-        const pixelOpacity = progress >= 0.92 ? 1 - (progress - 0.92) / 0.08 : 1
+        const panelOpacity = progress <= 0.9 ? 0 : (progress - 0.9) / 0.06
+        const contentOpacity = progress <= 0.97 ? 0 : (progress - 0.97) / 0.03
+        const pixelOpacity = progress >= 0.96 ? 1 - (progress - 0.96) / 0.04 : 1
 
         gsap.set(pixelInline, { opacity: progress <= 0.02 ? 1 : 0 })
         gsap.set(fallingPixel, {
