@@ -175,7 +175,7 @@ const sectionCards = [
 
     <!-- ══════ PIXEL ASSIST — horizontal scroll ══════ -->
     <section id="pixel-assist">
-      <div id="assist-wrapper" class="relative h-screen overflow-hidden mt-6">
+      <div id="assist-wrapper" class="relative h-screen overflow-hidden mt-6 bg-[#eae7e4]">
         <div id="assist-track" class="flex h-screen relative items-center bg-[#eae7e4]">
           <!-- Panel 1: intro text -->
 
@@ -658,6 +658,11 @@ const sectionCards = [
 </Layout>
 
 <style>
+  #assist-track {
+    /* Tiny overscan prevents subpixel seam on the pinned right edge */
+    padding-right: 2px;
+  }
+
   @media (min-width: 1024px) {
     #assist-track {
       /* Match Grid col-start-2 while keeping the pinned wrapper full-bleed */
