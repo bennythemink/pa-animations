@@ -278,7 +278,7 @@ const sectionCards = [
           <div>
             <h2 class="text-3xl sm:text-4xl text-pixel-dark-green mb-8">Our process</h2>
             <h3 class="text-6xl sm:text-9xl mb-10 sm:mb-12">Clear, simple, safe.</h3>
-            <p class="max-w-xs text-2xl sm:text-3xl">
+            <p class="max-w-xs lg:max-w-lg text-base sm:text-2xl leading-[0.76]">
               Our process reflects how proud outcomes are actually achieved: slow down just enough to clarify the
               promise and remove risk, apply care through design and build, and stay responsible beyond launch. Here's
               what that looks like in practice.
@@ -325,20 +325,21 @@ const sectionCards = [
                 data-h="40"
               >
               </div>
-              <div
+              <!-- <div
                 class="process-rect absolute top-0 left-[600px] w-[200px] h-[40px]"
                 data-color="green"
                 data-anim="grow-w"
                 data-w="200"
                 data-h="40"
               >
-              </div>
+              </div> -->
             </div>
-            <div class="-ml-[380px] sm:ml-0 pl-4 sm:pl-8 -mt-[100px] flex items-start gap-3 sm:gap-4">
-              <div class="text-pixel-green heading-style text-3xl sm:text-8xl shrink-0 mt-1 sm:mt-2">1.</div>
+            <div
+              class="-ml-[200px] -mt-[34px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-green pt-3 lg:pt-6 w-45.5 lg:w-98"
+            >
               <div>
-                <h4 class="text-6xl sm:text-8xl mb-6 sm:mb-8 max-w-sm">Discover &amp; define</h4>
-                <p class="max-w-sm text-2xl sm:text-3xl">
+                <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">1. Discover + define</h4>
+                <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
                   Before a line of design or code is written, you'll have full clarity on scope, timelines, cost, and
                   what success looks like. No ambiguity carried forward.
                 </p>
@@ -378,11 +379,12 @@ const sectionCards = [
               >
               </div>
             </div>
-            <div class="pl-4 sm:pl-8 -mt-[30px] flex items-start gap-3 sm:gap-4">
-              <div class="text-pixel-red heading-style text-3xl sm:text-8xl shrink-0 mt-1 sm:mt-2">2.</div>
+            <div
+              class="-mt-[32px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-red pt-3 lg:pt-6 w-45.5 lg:w-98"
+            >
               <div>
-                <h4 class="text-6xl sm:text-8xl mb-6 sm:mb-8 max-w-sm">Design</h4>
-                <p class="max-w-sm text-2xl sm:text-3xl">
+                <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">2. Design</h4>
+                <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
                   You'll see and sign off on designs that reflect your brand and your users before development begins.
                   No surprises later.
                 </p>
@@ -448,11 +450,12 @@ const sectionCards = [
               >
               </div>
             </div>
-            <div class="pl-4 sm:pl-8 -mt-[250px] flex items-start gap-3 sm:gap-4">
-              <div class="text-pixel-yellow heading-style text-3xl sm:text-8xl shrink-0 mt-1 sm:mt-2">3.</div>
+            <div
+              class="-mt-[250px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-yellow pt-3 lg:pt-6 w-45.5 lg:w-98"
+            >
               <div>
-                <h4 class="text-6xl sm:text-8xl mb-6 sm:mb-8 max-w-sm">Build &amp; test</h4>
-                <p class="max-w-sm text-2xl sm:text-3xl">
+                <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">3. Build + test</h4>
+                <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
                   You'll stay close to the work through regular previews, thorough testing, and your own review. We
                   build iteratively and share progress, no big reveals.
                 </p>
@@ -542,11 +545,12 @@ const sectionCards = [
               >
               </div>
             </div>
-            <div class="pl-4 sm:pl-8 -mt-[150px] flex items-start gap-3 sm:gap-4">
-              <div class="text-pixel-pink heading-style text-3xl sm:text-8xl shrink-0 mt-1 sm:mt-2">4.</div>
+            <div
+              class="-mt-[150px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-pink pt-3 lg:pt-6 w-45.5 lg:w-98"
+            >
               <div>
-                <h4 class="text-6xl sm:text-8xl mb-6 sm:mb-8 max-w-sm">Launch &amp; beyond</h4>
-                <p class="max-w-sm text-2xl sm:text-3xl">
+                <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">4. Launch + beyond</h4>
+                <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
                   You'll launch with confidence, not crossed fingers. And after launch, we stay involved, supporting and
                   resolving issues until the solution performs as intended.
                 </p>
@@ -671,6 +675,7 @@ const sectionCards = [
 
   .process-rect {
     opacity: 0;
+    will-change: transform, opacity;
   }
   .process-rect[data-color='red'] {
     background-color: var(--color-pixel-red);
@@ -1495,10 +1500,12 @@ const sectionCards = [
     const processScrollTween = gsap.to(processTrack, {
       x: () => -(processTrack.scrollWidth - window.innerWidth),
       ease: 'none',
+      force3D: true,
       scrollTrigger: {
         trigger: processWrapper,
         pin: true,
         scrub: 1,
+        anticipatePin: 1,
         end: () => `+=${processTrack.scrollWidth - window.innerWidth}`,
         invalidateOnRefresh: true
       }
@@ -1506,28 +1513,25 @@ const sectionCards = [
 
     function buildRectVars(rect: HTMLElement) {
       const anim = rect.dataset.anim
-      const w = rect.dataset.w + 'px'
-      const h = rect.dataset.h + 'px'
-
       let fromVars: gsap.TweenVars = { opacity: 0 }
       let toVars: gsap.TweenVars = { opacity: 1, duration: 0.6, ease: 'power2.out' }
 
       switch (anim) {
         case 'grow-h':
-          fromVars = { ...fromVars, height: 0, transformOrigin: 'bottom' }
-          toVars = { ...toVars, height: h }
+          fromVars = { ...fromVars, scaleY: 0, transformOrigin: 'bottom' }
+          toVars = { ...toVars, scaleY: 1 }
           break
         case 'grow-w':
-          fromVars = { ...fromVars, width: 0, transformOrigin: 'left' }
-          toVars = { ...toVars, width: w }
+          fromVars = { ...fromVars, scaleX: 0, transformOrigin: 'left' }
+          toVars = { ...toVars, scaleX: 1 }
           break
         case 'grow-h-ttb':
-          fromVars = { ...fromVars, height: 0, transformOrigin: 'top' }
-          toVars = { ...toVars, height: h }
+          fromVars = { ...fromVars, scaleY: 0, transformOrigin: 'top' }
+          toVars = { ...toVars, scaleY: 1 }
           break
         case 'grow-w-rtl':
-          fromVars = { ...fromVars, width: 0, marginLeft: w }
-          toVars = { ...toVars, width: w, marginLeft: '0px' }
+          fromVars = { ...fromVars, scaleX: 0, transformOrigin: 'right' }
+          toVars = { ...toVars, scaleX: 1 }
           break
       }
 
