@@ -116,7 +116,8 @@ const caseStudy = {
       </Grid>
     </section>
 
-    <section class="pb-12 lg:pb-18">
+    <!-- Shell A: first image (desktop) / all images (mobile) + intro text -->
+    <section class="pb-0">
       <Grid>
         <div id="case-study-shell" class="case-study-shell col-span-full lg:col-start-2 lg:col-span-11">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
@@ -144,11 +145,35 @@ const caseStudy = {
               <div class="aspect-video w-full overflow-hidden bg-(--case-study-placeholder)">
                 <Image src={mbImage} alt="" class="h-full w-full object-cover" />
               </div>
-              <p
-                class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black"
-              >
-                {caseStudy.summary}
-              </p>
+            </div>
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <p class="font-sans text-[clamp(2rem,4.2vw,3.6rem)] leading-[1.02] tracking-[-0.03em] text-black">
+              {caseStudy.intro}
+            </p>
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    <!-- Summary: standalone page-grid row, column position switches with panel state -->
+    <section class="py-0 lg:py-5">
+      <Grid>
+        <p
+          class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black"
+        >
+          {caseStudy.summary}
+        </p>
+      </Grid>
+    </section>
+
+    <!-- Shell B: remaining images (desktop) + case study content -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div class="case-study-shell col-span-full lg:col-start-2 lg:col-span-11">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <div class="case-study-desktop-visuals grid gap-5">
               <div class="grid grid-cols-2 gap-5">
                 <div class="aspect-square w-full overflow-hidden bg-(--case-study-placeholder)">
                   <Image src={mbImage} alt="" class="h-full w-full object-cover" />
@@ -167,9 +192,6 @@ const caseStudy = {
           </div>
 
           <div class="case-study-right-pane min-w-0">
-            <p class="font-sans text-[clamp(2rem,4.2vw,3.6rem)] leading-[1.02] tracking-[-0.03em] text-black">
-              {caseStudy.intro}
-            </p>
             <p
               class="case-study-summary-mobile mt-4 max-w-[15ch] font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black"
             >
@@ -442,16 +464,11 @@ const caseStudy = {
 
       .case-study-summary-desktop {
         display: block;
-        --case-study-grid-gap: 1.25rem;
-        --case-study-col-closed: calc((100% - (10 * var(--case-study-grid-gap))) / 11);
-        width: calc((5 * var(--case-study-col-closed)) + (4 * var(--case-study-grid-gap)));
-        margin-left: calc((5 * var(--case-study-col-closed)) + (5 * var(--case-study-grid-gap)));
+        grid-column: 7 / span 5;
       }
 
       #case-study-page[data-panel-state='open'] .case-study-summary-desktop {
-        --case-study-col-open: calc((100% - (5 * var(--case-study-grid-gap))) / 5.5);
-        width: calc((5 * var(--case-study-col-open)) + (4 * var(--case-study-grid-gap)));
-        margin-left: 0;
+        grid-column: 2 / span 5;
       }
 
       .case-study-summary-mobile {
