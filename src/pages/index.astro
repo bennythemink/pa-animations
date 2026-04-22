@@ -1584,7 +1584,12 @@ const sectionCards = [
           gsap.to(item.rect, { ...item.toVars, overwrite: 'auto' })
         } else if (!shouldReveal && item.revealed) {
           item.revealed = false
-          gsap.set(item.rect, item.fromVars)
+          gsap.to(item.rect, {
+            ...item.fromVars,
+            duration: 0.25,
+            ease: 'power2.in',
+            overwrite: 'auto'
+          })
         }
       })
     }
