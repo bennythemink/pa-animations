@@ -145,7 +145,7 @@ const caseStudy = {
                 <Image src={mbImage} alt="" class="h-full w-full object-cover" />
               </div>
               <p
-                class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black mt-4 max-w-[15ch]"
+                class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black"
               >
                 {caseStudy.summary}
               </p>
@@ -442,6 +442,16 @@ const caseStudy = {
 
       .case-study-summary-desktop {
         display: block;
+        --case-study-grid-gap: 1.25rem;
+        --case-study-col-closed: calc((100% - (10 * var(--case-study-grid-gap))) / 11);
+        width: calc((5 * var(--case-study-col-closed)) + (4 * var(--case-study-grid-gap)));
+        margin-left: calc((5 * var(--case-study-col-closed)) + (5 * var(--case-study-grid-gap)));
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-summary-desktop {
+        --case-study-col-open: calc((100% - (5 * var(--case-study-grid-gap))) / 5.5);
+        width: calc((5 * var(--case-study-col-open)) + (4 * var(--case-study-grid-gap)));
+        margin-left: 0;
       }
 
       .case-study-summary-mobile {
