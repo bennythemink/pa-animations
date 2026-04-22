@@ -1553,6 +1553,7 @@ const sectionCards = [
       processRevealState.length = 0
       const distNow = getProcessScrollDist()
       const revealEdge = window.innerWidth * 0.9
+      const minRevealStart = 0.05
 
       // Measure with track at origin so thresholds are stable.
       gsap.set(processTrack, { x: 0 })
@@ -1564,7 +1565,7 @@ const sectionCards = [
 
         const rectBox = rect.getBoundingClientRect()
         const rectLeftInTrack = rectBox.left - trackRect.left
-        const revealAt = distNow > 0 ? gsap.utils.clamp(0, 1, (rectLeftInTrack - revealEdge) / distNow) : 1
+        const revealAt = distNow > 0 ? gsap.utils.clamp(minRevealStart, 1, (rectLeftInTrack - revealEdge) / distNow) : 1
 
         processRevealState.push({
           rect,
