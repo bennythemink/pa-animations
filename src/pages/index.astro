@@ -271,61 +271,62 @@ const sectionCards = [
     </section>
 
     <!-- ══════ OUR PROCESS — horizontal scroll ══════ -->
-    <section id="process-wrapper" class="relative h-screen overflow-hidden bg-pixel-light-cream">
-      <div id="process-track" class="flex h-screen relative items-center">
-        <!-- Block 1: Our process — vertically centered -->
-        <div class="shrink-0 w-[50vw] sm:w-[55vw] pl-8 sm:pl-32 flex items-center h-full">
-          <div>
-            <h2 class="text-3xl sm:text-4xl text-pixel-dark-green mb-8">Our process</h2>
-            <h3 class="text-6xl sm:text-9xl mb-10 sm:mb-12">Clear, simple, safe.</h3>
-            <p class="max-w-xs lg:max-w-lg text-base sm:text-2xl leading-[0.76]">
-              Our process reflects how proud outcomes are actually achieved: slow down just enough to clarify the
-              promise and remove risk, apply care through design and build, and stay responsible beyond launch. Here's
-              what that looks like in practice.
-            </p>
+    <section id="process-wrapper" class="relative bg-pixel-light-cream">
+      <div id="process-sticky" class="sticky top-0 h-screen overflow-hidden">
+        <div id="process-track" class="flex h-screen relative items-center">
+          <!-- Block 1: Our process — vertically centered -->
+          <div class="shrink-0 w-[50vw] sm:w-[55vw] pl-8 sm:pl-32 flex items-center h-full">
+            <div>
+              <h2 class="text-3xl sm:text-4xl text-pixel-dark-green mb-8">Our process</h2>
+              <h3 class="text-6xl sm:text-9xl mb-10 sm:mb-12">Clear, simple, safe.</h3>
+              <p class="max-w-xs lg:max-w-lg text-base sm:text-2xl leading-[0.76]">
+                Our process reflects how proud outcomes are actually achieved: slow down just enough to clarify the
+                promise and remove risk, apply care through design and build, and stay responsible beyond launch. Here's
+                what that looks like in practice.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <!-- Block 2: 1. Discover & define — vertically centered -->
-        <div class="shrink-0 w-auto pl-8 sm:pl-16 flex items-center h-full">
-          <div class="flex items-center gap-0">
-            <div
-              id="discover-rects"
-              class="relative shrink-0 w-[800px] h-[120px] origin-left scale-50 sm:scale-100 -mt-10 sm:-mt-45"
-            >
+          <!-- Block 2: 1. Discover & define — vertically centered -->
+          <div class="shrink-0 w-auto pl-8 sm:pl-16 flex items-center h-full">
+            <div class="flex items-center gap-0">
               <div
-                class="process-rect absolute top-0 left-0 w-[200px] h-[80px]"
-                data-color="blue"
-                data-anim="grow-h"
-                data-w="200"
-                data-h="80"
+                id="discover-rects"
+                class="relative shrink-0 w-[800px] h-[120px] origin-left scale-50 sm:scale-100 -mt-10 sm:-mt-45"
               >
-              </div>
-              <div
-                class="process-rect absolute top-[40px] left-[200px] w-[200px] h-[40px]"
-                data-color="orange"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[80px] left-[200px] w-[200px] h-[40px]"
-                data-color="pink"
-                data-anim="grow-h-ttb"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[40px] left-[400px] w-[200px] h-[40px]"
-                data-color="light-orange"
-                data-anim="grow-w-rtl"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <!-- <div
+                <div
+                  class="process-rect absolute top-0 left-0 w-[200px] h-[80px]"
+                  data-color="blue"
+                  data-anim="grow-h"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[40px] left-[200px] w-[200px] h-[40px]"
+                  data-color="orange"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[80px] left-[200px] w-[200px] h-[40px]"
+                  data-color="pink"
+                  data-anim="grow-h-ttb"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[40px] left-[400px] w-[200px] h-[40px]"
+                  data-color="light-orange"
+                  data-anim="grow-w-rtl"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <!-- <div
                 class="process-rect absolute top-0 left-[600px] w-[200px] h-[40px]"
                 data-color="green"
                 data-anim="grow-w"
@@ -333,293 +334,294 @@ const sectionCards = [
                 data-h="40"
               >
               </div> -->
-            </div>
-            <div
-              class="-ml-[200px] -mt-[34px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-green pt-3 lg:pt-6 w-45.5 lg:w-98"
-            >
-              <div>
-                <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">1. Discover + define</h4>
-                <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
-                  Before a line of design or code is written, you'll have full clarity on scope, timelines, cost, and
-                  what success looks like. No ambiguity carried forward.
-                </p>
-              </div>
-            </div>
-            <div class="relative shrink-0 w-[600px] h-[200px] origin-left scale-50 sm:scale-100 ml-4 sm:ml-8">
-              <div
-                class="process-rect absolute top-[160px] left-0 w-[200px] h-[40px]"
-                data-color="green"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
-              >
               </div>
               <div
-                class="process-rect absolute top-[80px] left-[200px] w-[200px] h-[80px]"
-                data-color="pink"
-                data-anim="grow-h"
-                data-w="200"
-                data-h="80"
+                class="-ml-[200px] -mt-[34px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-green pt-3 lg:pt-6 w-45.5 lg:w-98"
               >
+                <div>
+                  <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">1. Discover + define</h4>
+                  <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
+                    Before a line of design or code is written, you'll have full clarity on scope, timelines, cost, and
+                    what success looks like. No ambiguity carried forward.
+                  </p>
+                </div>
+              </div>
+              <div class="relative shrink-0 w-[600px] h-[200px] origin-left scale-50 sm:scale-100 ml-4 sm:ml-8">
+                <div
+                  class="process-rect absolute top-[160px] left-0 w-[200px] h-[40px]"
+                  data-color="green"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[80px] left-[200px] w-[200px] h-[80px]"
+                  data-color="pink"
+                  data-anim="grow-h"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-0 left-[200px] w-[200px] h-[80px]"
+                  data-color="blue"
+                  data-anim="grow-h-ttb"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-0 left-[400px] w-[200px] h-[40px]"
+                  data-color="red"
+                  data-anim="grow-w-rtl"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
               </div>
               <div
-                class="process-rect absolute top-0 left-[200px] w-[200px] h-[80px]"
-                data-color="blue"
-                data-anim="grow-h-ttb"
-                data-w="200"
-                data-h="80"
+                class="-mt-[32px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-red pt-3 lg:pt-6 w-45.5 lg:w-98"
               >
+                <div>
+                  <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">2. Design</h4>
+                  <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
+                    You'll see and sign off on designs that reflect your brand and your users before development begins.
+                    No surprises later.
+                  </p>
+                </div>
               </div>
               <div
-                class="process-rect absolute top-0 left-[400px] w-[200px] h-[40px]"
-                data-color="red"
-                data-anim="grow-w-rtl"
-                data-w="200"
-                data-h="40"
+                class="relative shrink-0 w-[600px] h-[360px] origin-left scale-50 sm:scale-100 ml-4 sm:ml-8 -mt-[250px]"
               >
-              </div>
-            </div>
-            <div
-              class="-mt-[32px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-red pt-3 lg:pt-6 w-45.5 lg:w-98"
-            >
-              <div>
-                <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">2. Design</h4>
-                <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
-                  You'll see and sign off on designs that reflect your brand and your users before development begins.
-                  No surprises later.
-                </p>
-              </div>
-            </div>
-            <div
-              class="relative shrink-0 w-[600px] h-[360px] origin-left scale-50 sm:scale-100 ml-4 sm:ml-8 -mt-[250px]"
-            >
-              <div
-                class="process-rect absolute top-[320px] left-0 w-[200px] h-[40px]"
-                data-color="red"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[240px] left-0 w-[200px] h-[80px]"
-                data-color="dark-red"
-                data-anim="grow-h"
-                data-w="200"
-                data-h="80"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[200px] left-0 w-[200px] h-[40px]"
-                data-color="cream"
-                data-anim="grow-w-rtl"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[120px] left-[200px] w-[200px] h-[80px]"
-                data-color="green"
-                data-anim="grow-h-ttb"
-                data-w="200"
-                data-h="80"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[40px] left-[200px] w-[200px] h-[80px]"
-                data-color="pink"
-                data-anim="grow-h"
-                data-w="200"
-                data-h="80"
-              >
+                <div
+                  class="process-rect absolute top-[320px] left-0 w-[200px] h-[40px]"
+                  data-color="red"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[240px] left-0 w-[200px] h-[80px]"
+                  data-color="dark-red"
+                  data-anim="grow-h"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[200px] left-0 w-[200px] h-[40px]"
+                  data-color="cream"
+                  data-anim="grow-w-rtl"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[120px] left-[200px] w-[200px] h-[80px]"
+                  data-color="green"
+                  data-anim="grow-h-ttb"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[40px] left-[200px] w-[200px] h-[80px]"
+                  data-color="pink"
+                  data-anim="grow-h"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-0 left-[200px] w-[200px] h-[40px]"
+                  data-color="light-yellow"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-0 left-[400px] w-[200px] h-[40px]"
+                  data-color="yellow"
+                  data-anim="grow-w-rtl"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
               </div>
               <div
-                class="process-rect absolute top-0 left-[200px] w-[200px] h-[40px]"
-                data-color="light-yellow"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
+                class="-mt-[250px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-yellow pt-3 lg:pt-6 w-45.5 lg:w-98"
               >
+                <div>
+                  <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">3. Build + test</h4>
+                  <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
+                    You'll stay close to the work through regular previews, thorough testing, and your own review. We
+                    build iteratively and share progress, no big reveals.
+                  </p>
+                </div>
               </div>
               <div
-                class="process-rect absolute top-0 left-[400px] w-[200px] h-[40px]"
-                data-color="yellow"
-                data-anim="grow-w-rtl"
-                data-w="200"
-                data-h="40"
+                class="relative shrink-0 w-[1200px] h-[240px] origin-left scale-50 sm:scale-100 ml-4 sm:ml-8 -mt-[150px]"
               >
-              </div>
-            </div>
-            <div
-              class="-mt-[250px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-yellow pt-3 lg:pt-6 w-45.5 lg:w-98"
-            >
-              <div>
-                <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">3. Build + test</h4>
-                <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
-                  You'll stay close to the work through regular previews, thorough testing, and your own review. We
-                  build iteratively and share progress, no big reveals.
-                </p>
-              </div>
-            </div>
-            <div
-              class="relative shrink-0 w-[1200px] h-[240px] origin-left scale-50 sm:scale-100 ml-4 sm:ml-8 -mt-[150px]"
-            >
-              <div
-                class="process-rect absolute top-[40px] left-0 w-[200px] h-[40px]"
-                data-color="yellow"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[80px] left-0 w-[200px] h-[80px]"
-                data-color="light-pink"
-                data-anim="grow-h"
-                data-w="200"
-                data-h="80"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-0 left-[200px] w-[200px] h-[40px]"
-                data-color="red"
-                data-anim="grow-w-rtl"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[80px] left-[200px] w-[200px] h-[40px]"
-                data-color="dark-blue"
-                data-anim="grow-h-ttb"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[40px] left-[400px] w-[200px] h-[80px]"
-                data-color="blue"
-                data-anim="grow-h"
-                data-w="200"
-                data-h="80"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[120px] left-[600px] w-[200px] h-[80px]"
-                data-color="green"
-                data-anim="grow-h-ttb"
-                data-w="200"
-                data-h="80"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[80px] left-[800px] w-[200px] h-[40px]"
-                data-color="light-yellow"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[120px] left-[800px] w-[200px] h-[40px]"
-                data-color="dark-blue"
-                data-anim="grow-w-rtl"
-                data-w="200"
-                data-h="40"
-              >
+                <div
+                  class="process-rect absolute top-[40px] left-0 w-[200px] h-[40px]"
+                  data-color="yellow"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[80px] left-0 w-[200px] h-[80px]"
+                  data-color="light-pink"
+                  data-anim="grow-h"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-0 left-[200px] w-[200px] h-[40px]"
+                  data-color="red"
+                  data-anim="grow-w-rtl"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[80px] left-[200px] w-[200px] h-[40px]"
+                  data-color="dark-blue"
+                  data-anim="grow-h-ttb"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[40px] left-[400px] w-[200px] h-[80px]"
+                  data-color="blue"
+                  data-anim="grow-h"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[120px] left-[600px] w-[200px] h-[80px]"
+                  data-color="green"
+                  data-anim="grow-h-ttb"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[80px] left-[800px] w-[200px] h-[40px]"
+                  data-color="light-yellow"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[120px] left-[800px] w-[200px] h-[40px]"
+                  data-color="dark-blue"
+                  data-anim="grow-w-rtl"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[200px] left-[800px] w-[200px] h-[40px]"
+                  data-color="pink"
+                  data-anim="grow-h"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[120px] left-[1000px] w-[200px] h-[40px]"
+                  data-color="pink"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
               </div>
               <div
-                class="process-rect absolute top-[200px] left-[800px] w-[200px] h-[40px]"
-                data-color="pink"
-                data-anim="grow-h"
-                data-w="200"
-                data-h="40"
+                class="-mt-[150px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-pink pt-3 lg:pt-6 w-45.5 lg:w-98"
               >
+                <div>
+                  <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">4. Launch + beyond</h4>
+                  <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
+                    You'll launch with confidence, not crossed fingers. And after launch, we stay involved, supporting
+                    and resolving issues until the solution performs as intended.
+                  </p>
+                </div>
               </div>
-              <div
-                class="process-rect absolute top-[120px] left-[1000px] w-[200px] h-[40px]"
-                data-color="pink"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-            </div>
-            <div
-              class="-mt-[150px] px-4 lg:px-7.5 flex flex-col justify-between gap-3 sm:gap-4 bg-pixel-pink pt-3 lg:pt-6 w-45.5 lg:w-98"
-            >
-              <div>
-                <h4 class="text-[20px] lg:text-3xl mb-6 sm:mb-8 max-w-sm">4. Launch + beyond</h4>
-                <p class="max-w-sm text-base sm:text-2xl font-serif font-light leading-[0.76] pb-4 lg:pb-8">
-                  You'll launch with confidence, not crossed fingers. And after launch, we stay involved, supporting and
-                  resolving issues until the solution performs as intended.
-                </p>
-              </div>
-            </div>
-            <div class="relative shrink-0 w-[1000px] h-[200px] origin-left scale-50 sm:scale-100 ml-4 sm:ml-8">
-              <div
-                class="process-rect absolute top-[120px] left-0 w-[200px] h-[40px]"
-                data-color="pink"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-0 left-[200px] w-[200px] h-[80px]"
-                data-color="green"
-                data-anim="grow-h"
-                data-w="200"
-                data-h="80"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[80px] left-[200px] w-[200px] h-[40px]"
-                data-color="dark-green"
-                data-anim="grow-h-ttb"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[160px] left-[200px] w-[200px] h-[40px]"
-                data-color="red"
-                data-anim="grow-w-rtl"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[80px] left-[400px] w-[200px] h-[40px]"
-                data-color="blue"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[40px] left-[600px] w-[200px] h-[40px]"
-                data-color="light-orange"
-                data-anim="grow-w-rtl"
-                data-w="200"
-                data-h="40"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-[80px] left-[600px] w-[200px] h-[80px]"
-                data-color="orange"
-                data-anim="grow-h"
-                data-w="200"
-                data-h="80"
-              >
-              </div>
-              <div
-                class="process-rect absolute top-0 left-[800px] w-[200px] h-[40px]"
-                data-color="orange"
-                data-anim="grow-w"
-                data-w="200"
-                data-h="40"
-              >
+              <div class="relative shrink-0 w-[1000px] h-[200px] origin-left scale-50 sm:scale-100 ml-4 sm:ml-8">
+                <div
+                  class="process-rect absolute top-[120px] left-0 w-[200px] h-[40px]"
+                  data-color="pink"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-0 left-[200px] w-[200px] h-[80px]"
+                  data-color="green"
+                  data-anim="grow-h"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[80px] left-[200px] w-[200px] h-[40px]"
+                  data-color="dark-green"
+                  data-anim="grow-h-ttb"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[160px] left-[200px] w-[200px] h-[40px]"
+                  data-color="red"
+                  data-anim="grow-w-rtl"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[80px] left-[400px] w-[200px] h-[40px]"
+                  data-color="blue"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[40px] left-[600px] w-[200px] h-[40px]"
+                  data-color="light-orange"
+                  data-anim="grow-w-rtl"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-[80px] left-[600px] w-[200px] h-[80px]"
+                  data-color="orange"
+                  data-anim="grow-h"
+                  data-w="200"
+                  data-h="80"
+                >
+                </div>
+                <div
+                  class="process-rect absolute top-0 left-[800px] w-[200px] h-[40px]"
+                  data-color="orange"
+                  data-anim="grow-w"
+                  data-w="200"
+                  data-h="40"
+                >
+                </div>
               </div>
             </div>
           </div>
@@ -1495,21 +1497,22 @@ const sectionCards = [
 
     // ── OUR PROCESS horizontal scroll ──
     const processTrack = document.getElementById('process-track')!
+    const processSticky = document.getElementById('process-sticky')!
     const processWrapper = document.getElementById('process-wrapper')!
+    const getProcessScrollDist = () => Math.max(0, processTrack.scrollWidth - window.innerWidth)
+    const processScrollDist = getProcessScrollDist()
 
-    const processScrollTween = gsap.to(processTrack, {
-      x: () => -(processTrack.scrollWidth - window.innerWidth),
-      ease: 'none',
-      force3D: true,
-      scrollTrigger: {
-        trigger: processWrapper,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        end: () => `+=${processTrack.scrollWidth - window.innerWidth}`,
-        invalidateOnRefresh: true
+    function updateProcessLayout() {
+      const distNow = getProcessScrollDist()
+      if (distNow <= 0) {
+        processWrapper.style.height = `${window.innerHeight}px`
+      } else {
+        processWrapper.style.height = `${window.innerHeight + distNow}px`
       }
-    })
+      processSticky.style.height = `${window.innerHeight}px`
+    }
+
+    gsap.set(processTrack, { x: 0 })
 
     function buildRectVars(rect: HTMLElement) {
       const anim = rect.dataset.anim
@@ -1538,35 +1541,47 @@ const sectionCards = [
       return { fromVars, toVars }
     }
 
+    const processRects = Array.from(document.querySelectorAll<HTMLElement>('.process-rect'))
     const discoverContainer = document.getElementById('discover-rects')!
-    const discoverRects = discoverContainer.querySelectorAll<HTMLElement>('.process-rect')
+    const discoverRects = Array.from(discoverContainer.querySelectorAll<HTMLElement>('.process-rect'))
 
+    const revealTl = gsap.timeline({ paused: true })
+
+    // Stage 1: reveal first discover group as the section enters.
     discoverRects.forEach((rect, i) => {
       const { fromVars, toVars } = buildRectVars(rect)
-      gsap.fromTo(rect, fromVars, {
-        ...toVars,
-        delay: i * 0.12,
-        scrollTrigger: {
-          trigger: processWrapper,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        }
-      })
+      revealTl.fromTo(rect, fromVars, toVars, i * 0.08)
     })
 
-    const otherRects = document.querySelectorAll<HTMLElement>('.process-rect:not(#discover-rects .process-rect)')
-
-    otherRects.forEach((rect) => {
-      const { fromVars, toVars } = buildRectVars(rect)
-      gsap.fromTo(rect, fromVars, {
-        ...toVars,
-        scrollTrigger: {
-          trigger: rect,
-          containerAnimation: processScrollTween,
-          start: 'left 100%',
-          toggleActions: 'play none none none'
-        }
+    // Stage 2: reveal remaining rects in quick staggered batches.
+    processRects
+      .filter((rect) => !discoverContainer.contains(rect))
+      .forEach((rect, i) => {
+        const { fromVars, toVars } = buildRectVars(rect)
+        revealTl.fromTo(rect, fromVars, toVars, 0.45 + i * 0.025)
       })
+
+    function updateProcessFromNativeScroll() {
+      const distNow = getProcessScrollDist()
+      if (distNow <= 0) {
+        gsap.set(processTrack, { x: 0 })
+        revealTl.progress(0)
+        return
+      }
+
+      const rect = processWrapper.getBoundingClientRect()
+      const progress = gsap.utils.clamp(0, 1, -rect.top / distNow)
+      gsap.set(processTrack, { x: -progress * distNow })
+      revealTl.progress(progress)
+    }
+
+    updateProcessLayout()
+    updateProcessFromNativeScroll()
+    gsap.ticker.add(updateProcessFromNativeScroll)
+
+    window.addEventListener('resize', () => {
+      updateProcessLayout()
+      updateProcessFromNativeScroll()
     })
 
     // Dispatch event so Process.astro can initialise after pins are set up
