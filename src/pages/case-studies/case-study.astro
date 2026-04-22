@@ -62,29 +62,39 @@ const caseStudy = {
   <article id="case-study-page">
     <section class="pt-5 lg:pt-10 pb-8 lg:pb-14">
       <Grid>
-        <div class="col-span-full lg:col-start-2 lg:col-span-10">
+        <div class="col-span-full lg:col-start-2 lg:col-span-11">
           <div class="case-study-header-row">
             <div>
               <h1 class="case-study-title">{caseStudy.title}</h1>
-              <div class="case-study-meta-row">
-                <span><span class="case-study-meta-label">Sector</span>{caseStudy.sector}</span>
-                <span>
-                  <span class="case-study-meta-label">Services</span>
-                  {caseStudy.services.join(' ')}
-                </span>
-                <span><span class="case-study-meta-label">Duration</span>{caseStudy.duration}</span>
+              <div class="case-study-meta-actions">
+                <div class="case-study-meta-row">
+                  <span><span class="case-study-meta-label">Sector</span>{caseStudy.sector}</span>
+                  <span>
+                    <span class="case-study-meta-label">Services</span>
+                    {caseStudy.services.join(' ')}
+                  </span>
+                  <span><span class="case-study-meta-label">Duration</span>{caseStudy.duration}</span>
+                </div>
+
+                <button
+                  id="case-study-toggle"
+                  type="button"
+                  class="case-study-toggle group ml-auto inline-flex h-10 w-fit items-center gap-2 bg-(--accent-bgc) px-4 font-sans text-base font-normal text-(--case-study-toggle-text) transition-[color,text-decoration-color,transform] duration-200 hover:underline hover:decoration-current cursor-pointer hover:underline-offset-2"
+                  aria-expanded="false"
+                  aria-controls="case-study-shell"
+                >
+                  <span class="case-study-toggle-icon relative h-3.5 w-3.5 shrink-0" aria-hidden="true">
+                    <span
+                      class="case-study-toggle-icon-bar case-study-toggle-icon-bar-horizontal absolute left-1/2 top-1/2 h-[1.5px] w-full -translate-x-1/2 -translate-y-1/2 bg-current"
+                    ></span>
+                    <span
+                      class="case-study-toggle-icon-bar case-study-toggle-icon-bar-vertical absolute left-1/2 top-1/2 h-[1.5px] w-full -translate-x-1/2 -translate-y-1/2 bg-current"
+                    ></span>
+                  </span>
+                  <span class="case-study-toggle-label">About the project</span>
+                </button>
               </div>
             </div>
-
-            <button
-              id="case-study-toggle"
-              type="button"
-              class="case-study-toggle"
-              aria-expanded="false"
-              aria-controls="case-study-shell"
-            >
-              <span>+ About the project</span>
-            </button>
           </div>
         </div>
       </Grid>
@@ -92,7 +102,7 @@ const caseStudy = {
 
     <section class="pb-12 lg:pb-18">
       <Grid>
-        <div id="case-study-shell" class="case-study-shell col-span-full lg:col-start-2 lg:col-span-10">
+        <div id="case-study-shell" class="case-study-shell col-span-full lg:col-start-2 lg:col-span-11">
           <div class="case-study-left-pane">
             <div class="case-study-mobile-image-stack">
               <div class="case-study-image case-study-image-hero"></div>
@@ -225,6 +235,19 @@ const caseStudy = {
       color: color-mix(in oklab, var(--color-black) 55%, transparent);
     }
 
+    .case-study-meta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .case-study-meta-actions .case-study-meta-row {
+      margin-top: 0;
+      flex: 1 1 auto;
+    }
+
     .case-study-meta-row span {
       display: inline-flex;
       flex-wrap: wrap;
@@ -235,13 +258,41 @@ const caseStudy = {
       color: color-mix(in oklab, var(--color-black) 30%, transparent);
     }
 
-    .case-study-toggle {
-      align-self: flex-end;
-      font-family: var(--font-sans);
-      font-size: 0.875rem;
-      text-decoration: underline;
-      text-underline-offset: 0.15em;
-      cursor: pointer;
+    .case-study-toggle-icon-bar {
+      transform-origin: center;
+      transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .case-study-toggle-icon-bar-horizontal {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    .case-study-toggle-icon-bar-vertical {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .case-study-toggle:hover .case-study-toggle-icon-bar-horizontal {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .case-study-toggle:hover .case-study-toggle-icon-bar-vertical {
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+
+    .case-study-toggle[aria-expanded='true'] .case-study-toggle-icon-bar-horizontal {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .case-study-toggle[aria-expanded='true'] .case-study-toggle-icon-bar-vertical {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .case-study-toggle[aria-expanded='true']:hover .case-study-toggle-icon-bar-horizontal {
+      transform: translate(-50%, -50%) rotate(50deg);
+    }
+
+    .case-study-toggle[aria-expanded='true']:hover .case-study-toggle-icon-bar-vertical {
+      transform: translate(-50%, -50%) rotate(-50deg);
     }
 
     .case-study-shell {
@@ -592,6 +643,11 @@ const caseStudy = {
       .case-study-right-pane {
         transition: none;
       }
+
+      .case-study-toggle,
+      .case-study-toggle-icon-bar {
+        transition: none;
+      }
     }
   </style>
 
@@ -604,6 +660,23 @@ const caseStudy = {
       const toggleButton = toggle
 
       const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
 
       function getDefaultState() {
         return mobileMedia.matches ? 'open' : 'closed'
@@ -618,6 +691,7 @@ const caseStudy = {
         toggleButton.setAttribute('aria-expanded', String(isOpen))
       }
 
+      setToggleTextColor()
       syncA11y()
 
       toggleButton.addEventListener('click', () => {
