@@ -167,17 +167,6 @@ const caseStudy = {
                 <p class="case-study-detail-value">{caseStudy.acknowledgements}</p>
               </div>
             </div>
-
-            <div class="case-study-nav case-study-nav-inline">
-              <a href="#" class="case-study-nav-link">
-                <span class="case-study-nav-title">Previous case study</span>
-                <span class="case-study-nav-subtitle">Case study name</span>
-              </a>
-              <a href="#" class="case-study-nav-link case-study-nav-link-next">
-                <span class="case-study-nav-title">Next case study</span>
-                <span class="case-study-nav-subtitle">Case study name</span>
-              </a>
-            </div>
           </div>
         </div>
       </Grid>
@@ -185,7 +174,7 @@ const caseStudy = {
 
     <section class="pb-6 lg:pb-12 case-study-nav-section">
       <Grid>
-        <div class="col-span-full lg:col-start-2 lg:col-span-10 case-study-nav">
+        <div class="col-span-full lg:col-start-2 lg:col-span-11 case-study-nav">
           <a href="#" class="case-study-nav-link">
             <span class="case-study-nav-title">Previous case study</span>
             <span class="case-study-nav-subtitle">Case study name</span>
@@ -436,10 +425,6 @@ const caseStudy = {
       gap: 1rem;
     }
 
-    .case-study-nav-inline {
-      margin-top: 2rem;
-    }
-
     .case-study-nav-link {
       display: flex;
       flex-direction: column;
@@ -630,18 +615,11 @@ const caseStudy = {
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
-      .case-study-nav-inline {
-        display: grid;
-      }
-
-      .case-study-nav-section {
-        display: none;
-      }
-    }
-
-    @media (max-width: 1023px) {
-      .case-study-nav-inline {
-        display: none;
+      .case-study-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
       }
     }
 
