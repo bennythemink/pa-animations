@@ -1500,7 +1500,6 @@ const sectionCards = [
     const processSticky = document.getElementById('process-sticky')!
     const processWrapper = document.getElementById('process-wrapper')!
     const getProcessScrollDist = () => Math.max(0, processTrack.scrollWidth - window.innerWidth)
-    const processScrollDist = getProcessScrollDist()
 
     function updateProcessLayout() {
       const distNow = getProcessScrollDist()
