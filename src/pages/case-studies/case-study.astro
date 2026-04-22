@@ -241,6 +241,7 @@ const caseStudy = {
       align-items: center;
       gap: 1rem;
       margin-top: 1rem;
+      width: 100%;
     }
 
     .case-study-meta-actions .case-study-meta-row {
@@ -528,10 +529,17 @@ const caseStudy = {
 
     @media (min-width: 1024px) {
       .case-study-header-row {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        align-items: start;
-        gap: 2rem;
+        display: block;
+      }
+
+      .case-study-meta-actions {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+
+      .case-study-meta-actions .case-study-meta-row {
+        min-width: 0;
       }
 
       .case-study-shell {
