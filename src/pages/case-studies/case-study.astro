@@ -400,31 +400,56 @@ const caseStudy = {
     }
 
     @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
       .case-study-left-pane {
-        display: block;
+        flex: 0 0 auto;
+        width: 100%;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, opacity, transform;
       }
 
       #case-study-page[data-panel-state='open'] .case-study-left-pane {
-        display: none;
+        width: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
       }
 
       .case-study-right-pane {
-        display: block;
+        flex: 0 0 auto;
+        width: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, opacity, transform;
       }
 
-      #case-study-page[data-panel-state='closed'] .case-study-right-pane {
-        display: none;
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
       }
 
       .case-study-mobile-image-stack {
-        display: none;
-      }
-
-      #case-study-page[data-panel-state='closed'] .case-study-mobile-image-stack {
         display: grid;
       }
 
-      #case-study-page[data-panel-state='closed'] .case-study-desktop-visuals {
+      .case-study-desktop-visuals {
         display: none;
       }
     }
@@ -520,13 +545,13 @@ const caseStudy = {
       .case-study-details-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
+    }
 
-      @media (prefers-reduced-motion: reduce) {
-        .case-study-shell,
-        .case-study-left-pane,
-        .case-study-right-pane {
-          transition: none;
-        }
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
       }
     }
   </style>
