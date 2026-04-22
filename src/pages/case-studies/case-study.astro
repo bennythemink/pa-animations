@@ -119,7 +119,7 @@ const caseStudy = {
     <!-- Shell A: first image (desktop) / all images (mobile) + intro text -->
     <section class="pb-0">
       <Grid>
-        <div id="case-study-shell" class="case-study-shell col-span-full lg:col-start-2 lg:col-span-11">
+        <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <div class="case-study-mobile-image-stack grid gap-5">
               <div class="aspect-video w-full overflow-hidden bg-(--case-study-placeholder)">
@@ -142,7 +142,7 @@ const caseStudy = {
             </div>
 
             <div class="case-study-desktop-visuals grid gap-5">
-              <div class="col-span-11 aspect-video overflow-hidden bg-(--case-study-placeholder)">
+              <div class="col-span-12 aspect-video overflow-hidden bg-(--case-study-placeholder)">
                 <Image src={mbImage} alt="" class="h-full w-full object-cover" />
               </div>
             </div>
@@ -171,19 +171,19 @@ const caseStudy = {
     <!-- Shell B: remaining images (desktop) + case study content -->
     <section class="pb-12 lg:pb-18">
       <Grid>
-        <div class="case-study-shell col-span-full lg:col-start-2 lg:col-span-11">
+        <div class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <div class="case-study-desktop-visuals grid gap-5">
-              <div class="col-span-5 aspect-square overflow-hidden bg-(--case-study-placeholder)">
+              <div class="col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
                 <Image src={mbImage} alt="" class="h-full w-full object-cover" />
               </div>
               <div class="col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
                 <Image src={mbImage} alt="" class="h-full w-full object-cover" />
               </div>
-              <div class="col-span-11 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
+              <div class="col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
                 <Image src={mbImage} alt="" class="h-full w-full object-cover" />
               </div>
-              <div class="col-span-11 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
+              <div class="col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
                 <Image src={mbImage} alt="" class="h-full w-full object-cover" />
               </div>
             </div>
@@ -458,7 +458,7 @@ const caseStudy = {
 
       .case-study-desktop-visuals {
         display: grid;
-        grid-template-columns: repeat(11, minmax(0, 1fr));
+        grid-template-columns: repeat(12, minmax(0, 1fr));
       }
 
       .case-study-summary-desktop {
