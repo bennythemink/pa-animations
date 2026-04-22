@@ -1541,47 +1541,76 @@ const sectionCards = [
     }
 
     const processRects = Array.from(document.querySelectorAll<HTMLElement>('.process-rect'))
-    const discoverContainer = document.getElementById('discover-rects')!
-    const discoverRects = Array.from(discoverContainer.querySelectorAll<HTMLElement>('.process-rect'))
+    const processRevealState: Array<{
+      rect: HTMLElement
+      fromVars: gsap.TweenVars
+      toVars: gsap.TweenVars
+      revealAt: number
+      revealed: boolean
+    }> = []
 
-    const revealTl = gsap.timeline({ paused: true })
+    function buildProcessRevealState() {
+      processRevealState.length = 0
+      const distNow = getProcessScrollDist()
+      const revealEdge = window.innerWidth * 0.9
 
-    // Stage 1: reveal first discover group as the section enters.
-    discoverRects.forEach((rect, i) => {
-      const { fromVars, toVars } = buildRectVars(rect)
-      revealTl.fromTo(rect, fromVars, toVars, i * 0.08)
-    })
+      // Measure with track at origin so thresholds are stable.
+      gsap.set(processTrack, { x: 0 })
+      const trackRect = processTrack.getBoundingClientRect()
 
-    // Stage 2: reveal remaining rects in quick staggered batches.
-    processRects
-      .filter((rect) => !discoverContainer.contains(rect))
-      .forEach((rect, i) => {
+      processRects.forEach((rect) => {
         const { fromVars, toVars } = buildRectVars(rect)
-        revealTl.fromTo(rect, fromVars, toVars, 0.28 + i * 0.015)
+        gsap.set(rect, fromVars)
+
+        const rectBox = rect.getBoundingClientRect()
+        const rectLeftInTrack = rectBox.left - trackRect.left
+        const revealAt = distNow > 0 ? gsap.utils.clamp(0, 1, (rectLeftInTrack - revealEdge) / distNow) : 1
+
+        processRevealState.push({
+          rect,
+          fromVars,
+          toVars,
+          revealAt,
+          revealed: false
+        })
       })
+    }
+
+    function syncProcessReveals(progress: number) {
+      processRevealState.forEach((item) => {
+        const shouldReveal = progress >= item.revealAt
+        if (shouldReveal && !item.revealed) {
+          item.revealed = true
+          gsap.to(item.rect, { ...item.toVars, overwrite: 'auto' })
+        } else if (!shouldReveal && item.revealed) {
+          item.revealed = false
+          gsap.set(item.rect, item.fromVars)
+        }
+      })
+    }
 
     function updateProcessFromNativeScroll() {
       const distNow = getProcessScrollDist()
       if (distNow <= 0) {
         gsap.set(processTrack, { x: 0 })
-        revealTl.progress(0)
+        syncProcessReveals(0)
         return
       }
 
       const rect = processWrapper.getBoundingClientRect()
       const progress = gsap.utils.clamp(0, 1, -rect.top / distNow)
       gsap.set(processTrack, { x: -progress * distNow })
-      // Run the reveal timeline faster than travel so rects complete while visible.
-      const revealProgress = gsap.utils.clamp(0, 1, progress * 1.75)
-      revealTl.progress(revealProgress)
+      syncProcessReveals(progress)
     }
 
     updateProcessLayout()
+    buildProcessRevealState()
     updateProcessFromNativeScroll()
     gsap.ticker.add(updateProcessFromNativeScroll)
 
     window.addEventListener('resize', () => {
       updateProcessLayout()
+      buildProcessRevealState()
       updateProcessFromNativeScroll()
     })
 
