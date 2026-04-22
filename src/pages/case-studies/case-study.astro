@@ -1,0 +1,568 @@
+---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
+import Layout from '@layouts/Layout.astro'
+
+const caseStudy = {
+  title: 'Education provider',
+  sector: 'Education',
+  services: ['Discovery & Direction', 'Design', 'Development'],
+  duration: '6 months',
+  intro:
+    'The client operates across multiple campuses and serves a large, diverse student base. Their existing digital platform had grown over time and no longer reflected how students or staff actually worked.',
+  summary:
+    'A modern, scalable digital platform that improved usability, clarified internal ownership, and supported future growth.',
+  closing:
+    'This project highlighted the value of slowing down early to gain clarity. The initial discovery phase reduced risk, reduced rework, improved decision-making, and ultimately led to a stronger result.',
+  client: 'Education Provider',
+  acknowledgements: 'Partners listed here',
+  team: ['Benny Sheerin, role', 'Team member, role', 'Team member, role'],
+  sections: [
+    {
+      title: 'The problem',
+      intro: 'Key challenges included:',
+      bullets: [
+        'Fragmented systems and inconsistent experiences',
+        'Limited visibility over content ownership',
+        'Difficulty prioritising improvements'
+      ],
+      body: 'There was broad agreement that change was needed, but no shared understanding of where to start.'
+    },
+    {
+      title: 'Our approach',
+      intro: 'We began with a Discovery & Direction phase to clarify:',
+      bullets: ['Core user needs', 'Business constraints', 'Success criteria'],
+      body: 'This created alignment across stakeholders and a clear path forward. From there, we worked closely with internal teams through design and development, iterating and refining as we learned more.'
+    },
+    {
+      title: 'The solution',
+      intro: 'The final solution included:',
+      bullets: [
+        'A redesigned information architecture',
+        'A clearer content management approach',
+        'A modern, maintainable technical foundation'
+      ],
+      body: 'Design and development decisions were made collaboratively, balancing usability, performance, and long-term support.'
+    },
+    {
+      title: 'The outcome',
+      intro: 'The new platform:',
+      bullets: [
+        'Improved usability for students and staff',
+        'Reduced internal friction and rework',
+        'Provided a scalable foundation for future initiatives'
+      ],
+      body: 'Perhaps most importantly, the organisation gained confidence in its digital direction.'
+    }
+  ]
+}
+---
+
+<Layout title={caseStudy.title} description={caseStudy.intro}>
+  <article id="case-study-page">
+    <section class="pt-5 lg:pt-10 pb-8 lg:pb-14">
+      <Grid>
+        <div class="col-span-full lg:col-start-2 lg:col-span-10">
+          <div class="case-study-header-row">
+            <div>
+              <h1 class="case-study-title">{caseStudy.title}</h1>
+              <div class="case-study-meta-row">
+                <span><span class="case-study-meta-label">Sector</span>{caseStudy.sector}</span>
+                <span>
+                  <span class="case-study-meta-label">Services</span>
+                  {caseStudy.services.join(' ')}
+                </span>
+                <span><span class="case-study-meta-label">Duration</span>{caseStudy.duration}</span>
+              </div>
+            </div>
+
+            <button
+              id="case-study-toggle"
+              type="button"
+              class="case-study-toggle"
+              aria-expanded="false"
+              aria-controls="case-study-shell"
+            >
+              <span>+ About the project</span>
+            </button>
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full lg:col-start-2 lg:col-span-10">
+          <div class="case-study-left-pane">
+            <div class="case-study-mobile-image-stack">
+              <div class="case-study-image case-study-image-hero"></div>
+              <div class="case-study-image-grid-two">
+                <div class="case-study-image"></div>
+                <div class="case-study-image"></div>
+              </div>
+              <div class="case-study-image case-study-image-wide"></div>
+              <div class="case-study-image case-study-image-wide"></div>
+            </div>
+
+            <div class="case-study-desktop-visuals">
+              <div class="case-study-image case-study-image-hero"></div>
+              <p class="case-study-summary case-study-summary-desktop">{caseStudy.summary}</p>
+              <div class="case-study-image-grid-two">
+                <div class="case-study-image"></div>
+                <div class="case-study-image"></div>
+              </div>
+              <div class="case-study-image case-study-image-wide"></div>
+              <div class="case-study-image case-study-image-wide"></div>
+            </div>
+          </div>
+
+          <div class="case-study-right-pane">
+            <p class="case-study-intro">{caseStudy.intro}</p>
+            <p class="case-study-summary case-study-summary-mobile">{caseStudy.summary}</p>
+
+            <div class="case-study-sections">
+              {
+                caseStudy.sections.map((section) => (
+                  <div class="case-study-section-block">
+                    <h2 class="case-study-section-title">{section.title}</h2>
+                    <p class="case-study-section-intro">{section.intro}</p>
+                    <ul class="case-study-bullets">
+                      {section.bullets.map((bullet) => (
+                        <li>{bullet}</li>
+                      ))}
+                    </ul>
+                    <p class="case-study-section-body">{section.body}</p>
+                  </div>
+                ))
+              }
+            </div>
+
+            <p class="case-study-closing">{caseStudy.closing}</p>
+
+            <div class="case-study-details-grid">
+              <div>
+                <p class="case-study-detail-label">Client</p>
+                <p class="case-study-detail-value case-study-detail-link">{caseStudy.client}</p>
+              </div>
+              <div>
+                <p class="case-study-detail-label">Services</p>
+                {caseStudy.services.map((service) => <p class="case-study-detail-value">{service}</p>)}
+              </div>
+              <div>
+                <p class="case-study-detail-label">Team</p>
+                {caseStudy.team.map((member) => <p class="case-study-detail-value">{member}</p>)}
+              </div>
+              <div>
+                <p class="case-study-detail-label">Acknowledgements</p>
+                <p class="case-study-detail-value">{caseStudy.acknowledgements}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    <section class="pb-6 lg:pb-12">
+      <Grid>
+        <div class="col-span-full lg:col-start-2 lg:col-span-10 case-study-nav">
+          <a href="#" class="case-study-nav-link">
+            <span class="case-study-nav-title">Previous case study</span>
+            <span class="case-study-nav-subtitle">Case study name</span>
+          </a>
+          <a href="#" class="case-study-nav-link case-study-nav-link-next">
+            <span class="case-study-nav-title">Next case study</span>
+            <span class="case-study-nav-subtitle">Case study name</span>
+          </a>
+        </div>
+      </Grid>
+    </section>
+
+    <ContactForm
+      title="Discuss a similar challenge"
+      backgroundColor="var(--color-pixel-pink)"
+      displayDescription={false}
+    />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    .case-study-header-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .case-study-title {
+      font-family: var(--font-sans);
+      font-size: clamp(3rem, 5.5vw, 4.875rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .case-study-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      margin-top: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      line-height: 1.3;
+      color: color-mix(in oklab, var(--color-black) 55%, transparent);
+    }
+
+    .case-study-meta-row span {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .case-study-meta-label {
+      color: color-mix(in oklab, var(--color-black) 30%, transparent);
+    }
+
+    .case-study-toggle {
+      align-self: flex-end;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+      cursor: pointer;
+    }
+
+    .case-study-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .case-study-left-pane,
+    .case-study-right-pane {
+      min-width: 0;
+    }
+
+    .case-study-left-pane {
+      overflow: hidden;
+    }
+
+    .case-study-image {
+      background: var(--case-study-placeholder);
+      width: 100%;
+    }
+
+    .case-study-image-hero {
+      aspect-ratio: 16 / 9;
+    }
+
+    .case-study-image-wide {
+      aspect-ratio: 16 / 7;
+    }
+
+    .case-study-image-grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.375rem;
+    }
+
+    .case-study-image-grid-two .case-study-image {
+      aspect-ratio: 1 / 1;
+    }
+
+    .case-study-mobile-image-stack,
+    .case-study-desktop-visuals {
+      display: grid;
+      gap: 0.375rem;
+    }
+
+    .case-study-intro,
+    .case-study-summary,
+    .case-study-closing {
+      font-family: var(--font-sans);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      color: var(--color-black);
+    }
+
+    .case-study-intro {
+      font-size: clamp(2rem, 4.2vw, 3.6rem);
+    }
+
+    .case-study-summary {
+      font-size: clamp(2rem, 3.3vw, 3rem);
+      margin-top: 1rem;
+      max-width: 15ch;
+    }
+
+    .case-study-summary-mobile {
+      display: block;
+    }
+
+    .case-study-summary-desktop {
+      display: none;
+    }
+
+    .case-study-sections {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .case-study-section-title {
+      font-family: var(--font-sans);
+      font-size: clamp(1.6rem, 2vw, 2.15rem);
+      line-height: 1.05;
+      margin-bottom: 0.875rem;
+    }
+
+    .case-study-section-intro,
+    .case-study-section-body,
+    .case-study-bullets {
+      font-size: 1.0625rem;
+      line-height: 1.45;
+      color: color-mix(in oklab, var(--color-black) 86%, transparent);
+    }
+
+    .case-study-bullets {
+      margin: 0.875rem 0 1rem 1.25rem;
+      display: grid;
+      gap: 0.35rem;
+      list-style: disc;
+    }
+
+    .case-study-closing {
+      font-size: clamp(2rem, 3vw, 3.1rem);
+      margin-top: 2rem;
+      max-width: 18ch;
+    }
+
+    .case-study-details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 1rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+    }
+
+    .case-study-detail-label {
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      color: color-mix(in oklab, var(--color-black) 35%, transparent);
+      margin-bottom: 0.35rem;
+    }
+
+    .case-study-detail-value,
+    .case-study-detail-link {
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .case-study-detail-link {
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    .case-study-nav {
+      border-top: 1px solid var(--case-study-border);
+      padding-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .case-study-nav-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      min-width: 0;
+    }
+
+    .case-study-nav-link-next {
+      text-align: right;
+      align-items: flex-end;
+    }
+
+    .case-study-nav-title {
+      font-family: var(--font-sans);
+      font-size: clamp(2rem, 3.4vw, 3.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+    }
+
+    .case-study-nav-subtitle {
+      font-size: 0.9rem;
+      color: color-mix(in oklab, var(--color-black) 32%, transparent);
+      text-decoration: underline;
+      text-underline-offset: 0.14em;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-left-pane {
+        display: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        display: none;
+      }
+
+      .case-study-right-pane {
+        display: block;
+      }
+
+      #case-study-page[data-panel-state='closed'] .case-study-right-pane {
+        display: none;
+      }
+
+      .case-study-mobile-image-stack {
+        display: none;
+      }
+
+      #case-study-page[data-panel-state='closed'] .case-study-mobile-image-stack {
+        display: grid;
+      }
+
+      #case-study-page[data-panel-state='closed'] .case-study-desktop-visuals {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-header-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 2rem;
+      }
+
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+
+      .case-study-mobile-image-stack {
+        display: none;
+      }
+
+      .case-study-desktop-visuals {
+        display: grid;
+      }
+
+      .case-study-summary-desktop {
+        display: block;
+      }
+
+      .case-study-summary-mobile {
+        display: none;
+      }
+
+      .case-study-sections {
+        gap: 2.5rem;
+      }
+
+      .case-study-section-block {
+        display: grid;
+        grid-template-columns: minmax(0, 160px) minmax(0, 1fr);
+        gap: 1rem 1.25rem;
+        align-items: start;
+      }
+
+      .case-study-section-title {
+        margin: 0;
+      }
+
+      .case-study-section-intro,
+      .case-study-bullets,
+      .case-study-section-body {
+        grid-column: 2;
+      }
+
+      .case-study-details-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .case-study-shell,
+        .case-study-left-pane,
+        .case-study-right-pane {
+          transition: none;
+        }
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function getDefaultState() {
+        return mobileMedia.matches ? 'open' : 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
+</Layout>
