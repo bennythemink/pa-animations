@@ -1,10 +1,312 @@
 ---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
+import mbImage from '@assets/mb.png'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
+import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
+import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
+import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
 ---
 
 <Layout
-  title="Yoplait Australia Website Redesign Case Study"
-  description="How Pixel Agency transformed Yoplait Australia's digital presence, delivering 130% more traffic and 150% longer session times, plus full content independence for the team."
+  title="Yoplait Case Study"
+  description="How Pixel Agency transformed Yoplait Australia's digital presence, delivering 130% more traffic and 150%
+longer session times, plus full content independence for the team."
 >
-  <!-- Page content goes here -->
+  <article id="case-study-page">
+    <CaseStudyHeader>
+      <span slot="title">Yoplait</span>
+      <span slot="industry">Food & Beverage</span>
+      <span slot="services">Discovery + direction, Design, Development</span>
+      <span slot="duration">3 months</span>
+    </CaseStudyHeader>
+
+    <CaseStudyToggleButton />
+
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <CaseStudyImages
+              heroImage={{ src: mbImage }}
+              summary="How Pixel Agency transformed Yoplait Australia's digital presence, delivering 130% more traffic and 150% longer session times, plus full content independence for the team."
+              squareImages={[{ src: mbImage }, { src: mbImage }]}
+              wideImages={[{ src: mbImage }, { src: mbImage }]}
+            />
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <CaseStudyShout>Empowering Yopalit's marketing team.</CaseStudyShout>
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p class="">
+                Yoplait Australia, owned by Bega, has been a dairy cabinet staple in Australian homes for over 40 years.
+                A pioneer in flavoured yoghurt, the brand produces a wide range of locally made dairy products, from
+                fruit-flavoured and zero-sugar yoghurts to protein-focused options and much-loved kids' ranges like YOP
+                and Petit Miam. Yoplait serves Australian families, busy individuals, and children, and has earned its
+                place in supermarket fridges and family routines alike.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The problem" textColour="text-pixel-red">
+              <p>
+                Despite four decades of brand equity, Yoplait's digital presence hadn't kept pace. Their website was
+                dated and difficult to manage. Every update, promotion, or campaign required going back to their
+                previous developer, creating delays and a dependency that didn't suit a brand moving at the pace of the
+                consumer goods market. They needed to own their digital presence: to update it themselves, run campaigns
+                on their own terms, and present a brand experience worthy of their reputation.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
+              <p>
+                We started with discovery and market research, gathering the data needed to understand Yoplait's
+                audience, their content needs, and the workflows that would need to be supported behind the scenes. That
+                groundwork shaped everything that followed.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution" textColour="text-pixel-green">
+              <p>
+                The solution was a fully redesigned WordPress website built around two clear goals: a smooth, intuitive
+                experience for Yoplait's yoghurt-loving audience, and an easy-to-use management portal that put the
+                Yoplait team in control. Custom publishing roles and approval processes meant the right people could
+                update the right content, without bottlenecks, without developer dependency, and without the risk of
+                anything going live before it was ready.
+              </p><br />
+              <p>
+                We worked closely with Yoplait from design through to deployment, so the new site reflected their brand
+                guidelines with consistency and care. The relationship grew from there, expanding to include new
+                functionality such as recipes, and extending to other Bega-owned brands including Farmers Union Greek
+                Yogurt.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results" textColour="text-pixel-blue">
+              <p>The impact on Yoplait's digital presence was significant:</p>
+              <CaseStudyResults
+                results={[
+                  {
+                    title: '~130% increase in website traffic',
+                    description: 'after launch',
+                    backgroundColour: '#e8c42f'
+                  },
+                  {
+                    title: '~150% increase in average time on site',
+                    description: 'visitors were staying, exploring, and engaging',
+                    backgroundColour: '#6498c9'
+                  },
+                  {
+                    title: 'Full content independence',
+                    description: 'the team can now manage campaigns, promotions, and updates entirely in-house.',
+                    backgroundColour: '#F37992'
+                  }
+                ]}
+              />
+
+              <div class="mt-6 lg:mt-12"></div>
+              <CaseStudyShout>
+                For a brand operating at Yoplait's scale, the ability to move quickly and independently is a competitive
+                advantage.
+              </CaseStudyShout>
+            </CaseStudySectionText>
+
+            <CaseStudyMetaData
+              client={{ name: 'Yoplait', url: 'https://www.yoplait.com/' }}
+              industry={['Food & Beverage']}
+              serviceNames={['Discovery + direction', 'Design', 'Development']}
+            />
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    {/* Navigation section */}
+    <CaseStudyNav
+      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
+      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
+    />
+
+    <ContactForm
+      title="Discuss a similar challenge"
+      backgroundColor="var(--color-pixel-pink)"
+      displayDescription={false}
+    />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
+      .case-study-left-pane {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
+      }
+
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+        max-height: 5000px;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
+
+      function getDefaultState() {
+        return 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      setToggleTextColor()
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
 </Layout>
