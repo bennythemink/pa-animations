@@ -4,19 +4,21 @@ import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
 import { Image } from 'astro:assets'
 import mbImage from '@assets/mb.png'
+import CaseStudySectionText from '@components/case-studies/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/CaseStudyResults.astro'
 
 const caseStudy = {
-  title: 'Education provider',
+  title: 'Holmesglen Institute',
   sector: 'Education',
-  services: ['Discovery & Direction', 'Design', 'Development'],
+  services: ['Discovery + direction', 'Design', 'Development'],
   duration: '6 months',
   intro:
     'The client operates across multiple campuses and serves a large, diverse student base. Their existing digital platform had grown over time and no longer reflected how students or staff actually worked.',
   summary:
-    'A modern, scalable digital platform that improved usability, clarified internal ownership, and supported future growth.',
+    'How a discovery-led portal helped connect overlooked talent with local businesses. And placed over 80 students into employment.',
   closing:
     'This project highlighted the value of slowing down early to gain clarity. The initial discovery phase reduced risk, reduced rework, improved decision-making, and ultimately led to a stronger result.',
-  client: 'Education Provider',
+  client: 'Holmesglen Institute',
   acknowledgements: 'Partners listed here',
   team: ['Benny Sheerin, role', 'Team member, role', 'Team member, role'],
   sections: [
@@ -163,7 +165,7 @@ const caseStudy = {
     </section>
 
     <!-- Summary: standalone page-grid row, column position switches with panel state -->
-    <section class="py-0 lg:py-5">
+    <section class="py-0 lg:py-5 bg-red-400">
       <Grid>
         <p
           class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black lg:my-16"
@@ -195,65 +197,101 @@ const caseStudy = {
           </div>
 
           <div class="case-study-right-pane min-w-0">
-            <p
-              class="case-study-summary-mobile mt-4 font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black lg:max-w-[15ch]"
-            >
-              {caseStudy.summary}
-            </p>
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p class="font-extralight">
+                Holmesglen Institute is one of Victoria's leading government-owned TAFE providers, delivering vocational
+                education, apprenticeships, diplomas, and degree-level training to school leavers, mature-age learners,
+                and industry professionals.
+              </p><br />
+              <p>
+                With a strong focus on trade skills, in-demand industries, and Free TAFE programs, Holmesglen has built
+                a reputation for practical, employment-focused education — and a graduate cohort that's ready to work.
+              </p>
+            </CaseStudySectionText>
 
-            <div class="mt-8 grid gap-8 lg:gap-10">
-              {
-                caseStudy.sections.map((section) => (
-                  <div class="case-study-section-block lg:grid lg:grid-cols-[minmax(0,160px)_minmax(0,1fr)] lg:items-start lg:gap-x-5 lg:gap-y-4">
-                    <h2 class="mb-3.5 font-sans text-[clamp(1.6rem,2vw,2.15rem)] leading-[1.05] lg:mb-0">
-                      {section.title}
-                    </h2>
-                    <p class="text-[1.0625rem] leading-[1.45] text-[color-mix(in_oklab,var(--color-black)_86%,transparent)] lg:col-2">
-                      {section.intro}
-                    </p>
-                    <ul class="my-3.5 ml-5 grid list-disc gap-[0.35rem] text-[1.0625rem] leading-[1.45] text-[color-mix(in_oklab,var(--color-black)_86%,transparent)] lg:col-2 lg:mb-4 lg:mt-3.5">
-                      {section.bullets.map((bullet) => (
-                        <li>{bullet}</li>
-                      ))}
-                    </ul>
-                    <p class="text-[1.0625rem] leading-[1.45] text-[color-mix(in_oklab,var(--color-black)_86%,transparent)] lg:col-2">
-                      {section.body}
-                    </p>
-                  </div>
-                ))
-              }
-            </div>
+            <CaseStudySectionText title="The problem" textColour="text-pixel-red">
+              <p>
+                Holmesglen Institute is one of Victoria's leading government-owned TAFE providers, delivering vocational
+                education, apprenticeships, diplomas, and degree-level training to school leavers, mature-age learners,
+                and industry professionals.
+              </p><br />
+              <p>
+                With a strong focus on trade skills, in-demand industries, and Free TAFE programs, Holmesglen has built
+                a reputation for practical, employment-focused education — and a graduate cohort that's ready to work.
+              </p>
+            </CaseStudySectionText>
 
-            <p
-              class="mt-8 max-w-[18ch] font-sans text-[clamp(2rem,3vw,3.1rem)] leading-[1.02] tracking-[-0.03em] text-black"
-            >
-              {caseStudy.closing}
-            </p>
+            <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
+              <p>
+                Because this was uncharted territory, we started with discovery. We ran a structured workshop with a
+                broad group of stakeholders — Holmesglen program staff, graduating students, and potential employers —
+                to understand what each group actually needed, what processes would need to support the platform's
+                operation, and critically, how to make the service compelling enough that local businesses would use it.
+              </p><br />
+              <p>
+                That last question turned out to be the hardest. Attracting employers to a brand-new service with no
+                track record required more than a good website. We consulted closely with Holmesglen to shape a
+                marketing approach alongside the platform itself, ensuring the product and its go-to-market strategy
+                were built together rather than as an afterthought.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution" textColour="text-pixel-green">
+              <p>
+                The outcome was an online portal built around a personalised matching service. Holmesglen staff work
+                with each student through the portal to build a detailed candidate profile — skills, interests, and
+                strengths. Employers register their hiring needs. Holmesglen then matches suitable candidates to each
+                opportunity and provides employers with direct links to relevant profiles. Simple, structured, and human
+                at every step.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results" textColour="text-pixel-blue">
+              <p>
+                Despite being a first-of-its-kind initiative operating within a defined government program, the platform
+                delivered meaningful, measurable outcomes:
+              </p>
+              <CaseStudyResults
+                results={[
+                  {
+                    title: '200+ student profiles',
+                    description: 'created through the portal',
+                    backgroundColour: '#e8c42f'
+                  },
+                  {
+                    title: '1,200+ employers',
+                    description: 'registered and actively using the platform',
+                    backgroundColour: '#6498c9'
+                  },
+                  { title: '80+ students', description: 'placed into employment', backgroundColour: '#F37992' }
+                ]}
+              />
+            </CaseStudySectionText>
 
             <div class="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 pt-4 lg:grid-cols-4">
               <div>
                 <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">
                   Client
                 </p>
-                <p class="text-base leading-[1.35] underline underline-offset-[0.15em]">{caseStudy.client}</p>
+                <p class="text-base leading-[1.35] underline underline-offset-[0.15em]">
+                  <a href="https://www.holmesglen.edu.au/">Holmesglen Institute</a>
+                </p>
               </div>
+
+              <div>
+                <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">
+                  Sector
+                </p>
+                <p class="text-base leading-[1.35]">Education</p>
+              </div>
+
               <div>
                 <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">
                   Services
                 </p>
-                {caseStudy.services.map((service) => <p class="text-base leading-[1.35]">{service}</p>)}
-              </div>
-              <div>
-                <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">
-                  Team
-                </p>
-                {caseStudy.team.map((member) => <p class="text-base leading-[1.35]">{member}</p>)}
-              </div>
-              <div>
-                <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">
-                  Acknowledgements
-                </p>
-                <p class="text-base leading-[1.35]">{caseStudy.acknowledgements}</p>
+                <p class="text-base leading-[1.35]">Discovery + direction</p>
+                <p class="text-base leading-[1.35]">Design</p>
+                <p class="text-base leading-[1.35]">Development</p>
               </div>
             </div>
           </div>
@@ -261,6 +299,7 @@ const caseStudy = {
       </Grid>
     </section>
 
+    {/* Navigation section */}
     <section class="pb-6 lg:pb-12 case-study-nav-section">
       <Grid>
         <div

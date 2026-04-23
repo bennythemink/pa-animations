@@ -1,0 +1,11 @@
+---
+const { title, noTopMargin = false, textColour = 'text-pixel-pink' } = Astro.props
+---
+
+<section
+  id={title.toLowerCase().replace(/\s+/g, '-')}
+  class={`text-base lg:text-2xl leading-[0.76] tracking-[-0.01em] ${!noTopMargin ? 'mt-6 lg:mt-16' : ''}`}
+>
+  <h2 class={`text-3xl lg:text-[40px] ${textColour} mb-5 lg:mb-10`}>{title}</h2>
+  <slot />
+</section>
