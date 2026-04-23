@@ -101,7 +101,7 @@ const caseStudy = {
     <!-- Sticky toggle button -->
     <div class="sticky top-12 z-10 lg:top-20">
       <Grid>
-        <div class="col-span-full flex justify-end py-2 lg:col-start-2 lg:col-span-11">
+        <div class="col-span-full flex justify-end py-2 lg:pb-5 lg:col-start-2 lg:col-span-11">
           <button
             id="case-study-toggle"
             type="button"
@@ -123,8 +123,8 @@ const caseStudy = {
       </Grid>
     </div>
 
-    <!-- Shell A: first image (desktop) / all images (mobile) + intro text -->
-    <section class="pb-0">
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
       <Grid>
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
@@ -153,45 +153,16 @@ const caseStudy = {
                 <Image src={mbImage} alt="" class="h-full w-full object-cover" />
               </div>
             </div>
-          </div>
 
-          <div class="case-study-right-pane min-w-0">
-            <!-- <p class="font-sans text-[clamp(2rem,4.2vw,3.6rem)] leading-[1.02] tracking-[-0.03em] text-black">
-              {caseStudy.intro}
-            </p> -->
-
-            <CaseStudySectionText title="The client" noTopMargin={true}>
-              <p class="font-extralight">
-                Holmesglen Institute is one of Victoria's leading government-owned TAFE providers, delivering vocational
-                education, apprenticeships, diplomas, and degree-level training to school leavers, mature-age learners,
-                and industry professionals.
-              </p><br />
-              <p>
-                With a strong focus on trade skills, in-demand industries, and Free TAFE programs, Holmesglen has built
-                a reputation for practical, employment-focused education — and a graduate cohort that's ready to work.
+            <div class="hidden lg:grid grid-cols-12 gap-5">
+              <p
+                class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black my-16"
+              >
+                How a discovery-led portal helped connect overlooked talent with local businesses. And placed over 80
+                students into employment.
               </p>
-            </CaseStudySectionText>
-          </div>
-        </div>
-      </Grid>
-    </section>
+            </div>
 
-    <!-- Summary: standalone page-grid row, column position switches with panel state -->
-    <section class="py-0 lg:py-5">
-      <Grid>
-        <p
-          class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black lg:my-16"
-        >
-          {caseStudy.summary}
-        </p>
-      </Grid>
-    </section>
-
-    <!-- Shell B: remaining images (desktop) + case study content -->
-    <section class="pb-12 lg:pb-18">
-      <Grid>
-        <div class="case-study-shell col-span-full">
-          <div class="case-study-left-pane min-w-0 overflow-hidden">
             <div class="case-study-desktop-visuals grid gap-5">
               <div class="col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
                 <Image src={mbImage} alt="" class="h-full w-full object-cover" />
@@ -209,8 +180,14 @@ const caseStudy = {
           </div>
 
           <div class="case-study-right-pane min-w-0">
+            <p
+              class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black mb-16"
+            >
+              Connecting overlooked talent with local businesses.
+            </p>
+
             <CaseStudySectionText title="The client" noTopMargin={true}>
-              <p class="font-extralight">
+              <p class="">
                 Holmesglen Institute is one of Victoria's leading government-owned TAFE providers, delivering vocational
                 education, apprenticeships, diplomas, and degree-level training to school leavers, mature-age learners,
                 and industry professionals.
@@ -395,14 +372,6 @@ const caseStudy = {
       transform: translate(-50%, -50%) rotate(-50deg);
     }
 
-    .case-study-summary-mobile {
-      display: block;
-    }
-
-    .case-study-summary-desktop {
-      display: none;
-    }
-
     @media (max-width: 1023px) {
       .case-study-shell {
         display: flex;
@@ -522,16 +491,11 @@ const caseStudy = {
       }
 
       .case-study-summary-desktop {
-        display: block;
-        grid-column: 7 / span 5;
+        grid-column: 7 / span 6;
       }
 
       #case-study-page[data-panel-state='open'] .case-study-summary-desktop {
-        grid-column: 2 / span 5;
-      }
-
-      .case-study-summary-mobile {
-        display: none;
+        grid-column: 3 / span 12;
       }
     }
 
