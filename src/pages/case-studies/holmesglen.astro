@@ -2,7 +2,6 @@
 import ContactForm from '@components/ContactForm.astro'
 import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
-import { Image } from 'astro:assets'
 import mbImage from '@assets/mb.png'
 import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
 import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
@@ -11,6 +10,7 @@ import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudy
 import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
+import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
 ---
 
 <Layout
@@ -32,38 +32,12 @@ import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro
       <Grid>
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
-            <!-- First image -->
-            <div class="grid grid-cols-2 lg:grid-cols-12 gap-5">
-              <div class="col-span-2 lg:col-span-12 aspect-video overflow-hidden bg-(--case-study-placeholder)">
-                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-              </div>
-            </div>
-
-            <!-- Summary: shown on all breakpoints -->
-            <div class="grid grid-cols-12 gap-5">
-              <p
-                class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black my-12 lg:my-16"
-              >
-                How a discovery-led portal helped connect overlooked talent with local businesses. And placed over 80
-                students into employment.
-              </p>
-            </div>
-
-            <!-- Remaining images -->
-            <div class="grid grid-cols-2 lg:grid-cols-12 gap-5">
-              <div class="lg:col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
-                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-              </div>
-              <div class="lg:col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
-                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-              </div>
-              <div class="col-span-2 lg:col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
-                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-              </div>
-              <div class="col-span-2 lg:col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
-                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-              </div>
-            </div>
+            <CaseStudyImages
+              heroImage={{ src: mbImage }}
+              summary="How a discovery-led portal helped connect overlooked talent with local businesses. And placed over 80 students into employment."
+              squareImages={[{ src: mbImage }, { src: mbImage }]}
+              wideImages={[{ src: mbImage }, { src: mbImage }]}
+            />
           </div>
 
           <div class="case-study-right-pane min-w-0">
@@ -169,10 +143,6 @@ import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro
       --case-study-placeholder: #d9d9d9;
     }
 
-    .case-study-summary-desktop {
-      grid-column: 1 / -1;
-    }
-
     @media (max-width: 1023px) {
       .case-study-shell {
         display: flex;
@@ -272,14 +242,6 @@ import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro
         opacity: 1;
         transform: translateX(0);
         pointer-events: auto;
-      }
-
-      .case-study-summary-desktop {
-        grid-column: 7 / span 6;
-      }
-
-      #case-study-page[data-panel-state='open'] .case-study-summary-desktop {
-        grid-column: 3 / span 12;
       }
     }
 

@@ -1,38 +1,78 @@
 ---
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
 
+interface ImageWithAlt {
+  src: ImageMetadata
+  alt?: string
+}
+
+interface Props {
+  heroImage: ImageWithAlt
+  summary: string
+  squareImages?: [ImageWithAlt, ImageWithAlt]
+  wideImages?: [ImageWithAlt, ImageWithAlt]
+}
+
+const { heroImage, summary, squareImages, wideImages } = Astro.props
 ---
 
-<div class="case-study-left-pane min-w-0 overflow-hidden">
-  <!-- First image -->
-  <div class="grid grid-cols-2 lg:grid-cols-12 gap-5">
-    <div class="col-span-2 lg:col-span-12 aspect-video overflow-hidden bg-(--case-study-placeholder)">
-      <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-    </div>
-  </div>
-
-  <!-- Summary: shown on all breakpoints -->
-  <div class="grid grid-cols-12 gap-5">
-    <p
-      class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black my-12 lg:my-16"
-    >
-      How a discovery-led portal helped connect overlooked talent with local businesses. And placed over 80 students
-      into employment.
-    </p>
-  </div>
-
-  <!-- Remaining images -->
-  <div class="grid grid-cols-2 lg:grid-cols-12 gap-5">
-    <div class="lg:col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
-      <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-    </div>
-    <div class="lg:col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
-      <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-    </div>
-    <div class="col-span-2 lg:col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
-      <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-    </div>
-    <div class="col-span-2 lg:col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
-      <Image src={mbImage} alt="" class="h-full w-full object-cover" />
-    </div>
+<!-- First image -->
+<div class="grid grid-cols-2 lg:grid-cols-12 gap-5">
+  <div class="col-span-2 lg:col-span-12 aspect-video overflow-hidden bg-(--case-study-placeholder)">
+    <Image src={heroImage.src} alt={heroImage.alt ?? ''} class="h-full w-full object-cover" />
   </div>
 </div>
+
+<!-- Summary: shown on all breakpoints -->
+<div class="grid grid-cols-12 gap-5">
+  <p
+    class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black my-12 lg:my-16"
+  >
+    {summary}
+  </p>
+</div>
+
+<!-- Remaining images -->
+{
+  (squareImages || wideImages) && (
+    <div class="grid grid-cols-2 lg:grid-cols-12 gap-5">
+      {squareImages && (
+        <>
+          <div class="lg:col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
+            <Image src={squareImages[0].src} alt={squareImages[0].alt ?? ''} class="h-full w-full object-cover" />
+          </div>
+          <div class="lg:col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
+            <Image src={squareImages[1].src} alt={squareImages[1].alt ?? ''} class="h-full w-full object-cover" />
+          </div>
+        </>
+      )}
+      {wideImages && (
+        <>
+          <div class="col-span-2 lg:col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
+            <Image src={wideImages[0].src} alt={wideImages[0].alt ?? ''} class="h-full w-full object-cover" />
+          </div>
+          <div class="col-span-2 lg:col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
+            <Image src={wideImages[1].src} alt={wideImages[1].alt ?? ''} class="h-full w-full object-cover" />
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
+<style>
+  .case-study-summary-desktop {
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: 1024px) {
+    .case-study-summary-desktop {
+      grid-column: 7 / span 6;
+    }
+
+    :global(#case-study-page[data-panel-state='open']) .case-study-summary-desktop {
+      grid-column: 3 / span 12;
+    }
+  }
+</style>

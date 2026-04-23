@@ -22,7 +22,7 @@ const { previousCaseStudy, nextCaseStudy } = Astro.props as Props
       {
         previousCaseStudy ? (
           <a href={`/case-studies/${previousCaseStudy.slug}`} class="flex min-w-0 flex-col gap-1">
-            <span class="font-sans text-[clamp(2rem,3.4vw,3.2rem)] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline">
+            <span class="font-sans text-base lg:text-[40px] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline">
               Previous case study
             </span>
             <span class="text-base text-[color-mix(in_oklab,var(--color-black)_32%,transparent)] hover:underline-offset-2 hover:underline">
@@ -36,7 +36,7 @@ const { previousCaseStudy, nextCaseStudy } = Astro.props as Props
       {
         nextCaseStudy ? (
           <a href={`/case-studies/${nextCaseStudy.slug}`} class="flex min-w-0 flex-col gap-1 text-right lg:items-end">
-            <span class="font-sans text-[clamp(2rem,3.4vw,3.2rem)] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline">
+            <span class="font-sans text-base lg:text-[40px] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline">
               Next case study
             </span>
             <span class="text-base text-[color-mix(in_oklab,var(--color-black)_32%,transparent)] hover:underline-offset-2 hover:underline">
