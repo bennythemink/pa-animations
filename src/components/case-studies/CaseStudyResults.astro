@@ -12,7 +12,7 @@ interface Props {
 const { results = [] } = Astro.props as Props
 ---
 
-<div class="results-grid mt-6" style={`--result-count: ${results.length}`}>
+<div class="results-grid mt-6">
   {
     results.map((result) => (
       <div class="results-card" style={`background-color: ${result.backgroundColour}`}>
@@ -28,7 +28,7 @@ const { results = [] } = Astro.props as Props
 <style>
   .results-grid {
     display: grid;
-    grid-template-columns: repeat(var(--result-count), 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 
   @media (max-width: 480px) {
