@@ -10,25 +10,41 @@ interface Props {
 }
 
 const { results = [] } = Astro.props as Props
+
+function getCols(n: number): number {
+  if (n <= 3) return n
+  if (n <= 5) return 2
+  return 3
+}
+
+const cols = getCols(results.length)
+const lastSpans = results.length > 0 && results.length % cols === 1
 ---
 
-<div class="results-grid mt-6">
+<div class="results-grid mt-6" style={`--results-cols: ${cols}`}>
   {
-    results.map((result) => (
-      <div class="results-card" style={`background-color: ${result.backgroundColour}`}>
-        <p class="font-sans text-[clamp(1.5rem,2.5vw,2rem)] leading-[1.05] tracking-[-0.03em] p-4 pb-0 lg:p-5 lg:pb-0">
-          {result.title}
-        </p>
-        <p class="font-sans text-sm leading-[1.3] p-4 pt-6 lg:p-5 lg:pt-6">{result.description}</p>
-      </div>
-    ))
+    results.map((result, i) => {
+      const isLast = i === results.length - 1
+      return (
+        <div
+          class={`results-card${isLast && lastSpans ? ' results-card--full' : ''}`}
+          style={`background-color: ${result.backgroundColour}`}
+        >
+          <p class="font-sans text-[clamp(1.5rem,2.5vw,2rem)] leading-[1.05] tracking-[-0.03em] p-4 pb-0 lg:p-5 lg:pb-0">
+            {result.title}
+          </p>
+          <p class="font-sans text-sm leading-[1.3] p-4 pt-6 lg:p-5 lg:pt-6">{result.description}</p>
+        </div>
+      )
+    })
   }
 </div>
 
 <style>
   .results-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(var(--results-cols), 1fr);
+    align-items: stretch;
   }
 
   @media (max-width: 480px) {
@@ -38,8 +54,30 @@ const { results = [] } = Astro.props as Props
   }
 
   .results-card {
-    display: grid;
-    grid-row: span 2;
-    grid-template-rows: subgrid;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .results-card p:last-child {
+    margin-top: auto;
+  }
+
+  .results-card--full {
+    grid-column: 1 / -1;
   }
 </style>
+
+<script>
+  function equaliseResultsGrids() {
+    document.querySelectorAll<HTMLElement>('.results-grid').forEach((grid) => {
+      const cards = Array.from(grid.querySelectorAll<HTMLElement>('.results-card'))
+      // Reset before measuring so re-runs don't compound
+      cards.forEach((c) => (c.style.minHeight = ''))
+      const maxH = Math.max(...cards.map((c) => c.offsetHeight))
+      cards.forEach((c) => (c.style.minHeight = `${maxH}px`))
+    })
+  }
+
+  equaliseResultsGrids()
+  document.addEventListener('astro:after-swap', equaliseResultsGrids)
+</script>
