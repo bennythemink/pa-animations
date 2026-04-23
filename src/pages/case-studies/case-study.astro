@@ -9,6 +9,8 @@ import CaseStudyResults from '@components/case-studies/CaseStudyResults.astro'
 import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
 import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
 import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 ---
 
 <Layout title="Holmesglen Institute" description="">
@@ -79,11 +81,7 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
           </div>
 
           <div class="case-study-right-pane min-w-0">
-            <p
-              class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black mb-16"
-            >
-              Connecting overlooked talent with local businesses.
-            </p>
+            <CaseStudyShout>Connecting overlooked talent with local businesses.</CaseStudyShout>
 
             <CaseStudySectionText title="The client" noTopMargin={true}>
               <p class="">
@@ -167,38 +165,10 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
     </section>
 
     {/* Navigation section */}
-    <section class="pb-6 lg:pb-12 case-study-nav-section">
-      <Grid>
-        <div
-          class="case-study-nav col-span-full grid gap-4 border-t border-(--case-study-border) pt-4 lg:col-start-2 lg:col-span-11 lg:flex lg:items-start lg:justify-between lg:gap-8"
-        >
-          <a href="#" class="flex min-w-0 flex-col gap-1">
-            <span
-              class="font-sans text-[clamp(2rem,3.4vw,3.2rem)] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline"
-            >
-              Previous case study
-            </span>
-            <span
-              class="text-base text-[color-mix(in_oklab,var(--color-black)_32%,transparent)] hover:underline-offset-2 hover:underline"
-            >
-              Case study name
-            </span>
-          </a>
-          <a href="#" class="flex min-w-0 flex-col gap-1 text-right lg:items-end">
-            <span
-              class="font-sans text-[clamp(2rem,3.4vw,3.2rem)] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline"
-            >
-              Next case study
-            </span>
-            <span
-              class="text-base text-[color-mix(in_oklab,var(--color-black)_32%,transparent)] hover:underline-offset-2 hover:underline"
-            >
-              Case study name
-            </span>
-          </a>
-        </div>
-      </Grid>
-    </section>
+    <CaseStudyNav
+      previousCaseStudy={{ name: 'Previous case study', url: '#' }}
+      nextCaseStudy={{ name: 'Next case study', url: '#' }}
+    />
 
     <ContactForm
       title="Discuss a similar challenge"

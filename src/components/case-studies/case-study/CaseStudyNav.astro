@@ -1,0 +1,52 @@
+---
+import Grid from '@components/Grid.astro'
+
+interface CaseStudyLink {
+  slug: string
+  name: string
+}
+
+interface Props {
+  previousCaseStudy?: CaseStudyLink
+  nextCaseStudy?: CaseStudyLink
+}
+
+const { previousCaseStudy, nextCaseStudy } = Astro.props as Props
+---
+
+<section class="pb-6 lg:pb-12 case-study-nav-section">
+  <Grid>
+    <div
+      class="case-study-nav col-span-full grid gap-4 border-t border-(--case-study-border) pt-4 lg:col-start-2 lg:col-span-11 lg:flex lg:items-start lg:justify-between lg:gap-8"
+    >
+      {
+        previousCaseStudy ? (
+          <a href={`/case-studies/${previousCaseStudy.slug}`} class="flex min-w-0 flex-col gap-1">
+            <span class="font-sans text-[clamp(2rem,3.4vw,3.2rem)] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline">
+              Previous case study
+            </span>
+            <span class="text-base text-[color-mix(in_oklab,var(--color-black)_32%,transparent)] hover:underline-offset-2 hover:underline">
+              {previousCaseStudy.name}
+            </span>
+          </a>
+        ) : (
+          <div />
+        )
+      }
+      {
+        nextCaseStudy ? (
+          <a href={`/case-studies/${nextCaseStudy.slug}`} class="flex min-w-0 flex-col gap-1 text-right lg:items-end">
+            <span class="font-sans text-[clamp(2rem,3.4vw,3.2rem)] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline">
+              Next case study
+            </span>
+            <span class="text-base text-[color-mix(in_oklab,var(--color-black)_32%,transparent)] hover:underline-offset-2 hover:underline">
+              {nextCaseStudy.name}
+            </span>
+          </a>
+        ) : (
+          <div />
+        )
+      }
+    </div>
+  </Grid>
+</section>
