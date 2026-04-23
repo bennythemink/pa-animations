@@ -1,0 +1,73 @@
+---
+import Grid from '@components/Grid.astro'
+---
+
+<div class="sticky top-12 z-10 lg:top-20">
+  <Grid>
+    <div class="col-span-full flex justify-end py-2 lg:pb-5 lg:col-start-2 lg:col-span-11">
+      <button
+        id="case-study-toggle"
+        type="button"
+        class="case-study-toggle group inline-flex h-10 w-fit items-center gap-2 bg-(--accent-bgc) px-4 font-sans text-base font-normal text-(--case-study-toggle-text) transition-[color,text-decoration-color,transform] duration-200 hover:underline hover:decoration-current cursor-pointer hover:underline-offset-2"
+        aria-expanded="false"
+        aria-controls="case-study-shell"
+      >
+        <span class="case-study-toggle-icon relative h-3.5 w-3.5 shrink-0" aria-hidden="true">
+          <span
+            class="case-study-toggle-icon-bar case-study-toggle-icon-bar-horizontal absolute left-1/2 top-1/2 h-[1.5px] w-full -translate-x-1/2 -translate-y-1/2 bg-current"
+          ></span>
+          <span
+            class="case-study-toggle-icon-bar case-study-toggle-icon-bar-vertical absolute left-1/2 top-1/2 h-[1.5px] w-full -translate-x-1/2 -translate-y-1/2 bg-current"
+          ></span>
+        </span>
+        <span class="case-study-toggle-label">About the project</span>
+      </button>
+    </div>
+  </Grid>
+</div>
+
+<style>
+  .case-study-toggle-icon-bar {
+    transform-origin: center;
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .case-study-toggle-icon-bar-horizontal {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .case-study-toggle-icon-bar-vertical {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .case-study-toggle:hover .case-study-toggle-icon-bar-horizontal {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .case-study-toggle:hover .case-study-toggle-icon-bar-vertical {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+
+  .case-study-toggle[aria-expanded='true'] .case-study-toggle-icon-bar-horizontal {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .case-study-toggle[aria-expanded='true'] .case-study-toggle-icon-bar-vertical {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .case-study-toggle[aria-expanded='true']:hover .case-study-toggle-icon-bar-horizontal {
+    transform: translate(-50%, -50%) rotate(50deg);
+  }
+
+  .case-study-toggle[aria-expanded='true']:hover .case-study-toggle-icon-bar-vertical {
+    transform: translate(-50%, -50%) rotate(-50deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .case-study-toggle,
+    .case-study-toggle-icon-bar {
+      transition: none;
+    }
+  }
+</style>
