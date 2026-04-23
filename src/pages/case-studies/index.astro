@@ -20,30 +20,10 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    title: 'Sonata AI',
-    slug: 'sonata-ai',
-    industry: ['Technology', 'AI'],
-    services: ['Discovery', 'Design', 'Development'],
-    overview:
-      'A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold — from positioning through to product interface.',
-    colour: 'bg-pixel-pink',
-    image: mbImage
-  },
-  {
-    title: 'Fletcher Insulation',
-    slug: 'insulation',
-    industry: ['Manufacturing'],
-    services: ['Discovery', 'Design', 'Development'],
-    overview:
-      'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time — while cutting support requests by 30%.',
-    colour: 'bg-pixel-orange',
-    image: mbImage
-  },
-  {
     title: 'Better Health Network',
     slug: 'bhn',
     industry: ['Health', 'Community'],
-    services: ['Discovery', 'Design', 'Development'],
+    services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Unified three merging community health organisations online — achieving a 115% increase in total visitors within six months of launch.',
     colour: 'bg-pixel-green',
@@ -52,7 +32,7 @@ const caseStudies: CaseStudy[] = [
   {
     title: 'Dare Iced Coffee',
     slug: 'dare',
-    industry: ['FMCG'],
+    industry: ['Food & Beverage'],
     services: ['Design', 'Development'],
     overview:
       "Transformed Dare Iced Coffee's digital presence, delivering a 200%+ increase in time on site and a meaningful reduction in support load.",
@@ -63,17 +43,27 @@ const caseStudies: CaseStudy[] = [
     title: 'Explorers Early Learning',
     slug: 'eel',
     industry: ['Education', 'Childcare'],
-    services: ['Discovery', 'Design', 'Development'],
+    services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Redesigned the website to drive 9% more centre tour bookings and a 24% increase in session time from prospective parents.',
     colour: 'bg-pixel-blue',
     image: mbImage
   },
   {
+    title: 'Fletcher Insulation',
+    slug: 'insulation',
+    industry: ['Construction', 'Manufacturing'],
+    services: ['Discovery + direction', 'Design', 'Development'],
+    overview:
+      'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time — while cutting support requests by 30%.',
+    colour: 'bg-pixel-orange',
+    image: mbImage
+  },
+  {
     title: 'Holmesglen',
     slug: 'holmesglen',
     industry: ['Education'],
-    services: ['Discovery', 'Design', 'Development'],
+    services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Built a student-employer platform from the ground up. 1,200+ registered employers and 80+ student job placements in year one.',
     colour: 'bg-pixel-cream',
@@ -83,7 +73,7 @@ const caseStudies: CaseStudy[] = [
     title: 'VincentCare',
     slug: 'vincentcare',
     industry: ['Not-for-profit'],
-    services: ['Discovery', 'Design', 'Development'],
+    services: ['Discovery + direction', 'Design', 'Development'],
     overview: "Redesigned VincentCare's website, achieving a 14% increase in donations and 22% longer session times.",
     colour: 'bg-pixel-dark-green',
     image: mbImage
@@ -91,14 +81,27 @@ const caseStudies: CaseStudy[] = [
   {
     title: 'Yoplait',
     slug: 'yoplait',
-    industry: ['FMCG'],
-    services: ['Design', 'Development'],
+    industry: ['Food & Beverage'],
+    services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       "Transformed Yoplait Australia's digital presence, delivering 130% more traffic and 150% longer session times.",
     colour: 'bg-pixel-red',
     image: mbImage
   }
 ]
+
+/**
+ * {
+    title: 'Sonata AI',
+    slug: 'sonata-ai',
+    industry: ['Technology', 'AI'],
+    services: ['Discovery', 'Design', 'Development'],
+    overview:
+      'A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold — from positioning through to product interface.',
+    colour: 'bg-pixel-pink',
+    image: mbImage
+  },
+ */
 
 const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sort()
 ---
