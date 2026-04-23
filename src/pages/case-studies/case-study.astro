@@ -156,16 +156,28 @@ const caseStudy = {
           </div>
 
           <div class="case-study-right-pane min-w-0">
-            <p class="font-sans text-[clamp(2rem,4.2vw,3.6rem)] leading-[1.02] tracking-[-0.03em] text-black">
+            <!-- <p class="font-sans text-[clamp(2rem,4.2vw,3.6rem)] leading-[1.02] tracking-[-0.03em] text-black">
               {caseStudy.intro}
-            </p>
+            </p> -->
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p class="font-extralight">
+                Holmesglen Institute is one of Victoria's leading government-owned TAFE providers, delivering vocational
+                education, apprenticeships, diplomas, and degree-level training to school leavers, mature-age learners,
+                and industry professionals.
+              </p><br />
+              <p>
+                With a strong focus on trade skills, in-demand industries, and Free TAFE programs, Holmesglen has built
+                a reputation for practical, employment-focused education — and a graduate cohort that's ready to work.
+              </p>
+            </CaseStudySectionText>
           </div>
         </div>
       </Grid>
     </section>
 
     <!-- Summary: standalone page-grid row, column position switches with panel state -->
-    <section class="py-0 lg:py-5 bg-red-400">
+    <section class="py-0 lg:py-5">
       <Grid>
         <p
           class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black lg:my-16"
