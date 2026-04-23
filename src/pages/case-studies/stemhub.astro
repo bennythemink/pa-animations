@@ -1,10 +1,295 @@
 ---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
+import mbImage from '@assets/mb.png'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
+import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
+import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
+import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
 ---
 
 <Layout
-  title="Swinburne STEMHub Digital Design Case Study"
-  description="How Pixel Agency partnered with Swinburne University to design a digital STEM outreach platform, a thoughtful concept built to open new pathways for students."
+  title="STEM Hub"
+  description="How Pixel Agency partnered with Swinburne University to design a digital STEM outreach platform, a
+thoughtful concept built to open new pathways for students."
 >
-  <!-- Page content goes here -->
+  <article id="case-study-page">
+    <CaseStudyHeader>
+      <span slot="title">STEM Hub</span>
+      <span slot="industry">Education</span>
+      <span slot="services">Discovery + direction, Design</span>
+      <span slot="duration">1 month</span>
+    </CaseStudyHeader>
+
+    <CaseStudyToggleButton />
+
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <CaseStudyImages
+              heroImage={{ src: mbImage }}
+              summary="Partnering with Swinburne University to design a digital STEM outreach platform, a thoughtful concept built to open new pathways for students."
+              squareImages={[{ src: mbImage }, { src: mbImage }]}
+              wideImages={[{ src: mbImage }, { src: mbImage }]}
+            />
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <CaseStudyShout>Making STEM accessible and engaging for students.</CaseStudyShout>
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p>
+                Swinburne University of Technology is one of Australia's leading universities, known for its strong
+                focus on science, technology, engineering, and mathematics. With a long-standing commitment to applied
+                learning and industry partnership, Swinburne is well-placed to lead initiatives that connect the next
+                generation of Australians with the skills the future will demand.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The problem" textColour="text-pixel-red">
+              <p>
+                Swinburne had identified an opportunity: a government grant aimed at encouraging children and teenagers
+                into STEM fields. They had the ambition and the credibility, but they needed a compelling, well-defined
+                digital concept to anchor their tender response. A strong idea alone wouldn't be enough. It needed to be
+                backed by a clear scope, a realistic timeline, accurate pricing, and design work that made the vision
+                tangible for the grant assessors.
+              </p><br />
+              <p>They came to us to help them build that case.</p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
+              <p>
+                We started with discovery, working closely with Swinburne to understand the grant's objectives, the
+                target audience (students and educators), and what an engaging digital experience for STEM learning
+                could look like.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution" textColour="text-pixel-green">
+              <p>
+                The concept that emerged from discovery was StemHub: an online portal that gamified the learning of STEM
+                subjects and built a community around them. Students could earn points for learning, solving puzzles,
+                and helping others. Leaderboards, badges, and prizes created healthy competition and recognition. The
+                platform was designed not only as a resource, but as a place where young people could showcase their
+                curiosity, collaborate on problems, and develop an affinity for STEM thinking.
+              </p>
+              <p>
+                We developed desktop and mobile homepage designs to bring the concept to life visually, and supported
+                Swinburne with the full tender response, scoping the solution, defining the timeline, and providing
+                accurate pricing. The goal was to give the assessors more than an idea. We wanted to give them
+                confidence that it could be delivered.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results" textColour="text-pixel-blue">
+              <p>
+                Swinburne's application was ultimately unsuccessful. Government grant processes are competitive and
+                often opaque, and the outcome wasn't a reflection of the quality of the concept or the work behind it.
+              </p><br />
+              <p>
+                What remains is a concept and design we're proud of: a thoughtful, well-scoped vision for how digital
+                experiences can make STEM learning more engaging, more social, and more rewarding for the students who
+                need encouragement most.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudyMetaData
+              client={{ name: 'Swinburne University of Technology', url: 'https://www.swinburne.edu.au' }}
+              industry={['Education']}
+              serviceNames={['Discovery + direction', 'Design']}
+            />
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    {/* Navigation section */}
+    <CaseStudyNav
+      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
+      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
+    />
+
+    <ContactForm
+      title="Discuss a similar challenge"
+      backgroundColor="var(--color-pixel-pink)"
+      displayDescription={false}
+    />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
+      .case-study-left-pane {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
+      }
+
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+        max-height: 5000px;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
+
+      function getDefaultState() {
+        return 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      setToggleTextColor()
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
 </Layout>
