@@ -1,10 +1,377 @@
 ---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
+import { Image } from 'astro:assets'
+import mbImage from '@assets/mb.png'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
+import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
+import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 ---
 
 <Layout
-  title="Holmesglen Institute Employment Portal Case Study"
+  title="Holmesglen Institute"
   description="How Pixel Agency built Holmesglen's student-employer platform from the ground up. 1,200+ registered employers and 80+ student job placements in year one."
 >
-  <!-- Page content goes here -->
+  <article id="case-study-page">
+    <CaseStudyHeader>
+      <span slot="title">Holmesglen Institute</span>
+      <span slot="industry">Education</span>
+      <span slot="services">Discovery + direction, Design, Development</span>
+      <span slot="duration">3 months</span>
+    </CaseStudyHeader>
+
+    <CaseStudyToggleButton />
+
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <div class="case-study-mobile-image-stack grid gap-5">
+              <div class="aspect-video w-full overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="grid grid-cols-2 gap-5">
+                <div class="aspect-square w-full overflow-hidden bg-(--case-study-placeholder)">
+                  <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+                </div>
+                <div class="aspect-square w-full overflow-hidden bg-(--case-study-placeholder)">
+                  <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+                </div>
+              </div>
+              <div class="aspect-16/7 w-full overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="aspect-16/7 w-full overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+            </div>
+
+            <div class="case-study-desktop-visuals grid gap-5">
+              <div class="col-span-12 aspect-video overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+            </div>
+
+            <div class="hidden lg:grid grid-cols-12 gap-5">
+              <p
+                class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black my-16"
+              >
+                How a discovery-led portal helped connect overlooked talent with local businesses. And placed over 80
+                students into employment.
+              </p>
+            </div>
+
+            <div class="case-study-desktop-visuals grid gap-5">
+              <div class="col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+            </div>
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <CaseStudyShout>Connecting overlooked talent with local businesses.</CaseStudyShout>
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p class="">
+                Holmesglen Institute is one of Victoria's leading government-owned TAFE providers, delivering vocational
+                education, apprenticeships, diplomas, and degree-level training to school leavers, mature-age learners,
+                and industry professionals.
+              </p><br />
+              <p>
+                With a strong focus on trade skills, in-demand industries, and Free TAFE programs, Holmesglen has built
+                a reputation for practical, employment-focused education — and a graduate cohort that's ready to work.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The problem" textColour="text-pixel-red">
+              <p>
+                Holmesglen Institute is one of Victoria's leading government-owned TAFE providers, delivering vocational
+                education, apprenticeships, diplomas, and degree-level training to school leavers, mature-age learners,
+                and industry professionals.
+              </p><br />
+              <p>
+                With a strong focus on trade skills, in-demand industries, and Free TAFE programs, Holmesglen has built
+                a reputation for practical, employment-focused education — and a graduate cohort that's ready to work.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
+              <p>
+                Because this was uncharted territory, we started with discovery. We ran a structured workshop with a
+                broad group of stakeholders — Holmesglen program staff, graduating students, and potential employers —
+                to understand what each group actually needed, what processes would need to support the platform's
+                operation, and critically, how to make the service compelling enough that local businesses would use it.
+              </p><br />
+              <p>
+                That last question turned out to be the hardest. Attracting employers to a brand-new service with no
+                track record required more than a good website. We consulted closely with Holmesglen to shape a
+                marketing approach alongside the platform itself, ensuring the product and its go-to-market strategy
+                were built together rather than as an afterthought.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution" textColour="text-pixel-green">
+              <p>
+                The outcome was an online portal built around a personalised matching service. Holmesglen staff work
+                with each student through the portal to build a detailed candidate profile — skills, interests, and
+                strengths. Employers register their hiring needs. Holmesglen then matches suitable candidates to each
+                opportunity and provides employers with direct links to relevant profiles. Simple, structured, and human
+                at every step.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results" textColour="text-pixel-blue">
+              <p>
+                Despite being a first-of-its-kind initiative operating within a defined government program, the platform
+                delivered meaningful, measurable outcomes:
+              </p>
+              <CaseStudyResults
+                results={[
+                  {
+                    title: '200+ student profiles',
+                    description: 'created through the portal',
+                    backgroundColour: '#e8c42f'
+                  },
+                  {
+                    title: '1,200+ employers',
+                    description: 'registered and actively using the platform',
+                    backgroundColour: '#6498c9'
+                  },
+                  { title: '80+ students', description: 'placed into employment', backgroundColour: '#F37992' }
+                ]}
+              />
+            </CaseStudySectionText>
+
+            <CaseStudyMetaData
+              client={{ name: 'Holmesglen Institute', url: 'https://www.holmesglen.edu.au/' }}
+              industry={['Education']}
+              serviceNames={['Discovery + direction', 'Design', 'Development']}
+            />
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    {/* Navigation section */}
+    <CaseStudyNav
+      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
+      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
+    />
+
+    <ContactForm
+      title="Discuss a similar challenge"
+      backgroundColor="var(--color-pixel-pink)"
+      displayDescription={false}
+    />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
+      .case-study-left-pane {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
+      }
+
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+
+      .case-study-mobile-image-stack {
+        display: grid;
+      }
+
+      .case-study-desktop-visuals {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+        max-height: 5000px;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+
+      .case-study-mobile-image-stack {
+        display: none;
+      }
+
+      .case-study-desktop-visuals {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .case-study-summary-desktop {
+        grid-column: 7 / span 6;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-summary-desktop {
+        grid-column: 3 / span 12;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
+
+      function getDefaultState() {
+        return mobileMedia.matches ? 'open' : 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      setToggleTextColor()
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
 </Layout>

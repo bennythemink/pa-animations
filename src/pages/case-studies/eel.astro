@@ -1,10 +1,372 @@
 ---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
+import { Image } from 'astro:assets'
+import mbImage from '@assets/mb.png'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
+import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
+import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 ---
 
 <Layout
-  title="Explorers Early Learning Website Case Study"
+  title="Explorers Early Learning"
   description="How Pixel Agency redesigned Explorers Early Learning's website, driving 9% more centre tour bookings and a 24% increase in session time from prospective parents."
 >
-  <!-- Page content goes here -->
+  <article id="case-study-page">
+    <CaseStudyHeader>
+      <span slot="title">Explorers Early Learning</span>
+      <span slot="industry">Early Childhood Education</span>
+      <span slot="services">Discovery + direction, Design, Development</span>
+      <span slot="duration">3 months</span>
+    </CaseStudyHeader>
+
+    <CaseStudyToggleButton />
+
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <div class="case-study-mobile-image-stack grid gap-5">
+              <div class="aspect-video w-full overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="grid grid-cols-2 gap-5">
+                <div class="aspect-square w-full overflow-hidden bg-(--case-study-placeholder)">
+                  <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+                </div>
+                <div class="aspect-square w-full overflow-hidden bg-(--case-study-placeholder)">
+                  <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+                </div>
+              </div>
+              <div class="aspect-16/7 w-full overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="aspect-16/7 w-full overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+            </div>
+
+            <div class="case-study-desktop-visuals grid gap-5">
+              <div class="col-span-12 aspect-video overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+            </div>
+
+            <div class="hidden lg:grid grid-cols-12 gap-5">
+              <p
+                class="case-study-summary-desktop font-sans text-[clamp(2rem,3.3vw,3rem)] leading-[1.02] tracking-[-0.03em] text-black my-16"
+              >
+                How discovery and a design that captured their spirit of curiosity helped increase centre tour bookings
+                by 9% and session time by 24%.
+              </p>
+            </div>
+
+            <div class="case-study-desktop-visuals grid gap-5">
+              <div class="col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-6 aspect-square overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+              <div class="col-span-12 aspect-16/7 overflow-hidden bg-(--case-study-placeholder)">
+                <Image src={mbImage} alt="" class="h-full w-full object-cover" />
+              </div>
+            </div>
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <CaseStudyShout>A web presence that reflected their quality and values.</CaseStudyShout>
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p>
+                Explorers Early Learning is a Melbourne-based, family-owned provider of long day care and integrated
+                kindergarten programs for children aged six weeks to school age. Their Reggio Emilia-inspired centres
+                are built around play-based, child-led learning — natural environments, chef-prepared meals, and a
+                genuine philosophy of curiosity and exploration. In the childcare space, the Explorers name is
+                synonymous with quality.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The problem" textColour="text-pixel-red">
+              <p>
+                Their website told a different story. A dated design, a poor mobile experience, and a digital presence
+                that had fallen behind competitors meant that parents visiting the site weren't getting the impression
+                the brand deserved. For a provider whose entire reputation rests on the quality of their environment and
+                care, a website that felt second-rate was quietly undermining the work they'd spent years building.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
+              <p>
+                Explorers came to us through a referral from a member of their marketing team who had seen our work with
+                Better Health Network, which meant trust was already established before the first conversation.
+              </p><br />
+              <p>
+                We started with discovery, working to understand not just what the website needed to do, but who
+                Explorers are — their culture, their values, and the philosophy that shapes every centre they run. That
+                understanding became the design brief. Rather than applying a generic childcare template, we built a
+                solution that married Explorers' spirit of curiosity and exploration with a modern design language, one
+                that felt warm, distinctive, and unmistakably theirs.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution" textColour="text-pixel-green">
+              <p>
+                The result was a website that finally reflected the quality of the experience waiting for families
+                inside their centres: visually rich, easy to navigate on any device, and designed to help parents feel
+                confident they were in the right place. The design work didn't stop at the browser, the visual language
+                and design elements we created for the website were subsequently adopted into Explorers' broader brand
+                and communications, a reflection of how well the new direction captured who they are.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results" textColour="text-pixel-blue">
+              <p>The impact on the metrics that matter most to a childcare provider was immediate:</p>
+              <CaseStudyResults
+                results={[
+                  {
+                    title: '9% increase in centre tour bookings',
+                    description: 'more parents taking the next step toward enrolment',
+                    backgroundColour: '#e8c42f'
+                  },
+                  {
+                    title: '24% increase in average session time',
+                    description: 'visitors engaging more deeply with the content',
+                    backgroundColour: '#6498c9'
+                  },
+                  {
+                    title: '12% increase in overall website traffic',
+                    description: 'more visitors discovering the centre online',
+                    backgroundColour: '#F37992'
+                  }
+                ]}
+              />
+            </CaseStudySectionText>
+
+            <CaseStudyMetaData
+              client={{ name: 'Explorers Early Learning', url: 'https://www.eel.com.au/' }}
+              industry={['Education']}
+              serviceNames={['Discovery + direction', 'Design', 'Development']}
+            />
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    {/* Navigation section */}
+    <CaseStudyNav
+      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
+      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
+    />
+
+    <ContactForm
+      title="Discuss a similar challenge"
+      backgroundColor="var(--color-pixel-pink)"
+      displayDescription={false}
+    />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
+      .case-study-left-pane {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
+      }
+
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+
+      .case-study-mobile-image-stack {
+        display: grid;
+      }
+
+      .case-study-desktop-visuals {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+        max-height: 5000px;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+
+      .case-study-mobile-image-stack {
+        display: none;
+      }
+
+      .case-study-desktop-visuals {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .case-study-summary-desktop {
+        grid-column: 7 / span 6;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-summary-desktop {
+        grid-column: 3 / span 12;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
+
+      function getDefaultState() {
+        return mobileMedia.matches ? 'open' : 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      setToggleTextColor()
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
 </Layout>
