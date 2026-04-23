@@ -6,63 +6,9 @@ import { Image } from 'astro:assets'
 import mbImage from '@assets/mb.png'
 import CaseStudySectionText from '@components/case-studies/CaseStudySectionText.astro'
 import CaseStudyResults from '@components/case-studies/CaseStudyResults.astro'
-
-const caseStudy = {
-  title: 'Holmesglen Institute',
-  sector: 'Education',
-  services: ['Discovery + direction', 'Design', 'Development'],
-  duration: '6 months',
-  intro:
-    'The client operates across multiple campuses and serves a large, diverse student base. Their existing digital platform had grown over time and no longer reflected how students or staff actually worked.',
-  summary:
-    'How a discovery-led portal helped connect overlooked talent with local businesses. And placed over 80 students into employment.',
-  closing:
-    'This project highlighted the value of slowing down early to gain clarity. The initial discovery phase reduced risk, reduced rework, improved decision-making, and ultimately led to a stronger result.',
-  client: 'Holmesglen Institute',
-  acknowledgements: 'Partners listed here',
-  team: ['Benny Sheerin, role', 'Team member, role', 'Team member, role'],
-  sections: [
-    {
-      title: 'The problem',
-      intro: 'Key challenges included:',
-      bullets: [
-        'Fragmented systems and inconsistent experiences',
-        'Limited visibility over content ownership',
-        'Difficulty prioritising improvements'
-      ],
-      body: 'There was broad agreement that change was needed, but no shared understanding of where to start.'
-    },
-    {
-      title: 'Our approach',
-      intro: 'We began with a Discovery & Direction phase to clarify:',
-      bullets: ['Core user needs', 'Business constraints', 'Success criteria'],
-      body: 'This created alignment across stakeholders and a clear path forward. From there, we worked closely with internal teams through design and development, iterating and refining as we learned more.'
-    },
-    {
-      title: 'The solution',
-      intro: 'The final solution included:',
-      bullets: [
-        'A redesigned information architecture',
-        'A clearer content management approach',
-        'A modern, maintainable technical foundation'
-      ],
-      body: 'Design and development decisions were made collaboratively, balancing usability, performance, and long-term support.'
-    },
-    {
-      title: 'The outcome',
-      intro: 'The new platform:',
-      bullets: [
-        'Improved usability for students and staff',
-        'Reduced internal friction and rework',
-        'Provided a scalable foundation for future initiatives'
-      ],
-      body: 'Perhaps most importantly, the organisation gained confidence in its digital direction.'
-    }
-  ]
-}
 ---
 
-<Layout title={caseStudy.title} description={caseStudy.intro}>
+<Layout title="Holmesglen Institute" description="">
   <article id="case-study-page">
     <section class="pt-5 lg:pt-10 pb-8 lg:pb-14">
       <Grid>
@@ -70,25 +16,22 @@ const caseStudy = {
           <div class="flex flex-col gap-6">
             <div>
               <h1 class="font-sans text-[clamp(3rem,5.5vw,4.875rem)] leading-[0.96] tracking-[-0.04em]">
-                {caseStudy.title}
+                Holmesglen Institute
               </h1>
               <div class="case-study-meta-actions mt-4 flex w-full flex-wrap items-center gap-4 lg:flex-nowrap">
                 <div
                   class="case-study-meta-row flex flex-1 flex-wrap gap-x-4 gap-y-2 font-sans text-sm leading-[1.3] text-[color-mix(in_oklab,var(--color-black)_55%,transparent)]"
                 >
                   <span class="inline-flex flex-wrap gap-1"
-                    ><span class="text-[color-mix(in_oklab,var(--color-black)_30%,transparent)]">Sector</span>{
-                      caseStudy.sector
-                    }</span
+                    ><span class="text-[color-mix(in_oklab,var(--color-black)_30%,transparent)]">Sector</span
+                    >Education</span
                   >
                   <span>
                     <span class="text-[color-mix(in_oklab,var(--color-black)_30%,transparent)]">Services</span>
-                    {caseStudy.services.join(' ')}
+                    Discovery + direction, Design, Development
                   </span>
                   <span class="inline-flex flex-wrap gap-1"
-                    ><span class="text-[color-mix(in_oklab,var(--color-black)_30%,transparent)]">Duration</span>{
-                      caseStudy.duration
-                    }</span
+                    ><span class="text-[color-mix(in_oklab,var(--color-black)_30%,transparent)]">Duration</span>3 months</span
                   >
                 </div>
               </div>
