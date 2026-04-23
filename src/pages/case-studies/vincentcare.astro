@@ -1,10 +1,318 @@
 ---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
+import mbImage from '@assets/mb.png'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
+import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
+import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
+import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
 ---
 
 <Layout
-  title="VincentCare Website Design Case Study"
+  title="Vincent Care Case Study"
   description="How Pixel Agency redesigned VincentCare's website, achieving a 14% increase in donations and 22% longer session times, directly supporting their not-for-profit mission."
 >
-  <!-- Page content goes here -->
+  <article id="case-study-page">
+    <CaseStudyHeader>
+      <span slot="title">Vincent Care</span>
+      <span slot="industry">Not-for-profit</span>
+      <span slot="services">Discovery + direction, Design, Development</span>
+      <span slot="duration">3 months</span>
+    </CaseStudyHeader>
+
+    <CaseStudyToggleButton />
+
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <CaseStudyImages
+              heroImage={{ src: mbImage }}
+              summary="How Pixel Agency redesigned VincentCare's website, achieving a 14% increase in donations and 22% longer session times, directly supporting their not-for-profit mission."
+              squareImages={[{ src: mbImage }, { src: mbImage }]}
+              wideImages={[{ src: mbImage }, { src: mbImage }]}
+            />
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <CaseStudyShout>Increasing donations and engagement.</CaseStudyShout>
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p>
+                VincentCare is one of Victoria's leading not-for-profit providers of support services for people
+                experiencing homelessness and disadvantage. Operating under the St. Vincent de Paul Society, they
+                deliver essential housing, mental health, alcohol and other drug support, and social inclusion programs
+                to some of the most vulnerable people in the community. For the people they serve, VincentCare is a
+                lifeline.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The problem" textColour="text-pixel-red">
+              <p>
+                VincentCare needed a digital presence that matched the seriousness and accessibility of the work they
+                do. Their existing website wasn't meeting the needs of their users, many of whom access the internet via
+                lower-powered smartphones, or the organisation's growing reliance on online fundraising as a primary
+                revenue channel. With a non-technical internal team and critical services to communicate clearly, they
+                needed a partner who could guide them through the whole journey, not just deliver a finished product and
+                walk away.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
+              <p>
+                We started with discovery, working closely with VincentCare's stakeholders to understand their users,
+                their services, and the practical constraints of managing a website without a dedicated technical team.
+                That process shaped every decision that followed, from platform choice to content structure to how the
+                site would be maintained long after launch.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution" textColour="text-pixel-green">
+              <p>
+                WordPress was the right foundation: resilient, mobile-optimised, and manageable by a non-technical team
+                without developer dependency. We designed and built a site structured around clarity and accessibility,
+                so people in difficult circumstances (often on low-end devices with unreliable connections) could find
+                the information and support they needed without friction.
+              </p><br />
+              <p>
+                The most complex element was the donation integration. VincentCare's fundraising processes involved
+                internal systems that weren't straightforward to connect, a challenge we worked through carefully to
+                deliver a seamless giving experience for donors without placing additional burden on the VincentCare
+                team. The result was a website that does more than inform. It actively supports the organisation's
+                mission by converting visitor intent into fundraising outcomes.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results" textColour="text-pixel-blue">
+              <p>The new site delivered real improvements across the metrics that matter most for a not-for-profit:</p>
+              <CaseStudyResults
+                results={[
+                  {
+                    title: '14% increase in donations',
+                    description: "now actively supports VincentCare's fundraising mission",
+                    backgroundColour: '#e8c42f'
+                  },
+                  {
+                    title: '+22% average time on site',
+                    description: 'visitors engaging more deeply with services + content',
+                    backgroundColour: '#6498c9'
+                  },
+                  {
+                    title: 'Accessible, mobile-optimised',
+                    description: 'experience serving users on a wide range of devices',
+                    backgroundColour: '#F37992'
+                  },
+                  {
+                    title: 'Self-managed platform',
+                    description: 'without technical support for day-to-day updates',
+                    backgroundColour: '#599e83'
+                  }
+                ]}
+              />
+
+              <div class="mt-6 lg:mt-12"></div>
+              <CaseStudyShout
+                >For an organisation that depends on community support to fund its work, a website that converts more
+                visitors into donors is a direct contribution to the people VincentCare serves.</CaseStudyShout
+              >
+            </CaseStudySectionText>
+
+            <CaseStudyMetaData
+              client={{ name: 'VincentCare', url: 'https://www.vincentcare.org.au/' }}
+              industry={['Not-for-profit']}
+              serviceNames={['Discovery + direction', 'Design', 'Development']}
+            />
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    {/* Navigation section */}
+    <CaseStudyNav
+      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
+      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
+    />
+
+    <ContactForm
+      title="Discuss a similar challenge"
+      backgroundColor="var(--color-pixel-pink)"
+      displayDescription={false}
+    />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
+      .case-study-left-pane {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
+      }
+
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+        max-height: 5000px;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
+
+      function getDefaultState() {
+        return 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      setToggleTextColor()
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
 </Layout>
