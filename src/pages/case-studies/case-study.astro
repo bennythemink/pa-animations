@@ -8,6 +8,7 @@ import CaseStudySectionText from '@components/case-studies/CaseStudySectionText.
 import CaseStudyResults from '@components/case-studies/CaseStudyResults.astro'
 import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
 import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
 ---
 
 <Layout title="Holmesglen Institute" description="">
@@ -155,32 +156,11 @@ import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudy
               />
             </CaseStudySectionText>
 
-            <div class="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 pt-4 lg:grid-cols-4">
-              <div>
-                <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">
-                  Client
-                </p>
-                <p class="text-base leading-[1.35] underline underline-offset-[0.15em]">
-                  <a href="https://www.holmesglen.edu.au/">Holmesglen Institute</a>
-                </p>
-              </div>
-
-              <div>
-                <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">
-                  Sector
-                </p>
-                <p class="text-base leading-[1.35]">Education</p>
-              </div>
-
-              <div>
-                <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">
-                  Services
-                </p>
-                <p class="text-base leading-[1.35]">Discovery + direction</p>
-                <p class="text-base leading-[1.35]">Design</p>
-                <p class="text-base leading-[1.35]">Development</p>
-              </div>
-            </div>
+            <CaseStudyMetaData
+              client={{ name: 'Holmesglen Institute', url: 'https://www.holmesglen.edu.au/' }}
+              sector={['Education']}
+              serviceNames={['Discovery + direction', 'Design', 'Development']}
+            />
           </div>
         </div>
       </Grid>

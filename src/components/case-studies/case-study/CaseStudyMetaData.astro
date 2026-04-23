@@ -1,0 +1,49 @@
+---
+type Link = {
+  name: string
+  url: string
+}
+
+const services = [
+  { name: 'Discovery + direction', url: '/services/discovery' },
+  { name: 'Design', url: '/services/design' },
+  { name: 'Development', url: '/services/development' },
+  { name: 'AI', url: '/services/ai' },
+  { name: 'Consulting', url: '/services/consulting' }
+]
+
+type Props = {
+  client: Link
+  sector: string[]
+  serviceNames: (typeof services)[number]['name'][]
+}
+
+const { client, sector, serviceNames } = Astro.props as Props
+
+const selectedServices = services.filter((service) => serviceNames.includes(service.name))
+---
+
+<div class="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 pt-4 lg:grid-cols-4">
+  <div>
+    <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">Client</p>
+    <p class="text-base leading-[1.35] underline underline-offset-[0.15em]">
+      <a href={client.url}>{client.name}</a>
+    </p>
+  </div>
+
+  <div>
+    <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">Sector</p>
+    <p class="text-base leading-[1.35]">{sector.join(', ')}</p>
+  </div>
+
+  <div>
+    <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">Services</p>
+    {
+      selectedServices.map((service) => (
+        <p class="text-base leading-[1.35]">
+          <a href={service.url}>{service.name}</a>
+        </p>
+      ))
+    }
+  </div>
+</div>
