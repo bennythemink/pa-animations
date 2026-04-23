@@ -4,8 +4,8 @@ import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
 import { Image } from 'astro:assets'
 import mbImage from '@assets/mb.png'
-import CaseStudySectionText from '@components/case-studies/CaseStudySectionText.astro'
-import CaseStudyResults from '@components/case-studies/CaseStudyResults.astro'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
 import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
 import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
 import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
@@ -17,7 +17,7 @@ import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro
   <article id="case-study-page">
     <CaseStudyHeader>
       <span slot="title">Holmesglen Institute</span>
-      <span slot="sector">Education</span>
+      <span slot="industry">Education</span>
       <span slot="services"> Discovery + direction, Design, Development </span>
       <span slot="duration">3 months</span>
     </CaseStudyHeader>
@@ -156,7 +156,7 @@ import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro
 
             <CaseStudyMetaData
               client={{ name: 'Holmesglen Institute', url: 'https://www.holmesglen.edu.au/' }}
-              sector={['Education']}
+              industry={['Education']}
               serviceNames={['Discovery + direction', 'Design', 'Development']}
             />
           </div>
@@ -166,8 +166,8 @@ import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro
 
     {/* Navigation section */}
     <CaseStudyNav
-      previousCaseStudy={{ name: 'Previous case study', url: '#' }}
-      nextCaseStudy={{ name: 'Next case study', url: '#' }}
+      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
+      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
     />
 
     <ContactForm

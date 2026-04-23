@@ -11,11 +11,11 @@ const services = [
 
 type Props = {
   client: Link
-  sector: string[]
+  industry: string[]
   serviceNames: (typeof services)[number]['name'][]
 }
 
-const { client, sector, serviceNames } = Astro.props as Props
+const { client, industry, serviceNames } = Astro.props as Props
 
 const selectedServices = services.filter((service) => serviceNames.includes(service.name))
 ---
@@ -29,8 +29,8 @@ const selectedServices = services.filter((service) => serviceNames.includes(serv
   </div>
 
   <div>
-    <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">Sector</p>
-    <p class="text-base leading-[1.35]">{sector.join(', ')}</p>
+    <p class="mb-[0.35rem] font-sans text-sm text-[color-mix(in_oklab,var(--color-black)_35%,transparent)]">Industry</p>
+    <p class="text-base leading-[1.35]">{industry.join(', ')}</p>
   </div>
 
   <div>
