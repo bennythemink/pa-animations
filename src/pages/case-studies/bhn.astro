@@ -1,10 +1,324 @@
 ---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
+import mbImage from '@assets/mb.png'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
+import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
+import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
+import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
 ---
 
 <Layout
-  title="Better Health Network Website Redesign Case Study"
-  description="How Pixel Agency unified three merging community health organisations online — achieving a 115% increase in total visitors within six months of launch."
+  title="Better Health Network"
+  description="How Pixel Agency unified three merging community health organisations online — achieving a 115% increase in
+total visitors within six months of launch."
 >
-  <!-- Page content goes here -->
+  <article id="case-study-page">
+    <CaseStudyHeader>
+      <span slot="title">Better Health Network</span>
+      <span slot="industry">Healthcare</span>
+      <span slot="services">Discovery + direction, Design, Development</span>
+      <span slot="duration">3 months</span>
+    </CaseStudyHeader>
+
+    <CaseStudyToggleButton />
+
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <CaseStudyImages
+              heroImage={{ src: mbImage }}
+              summary="Unifying three merged organisations under one brand and delivering a 115% increase in total website visitors."
+              squareImages={[{ src: mbImage }, { src: mbImage }]}
+              wideImages={[{ src: mbImage }, { src: mbImage }]}
+            />
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <CaseStudyShout>Connecting overlooked talent with local businesses.</CaseStudyShout>
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p>
+                Better Health Network (BHN) is a not-for-profit community health organisation serving south-eastern
+                Melbourne. They provide integrated health, allied health, dental, and social support services, with a
+                focus on accessibility and inclusion.
+              </p><br />
+              <p>
+                BHN delivers low-cost services to residents with health care or pension cards, NDIS participants, aged
+                care recipients, and families needing specialised care. Their purpose is to make quality health services
+                available to the people who need them most.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The problem" textColour="text-pixel-red">
+              <p>
+                BHN was formed through the amalgamation of three well-established and well-regarded community health
+                organisations: Central Bayside Community Health Service, Connect Health & Community, and Star Health.
+                Each had its own identity, its own web presence, and its own loyal patient base.
+              </p><br />
+              <p>
+                The challenge wasn't simply building a new website. It was ensuring that patients who had trusted these
+                organisations for years could find their way to the same services under a new name, without confusion,
+                disruption, or (in a health context) any risk of people disengaging from care they depended on. Getting
+                the messaging wrong was more than a marketing problem. It had real consequences for real people.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
+              <p>
+                We started with discovery, running a series of structured sessions with stakeholders across all three
+                organisations to map the full landscape of services and determine how they would be presented under one
+                roof. The central design challenge was service findability. How would a patient who had always gone to
+                one provider navigate an entirely new organisation to find the care they needed?
+              </p><br />
+              <p>
+                Through user journey mapping and prototyping, we worked through the UX before a single page was
+                designed, so the structure of the new site was shaped by how patients actually think and search, rather
+                than by how the organisation was internally structured.
+              </p><br />
+              <p>
+                We were provided with a new logo and brand colours and tasked with building everything else. We created
+                the full visual and digital identity from the ground up, translating the new brand into a website that
+                felt coherent, trustworthy, and distinctly BHN.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution" textColour="text-pixel-green">
+              <p>
+                With three large organisations each navigating their own workflows, stakeholder consultations, and
+                internal processes, waiting for everything to be finalised before going live wasn't an option. Patients
+                needed clear information now. We developed a phased approach: first, a focused information mini-site to
+                communicate the amalgamation quickly and clearly; second, a fully branded website with complete service
+                information; and third, a service-focused web experience designed around the UX work, ready to launch
+                once community consultations were complete. The three legacy websites were kept live for a full year,
+                giving patients time to find their footing before the transition was complete.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results" textColour="text-pixel-blue">
+              <p>The phased approach delivered a smooth transition that protected patient access throughout:</p>
+              <CaseStudyResults
+                results={[
+                  {
+                    title: '80%+ of combined traffic',
+                    description: 'transferred to the new site within three months of launch',
+                    backgroundColour: '#e8c42f'
+                  },
+                  {
+                    title: '100% transfer complete',
+                    description: 'within six months, with no patients left behind',
+                    backgroundColour: '#6498c9'
+                  },
+                  {
+                    title: '~115% increase',
+                    description: 'in total website visitors compared to the three legacy sites combined',
+                    backgroundColour: '#F37992'
+                  }
+                ]}
+              />
+              <p>
+                For a community health organisation, a website is more than a marketing asset. More visitors finding
+                their way in means more people accessing the care they need.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudyMetaData
+              client={{ name: 'BHN', url: 'https://www.bhn.org.au' }}
+              industry={['Health']}
+              serviceNames={['Discovery + direction', 'Design', 'Development']}
+            />
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    {/* Navigation section */}
+    <CaseStudyNav
+      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
+      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
+    />
+
+    <ContactForm
+      title="Discuss a similar challenge"
+      backgroundColor="var(--color-pixel-pink)"
+      displayDescription={false}
+    />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
+      .case-study-left-pane {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
+      }
+
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+        max-height: 5000px;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
+
+      function getDefaultState() {
+        return 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      setToggleTextColor()
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
 </Layout>
