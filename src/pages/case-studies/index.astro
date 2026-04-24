@@ -5,6 +5,7 @@ import { Image } from 'astro:assets'
 import mbImage from '@assets/mb.png'
 import CTA from '@components/CTA.astro'
 import CaseStudyCard from '@components/case-studies/CaseStudyCard.astro'
+import Plus from '@components/signs/Plus.astro'
 
 interface CaseStudy {
   title: string
@@ -31,7 +32,7 @@ const caseStudies: CaseStudy[] = [
     title: 'Dare Iced Coffee',
     slug: 'dare',
     industry: ['Food & Beverage'],
-    services: ['Design', 'Development'],
+    services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       "Transformed Dare Iced Coffee's digital presence, delivering a 200%+ increase in time on site and a meaningful reduction in support load.",
     colour: 'bg-pixel-red',
@@ -63,7 +64,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Education'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
-      'Built a student-employer platform from the ground up. 1,200+ registered employers and 80+ student job placements in year one.',
+      'Built a student-employer platform from the ground up. 200+ registered students, 1,200+ registered employers and 80+ student job placements in year one.',
     colour: 'bg-pixel-cream',
     image: mbImage
   },
@@ -82,7 +83,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Food & Beverage'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
-      "Transformed Yoplait Australia's digital presence, delivering 130% more traffic and 150% longer session times.",
+      "Transformed Yoplait Australia's digital presence, delivering +30% more traffic and +50% longer session times.",
     colour: 'bg-pixel-red',
     image: mbImage
   }
@@ -117,8 +118,8 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
       </div>
       <div class="col-span-full lg:col-start-7 lg:col-span-5 mt-4 lg:mt-0">
         <p class="font-sans text-3xl lg:text-4xl">
-          A selection of the clients we were excited to partner with, and the projects we were proud to deliver results
-          for.
+          A selection of the clients we were excited to partner with <Plus size={24} desktopSize={36} /> the projects we were
+          proud to deliver results for.
         </p>
       </div>
 
