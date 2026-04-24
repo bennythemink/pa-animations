@@ -2,6 +2,7 @@ import mbImage from '@assets/mb.png'
 import holmesglen from '@assets/case-studies/holmesglen/tile.webp'
 import vincentcare from '@assets/case-studies/vincentcare/tile.webp'
 import yoplait from '@assets/case-studies/yoplait/tile.webp'
+import bhn from '@assets/case-studies/bhn/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -37,7 +38,7 @@ const caseStudies: CaseStudy[] = [
     overview:
       'Unified three merging community health organisations online, achieving a 115% increase in total visitors within six months of launch.',
     colour: 'bg-pixel-green',
-    image: mbImage,
+    image: bhn,
     published: true,
     featured: true
   },
