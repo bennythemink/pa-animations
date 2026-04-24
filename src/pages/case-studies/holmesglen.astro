@@ -12,6 +12,14 @@ import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.a
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
 import { getCaseStudyNav } from '@data/caseStudies'
+
+import hth1 from '@assets/case-studies/holmesglen/hth-1.svg'
+import hth2 from '@assets/case-studies/holmesglen/hth-2.svg'
+import hthAbout from '@assets/case-studies/holmesglen/hth-about.webp'
+import hthHome from '@assets/case-studies/holmesglen/hth-homepage.webp'
+import hthResources from '@assets/case-studies/holmesglen/hth-resources.webp'
+import holmesglen from '@assets/case-studies/holmesglen/holmesglen.webp'
+
 const { previous, next } = getCaseStudyNav('holmesglen')
 ---
 
@@ -35,10 +43,10 @@ const { previous, next } = getCaseStudyNav('holmesglen')
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: mbImage }}
+              heroImage={{ src: hthHome }}
               summary="How a discovery-led portal helped connect overlooked talent with local businesses. And placed over 80 students into employment."
-              squareImages={[{ src: mbImage }, { src: mbImage }]}
-              wideImages={[{ src: mbImage }, { src: mbImage }]}
+              squareImages={[{ src: holmesglen }, { src: hth2 }]}
+              wideImages={[{ src: hthAbout }, { src: hthResources }]}
             />
           </div>
 

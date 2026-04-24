@@ -64,3 +64,13 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 | 900    | Black            |
 
 Tailwind utility classes follow the same naming: font-thin, font-extralight, font-light, font-normal, font-medium, font-semibold, font-bold, font-extrabold, font-black.
+
+## Case Study Images
+
+The individual case study pages have a number of images. Each image type has its own aspect ratio, as shown in the table below. When creating images for these, ensure that you crop them using the below ratios for best results.
+
+| Prop           | Container aspect | Crop to  |
+| -------------- | ---------------- | -------- |
+| `heroImage`    | `aspect-video`   | **16:9** |
+| `squareImages` | `aspect-square`  | **1:1**  |
+| `wideImages`   | `aspect-16/7`    | **16:7** |
