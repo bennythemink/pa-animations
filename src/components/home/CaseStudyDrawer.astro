@@ -1,5 +1,5 @@
 ---
-import mbPlaceholder from '@assets/mb.png'
+import { featuredCaseStudies, resolveColour } from '@data/caseStudies'
 
 interface CaseStudyItem {
   title: string
@@ -14,18 +14,13 @@ interface Props {
   size?: 'default' | 'small'
 }
 
-const defaultItems: CaseStudyItem[] = [
-  { title: 'BHN', slug: '/case-studies/bhn', image: mbPlaceholder, colour: '#479f82' },
-  { title: 'Holmesglen Institute', slug: '/case-studies/holmesglen', image: mbPlaceholder, colour: '#e38093' },
-  { title: 'Fletchers Insulation', slug: '/case-studies/insulation', image: mbPlaceholder, colour: '#63a3d2' },
-  { title: 'Yoplait', slug: '/case-studies/yoplait', image: mbPlaceholder, colour: '#f09339' },
-  {
-    title: 'VincentCare',
-    slug: '/case-studies/vincentcare',
-    image: mbPlaceholder,
-    colour: '#f5c844'
-  }
-]
+const defaultItems: CaseStudyItem[] = featuredCaseStudies.map((cs) => ({
+  title: cs.title,
+  slug: `/case-studies/${cs.slug}`,
+  image: cs.image,
+  colour: cs.colour,
+  imagePosition: cs.imagePosition
+}))
 
 const { items = defaultItems, size = 'default' } = Astro.props
 
@@ -50,30 +45,33 @@ const containerClass =
   data-banner-height-desktop={BANNER_HEIGHT_DESKTOP}
 >
   {
-    items.map((item, i) => (
-      <div
-        class="drawer absolute inset-x-0 h-full flex flex-col"
-        data-index={i}
-        style={`z-index: ${i + 1}; top: ${i * BANNER_HEIGHT_MOBILE}px;`}
-      >
-        <button
-          class="drawer-banner w-full text-left px-5 font-sans font-normal text-sm lg:text-base flex items-center shrink-0 hover:brightness-95 transition-[filter] cursor-pointer"
-          style={`background-color: ${item.colour}; height: ${BANNER_HEIGHT_MOBILE}px;`}
+    items.map((item, i) => {
+      const cr = resolveColour(item.colour)
+      return (
+        <div
+          class="drawer absolute inset-x-0 h-full flex flex-col"
           data-index={i}
-          type="button"
+          style={`z-index: ${i + 1}; top: ${i * BANNER_HEIGHT_MOBILE}px;`}
         >
-          <span class="underline underline-offset-2">{item.title}</span>
-        </button>
-        <a href={item.slug} target="_blank" rel="noopener noreferrer" class="drawer-image block overflow-hidden">
-          <img
-            src={getImageSrc(item.image)}
-            alt={item.title}
-            class="w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0"
-            style={`object-position: ${item.imagePosition ?? 'center'};`}
-          />
-        </a>
-      </div>
-    ))
+          <button
+            class={`drawer-banner w-full text-left px-5 font-sans font-normal text-sm lg:text-base flex items-center shrink-0 hover:brightness-95 transition-[filter] cursor-pointer${cr.class ? ` ${cr.class}` : ''}`}
+            style={`${cr.style ? `${cr.style}; ` : ''}height: ${BANNER_HEIGHT_MOBILE}px;`}
+            data-index={i}
+            type="button"
+          >
+            <span class="underline underline-offset-2">{item.title}</span>
+          </button>
+          <a href={item.slug} target="_blank" rel="noopener noreferrer" class="drawer-image block overflow-hidden">
+            <img
+              src={getImageSrc(item.image)}
+              alt={item.title}
+              class="w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0"
+              style={`object-position: ${item.imagePosition ?? 'center'};`}
+            />
+          </a>
+        </div>
+      )
+    })
   }
 </div>
 

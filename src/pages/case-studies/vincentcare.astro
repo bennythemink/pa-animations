@@ -11,6 +11,8 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+import { getCaseStudyNav } from '@data/caseStudies'
+const { previous, next } = getCaseStudyNav('vincentcare')
 ---
 
 <Layout
@@ -134,10 +136,7 @@ import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages
     </section>
 
     {/* Navigation section */}
-    <CaseStudyNav
-      previousCaseStudy={{ name: 'Holmesglen', slug: 'holmesglen' }}
-      nextCaseStudy={{ name: 'Yoplait', slug: 'yoplait' }}
-    />
+    <CaseStudyNav previousCaseStudy={previous} nextCaseStudy={next} />
 
     <ContactForm
       title="Discuss a similar challenge"

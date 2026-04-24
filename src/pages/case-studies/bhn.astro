@@ -11,6 +11,8 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+import { getCaseStudyNav } from '@data/caseStudies'
+const { previous, next } = getCaseStudyNav('bhn')
 ---
 
 <Layout
@@ -144,7 +146,7 @@ total visitors within six months of launch."
   </article>
 
   {/* Navigation section */}
-  <CaseStudyNav nextCaseStudy={{ name: 'Dare Iced Coffee', slug: 'dare' }} />
+  <CaseStudyNav previousCaseStudy={previous} nextCaseStudy={next} />
 
   <ContactForm
     title="Discuss a similar challenge"

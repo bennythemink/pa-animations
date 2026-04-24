@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import { resolveColour } from '@data/caseStudies'
 
 interface Props {
   title: string
@@ -12,10 +13,12 @@ interface Props {
 }
 
 const { title, slug, industry, services, overview, colour, image } = Astro.props
+const colourResolved = resolveColour(colour)
 ---
 
 <div
-  class={`case-study-card h-67 lg:h-138 ${colour} relative overflow-hidden`}
+  class={`case-study-card h-67 lg:h-138 ${colourResolved.class ?? ''} relative overflow-hidden`}
+  style={colourResolved.style}
   data-industries={JSON.stringify(industry)}
 >
   <div class="absolute inset-0">
@@ -23,7 +26,8 @@ const { title, slug, industry, services, overview, colour, image } = Astro.props
   </div>
 
   <div
-    class={`case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col pt-2 ${colour} transition-[height,padding-top,padding-bottom] duration-300 ease-in-out overflow-hidden`}
+    class={`case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col pt-2 ${colourResolved.class ?? ''} transition-[height,padding-top,padding-bottom] duration-300 ease-in-out overflow-hidden`}
+    style={colourResolved.style}
   >
     <h2 class="text-base transition-[font-size,padding-left] duration-300 ease-in-out shrink-0 px-2 lg:px-4">
       {title}
