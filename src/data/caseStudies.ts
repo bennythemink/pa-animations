@@ -1,6 +1,7 @@
 import mbImage from '@assets/mb.png'
 import holmesglen from '@assets/case-studies/holmesglen/tile.webp'
 import vincentcare from '@assets/case-studies/vincentcare/tile.webp'
+import yoplait from '@assets/case-studies/yoplait/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -120,7 +121,7 @@ const caseStudies: CaseStudy[] = [
     overview:
       "Transformed Yoplait Australia's digital presence, delivering +30% more traffic and +50% longer session times.",
     colour: 'bg-pixel-orange',
-    image: mbImage,
+    image: yoplait,
     published: true,
     featured: true
   }
