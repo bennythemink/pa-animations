@@ -114,7 +114,7 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
     <Grid>
       <!-- Heading row -->
       <div class="col-span-full lg:col-start-2 lg:col-span-4">
-        <h1 class="text-base lg:text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-orange">Case Studies</h1>
+        <h1 class="text-[18px] lg:text-[40px] leading-[1.04] tracking-[-0.04em] text-pixel-orange">Case Studies</h1>
       </div>
       <div class="col-span-full lg:col-start-7 lg:col-span-5 mt-4 lg:mt-0">
         <p class="font-sans text-3xl lg:text-4xl">
@@ -130,7 +130,7 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
       >
         {
           allIndustries.map((ind) => (
-            <label class="industry-filter cursor-pointer font-sans font-normal inline-block bg-white px-4 py-2 text-base transition-colors select-none">
+            <label class="industry-filter cursor-pointer font-sans font-normal inline-block bg-white px-4 py-2 text-[18px] transition-colors select-none">
               <input type="checkbox" value={ind} class="industry-checkbox sr-only" />
               {ind}
             </label>
@@ -142,7 +142,7 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
         <button
           id="clear-filters"
           type="button"
-          class="font-sans text-base underline underline-offset-2 hover:opacity-70 transition-opacity hover:cursor-pointer"
+          class="font-sans text-[18px] underline underline-offset-2 hover:opacity-70 transition-opacity hover:cursor-pointer"
           >clear</button
         >
       </div>
