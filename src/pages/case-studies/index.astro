@@ -1,8 +1,6 @@
 ---
 import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
-import Equals from '@components/signs/Equals.astro'
-import Plus from '@components/signs/Plus.astro'
 import { Image } from 'astro:assets'
 import mbImage from '@assets/mb.png'
 import CTA from '@components/CTA.astro'
@@ -25,7 +23,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Health', 'Community'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
-      'Unified three merging community health organisations online — achieving a 115% increase in total visitors within six months of launch.',
+      'Unified three merging community health organisations online, achieving a 115% increase in total visitors within six months of launch.',
     colour: 'bg-pixel-green',
     image: mbImage
   },
@@ -55,7 +53,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Construction', 'Manufacturing'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
-      'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time — while cutting support requests by 30%.',
+      'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time, while cutting support requests by 30%.',
     colour: 'bg-pixel-orange',
     image: mbImage
   },
@@ -110,39 +108,6 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
   title="Case Studies"
   description="Real digital projects, real outcomes. See how Pixel Agency has helped organisations solve complex challenges through discovery, design, development, and AI."
 >
-  <!-- Hero -->
-  <!-- <section id="hero" class="pt-10 pb-12 lg:pt-16 lg:pb-20">
-    <Grid>
-      <div class="col-span-full lg:col-start-2 lg:col-span-10">
-        <p
-          class="text-2xl lg:text-[40px] leading-[1.15] tracking-[-0.02em] flex flex-wrap items-center gap-x-3 lg:gap-x-4"
-        >
-          <span>Real organisations</span>
-          <Plus size={20} desktopSize={32} />
-          <span>Real problems</span>
-          <Equals size={20} desktopSize={32} />
-          <span>Real outcomes</span>
-          <span class="inline-block w-5 h-5 lg:w-8 lg:h-8" style="background-color: var(--accent-bgc);"></span>
-        </p>
-      </div>
-      <div class="col-span-full lg:col-start-4 lg:col-span-6 mt-8 lg:mt-12 text-center">
-        <p>
-          These case studies are about the clients who trusted us with their challenges — and what became possible when
-          the right partnership was in place.
-        </p>
-        <p>
-          They show how clarity, collaboration, and experienced guidance come together to deliver meaningful results. If
-          any of these resonate with your situation, we’d be glad to talk.
-        </p>
-        <p>Every project here is work we were proud to take on — and proud to deliver.</p>
-
-        <div class="mt-6">
-          <CTA />
-        </div>
-      </div>
-    </Grid>
-  </section> -->
-
   <!-- Case Studies -->
   <section id="case-studies" class="lg:pb-20">
     <Grid>
