@@ -1,4 +1,6 @@
 import mbImage from '@assets/mb.png'
+import holmesglen from '@assets/case-studies/holmesglen/tile.webp'
+
 import type { ImageMetadata } from 'astro'
 
 export interface CaseStudy {
@@ -9,7 +11,7 @@ export interface CaseStudy {
   overview: string
   colour: string
   image: ImageMetadata
-  imagePosition?: string
+  imagePosition?: string // e.g. 'top', 'center', 'bottom'
   published: boolean
   featured: boolean
 }
@@ -81,7 +83,8 @@ const caseStudies: CaseStudy[] = [
     overview:
       'Built a student-employer platform from the ground up. 200+ registered students, 1,200+ registered employers and 80+ student job placements in year one.',
     colour: 'bg-pixel-pink',
-    image: mbImage,
+    image: holmesglen,
+    imagePosition: 'top',
     published: true,
     featured: true
   },
