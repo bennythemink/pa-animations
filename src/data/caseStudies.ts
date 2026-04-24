@@ -1,5 +1,6 @@
 import mbImage from '@assets/mb.png'
 import holmesglen from '@assets/case-studies/holmesglen/tile.webp'
+import vincentcare from '@assets/case-studies/vincentcare/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -76,7 +77,7 @@ const caseStudies: CaseStudy[] = [
     featured: true
   },
   {
-    title: 'Holmesglen',
+    title: 'Holmesglen Institute',
     slug: 'holmesglen',
     industry: ['Education'],
     services: ['Discovery + direction', 'Design', 'Development'],
@@ -107,7 +108,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview: "Redesigned VincentCare's website, achieving a 14% increase in donations and 22% longer session times.",
     colour: 'bg-pixel-yellow',
-    image: mbImage,
+    image: vincentcare,
     published: true,
     featured: true
   },

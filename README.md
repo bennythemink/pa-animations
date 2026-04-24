@@ -69,8 +69,9 @@ Tailwind utility classes follow the same naming: font-thin, font-extralight, fon
 
 The individual case study pages have a number of images. Each image type has its own aspect ratio, as shown in the table below. When creating images for these, ensure that you crop them using the below ratios for best results.
 
-| Prop           | Container aspect | Crop to  |
-| -------------- | ---------------- | -------- |
-| `heroImage`    | `aspect-video`   | **16:9** |
-| `squareImages` | `aspect-square`  | **1:1**  |
-| `wideImages`   | `aspect-16/7`    | **16:7** |
+| Prop           | Container aspect | Crop to  | Use.         |
+| -------------- | ---------------- | -------- | ------------ |
+| `heroImage`    | `aspect-video`   | **16:9** | 1st row      |
+| `squareImages` | `aspect-square`  | **1:1**  | 2nd row      |
+| `wideImages`   | `aspect-16/7`    | **16:7** | Other rows   |
+| `tile`         | `aspect-square`  | **1:1**  | Listing page |
