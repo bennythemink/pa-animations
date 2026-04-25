@@ -11,6 +11,12 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+
+import hero from '@assets/case-studies/simple/hero.webp'
+import squareOne from '@assets/case-studies/simple/squareOne.svg'
+import squareTwo from '@assets/case-studies/simple/squareTwo.webp'
+import wideOne from '@assets/case-studies/simple/wideOne.webp'
+import wideTwo from '@assets/case-studies/simple/wideTwo.webp'
 ---
 
 <Layout
@@ -34,10 +40,10 @@ SaaS stand out in a competitive enterprise market."
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: mbImage }}
+              heroImage={{ src: hero }}
               summary="A discovery-led redesign that helped an Australian SaaS platform cut through conservative branding, find its personality, and lift website leads by 26%."
-              squareImages={[{ src: mbImage }, { src: mbImage }]}
-              wideImages={[{ src: mbImage }, { src: mbImage }]}
+              squareImages={[{ src: squareOne }, { src: squareTwo }]}
+              wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
           </div>
 

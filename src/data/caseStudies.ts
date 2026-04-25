@@ -5,6 +5,7 @@ import yoplait from '@assets/case-studies/yoplait/tile.webp'
 import bhn from '@assets/case-studies/bhn/tile.webp'
 import farmers from '@assets/case-studies/farmers-union/tile.webp'
 import stemhub from '@assets/case-studies/stemhub/tile.webp'
+import simple from '@assets/case-studies/simple/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -147,6 +148,17 @@ const caseStudies: CaseStudy[] = [
     overview: 'TBD',
     colour: 'bg-pixel-orange',
     image: farmers,
+    published: false,
+    featured: false
+  },
+  {
+    title: 'Simple.io',
+    slug: 'simple',
+    industry: ['SaaS', 'Technology'],
+    services: ['Discovery + direction', 'Design', 'Development'],
+    overview: 'TBD',
+    colour: 'bg-pixel-orange',
+    image: simple,
     published: false,
     featured: false
   }
