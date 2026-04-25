@@ -10,6 +10,7 @@ import insulation from '@assets/case-studies/insulation/tile.webp'
 import eel from '@assets/case-studies/eel/tile.webp'
 import dare from '@assets/case-studies/dare/tile.webp'
 import toll from '@assets/case-studies/toll/tile.webp'
+import bawbaw from '@assets/case-studies/bawbaw/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -174,6 +175,17 @@ const caseStudies: CaseStudy[] = [
     overview: 'TBD',
     colour: 'bg-pixel-orange',
     image: toll,
+    published: false,
+    featured: false
+  },
+  {
+    title: 'Mt Baw Baw',
+    slug: 'bawbaw',
+    industry: ['Tourism'],
+    services: ['Discovery + direction', 'Design', 'Development'],
+    overview: 'TBD',
+    colour: 'bg-pixel-orange',
+    image: bawbaw,
     published: false,
     featured: false
   }

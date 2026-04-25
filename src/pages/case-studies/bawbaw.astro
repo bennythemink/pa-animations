@@ -2,7 +2,6 @@
 import ContactForm from '@components/ContactForm.astro'
 import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
-import mbImage from '@assets/mb.png'
 import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
 import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
 import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
@@ -11,6 +10,12 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+
+import hero from '@assets/case-studies/bawbaw/hero.webp'
+import squareOne from '@assets/case-studies/bawbaw/squareOne.svg'
+import squareTwo from '@assets/case-studies/bawbaw/squareTwo.webp'
+import wideOne from '@assets/case-studies/bawbaw/wideOne.webp'
+import wideTwo from '@assets/case-studies/bawbaw/wideTwo.webp'
 ---
 
 <Layout
@@ -33,10 +38,10 @@ import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: mbImage }}
+              heroImage={{ src: hero }}
               summary="Mt. Baw Baw, a popular tourist destination, wanted to enhance their online presence + improve customer engagement."
-              squareImages={[{ src: mbImage }, { src: mbImage }]}
-              wideImages={[{ src: mbImage }, { src: mbImage }]}
+              squareImages={[{ src: squareOne }, { src: squareTwo }]}
+              wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
           </div>
 
