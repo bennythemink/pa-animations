@@ -11,6 +11,12 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+
+import hero from '@assets/case-studies/stemhub/hero.webp'
+import squareOne from '@assets/case-studies/stemhub/squareOne.svg'
+import squareTwo from '@assets/case-studies/stemhub/squareTwo.webp'
+import wideOne from '@assets/case-studies/stemhub/wideOne.webp'
+import wideTwo from '@assets/case-studies/stemhub/wideTwo.webp'
 ---
 
 <Layout
@@ -34,10 +40,10 @@ thoughtful concept built to open new pathways for students."
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: mbImage }}
+              heroImage={{ src: hero }}
               summary="Partnering with Swinburne University to design a digital STEM outreach platform, a thoughtful concept built to open new pathways for students."
-              squareImages={[{ src: mbImage }, { src: mbImage }]}
-              wideImages={[{ src: mbImage }, { src: mbImage }]}
+              squareImages={[{ src: squareOne }, { src: squareTwo }]}
+              wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
           </div>
 

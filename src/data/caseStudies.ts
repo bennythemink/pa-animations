@@ -4,6 +4,7 @@ import vincentcare from '@assets/case-studies/vincentcare/tile.webp'
 import yoplait from '@assets/case-studies/yoplait/tile.webp'
 import bhn from '@assets/case-studies/bhn/tile.webp'
 import farmers from '@assets/case-studies/farmers-union/tile.webp'
+import stemhub from '@assets/case-studies/stemhub/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -128,13 +129,13 @@ const caseStudies: CaseStudy[] = [
     featured: true
   },
   {
-    title: 'Farmers Union Greek Style Yogurt',
-    slug: 'farmers',
-    industry: ['Food & Beverage'],
+    title: 'Stemhub',
+    slug: 'stemhub',
+    industry: ['Education'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview: 'TBD',
     colour: 'bg-pixel-orange',
-    image: farmers,
+    image: stemhub,
     published: false,
     featured: false
   }
