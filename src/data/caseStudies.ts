@@ -9,6 +9,7 @@ import simple from '@assets/case-studies/simple/tile.webp'
 import insulation from '@assets/case-studies/insulation/tile.webp'
 import eel from '@assets/case-studies/eel/tile.webp'
 import dare from '@assets/case-studies/dare/tile.webp'
+import toll from '@assets/case-studies/toll/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -162,6 +163,17 @@ const caseStudies: CaseStudy[] = [
     overview: 'TBD',
     colour: 'bg-pixel-orange',
     image: simple,
+    published: false,
+    featured: false
+  },
+  {
+    title: 'Toll Uncrewed Systems',
+    slug: 'toll',
+    industry: ['Logistics', 'Emergency Services'],
+    services: ['Discovery + direction', 'Design'],
+    overview: 'TBD',
+    colour: 'bg-pixel-orange',
+    image: toll,
     published: false,
     featured: false
   }
