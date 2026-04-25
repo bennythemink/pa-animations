@@ -3,6 +3,7 @@ import holmesglen from '@assets/case-studies/holmesglen/tile.webp'
 import vincentcare from '@assets/case-studies/vincentcare/tile.webp'
 import yoplait from '@assets/case-studies/yoplait/tile.webp'
 import bhn from '@assets/case-studies/bhn/tile.webp'
+import farmers from '@assets/case-studies/farmers-union-greek-style-yogurt/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -125,6 +126,17 @@ const caseStudies: CaseStudy[] = [
     image: yoplait,
     published: true,
     featured: true
+  },
+  {
+    title: 'Farmers Union Greek Style Yogurt',
+    slug: 'farmers',
+    industry: ['Food & Beverage'],
+    services: ['Discovery + direction', 'Design', 'Development'],
+    overview: 'TBD',
+    colour: 'bg-pixel-orange',
+    image: farmers,
+    published: false,
+    featured: false
   }
 ]
 
