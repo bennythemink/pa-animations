@@ -1,11 +1,13 @@
 import mbImage from '@assets/mb.png'
-import holmesglen from '@assets/case-studies/holmesglen/tile.webp'
+import holmesglen from '@assets/case-studies/holmesglen/tile.svg'
 import vincentcare from '@assets/case-studies/vincentcare/tile.webp'
 import yoplait from '@assets/case-studies/yoplait/tile.webp'
 import bhn from '@assets/case-studies/bhn/tile.webp'
 import farmers from '@assets/case-studies/farmers-union/tile.webp'
-import stemhub from '@assets/case-studies/stemhub/tile.webp'
+import stemhub from '@assets/case-studies/stemhub/tile.svg'
 import simple from '@assets/case-studies/simple/tile.webp'
+import insulation from '@assets/case-studies/insulation/tile.webp'
+import eel from '@assets/case-studies/eel/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -65,7 +67,7 @@ const caseStudies: CaseStudy[] = [
     overview:
       'Redesigned the website to drive 9% more centre tour bookings and a 24% increase in session time from prospective parents.',
     colour: 'bg-pixel-pink',
-    image: mbImage,
+    image: eel,
     published: true,
     featured: false
   },
@@ -77,7 +79,7 @@ const caseStudies: CaseStudy[] = [
     overview:
       'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time, while cutting support requests by 30%.',
     colour: 'bg-pixel-blue',
-    image: mbImage,
+    image: insulation,
     published: true,
     featured: true
   },
