@@ -8,6 +8,7 @@ import stemhub from '@assets/case-studies/stemhub/tile.svg'
 import simple from '@assets/case-studies/simple/tile.webp'
 import insulation from '@assets/case-studies/insulation/tile.webp'
 import eel from '@assets/case-studies/eel/tile.webp'
+import dare from '@assets/case-studies/dare/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -55,7 +56,7 @@ const caseStudies: CaseStudy[] = [
     overview:
       "Transformed Dare Iced Coffee's digital presence, delivering a 200%+ increase in time on site and a meaningful reduction in support load.",
     colour: 'bg-pixel-red',
-    image: mbImage,
+    image: dare,
     published: true,
     featured: false
   },
