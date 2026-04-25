@@ -138,6 +138,17 @@ const caseStudies: CaseStudy[] = [
     image: stemhub,
     published: false,
     featured: false
+  },
+  {
+    title: 'Farmers Union Greek Style Yogurt',
+    slug: 'farmers',
+    industry: ['Food & Beverage'],
+    services: ['Discovery + direction', 'Design', 'Development'],
+    overview: 'TBD',
+    colour: 'bg-pixel-orange',
+    image: farmers,
+    published: false,
+    featured: false
   }
 ]
 
