@@ -1,0 +1,326 @@
+---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
+import Layout from '@layouts/Layout.astro'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
+import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
+import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
+import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+
+import hero from '@assets/case-studies/toll/hero.webp'
+import squareOne from '@assets/case-studies/toll/squareOne.svg'
+import squareTwo from '@assets/case-studies/toll/squareTwo.webp'
+import wideOne from '@assets/case-studies/toll/wideOne.webp'
+import wideTwo from '@assets/case-studies/toll/wideTwo.webp'
+---
+
+<Layout
+  title="Toll Uncrewed Systems Case Study"
+  description="Discovery, website design, and digital consulting for Toll Uncrewed Systems, the drone pilot training division of Toll Group, in the aviation training and uncrewed systems sector. Pixel Agency consolidated two legacy websites into a single unified brand and helped prepare the business case for head office approval."
+>
+  <article id="case-study-page">
+    <CaseStudyHeader>
+      <span slot="title">Toll Uncrewed Systems</span>
+      <span slot="industry">Tourism</span>
+      <span slot="services">Discovery + direction, Design, Consulting</span>
+      <span slot="duration">1 month</span>
+    </CaseStudyHeader>
+
+    <CaseStudyToggleButton />
+
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <CaseStudyImages
+              heroImage={{ src: hero }}
+              summary="How Pixel Agency helped Toll Uncrewed Systems consolidate two legacy websites into a single unified brand, with discovery, design, and a business case ready for head office approval."
+              squareImages={[{ src: squareOne }, { src: squareTwo }]}
+              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+            />
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <CaseStudyShout> One brand, one site, for Toll's drone pilot training arm </CaseStudyShout>
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p class="">
+                Toll Uncrewed Systems is a division of Toll Group, one of Australia's most established logistics
+                businesses. The division trains commercial and professional drone pilots for industries that
+                increasingly rely on uncrewed aircraft, from infrastructure maintenance and agriculture to other
+                commercial sectors. Their customers are organisations and individuals who need certified, qualified
+                drone pilots ready to operate in real-world commercial environments.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The problem" textColour="text-pixel-red">
+              <p>
+                Toll Uncrewed Systems was running two separate websites: one focused on training, the other on
+                sales-related drone services. The two sites had grown up alongside each other but were starting to
+                confuse the brand and dilute the customer journey. Anyone trying to understand what Toll Uncrewed
+                Systems actually offered had to piece it together from two places, and internally, the team was managing
+                twice the digital footprint without twice the value.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
+              <p>
+                Toll brought us back in to consolidate the two sites into a single, unified brand experience. We started
+                with a focused discovery phase to map both existing sites, audit the content and structure, and
+                determine what should carry forward and what should be left behind. Working closely with the Toll team,
+                we identified the audiences each site was speaking to and defined a clear brief for what the unified
+                site needed to do for both of them.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution" textColour="text-pixel-green">
+              <p>
+                From discovery, we moved into design, building a coherent visual and structural direction that brought
+                training and services under one roof without losing the strengths of either side. We shared progress and
+                presented design reviews along the way, giving the Toll team the artefacts they needed to test the
+                direction with their internal stakeholders.
+              </p><br />
+              <p>
+                Because Toll Uncrewed Systems sits within a larger group, the build itself required head office
+                sign-off. Alongside the design work, we provided digital consulting to help the team put together the
+                business case for approval, framing the build and the supporting marketing investment in terms head
+                office could evaluate.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results" textColour="text-pixel-blue">
+              <p>
+                The engagement is paused at a clean point. The discovery, design, and business case work are complete,
+                and the proposal is now with Toll head office for approval:
+              </p>
+              <CaseStudyResults
+                results={[
+                  {
+                    title: 'A unified brand direction',
+                    description: 'agreed across both legacy sites',
+                    backgroundColour: '#e8c42f'
+                  },
+                  {
+                    title: 'A complete design',
+                    description: 'for the consolidated site, ready to build',
+                    backgroundColour: '#6498c9'
+                  },
+                  {
+                    title: 'Prepared business case',
+                    description: 'with our direction, currently with head office',
+                    backgroundColour: '#F37992'
+                  },
+                  {
+                    title: 'A clear path forward',
+                    description: 'once the decision lands',
+                    backgroundColour: '#599e83'
+                  }
+                ]}
+              />
+
+              <div class="mt-6 lg:mt-12"></div>
+
+              <CaseStudyShout>
+                For a division operating inside a larger group, getting the strategy and the business case right before
+                the build matters as much as the build itself.
+              </CaseStudyShout>
+            </CaseStudySectionText>
+
+            <CaseStudyMetaData
+              client={{ name: 'Mt. Baw Baw', url: 'https://www.mountbawbaw.com.au' }}
+              industry={['Tourism']}
+              serviceNames={['Discovery + direction', 'Design', 'Development']}
+            />
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    {/* Navigation section */}
+    <CaseStudyNav
+      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
+      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
+    />
+
+    <ContactForm
+      title="Discuss a similar challenge"
+      backgroundColor="var(--color-pixel-pink)"
+      displayDescription={false}
+    />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
+      .case-study-left-pane {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
+      }
+
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+        max-height: 5000px;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
+
+      function getDefaultState() {
+        return 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      setToggleTextColor()
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
+</Layout>

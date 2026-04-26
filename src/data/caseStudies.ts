@@ -140,7 +140,8 @@ const caseStudies: CaseStudy[] = [
     slug: 'stemhub',
     industry: ['Education'],
     services: ['Discovery + direction', 'Design', 'Development'],
-    overview: 'TBD',
+    overview:
+      'Shaped a gamified online STEM learning concept for Swinburne University, with full desktop and mobile design and a complete tender response to anchor their national grant bid.',
     colour: 'bg-pixel-orange',
     image: stemhub,
     published: true,
@@ -162,7 +163,8 @@ const caseStudies: CaseStudy[] = [
     slug: 'simple',
     industry: ['SaaS', 'Technology'],
     services: ['Discovery + direction', 'Design', 'Development'],
-    overview: 'TBD',
+    overview:
+      "Redesigned Simple.io's website, delivering a 26% lift in leads and 76% longer session times, plus a distinctive illustration-led brand identity.",
     colour: 'bg-pixel-orange',
     image: simple,
     published: true,
@@ -173,7 +175,8 @@ const caseStudies: CaseStudy[] = [
     slug: 'toll',
     industry: ['Logistics', 'Emergency Services'],
     services: ['Discovery + direction', 'Design'],
-    overview: 'TBD',
+    overview:
+      'Two legacy sites consolidated into a unified brand, with discovery, design, and a head-office-ready business case delivered.',
     colour: 'bg-pixel-orange',
     image: toll,
     published: true,
@@ -184,7 +187,8 @@ const caseStudies: CaseStudy[] = [
     slug: 'bawbaw',
     industry: ['Tourism'],
     services: ['Discovery + direction', 'Design', 'Development'],
-    overview: 'TBD',
+    overview:
+      "Redesigned Mt. Baw Baw Alpine Resort's website, lifting customer satisfaction by 88% and accommodation bookings by 25%+.",
     colour: 'bg-pixel-orange',
     image: bawbaw,
     published: true,
@@ -195,7 +199,8 @@ const caseStudies: CaseStudy[] = [
     slug: 'cyprusays',
     industry: ['Education', 'Community'],
     services: ['Consulting'],
-    overview: 'TBD',
+    overview:
+      'Took an off-shore-built Greek Cypriot language app from rudderless to launched on iOS and Android, with the founders trained to run delivery themselves.',
     colour: 'bg-pixel-green',
     image: cyprusays,
     published: true,
