@@ -1,0 +1,332 @@
+---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
+import Layout from '@layouts/Layout.astro'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
+import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
+import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
+import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+
+import hero from '@assets/case-studies/cyprusays/hero.webp'
+import squareOne from '@assets/case-studies/cyprusays/squareOne.svg'
+import squareTwo from '@assets/case-studies/cyprusays/squareTwo.webp'
+import wideOne from '@assets/case-studies/cyprusays/wideOne.webp'
+import wideTwo from '@assets/case-studies/cyprusays/wideTwo.webp'
+---
+
+<Layout
+  title="Cyprusays Case Study"
+  description="How Pixel Agency took Cyprusays' off-shore app build from rudderless to launched, set up project structures from scratch, and left the founders running delivery themselves."
+>
+  <article id="case-study-page">
+    <CaseStudyHeader>
+      <span slot="title">Cyprusays</span>
+      <span slot="industry">Education, Community</span>
+      <span slot="services">Consulting</span>
+      <span slot="duration">4 months</span>
+    </CaseStudyHeader>
+
+    <CaseStudyToggleButton />
+
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <CaseStudyImages
+              heroImage={{ src: hero }}
+              summary="How Pixel Agency took Cyprusays' off-shore app build from rudderless to launched, set up project structures from scratch, and left the founders running delivery themselves."
+              squareImages={[{ src: squareOne }, { src: squareTwo }]}
+              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+            />
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <CaseStudyShout>Empowering Cyprusays' founders to run their own project.</CaseStudyShout>
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p class="">
+                Cyprusays is an Australian start-up on a quietly important mission: helping the Cypriot diaspora
+                reconnect with the Greek Cypriot language through a mobile app on iOS and Android. The app runs on a
+                freemium model, with a free tier for casual learners and subscription tiers for users who want to go
+                deeper. Their audience spans generations of Cypriot families across Australia and beyond, many of whom
+                feel a piece of their heritage slipping away with each generation.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The problem" textColour="text-pixel-red">
+              <p>
+                Cyprusays had a clear product vision, finished designs, and an off-shore development team ready to start
+                building. What they didn't have was anyone with experience setting up and running a technical project.
+                They were on the cusp of kicking off the build, but with no formal requirements, no roadmap, and no idea
+                where to begin on the management side. Without the right structures in place from day one, the risks
+                were predictable: missed deadlines, scope creep, and a build that drifted from the start.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
+              <p>
+                Cyprusays brought us in to set the project up properly before development began. We started with
+                discovery, working with the founders to understand the product, the offshore vendor relationship, and
+                the constraints they were working within. The designs were already done, but no one had defined what
+                success looked like, what was in scope, or how the build would actually be run.
+              </p><br />
+              <p>
+                The first thing we did was create a formal project requirements document with clear success criteria, so
+                the founders, the offshore vendor, and our team were all working from the same definition of success.
+                From there, we built out the rest of the operating structure the team could carry forward themselves
+                once we stepped back.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution" textColour="text-pixel-green">
+              <p>
+                With the requirements and success criteria locked in, we put the rest of the operating layer in place:
+                roadmap, timelines, deadlines, review processes, decision logs, and a sensible delivery cadence. Beyond
+                pure project management, we reviewed designs and flagged UX issues with significant downstream
+                implications, advised on technical decisions that reshaped screen flows for the better, worked through
+                user data storage and PII obligations, and guided the team through app store optimisation and launch
+                positioning.
+              </p><br />
+              <p>
+                We ran the project hands-on through roughly the first half of delivery, then handed the day-to-day to
+                the founders, training them to manage the cadence themselves. We came back for the final stretch to
+                support handover and launch.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results" textColour="text-pixel-blue">
+              <p>
+                There aren't growth metrics to share, because the value here was different. Cyprusays moved from a
+                project drifting without direction to a confident in-house team capable of running their own delivery:
+              </p>
+              <CaseStudyResults
+                results={[
+                  {
+                    title: 'Successful app launch on iOS and Android',
+                    description: 'on time + on budget',
+                    backgroundColour: '#e8c42f'
+                  },
+                  {
+                    title: 'Empowered founders',
+                    description: 'now running the project end to end themselves, with confidence and clarity',
+                    backgroundColour: '#6498c9'
+                  },
+                  {
+                    title: 'Subscriber base is growing',
+                    description: '+ the business is tracking well',
+                    backgroundColour: '#F37992'
+                  },
+                  {
+                    title: 'Habits to keep delivering',
+                    description:
+                      'The team came away with the documentation, processes, and operating habits to keep delivering without external help',
+                    backgroundColour: '#599e83'
+                  }
+                ]}
+              />
+
+              <div class="mt-6 lg:mt-12"></div>
+
+              <CaseStudyShout>
+                For a founder-led start-up, the ability to own delivery end to end is the result that matters most.
+              </CaseStudyShout>
+            </CaseStudySectionText>
+
+            <CaseStudyMetaData
+              client={{ name: 'Cyprusays', url: 'https://www.cyprusays.com' }}
+              industry={['Education', 'Community']}
+              serviceNames={['Consulting']}
+            />
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    {/* Navigation section */}
+    <CaseStudyNav
+      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
+      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
+    />
+
+    <ContactForm
+      title="Discuss a similar challenge"
+      backgroundColor="var(--color-pixel-pink)"
+      displayDescription={false}
+    />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
+      .case-study-left-pane {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
+      }
+
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+        max-height: 5000px;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
+
+      function getDefaultState() {
+        return 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      setToggleTextColor()
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
+</Layout>
