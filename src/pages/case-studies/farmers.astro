@@ -22,13 +22,16 @@ import wideTwo from '@assets/case-studies/farmers-union/wideTwo.webp'
 const { previous, next } = getCaseStudyNav('farmers')
 ---
 
-<Layout title="Farmers Union Greek Style Yogurt Case Study" description="TBD.">
+<Layout
+  title="Farmers Union Greek Style Yogurt Case Study"
+  description="Website design and development for Farmers Union Greek Yogurt, a Bega Group dairy brand sold across major Australian supermarkets, in the consumer packaged goods sector. Pixel Agency translated the brand's updated packaging into a cohesive web and mobile experience, lifting traffic on launch."
+>
   <article id="case-study-page">
     <CaseStudyHeader>
       <span slot="title">Farmers Union Greek Style Yogurt</span>
       <span slot="industry">Food & Beverage</span>
-      <span slot="services">Discovery + direction, Design, Development</span>
-      <span slot="duration">3 months</span>
+      <span slot="services">Design, Development</span>
+      <span slot="duration">2 months</span>
     </CaseStudyHeader>
 
     <CaseStudyToggleButton />
@@ -40,61 +43,92 @@ const { previous, next } = getCaseStudyNav('farmers')
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
               heroImage={{ src: hero }}
-              summary="TBD"
+              summary="How Pixel Agency translated Farmers Union Greek Yogurt's updated packaging brand into a cohesive digital experience, sharpening the visual language for screens and lifting site traffic on launch."
               squareImages={[{ src: squareOne }, { src: squareTwo }]}
               wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
           </div>
 
           <div class="case-study-right-pane min-w-0">
-            <CaseStudyShout>TBD</CaseStudyShout>
+            <CaseStudyShout>Bringing a refreshed yogurt brand to life across web and mobile.</CaseStudyShout>
 
             <CaseStudySectionText title="The client" noTopMargin={true}>
-              <p class="">TBD</p>
+              <p class="">
+                Farmers Union Greek Yogurt is one of the dairy brands in the Bega Group portfolio, sold across all the
+                major Australian supermarkets. Their products sit on shelves alongside the country's most recognisable
+                dairy names, competing for attention in a category where packaging and presentation do a lot of the
+                heavy lifting.
+              </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The problem" textColour="text-pixel-red">
-              <p>TBD</p>
+              <p>
+                Farmers Union had refreshed its packaging brand, sharpening the look on shelf and giving the range a
+                clearer, more confident identity. The challenge was getting that same brand to land on the web.
+                Packaging and digital are different beasts. Colours that pop on a tub under supermarket lighting don't
+                always translate to a screen, and visual choices that work at arm's length need rethinking when they're
+                being viewed on a phone in someone's hand. Without the right adaptation, the new brand risked feeling
+                inconsistent across touchpoints, undoing the cohesion the rebrand was meant to achieve.
+              </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
-              <p>TBD</p>
+              <p>
+                Bega brought us in based on the working relationship we've built across most of their major brands. We
+                started by getting properly across the new packaging direction, sitting with the design language and
+                understanding what made it work in the physical world before deciding how to translate it. Discovery
+                here wasn't about finding the brand, it was about pressure-testing how it would behave in a different
+                medium and where it would need adjustment to keep its impact.
+              </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The solution" textColour="text-pixel-green">
-              <p>TBD</p>
+              <p>
+                From there, we moved into design and development, rebuilding the digital presence around the refreshed
+                brand. The work covered the detail that determines whether a brand feels right on screen: colour
+                corrections to make the palette read cleanly on digital displays, spacing and layout choices tuned for
+                web and mobile, and messaging and calls to action reshaped to fit how people actually move through a
+                website. The output was a digital experience that felt unmistakably Farmers Union, in step with the new
+                packaging rather than a watered-down version of it.
+              </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The results" textColour="text-pixel-blue">
-              <p>TBD:</p>
+              <p>
+                The relaunch landed well, and the brand sat right alongside the rest of the Bega portfolio in look and
+                feel:
+              </p>
               <CaseStudyResults
                 results={[
                   {
-                    title: 'TBD',
-                    description: 'after launch',
+                    title: 'A clear lift',
+                    description: 'in website traffic following the new brand release',
                     backgroundColour: '#e8c42f'
                   },
                   {
-                    title: 'TBD',
-                    description: 'visitors were staying, exploring, and engaging',
+                    title: 'Visual cohesion',
+                    description: 'across packaging, web, and mobile',
                     backgroundColour: '#6498c9'
                   },
                   {
-                    title: 'TBD',
-                    description: 'the team can now manage campaigns, promotions, and updates entirely in-house.',
+                    title: 'A digital presence',
+                    description: 'that matches the confidence of the refreshed shelf identity',
                     backgroundColour: '#F37992'
                   }
                 ]}
               />
 
               <div class="mt-6 lg:mt-12"></div>
-              <CaseStudyShout> TBD </CaseStudyShout>
+              <CaseStudyShout
+                >Brand work that holds together across packaging and digital is harder than it looks, and the difference
+                shows when it's done right.</CaseStudyShout
+              >
             </CaseStudySectionText>
 
             <CaseStudyMetaData
               client={{ name: 'Farmers Union Greek Style Yogurt', url: 'https://farmersunionyogurt.com.au/' }}
               industry={['Food & Beverage']}
-              serviceNames={['Discovery + direction', 'Design', 'Development']}
+              serviceNames={['Design', 'Development']}
             />
           </div>
         </div>

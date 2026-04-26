@@ -12,6 +12,7 @@ import dare from '@assets/case-studies/dare/tile.webp'
 import toll from '@assets/case-studies/toll/tile.webp'
 import bawbaw from '@assets/case-studies/bawbaw/tile.webp'
 import cyprusays from '@assets/case-studies/cyprusays/tile.webp'
+import jamala from '@assets/case-studies/jamala/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -152,7 +153,8 @@ const caseStudies: CaseStudy[] = [
     slug: 'farmers',
     industry: ['Food & Beverage'],
     services: ['Discovery + direction', 'Design', 'Development'],
-    overview: 'TBD',
+    overview:
+      "Translated Farmers Union Greek Yogurt's refreshed packaging brand into a cohesive web and mobile experience, lifting traffic on launch.",
     colour: 'bg-pixel-orange',
     image: farmers,
     published: true,
@@ -203,6 +205,17 @@ const caseStudies: CaseStudy[] = [
       'Took an off-shore-built Greek Cypriot language app from rudderless to launched on iOS and Android, with the founders trained to run delivery themselves.',
     colour: 'bg-pixel-green',
     image: cyprusays,
+    published: true,
+    featured: false
+  },
+  {
+    title: 'Jamala Properties',
+    slug: 'jamala',
+    industry: ['Construction'],
+    services: ['Discovery + direction', 'Design', 'Development'],
+    overview: 'TBD',
+    colour: 'bg-pixel-green',
+    image: jamala,
     published: true,
     featured: false
   }

@@ -11,6 +11,8 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+
+import squareOne from '@assets/case-studies/jamala/squareOne.svg'
 ---
 
 <Layout
@@ -36,7 +38,7 @@ development service, and what the data revealed."
             <CaseStudyImages
               heroImage={{ src: mbImage }}
               summary="Jamala Properties, a specialist builder focused on constructing properties for the childcare sector, wanted to test whether their expertise could find a viable market at a national scale."
-              squareImages={[{ src: mbImage }, { src: mbImage }]}
+              squareImages={[{ src: squareOne }, { src: mbImage }]}
               wideImages={[{ src: mbImage }, { src: mbImage }]}
             />
           </div>
