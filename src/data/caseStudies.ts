@@ -215,7 +215,8 @@ const caseStudies: CaseStudy[] = [
     slug: 'jamala',
     industry: ['Construction'],
     services: ['Discovery + direction', 'Design', 'Development'],
-    overview: 'TBD',
+    overview:
+      'A 12-month time-boxed digital experiment that gave a specialist childcare builder a clear, data-backed answer on whether a national market existed, letting them close the venture cleanly without overcommitting.',
     colour: 'bg-pixel-green',
     image: jamala,
     published: true,

@@ -11,8 +11,15 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+import { getCaseStudyNav } from '@data/caseStudies'
 
+import hero from '@assets/case-studies/jamala/hero.webp'
 import squareOne from '@assets/case-studies/jamala/squareOne.svg'
+import squareTwo from '@assets/case-studies/jamala/squareTwo.webp'
+import wideOne from '@assets/case-studies/jamala/wideOne.webp'
+import wideTwo from '@assets/case-studies/jamala/wideTwo.webp'
+
+const { previous, next } = getCaseStudyNav('jamala')
 ---
 
 <Layout
@@ -36,10 +43,10 @@ development service, and what the data revealed."
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: mbImage }}
+              heroImage={{ src: hero }}
               summary="Jamala Properties, a specialist builder focused on constructing properties for the childcare sector, wanted to test whether their expertise could find a viable market at a national scale."
-              squareImages={[{ src: squareOne }, { src: mbImage }]}
-              wideImages={[{ src: mbImage }, { src: mbImage }]}
+              squareImages={[{ src: squareOne }, { src: squareTwo }]}
+              wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
           </div>
 
@@ -140,10 +147,7 @@ development service, and what the data revealed."
     </section>
 
     {/* Navigation section */}
-    <CaseStudyNav
-      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
-      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
-    />
+    <CaseStudyNav previousCaseStudy={previous} nextCaseStudy={next} />
 
     <ContactForm
       title="Discuss a similar challenge"
