@@ -13,6 +13,7 @@ import toll from '@assets/case-studies/toll/tile.webp'
 import bawbaw from '@assets/case-studies/bawbaw/tile.webp'
 import cyprusays from '@assets/case-studies/cyprusays/tile.webp'
 import jamala from '@assets/case-studies/jamala/tile.webp'
+import miele from '@assets/case-studies/miele/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -137,10 +138,10 @@ const caseStudies: CaseStudy[] = [
     featured: true
   },
   {
-    title: 'Stemhub',
+    title: 'Swinburne University',
     slug: 'stemhub',
     industry: ['Education'],
-    services: ['Discovery + direction', 'Design', 'Development'],
+    services: ['Discovery + direction', 'Design', 'Consulting'],
     overview:
       'Shaped a gamified online STEM learning concept for Swinburne University, with full desktop and mobile design and a complete tender response to anchor their national grant bid.',
     colour: 'bg-pixel-orange',
@@ -216,6 +217,18 @@ const caseStudies: CaseStudy[] = [
     overview: 'TBD',
     colour: 'bg-pixel-green',
     image: jamala,
+    published: true,
+    featured: false
+  },
+  {
+    title: 'Miele Australia',
+    slug: 'miele',
+    industry: ['Home Appliances'],
+    services: ['Consulting'],
+    overview:
+      'Digital consulting and strategy for Miele Australia in the domestic and commercial appliances sector. Pixel Agency mapped its technology landscape ahead of the global SAP S/4HANA transition, securing a market-specific implementation that now benchmarks similar Miele markets.',
+    colour: 'bg-pixel-red',
+    image: miele,
     published: true,
     featured: false
   }
