@@ -14,6 +14,7 @@ import bawbaw from '@assets/case-studies/bawbaw/tile.webp'
 import cyprusays from '@assets/case-studies/cyprusays/tile.webp'
 import jamala from '@assets/case-studies/jamala/tile.webp'
 import miele from '@assets/case-studies/miele/tile.webp'
+import fletcherDam from '@assets/case-studies/fletcher-dam/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -229,6 +230,18 @@ const caseStudies: CaseStudy[] = [
       'Digital consulting and strategy for Miele Australia in the domestic and commercial appliances sector. Pixel Agency mapped its technology landscape ahead of the global SAP S/4HANA transition, securing a market-specific implementation that now benchmarks similar Miele markets.',
     colour: 'bg-pixel-red',
     image: miele,
+    published: true,
+    featured: false
+  },
+  {
+    title: 'Fletcher Insulation Digital Asset Management Platform',
+    slug: 'fletcher-dam',
+    industry: ['Construction', 'Manufacturing'],
+    services: ['Discovery + direction', 'Design', 'Development'],
+    overview:
+      'Custom Digital Asset Management platform design and development for Fletcher Insulation, an Australian leader in the building and construction insulation products sector. Pixel Agency built a self-service DAM for Fletcher employees and approved partners with a custom approval workflow, cutting asset support requests by 15% and replacing scattered files with a single source of truth.',
+    colour: 'bg-pixel-green',
+    image: fletcherDam,
     published: true,
     featured: false
   }
