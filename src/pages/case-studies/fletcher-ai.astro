@@ -12,24 +12,24 @@ import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
 import { getCaseStudyNav } from '@data/caseStudies'
 
-import hero from '@assets/case-studies/sonata-ai/hero.webp'
-import squareOne from '@assets/case-studies/sonata-ai/squareOne.svg'
-import squareTwo from '@assets/case-studies/sonata-ai/squareTwo.webp'
-import wideOne from '@assets/case-studies/sonata-ai/wideOne.webp'
-import wideTwo from '@assets/case-studies/sonata-ai/wideTwo.webp'
+import hero from '@assets/case-studies/fletcher-dam/hero.webp'
+import squareOne from '@assets/case-studies/fletcher-dam/squareOne.svg'
+import squareTwo from '@assets/case-studies/fletcher-dam/squareTwo.svg'
+import wideOne from '@assets/case-studies/fletcher-dam/wideOne.webp'
+import wideTwo from '@assets/case-studies/fletcher-dam/wideTwo.webp'
 
-const { previous, next } = getCaseStudyNav('sonata-ai')
+const { previous, next } = getCaseStudyNav('fletcher-dam')
 ---
 
 <Layout
-  title="Sonata AI Acoustic Risk Calculator Case Study"
-  description="Custom Digital Asset Management platform design and development for Fletcher Insulation, an Australian leader in the building and construction insulation products sector. Pixel Agency built a self-service DAM for Fletcher employees and approved partners with a custom approval workflow, cutting asset support requests by 15% and replacing scattered files with a single source of truth."
+  title="Fletcher Insulation + Pixel Assist"
+  description="AI and consulting for Fletcher Insulation, an Australian leader in the building and construction insulation products sector. Pixel Agency deployed Pixel Assist, an AI knowledge assistant on insulation.com.au, helping users surface product information instantly and reducing customer support queries during a successful 2% feature-flagged trial."
 >
   <article id="case-study-page">
     <CaseStudyHeader>
-      <span slot="title">Sonata AI Acoustic Risk Calculator</span>
+      <span slot="title">Fletcher Insulation + Pixel Assist</span>
       <span slot="industry">Construction, Manufacturing</span>
-      <span slot="services">AI</span>
+      <span slot="services">AI, Pixel Assist</span>
       <span slot="duration">1 month</span>
     </CaseStudyHeader>
 
@@ -42,91 +42,89 @@ const { previous, next } = getCaseStudyNav('sonata-ai')
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
               heroImage={{ src: hero }}
-              summary="How Pixel Agency built Fletcher Insulation a custom Digital Asset Management platform that gave employees and approved partners a single, controlled home for marketing assets, with self-service that cut asset support requests by 15%."
+              summary="How Pixel Agency deployed Pixel Assist, an AI knowledge assistant, on Fletcher Insulation's website to surface product knowledge in real time for architects, planners, and trade partners, with a feature-flagged rollout that proved the system out on 2% of users before scaling."
               squareImages={[{ src: squareOne }, { src: squareTwo }]}
               wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
           </div>
 
           <div class="case-study-right-pane min-w-0">
-            <CaseStudyShout> Helping architects spot acoustic risk before the design is locked in. </CaseStudyShout>
+            <CaseStudyShout>
+              An AI knowledge assistant for insulation.com.au, rolled out the careful way.
+            </CaseStudyShout>
 
             <CaseStudySectionText title="The client" noTopMargin={true}>
               <p>
                 Fletcher Insulation is one of Australia's leading suppliers of insulation products, serving trades,
-                architects, builders, and project teams across the country. Beyond their public-facing brand, Fletcher's
-                marketing operation supports a wide ecosystem of internal teams and approved trade partners who rely on
-                consistent, up-to-date marketing assets to do their work. Getting the right asset to the right person,
-                in the right version, is a daily operational task.
+                architects, builders, and project teams across the country through insulation.com.au. The site holds a
+                large body of technical product knowledge: HTML pages, PDF datasheets, technical documents, and product
+                imagery built up over years of being a category leader. The audience visiting that knowledge isn't
+                browsing; they're making decisions.
               </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The problem" textColour="text-pixel-red">
               <p>
-                Before the DAM, Fletcher's marketing assets lived in people's inboxes, on shared drives, and across
-                multiple locations with no central source of truth. Marketing materials, photography, product images,
-                and logos were scattered, and getting hold of the right asset usually meant emailing the marketing team.
+                The depth of information on insulation.com.au is part of why architects, planners, and trade partners
+                come to it. It's also part of what gets in their way. Users trying to find the right product for a
+                specific application have to hunt across HTML pages, PDF documents, and images to piece an answer
+                together.
               </p><br />
               <p>
-                The result was a steady stream of support requests that ate into the team's capacity, and a real risk:
-                when assets aren't centrally controlled, non-approved versions can quietly leak into circulation.
-                Off-the-shelf DAM products were considered, but none cleanly supported Fletcher's specific approval
-                process, and the in-house team didn't want to take on a new technology stack to maintain.
+                Slow answers cost Fletcher in two ways: support requests pile up where users can't self-serve, and a
+                buyer who can't quickly find the right Fletcher product is more likely to drift to a competitor whose
+                information is easier to surface. With insulation specifications increasingly driven by performance,
+                compliance, and time pressure, frictionless decision-making isn't a nice-to-have.
               </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The approach" textColour="text-pixel-orange">
               <p>
-                Off the back of the website work we'd already done together, Fletcher brought us in to scope and build
-                the DAM. We started with a discovery phase focused on the two pieces that would make or break the build:
-                the integrations with Fletcher's existing systems, and the custom approval workflow they actually
-                needed.
-              </p><br />
-              <p>
-                Discovery had to surface the real shape of the approval process from the people running it day-to-day,
-                not just the version that lived on paper. We mapped the asset types in scope, the user roles (internal
-                staff and approved partners), and the approval steps each asset would need to pass before it was
-                available for use.
+                We brought Pixel Assist to Fletcher as a new addition to the ongoing partnership. Pixel Assist is our
+                managed AI knowledge assistant: a RAG-based system that learns from a client's existing knowledge, with
+                no fine-tuning required, and answers user questions in real time in the client's tone of voice. We
+                started with discovery, working with Fletcher to map the knowledge that would feed the system, the kinds
+                of questions users actually need answered (product fit, R-values, install methods, application
+                suitability), and the brand voice the assistant would need to use so every answer felt unmistakably
+                Fletcher.
               </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The solution" textColour="text-pixel-green">
               <p>
-                We designed and built a custom DAM platform on the same technology stack as Fletcher's main website, so
-                the in-house team could maintain it without having to learn a new system. The platform gives Fletcher
-                employees and approved partners a controlled home for marketing materials, photography, product images,
-                and logos, with the custom approval workflow baked into the publishing process. Integrations with the
-                existing systems mean the DAM sits inside the broader operation rather than alongside it, and the
-                structure makes self-service the default path for getting hold of an asset, rather than the marketing
-                team's inbox.
+                Pixel Assist was deployed on insulation.com.au with a familiar chat interface, but the deployment itself
+                was where the care went in. Rather than turn the assistant on for every visitor at once, we used feature
+                flagging to expose Pixel Assist to just 2% of users. That gave us a controlled environment to validate
+                the system in the wild without putting the wider user base at risk if anything needed adjusting. The
+                assistant answers user questions in real time, suggests Fletcher products that fit specific needs, and
+                is built to support architects, planners, trade partners, and (in time) internal staff in finding what
+                they need quickly.
               </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The results" textColour="text-pixel-blue">
-              <p>
-                A year in, the DAM has settled into its role as the central source of truth for Fletcher's marketing
-                assets:
-              </p>
+              <p>The 2% trial validated what the system could do on the three dimensions Fletcher cared about:</p>
               <CaseStudyResults
                 results={[
                   {
-                    title: '~15% drop in asset support requests',
-                    description: 'users now self-managing the assets they need',
+                    title: 'A measured fall ',
+                    description: 'in customer support requests from users who reached the assistant',
                     backgroundColour: '#e8c42f'
                   },
                   {
-                    title: 'One source of truth',
-                    description: 'for marketing materials, photography, product images, and logos',
+                    title: 'Questions answered to a high quality',
+                    description: "with Fletcher's tone of voice preserved across responses",
                     backgroundColour: '#6498c9'
                   },
                   {
-                    title: 'Custom approval workflow',
-                    description: 'ensuring only approved assets are in circulation',
+                    title: 'No incidents',
+                    description:
+                      'on the wider user base during the test period, thanks to the feature-flagged exposure',
                     backgroundColour: '#F37992'
                   },
                   {
-                    title: 'Same stack',
-                    description: "as Fletcher's main website, no new system for the in-house team to learn",
+                    title: 'A proven system',
+                    description: 'ready to scale, with confidence on both quality and brand fit',
                     backgroundColour: '#F37992'
                   }
                 ]}
@@ -135,7 +133,7 @@ const { previous, next } = getCaseStudyNav('sonata-ai')
               <div class="mt-6 lg:mt-12"></div>
 
               <CaseStudyShout>
-                Sometimes the right build is the one that fits how your team already works.
+                AI doesn't have to be all or nothing. The smart way in is the careful way.
               </CaseStudyShout>
             </CaseStudySectionText>
 

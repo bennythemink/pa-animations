@@ -15,6 +15,8 @@ import cyprusays from '@assets/case-studies/cyprusays/tile.webp'
 import jamala from '@assets/case-studies/jamala/tile.webp'
 import miele from '@assets/case-studies/miele/tile.webp'
 import fletcherDam from '@assets/case-studies/fletcher-dam/tile.webp'
+import fletcherAi from '@assets/case-studies/fletcher-ai/tile.webp'
+import sonataAi from '@assets/case-studies/sonata-ai/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -243,6 +245,30 @@ const caseStudies: CaseStudy[] = [
       'Custom Digital Asset Management platform design and development for Fletcher Insulation, an Australian leader in the building and construction insulation products sector. Pixel Agency built a self-service DAM for Fletcher employees and approved partners with a custom approval workflow, cutting asset support requests by 15% and replacing scattered files with a single source of truth.',
     colour: 'bg-pixel-green',
     image: fletcherDam,
+    published: true,
+    featured: false
+  },
+  {
+    title: 'Fletcher Insulation + Pixel Assist',
+    slug: 'fletcher-ai',
+    industry: ['Construction', 'Manufacturing'],
+    services: ['AI'],
+    overview:
+      'AI for Fletcher Insulation. Pixel Agency deployed Pixel Assist, our AI knowledge assistant product on insulation.com.au, surfacing product information instantly and cutting support queries in a successful trial.',
+    colour: 'bg-pixel-green',
+    image: fletcherAi,
+    published: true,
+    featured: false
+  },
+  {
+    title: 'Sonata AI Acoustic Risk Calculator',
+    slug: 'sonata-ai',
+    industry: ['Construction', 'Manufacturing'],
+    services: ['AI'],
+    overview:
+      'AI for Sonata AI. Pixel Agency built a custom acoustic risk calculator for Sonata AI, demonstrating the potential of AI-powered tools to provide instant, accurate insights and drive informed decision-making in the construction industry.',
+    colour: 'bg-pixel-green',
+    image: sonataAi,
     published: true,
     featured: false
   }
