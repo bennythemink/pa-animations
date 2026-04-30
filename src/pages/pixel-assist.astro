@@ -69,7 +69,7 @@ const benefitsCards = [
     </div>
 
     <div
-      class="pa-bubble pa-bubble--back top-[14%] right-[8%] lg:top-[14%] lg:right-[8%]"
+      class="pa-bubble pa-bubble--back top-[8%] right-[5%] lg:top-[14%] lg:right-[8%]"
       data-speed="0.4"
       style="background-color: #e8c728;"
     >
@@ -126,7 +126,7 @@ const benefitsCards = [
 
     {/* ── Front bubble layer (z-3, in front of text) ── */}
     <div
-      class="pa-bubble pa-bubble--front top-[55%] left-[8%] lg:top-[55%] lg:left-[8%]"
+      class="pa-bubble pa-bubble--back top-[20%] left-[5%] lg:top-[55%] lg:left-[8%]"
       data-speed="1.0"
       style="background-color: #7ea0c4;"
     >
@@ -134,7 +134,7 @@ const benefitsCards = [
     </div>
 
     <div
-      class="pa-bubble pa-bubble--front top-[72%] right-[8%] lg:top-[72%] lg:right-[8%]"
+      class="pa-bubble pa-bubble--front top-[65%] left-[30%] right-auto lg:top-[72%] lg:left-auto lg:right-[8%]"
       data-speed="0.8"
       style="background-color: #4d9e8e;"
     >
@@ -870,36 +870,6 @@ const benefitsCards = [
       },
       0.7
     )
-
-    // ── Mobile adjustments ──
-    ScrollTrigger.matchMedia({
-      '(max-width: 1023px)': () => {
-        // Reposition bubbles for mobile
-        gsap.set('[data-speed]', { clearProps: 'left,right,top' })
-        // Positions tuned for mobile screenshots
-        const bubbles = hero.querySelectorAll<HTMLElement>('.pa-bubble, .pa-square')
-        bubbles.forEach((b) => {
-          const text = b.textContent?.trim() || ''
-          if (text.startsWith('What is the warranty')) {
-            b.style.display = 'none' // hidden on mobile
-          }
-          if (text.startsWith("What's the difference")) {
-            b.style.top = '8%'
-            b.style.right = '5%'
-            b.style.left = 'auto'
-          }
-          if (text.startsWith('Does this meet')) {
-            b.style.top = '50%'
-            b.style.left = '5%'
-          }
-          if (text.startsWith('Which option')) {
-            b.style.top = '65%'
-            b.style.left = '30%'
-            b.style.right = 'auto'
-          }
-        })
-      }
-    })
   })
 
   // Clean up on Astro page transitions
