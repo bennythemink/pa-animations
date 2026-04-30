@@ -61,14 +61,18 @@ const benefitsCards = [
   <section id="pa-hero" class="relative h-screen overflow-hidden bg-pixel-off-white">
     {/* ── Back bubble layer (z-1, behind text) ── */}
     <div
-      class="pa-bubble pa-bubble--back hidden lg:block"
+      class="pa-bubble pa-bubble--back hidden lg:block top-[35%] left-[5%] lg:top-[35%] lg:left-[5%]"
       data-speed="0.6"
-      style="top: 35%; left: 5%; background-color: #c9b97a;"
+      style="background-color: #c9b97a;"
     >
       What is the warranty period?
     </div>
 
-    <div class="pa-bubble pa-bubble--back" data-speed="0.4" style="top: 14%; right: 8%; background-color: #e8c728;">
+    <div
+      class="pa-bubble pa-bubble--back top-[14%] right-[8%] lg:top-[14%] lg:right-[8%]"
+      data-speed="0.4"
+      style="background-color: #e8c728;"
+    >
       What's the difference between these products?
     </div>
 
@@ -121,20 +125,28 @@ const benefitsCards = [
     </div>
 
     {/* ── Front bubble layer (z-3, in front of text) ── */}
-    <div class="pa-bubble pa-bubble--front" data-speed="1.0" style="top: 55%; left: 8%; background-color: #7ea0c4;">
+    <div
+      class="pa-bubble pa-bubble--front top-[55%] left-[8%] lg:top-[55%] lg:left-[8%]"
+      data-speed="1.0"
+      style="background-color: #7ea0c4;"
+    >
       Does this meet compliance requirements?
     </div>
 
-    <div class="pa-bubble pa-bubble--front" data-speed="0.8" style="top: 72%; right: 8%; background-color: #4d9e8e;">
+    <div
+      class="pa-bubble pa-bubble--front top-[72%] right-[8%] lg:top-[72%] lg:right-[8%]"
+      data-speed="0.8"
+      style="background-color: #4d9e8e;"
+    >
       Which option is right for my situation?
     </div>
 
     {/* ── Typing indicator (fades in during phase 2) ── */}
     <div
       id="pa-typing"
-      class="pa-bubble pa-bubble--front opacity-0"
+      class="pa-bubble pa-bubble--front opacity-0 top-[80%] right-[15%] lg:top-[80%] lg:right-[15%]"
       data-speed="0.7"
-      style="top: 80%; right: 15%; background-color: #d4d0cb;"
+      style="background-color: #d4d0cb;"
     >
       <span class="flex gap-1 items-center">
         <span class="w-2 h-2 rounded-full bg-black/40"></span>
@@ -146,9 +158,9 @@ const benefitsCards = [
     {/* ── Late-entering elements (phase 3) ── */}
     <div
       id="pa-bubble-late"
-      class="pa-bubble pa-bubble--front opacity-0"
+      class="pa-bubble pa-bubble--front opacity-0 top-[90%] right-[12%] lg:top-[90%] lg:right-[12%]"
       data-speed="0.5"
-      style="top: 90%; right: 12%; background-color: #c9b97a;"
+      style="background-color: #c9b97a;"
     >
       For a new.....
     </div>
@@ -185,60 +197,122 @@ const benefitsCards = [
 
     {/* ── Scrolling bubbles — varied speeds for parallax, staggered positions ── */}
     {/* Phase 1 */}
-    <div class="pa-bubble pa-bubble--back" data-speed="1.5" style="top: 110%; left: 6%; background-color: #c9b97a;">
+    <div
+      class="pa-bubble pa-bubble--back top-[110%] left-[6%] lg:top-[110%] lg:left-[6%]"
+      data-speed="1.5"
+      style="background-color: #c9b97a;"
+    >
       Where can I find the spec sheet?
     </div>
-    <div class="pa-bubble pa-bubble--front" data-speed="1.3" style="top: 120%; right: 12%; background-color: #7ea0c4;">
+    <div
+      class="pa-bubble pa-bubble--front top-[120%] right-[12%] lg:top-[120%] lg:right-[12%]"
+      data-speed="1.3"
+      style="background-color: #7ea0c4;"
+    >
       Do you ship internationally?
     </div>
 
     {/* Early Phase 2 */}
-    <div class="pa-bubble pa-bubble--back" data-speed="1.3" style="top: 140%; left: 15%; background-color: #e8c728;">
+    <div
+      class="pa-bubble pa-bubble--back top-[140%] left-[15%] lg:top-[140%] lg:left-[15%]"
+      data-speed="1.3"
+      style="background-color: #e8c728;"
+    >
       How do I get started?
     </div>
-    <div class="pa-bubble pa-bubble--front" data-speed="1.4" style="top: 175%; right: 5%; background-color: #4d9e8e;">
+    <div
+      class="pa-bubble pa-bubble--front top-[175%] right-[5%] lg:top-[175%] lg:right-[5%]"
+      data-speed="1.4"
+      style="background-color: #4d9e8e;"
+    >
       Can I integrate with my CRM?
     </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.2" style="top: 190%; left: 3%; background-color: #7ea0c4;">
+    <div
+      class="pa-bubble pa-bubble--back top-[190%] left-[3%] lg:top-[190%] lg:left-[3%]"
+      data-speed="1.2"
+      style="background-color: #7ea0c4;"
+    >
       What are the payment options?
     </div>
 
     {/* Mid Phase 2 */}
-    <div class="pa-bubble pa-bubble--front" data-speed="1.2" style="top: 230%; right: 20%; background-color: #c9b97a;">
+    <div
+      class="pa-bubble pa-bubble--front top-[230%] right-[20%] lg:top-[230%] lg:right-[20%]"
+      data-speed="1.2"
+      style="background-color: #c9b97a;"
+    >
       Is my data secure?
     </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.3" style="top: 190%; left: 75%; background-color: #e8c728;">
+    <div
+      class="pa-bubble pa-bubble--back top-[190%] left-[75%] lg:top-[190%] lg:left-[75%]"
+      data-speed="1.3"
+      style="background-color: #e8c728;"
+    >
       What languages do you support?
     </div>
-    <div class="pa-bubble pa-bubble--front" data-speed="1.1" style="top: 260%; left: 2%; background-color: #4d9e8e;">
+    <div
+      class="pa-bubble pa-bubble--front top-[260%] left-[2%] lg:top-[260%] lg:left-[2%]"
+      data-speed="1.1"
+      style="background-color: #4d9e8e;"
+    >
       Can it handle technical questions?
     </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.15" style="top: 240%; right: 13%; background-color: #e8c728;">
+    <div
+      class="pa-bubble pa-bubble--back top-[240%] right-[13%] lg:top-[240%] lg:right-[13%]"
+      data-speed="1.15"
+      style="background-color: #e8c728;"
+    >
       What reporting is included?
     </div>
-    <div class="pa-bubble pa-bubble--front bg-pixel-orange" data-speed="1.05" style="top: 275%; left: 15%; ">
+    <div
+      class="pa-bubble pa-bubble--front bg-pixel-orange top-[275%] left-[15%] lg:top-[275%] lg:left-[15%]"
+      data-speed="1.05"
+    >
       Can I customise the responses?
     </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.25" style="top: 210%; right: 30%; background-color: #7ea0c4;">
+    <div
+      class="pa-bubble pa-bubble--back top-[210%] right-[30%] lg:top-[210%] lg:right-[30%]"
+      data-speed="1.25"
+      style="background-color: #7ea0c4;"
+    >
       How does onboarding work?
     </div>
-    <div class="pa-bubble pa-bubble--back bg-pixel-blue" data-speed="1.1" style="top: 250%; left: 42%;">
+    <div
+      class="pa-bubble pa-bubble--back bg-pixel-blue top-[250%] left-[42%] lg:top-[250%] lg:left-[42%]"
+      data-speed="1.1"
+    >
       What's the uptime guarantee?
     </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.2" style="top: 290%; right: 5%; background-color: #e8c728;">
+    <div
+      class="pa-bubble pa-bubble--back top-[290%] right-[5%] lg:top-[290%] lg:right-[5%]"
+      data-speed="1.2"
+      style="background-color: #e8c728;"
+    >
       Who manages the knowledge base?
     </div>
 
     {/* Late Phase 2 → Phase 3 */}
-    <div class="pa-bubble pa-bubble--back" data-speed="1.1" style="top: 340%; right: 8%; background-color: #7ea0c4;">
+    <div
+      class="pa-bubble pa-bubble--back top-[340%] right-[8%] lg:top-[340%] lg:right-[8%]"
+      data-speed="1.1"
+      style="background-color: #7ea0c4;"
+    >
       How accurate are the answers?
     </div>
-    <div class="pa-bubble pa-bubble--back" data-speed="1.2" style="top: 330%; left: 35%; background-color: #c9b97a;">
+    <div
+      class="pa-bubble pa-bubble--back top-[330%] left-[35%] lg:top-[330%] lg:left-[35%]"
+      data-speed="1.2"
+      style="background-color: #c9b97a;"
+    >
       Does it learn over time?
     </div>
 
     {/* Phase 3 */}
-    <div class="pa-bubble pa-bubble--front" data-speed="1.1" style="top: 370%; left: 8%; background-color: #4d9e8e;">
+    <div
+      class="pa-bubble pa-bubble--front top-[370%] left-[8%] lg:top-[370%] lg:left-[8%]"
+      data-speed="1.1"
+      style="background-color: #4d9e8e;"
+    >
       Can visitors ask follow-ups?
     </div>
   </section>
