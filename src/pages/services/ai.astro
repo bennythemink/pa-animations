@@ -3,8 +3,6 @@ import ContactForm from '@components/ContactForm.astro'
 import HeroSection from '@components/services/HeroSection.astro'
 import Layout from '@layouts/Layout.astro'
 
-import mbImage from '@assets/mb.png'
-import iphoneImage from '@assets/iphone.png'
 import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
 import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
 import OurApproachSection from '@components/services/OurApproachSection.astro'
@@ -12,6 +10,9 @@ import Plus from '@components/signs/Plus.astro'
 import FeatureCards from '@components/services/FeatureCards.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 import Callout from '@components/Callout.astro'
+
+import fletcher from '@assets/case-studies/fletcher-ai/fourThree.webp'
+import sonata from '@assets/case-studies/sonata-ai/fourThree.webp'
 
 /**
  * HeroSection variables
@@ -29,14 +30,14 @@ const paragraphs = [
 
 const first = {
   title: 'Insulation.com.au AI Assistant',
-  link: '/case-studies/pixel-assist-insulation',
-  image: mbImage
+  link: '/case-studies/fletcher-ai',
+  image: fletcher
 }
 
 const second = {
   title: 'Acoustic Risk AI Risk Assessment Tool',
   link: '/case-studies/sonata-ai',
-  image: iphoneImage
+  image: sonata
 }
 
 /**
