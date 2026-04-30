@@ -1,2 +1,5 @@
 User-agent: *
 Disallow: /
+Disallow: /case-studies/private/
+
+Sitemap: https://pixelagency.com.au/sitemap-index.xml

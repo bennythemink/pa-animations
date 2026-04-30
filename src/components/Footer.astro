@@ -36,7 +36,7 @@ const year = new Date().getFullYear()
             >
           </li>
           <li>
-            <a href="/site-map" class="text-black/40 hover:text-black transition-colors">Site Map</a>
+            <a href="/sitemap-0.xml" class="text-black/40 hover:text-black transition-colors">Site Map</a>
           </li>
         </ul>
       </div>
@@ -77,8 +77,9 @@ const year = new Date().getFullYear()
           </li>
           <li>
             <span class="font-semibold font-sans text-base">Call</span>{' '}
-            <a href={`tel:${siteConfig.phone}`} class="hover:underline underline-offset-2 font-sans text-base"
-              >{siteConfig.phone}</a
+            <a
+              href={`tel:${siteConfig.phone}`}
+              class="hover:underline cursor-pointer underline-offset-2 font-sans text-base">{siteConfig.phone}</a
             >
           </li>
           <li><a href="#" class="hover:underline underline-offset-2 font-sans text-base">LinkedIn</a></li>

@@ -3,8 +3,11 @@ import { defineConfig, fontProviders } from 'astro/config'
 
 import tailwindcss from '@tailwindcss/vite'
 
+import sitemap from '@astrojs/sitemap'
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.pixelagency.com.au',
   fonts: [
     {
       provider: fontProviders.google(),
@@ -23,7 +26,14 @@ export default defineConfig({
       display: 'optional'
     }
   ],
+
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/case-studies/private/')
+    })
+  ]
 })

@@ -75,3 +75,16 @@ The individual case study pages have a number of images. Each image type has its
 | `squareImages` | `aspect-square`  | **1:1**  | 2nd row      |
 | `wideImages`   | `aspect-16/7`    | **16:7** | Other rows   |
 | `tile`         | `aspect-square`  | **1:1**  | Listing page |
+
+## Publishing Case Studies
+
+For SEO purposes not all case studies are published on site launch. It is better to keep an active site so it is planned on launching one case study per month. These are the steps you must take to do so:
+
+1. Move the case study to publish from the 'pages/case-studies/private' folder into its parent folder.
+2. Open the case study page and remove the 'published={false}' from the Layout component.
+3. Open the 'caseStudies.ts' file, find the case study in the caseStudies array, change its 'published' property to true.
+4. Push to main + remote
+
+## Moving To Production
+
+Make sure you update the robots.txt file! In the public directory, open the robots.txt file and change the line `Disallow: /` to `Allow: /`
