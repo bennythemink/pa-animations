@@ -12,13 +12,15 @@ interface Props {
   noMenuSpacer?: boolean
   /** Override the random logo colour pair. Pass { p: '#hex', a: '#hex' }. */
   logoColors?: { p: string; a: string }
+  published?: boolean
 }
 
 const {
   title = 'Pixel Agency',
   description = 'Pixel Agency — digital strategy, design, and development studio based in Melbourne, Australia.',
   noMenuSpacer = false,
-  logoColors
+  logoColors,
+  published = true
 } = Astro.props
 
 const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
@@ -28,6 +30,7 @@ const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
 <html lang="en" class="h-full m-0">
   <head>
     <meta charset="UTF-8" />
+    {!published && <meta name="robots" content="noindex, nofollow" />}
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
