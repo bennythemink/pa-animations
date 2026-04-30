@@ -65,7 +65,7 @@ const caseStudies: CaseStudy[] = [
       "Transformed Dare Iced Coffee's digital presence, delivering a 200%+ increase in time on site and a meaningful reduction in support load.",
     colour: 'bg-pixel-red',
     image: dare,
-    published: true,
+    published: false,
     featured: false
   },
   {
@@ -125,8 +125,8 @@ const caseStudies: CaseStudy[] = [
     overview: "Redesigned VincentCare's website, achieving a 14% increase in donations and 22% longer session times.",
     colour: 'bg-pixel-yellow',
     image: vincentcare,
-    published: true,
-    featured: true
+    published: false,
+    featured: false
   },
   {
     title: 'Yoplait',
@@ -161,7 +161,7 @@ const caseStudies: CaseStudy[] = [
       "Translated Farmers Union Greek Yogurt's refreshed packaging brand into a cohesive web and mobile experience, lifting traffic on launch.",
     colour: 'bg-pixel-orange',
     image: farmers,
-    published: true,
+    published: false,
     featured: false
   },
   {
@@ -185,7 +185,7 @@ const caseStudies: CaseStudy[] = [
       'Two legacy sites consolidated into a unified brand, with discovery, design, and a head-office-ready business case delivered.',
     colour: 'bg-pixel-orange',
     image: toll,
-    published: true,
+    published: false,
     featured: false
   },
   {
@@ -221,7 +221,7 @@ const caseStudies: CaseStudy[] = [
       'A 12-month time-boxed digital experiment that gave a specialist childcare builder a clear, data-backed answer on whether a national market existed, letting them close the venture cleanly without overcommitting.',
     colour: 'bg-pixel-green',
     image: jamala,
-    published: true,
+    published: false,
     featured: false
   },
   {
@@ -233,7 +233,7 @@ const caseStudies: CaseStudy[] = [
       'Digital consulting and strategy for Miele Australia in the domestic and commercial appliances sector. Pixel Agency mapped its technology landscape ahead of the global SAP S/4HANA transition, securing a market-specific implementation that now benchmarks similar Miele markets.',
     colour: 'bg-pixel-red',
     image: miele,
-    published: true,
+    published: false,
     featured: false
   },
   {
