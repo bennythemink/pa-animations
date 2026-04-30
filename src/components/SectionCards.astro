@@ -62,12 +62,7 @@ const taglineSpanClass: Record<number, string> = {
         )
       }
       <h3 class="col-span-full text-3xl lg:text-[80px] leading-[1.04] tracking-[-0.04em]" set:html={text.tagline} />
-      <div
-        class:list={[
-          'col-span-full flex flex-col gap-4 font-serif mt-3.5 lg:mt-12',
-          taglineSpanClass[text.colSpan ?? 4]
-        ]}
-      >
+      <div class:list={['col-span-full flex flex-col gap-4 font-serif lg:mt-12', taglineSpanClass[text.colSpan ?? 4]]}>
         {text.description.map((line) => <p set:html={line} />)}
       </div>
     </div>
