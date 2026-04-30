@@ -1,7 +1,82 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import Grid from '@components/Grid.astro'
+import { publishedCaseStudies } from '@data/caseStudies'
+import Callout from '@components/Callout.astro'
+
+const sections = [
+  {
+    title: 'Main',
+    links: [
+      { label: 'Home', href: '/' },
+      { label: 'Services', href: '/services' },
+      { label: 'Pixel Assist', href: '/pixel-assist' },
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' }
+    ]
+  },
+  {
+    title: 'Services',
+    links: [
+      { label: 'Discovery + direction', href: '/services/discovery' },
+      { label: 'Design', href: '/services/design' },
+      { label: 'Development', href: '/services/development' },
+      { label: 'AI', href: '/services/ai' },
+      { label: 'Consulting', href: '/services/consulting' }
+    ]
+  },
+  {
+    title: 'Case Studies',
+    links: [
+      ...publishedCaseStudies.map((cs) => ({
+        label: cs.title,
+        href: `/case-studies/${cs.slug}`
+      }))
+    ]
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms & Conditions', href: '/terms' }
+    ]
+  }
+]
 ---
 
 <Layout title="Sitemap">
-  <!-- Page content goes here -->
+  <section class="pb-16 lg:pb-24 pt-12">
+    <Grid>
+      <div class="col-span-full lg:col-start-2 lg:col-span-10 mb-10 lg:mb-16">
+        <h1 class="text-4xl lg:text-7xl leading-[0.9] tracking-[-0.03em]">Sitemap</h1>
+      </div>
+    </Grid>
+
+    <Grid>
+      {
+        sections.map((section) => (
+          <div class="col-span-full lg:col-span-2 lg:col-start-auto mb-10 lg:mb-0 first:lg:col-start-2">
+            <h2 class="font-sans font-semibold text-base text-black/40 uppercase tracking-widest mb-4">
+              {section.title}
+            </h2>
+            <ul class="flex flex-col gap-2">
+              {section.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="font-sans text-base lg:text-lg hover:underline underline-offset-2 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </Grid>
+  </section>
+
+  <Callout label="Looking for something else?" link={{ href: '/contact', label: "Let's chat" }} />
+  <div class="my-6"></div>
 </Layout>
