@@ -1,0 +1,334 @@
+---
+import ContactForm from '@components/ContactForm.astro'
+import Grid from '@components/Grid.astro'
+import Layout from '@layouts/Layout.astro'
+import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
+import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
+import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
+import CaseStudyToggleButton from '@components/case-studies/case-study/CaseStudyToggleButton.astro'
+import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMetaData.astro'
+import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
+import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
+import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+import { getCaseStudyNav } from '@data/caseStudies'
+
+import hero from '@assets/case-studies/pfg/hero.webp'
+import squareOne from '@assets/case-studies/pfg/squareOne.svg'
+import squareTwo from '@assets/case-studies/pfg/squareTwo.webp'
+import wideOne from '@assets/case-studies/pfg/wideOne-alt.webp'
+import wideTwo from '@assets/case-studies/pfg/wideTwo.webp'
+
+const { previous, next } = getCaseStudyNav('pfg')
+---
+
+<Layout
+  title="PFG Australia Case Study"
+  description="Discovery-led website design and development for PFG Australia, the country's largest independent distributor of agricultural machinery and the family-owned home of 15+ tractor and machinery sub-brands. Pixel Agency rebuilt the AU site to give the brand portfolio the showcase it deserved, lift dealer and product enquiries, and make day-to-day maintenance easier for the internal team, with the work since extending into PFG's New Zealand site."
+  published={false}
+>
+  <article id="case-study-page">
+    <CaseStudyHeader>
+      <span slot="title">PFG Australia</span>
+      <span slot="industry">Agricultural Machinery</span>
+      <span slot="services">Discovery + direction, Design, Development</span>
+      <span slot="duration">3 months</span>
+    </CaseStudyHeader>
+
+    <CaseStudyToggleButton />
+
+    <!-- Single shell: all images + summary (left pane) / all case study text (right pane) -->
+    <section class="pb-12 lg:pb-18">
+      <Grid>
+        <div id="case-study-shell" class="case-study-shell col-span-full">
+          <div class="case-study-left-pane min-w-0 overflow-hidden">
+            <CaseStudyImages
+              heroImage={{ src: hero }}
+              summary="Redesigned + redeveloped the PFG Australia website to properly present a portfolio of 15+ tractor and machinery sub-brands to dealers and buyers across the country, lifting product enquiries and earning the trust to extend the work into PFG's New Zealand site."
+              squareImages={[{ src: squareOne }, { src: squareTwo }]}
+              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+            />
+          </div>
+
+          <div class="case-study-right-pane min-w-0">
+            <CaseStudyShout>A new digital foundation for the PFG Australia brand.</CaseStudyShout>
+
+            <CaseStudySectionText title="The client" noTopMargin={true}>
+              <p>
+                PFG Australia is a family-owned, fully independent group of companies with a three-generation history
+                serving the Australian and New Zealand tractor and machinery markets. They're the country's largest
+                independent distributor of agricultural machinery, supplying a national dealer network of around 300
+                dealerships across 15+ brands, including Deutz-Fahr, Kioti, Solis, Versatile, McHale, Maschio Gaspardo,
+                and Kverneland. PFG's audience spans dealers stocking the range, farmers and contractors making serious
+                capital decisions, and the broader category of buyers researching brands before they ever set foot on a
+                dealer's lot.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The problem">
+              <p>
+                PFG already had a presence in Australia, but the existing site wasn't doing the business justice. It
+                looked dated, felt off-brand for a three-generation family business at the top of its category, and
+                wasn't mobile-friendly, which is a problem when dealers and buyers increasingly research machinery on a
+                phone in the paddock or on the move. Product information was hard to find, and the site had no real way
+                of presenting PFG's multi-brand portfolio: each sub-brand has its own audience, identity, and product
+                range, and the old site treated them as a flat list rather than a structured family.
+              </p><br />
+              <p>
+                On top of that, the internal team found the site painful to maintain, which meant updates lagged and the
+                site quietly drifted further behind the business.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The approach">
+              <p>
+                We started in discovery, working with the PFG team to understand the shape of the business before
+                recommending a structure for the website. The brief wasn't just "redesign it." It was: how do we present
+                15+ sub-brands so each one gets the space it deserves, while keeping PFG itself as the trusted parent?
+                How do we serve a dealer network of around 300 dealerships and a buyer audience that ranges from
+                large-scale farmers to small acreage owners? And how do we set the team up to maintain it without coming
+                back to us every time a brand updates a product line? Discovery surfaced the architecture decisions that
+                would carry the project: a brand-led structure, a clear product information hierarchy, and a content
+                management approach the in-house team could actually own.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The solution">
+              <p>
+                We designed and built a new PFG Australia website around the brand portfolio rather than around the
+                corporate org chart. Each sub-brand now has the room to present itself properly, with its own identity,
+                products, and story, while PFG sits cleanly as the trusted distributor behind them.
+              </p><br />
+              <p>
+                The site is mobile-friendly by default, the product information is structured so dealers and buyers can
+                navigate the range without hunting, and the content management system was set up specifically for PFG's
+                team to handle day-to-day updates without needing us in the loop.
+              </p><br />
+              <p>
+                The build was the redesign and redevelopment of the AU site, but it was scoped and structured with the
+                broader group in mind, so the same thinking could extend into the New Zealand market.
+              </p>
+            </CaseStudySectionText>
+
+            <CaseStudySectionText title="The results">
+              <p>
+                The new PFG Australia site has settled in as the digital front door for the business and the brand
+                portfolio:
+              </p>
+              <CaseStudyResults
+                results={[
+                  {
+                    title: 'A measurable lift',
+                    description: 'in dealer and product enquiries',
+                    backgroundColour: '#e8c42f'
+                  },
+                  {
+                    title: 'A multi-brand structure',
+                    description: 'giving each sub-brand the space + identity they need',
+                    backgroundColour: '#6498c9'
+                  },
+                  {
+                    title: 'Easier day-to-day',
+                    description: 'sub-brand content management',
+                    backgroundColour: '#F37992'
+                  },
+                  {
+                    title: 'Trust',
+                    description: 'to extend work onto their main NZ website',
+                    backgroundColour: '#599e83'
+                  }
+                ]}
+              />
+
+              <div class="mt-6 lg:mt-12"></div>
+              <CaseStudyShout
+                >We understand that family businesses don't extend trust by accident. They extend it because the first
+                piece of work earned it.</CaseStudyShout
+              >
+            </CaseStudySectionText>
+
+            <CaseStudyMetaData
+              client={{ name: 'PFG Australia', url: 'https://www.pfgaustralia.com.au' }}
+              industry={['Agricultural Machinery']}
+              serviceNames={['Discovery + direction', 'Design', 'Development']}
+            />
+          </div>
+        </div>
+      </Grid>
+    </section>
+
+    {/* Navigation section */}
+    <CaseStudyNav previousCaseStudy={previous} nextCaseStudy={next} />
+
+    <ContactForm title="Discuss a similar challenge" displayDescription={false} />
+  </article>
+
+  <style>
+    #case-study-page {
+      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+      --case-study-placeholder: #d9d9d9;
+    }
+
+    @media (max-width: 1023px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        overflow: clip;
+      }
+
+      .case-study-left-pane {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 240ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-2rem);
+        pointer-events: none;
+      }
+
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: clip;
+        transform: translateX(2rem);
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: 100%;
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .case-study-shell {
+        display: flex;
+        gap: 0;
+        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-shell {
+        gap: 1.25rem;
+      }
+
+      .case-study-left-pane,
+      .case-study-right-pane {
+        flex: 0 0 auto;
+        transition:
+          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width, max-height, opacity, transform;
+      }
+
+      .case-study-left-pane {
+        width: 100%;
+        max-height: 5000px;
+      }
+
+      .case-study-right-pane {
+        width: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(2rem);
+        overflow: clip;
+        pointer-events: none;
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-left-pane {
+        width: calc(50% - 0.625rem);
+      }
+
+      #case-study-page[data-panel-state='open'] .case-study-right-pane {
+        width: calc(50% - 0.625rem);
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .case-study-shell,
+      .case-study-left-pane,
+      .case-study-right-pane {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    function initCaseStudyPage() {
+      const page = document.getElementById('case-study-page')
+      const toggle = document.getElementById('case-study-toggle')
+      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+      const pageElement = page
+      const toggleButton = toggle
+
+      const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+      function setToggleTextColor() {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+        if (!match) return
+
+        let red = parseInt(match[1], 10) / 255
+        let green = parseInt(match[2], 10) / 255
+        let blue = parseInt(match[3], 10) / 255
+
+        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+      }
+
+      function getDefaultState() {
+        return 'closed'
+      }
+
+      if (!pageElement.dataset.panelState) {
+        pageElement.dataset.panelState = getDefaultState()
+      }
+
+      function syncA11y() {
+        const isOpen = pageElement.dataset.panelState === 'open'
+        toggleButton.setAttribute('aria-expanded', String(isOpen))
+      }
+
+      setToggleTextColor()
+      syncA11y()
+
+      toggleButton.addEventListener('click', () => {
+        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+        syncA11y()
+      })
+    }
+
+    initCaseStudyPage()
+    document.addEventListener('astro:after-swap', initCaseStudyPage)
+  </script>
+</Layout>

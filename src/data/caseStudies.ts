@@ -17,6 +17,7 @@ import miele from '@assets/case-studies/miele/tile.webp'
 import fletcherDam from '@assets/case-studies/fletcher-dam/tile.webp'
 import fletcherAi from '@assets/case-studies/fletcher-ai/tile.webp'
 import sonataAi from '@assets/case-studies/sonata-ai/tile.webp'
+import pfg from '@assets/case-studies/pfg/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -270,6 +271,17 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-green',
     image: sonataAi,
     published: true,
+    featured: false
+  },
+  {
+    title: 'PFG Australia',
+    slug: 'pfg',
+    industry: ['Agricultural Machinery'],
+    services: ['Discovery + direction', 'Design', 'Development'],
+    overview: 'TBD',
+    colour: 'bg-pixel-green',
+    image: pfg,
+    published: false,
     featured: false
   }
 ]
