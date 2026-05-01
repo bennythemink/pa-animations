@@ -76,7 +76,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Redesigned the website to drive 9% more centre tour bookings and a 24% increase in session time from prospective parents.',
-    colour: 'bg-pixel-pink',
+    colour: 'bg-pixel-rosy',
     image: eel,
     published: true,
     featured: false
@@ -100,7 +100,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Built a student-employer platform from the ground up. 200+ registered students, 1,200+ registered employers and 80+ student job placements in year one.',
-    colour: 'bg-pixel-pink',
+    colour: 'bg-pixel-rosy',
     image: holmesglen,
     imagePosition: 'top',
     published: true,
@@ -113,7 +113,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold — from positioning through to product interface.',
-    colour: 'bg-pixel-pink',
+    colour: 'bg-pixel-rosy',
     image: mbImage,
     published: false,
     featured: false

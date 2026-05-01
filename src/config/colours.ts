@@ -18,8 +18,8 @@ export const PIXEL_COLOURS = {
   'pixel-red': '#e9504c',
   'pixel-dark-red': '#8c291c',
 
-  'pixel-pink': '#e38093',
-  'pixel-light-pink': '#ecc9d9',
+  'pixel-rosy': '#f37992',
+  'pixel-lte-rosy': '#F3C8DA',
 
   'pixel-orange': '#f09339',
   'pixel-light-orange': '#f4b865',
@@ -64,7 +64,7 @@ export const ACCENT_COLOUR_KEYS: PixelColourKey[] = [
   'pixel-blue',
   'pixel-dark-blue',
   'pixel-red',
-  'pixel-pink',
+  'pixel-rosy',
   'pixel-orange',
   'pixel-yellow',
   'pixel-green',

@@ -36,7 +36,7 @@ export interface FlowFieldOptions {
   speed?: number
   /** Base colour of the flow field vectors. Default: 'pixel-green' */
   color?: PixelColourKey
-  /** Highlight colour used for mouse/text interaction tinting. Default: 'pixel-pink' */
+  /** Highlight colour used for mouse/text interaction tinting. Default: 'pixel-rosy' */
   highlightColor?: PixelColourKey
   /** Grid spacing preset. Default: 'compact' */
   spacing?: keyof typeof SPACING
@@ -56,7 +56,7 @@ export function initFlowField(options: FlowFieldOptions = {}): FlowFieldControll
     colorChangeOnInteraction = false,
     spacing = 'tight',
     color = 'pixel-green',
-    highlightColor = 'pixel-pink',
+    highlightColor = 'pixel-rosy',
     canvasId = 'flow',
     speed = 0.5,
     padding
