@@ -133,7 +133,7 @@ const logoData = clients ?? defaultClients
       logoData.map((client, i) => (
         <button
           type="button"
-          class="marquee-item shrink-0 px-[10px] lg:px-[12px] cursor-pointer appearance-none bg-transparent border-0 p-0"
+          class="marquee-item group shrink-0 px-[10px] lg:px-[12px] cursor-pointer appearance-none bg-transparent border-0 p-0"
           data-links={JSON.stringify(client.links || [])}
           data-name={client.name}
           data-industry={client.industry || ''}
@@ -144,7 +144,7 @@ const logoData = clients ?? defaultClients
           <img
             src={client.src}
             alt={client.name}
-            class="h-5 lg:h-7 w-auto max-w-none object-contain pointer-events-none"
+            class="h-5 lg:h-7 w-auto max-w-none object-contain pointer-events-none grayscale transition duration-300 ease-in-out group-hover:grayscale-0"
             loading="eager"
             decoding="async"
           />
@@ -334,6 +334,14 @@ const logoData = clients ?? defaultClients
 
     // Popup logic
     function showPopup(btn: HTMLElement) {
+      // Reset all logos to grayscale, then reveal tapped logo (originals + clones)
+      track.querySelectorAll<HTMLImageElement>('.marquee-item img').forEach((img) => img.classList.add('grayscale'))
+      track.querySelectorAll<HTMLElement>('.marquee-item').forEach((el) => {
+        if (el.dataset.name === btn.dataset.name) {
+          el.querySelector('img')?.classList.remove('grayscale')
+        }
+      })
+
       const name = btn.dataset.name || ''
       const industry = btn.dataset.industry || ''
       const services: string[] = JSON.parse(btn.dataset.services || '[]')
@@ -397,6 +405,7 @@ const logoData = clients ?? defaultClients
     }
 
     function hidePopup() {
+      track.querySelectorAll<HTMLImageElement>('.marquee-item img').forEach((img) => img.classList.add('grayscale'))
       popup.classList.add('hidden')
       popup.setAttribute('aria-hidden', 'true')
     }
