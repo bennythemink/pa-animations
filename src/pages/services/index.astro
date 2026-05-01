@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro'
 import Grid from '@components/Grid.astro'
 import Equals from '@components/signs/Equals.astro'
 import CTA from '@components/CTA.astro'
+import { resolvePixelColour } from '@config/colours'
 
 import { Image } from 'astro:assets'
 import servicesHero from '@assets/pa-services-placeholder.png'
@@ -14,7 +15,7 @@ const services = [
     tagline: 'Clarity before commitment.',
     description:
       'For organisations that know something needs to change, but need help defining the problem, the solution, and the investment required. Discovery and direction helps establish shared understanding, reduce uncertainty, and create a clear, defensible path forward, before committing to delivery.',
-    bg: '#63a3d2'
+    bg: 'pixel-blue'
   },
   {
     name: 'Design',
@@ -22,7 +23,7 @@ const services = [
     tagline: 'Human-centred digital experiences.',
     description:
       'We design brands, websites, and applications that are clear, considered, and enjoyable to use, balancing visual expression with usability and purpose. Design translates strategy into something tangible, aligning user needs with business goals.',
-    bg: '#cab38f'
+    bg: 'pixel-cream'
   },
   {
     name: 'Development',
@@ -30,7 +31,7 @@ const services = [
     tagline: 'Reliable, scalable digital solutions.',
     description:
       'From websites to applications and custom systems, we build digital products that are robust, maintainable, and fit for real-world use. Development is where ideas become working solutions, built carefully, not rushed.',
-    bg: '#e38093'
+    bg: 'pixel-pink'
   },
   {
     name: 'AI',
@@ -38,7 +39,7 @@ const services = [
     tagline: 'Practical AI strategy and implementation.',
     description:
       'We help organisations leverage AI to drive innovation, improve efficiency, and make data-driven decisions. Our AI services include strategy, implementation, and ongoing support to ensure successful adoption and measurable impact.',
-    bg: '#479f82'
+    bg: 'pixel-green'
   },
   {
     name: 'Consulting',
@@ -46,7 +47,7 @@ const services = [
     tagline: 'Strategy, leadership, and clarity at every stage.',
     description:
       "Not every challenge requires a build. We provide experienced digital leadership to support strategy, delivery, autonomy, and long-term decision-making. Digital Consulting helps organisations navigate complexity with confidence, whether that's as a virtual CTO, delivery lead, or trusted advisor.",
-    bg: '#f09339'
+    bg: 'pixel-orange'
   }
 ]
 ---
@@ -122,13 +123,13 @@ const services = [
       <div
         id="services-blurb"
         class="col-span-full lg:col-start-1 lg:col-span-6 lg:self-start lg:sticky lg:top-34 lg:grid lg:grid-cols-subgrid"
-        style="background-color: #EAE7E4;"
+        style="background-color: var(--color-pixel-light-cream);"
       >
         {/* Inner content inset to match services-intro left edge */}
         <div class="col-span-full lg:col-start-2 lg:col-span-5 flex flex-col gap-6 p-10 lg:py-16 lg:pr-16 lg:pl-0">
           <p
             class="font-sans font-normal text-[18px] lg:text-[40px]"
-            style="color: #00A180; letter-spacing: 0; line-height: 1.1;"
+            style="color: var(--color-pixel-green); letter-spacing: 0; line-height: 1.1;"
           >
             How our services work together
           </p>
@@ -166,7 +167,7 @@ const services = [
             services.map((s) => (
               <div
                 class="shrink-0 snap-start w-[300px] min-h-[300px] lg:w-auto lg:h-[464px] flex flex-col pt-5 px-5 lg:px-8 pb-5 justify-between"
-                style={`background-color: ${s.bg};`}
+                style={`background-color: ${resolvePixelColour(s.bg)};`}
               >
                 <div class="flex items-start justify-between gap-4">
                   <h3 class="text-[40px]">{s.name}</h3>
@@ -231,7 +232,7 @@ const services = [
     transition: color 0.25s ease;
   }
   .service-link .arrow {
-    color: #cac0b8;
+    color: var(--color-pixel-brown);
     transition: color 0.25s ease;
   }
   .service-link:hover,

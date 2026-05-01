@@ -111,14 +111,14 @@ const { previous, next } = getCaseStudyNav('holmesglen')
                   {
                     title: '200+ student profiles',
                     description: 'created through the portal',
-                    backgroundColour: '#e8c42f'
+                    backgroundColour: 'pixel-yellow'
                   },
                   {
                     title: '1,200+ employers',
                     description: 'registered and actively using the platform',
-                    backgroundColour: '#6498c9'
+                    backgroundColour: 'pixel-blue'
                   },
-                  { title: '80+ students', description: 'placed into employment', backgroundColour: '#F37992' }
+                  { title: '80+ students', description: 'placed into employment', backgroundColour: 'pixel-pink' }
                 ]}
               />
 
@@ -149,7 +149,7 @@ const { previous, next } = getCaseStudyNav('holmesglen')
   <style>
     #case-study-page {
       --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
-      --case-study-placeholder: #d9d9d9;
+      --case-study-placeholder: var(--color-pixel-placeholder-grey);
     }
 
     @media (max-width: 1023px) {

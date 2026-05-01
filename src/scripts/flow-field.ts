@@ -3,28 +3,23 @@
    Zero dependencies. ~3 KB.
    ============================================================ */
 
+import { PIXEL_COLOURS, ACCENT_COLOUR_KEYS, hexToRgb, type PixelColourKey } from '@config/colours'
+
 // ── COLOUR PALETTE ──────────────────────────────────────────
-const COLORS = {
-  green: { r: 0, g: 161, b: 128 }, // #00A180
-  pink: { r: 243, g: 121, b: 146 }, // #F37992
-  yellow: { r: 232, g: 196, b: 47 }, // #e8c42f
-  red: { r: 221, g: 122, b: 140 }, // #dd7a8c
-  blue: { r: 100, g: 152, b: 201 }, // #6498c9
-  orange: { r: 240, g: 147, b: 57 }, // #f09339
-  beige: { r: 202, g: 179, b: 143 }, // #cab38f
-  gold: { r: 255, g: 215, b: 0 }, // #FFD700
-  burntGold: { r: 212, g: 170, b: 42 } // #D4AA2A
-}
+const COLORS = Object.fromEntries(Object.entries(PIXEL_COLOURS).map(([key, hex]) => [key, hexToRgb(hex)])) as Record<
+  PixelColourKey,
+  { r: number; g: number; b: number }
+>
 
-/** All valid colour keys, exported for use in other scripts. */
-export const COLOR_KEYS = Object.keys(COLORS) as (keyof typeof COLORS)[]
+/** Accent colour keys used by the flow-field, exported for use in other scripts. */
+export const COLOR_KEYS = ACCENT_COLOUR_KEYS
 
-/** Maps each colour key to a CSS rgb() string. Used to set the --accent-bgc CSS variable. */
+/** Maps each accent colour key to a CSS rgb() string. Used to set the --accent-bgc CSS variable. */
 export const COLORS_RGB = Object.fromEntries(
-  Object.entries(COLORS).map(([k, v]) => [
-    k,
-    `rgb(${(v as { r: number; g: number; b: number }).r},${(v as { r: number; g: number; b: number }).g},${(v as { r: number; g: number; b: number }).b})`
-  ])
+  ACCENT_COLOUR_KEYS.map((k) => {
+    const v = COLORS[k]
+    return [k, `rgb(${v.r},${v.g},${v.b})`]
+  })
 ) as Record<string, string>
 
 // ── SPACING PRESETS ─────────────────────────────────────────
@@ -39,10 +34,10 @@ export interface FlowFieldOptions {
   canvasId?: string
   /** Animation speed multiplier, 0–1. 1 = full speed. Default: 0.5 */
   speed?: number
-  /** Base colour of the flow field vectors. Default: 'green' */
-  color?: keyof typeof COLORS
-  /** Highlight colour used for mouse/text interaction tinting. Default: 'pink' */
-  highlightColor?: keyof typeof COLORS
+  /** Base colour of the flow field vectors. Default: 'pixel-green' */
+  color?: PixelColourKey
+  /** Highlight colour used for mouse/text interaction tinting. Default: 'pixel-pink' */
+  highlightColor?: PixelColourKey
   /** Grid spacing preset. Default: 'compact' */
   spacing?: keyof typeof SPACING
   /** Whether vectors change colour on mouse interaction. Default: false */
@@ -60,8 +55,8 @@ export function initFlowField(options: FlowFieldOptions = {}): FlowFieldControll
   const {
     colorChangeOnInteraction = false,
     spacing = 'tight',
-    color = 'green',
-    highlightColor = 'pink',
+    color = 'pixel-green',
+    highlightColor = 'pixel-pink',
     canvasId = 'flow',
     speed = 0.5,
     padding

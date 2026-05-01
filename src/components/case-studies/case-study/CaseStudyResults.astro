@@ -1,4 +1,6 @@
 ---
+import { resolvePixelColour } from '@config/colours'
+
 interface Result {
   title: string
   description: string
@@ -28,7 +30,7 @@ const lastSpans = results.length > 0 && results.length % cols === 1
       return (
         <div
           class={`results-card${isLast && lastSpans ? ' results-card--full' : ''}`}
-          style={`background-color: ${result.backgroundColour}`}
+          style={`background-color: ${resolvePixelColour(result.backgroundColour)}`}
         >
           <p class="font-sans text-[clamp(1.5rem,2.5vw,2rem)] leading-[1.05] tracking-[-0.03em] p-4 pb-0 lg:p-5 lg:pb-0">
             {result.title}

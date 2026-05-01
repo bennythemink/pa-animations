@@ -38,7 +38,7 @@ const sectionCards = [
       'Whether you’re starting from scratch, improving something that exists, or navigating a complex digital challenge, there’s a service built for where you are right now.'
     ],
     url: '/services/discovery',
-    colour: '#63a3d2'
+    colour: 'pixel-blue'
   },
   {
     title: 'Design',
@@ -46,7 +46,7 @@ const sectionCards = [
       'Digital experiences that work for your customers, not just impress them. Brand, website, and product design driven by outcomes and grounded in how real people use digital products.'
     ],
     url: '/services/design',
-    colour: '#cab38f'
+    colour: 'pixel-cream'
   },
   {
     title: 'Development',
@@ -54,7 +54,7 @@ const sectionCards = [
       'Websites, apps, and systems built to last, robust, maintainable, and fit for purpose. Not over-engineered, not fragile.'
     ],
     url: '/services/development',
-    colour: '#e38093'
+    colour: 'pixel-pink'
   },
   {
     title: 'AI',
@@ -62,7 +62,7 @@ const sectionCards = [
       'AI-powered solutions that enhance your digital experiences, automate processes, and provide insights to drive better decision-making.'
     ],
     url: '/services/ai',
-    colour: '#00A180'
+    colour: 'pixel-green'
   },
   {
     title: 'Consulting',
@@ -70,7 +70,7 @@ const sectionCards = [
       'Senior guidance on strategy, delivery, and technical decisions, from people who have seen what good and bad looks like at scale, and will tell you the difference.'
     ],
     url: '/services/consulting',
-    colour: '#f09339'
+    colour: 'pixel-orange'
   }
 ]
 ---
@@ -1171,7 +1171,7 @@ const sectionCards = [
     const pxEndW = vw < 640 ? 32 : 64
 
     // ── Init flow field ──
-    const accentKey = (document.documentElement.dataset.accentColor || 'green') as any
+    const accentKey = (document.documentElement.dataset.accentColor || 'pixel-green') as any
     const flowCtrl = initFlowField({
       canvasId: 'hero-flow',
       color: accentKey,

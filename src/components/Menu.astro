@@ -1,32 +1,9 @@
 ---
 import { siteConfig } from '@config/site'
-
-/** Name-to-hex lookup matching --color-pixel-* tokens in global.css */
-const PIXEL_COLORS: Record<string, string> = {
-  'pixel-red': '#e9504c',
-  'pixel-dark-red': '#8c291c',
-  'pixel-blue': '#63a3d2',
-  'pixel-dark-blue': '#386b92',
-  'pixel-light-blue': '#dfe9fd',
-  'pixel-green': '#479f82',
-  'pixel-dark-green': '#2a6351',
-  'pixel-orange': '#f09339',
-  'pixel-light-orange': '#f4b865',
-  'pixel-pink': '#e38093',
-  'pixel-light-pink': '#ecc9d9',
-  'pixel-yellow': '#f5c844',
-  'pixel-light-yellow': '#fcebad',
-  'pixel-cream': '#cab38f',
-  'pixel-light-cream': '#eae7e4',
-  'pixel-off-cream': '#ebe7e4',
-  'pixel-off-white': '#f5f3f2',
-  'pixel-brown': '#c9b58d'
-}
+import { resolvePixelColour } from '@config/colours'
 
 /** Resolve a pixel-* name or pass through a raw hex value */
-function resolveColour(value: string): string {
-  return PIXEL_COLORS[value] ?? value
-}
+const resolveColour = resolvePixelColour
 
 interface LogoColourPair {
   p: string

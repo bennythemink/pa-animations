@@ -1,5 +1,6 @@
 ---
 import Grid from './Grid.astro'
+import { resolvePixelColour } from '@config/colours'
 
 interface Card {
   title: string
@@ -43,7 +44,7 @@ const taglineSpanClass: Record<number, string> = {
   <div
     id="section-cards-intro"
     class="col-span-full lg:col-start-1 lg:col-span-6 lg:self-start lg:sticky lg:top-30 lg:grid lg:grid-cols-subgrid"
-    style={displayTextBackground ? 'background-color: #EAE7E4;' : ''}
+    style={displayTextBackground ? 'background-color: var(--color-pixel-light-cream);' : ''}
   >
     {/* Inner content inset to match services-intro left edge */}
     <div
@@ -56,7 +57,7 @@ const taglineSpanClass: Record<number, string> = {
         title && (
           <h2
             class="col-span-full font-sans text-base lg:text-[40px]"
-            style="color: #357563; letter-spacing: 0; line-height: 1.1;"
+            style={`color: ${resolvePixelColour(title.colour ?? 'pixel-dark-green')}; letter-spacing: 0; line-height: 1.1;`}
             set:html={title.text}
           />
         )
@@ -77,7 +78,7 @@ const taglineSpanClass: Record<number, string> = {
         cards.map((card) => (
           <div
             class="shrink-0 snap-start w-[300px] min-h-[300px] lg:w-auto lg:h-[464px] flex flex-col pt-5 px-5 lg:px-8 pb-5 justify-between"
-            style={`background-color: ${card.colour};`}
+            style={`background-color: ${resolvePixelColour(card.colour ?? '')};`}
           >
             <div class="flex items-start justify-between gap-4">
               <h3 class="text-[40px]" set:html={card.title} />

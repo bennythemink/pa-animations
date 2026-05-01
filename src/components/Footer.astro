@@ -121,6 +121,6 @@ const year = new Date().getFullYear()
   // Explicit prop wins → random accent colour → default 'blue'
   const color = (canvas.dataset.color ||
     document.documentElement.dataset.accentColor ||
-    'blue') as FlowFieldOptions['color']
+    'pixel-blue') as FlowFieldOptions['color']
   initFlowField({ canvasId: 'footer-flow', color, padding: { top: 80 } })
 </script>
