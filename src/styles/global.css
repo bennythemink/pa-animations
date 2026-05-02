@@ -57,6 +57,8 @@
   --text-20xl: 30rem;
   --text-20xl--line-height: 1;
 
+  --color-pixel-platinum: #ebe7e4;
+
   --color-pixel-rosy: #f37992;
   --color-pixel-lte-rosy: #f3c8da;
 
@@ -65,7 +67,6 @@
 
   --color-pixel-cream: #cfb28a;
   --color-pixel-light-cream: #eae7e4;
-  --color-pixel-off-cream: #ebe7e4;
 
   --color-pixel-poppy: #fd3f44;
   --color-pixel-drk-poppy: #991c12;

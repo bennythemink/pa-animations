@@ -7,6 +7,8 @@
  * and call resolvePixelColour() to convert it to a hex value for inline styles.
  */
 export const PIXEL_COLOURS = {
+  'pixel-platinum': '#ebe7e4',
+
   'pixel-rosy': '#f37992',
   'pixel-lte-rosy': '#F3C8DA',
 
@@ -15,7 +17,6 @@ export const PIXEL_COLOURS = {
 
   'pixel-cream': '#CFB28A',
   'pixel-light-cream': '#eae7e4',
-  'pixel-off-cream': '#ebe7e4',
 
   'pixel-poppy': '#fd3f44',
   'pixel-drk-poppy': '#991c12',
