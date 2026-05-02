@@ -11,9 +11,9 @@ export const PIXEL_COLOURS = {
   'pixel-light-cream': '#eae7e4',
   'pixel-off-cream': '#ebe7e4',
 
-  'pixel-blue': '#63a3d2',
-  'pixel-dark-blue': '#386b92',
-  'pixel-light-blue': '#dfe9fd',
+  'pixel-celestial': '#63a3d2',
+  'pixel-drk-celestial': '#386b92',
+  'pixel-lte-celestial': '#dfe9fd',
 
   'pixel-poppy': '#e9504c',
   'pixel-drk-poppy': '#8c291c',
@@ -61,8 +61,8 @@ export function hexToRgb(hex: string): { r: number; g: number; b: number } {
 
 /** Colour keys used by the flow-field accent system. Subset of brand palette. */
 export const ACCENT_COLOUR_KEYS: PixelColourKey[] = [
-  'pixel-blue',
-  'pixel-dark-blue',
+  'pixel-celestial',
+  'pixel-drk-celestial',
   'pixel-poppy',
   'pixel-rosy',
   'pixel-orange',

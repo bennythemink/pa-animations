@@ -88,7 +88,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time, while cutting support requests by 30%.',
-    colour: 'bg-pixel-blue',
+    colour: 'bg-pixel-celestial',
     image: insulation,
     published: true,
     featured: true
