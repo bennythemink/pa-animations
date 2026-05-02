@@ -30,10 +30,6 @@ export const PIXEL_COLOURS = {
   'pixel-solar': '#FEC601',
   'pixel-lte-solar': '#FFEAA1',
 
-  'pixel-off-white': '#f5f3f2',
-
-  'pixel-brown': '#c9b58d',
-
   // UI utility — not a brand colour
   'pixel-placeholder-grey': '#d9d9d9'
 } as const
@@ -69,6 +65,5 @@ export const ACCENT_COLOUR_KEYS: PixelColourKey[] = [
   'pixel-solar',
   'pixel-teal',
   'pixel-drk-teal',
-  'pixel-brown',
   'pixel-fawn'
 ]
