@@ -151,7 +151,7 @@ const navLinks = [
       {/* Mobile menu trigger — hidden on desktop */}
       <button
         id="menu-open"
-        class="lg:hidden font-sans font-normal p-1.5 hover:cursor-pointer pointer-events-auto"
+        class="lg:hidden font-sans font-normal p-1.5 hover:cursor-pointer pointer-events-auto hover:underline underline-offset-2"
         style="background-color: rgb(255 255 255 / 95%);"
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -174,7 +174,10 @@ const navLinks = [
 >
   {/* Overlay header row: logo + close button */}
   <div class="flex items-start justify-between shrink-0">
-    <a href="/" class="flex flex-col font-sans text-2xl font-normal" aria-label="Pixel Agency homepage"
+    <a
+      href="/"
+      class="flex flex-col font-sans text-2xl font-normal hover:underline underline-offset-2"
+      aria-label="Pixel Agency homepage"
       >Pixel Agency
     </a>
     <button

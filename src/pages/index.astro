@@ -117,9 +117,11 @@ const sectionCards = [
       <div class="px-5 lg:px-20 max-w-360 w-full text-center">
         <h1 id="hero-h1" class="text-[8vw] xl:text-[120px]" style="visibility:hidden;">
           <span id="hero-word-container" class="inline-block align-baseline text-center">
-            <span id="hero-word"></span><span
+            <span id="hero-word"></span>
+            <span
               id="hero-cursor"
-              class="inline-block w-0.5 sm:w-1.5 h-[1.2em] bg-current align-middle ml-2 -translate-y-[14px]"></span>
+              class="inline-block w-0.5 sm:w-1.5 h-[1.2em] bg-current align-middle lg:ml-1 -translate-y-[3px] lg:-translate-y-[14px]"
+            ></span>
           </span><br />
           without the sales<br />
           <span class="whitespace-nowrap"
@@ -637,6 +639,10 @@ const sectionCards = [
   }
   .process-rect[data-color='cream'] {
     background-color: var(--color-pixel-fawn);
+  }
+
+  #hero-word-container {
+    white-space: nowrap;
   }
 
   /* ── Hero animation ── */
