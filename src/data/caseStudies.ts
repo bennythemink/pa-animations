@@ -124,7 +124,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Not-for-profit'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview: "Redesigned VincentCare's website, achieving a 14% increase in donations and 22% longer session times.",
-    colour: 'bg-pixel-yellow',
+    colour: 'bg-pixel-solar',
     image: vincentcare,
     published: false,
     featured: false

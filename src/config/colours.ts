@@ -27,8 +27,8 @@ export const PIXEL_COLOURS = {
   'pixel-fire': '#FF8D11',
   'pixel-lte-fire': '#ffb554',
 
-  'pixel-yellow': '#f5c844',
-  'pixel-light-yellow': '#fcebad',
+  'pixel-solar': '#FEC601',
+  'pixel-lte-solar': '#FFEAA1',
 
   'pixel-off-white': '#f5f3f2',
 
@@ -66,7 +66,7 @@ export const ACCENT_COLOUR_KEYS: PixelColourKey[] = [
   'pixel-poppy',
   'pixel-rosy',
   'pixel-fire',
-  'pixel-yellow',
+  'pixel-solar',
   'pixel-teal',
   'pixel-drk-teal',
   'pixel-brown',
