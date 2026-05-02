@@ -21,9 +21,10 @@ const { id = 'who', title, labelColor = 'text-pixel-poppy', rightColumnTitle, bu
       </div>
     </div>
 
-    <div class="col-span-12 lg:col-span-5 lg:col-start-8 mt-10 lg:mt-0">
+    <div class="col-span-12 lg:col-span-4 lg:col-start-8 mt-10 lg:mt-0">
       <p class="font-sans font-normal text-[20px] lg:text-[30px] tracking-[-0.04em] mb-6 lg:mb-10">
-        {rightColumnTitle}
+        {rightColumnTitle && <>{rightColumnTitle}</>}
+        {!rightColumnTitle && <div class="h-[1em]" aria-hidden="true" />}
       </p>
       <ul class="flex flex-col gap-5 lg:gap-7">
         {
