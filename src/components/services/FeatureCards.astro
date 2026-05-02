@@ -219,7 +219,7 @@ const uid = Math.random().toString(36).slice(2, 8)
     'inset(0% 0% 0% 100%)'
   ]
 
-  type Instance = { ctx: gsap.Context; resizeHandler: () => void }
+  type Instance = { observer: IntersectionObserver; resizeHandler: () => void }
   let instances: Instance[] = []
 
   function equaliseHeights(cards: HTMLElement[]) {
@@ -261,9 +261,7 @@ const uid = Math.random().toString(36).slice(2, 8)
     // Randomise col-start for solo cards, guaranteeing at least one in each column
     const soloCards = cards.filter((c) => c.dataset.solo === 'true')
     if (soloCards.length > 0) {
-      // Assign randomly first
       const starts = soloCards.map(() => (Math.random() < 0.5 ? '2' : '7'))
-      // If all ended up the same column, flip one random card to the other
       const allSame = starts.every((s) => s === starts[0])
       if (allSame && soloCards.length > 1) {
         const flipIdx = Math.floor(Math.random() * soloCards.length)
@@ -277,30 +275,39 @@ const uid = Math.random().toString(36).slice(2, 8)
     // Shuffle clip directions so each page load gets a different assignment
     const directions = shuffle(CLIP_DIRECTIONS)
 
-    // Set clip-path immediately (before any ScrollTrigger measures positions)
+    // Set clip-path immediately
     cards.forEach((card, i) => {
       card.style.clipPath = directions[i % directions.length]
     })
 
-    const ctx = gsap.context(() => {
-      cards.forEach((card, i) => {
-        gsap.to(card, {
-          clipPath: 'inset(0% 0% 0% 0%)',
-          duration: 0.9,
-          ease: 'power2.out',
-          scrollTrigger: { trigger: card, start: 'top 85%', once: true, invalidateOnRefresh: true }
+    // Use IntersectionObserver for entrance detection — immune to pinned ScrollTrigger
+    // sections on the page inflating scroll positions and firing triggers prematurely.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          const card = entry.target as HTMLElement
+          observer.unobserve(card)
+          gsap.to(card, {
+            clipPath: 'inset(0% 0% 0% 0%)',
+            duration: 0.9,
+            ease: 'power2.out'
+          })
         })
-      })
-    })
+      },
+      { threshold: 0 }
+    )
+
+    cards.forEach((card) => observer.observe(card))
 
     const resizeHandler = () => equaliseHeights(cards)
     window.addEventListener('resize', resizeHandler)
-    return { ctx, resizeHandler }
+    return { observer, resizeHandler }
   }
 
   function init() {
-    instances.forEach(({ ctx, resizeHandler }) => {
-      ctx.revert()
+    instances.forEach(({ observer, resizeHandler }) => {
+      observer.disconnect()
       window.removeEventListener('resize', resizeHandler)
     })
     instances = []
@@ -308,16 +315,14 @@ const uid = Math.random().toString(36).slice(2, 8)
     document.querySelectorAll<HTMLElement>('[data-approach-section]').forEach((section) => {
       instances.push(initSection(section))
     })
-
-    ScrollTrigger.refresh()
   }
 
   requestAnimationFrame(() => init())
 
   document.addEventListener('astro:page-load', () => requestAnimationFrame(() => init()))
   document.addEventListener('astro:before-swap', () => {
-    instances.forEach(({ ctx, resizeHandler }) => {
-      ctx.revert()
+    instances.forEach(({ observer, resizeHandler }) => {
+      observer.disconnect()
       window.removeEventListener('resize', resizeHandler)
     })
     instances = []
