@@ -52,7 +52,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Unified three merging community health organisations online, achieving a 115% increase in total visitors within six months of launch.',
-    colour: 'bg-pixel-green',
+    colour: 'bg-pixel-teal',
     image: bhn,
     published: true,
     featured: true
@@ -208,7 +208,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Consulting'],
     overview:
       'Took an off-shore-built Greek Cypriot language app from rudderless to launched on iOS and Android, with the founders trained to run delivery themselves.',
-    colour: 'bg-pixel-green',
+    colour: 'bg-pixel-teal',
     image: cyprusays,
     published: true,
     featured: false
@@ -220,7 +220,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'A 12-month time-boxed digital experiment that gave a specialist childcare builder a clear, data-backed answer on whether a national market existed, letting them close the venture cleanly without overcommitting.',
-    colour: 'bg-pixel-green',
+    colour: 'bg-pixel-teal',
     image: jamala,
     published: false,
     featured: false
@@ -244,7 +244,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Custom Digital Asset Management platform design and development for Fletcher Insulation, an Australian leader in the building and construction insulation products sector. Pixel Agency built a self-service DAM for Fletcher employees and approved partners with a custom approval workflow, cutting asset support requests by 15% and replacing scattered files with a single source of truth.',
-    colour: 'bg-pixel-green',
+    colour: 'bg-pixel-teal',
     image: fletcherDam,
     published: true,
     featured: false
@@ -256,7 +256,7 @@ const caseStudies: CaseStudy[] = [
     services: ['AI'],
     overview:
       'AI for Fletcher Insulation. Pixel Agency deployed Pixel Assist, our AI knowledge assistant product on insulation.com.au, surfacing product information instantly and cutting support queries in a successful trial.',
-    colour: 'bg-pixel-green',
+    colour: 'bg-pixel-teal',
     image: fletcherAi,
     published: true,
     featured: false
@@ -268,7 +268,7 @@ const caseStudies: CaseStudy[] = [
     services: ['AI'],
     overview:
       'AI for Sonata AI. Pixel Agency built a custom acoustic risk calculator for Sonata AI, demonstrating the potential of AI-powered tools to provide instant, accurate insights and drive informed decision-making in the construction industry.',
-    colour: 'bg-pixel-green',
+    colour: 'bg-pixel-teal',
     image: sonataAi,
     published: true,
     featured: false
@@ -279,7 +279,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Agricultural Machinery'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview: 'TBD',
-    colour: 'bg-pixel-green',
+    colour: 'bg-pixel-teal',
     image: pfg,
     published: false,
     featured: false

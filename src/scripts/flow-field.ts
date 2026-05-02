@@ -34,7 +34,7 @@ export interface FlowFieldOptions {
   canvasId?: string
   /** Animation speed multiplier, 0–1. 1 = full speed. Default: 0.5 */
   speed?: number
-  /** Base colour of the flow field vectors. Default: 'pixel-green' */
+  /** Base colour of the flow field vectors. Default: 'pixel-teal' */
   color?: PixelColourKey
   /** Highlight colour used for mouse/text interaction tinting. Default: 'pixel-rosy' */
   highlightColor?: PixelColourKey
@@ -55,7 +55,7 @@ export function initFlowField(options: FlowFieldOptions = {}): FlowFieldControll
   const {
     colorChangeOnInteraction = false,
     spacing = 'tight',
-    color = 'pixel-green',
+    color = 'pixel-teal',
     highlightColor = 'pixel-rosy',
     canvasId = 'flow',
     speed = 0.5,
