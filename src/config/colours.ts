@@ -15,8 +15,8 @@ export const PIXEL_COLOURS = {
   'pixel-dark-blue': '#386b92',
   'pixel-light-blue': '#dfe9fd',
 
-  'pixel-red': '#e9504c',
-  'pixel-dark-red': '#8c291c',
+  'pixel-poppy': '#e9504c',
+  'pixel-drk-poppy': '#8c291c',
 
   'pixel-rosy': '#f37992',
   'pixel-lte-rosy': '#F3C8DA',
@@ -63,7 +63,7 @@ export function hexToRgb(hex: string): { r: number; g: number; b: number } {
 export const ACCENT_COLOUR_KEYS: PixelColourKey[] = [
   'pixel-blue',
   'pixel-dark-blue',
-  'pixel-red',
+  'pixel-poppy',
   'pixel-rosy',
   'pixel-orange',
   'pixel-yellow',

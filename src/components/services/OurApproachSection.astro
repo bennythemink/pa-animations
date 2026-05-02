@@ -6,11 +6,11 @@ import Grid from '@components/Grid.astro'
 interface Props {
   /** Optional label above the heading. Defaults to 'Our approach'. */
   label?: string
-  /** Hex colour or pixel var name (e.g. 'pixel-red') for the label text. Defaults to pixel-red. */
+  /** Hex colour or pixel var name (e.g. 'pixel-poppy') for the label text. Defaults to pixel-poppy. */
   labelColour?: string
 }
 
-const { label = 'Our approach', labelColour = 'pixel-red' } = Astro.props
+const { label = 'Our approach', labelColour = 'pixel-poppy' } = Astro.props
 
 // Resolve colour — same pattern as ApproachPointsSection
 const cssText = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf-8')

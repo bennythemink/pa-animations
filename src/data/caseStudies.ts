@@ -64,7 +64,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       "Transformed Dare Iced Coffee's digital presence, delivering a 200%+ increase in time on site and a meaningful reduction in support load.",
-    colour: 'bg-pixel-red',
+    colour: 'bg-pixel-poppy',
     image: dare,
     published: false,
     featured: false
@@ -232,7 +232,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Consulting'],
     overview:
       'Digital consulting and strategy for Miele Australia in the domestic and commercial appliances sector. Pixel Agency mapped its technology landscape ahead of the global SAP S/4HANA transition, securing a market-specific implementation that now benchmarks similar Miele markets.',
-    colour: 'bg-pixel-red',
+    colour: 'bg-pixel-poppy',
     image: miele,
     published: false,
     featured: false

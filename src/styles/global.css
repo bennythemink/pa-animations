@@ -63,6 +63,9 @@
   --color-pixel-teal: #00a180;
   --color-pixel-drk-teal: #006550;
 
+  --color-pixel-poppy: #fd3f44;
+  --color-pixel-drk-poppy: #991c12;
+
   --color-pixel-cream: #cab38f;
   --color-pixel-light-cream: #eae7e4;
   --color-pixel-off-cream: #ebe7e4;
@@ -70,9 +73,6 @@
   --color-pixel-blue: #63a3d2;
   --color-pixel-dark-blue: #386b92;
   --color-pixel-light-blue: #dfe9fd;
-
-  --color-pixel-red: #e9504c;
-  --color-pixel-dark-red: #8c291c;
 
   --color-pixel-orange: #f09339;
   --color-pixel-light-orange: #f4b865;
