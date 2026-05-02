@@ -7,28 +7,28 @@
  * and call resolvePixelColour() to convert it to a hex value for inline styles.
  */
 export const PIXEL_COLOURS = {
-  'pixel-cream': '#cab38f',
-  'pixel-light-cream': '#eae7e4',
-  'pixel-off-cream': '#ebe7e4',
-
-  'pixel-celestial': '#63a3d2',
-  'pixel-drk-celestial': '#386b92',
-  'pixel-lte-celestial': '#dfe9fd',
-
-  'pixel-poppy': '#e9504c',
-  'pixel-drk-poppy': '#8c291c',
-
   'pixel-rosy': '#f37992',
   'pixel-lte-rosy': '#F3C8DA',
 
-  'pixel-orange': '#f09339',
-  'pixel-light-orange': '#f4b865',
+  'pixel-teal': '#00a180',
+  'pixel-drk-teal': '#006550',
+
+  'pixel-cream': '#CFB28A',
+  'pixel-light-cream': '#eae7e4',
+  'pixel-off-cream': '#ebe7e4',
+
+  'pixel-poppy': '#fd3f44',
+  'pixel-drk-poppy': '#991c12',
+
+  'pixel-celestial': '#4ba5d7',
+  'pixel-drk-celestial': '#216d96',
+  'pixel-lte-celestial': '#dfe9fd',
+
+  'pixel-fire': '#FF8D11',
+  'pixel-lte-fire': '#ffb554',
 
   'pixel-yellow': '#f5c844',
   'pixel-light-yellow': '#fcebad',
-
-  'pixel-teal': '#479f82',
-  'pixel-drk-teal': '#2a6351',
 
   'pixel-off-white': '#f5f3f2',
 
@@ -65,7 +65,7 @@ export const ACCENT_COLOUR_KEYS: PixelColourKey[] = [
   'pixel-drk-celestial',
   'pixel-poppy',
   'pixel-rosy',
-  'pixel-orange',
+  'pixel-fire',
   'pixel-yellow',
   'pixel-teal',
   'pixel-drk-teal',

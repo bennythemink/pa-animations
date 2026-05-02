@@ -136,7 +136,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       "Transformed Yoplait Australia's digital presence, delivering +30% more traffic and +50% longer session times.",
-    colour: 'bg-pixel-orange',
+    colour: 'bg-pixel-fire',
     image: yoplait,
     published: true,
     featured: true
@@ -148,7 +148,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Consulting'],
     overview:
       'Shaped a gamified online STEM learning concept for Swinburne University, with full desktop and mobile design and a complete tender response to anchor their national grant bid.',
-    colour: 'bg-pixel-orange',
+    colour: 'bg-pixel-fire',
     image: stemhub,
     published: true,
     featured: false
@@ -160,7 +160,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       "Translated Farmers Union Greek Yogurt's refreshed packaging brand into a cohesive web and mobile experience, lifting traffic on launch.",
-    colour: 'bg-pixel-orange',
+    colour: 'bg-pixel-fire',
     image: farmers,
     published: false,
     featured: false
@@ -172,7 +172,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       "Redesigned Simple.io's website, delivering a 26% lift in leads and 76% longer session times, plus a distinctive illustration-led brand identity.",
-    colour: 'bg-pixel-orange',
+    colour: 'bg-pixel-fire',
     image: simple,
     published: true,
     featured: false
@@ -184,7 +184,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design'],
     overview:
       'Two legacy sites consolidated into a unified brand, with discovery, design, and a head-office-ready business case delivered.',
-    colour: 'bg-pixel-orange',
+    colour: 'bg-pixel-fire',
     image: toll,
     published: false,
     featured: false
@@ -196,7 +196,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       "Redesigned Mt. Baw Baw Alpine Resort's website, lifting customer satisfaction by 88% and accommodation bookings by 25%+.",
-    colour: 'bg-pixel-orange',
+    colour: 'bg-pixel-fire',
     image: bawbaw,
     published: true,
     featured: false
