@@ -18,7 +18,8 @@ const {
 } = Astro.props
 
 // ── Replace with your deployed Google Apps Script web app URL ──
-const FORM_ENDPOINT = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
+const FORM_ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbwuoWaLuK5kxwKwDsgILOtSFBYZiVSPe0zUIWJlPy3UKOfE74yvl_p9iM22JAmNNWs/exec'
 
 // Unique prefix so multiple instances on the same page don't clash
 const uid = Math.random().toString(36).slice(2, 8)
@@ -230,17 +231,19 @@ const uid = Math.random().toString(36).slice(2, 8)
       setLoading(true)
 
       try {
+        const org = orgInput?.value.trim()
+        const nameValue = org ? `${nameInput.value.trim()} (${org})` : nameInput.value.trim()
+        const emailValue = emailInput.value.trim()
+        const phoneValue = phoneInput.value.trim()
+        const contactValue = [emailValue, phoneValue].filter(Boolean).join(' / ')
+
         const data = new URLSearchParams({
-          name: nameInput.value.trim(),
-          organisation: orgInput?.value.trim() ?? '',
-          email: emailInput.value.trim(),
-          phone: phoneInput.value.trim(),
-          message: msgInput?.value.trim() ?? ''
+          name: nameValue,
+          contact: contactValue,
+          scope: msgInput?.value.trim() ?? ''
         })
 
-        // Google Apps Script requires no-cors; response will be opaque.
-        // Network failures (no internet) still throw and are caught below.
-        await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: data })
+        await fetch(endpoint, { method: 'POST', body: data })
 
         form.classList.add('hidden')
         successEl.classList.remove('hidden')
