@@ -18,8 +18,11 @@ const {
 } = Astro.props
 
 // ── Replace with your deployed Google Apps Script web app URL ──
+// const FORM_ENDPOINT =
+//   'https://script.google.com/macros/s/AKfycbwuoWaLuK5kxwKwDsgILOtSFBYZiVSPe0zUIWJlPy3UKOfE74yvl_p9iM22JAmNNWs/exec'
+
 const FORM_ENDPOINT =
-  'https://script.google.com/macros/s/AKfycbwuoWaLuK5kxwKwDsgILOtSFBYZiVSPe0zUIWJlPy3UKOfE74yvl_p9iM22JAmNNWs/exec'
+  'https://script.google.com/macros/s/AKfycbxAORd_xn1-nWQfctalbEf8_aASlVjzBiiiLbyrYvoHtfZ_jYPvlRoz2r7r6ecSNnc9/exec'
 
 // Unique prefix so multiple instances on the same page don't clash
 const uid = Math.random().toString(36).slice(2, 8)
@@ -61,7 +64,7 @@ const uid = Math.random().toString(36).slice(2, 8)
     >
       {/* Name */}
       <div class="flex flex-col gap-1">
-        <label for={`cf-${uid}-name`} class="sr-only">Full name</label>
+        <label for={`cf-${uid}-name`} class="sr-only">Full name*</label>
         <input
           type="text"
           id={`cf-${uid}-name`}
@@ -92,7 +95,7 @@ const uid = Math.random().toString(36).slice(2, 8)
 
       {/* Email */}
       <div class="flex flex-col gap-1">
-        <label for={`cf-${uid}-email`} class="sr-only">Email address</label>
+        <label for={`cf-${uid}-email`} class="sr-only">Email address*</label>
         <input
           type="email"
           id={`cf-${uid}-email`}
@@ -126,7 +129,7 @@ const uid = Math.random().toString(36).slice(2, 8)
 
       {/* Message */}
       <div class="lg:col-span-2 flex flex-col gap-1">
-        <label for={`cf-${uid}-message`} class="sr-only">What would you like to discuss?</label>
+        <label for={`cf-${uid}-message`} class="sr-only">What would you like to discuss?*</label>
         <textarea
           id={`cf-${uid}-message`}
           name="message"
@@ -232,15 +235,16 @@ const uid = Math.random().toString(36).slice(2, 8)
 
       try {
         const org = orgInput?.value.trim()
-        const nameValue = org ? `${nameInput.value.trim()} (${org})` : nameInput.value.trim()
+        const nameValue = nameInput.value.trim()
         const emailValue = emailInput.value.trim()
         const phoneValue = phoneInput.value.trim()
-        const contactValue = [emailValue, phoneValue].filter(Boolean).join(' / ')
 
         const data = new URLSearchParams({
           name: nameValue,
-          contact: contactValue,
-          scope: msgInput?.value.trim() ?? ''
+          organisation: org ? org : 'N/A',
+          email: emailValue ? emailValue : 'N/A',
+          phone: phoneValue ? phoneValue : 'N/A',
+          message: msgInput?.value.trim() ?? ''
         })
 
         await fetch(endpoint, { method: 'POST', body: data })
