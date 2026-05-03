@@ -30,7 +30,17 @@ for (const [, name, hex] of cssText.matchAll(/--color-(pixel-[a-z-]+):\s*(#[0-9a
   pixelColourMap[name] = hex
 }
 // Exclude colours that are too light to use as card backgrounds
-const EXCLUDED_COLOURS = new Set(['#f5f3f2'])
+const EXCLUDED_COLOURS = new Set([
+  '#f5f3f2',
+  '#F3C8DA',
+  '#006550',
+  '#991c12',
+  '#216d96',
+  '#dfe9fd',
+  '#ffb554',
+  '#FFEAA1',
+  '#d9d9d9'
+])
 const pixelColourValues = Object.values(pixelColourMap).filter((hex) => !EXCLUDED_COLOURS.has(hex))
 
 // Resolve a colour string: var name → hex, hex passthrough, unknown → null
