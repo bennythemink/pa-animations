@@ -23,10 +23,10 @@ const year = new Date().getFullYear()
       <div
         class="col-span-full order-3 flex flex-col-reverse gap-3 text-base sm:text-lg lg:col-start-2 lg:col-span-3 lg:row-start-1 lg:flex-col lg:self-start"
       >
-        <p class="text-black/40 lg:text-black leading-none font-sans text-base">
+        <p class="text-black/40 lg:text-black leading-none font-sans font-normal text-base">
           © {year} Pixel Agency. All Rights Reserved.
         </p>
-        <ul class="flex flex-col font-sans text-base">
+        <ul class="flex flex-col font-sans font-normal text-base">
           <li>
             <a href="/privacy-policy" class="text-black/40 hover:text-black transition-colors">Privacy Policy</a>
           </li>
@@ -58,7 +58,7 @@ const year = new Date().getFullYear()
         class="col-span-6 order-1 text-right font-sans text-base lg:col-start-2 lg:col-span-3 lg:row-start-2 lg:order-3 lg:text-left"
       >
         <p class="font-semibold">Melbourne, Australia</p>
-        <p class="text-black/60">AEDT</p>
+        <p class="text-black/60 font-normal">AEDT</p>
       </div>
 
       {/* Contact block — mobile: 2nd row; desktop: col 5–7 row 1 */}
@@ -71,18 +71,20 @@ const year = new Date().getFullYear()
         <ul class="flex flex-col gap-1">
           <li>
             <span class="font-semibold font-sans text-base">Email</span>{' '}
-            <a href={`mailto:${siteConfig.email}`} class="hover:underline underline-offset-2 font-sans text-base"
-              >{siteConfig.email}</a
+            <a
+              href={`mailto:${siteConfig.email}`}
+              class="hover:underline underline-offset-2 font-sans font-normal text-base">{siteConfig.email}</a
             >
           </li>
           <li>
             <span class="font-semibold font-sans text-base">Call</span>{' '}
             <a
               href={`tel:${siteConfig.phone}`}
-              class="hover:underline cursor-pointer underline-offset-2 font-sans text-base">{siteConfig.phone}</a
+              class="hover:underline cursor-pointer underline-offset-2 font-sans font-normal text-base"
+              >{siteConfig.phone}</a
             >
           </li>
-          <li><a href="#" class="hover:underline underline-offset-2 font-sans text-base">LinkedIn</a></li>
+          <li><a href="#" class="hover:underline underline-offset-2 font-sans font-normal text-base">LinkedIn</a></li>
         </ul>
       </div>
     </Grid>
@@ -122,5 +124,5 @@ const year = new Date().getFullYear()
   const color = (canvas.dataset.color ||
     document.documentElement.dataset.accentColor ||
     'pixel-celestial') as FlowFieldOptions['color']
-  initFlowField({ canvasId: 'footer-flow', color, padding: { top: 80 } })
+  initFlowField({ canvasId: 'footer-flow', color, padding: { top: 80 }, speed: 0.35 })
 </script>
