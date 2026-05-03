@@ -1,0 +1,121 @@
+---
+import Layout from '@layouts/Layout.astro'
+
+import HeroSection from '@components/services/HeroSection.astro'
+import CaseStudiesSection from '@components/services/CaseStudiesSection.astro'
+import WhatWeDoSection from '@components/services/WhatWeDoSection.astro'
+
+import OurApproachSection from '@components/services/OurApproachSection.astro'
+import Vector from '@components/signs/Vector.astro'
+import Plus from '@components/signs/Plus.astro'
+import FeatureCards from '@components/services/FeatureCards.astro'
+import WhoSection from '@components/services/WhoSection.astro'
+
+import cyprusays from '@assets/case-studies/cyprusays/fourThree.webp'
+import stemhub from '@assets/case-studies/stemhub/fourThree.svg'
+
+import ContactForm from '@components/ContactForm.astro'
+
+/**
+ * HeroSection variables
+ */
+const pageTitle = 'Education'
+const tagline = 'Creating high-quality learning material is harder than most providers want to admit.'
+const paragraphs = [
+  'Our team of highly experienced, formally trained educators know exactly how much care, expertise, and professional judgement goes into building learning material that actually works. We also know how rarely the market delivers it.',
+  "The education sector is saturated with providers who produce low (and high) cost , low-quality resources that organisations struggle to use and learners struggle to benefit from. We're here to change that. We offer consistently high-quality, TAFE-compliant material that educators are proud to deliver."
+]
+
+/**
+ * CaseStudiesSection variables
+ */
+
+const first = {
+  title: 'Cyprusays',
+  link: '/case-studies/cyprusays',
+  image: cyprusays
+}
+
+const second = {
+  title: 'Swinburne University',
+  link: '/case-studies/stemhub',
+  image: stemhub
+}
+
+/**
+ * WhatWeDoSection variables
+ */
+const whatWeConsultOn = [
+  'Assessment creation',
+  'Unit creation',
+  'Course creation',
+  'Teacher professional development',
+  'Education consulting on strategy, delivery, and capability building'
+]
+
+/**
+ * ApproachPointsSection variables
+ */
+const cardsTitle = { text: 'Our process', colour: 'pixel-celestial' }
+const cards = [
+  {
+    title: 'Understand',
+    description:
+      'we begin by getting a clear picture of your organisation, your learners, your compliance requirements, and what good looks like for you.'
+  },
+  {
+    title: 'Framework',
+    description:
+      'we map out the structure of the content; units, assessments, or programs, and share it with you before any writing begins.'
+  },
+  {
+    title: 'Review',
+    description:
+      'you provide feedback on the framework and solution map, so the final content reflects your context and requirements.'
+  },
+  {
+    title: 'Create',
+    description:
+      'we write and build the material to TAFE compliance standards, with the care and rigour the subject matter deserves.'
+  }
+]
+
+/**
+ * WhoSection variables
+ */
+const whoFor = [
+  'RTOs and TAFEs that need high-quality, compliant learning material they can actually use',
+  "Education providers tired of low-grade resources that don't serve their learners",
+  'Organisations building new courses, units, or assessment frameworks from the ground up',
+  'Teams needing professional development content that respects the expertise of the people receiving it'
+]
+
+const whoNotFor = [
+  'Organisations whose primary requirement is the lowest possible cost, regardless of quality or usability',
+  'Providers looking for content that simply ticks a compliance box rather than genuinely supports learning'
+]
+---
+
+<Layout
+  title="Education Resources + Consulting Services"
+  description="High-quality, compliant learning material, including courses, units, and assessments, for RTOs and TAFEs, designed to genuinely support learners and meet your specific requirements."
+>
+  <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} stack={true} />
+  <CaseStudiesSection first={first} second={second} />
+
+  <WhatWeDoSection title="We create + consult on:" items={whatWeConsultOn} />
+
+  <OurApproachSection>
+    <p>We don't start creating until we understand what you + your learners need from the material.</p>
+  </OurApproachSection>
+
+  <FeatureCards title={cardsTitle} cards={cards} />
+
+  <OurApproachSection label="Our difference" labelColour="pixel-teal">
+    We don't produce content that passes a checklist. We produce resources you are proud to deliver.
+  </OurApproachSection>
+
+  <WhoSection forItems={whoFor} notForItems={whoNotFor} />
+
+  <ContactForm title="Let's talk about what you're trying to achieve." />
+</Layout>
