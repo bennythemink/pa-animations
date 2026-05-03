@@ -54,7 +54,7 @@ const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
       document.documentElement.style.setProperty('--accent-bgc', colorsRGB[key])
     </script>
   </head>
-  <body class="m-0 min-h-screen">
+  <body class="m-0 min-h-screen bg-pixel-platinum-lte">
     <Menu logoColors={logoColors} />
     {!noMenuSpacer && <div class="h-[70px] lg:h-[128px]" aria-hidden="true" />}
     <slot />
