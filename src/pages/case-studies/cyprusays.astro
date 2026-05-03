@@ -10,12 +10,15 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+import { getCaseStudyNav } from '@data/caseStudies'
 
 import hero from '@assets/case-studies/cyprusays/hero.webp'
 import squareOne from '@assets/case-studies/cyprusays/squareOne.svg'
 import squareTwo from '@assets/case-studies/cyprusays/squareTwo.webp'
 import wideOne from '@assets/case-studies/cyprusays/wideOne.webp'
 import wideTwo from '@assets/case-studies/cyprusays/wideTwo.webp'
+
+const { previous, next } = getCaseStudyNav('cyprusays')
 ---
 
 <Layout
@@ -148,10 +151,7 @@ import wideTwo from '@assets/case-studies/cyprusays/wideTwo.webp'
     </section>
 
     {/* Navigation section */}
-    <CaseStudyNav
-      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
-      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
-    />
+    <CaseStudyNav previousCaseStudy={previous} nextCaseStudy={next} />
 
     <ContactForm title="Discuss a similar challenge" displayDescription={false} />
   </article>
