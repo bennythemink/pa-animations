@@ -11,46 +11,38 @@ import Plus from '@components/signs/Plus.astro'
 import FeatureCards from '@components/services/FeatureCards.astro'
 import WhoSection from '@components/services/WhoSection.astro'
 
-import holmesglen from '@assets/case-studies/holmesglen/fourThree.svg'
-import stemhub from '@assets/case-studies/stemhub/fourThree.svg'
-
 import ContactForm from '@components/ContactForm.astro'
+
+import holmesglen from '@assets/services/education/holmesglen.svg'
+import vicUni from '@assets/services/education/vic-uni.svg'
+import chisholm from '@assets/services/education/chisholm.svg'
+import inclusion from '@assets/services/education/inclusion.svg'
+import Grid from '@components/Grid.astro'
 
 /**
  * HeroSection variables
  */
 const pageTitle = 'Education'
-const tagline = 'Creating high-quality learning material is harder than most providers want to admit.'
+const tagline = 'Education strategy, compliance and curriculum that is practical and effective.'
 const paragraphs = [
-  'Our team of highly experienced, formally trained educators know exactly how much care, expertise, and professional judgement goes into building learning material that actually works. We also know how rarely the market delivers it.',
-  "The education sector is saturated with providers who produce low (and high) cost , low-quality resources that organisations struggle to use and learners struggle to benefit from. We're here to change that. We offer consistently high-quality, TAFE-compliant material that educators are proud to deliver."
+  'Our team of highly experienced, formally trained educators know exactly how much care, expertise, and professional judgement goes into building educational systems, frameworks and materials that actually work. We also know how rarely the market delivers it.',
+  'Traditional consulting services offer reports that sits on shelves.',
+  'We work differently. We combine deep, applied expertise in Vocational Education and Training (VET), schools, compliance, and educational governance to solve complex education challenges.'
 ]
-
-/**
- * CaseStudiesSection variables
- */
-
-const first = {
-  title: 'holmesglen',
-  link: '/case-studies/holmesglen',
-  image: holmesglen
-}
-
-const second = {
-  title: 'Swinburne University',
-  link: '/case-studies/stemhub',
-  image: stemhub
-}
 
 /**
  * WhatWeDoSection variables
  */
 const whatWeConsultOn = [
-  'Assessment creation',
-  'Unit creation',
-  'Course creation',
-  'Teacher professional development',
-  'Education consulting on strategy, delivery, and capability building'
+  'RTO setup',
+  'Compliance',
+  'Governance frameworks',
+  'Education business models',
+  'Strategies for growth',
+  'New education products',
+  'Workforce planning',
+  'Project planning, management and delivery',
+  'Professional development for Education and Teaching teams'
 ]
 
 /**
@@ -85,8 +77,8 @@ const cards = [
  */
 const whoFor = [
   'RTOs and TAFEs that need high-quality, compliant learning material they can actually use',
-  "Education providers tired of low-grade resources that don't serve their learners",
-  'Organisations building new courses, units, or assessment frameworks from the ground up',
+  'Education providers strengthening their governance frameworks and policies',
+  'New RTOs seeking advice on setup and compliance',
   'Teams needing professional development content that respects the expertise of the people receiving it'
 ]
 
@@ -101,9 +93,21 @@ const whoNotFor = [
   description="High-quality, compliant learning material, including courses, units, and assessments, for RTOs and TAFEs, designed to genuinely support learners and meet your specific requirements."
 >
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} stack={true} />
-  <CaseStudiesSection first={first} second={second} />
 
-  <WhatWeDoSection title="We create + consult on:" items={whatWeConsultOn} />
+  <Grid>
+    <h2 class="lg:col-start-2 col-span-full text-lg lg:text-4xl text-pixel-rosy">Our team has worked with:</h2>
+  </Grid>
+  <Grid>
+    <img src={holmesglen.src} alt="Holmesglen" class="col-span-3" />
+    <img src={chisholm.src} alt="Chisholm" class="col-span-3" />
+    <img src={inclusion.src} alt="Inclusion" class="col-span-3" />
+    <img src={vicUni.src} alt="Victoria University" class="col-span-3" />
+  </Grid>
+
+  <WhatWeDoSection
+    title="We help organisations think about how education is delivered, structured + scaled:"
+    items={whatWeConsultOn}
+  />
 
   <OurApproachSection>
     <p>We don't start creating until we understand what you + your learners need from the material.</p>
