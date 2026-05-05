@@ -10,6 +10,7 @@ import aboutImage from '@assets/pa-about-reduced.webp'
 import ClientLogos from '@components/home/ClientLogos.astro'
 import ContactForm from '@components/ContactForm.astro'
 import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
+import extended from '@assets/pa-extended.svg'
 
 /**
  * WhoSection variables
@@ -189,7 +190,13 @@ const sectionCards = [
           digital specialists who are actively involved in your project. No handovers. No junior teams receiving a
           second-hand brief.
         </p>
-        <div class="w-full h-[254px] bg-gray-200">Placeholder</div>
+        <div class="w-full">
+          <Image
+            src={extended}
+            alt="Illustration showing how Pixel Agency works with clients, with no handovers or sales layer"
+            class="w-full h-full object-contain"
+          />
+        </div>
         <p>
           We operate as a senior, flexible team, bringing together the right people for each engagement and taking
           ownership beyond the brief. You get clear thinking, honest advice, and a team that adapts as your project
