@@ -22,7 +22,7 @@ const {
 //   'https://script.google.com/macros/s/AKfycbwuoWaLuK5kxwKwDsgILOtSFBYZiVSPe0zUIWJlPy3UKOfE74yvl_p9iM22JAmNNWs/exec'
 
 const FORM_ENDPOINT =
-  'https://script.google.com/macros/s/AKfycbxAORd_xn1-nWQfctalbEf8_aASlVjzBiiiLbyrYvoHtfZ_jYPvlRoz2r7r6ecSNnc9/exec'
+  'https://script.google.com/macros/s/AKfycbw9bAQXui4ZUFw4-Rp1QCmb-Hepg6DAbjGIavaf3PQg3FN_9bazUx4ESt73zYw87zt5/exec'
 
 // Unique prefix so multiple instances on the same page don't clash
 const uid = Math.random().toString(36).slice(2, 8)
@@ -247,7 +247,7 @@ const uid = Math.random().toString(36).slice(2, 8)
           message: msgInput?.value.trim() ?? ''
         })
 
-        await fetch(endpoint, { method: 'POST', body: data })
+        await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: data })
 
         form.classList.add('hidden')
         successEl.classList.remove('hidden')
