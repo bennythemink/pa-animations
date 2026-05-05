@@ -34,7 +34,7 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
       >
         {
           allIndustries.map((ind) => (
-            <label class="industry-filter cursor-pointer font-sans font-normal inline-block bg-white px-4 py-2 text-[18px] transition-colors select-none">
+            <label class="industry-filter cursor-pointer hover:underline hover:underline-offset-2 font-sans font-normal inline-block bg-white px-4 py-2 text-[18px] transition-colors select-none">
               <input type="checkbox" value={ind} class="industry-checkbox sr-only" />
               {ind}
             </label>
@@ -90,11 +90,13 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
 
   <style>
     .industry-filter:hover {
-      background-color: var(--accent-bgc);
+      /* background-color: var(--accent-bgc); */
+      background-color: #cac0b8;
       color: #fff;
     }
     .industry-filter.active {
-      background-color: var(--accent-bgc);
+      /* background-color: var(--accent-bgc); */
+      background-color: #cac0b8;
       color: #fff;
     }
   </style>
