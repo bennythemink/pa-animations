@@ -13,7 +13,7 @@ interface Props {
   imagePosition?: string
 }
 
-const { title, slug, industry, services, overview, colour, image, imagePosition = 'center' } = Astro.props
+const { title, slug, industry, services, overview, colour, image, imagePosition = 'object-center' } = Astro.props
 const colourResolved = resolveColour(colour)
 ---
 
@@ -23,7 +23,7 @@ const colourResolved = resolveColour(colour)
   data-industries={JSON.stringify(industry)}
 >
   <div class="absolute inset-0">
-    <Image src={image} alt={title} class="w-full h-full object-cover" style={`object-position: ${imagePosition}`} />
+    <Image src={image} alt={title} class={`w-full h-full object-cover ${imagePosition}`} />
   </div>
 
   <div

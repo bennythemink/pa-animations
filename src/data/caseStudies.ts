@@ -79,7 +79,8 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-poppy',
     image: eel,
     published: true,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top lg:object-center'
   },
   {
     title: 'Fletcher Insulation',
@@ -91,7 +92,8 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-celestial',
     image: insulation,
     published: true,
-    featured: true
+    featured: true,
+    imagePosition: 'object-top lg:object-center'
   },
   {
     title: 'Holmesglen Institute',
@@ -102,7 +104,7 @@ const caseStudies: CaseStudy[] = [
       'Built a student-employer platform from the ground up. 200+ registered students, 1,200+ registered employers and 80+ student job placements in year one.',
     colour: 'bg-pixel-rosy',
     image: holmesglen,
-    imagePosition: 'top',
+    imagePosition: 'object-top',
     published: true,
     featured: true
   },
@@ -139,7 +141,8 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-rosy',
     image: yoplait,
     published: true,
-    featured: true
+    featured: true,
+    imagePosition: 'object-top lg:object-center'
   },
   {
     title: 'Swinburne University',
@@ -151,7 +154,8 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-poppy',
     image: stemhub,
     published: true,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top lg:object-center'
   },
   {
     title: 'Farmers Union Greek Style Yogurt',
@@ -211,7 +215,8 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-teal',
     image: cyprusays,
     published: true,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top lg:object-center'
   },
   {
     title: 'Jamala Properties',
@@ -247,7 +252,8 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-solar',
     image: fletcherDam,
     published: true,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top lg:object-center'
   },
   {
     title: 'Fletcher Insulation + Pixel Assist',
@@ -259,7 +265,8 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-teal',
     image: fletcherAi,
     published: true,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top lg:object-center'
   },
   {
     title: 'Sonata AI Acoustic Risk Calculator',
@@ -271,7 +278,8 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-teal',
     image: sonataAi,
     published: true,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top lg:object-center'
   },
   {
     title: 'PFG Australia',
