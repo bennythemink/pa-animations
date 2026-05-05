@@ -223,8 +223,20 @@ const sectionCards = [
 
           <!-- Panel 5: chatbot demo -->
           <div id="assist-chatbot-panel" class="shrink-0 h-full flex items-center justify-center">
-            <div class="w-72 h-96">
-              <PixelAssistChatbot id="assist-chatbot" conversation={assistConversation} placeholder="Ask a question" />
+            <div class="flex flex-col items-center gap-4 pt-9">
+              <div class="w-72 h-96">
+                <PixelAssistChatbot
+                  id="assist-chatbot"
+                  conversation={assistConversation}
+                  placeholder="Ask a question"
+                />
+              </div>
+              <button
+                id="assist-skip"
+                class="text-sm text-black/50 underline underline-offset-2 hover:text-black transition-colors cursor-pointer"
+              >
+                Skip to end
+              </button>
             </div>
           </div>
 
@@ -1385,14 +1397,19 @@ const sectionCards = [
     const durPause = chatPauseDist / assistScrollDist
     const durPost = totalTravel > 0 ? xAfterChat / assistScrollDist : 0
 
+    let assistST: ScrollTrigger | null = null
     const assistTl = gsap.timeline({
       scrollTrigger: {
         trigger: '#assist-wrapper',
         pin: true,
         scrub: 1,
-        end: () => `+=${assistScrollDist}`
+        end: () => `+=${assistScrollDist}`,
+        onRefresh(self) {
+          assistST = self
+        }
       }
     })
+    assistST = assistTl.scrollTrigger
 
     if (xToChatCenter > 0) {
       assistTl.to('#assist-track', { x: -xToChatCenter, ease: 'none', duration: durPre })
@@ -1404,6 +1421,17 @@ const sectionCards = [
 
     const pauseStart = durPre
     const pauseEnd = durPre + durPause
+
+    // Skip button: scroll to where the full chat has been shown
+    const skipBtn = document.getElementById('assist-skip')
+    if (skipBtn) {
+      skipBtn.addEventListener('click', () => {
+        const st = assistST ?? assistTl.scrollTrigger
+        if (!st) return
+        const targetScroll = st.start + pauseEnd * assistScrollDist
+        lenis.scrollTo(targetScroll, { duration: 1.2 })
+      })
+    }
 
     ScrollTrigger.create({
       trigger: '#assist-wrapper',
