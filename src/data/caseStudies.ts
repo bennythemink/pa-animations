@@ -52,7 +52,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Unified three merging community health organisations online, achieving a 115% increase in total visitors within six months of launch.',
-    colour: 'bg-pixel-teal',
+    colour: 'bg-pixel-celestial',
     image: bhn,
     published: true,
     featured: true
@@ -76,7 +76,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Redesigned the website to drive 9% more centre tour bookings and a 24% increase in session time from prospective parents.',
-    colour: 'bg-pixel-rosy',
+    colour: 'bg-pixel-poppy',
     image: eel,
     published: true,
     featured: false
@@ -113,7 +113,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold — from positioning through to product interface.',
-    colour: 'bg-pixel-rosy',
+    colour: 'bg-pixel-celestial',
     image: mbImage,
     published: false,
     featured: false
@@ -124,7 +124,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Not-for-profit'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview: "Redesigned VincentCare's website, achieving a 14% increase in donations and 22% longer session times.",
-    colour: 'bg-pixel-solar',
+    colour: 'bg-pixel-drk-celestial',
     image: vincentcare,
     published: false,
     featured: false
@@ -136,7 +136,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       "Transformed Yoplait Australia's digital presence, delivering +30% more traffic and +50% longer session times.",
-    colour: 'bg-pixel-fire',
+    colour: 'bg-pixel-rosy',
     image: yoplait,
     published: true,
     featured: true
@@ -148,7 +148,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Consulting'],
     overview:
       'Shaped a gamified online STEM learning concept for Swinburne University, with full desktop and mobile design and a complete tender response to anchor their national grant bid.',
-    colour: 'bg-pixel-fire',
+    colour: 'bg-pixel-poppy',
     image: stemhub,
     published: true,
     featured: false
@@ -244,7 +244,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Custom Digital Asset Management platform design and development for Fletcher Insulation, an Australian leader in the building and construction insulation products sector. Pixel Agency built a self-service DAM for Fletcher employees and approved partners with a custom approval workflow, cutting asset support requests by 15% and replacing scattered files with a single source of truth.',
-    colour: 'bg-pixel-teal',
+    colour: 'bg-pixel-solar',
     image: fletcherDam,
     published: true,
     featured: false
@@ -255,7 +255,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Construction', 'Manufacturing'],
     services: ['AI'],
     overview:
-      'AI for Fletcher Insulation. Pixel Agency deployed Pixel Assist, our AI knowledge assistant product on insulation.com.au, surfacing product information instantly and cutting support queries in a successful trial.',
+      'We Pixel Assist, our AI knowledge assistant product, surfacing product information instantly and cutting support queries in a successful trial.',
     colour: 'bg-pixel-teal',
     image: fletcherAi,
     published: true,

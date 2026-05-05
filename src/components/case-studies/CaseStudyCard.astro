@@ -30,20 +30,20 @@ const colourResolved = resolveColour(colour)
     class={`case-study-overlay absolute bottom-0 left-0 right-0 h-8 flex flex-col pt-2 ${colourResolved.class ?? ''} transition-[height,padding-top,padding-bottom] duration-300 ease-in-out overflow-hidden`}
     style={colourResolved.style}
   >
-    <h2 class="text-base transition-[font-size,padding-left] duration-300 ease-in-out shrink-0 px-2 lg:px-4">
+    <h2 class="text-base transition-[font-size,padding-left] duration-300 ease-in-out shrink-0 px-2 lg:px-4 pt-0.5">
       <a href={`/case-studies/${slug}`} class="hover:underline hover:underline-offset-2 hover:opacity-70">{title}</a>
     </h2>
-    <div class="case-study-content mt-8 grid gap-y-2 gap-x-3" style="grid-template-columns: auto 1fr;">
+    <div class="case-study-content mt-4 lg:mt-8 grid gap-y-2 gap-x-3" style="grid-template-columns: auto 1fr;">
       <div class="col-span-full flex flex-wrap items-center gap-2">
-        {industry.map((i) => <span class="meta-data">{i}</span>)}
+        {industry.map((i) => <span class="meta-data text-[12px] lg:text-base">{i}</span>)}
       </div>
       <div class="col-span-full flex flex-wrap items-center gap-2">
-        {services.map((s) => <span class="meta-data">{s}</span>)}
+        {services.map((s) => <span class="meta-data text-[12px] lg:text-base">{s}</span>)}
       </div>
     </div>
 
     <div class="case-study-content mt-auto">
-      <p>
+      <p class="line-clamp-1 lg:line-clamp-4">
         {overview}
       </p>
       <a
