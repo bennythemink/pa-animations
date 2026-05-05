@@ -89,7 +89,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time, while cutting support requests by 30%.',
-    colour: 'bg-pixel-celestial',
+    colour: 'bg-pixel-teal',
     image: insulation,
     published: true,
     featured: true,
@@ -102,7 +102,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Built a student-employer platform from the ground up. 200+ registered students, 1,200+ registered employers and 80+ student job placements in year one.',
-    colour: 'bg-pixel-rosy',
+    colour: 'bg-pixel-solar',
     image: holmesglen,
     imagePosition: 'object-top',
     published: true,
