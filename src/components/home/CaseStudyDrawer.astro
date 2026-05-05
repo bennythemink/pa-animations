@@ -65,8 +65,7 @@ const containerClass =
             <img
               src={getImageSrc(item.image)}
               alt={item.title}
-              class="w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0"
-              style={`object-position: ${item.imagePosition ?? 'center'};`}
+              class={`w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0 ${item.imagePosition ? `${item.imagePosition}` : 'object-center'}`}
             />
           </a>
         </div>
