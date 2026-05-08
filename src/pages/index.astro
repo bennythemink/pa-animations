@@ -224,6 +224,12 @@ const sectionCards = [
           <!-- Panel 5: chatbot demo -->
           <div id="assist-chatbot-panel" class="shrink-0 h-full flex items-center justify-center">
             <div class="flex flex-col items-center gap-4 pt-9">
+              <button
+                id="assist-skip-back"
+                class="text-sm text-black/50 underline underline-offset-2 hover:text-black transition-colors cursor-pointer opacity-0 pointer-events-none"
+              >
+                Skip to start
+              </button>
               <div class="w-72 h-96">
                 <PixelAssistChatbot
                   id="assist-chatbot"
@@ -1433,6 +1439,19 @@ const sectionCards = [
       })
     }
 
+    // Skip to beginning button
+    const skipBackBtn = document.getElementById('assist-skip-back')
+    if (skipBackBtn) {
+      skipBackBtn.addEventListener('click', () => {
+        const st = assistST ?? assistTl.scrollTrigger
+        if (!st) return
+        const targetScroll = st.start + pauseStart * assistScrollDist
+        const chatEl = document.getElementById('assist-chatbot') as any
+        if (chatEl?.setProgress) chatEl.setProgress(0)
+        lenis.scrollTo(targetScroll, { duration: 1.2 })
+      })
+    }
+
     ScrollTrigger.create({
       trigger: '#assist-wrapper',
       scrub: 1,
@@ -1440,16 +1459,29 @@ const sectionCards = [
       end: () => `+=${assistScrollDist}`,
       onUpdate(self) {
         const p = self.progress
+        const skipBack = document.getElementById('assist-skip-back') as HTMLElement | null
         if (p >= pauseStart && p <= pauseEnd && durPause > 0) {
           const chatP = (p - pauseStart) / durPause
           const chatEl = document.getElementById('assist-chatbot') as any
           if (chatEl?.setProgress) chatEl.setProgress(chatP)
+          if (skipBack) {
+            skipBack.style.opacity = '1'
+            skipBack.style.pointerEvents = 'auto'
+          }
         } else if (p < pauseStart) {
           const chatEl = document.getElementById('assist-chatbot') as any
           if (chatEl?.setProgress) chatEl.setProgress(0)
+          if (skipBack) {
+            skipBack.style.opacity = '0'
+            skipBack.style.pointerEvents = 'none'
+          }
         } else {
           const chatEl = document.getElementById('assist-chatbot') as any
           if (chatEl?.setProgress) chatEl.setProgress(1)
+          if (skipBack) {
+            skipBack.style.opacity = '1'
+            skipBack.style.pointerEvents = 'auto'
+          }
         }
       }
     })
