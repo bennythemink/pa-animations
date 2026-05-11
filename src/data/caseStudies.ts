@@ -20,6 +20,11 @@ import sonataAi from '@assets/case-studies/sonata-ai/tile.webp'
 import pfg from '@assets/case-studies/pfg/tile.webp'
 import fortKnox from '@assets/case-studies/fort-knox/tile.webp'
 
+import bhnDrawer from '@assets/case-studies/bhn/drawer.webp'
+import yoplaitDrawer from '@assets/case-studies/yoplait/drawer.webp'
+import insulationDrawer from '@assets/case-studies/insulation/drawer.webp'
+import holmesglenDrawer from '@assets/case-studies/holmesglen/drawer.svg'
+
 import type { ImageMetadata } from 'astro'
 
 export interface CaseStudy {
@@ -30,6 +35,7 @@ export interface CaseStudy {
   overview: string
   colour: string
   image: ImageMetadata
+  drawerImage?: ImageMetadata
   imagePosition?: string // e.g. 'top', 'center', 'bottom'
   drawerPosition?: string // e.g. 'top', 'center', 'bottom'
   published: boolean
@@ -56,10 +62,11 @@ const caseStudies: CaseStudy[] = [
       'Unified three merging community health organisations online, achieving a 115% increase in total visitors within six months of launch.',
     colour: 'bg-pixel-celestial',
     image: bhn,
+    drawerImage: bhnDrawer,
     published: true,
     featured: true,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-[0%_0%]'
   },
   {
     title: 'Dare Iced Coffee',
@@ -97,10 +104,11 @@ const caseStudies: CaseStudy[] = [
       'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time, while cutting support requests by 30%.',
     colour: 'bg-pixel-teal',
     image: insulation,
+    drawerImage: insulationDrawer,
     published: true,
     featured: true,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-[0%_0%]'
   },
   {
     title: 'Holmesglen Institute',
@@ -111,10 +119,11 @@ const caseStudies: CaseStudy[] = [
       'Built a student-employer platform from the ground up. 200+ registered students, 1,200+ registered employers and 80+ student job placements in year one.',
     colour: 'bg-pixel-solar',
     image: holmesglen,
+    drawerImage: holmesglenDrawer,
     published: true,
     featured: true,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-[0%_0%]'
   },
   {
     title: 'Sonata AI',
@@ -152,10 +161,11 @@ const caseStudies: CaseStudy[] = [
       "Transformed Yoplait Australia's digital presence, delivering +30% more traffic and +50% longer session times.",
     colour: 'bg-pixel-rosy',
     image: yoplait,
+    drawerImage: yoplaitDrawer,
     published: true,
     featured: true,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-[0%_0%]'
   },
   {
     title: 'Swinburne University',

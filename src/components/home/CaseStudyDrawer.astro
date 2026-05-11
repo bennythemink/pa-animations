@@ -17,7 +17,7 @@ interface Props {
 const defaultItems: CaseStudyItem[] = featuredCaseStudies.map((cs) => ({
   title: cs.title,
   slug: `/case-studies/${cs.slug}`,
-  image: cs.image,
+  image: cs.drawerImage ?? cs.image,
   colour: cs.colour,
   drawerPosition: cs.drawerPosition
 }))
