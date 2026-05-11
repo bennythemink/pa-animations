@@ -6,7 +6,7 @@ interface CaseStudyItem {
   slug: string
   image: ImageMetadata | string
   colour: string
-  imagePosition?: string // Optional CSS object-position value for the image, e.g. 'top', 'bottom', 'left', 'right', 'center', or '50% 30%'. Defaults to 'center'.
+  drawerPosition?: string
 }
 
 interface Props {
@@ -19,7 +19,7 @@ const defaultItems: CaseStudyItem[] = featuredCaseStudies.map((cs) => ({
   slug: `/case-studies/${cs.slug}`,
   image: cs.image,
   colour: cs.colour,
-  imagePosition: cs.imagePosition
+  drawerPosition: cs.drawerPosition
 }))
 
 const { items = defaultItems, size = 'default' } = Astro.props
@@ -65,8 +65,9 @@ const containerClass =
             <img
               src={getImageSrc(item.image)}
               alt={item.title}
-              class={`w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0 object-top`}
+              class={`w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0 ${item.drawerPosition ? `${item.drawerPosition}` : 'object-center'}`}
             />
+            {/* class={`w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0 object-top`} */}
             {/* class={`w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0 ${item.imagePosition ? `${item.imagePosition}` : 'object-center'}`} */}
           </a>
         </div>

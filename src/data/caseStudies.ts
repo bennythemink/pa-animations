@@ -18,6 +18,7 @@ import fletcherDam from '@assets/case-studies/fletcher-dam/tile.webp'
 import fletcherAi from '@assets/case-studies/fletcher-ai/tile.webp'
 import sonataAi from '@assets/case-studies/sonata-ai/tile.webp'
 import pfg from '@assets/case-studies/pfg/tile.webp'
+import fortKnox from '@assets/case-studies/fort-knox/tile.webp'
 
 import type { ImageMetadata } from 'astro'
 
@@ -30,6 +31,7 @@ export interface CaseStudy {
   colour: string
   image: ImageMetadata
   imagePosition?: string // e.g. 'top', 'center', 'bottom'
+  drawerPosition?: string // e.g. 'top', 'center', 'bottom'
   published: boolean
   featured: boolean
 }
@@ -55,7 +57,9 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-celestial',
     image: bhn,
     published: true,
-    featured: true
+    featured: true,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Dare Iced Coffee',
@@ -67,7 +71,8 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-poppy',
     image: dare,
     published: false,
-    featured: false
+    featured: false,
+    drawerPosition: 'object-top'
   },
   {
     title: 'Explorers Early Learning',
@@ -80,7 +85,8 @@ const caseStudies: CaseStudy[] = [
     image: eel,
     published: true,
     featured: false,
-    imagePosition: 'object-top lg:object-center'
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Fletcher Insulation',
@@ -93,7 +99,8 @@ const caseStudies: CaseStudy[] = [
     image: insulation,
     published: true,
     featured: true,
-    imagePosition: 'object-top lg:object-center'
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Holmesglen Institute',
@@ -104,9 +111,10 @@ const caseStudies: CaseStudy[] = [
       'Built a student-employer platform from the ground up. 200+ registered students, 1,200+ registered employers and 80+ student job placements in year one.',
     colour: 'bg-pixel-solar',
     image: holmesglen,
-    imagePosition: 'object-top',
     published: true,
-    featured: true
+    featured: true,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Sonata AI',
@@ -118,7 +126,9 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-celestial',
     image: mbImage,
     published: false,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'VincentCare',
@@ -129,7 +139,9 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-drk-celestial',
     image: vincentcare,
     published: false,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Yoplait',
@@ -142,7 +154,8 @@ const caseStudies: CaseStudy[] = [
     image: yoplait,
     published: true,
     featured: true,
-    imagePosition: 'object-top lg:object-center'
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Swinburne University',
@@ -155,7 +168,8 @@ const caseStudies: CaseStudy[] = [
     image: stemhub,
     published: true,
     featured: false,
-    imagePosition: 'object-top lg:object-center'
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Farmers Union Greek Style Yogurt',
@@ -167,7 +181,9 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-fire',
     image: farmers,
     published: false,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Simple.io',
@@ -179,7 +195,9 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-fire',
     image: simple,
     published: true,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Toll Uncrewed Systems',
@@ -191,7 +209,9 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-fire',
     image: toll,
     published: false,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Mt Baw Baw',
@@ -203,7 +223,9 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-fire',
     image: bawbaw,
     published: true,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Cyprusays',
@@ -216,7 +238,8 @@ const caseStudies: CaseStudy[] = [
     image: cyprusays,
     published: true,
     featured: false,
-    imagePosition: 'object-top lg:object-center'
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Jamala Properties',
@@ -228,7 +251,9 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-teal',
     image: jamala,
     published: false,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Miele Australia',
@@ -240,7 +265,9 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-poppy',
     image: miele,
     published: false,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Fletcher Insulation Digital Asset Management Platform',
@@ -253,7 +280,8 @@ const caseStudies: CaseStudy[] = [
     image: fletcherDam,
     published: true,
     featured: false,
-    imagePosition: 'object-top lg:object-center'
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Fletcher Insulation + Pixel Assist',
@@ -266,7 +294,8 @@ const caseStudies: CaseStudy[] = [
     image: fletcherAi,
     published: true,
     featured: false,
-    imagePosition: 'object-top lg:object-center'
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'Sonata AI Acoustic Risk Calculator',
@@ -279,7 +308,8 @@ const caseStudies: CaseStudy[] = [
     image: sonataAi,
     published: true,
     featured: false,
-    imagePosition: 'object-top lg:object-center'
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   },
   {
     title: 'PFG Australia',
@@ -290,7 +320,22 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-teal',
     image: pfg,
     published: false,
-    featured: false
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
+  },
+  {
+    title: 'Fort Knox Self Storage',
+    slug: 'fort-knox',
+    industry: ['Self Storage'],
+    services: ['Discovery + direction', 'Design', 'Development', 'Consulting'],
+    overview: 'TBD',
+    colour: 'bg-pixel-teal',
+    image: fortKnox,
+    published: true,
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
   }
 ]
 

@@ -11,27 +11,23 @@ import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.a
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
 
-import hero from '@assets/case-studies/miele/hero.webp'
-import squareOne from '@assets/case-studies/miele/squareOne.svg'
-import squareTwo from '@assets/case-studies/miele/squareTwo.webp'
-import wideOne from '@assets/case-studies/miele/wideOne.webp'
-import wideTwo from '@assets/case-studies/miele/wideTwo.webp'
+import hero from '@assets/case-studies/fort-knox/hero.webp'
+import squareOne from '@assets/case-studies/fort-knox/squareOne.svg'
+import squareTwo from '@assets/case-studies/fort-knox/squareTwo.webp'
+import wideOne from '@assets/case-studies/fort-knox/wideOne.webp'
+import wideTwo from '@assets/case-studies/fort-knox/wideTwo.webp'
 import { getCaseStudyNav } from '@data/caseStudies'
 
-const { previous, next } = getCaseStudyNav('miele')
+const { previous, next } = getCaseStudyNav('fort-knox')
 ---
 
-<Layout
-  title="Miele Case Study"
-  description="Digital consulting and strategy for Miele Australia, the local arm of the German premium appliance manufacturer, in the domestic and commercial appliances sector. Pixel Agency mapped Miele Australia's full technology landscape ahead of the global SAP S/4HANA transition, building the business case for a market-specific implementation now serving as a benchmark for similar Miele markets."
-  published={false}
->
+<Layout title="Fort Knox Case Study" description="TBD" published={false}>
   <article id="case-study-page">
     <CaseStudyHeader>
-      <span slot="title">Miele Australia</span>
-      <span slot="industry">Home Appliances</span>
-      <span slot="services">Consulting</span>
-      <span slot="duration">2 months</span>
+      <span slot="title">Fort Knox</span>
+      <span slot="industry">Self Storage</span>
+      <span slot="services">Discovery + direction, Design, Development, Consulting</span>
+      <span slot="duration">4 months</span>
     </CaseStudyHeader>
 
     <CaseStudyToggleButton />
@@ -43,69 +39,33 @@ const { previous, next } = getCaseStudyNav('miele')
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
               heroImage={{ src: hero }}
-              summary="How Pixel Agency helped Miele Australia document its full technology and data landscape ahead of a global SAP S/4HANA rollout, making the case for a market-specific implementation now serving as the benchmark for similar Miele markets."
+              summary="TBD"
               squareImages={[{ src: squareOne }, { src: squareTwo }]}
               wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
           </div>
 
           <div class="case-study-right-pane min-w-0">
-            <CaseStudyShout>
-              Mapped Miele Australia's full technology landscape ahead of the global SAP S/4HANA transition, winning
-              approval for a market-specific implementation now benchmarking similar Miele markets.
-            </CaseStudyShout>
+            <CaseStudyShout> TBD </CaseStudyShout>
 
             <CaseStudySectionText title="The client" noTopMargin={true}>
-              <p class="">
-                Miele Australia is the local arm of Miele, the German manufacturer known for premium white goods and
-                kitchen equipment built to last decades. Unusually within the global Miele network, the Australian
-                business runs both a B2C and a B2B model, where the vast majority of Miele markets are B2B only. That
-                dual operating model means Miele Australia carries a much larger customer base, more sensitive customer
-                data, and more integrated systems than the rest of the group.
-              </p>
+              <p class="">TBD</p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The problem">
-              <p>
-                Miele globally was moving from a patchwork of legacy ERPs to SAP S/4HANA, and Miele Australia was one of
-                the very first markets in the world to make the transition. Global was working from a single blueprint
-                built around the typical Miele B2B market, which looked nothing like the Australian reality. Miele
-                Australia's reporting stack runs the business day-to-day, and applying the global blueprint as-is would
-                have meant key reports could no longer be produced, with operations grinding to a halt as a result. With
-                two other Miele markets watching Australia as the benchmark for their own transitions, the stakes
-                weren't just local.
-              </p>
+              <p>TBD</p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The approach">
-              <p>
-                Pixel was brought in as a partner alongside another consultancy to advise Miele Australia on how to
-                actually carry out the transition. The first thing that became clear was sobering: between the age of
-                the systems and the number of moving parts, no one inside the business had a complete technical picture.
-                Before we could advise on anything, we had to build that picture from the ground up. We worked across
-                the full OSI model, mapping the entire network, data centres, systems, integrations, data warehouses,
-                printers, and reports, identifying what was in active use, what had been orphaned, what needed patching,
-                and who owned each piece.
-              </p>
+              <p>TBD</p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The solution">
-              <p>
-                Out of that mapping came a documented understanding of how Miele Australia actually runs, and where the
-                gaps would open up if the global SAP S/4HANA blueprint were applied without adaptation. We mapped each
-                existing system to its SAP equivalent, called out where market-specific customisation would be required,
-                and built the case Miele global needed to see. Along the way, we identified a long-standing data
-                fragmentation issue: customer information lived across multiple CRMs and marketing tools that didn't
-                cleanly talk to the source of truth, which had been quietly causing problems like opted-out customers
-                still receiving marketing. We provided a solution plan to resolve it as part of the broader transition.
-              </p>
+              <p>OTBD</p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The results">
-              <p>
-                Phase one delivered the strategic outcome that mattered most: Miele Australia made the case that a
-                one-size-fits-all SAP rollout wouldn't work for its market, and global agreed.
-              </p>
+              <p>TBD</p>
               <CaseStudyResults
                 results={[
                   {
@@ -144,15 +104,13 @@ const { previous, next } = getCaseStudyNav('miele')
 
               <div class="mt-6 lg:mt-12"></div>
 
-              <CaseStudyShout>
-                Before you can move a business to a new platform, you have to know what you're actually moving.
-              </CaseStudyShout>
+              <CaseStudyShout> TBD </CaseStudyShout>
             </CaseStudySectionText>
 
             <CaseStudyMetaData
-              client={{ name: 'Miele', url: 'https://www.miele.com.au/' }}
-              industry={['Home Appliances']}
-              serviceNames={['Consulting']}
+              client={{ name: 'Fort Knox Self Storage', url: 'https://fortknoxselfstorage.com.au' }}
+              industry={['Self Storage']}
+              serviceNames={['Discovery + direction, Design, Development, Consulting']}
             />
           </div>
         </div>
