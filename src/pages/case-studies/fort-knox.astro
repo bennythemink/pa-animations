@@ -21,7 +21,11 @@ import { getCaseStudyNav } from '@data/caseStudies'
 const { previous, next } = getCaseStudyNav('fort-knox')
 ---
 
-<Layout title="Fort Knox Case Study" description="TBD" published={false}>
+<Layout
+  title="Fort Knox Case Study"
+  description="Website design and development, plus a custom internal inventory and bookings platform, for Fort Knox Self Storage, one of Melbourne's largest independent self storage operators with 11 locations across the metro area. Pixel Agency built the customer-facing website and the platform that powered it from the inside, then managed both as a multi-year partner."
+  published={false}
+>
   <article id="case-study-page">
     <CaseStudyHeader>
       <span slot="title">Fort Knox</span>
@@ -39,78 +43,116 @@ const { previous, next } = getCaseStudyNav('fort-knox')
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
               heroImage={{ src: hero }}
-              summary="TBD"
+              summary="How Pixel Agency built Fort Knox Self Storage a website and the custom internal platform behind it, running availability, pricing, and bookings across 11 Melbourne locations as one."
               squareImages={[{ src: squareOne }, { src: squareTwo }]}
               wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
           </div>
 
           <div class="case-study-right-pane min-w-0">
-            <CaseStudyShout> TBD </CaseStudyShout>
+            <CaseStudyShout
+              >A website and the custom inventory platform behind it, built to run 11 Melbourne storage locations as
+              one.</CaseStudyShout
+            >
 
             <CaseStudySectionText title="The client" noTopMargin={true}>
-              <p class="">TBD</p>
+              <p class="">
+                Fort Knox Self Storage is one of Melbourne's most recognised independent self storage operators, with 11
+                facilities across the greater metro area, from West Melbourne to Dandenong, Coburg to Ringwood. Their
+                audience runs the full range that self storage serves: residential customers needing space for
+                furniture, wine, cars, or boats between moves, and business customers using their facilities for office,
+                commercial, warehouse, and archival storage. With locations spread across Melbourne and a customer base
+                that needs answers fast (what size, what location, what price, available now), the digital experience
+                had to do a lot of work.
+              </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The problem">
-              <p>TBD</p>
+              <p>
+                Running 11 self storage locations as one business is harder than it looks. The Fort Knox team needed a
+                public website that gave customers an immediate read on what was available, where, and at what price,
+                without the customer having to ring three locations to find out.
+              </p><br />
+              <p>
+                They also needed the system behind the scenes to actually reflect reality: which units were free at
+                which site, what the current pricing was per location and size, who was in which unit, and how a
+                customer booking online turned into a real reservation against real inventory. A standard off-the-shelf
+                website couldn't carry that. A standard off-the-shelf storage platform couldn't carry the brand and
+                customer experience. They needed both, built to work as one.
+              </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The approach">
-              <p>TBD</p>
+              <p>
+                We started with discovery, working with the Fort Knox team to map two things at once: how a customer was
+                actually trying to find storage (and where the existing experience was getting in the way), and how the
+                business itself was managing inventory, tenants, pricing, and bookings across 11 sites. Discovery
+                surfaced that the website and the internal system couldn't be designed separately. The customer
+                experience on the public site, the instant quote, the location-by-location availability, the reservation
+                flow, was only as good as the inventory data feeding it, and the inventory data was only useful if the
+                staff actually wanted to use the tool that managed it. We scoped the engagement as two builds that had
+                to behave as one.
+              </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The solution">
-              <p>OTBD</p>
+              <p>
+                We designed and built a customer-facing Fort Knox Self Storage website that put the most important
+                questions front and centre: where, what size, how much, available now. Behind it, we built a custom
+                internal web application that became the operating system of the business. The app gave the Fort Knox
+                team real-time unit availability across every location, control over pricing by location and unit size,
+                an online booking flow that wrote directly into the inventory, and a tenant and unit management tool the
+                in-branch staff actually used day-to-day. The website and the internal app were designed as one system,
+                so a customer reserving a 3 metre unit at Coburg saw real availability, the booking landed against real
+                inventory, and the staff at Coburg saw it without anyone having to phone anyone. As the business grew,
+                we kept building: new features, new locations onto the platform, ongoing content and site updates, and
+                the technical support to keep both pieces running.
+              </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The results">
-              <p>TBD</p>
+              <p>The qualitative story across the multi-year partnership tells itself:</p>
               <CaseStudyResults
                 results={[
                   {
-                    title: 'Complete documentation',
-                    description: "of Miele Australia's technology and data landscape",
+                    title: 'A customer-facing website',
+                    description: 'built around how people actually shop for self storage',
                     backgroundColour: 'pixel-solar'
                   },
                   {
-                    title: 'A full mapping',
-                    description: 'of legacy systems to SAP S/4HANA, with gaps identified',
+                    title: 'A custom internal platform',
+                    description: 'running availability, pricing, bookings, and tenants from one place',
                     backgroundColour: 'pixel-celestial'
                   },
                   {
-                    title: 'A solution plan',
-                    description:
-                      'to consolidate fragmented customer data and stop opted-out customers receiving marketing material',
+                    title: 'Real-time inventory',
+                    description: 'across 11 Melbourne locations, feeding the site and the front desk',
                     backgroundColour: 'pixel-rosy'
                   },
                   {
-                    title: 'Accepted case by Miele global',
-                    description: 'opening the door to market-specific customisation',
+                    title: 'Online bookings',
+                    description: 'flowing straight into the inventory the staff use day-to-day',
                     backgroundColour: 'pixel-teal'
                   },
                   {
-                    title: 'A framework',
-                    description: 'informing the two other Miele markets with similar B2C/B2B operating models',
+                    title: 'New locations added',
+                    description: 'onto the platform as Fort Knox expanded across the city',
                     backgroundColour: 'pixel-fawn'
-                  },
-                  {
-                    title: 'Signed off implementation plan',
-                    description: 'awaiting budget for the build phase',
-                    backgroundColour: 'pixel-poppy'
                   }
                 ]}
               />
 
               <div class="mt-6 lg:mt-12"></div>
 
-              <CaseStudyShout> TBD </CaseStudyShout>
+              <CaseStudyShout
+                >Success behind the scenes built the trust for Fort Knox to hand us the customer-facing platform.</CaseStudyShout
+              >
             </CaseStudySectionText>
 
             <CaseStudyMetaData
               client={{ name: 'Fort Knox Self Storage', url: 'https://fortknoxselfstorage.com.au' }}
               industry={['Self Storage']}
-              serviceNames={['Discovery + direction, Design, Development, Consulting']}
+              serviceNames={['Discovery + direction', 'Design', 'Development', 'Consulting']}
             />
           </div>
         </div>

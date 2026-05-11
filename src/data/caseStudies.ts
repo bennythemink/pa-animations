@@ -342,7 +342,7 @@ const caseStudies: CaseStudy[] = [
     overview: 'TBD',
     colour: 'bg-pixel-teal',
     image: fortKnox,
-    published: true,
+    published: false,
     featured: false,
     imagePosition: 'object-top',
     drawerPosition: 'object-top'
