@@ -250,7 +250,7 @@ const sectionCards = [
                 { name: 'Stephan', role: 'UX/UI Nerd', colour: 'bg-pixel-lte-rosy', image: 'stephan' },
                 { name: 'Stuart', role: 'Cloud Nerd', colour: 'bg-pixel-teal', image: 'stuart' },
                 { name: 'Hoang', role: 'AI Nerd', colour: 'bg-pixel-solar', image: 'hoang' },
-                { name: 'Gabriella', role: 'Design Nerd', colour: 'bg-pixel-rosy', image: 'gabriella' }
+                { name: 'Gabriella', role: 'Brand + Design Nerd', colour: 'bg-pixel-rosy', image: 'gabriella' }
               ].map((member) => (
                 <div
                   class={`shrink-0 w-[140px] lg:w-[240px] h-[140px] lg:h-[240px] relative overflow-hidden flex flex-col items-center ${member.colour}`}
@@ -264,7 +264,7 @@ const sectionCards = [
                   )}
                   <div class="absolute bottom-0 left-0 right-0 p-3 lg:p-4">
                     <p class="font-sans text-xs lg:text-sm">
-                      {member.name}
+                      <span class="font-medium">{member.name}</span>
                       <br />
                       {member.role}
                     </p>
@@ -293,13 +293,18 @@ const sectionCards = [
             operating at scale.
           </p>
           <p>
+            Over the years, and across multiple organisations, our team has worked with a diverse range of clients, from
+            small startups to large enterprises, including major projects directly for Apple, Samsung, ANZ, NAB,
+            Telstra, National Storage, and many, many more.
+          </p>
+          <p>
             That breadth means we adapt to your context without losing our standard of care. And it gives us the
             confidence to be selective, honest, and deeply involved, rather than stretched thin or transactional.
           </p>
         </div>
       </div>
       <div class="col-span-full lg:col-start-7 lg:col-span-5 mt-8 lg:mt-0">
-        <div class="w-full aspect-[4/3] bg-gray-200">
+        <div class="w-full aspect-[4/3]">
           <CaseStudyDrawer size="small" />
         </div>
       </div>
