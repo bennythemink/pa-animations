@@ -1,8 +1,8 @@
 ---
 import ContactForm from '@components/ContactForm.astro'
+import { SitePage } from '@data/analyticsCaller'
 import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
-import mbImage from '@assets/mb.png'
 import CaseStudySectionText from '@components/case-studies/case-study/CaseStudySectionText.astro'
 import CaseStudyResults from '@components/case-studies/case-study/CaseStudyResults.astro'
 import CaseStudyHeader from '@components/case-studies/case-study/CaseStudyHeader.astro'
@@ -139,7 +139,11 @@ longer session times, plus full content independence for the team."
     {/* Navigation section */}
     <CaseStudyNav previousCaseStudy={previous} nextCaseStudy={next} />
 
-    <ContactForm title="Discuss a similar challenge" displayDescription={false} />
+    <ContactForm
+      title="Discuss a similar challenge"
+      displayDescription={false}
+      caller={SitePage.CASE_STUDIES_YOPLAIT}
+    />
   </article>
 
   <style>
