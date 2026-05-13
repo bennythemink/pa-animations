@@ -260,10 +260,21 @@ const uid = Math.random().toString(36).slice(2, 8)
         successEl.classList.remove('hidden')
 
         window.dataLayer = window.dataLayer || []
-        window.dataLayer.push({
-          event: 'form_submission_success',
-          form_id: callerValue
+
+        // The "Double Tick" for Partytown stability
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            window.dataLayer?.push({
+              event: 'form_submission_success',
+              form_id: callerValue
+            })
+          })
         })
+
+        // window.dataLayer.push({
+        //   event: 'form_submission_success',
+        //   form_id: callerValue
+        // })
       } catch {
         showError(formErr, true)
         setLoading(false)
