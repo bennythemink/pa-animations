@@ -53,6 +53,18 @@ const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
       document.documentElement.dataset.accentColor = key
       document.documentElement.style.setProperty('--accent-bgc', colorsRGB[key])
     </script>
+
+    <!-- Google Tag Manager -->
+    <script type="text/partytown" is:inline src="https://www.googletagmanager.com/gtag/js?id=GTM-TSXFMXLV"></script>
+    <script type="text/partytown" is:inline>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'GTM-TSXFMXLV')
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body class="m-0 min-h-screen bg-pixel-lte-platinum">
     <Menu logoColors={logoColors} />
