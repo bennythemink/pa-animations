@@ -7,6 +7,7 @@ import Layout from '@layouts/Layout.astro'
 import fletcherImg from '@assets/fletcher-pixel-assist.webp'
 import FeatureCards from '@components/services/FeatureCards.astro'
 import BlurbPoints from '@components/services/BlurbPoints.astro'
+import { SitePage } from '@data/analyticsCaller'
 
 const includes = [
   'Setup and training on your content',
@@ -531,6 +532,7 @@ const benefitsCards = [
   <ContactForm
     title="Make your knowledge easier to access"
     description="Your team already has the answers. Pixel Assist simply makes them instantly available to everyone who needs them.<br/><br/>If you’d like to explore whether it’s a fit for your organisation, we’d love to chat."
+    caller={SitePage.PIXEL_ASSIST}
   />
 </Layout>
 

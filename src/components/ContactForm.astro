@@ -1,5 +1,6 @@
 ---
 import Grid from './Grid.astro'
+import { DEFAULT_CALLER, type Caller } from '@data/analyticsCaller'
 
 interface Props {
   /** Heading text, e.g. "Discuss a similar challenge" */
@@ -8,14 +9,18 @@ interface Props {
   backgroundColor?: string
   displayDescription?: boolean
   description?: string
+  caller?: Caller
 }
 
 const {
   title = 'Get in touch',
   backgroundColor,
   displayDescription = true,
-  description = `Whether you've got a detailed brief or just a rough idea, we're happy to have a conversation.<br /><br />No pitch, no pressure, just a straight talk about what you're working on and whether we're the right fit.`
+  description = `Whether you've got a detailed brief or just a rough idea, we're happy to have a conversation.<br /><br />No pitch, no pressure, just a straight talk about what you're working on and whether we're the right fit.`,
+  caller = DEFAULT_CALLER
 } = Astro.props
+
+const analyticsCaller = caller
 
 // ── Replace with your deployed Google Apps Script web app URL ──
 // const FORM_ENDPOINT =
@@ -58,6 +63,7 @@ const uid = Math.random().toString(36).slice(2, 8)
       id={`cf-${uid}`}
       data-contact-form
       data-endpoint={FORM_ENDPOINT}
+      data-caller={analyticsCaller}
       novalidate
       aria-labelledby={`cf-${uid}-heading`}
       class="col-start-2 col-span-10 grid grid-cols-1 gap-5 lg:grid-cols-2"
@@ -175,6 +181,7 @@ const uid = Math.random().toString(36).slice(2, 8)
   document.querySelectorAll<HTMLFormElement>('form[data-contact-form]').forEach((form) => {
     const root = form.closest<HTMLElement>('[data-contact-form-root]')!
     const endpoint = form.dataset.endpoint!
+    const callerValue = form.dataset.caller || 'not_supplied'
 
     const nameInput = form.querySelector<HTMLInputElement>('[name="name"]')!
     const emailInput = form.querySelector<HTMLInputElement>('[name="email"]')!
@@ -251,6 +258,12 @@ const uid = Math.random().toString(36).slice(2, 8)
 
         form.classList.add('hidden')
         successEl.classList.remove('hidden')
+
+        window.dataLayer = window.dataLayer || []
+        window.dataLayer.push({
+          event: 'form_submission_success',
+          form_id: callerValue
+        })
       } catch {
         showError(formErr, true)
         setLoading(false)

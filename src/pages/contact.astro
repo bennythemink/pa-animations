@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro'
 import Grid from '@components/Grid.astro'
 import ContactForm from '@components/ContactForm.astro'
+import { SitePage } from '@data/analyticsCaller'
 ---
 
 <Layout>
@@ -59,6 +60,6 @@ import ContactForm from '@components/ContactForm.astro'
 
   {/* ── Contact form (24px gap above) ── */}
   <div class="mt-4 sm:mt-6">
-    <ContactForm title="Get in touch" displayDescription={false} />
+    <ContactForm title="Get in touch" displayDescription={false} caller={SitePage.CONTACT} />
   </div>
 </Layout>
