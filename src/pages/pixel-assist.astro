@@ -83,7 +83,7 @@ const benefitsCards = [
       <h1 id="pa-h1" class="font-sans text-[18px] lg:text-xl underline underline-offset-4 mb-4 text-center">
         Introducing Pixel Assist
       </h1>
-      <div class="relative w-full max-w-[1000px]">
+      <div class="relative w-full max-w-250">
         <h2
           id="pa-phrase-1"
           class="pa-phrase text-center leading-[0.9] tracking-[-0.03em]"
@@ -377,6 +377,7 @@ const benefitsCards = [
             </h2>
 
             <div
+              id="pa-managed-steps"
               class="grid grid-cols-1 lg:grid-cols-4 grid-rows-[auto_1fr_auto_auto_auto_1fr_auto_auto] lg:grid-rows-[auto_1fr_auto_auto]"
             >
               {
@@ -407,8 +408,9 @@ const benefitsCards = [
                   }
                 ].map((step) => (
                   <div
-                    class="row-span-4 p-3 lg:p-5"
-                    style={`background-color: ${step.colour}; grid-template-rows: subgrid;`}
+                    data-managed-step
+                    class="row-span-4 p-3 lg:p-5 overflow-hidden"
+                    style={`background-color: ${step.colour}; grid-template-rows: subgrid; clip-path: inset(0 100% 0 0); opacity: 0; will-change: clip-path, opacity;`}
                   >
                     <p class="font-sans font-light text-xl  text-black">{step.num}</p>
                     <div class="mt-8 lg:mt-10">
@@ -420,7 +422,10 @@ const benefitsCards = [
               }
             </div>
 
-            <p class="font-sans text-[18px] lg:text-3xl leading-[1.2] tracking-[-0.03em] mt-10 lg:mt-16 px-3 lg:px-0">
+            <p
+              id="pa-managed-copy"
+              class="font-sans text-[18px] lg:text-3xl leading-[1.2] tracking-[-0.03em] mt-10 lg:mt-16 px-3 lg:px-0"
+            >
               We've designed Pixel Assist to be straightforward and low effort for your team.
             </p>
           </div>
@@ -619,8 +624,6 @@ const benefitsCards = [
     const phrase3 = document.getElementById('pa-phrase-3')!
     const typing = document.getElementById('pa-typing')!
     const bubbleLate = document.getElementById('pa-bubble-late')!
-    const squareTeal = document.getElementById('pa-square-teal')!
-    const squareTan = document.getElementById('pa-square-tan')!
     const phase4 = document.getElementById('pa-phase-4')!
     const chatbot = document.getElementById('pa-chatbot')!
     const aiDots = document.getElementById('pa-ai-dots')!
@@ -629,6 +632,8 @@ const benefitsCards = [
     const hl1_1 = document.getElementById('pa-hl-1-1')!
     const hl2 = document.getElementById('pa-hl-2')!
     const hl3 = document.getElementById('pa-hl-3')!
+    const managedSection = document.getElementById('managed')!
+    const managedSteps = Array.from(document.querySelectorAll<HTMLElement>('[data-managed-step]'))
 
     const AI_RESPONSE =
       'A managed, AI-powered knowledge assistant for your website. It learns your content \u2014 products, documentation, specifications, policies, FAQs, and internal knowledge \u2014 and uses it to answer questions in plain language, in real time.'
@@ -638,6 +643,33 @@ const benefitsCards = [
 
     // Collect all bubbles for parallax
     const allBubbles = hero.querySelectorAll<HTMLElement>('[data-speed]')
+
+    let managedRevealed = false
+    const managedObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        if (!entry || managedRevealed) return
+
+        // Trigger only when a substantial portion of the managed section is visible.
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+          managedRevealed = true
+          managedObserver.disconnect()
+          gsap.to(managedSteps, {
+            clipPath: 'inset(0 0% 0 0)',
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power2.out',
+            stagger: 0.14
+          })
+        }
+      },
+      {
+        threshold: [0, 0.35, 1],
+        rootMargin: '0px 0px -10% 0px'
+      }
+    )
+
+    managedObserver.observe(managedSection)
 
     // ── Master timeline ──
     const tl = gsap.timeline({
@@ -780,26 +812,6 @@ const benefitsCards = [
         ease: 'power1.inOut'
       },
       0.38
-    )
-
-    tl.to(
-      squareTeal,
-      {
-        opacity: 1,
-        duration: 0.06,
-        ease: 'power1.inOut'
-      },
-      0.4
-    )
-
-    tl.to(
-      squareTan,
-      {
-        opacity: 1,
-        duration: 0.06,
-        ease: 'power1.inOut'
-      },
-      0.42
     )
 
     // Typing indicator fades out in phase 3
