@@ -19,6 +19,65 @@ const includes = [
 ]
 
 /**
+ * Features variables
+ */
+const featuresTitle = { text: 'What are its features?', colour: 'pixel-teal' }
+const featuresCards = [
+  {
+    title: 'Custom UI',
+    description:
+      'The assistant is integrated directly into your website experience, designed to match your brand and style.'
+  },
+  {
+    title: 'Managed solution',
+    description: 'We handle the setup, training, hosting, and ongoing maintenance so you can focus on your business.'
+  },
+  {
+    title: 'Bring your own model',
+    description:
+      "We don't charge you markup for the AI usage, we connect your own OpenAI, Claude, etc. account and use the models you prefer at cost price."
+  },
+  {
+    title: 'CRM integration',
+    description:
+      'We connect Pixel Assist to your CRM so that you can continue to have a single source of truth for customer information and interactions.'
+  },
+  {
+    title: 'No personal data stored',
+    description: 'Pixel Assist does not store any personal data, ensuring privacy and compliance.'
+  },
+  {
+    title: 'Australian based hosting',
+    description:
+      'Our solution is hosted and backed-up in Australia, ensuring data sovereignty and compliance with local regulations.'
+  },
+  {
+    title: 'Ongoing optimisation',
+    description:
+      'We continuously monitor and optimise the assistant’s performance, making adjustments to improve accuracy and relevance over time.'
+  },
+  {
+    title: 'Data ownership',
+    description: 'You retain full ownership of your data, ensuring control and compliance with your policies.'
+  },
+  {
+    title: 'Monthly reports',
+    description:
+      'Receive detailed monthly reports on trends and insights from your knowledge base, helping you make informed decisions.'
+  },
+  {
+    title: 'Dedicated hosting',
+    description:
+      'Our solution is hosted on dedicated servers, ensuring optimal performance, security, and reliability for your AI assistant.'
+  },
+  {
+    title: 'No model training',
+    description:
+      "We do not use your data to train other models. Your data is only used to answer your user's questions, ensuring privacy and security."
+  }
+]
+
+/**
  * Benefits variables
  */
 const benefitsTitle = { text: 'What are its benefits?', colour: 'pixel-teal' }
@@ -364,6 +423,8 @@ const benefitsCards = [
       </div>
     </Grid>
   </section>
+
+  <FeatureCards title={featuresTitle} cards={featuresCards} style="left-aligned" />
 
   <FeatureCards title={benefitsTitle} cards={benefitsCards} style="left-aligned" />
 
