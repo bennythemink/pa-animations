@@ -7,6 +7,7 @@ import Layout from '@layouts/Layout.astro'
 import fletcherImg from '@assets/fletcher-pixel-assist.webp'
 import FeatureCards from '@components/services/FeatureCards.astro'
 import BlurbPoints from '@components/services/BlurbPoints.astro'
+import Callout from '@components/Callout.astro'
 import { SitePage } from '@data/analyticsCaller'
 
 const includes = [
@@ -424,11 +425,17 @@ const benefitsCards = [
     </Grid>
   </section>
 
-  <FeatureCards title={featuresTitle} cards={featuresCards} style="left-aligned" />
+  <FeatureCards title={featuresTitle} cards={featuresCards} style="left-aligned" bottomMargin={false} />
 
-  <FeatureCards title={benefitsTitle} cards={benefitsCards} style="left-aligned" />
+  <Callout
+    calloutText="Interested already? Skip the (nice + non-pushy) sales pitch and let\'s jump to the contact form to open a conversation."
+    ctaText="Let\'s talk →"
+    url="#contact-form"
+  />
 
-  <section id="managed" class="py-16 lg:py-24">
+  <FeatureCards title={benefitsTitle} cards={benefitsCards} style="left-aligned" bottomMargin={false} />
+
+  <section id="managed" class="pt-16 lg:pt-24">
     <Grid>
       <div class="col-span-full py-10 lg:py-14 grid grid-cols-12 gap-5 bg-pixel-platinum">
         <div class="col-span-12 lg:col-start-2 lg:col-span-10 py-10 lg:py-14">

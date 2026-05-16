@@ -19,9 +19,10 @@ interface Props {
   title?: SectionTitle
   cards: Card[]
   style?: 'default' | 'left-aligned'
+  bottomMargin?: boolean
 }
 
-const { title, cards, style = 'default' } = Astro.props
+const { title, cards, style = 'default', bottomMargin = true } = Astro.props
 
 // Read --color-pixel-* values from global.css — single source of truth
 const cssText = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf-8')
@@ -160,7 +161,7 @@ const uid = Math.random().toString(36).slice(2, 8)
   id="approach-points"
   data-approach-section
   data-colour-pool={JSON.stringify(pixelColourValues)}
-  class="py-12 lg:py-20"
+  class={` ${bottomMargin ? 'py-12 lg:py-20' : 'pt-12 lg:pt-20'}`}
 >
   <div class="grid grid-cols-12 px-5 max-w-495 mx-auto w-full">
     {
