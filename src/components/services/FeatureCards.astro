@@ -161,8 +161,9 @@ const uid = Math.random().toString(36).slice(2, 8)
   id="approach-points"
   data-approach-section
   data-colour-pool={JSON.stringify(pixelColourValues)}
-  class={` ${bottomMargin ? 'py-12 lg:py-20' : 'pt-12 lg:pt-20'}`}
+  class="py-12 lg:py-0 lg:pt-20"
 >
+  <!-- class={` ${bottomMargin ? 'py-12 lg:py-20' : 'pt-12 lg:pt-20'}`} -->
   <div class="grid grid-cols-12 px-5 max-w-495 mx-auto w-full">
     {
       title && (
