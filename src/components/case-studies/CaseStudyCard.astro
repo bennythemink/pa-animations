@@ -48,7 +48,7 @@ const colourResolved = resolveColour(colour)
       </p>
       <a
         href={`/case-studies/${slug}`}
-        class="mt-2 inline-block font-sans text-base underline underline-offset-2 hover:opacity-70 transition-opacity"
+        class="case-study-nav-link mt-2 inline-block font-sans text-base underline underline-offset-2 hover:opacity-70 transition-opacity"
         >View case study</a
       >
     </div>
@@ -127,7 +127,7 @@ const colourResolved = resolveColour(colour)
         if (window.matchMedia('(hover: hover)').matches) return
 
         const target = e.target as HTMLElement
-        if (target.closest('a')) {
+        if (target.closest('.case-study-nav-link')) {
           return
         }
 
