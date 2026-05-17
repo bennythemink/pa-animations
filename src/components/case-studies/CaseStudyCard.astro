@@ -110,10 +110,26 @@ const colourResolved = resolveColour(colour)
 </style>
 
 <script>
+  type BoundCard = HTMLElement & { dataset: DOMStringMap }
+  type DocWithHandler = Document & { __caseStudyOutsideClickHandler?: (e: Event) => void }
+
   function initCaseStudyCards() {
     const cards = document.querySelectorAll<HTMLElement>('.case-study-card')
 
+    const collapseAll = () => {
+      document.querySelectorAll('.case-study-overlay.expanded').forEach((el) => {
+        el.classList.remove('expanded')
+      })
+    }
+
+    // Ensure cards are collapsed when (re)initializing and after browser back/forward restore.
+    collapseAll()
+
     cards.forEach((card) => {
+      const boundCard = card as BoundCard
+      if (boundCard.dataset.csBound === '1') return
+      boundCard.dataset.csBound = '1'
+
       const overlay = card.querySelector<HTMLElement>('.case-study-overlay')!
 
       card.addEventListener('mouseenter', () => {
@@ -136,17 +152,23 @@ const colourResolved = resolveColour(colour)
       })
     })
 
-    document.addEventListener('click', (e) => {
+    const doc = document as DocWithHandler
+    if (doc.__caseStudyOutsideClickHandler) {
+      document.removeEventListener('click', doc.__caseStudyOutsideClickHandler)
+    }
+
+    doc.__caseStudyOutsideClickHandler = (e: Event) => {
       if (window.matchMedia('(hover: hover)').matches) return
       const target = e.target as HTMLElement
       if (!target.closest('.case-study-card')) {
-        document.querySelectorAll('.case-study-overlay.expanded').forEach((el) => {
-          el.classList.remove('expanded')
-        })
+        collapseAll()
       }
-    })
+    }
+
+    document.addEventListener('click', doc.__caseStudyOutsideClickHandler)
   }
 
   initCaseStudyCards()
   document.addEventListener('astro:after-swap', initCaseStudyCards)
+  window.addEventListener('pageshow', initCaseStudyCards)
 </script>
