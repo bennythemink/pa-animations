@@ -125,6 +125,12 @@ const colourResolved = resolveColour(colour)
 
       card.addEventListener('click', (e) => {
         if (window.matchMedia('(hover: hover)').matches) return
+
+        const target = e.target as HTMLElement
+        if (target.closest('a')) {
+          return
+        }
+
         e.preventDefault()
         overlay.classList.toggle('expanded')
       })
