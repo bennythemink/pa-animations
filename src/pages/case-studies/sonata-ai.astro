@@ -24,7 +24,7 @@ const { previous, next } = getCaseStudyNav('sonata-ai')
 
 <Layout
   title="Sonata AI Acoustic Risk Calculator Case Study"
-  description="Custom Digital Asset Management platform design and development for Fletcher Insulation, an Australian leader in the building and construction insulation products sector. Pixel Agency built a self-service DAM for Fletcher employees and approved partners with a custom approval workflow, cutting asset support requests by 15% and replacing scattered files with a single source of truth."
+  description="AI for Sonata, a Fletcher Building brand of acoustic panels for commercial fit-outs and interiors. Pixel Agency built a custom AI-powered Acoustic Risk Tool, a CatBoost prediction model that estimates acoustic risk from early design inputs, giving architects and designers an instant read at the point decisions are made and positioning Sonata as the brand that helps them see the problem before it becomes one."
 >
   <article id="case-study-page">
     <CaseStudyHeader>
@@ -43,7 +43,7 @@ const { previous, next } = getCaseStudyNav('sonata-ai')
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
               heroImage={{ src: hero }}
-              summary="How Pixel Agency built Fletcher Insulation a custom Digital Asset Management platform that gave employees and approved partners a single, controlled home for marketing assets, with self-service that cut asset support requests by 15%."
+              summary="How Pixel Agency built Sonata an AI-powered Acoustic Risk Tool, giving architects and designers an instant read on whether a space is heading for an acoustic problem and putting Sonata in the conversation early."
               squareImages={[{ src: squareOne }, { src: squareTwo }]}
               wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
@@ -54,81 +54,90 @@ const { previous, next } = getCaseStudyNav('sonata-ai')
 
             <CaseStudySectionText title="The client" noTopMargin={true}>
               <p>
-                Fletcher Insulation is one of Australia's leading suppliers of insulation products, serving trades,
-                architects, builders, and project teams across the country. Beyond their public-facing brand, Fletcher's
-                marketing operation supports a wide ecosystem of internal teams and approved trade partners who rely on
-                consistent, up-to-date marketing assets to do their work. Getting the right asset to the right person,
-                in the right version, is a daily operational task.
+                Sonata is a Fletcher Building brand of acoustic panels designed for commercial fit-outs, offices,
+                education spaces, and interiors where acoustic performance matters. Sonata sells through architects,
+                designers, and specifiers, the people who shape a space long before a panel goes on a wall. Getting
+                Sonata specified means being part of the conversation early, when the acoustic risk is still a question
+                rather than a problem.
               </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The problem">
               <p>
-                Before the DAM, Fletcher's marketing assets lived in people's inboxes, on shared drives, and across
-                multiple locations with no central source of truth. Marketing materials, photography, product images,
-                and logos were scattered, and getting hold of the right asset usually meant emailing the marketing team.
+                Acoustic risk is one of those things that's hard to see until it's too late. A room can look right on a
+                plan and still sound wrong once it's built. Architects and designers don't always have an easy way to
+                assess the acoustic risk of a space at the moment they're making the decisions that drive it: room size,
+                ceiling height, surface character, occupancy density, glazing, floor type. By the time the room is in
+                use, the problem (and the cost of fixing it) is locked in.
               </p><br />
               <p>
-                The result was a steady stream of support requests that ate into the team's capacity, and a real risk:
-                when assets aren't centrally controlled, non-approved versions can quietly leak into circulation.
-                Off-the-shelf DAM products were considered, but none cleanly supported Fletcher's specific approval
-                process, and the in-house team didn't want to take on a new technology stack to maintain.
+                Sonata's marketing team saw an opportunity in that gap. If Sonata could give architects and designers a
+                quick, credible way to assess acoustic risk early, Sonata would stop being just a product to specify and
+                start being a useful tool in the design process itself. The challenge was turning that idea into
+                something real, technically credible, and trusted by a professional audience.
               </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The approach">
               <p>
-                Off the back of the website work we'd already done together, Fletcher brought us in to scope and build
-                the DAM. We started with a discovery phase focused on the two pieces that would make or break the build:
-                the integrations with Fletcher's existing systems, and the custom approval workflow they actually
-                needed.
+                Sonata brought the idea to us as a differentiator they wanted to validate. Our job was to take the
+                concept from "this could work" to "this does work" by building a working prototype that proved out the
+                technical approach and gave Sonata something tangible to show stakeholders. We started by working with
+                Sonata to define the inputs an architect would actually have at the early design stage, the outputs that
+                would be useful at that moment, and the level of confidence the tool needed to project to be credible to
+                a professional audience.
               </p><br />
               <p>
-                Discovery had to surface the real shape of the approval process from the people running it day-to-day,
-                not just the version that lived on paper. We mapped the asset types in scope, the user roles (internal
-                staff and approved partners), and the approval steps each asset would need to pass before it was
-                available for use.
+                From there we designed the system around a custom AI prediction model: a CatBoost gradient boosting
+                model trained on the relationship between room characteristics and acoustic risk outcomes. CatBoost was
+                chosen because it handles the structured, tabular nature of the design inputs well, performs strongly on
+                smaller training datasets, and produces calibrated confidence scores rather than the black-box guesses
+                you sometimes get from off-the-shelf AI.
               </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The solution">
               <p>
-                We designed and built a custom DAM platform on the same technology stack as Fletcher's main website, so
-                the in-house team could maintain it without having to learn a new system. The platform gives Fletcher
-                employees and approved partners a controlled home for marketing materials, photography, product images,
-                and logos, with the custom approval workflow baked into the publishing process. Integrations with the
-                existing systems mean the DAM sits inside the broader operation rather than alongside it, and the
-                structure makes self-service the default path for getting hold of an asset, rather than the marketing
-                team's inbox.
+                The Acoustic Risk Tool is built as a self-contained, Sonata-branded application that is designed to
+                embed cleanly inside the Sonata website. The architecture is deliberately lightweight: a FastAPI and
+                Pydantic backend serving the trained CatBoost model, a Sonata-branded front end for architects and
+                designers, and a single dedicated server hosting the model and API. No third-party AI services in the
+                loop, no data leaving Sonata's environment unnecessarily, and full control over the model and its
+                training.
+              </p><br />
+              <p>
+                A user steps through a short, considered set of inputs: space type, room size, etc., the model returns
+                an acoustic risk band (Low, Medium, or High), a confidence score, and the factors that contributed most
+                to the result, so the answer isn't just a number but a starting point for a design conversation. Sonata
+                products are surfaced as part of the response where appropriate, putting the brand in front of
+                architects at the exact moment they're thinking about how to bring the risk down.
               </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The results">
               <p>
-                A year in, the DAM has settled into its role as the central source of truth for Fletcher's marketing
-                assets:
+                The tool is currently in pre-launch, with a working demonstration validated end-to-end and the model
+                trained on representative scenarios:
               </p>
               <CaseStudyResults
                 results={[
                   {
-                    title: '~15% drop in asset support requests',
-                    description: 'users now self-managing the assets they need',
+                    title: 'A working AI tool',
+                    description:
+                      'demonstrated end-to-end with the trained CatBoost model returning calibrated risk bands, confidence scores, and contributing factors',
                     backgroundColour: 'pixel-solar'
                   },
                   {
-                    title: 'One source of truth',
-                    description: 'for marketing materials, photography, product images, and logos',
+                    title: 'A custom architecture',
+                    description:
+                      'that gives Sonata full control over the model, the data, and the training process, with no dependence on third-party AI services',
                     backgroundColour: 'pixel-celestial'
                   },
                   {
-                    title: 'Custom approval workflow',
-                    description: 'ensuring only approved assets are in circulation',
+                    title: 'A Sonata-branded experience',
+                    description:
+                      'designed to embed inside the Sonata website via a secure iframe, ready to drop into the live site with no disruption',
                     backgroundColour: 'pixel-rosy'
-                  },
-                  {
-                    title: 'Same stack',
-                    description: "as Fletcher's main website, no new system for the in-house team to learn",
-                    backgroundColour: 'pixel-teal'
                   }
                 ]}
               />
@@ -136,7 +145,8 @@ const { previous, next } = getCaseStudyNav('sonata-ai')
               <div class="mt-6 lg:mt-12"></div>
 
               <CaseStudyShout>
-                Sometimes the right build is the one that fits how your team already works.
+                An acoustic problem is cheap to fix before the room is built. After that, it's not. AI gives us the
+                power to see the risk before it's a problem.
               </CaseStudyShout>
             </CaseStudySectionText>
 
