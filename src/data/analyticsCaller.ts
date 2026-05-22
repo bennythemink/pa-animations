@@ -36,7 +36,8 @@ export enum SitePage {
   CASE_STUDIES_PRIVATE_MIELE = '/case-studies/private/miele',
   CASE_STUDIES_PRIVATE_PFG = '/case-studies/private/pfg',
   CASE_STUDIES_PRIVATE_TOLL = '/case-studies/private/toll',
-  CASE_STUDIES_PRIVATE_VINCENTCARE = '/case-studies/private/vincentcare'
+  CASE_STUDIES_PRIVATE_VINCENTCARE = '/case-studies/private/vincentcare',
+  CASE_STUDIES_PIXEL_ASSIST = '/case-studies/pixel-assist'
 }
 
 export const DEFAULT_CALLER: SitePage = SitePage.NOT_SUPPLIED

@@ -302,7 +302,7 @@ const caseStudies: CaseStudy[] = [
       'We Pixel Assist, our AI knowledge assistant product, surfacing product information instantly and cutting support queries in a successful trial.',
     colour: 'bg-pixel-teal',
     image: fletcherAi,
-    published: true,
+    published: false,
     featured: false,
     imagePosition: 'object-top',
     drawerPosition: 'object-top'
@@ -343,6 +343,20 @@ const caseStudies: CaseStudy[] = [
     colour: 'bg-pixel-teal',
     image: fortKnox,
     published: false,
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
+  },
+  {
+    title: 'Redacted Client + Pixel Assist',
+    slug: 'pixel-assist',
+    industry: ['Manufacturing'],
+    services: ['AI'],
+    overview:
+      'We are integrating Pixel Assist, our AI knowledge assistant product, at a leading Australian manufacturing client, surfacing product information instantly and cutting support queries in a successful trial.',
+    colour: 'bg-pixel-teal',
+    image: fletcherAi,
+    published: true,
     featured: false,
     imagePosition: 'object-top',
     drawerPosition: 'object-top'
