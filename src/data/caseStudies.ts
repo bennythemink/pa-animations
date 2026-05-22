@@ -1,4 +1,3 @@
-import mbImage from '@assets/mb.png'
 import holmesglen from '@assets/case-studies/holmesglen/tile.svg'
 import vincentcare from '@assets/case-studies/vincentcare/tile.webp'
 import yoplait from '@assets/case-studies/yoplait/tile.webp'
@@ -17,8 +16,10 @@ import miele from '@assets/case-studies/miele/tile.webp'
 import fletcherDam from '@assets/case-studies/fletcher-dam/tile.webp'
 import fletcherAi from '@assets/case-studies/fletcher-ai/tile.webp'
 import sonataAi from '@assets/case-studies/sonata-ai/tile.webp'
+import aiRiskCalculator from '@assets/case-studies/ai-risk-calculator/tile.webp'
 import pfg from '@assets/case-studies/pfg/tile.webp'
 import fortKnox from '@assets/case-studies/fort-knox/tile.webp'
+import pixelAssist from '@assets/case-studies/pixel-assist/tile.webp'
 
 import bhnDrawer from '@assets/case-studies/bhn/drawer.webp'
 import yoplaitDrawer from '@assets/case-studies/yoplait/drawer.webp'
@@ -124,20 +125,6 @@ const caseStudies: CaseStudy[] = [
     featured: true,
     imagePosition: 'object-top',
     drawerPosition: 'object-[0%_0%]'
-  },
-  {
-    title: 'Sonata AI',
-    slug: 'sonata-ai',
-    industry: ['Technology', 'AI'],
-    services: ['Discovery + direction', 'Design', 'Development'],
-    overview:
-      'A ground-up digital experience built to redefine how AI-powered software is designed, marketed and sold — from positioning through to product interface.',
-    colour: 'bg-pixel-celestial',
-    image: mbImage,
-    published: false,
-    featured: false,
-    imagePosition: 'object-top',
-    drawerPosition: 'object-top'
   },
   {
     title: 'VincentCare',
@@ -316,7 +303,7 @@ const caseStudies: CaseStudy[] = [
       'AI for Sonata AI. Pixel Agency built a custom acoustic risk calculator for Sonata AI, demonstrating the potential of AI-powered tools to provide instant, accurate insights and drive informed decision-making in the construction industry.',
     colour: 'bg-pixel-teal',
     image: sonataAi,
-    published: true,
+    published: false,
     featured: false,
     imagePosition: 'object-top',
     drawerPosition: 'object-top'
@@ -348,14 +335,28 @@ const caseStudies: CaseStudy[] = [
     drawerPosition: 'object-top'
   },
   {
-    title: 'Redacted Client + Pixel Assist',
+    title: 'Pixel Assist',
     slug: 'pixel-assist',
     industry: ['Manufacturing'],
-    services: ['AI'],
+    services: ['Pixel Assist'],
     overview:
       'We are integrating Pixel Assist, our AI knowledge assistant product, at a leading Australian manufacturing client, surfacing product information instantly and cutting support queries in a successful trial.',
     colour: 'bg-pixel-teal',
-    image: fletcherAi,
+    image: pixelAssist,
+    published: true,
+    featured: false,
+    imagePosition: 'object-top',
+    drawerPosition: 'object-top'
+  },
+  {
+    title: 'AI Risk Calculator',
+    slug: 'ai-risk-calculator',
+    industry: ['Manufacturing'],
+    services: ['Discovery + direction', 'Design', 'Development', 'AI'],
+    overview:
+      'Pixel Agency built a custom AI-powered risk calculator for a leading Australian manufacturing client, demonstrating the potential of AI-powered tools to provide instant, accurate insights and drive informed decision-making in the industry.',
+    colour: 'bg-pixel-teal',
+    image: aiRiskCalculator,
     published: true,
     featured: false,
     imagePosition: 'object-top',
