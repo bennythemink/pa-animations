@@ -19,7 +19,7 @@ import sonataAi from '@assets/case-studies/sonata-ai/tile.webp'
 import aiRiskCalculator from '@assets/case-studies/ai-risk-calculator/tile.webp'
 import pfg from '@assets/case-studies/pfg/tile.webp'
 import fortKnox from '@assets/case-studies/fort-knox/tile.webp'
-import pixelAssist from '@assets/case-studies/pixel-assist/tile.webp'
+import pixelAssist from '@assets/case-studies/pixel-assist/tile.svg'
 
 import bhnDrawer from '@assets/case-studies/bhn/drawer.webp'
 import yoplaitDrawer from '@assets/case-studies/yoplait/drawer.webp'
