@@ -13,11 +13,11 @@ import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
 import { getCaseStudyNav } from '@data/caseStudies'
 
-import hero from '@assets/case-studies/sonata-ai/hero.webp'
-import squareOne from '@assets/case-studies/sonata-ai/squareOne.svg'
-import squareTwo from '@assets/case-studies/sonata-ai/squareTwo.webp'
-import wideOne from '@assets/case-studies/sonata-ai/wideOne.webp'
-import wideTwo from '@assets/case-studies/sonata-ai/wideTwo.webp'
+import hero from '@assets/case-studies/ai-risk-calculator/hero.webp'
+import squareOne from '@assets/case-studies/ai-risk-calculator/squareOne.svg'
+import squareTwo from '@assets/case-studies/ai-risk-calculator/squareTwo.webp'
+import wideOne from '@assets/case-studies/ai-risk-calculator/wideOne.webp'
+import wideTwo from '@assets/case-studies/ai-risk-calculator/wideTwo.webp'
 
 const { previous, next } = getCaseStudyNav('ai-risk-calculator')
 ---
@@ -43,7 +43,7 @@ const { previous, next } = getCaseStudyNav('ai-risk-calculator')
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
               heroImage={{ src: hero }}
-              summary="How Pixel Agency built a custom AI-powered Risk Tool, giving architects and designers an instant read on whether a space is heading for a problem and putting the client in the conversation early."
+              summary="How Pixel Agency built a custom AI-powered Risk Tool, giving architects and designers an instant read on whether a building is heading for a problem and putting the client in the conversation early."
               squareImages={[{ src: squareOne }, { src: squareTwo }]}
               wideImages={[{ src: wideOne }, { src: wideTwo }]}
             />
