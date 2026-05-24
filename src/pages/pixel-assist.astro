@@ -4,11 +4,12 @@ import ContactForm from '@components/ContactForm.astro'
 import EqualSign from '@components/signs/Equals.astro'
 import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
-import fletcherImg from '@assets/fletcher-pixel-assist.webp'
+import fletcherImg from '@assets/redacted-pixel-assist.webp'
 import FeatureCards from '@components/services/FeatureCards.astro'
 import BlurbPoints from '@components/services/BlurbPoints.astro'
 import Callout from '@components/Callout.astro'
 import { SitePage } from '@data/analyticsCaller'
+import CTA from '@components/CTA.astro'
 
 const includes = [
   'Setup and training on your content',
@@ -528,19 +529,19 @@ const benefitsCards = [
           <div class="">
             <h2 class="font-sans font-normal text-2xl lg:text-4xl text-pixel-fawn pb-6 lg:pb-7">Case study</h2>
             <h3 class="font-sans font-normal text-4xl lg:text-6xl leading-[0.95] tracking-[-0.03em] mb-6 lg:mb-10">
-              Fletcher Insulation
+              Redacted Client
             </h3>
           </div>
           <div class="">
-            <p>
-              Fletcher Insulation manages a large catalogue of technical products supported by datasheets, compliance
-              documentation, and specifications. For trades, architects, and project teams, finding the right
-              information often meant searching across multiple pages or contacting support.
+            <p class="italic font-extralight">
+              Due to the sensitive nature of the information involved, we are unable to disclose the name of this
+              client, but we can share how Pixel Assist helped them transform their website into a powerful, interactive
+              resource for their customers.
             </p><br />
             <p>
-              We implemented Pixel Assist to answer product and compliance questions instantly and make technical
-              information easier to access, reduce repetitive support requests, and help customers choose products with
-              confidence.
+              The client manages a large catalogue of technical products supported by datasheets, compliance
+              documentation, and specifications. For trades, architects, and project teams, finding the right
+              information often meant searching across multiple pages or contacting support.
             </p>
           </div>
         </div>
@@ -551,12 +552,18 @@ const benefitsCards = [
         </div>
 
         {/* Right: Results copy */}
-        <div class="col-span-12 lg:col-span-3 flex flex-col items-center justify-end px-3 lg:px-0">
+        <div class="col-span-12 lg:col-span-3 flex flex-col items-start justify-end px-3 lg:px-0">
+          <p>
+            We implemented Pixel Assist to answer product and compliance questions instantly and make technical
+            information easier to access, reduce repetitive support requests, and help customers choose products with
+            confidence.
+          </p><br />
           <p>
             The result is a faster, smoother experience for users, and a website that actively supports decision-making
             rather than simply hosting information.
           </p><br />
-          <p>The same approach can be configured for any organisation with complex knowledge.</p>
+          <p>The same approach can be configured for any organisation with complex knowledge.</p><br />
+          <CTA label="Read the full case study →" url="/case-studies/pixel-assist" />
         </div>
       </div>
     </Grid>
