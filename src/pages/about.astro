@@ -142,7 +142,12 @@ const sectionCards = [
     </Grid>
   </section>
 
-  <Image src={aboutImage} alt="" class="w-full h-[288px] lg:h-[456px] object-cover" widths={[768, 1440, 2560]} />
+  <Image
+    src={aboutImage}
+    alt="Designer working on a digital project"
+    class="w-full h-[288px] lg:h-[456px] object-cover"
+    widths={[768, 1440, 2560]}
+  />
 
   <section id="pov" class="py-12 lg:py-20">
     <Grid>
@@ -196,7 +201,7 @@ const sectionCards = [
         <div class="w-full">
           <Image
             src={extended}
-            alt="Illustration showing how Pixel Agency works with clients, with no handovers or sales layer"
+            alt="Illustration of the Pixel Agency extended logo"
             class="w-full h-full object-contain"
           />
         </div>
@@ -240,18 +245,90 @@ const sectionCards = [
           <div id="team-cards" class="flex shrink-0 overflow-x-auto lg:overflow-visible -mx-5 px-5 lg:mx-0 lg:px-0">
             {
               [
-                { name: 'Benny', role: 'Principle Nerd', colour: 'bg-pixel-teal', image: 'benny' },
-                { name: 'Julio', role: 'UX/UI Nerd', colour: 'bg-pixel-celestial', image: 'julio' },
-                { name: 'Dave', role: 'Web Nerd', colour: 'bg-pixel-poppy', image: 'dave' },
-                { name: 'Alyssa', role: 'Finance Nerd', colour: 'bg-pixel-rosy', image: 'alyssa' },
-                { name: 'Christiaan', role: 'Web Nerd', colour: 'bg-pixel-solar', image: 'christiaan' },
-                { name: 'Aaron', role: 'Data Nerd', colour: 'bg-pixel-fawn', image: 'aaron' },
-                { name: 'Harvin', role: 'App Nerd', colour: 'bg-pixel-poppy', image: 'harvin' },
-                { name: 'Johnny', role: 'App Nerd', colour: 'bg-pixel-fire', image: 'jong' },
-                { name: 'Stephan', role: 'UX/UI Nerd', colour: 'bg-pixel-lte-rosy', image: 'stephan' },
-                { name: 'Stuart', role: 'Cloud Nerd', colour: 'bg-pixel-teal', image: 'stuart' },
-                { name: 'Hoang', role: 'AI Nerd', colour: 'bg-pixel-solar', image: 'hoang' },
-                { name: 'Gabriella', role: 'Brand + Design Nerd', colour: 'bg-pixel-rosy', image: 'gabriella' }
+                {
+                  name: 'Benny',
+                  role: 'Principle Nerd',
+                  colour: 'bg-pixel-teal',
+                  image: 'benny',
+                  alt: 'Illustration of Benny, Principle of Pixel Agency'
+                },
+                {
+                  name: 'Julio',
+                  role: 'UX/UI Nerd',
+                  colour: 'bg-pixel-celestial',
+                  image: 'julio',
+                  alt: 'Illustration of Julio, UX/UI Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Dave',
+                  role: 'Web Nerd',
+                  colour: 'bg-pixel-poppy',
+                  image: 'dave',
+                  alt: 'Illustration of Dave, Web Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Alyssa',
+                  role: 'Finance Nerd',
+                  colour: 'bg-pixel-rosy',
+                  image: 'alyssa',
+                  alt: 'Illustration of Alyssa, Finance Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Christiaan',
+                  role: 'Web Nerd',
+                  colour: 'bg-pixel-solar',
+                  image: 'christiaan',
+                  alt: 'Illustration of Christiaan, Web Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Aaron',
+                  role: 'Data Nerd',
+                  colour: 'bg-pixel-fawn',
+                  image: 'aaron',
+                  alt: 'Illustration of Aaron, Data Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Harvin',
+                  role: 'App Nerd',
+                  colour: 'bg-pixel-poppy',
+                  image: 'harvin',
+                  alt: 'Illustration of Harvin, App Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Johnny',
+                  role: 'App Nerd',
+                  colour: 'bg-pixel-fire',
+                  image: 'jong',
+                  alt: 'Illustration of Johnny, App Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Stephan',
+                  role: 'UX/UI Nerd',
+                  colour: 'bg-pixel-lte-rosy',
+                  image: 'stephan',
+                  alt: 'Illustration of Stephan, UX/UI Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Stuart',
+                  role: 'Cloud Nerd',
+                  colour: 'bg-pixel-teal',
+                  image: 'stuart',
+                  alt: 'Illustration of Stuart, Cloud Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Hoang',
+                  role: 'AI + Data Nerd',
+                  colour: 'bg-pixel-solar',
+                  image: 'hoang',
+                  alt: 'Illustration of Hoang, AI + Data Nerd at Pixel Agency'
+                },
+                {
+                  name: 'Gabriella',
+                  role: 'Brand + Design Nerd',
+                  colour: 'bg-pixel-rosy',
+                  image: 'gabriella',
+                  alt: 'Illustration of Gabriella, Brand + Design Nerd at Pixel Agency'
+                }
               ].map((member) => (
                 <div
                   class={`shrink-0 w-[140px] lg:w-[240px] h-[140px] lg:h-[240px] relative overflow-hidden flex flex-col items-center ${member.colour}`}
@@ -259,7 +336,7 @@ const sectionCards = [
                   {member.image && (
                     <img
                       src={`/team/${member.image}.webp`}
-                      alt={member.name}
+                      alt={member.alt}
                       class="w-[50%] h-[50%] object-contain mt-3 lg:mt-5"
                     />
                   )}
