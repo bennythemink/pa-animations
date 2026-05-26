@@ -44,10 +44,19 @@ thoughtful concept built to open new pathways for students."
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{
+                src: hero,
+                alt: 'A screenshot of the homepage design for the STEM Hub concept.'
+              }}
               summary="Partnering with Swinburne University to design a digital STEM outreach platform, a thoughtful concept built to open new pathways for students."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                { src: squareOne, alt: 'Image of Swinburne University logo' },
+                { src: squareTwo, alt: 'Image of STEM Hub branding element' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'Wide image of STEM Hub resources section' },
+                { src: wideTwo, alt: 'Wide image of STEM Hub games section' }
+              ]}
             />
           </div>
 

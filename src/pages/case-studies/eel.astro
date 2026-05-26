@@ -43,11 +43,17 @@ const { previous, next } = getCaseStudyNav('eel')
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{ src: hero, alt: 'Hero image of the website' }}
               summary="How discovery and a design that captured their spirit of curiosity helped increase centre tour bookings
                 by 9% and session time by 24%."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                { src: squareOne, alt: 'Image of the Explorers Early Learning logo' },
+                { src: squareTwo, alt: 'Image of the website interface' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'Wide image of a website section' },
+                { src: wideTwo, alt: 'Wide image of a different website section' }
+              ]}
             />
           </div>
 

@@ -43,10 +43,16 @@ const { previous, next } = getCaseStudyNav('holmesglen')
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{ src: hero, alt: 'A screenshot of the website homepage' }}
               summary="How a discovery-led portal helped connect overlooked talent with local businesses. And placed over 80 students into employment."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                { src: squareOne, alt: 'Image of Holmesglen Institute logo' },
+                { src: squareTwo, alt: 'Image of a branding illustration element' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'Wide image of the about section' },
+                { src: wideTwo, alt: 'Wide image of the support section' }
+              ]}
             />
           </div>
 

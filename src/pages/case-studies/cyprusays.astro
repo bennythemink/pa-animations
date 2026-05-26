@@ -42,10 +42,16 @@ const { previous, next } = getCaseStudyNav('cyprusays')
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{ src: hero, alt: 'An illustration of Greek Cypriots' }}
               summary="How Pixel Agency took Cyprusays' off-shore app build from rudderless to launched, set up project structures from scratch, and left the founders running delivery themselves."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                { src: squareOne, alt: 'Image of the Cyprusays app logo' },
+                { src: squareTwo, alt: 'Image of the Cyprusays app' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'Artistic screenshots of the app interface' },
+                { src: wideTwo, alt: 'Screenshots of various app screens' }
+              ]}
             />
           </div>
 

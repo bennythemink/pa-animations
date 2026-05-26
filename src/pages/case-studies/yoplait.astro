@@ -43,15 +43,21 @@ longer session times, plus full content independence for the team."
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{ src: hero, alt: 'A screenshot of the Yoplait Australia homepage design.' }}
               summary="How Pixel Agency transformed Yoplait Australia's digital presence, delivering 130% more traffic and 150% longer session times, plus full content independence for the team."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                { src: squareOne, alt: 'Image of Yoplait logo' },
+                { src: squareTwo, alt: 'Image of Yoplait marketing material' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'Wide image of Yoplait product section' },
+                { src: wideTwo, alt: 'Wide image of Yoplait recipes section' }
+              ]}
             />
           </div>
 
           <div class="case-study-right-pane min-w-0">
-            <CaseStudyShout>Empowering Yopalit's marketing team.</CaseStudyShout>
+            <CaseStudyShout>Empowering Yoplait's marketing team.</CaseStudyShout>
 
             <CaseStudySectionText title="The client" noTopMargin={true}>
               <p class="">

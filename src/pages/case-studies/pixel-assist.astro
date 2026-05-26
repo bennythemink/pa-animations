@@ -42,10 +42,16 @@ const { previous, next } = getCaseStudyNav('pixel-assist')
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{ src: hero, alt: 'Hero image of Pixel Assist in action' }}
               summary="How Pixel Agency are deploying Pixel Assist, an AI knowledge assistant, on a client's website to surface product knowledge in real time for their customers, with a rollout that proved the system out on a subset of users before scaling."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                { src: squareOne, alt: 'Image of Pixel Assist logo' },
+                { src: squareTwo, alt: 'Image of Pixel Assist branding element' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'An image of various Pixel Assist use cases' },
+                { src: wideTwo, alt: 'An image of more Pixel Assist use cases' }
+              ]}
             />
           </div>
 

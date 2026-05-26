@@ -42,10 +42,16 @@ const { previous, next } = getCaseStudyNav('fletcher-dam')
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{ src: hero, alt: 'Fletcher Insulation Digital Asset Management Platform screenshot' }}
               summary="How Pixel Agency built Fletcher Insulation a custom Digital Asset Management platform that gave employees and approved partners a single, controlled home for marketing assets, with self-service that cut asset support requests by ~15%."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                { src: squareOne, alt: 'Image of Fletcher Insulation logo' },
+                { src: squareTwo, alt: 'Artistic image of the branding elements' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'Screenshot of the resources section' },
+                { src: wideTwo, alt: 'Screenshot of the asset view section' }
+              ]}
             />
           </div>
 
