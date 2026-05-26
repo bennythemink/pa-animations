@@ -42,10 +42,16 @@ const { previous, next } = getCaseStudyNav('bawbaw')
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{ src: hero, alt: 'Hero image of the company website' }}
               summary="Mt. Baw Baw, a popular tourist destination, wanted to enhance their online presence + improve customer engagement."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                { src: squareOne, alt: 'Image of the company logo' },
+                { src: squareTwo, alt: 'Image of a skier jumping' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'Image of the website summer version ' },
+                { src: wideTwo, alt: 'Image of the website weather warning ' }
+              ]}
             />
           </div>
 

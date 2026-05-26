@@ -42,10 +42,19 @@ const { previous, next } = getCaseStudyNav('ai-risk-calculator')
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{ src: hero, alt: 'Hero image of a beautiful architectural building' }}
               summary="How Pixel Agency built a custom AI-powered Risk Tool, giving architects and designers an instant read on whether a building is heading for a problem and putting the client in the conversation early."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                {
+                  src: squareOne,
+                  alt: 'Client logo - this time it uses a dummy logo until the client releases the calculator'
+                },
+                { src: squareTwo, alt: 'Image of a beautiful architectural building looking up' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'The user interface of the AI Risk Calculator with sensitive sections redacted' },
+                { src: wideTwo, alt: 'The results of the AI Risk Calculator with sensitive sections redacted' }
+              ]}
             />
           </div>
 
