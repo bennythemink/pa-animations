@@ -54,6 +54,25 @@ const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
       document.documentElement.style.setProperty('--accent-bgc', colorsRGB[key])
     </script>
 
+    {/* Structured data for SEO */}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Pixel Agency",
+        "url": "https://www.pixelagency.com.au",
+        "telephone": "03 9943 2429",
+        "email": "hello@pixelagency.com.au",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Melbourne",
+          "addressRegion": "VIC",
+          "addressCountry": "AU"
+        },
+        "areaServed": "Australia"
+      }
+    </script>
+
     <!-- Google Tag Manager (Partytown Version) -->
     <script type="text/partytown">
       ;(function (w, d, s, l, i) {
