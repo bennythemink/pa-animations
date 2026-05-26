@@ -349,7 +349,7 @@ const caseStudies: CaseStudy[] = [
     drawerPosition: 'object-top'
   },
   {
-    title: 'AI Risk Calculator',
+    title: 'Risk Calculator',
     slug: 'ai-risk-calculator',
     industry: ['Manufacturing'],
     services: ['Discovery + direction', 'Design', 'Development', 'AI'],
