@@ -8,9 +8,10 @@ interface Props {
   label?: string
   /** Hex colour or pixel var name (e.g. 'pixel-poppy') for the label text. Defaults to pixel-poppy. */
   labelColour?: string
+  margin?: string
 }
 
-const { label = 'Our approach', labelColour = 'pixel-poppy' } = Astro.props
+const { label = 'Our approach', labelColour = 'pixel-poppy', margin = 'mb-12 lg:mb-20' } = Astro.props
 
 // Resolve colour — same pattern as ApproachPointsSection
 const cssText = readFileSync(resolve(process.cwd(), 'src/styles/global.css'), 'utf-8')
@@ -26,7 +27,7 @@ function resolveColour(raw: string): string {
 const resolvedLabelColour = resolveColour(labelColour)
 ---
 
-<section id="approach-section" class="pb-12 lg:pb-20">
+<section id="approach-section" class={margin}>
   <Grid>
     <div class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-col gap-5">
       <p class="font-sans font-normal text-lg lg:text-4xl" style={`color: ${resolvedLabelColour};`}>{label}</p>

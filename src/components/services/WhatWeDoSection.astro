@@ -4,12 +4,13 @@ import Grid from '@components/Grid.astro'
 interface Props {
   title: string
   items: string[]
+  margin?: string
 }
 
-const { title, items } = Astro.props
+const { title, items, margin = 'mb-12 lg:mb-20' } = Astro.props
 ---
 
-<section class="py-12 lg:py-20">
+<section class={margin}>
   <Grid>
     <div class="col-span-full lg:col-start-2 lg:col-span-4">
       <h2 style="font-size: clamp(2rem, 5vw, 4rem);">{title}</h2>
