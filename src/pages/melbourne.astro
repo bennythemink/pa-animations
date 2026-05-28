@@ -96,6 +96,7 @@ const cards = [
 ---
 
 <Layout
+  noMenuSpacer
   title="Digital Agency Melbourne | Web, App + System Discovery, Design, Development, AI, & Consulting"
   description="Melbourne digital agency specialising in web/app/system design, brand design, development, AI, and digital consulting. Senior practitioners, no sales layer. Serving businesses across Melbourne and Australia."
 >
@@ -111,12 +112,9 @@ const cards = [
         <div id="hero-puzzle" class="relative mx-auto"></div>
         <p
           id="hero-tagline-bottom"
-          class="text-2xl sm:text-4xl lg:text-5xl mt-6 sm:mt-8 font-sans font-normal tracking-[-0.03em] opacity-0"
+          class="text-2xl sm:text-4xl lg:text-5xl mt-6 sm:mt-8 font-sans font-normal tracking-[-0.03em] leading-[1.2] opacity-0"
         >
-          a <span class="text-pixel-fire underline underline-offset-4">refreshing</span> digital partner<span
-            id="hero-pixel-dot"
-            class="inline-block w-[0.22em] h-[0.22em] bg-pixel-teal ml-[0.08em] rounded-none"
-            style="vertical-align: baseline;"></span>
+          a <span class="text-pixel-celestial underline underline-offset-4">local + refreshing</span> digital partner
         </p>
 
         <div id="hero-cta" class="mt-4 lg:mt-8 opacity-0">
@@ -125,54 +123,26 @@ const cards = [
       </div>
     </section>
 
-    <OurApproachSection label="Melbourne digital agency" labelColour="pixel-rosy">
+    <OurApproachSection label="Have a digital problem?" labelColour="pixel-fire">
       We help Melbourne businesses create digital products and experiences that make a difference. Websites, apps,
       systems, and brands designed and built to work for your customers and your business.
     </OurApproachSection>
 
-    <FeatureCards title={cardsTitle} cards={cards} margin="pb-12 lg:pb-20" />
+    <SectionCards title={sectionCardsTitle} text={sectionText} cards={sectionCards} displayTextBackground={false} />
 
-    <div class="">
+    <OurApproachSection label="Why us?" labelColour="pixel-teal" margin="my-16 lg:my-24">
+      Our senior team works directly with you, no sales layer or junior hand-off, so solutions stay practical, high
+      quality, and grounded in real-world experience.
+    </OurApproachSection>
+
+    <FeatureCards title={cardsTitle} cards={cards} margin="my-12 lg:my-20" />
+
+    <section id="experience" class="my-16 lg:my-24">
       <Grid>
-        <div
-          class="col-span-12 lg:col-start-2 lg:col-span-4 my-0 lg:my-20 flex flex-col justify-start gap-6 mt-0 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
-        >
-          <p>
-            We are a Melbourne based digital agency, but we work with businesses across Australia and beyond. That means
-            we understand the local market and context, but also have experience with a wide range of industries and
-            challenges. We bring that experience to every project, ensuring our solutions are grounded in real-world
-            understanding and best practices.
-          </p>
-          <p>
-            Our team is made up of senior practitioners with deep expertise in their respective fields. We don’t have a
-            sales layer or junior staff, you work directly with the people doing the work, ensuring clear communication,
-            high standards, and a collaborative approach.
-          </p>
-        </div>
-
-        <div
-          class="col-span-12 lg:col-start-7 lg:col-span-4 flex flex-col justify-start gap-6 my-2 lg:my-0 text-[18px] lg:text-2xl leading-[0.76]"
-        >
-          <p>
-            We’ve worked with businesses across Melbourne and Australia, from startups to established enterprises, in
-            industries ranging from construction to education, farming to retail, automotive to fintech, and more. That
-            range means we adapt to your context without losing our standard of care. And it gives us the confidence to
-            be selective, honest, and deeply involved rather than stretched thin or transactional.
-          </p>
-          <p>
-            Wherever you are, our standard of care travels with us. The following case studies highlight our work with
-            Melbourne based clients, but we work with businesses across Australia and beyond.
-          </p>
-        </div>
-      </Grid>
-    </div>
-
-    <SectionCards text={sectionText} cards={sectionCards} displayTextBackground={false} />
-
-    <section id="experience" class="py-16 lg:py-24">
-      <Grid>
-        <p class="col-span-12 lg:col-start-2 lg:col-span-11 text-[40px] text-pixel-rosy">Our experience</p>
-        <h2 class="col-span-12 lg:col-start-2 lg:col-span-5 text-3xl lg:text-[80px] mt-8 lg:mt-0">
+        <p class="col-span-12 lg:col-start-2 lg:col-span-11 text-2xl lg:text-4xl text-pixel-rosy font-sans font-light">
+          Our experience
+        </p>
+        <h2 class="col-span-12 lg:col-start-2 lg:col-span-5 text-3xl lg:text-[80px] mt-2 lg:mt-0">
           We've been here before, whatever 'here' looks like for you.
         </h2>
         <div
