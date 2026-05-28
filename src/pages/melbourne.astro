@@ -9,6 +9,7 @@ import { melbourneCaseStudies } from '@data/caseStudies'
 import SectionCards from '@components/SectionCards.astro'
 import OurApproachSection from '@components/services/OurApproachSection.astro'
 import FeatureCards from '@components/services/FeatureCards.astro'
+import CTA from '@components/CTA.astro'
 
 /**
  * SectionCards variables
@@ -98,85 +99,283 @@ const cards = [
   title="Digital Agency Melbourne | Web, App + System Discovery, Design, Development, AI, & Consulting"
   description="Melbourne digital agency specialising in web/app/system design, brand design, development, AI, and digital consulting. Senior practitioners, no sales layer. Serving businesses across Melbourne and Australia."
 >
-  <OurApproachSection label="Melbourne digital agency" labelColour="pixel-rosy">
-    We help Melbourne businesses create digital products and experiences that make a difference. Websites, apps,
-    systems, and brands designed and built to work for your customers and your business.
-  </OurApproachSection>
+  <div id="site-content">
+    <section id="hero-puzzle-section" class="relative h-screen flex items-center justify-center">
+      <div id="hero-puzzle-content" class="text-center">
+        <h2
+          id="hero-tagline-top"
+          class="text-2xl sm:text-4xl lg:text-5xl mb-6 sm:mb-8 font-sans font-normal tracking-[-0.03em] opacity-0"
+        >
+          We are
+        </h2>
+        <div id="hero-puzzle" class="relative mx-auto"></div>
+        <p
+          id="hero-tagline-bottom"
+          class="text-2xl sm:text-4xl lg:text-5xl mt-6 sm:mt-8 font-sans font-normal tracking-[-0.03em] opacity-0"
+        >
+          a <span class="text-pixel-fire underline underline-offset-4">refreshing</span> digital partner<span
+            id="hero-pixel-dot"
+            class="inline-block w-[0.22em] h-[0.22em] bg-pixel-teal ml-[0.08em] rounded-none"
+            style="vertical-align: baseline;"></span>
+        </p>
 
-  <FeatureCards title={cardsTitle} cards={cards} margin="pb-12 lg:pb-20" />
+        <div id="hero-cta" class="mt-4 lg:mt-8 opacity-0">
+          <CTA label="Let's talk" url="/contact" />
+        </div>
+      </div>
+    </section>
 
-  <Grid>
-    <div
-      class="col-span-12 lg:col-start-2 lg:col-span-4 my-12 lg:my-20 flex flex-col justify-start gap-6 mt-8 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
-    >
-      <p>
-        We are a Melbourne based digital agency, but we work with businesses across Australia and beyond. That means we
-        understand the local market and context, but also have experience with a wide range of industries and
-        challenges. We bring that experience to every project, ensuring our solutions are grounded in real-world
-        understanding and best practices.
-      </p>
-      <p>
-        Our team is made up of senior practitioners with deep expertise in their respective fields. We don’t have a
-        sales layer or junior staff, you work directly with the people doing the work, ensuring clear communication,
-        high standards, and a collaborative approach.
-      </p>
+    <OurApproachSection label="Melbourne digital agency" labelColour="pixel-rosy">
+      We help Melbourne businesses create digital products and experiences that make a difference. Websites, apps,
+      systems, and brands designed and built to work for your customers and your business.
+    </OurApproachSection>
+
+    <FeatureCards title={cardsTitle} cards={cards} margin="pb-12 lg:pb-20" />
+
+    <div class="">
+      <Grid>
+        <div
+          class="col-span-12 lg:col-start-2 lg:col-span-4 my-0 lg:my-20 flex flex-col justify-start gap-6 mt-0 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
+        >
+          <p>
+            We are a Melbourne based digital agency, but we work with businesses across Australia and beyond. That means
+            we understand the local market and context, but also have experience with a wide range of industries and
+            challenges. We bring that experience to every project, ensuring our solutions are grounded in real-world
+            understanding and best practices.
+          </p>
+          <p>
+            Our team is made up of senior practitioners with deep expertise in their respective fields. We don’t have a
+            sales layer or junior staff, you work directly with the people doing the work, ensuring clear communication,
+            high standards, and a collaborative approach.
+          </p>
+        </div>
+
+        <div
+          class="col-span-12 lg:col-start-7 lg:col-span-4 flex flex-col justify-start gap-6 my-2 lg:my-0 text-[18px] lg:text-2xl leading-[0.76]"
+        >
+          <p>
+            We’ve worked with businesses across Melbourne and Australia, from startups to established enterprises, in
+            industries ranging from construction to education, farming to retail, automotive to fintech, and more. That
+            range means we adapt to your context without losing our standard of care. And it gives us the confidence to
+            be selective, honest, and deeply involved rather than stretched thin or transactional.
+          </p>
+          <p>
+            Wherever you are, our standard of care travels with us. The following case studies highlight our work with
+            Melbourne based clients, but we work with businesses across Australia and beyond.
+          </p>
+        </div>
+      </Grid>
     </div>
 
-    <div
-      class="col-span-12 lg:col-start-7 lg:col-span-4 flex flex-col justify-start gap-6 mt-8 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
-    >
-      <p>
-        We’ve worked with businesses across Melbourne and Australia, from startups to established enterprises, in
-        industries ranging from construction to education, farming to retail, automotive to fintech, and more. That
-        range means we adapt to your context without losing our standard of care. And it gives us the confidence to be
-        selective, honest, and deeply involved rather than stretched thin or transactional.
-      </p>
-      <p>
-        Wherever you are, our standard of care travels with us. The following case studies highlight our work with
-        Melbourne based clients, but we work with businesses across Australia and beyond.
-      </p>
+    <SectionCards text={sectionText} cards={sectionCards} displayTextBackground={false} />
+
+    <section id="experience" class="py-16 lg:py-24">
+      <Grid>
+        <p class="col-span-12 lg:col-start-2 lg:col-span-11 text-[40px] text-pixel-rosy">Our experience</p>
+        <h2 class="col-span-12 lg:col-start-2 lg:col-span-5 text-3xl lg:text-[80px] mt-8 lg:mt-0">
+          We've been here before, whatever 'here' looks like for you.
+        </h2>
+        <div
+          class="col-span-12 lg:col-start-8 lg:col-span-4 flex flex-col justify-start gap-6 mt-8 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
+        >
+          <p>
+            From startups finding their footing to established businesses navigating complex digital change, and global
+            organisations operating at scale, our team has worked across it all. Construction, education, farming,
+            retail, automotive, fintech, and more. Projects of every size and complexity.
+          </p>
+          <p>
+            That range means we adapt to your context without losing our standard of care. And it gives us the
+            confidence to be selective, honest, and deeply involved rather than stretched thin or transactional.
+          </p>
+          <p>
+            That range extends geographically too. We are based in <a href="/melbourne">Melbourne</a> and work with businesses
+            across Australia, including <a href="/sydney">Sydney</a>. The following case studies highlight our work with
+            Melbourne based clients. Wherever you are, our standard of care travels with us.
+          </p>
+        </div>
+      </Grid>
+
+      <Grid>
+        <div class="col-span-full col-start-1 lg:col-start-2 lg:col-span-10 my-6 mt-5 lg:mt-20">
+          <CaseStudyDrawer items={mapCaseStudiesToItems(melbourneCaseStudies)} />
+        </div>
+      </Grid>
+
+      <ClientLogos />
+    </section>
+
+    {/* ── Contact form (24px gap above) ── */}
+    <div class="mt-4 sm:mt-6">
+      <ContactForm title="Get in touch" displayDescription={false} caller={SitePage.CONTACT} />
     </div>
-  </Grid>
-
-  <SectionCards text={sectionText} cards={sectionCards} displayTextBackground={false} />
-
-  <section id="experience" class="py-16 lg:py-24">
-    <Grid>
-      <p class="col-span-12 lg:col-start-2 lg:col-span-11 text-[40px] text-pixel-rosy">Our experience</p>
-      <h2 class="col-span-12 lg:col-start-2 lg:col-span-5 text-3xl lg:text-[80px] mt-8 lg:mt-0">
-        We've been here before, whatever 'here' looks like for you.
-      </h2>
-      <div
-        class="col-span-12 lg:col-start-8 lg:col-span-4 flex flex-col justify-start gap-6 mt-8 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
-      >
-        <p>
-          From startups finding their footing to established businesses navigating complex digital change, and global
-          organisations operating at scale, our team has worked across it all. Construction, education, farming, retail,
-          automotive, fintech, and more. Projects of every size and complexity.
-        </p>
-        <p>
-          That range means we adapt to your context without losing our standard of care. And it gives us the confidence
-          to be selective, honest, and deeply involved rather than stretched thin or transactional.
-        </p>
-        <p>
-          That range extends geographically too. We are based in <a href="/melbourne">Melbourne</a> and work with businesses
-          across Australia, including <a href="/sydney">Sydney</a>. The following case studies highlight our work with
-          Melbourne based clients. Wherever you are, our standard of care travels with us.
-        </p>
-      </div>
-    </Grid>
-
-    <Grid>
-      <div class="col-span-full col-start-1 lg:col-start-2 lg:col-span-10 my-6 mt-5 lg:mt-20">
-        <CaseStudyDrawer items={mapCaseStudiesToItems(melbourneCaseStudies)} />
-      </div>
-    </Grid>
-
-    <ClientLogos />
-  </section>
-
-  {/* ── Contact form (24px gap above) ── */}
-  <div class="mt-4 sm:mt-6">
-    <ContactForm title="Get in touch" displayDescription={false} caller={SitePage.CONTACT} />
   </div>
 </Layout>
+
+<script>
+  import { gsap } from 'gsap'
+
+  history.scrollRestoration = 'manual'
+  window.scrollTo(0, 0)
+
+  const COLS = 6
+  const ROWS = 2
+
+  const HERO_PUZZLE_SIZE: 'small' | 'medium' | 'large' = 'medium'
+  const HERO_PUZZLE_SCALE: Record<'small' | 'medium' | 'large', number> = {
+    small: 1,
+    medium: 1.25,
+    large: 1.5
+  }
+
+  const TILE_DEFS = [
+    { id: 'P', src: '/Letters/P.svg', solvedPos: 0 },
+    { id: 'I', src: '/Letters/I.svg', solvedPos: 1 },
+    { id: 'X', src: '/Letters/X.svg', solvedPos: 2 },
+    { id: 'E', src: '/Letters/E.svg', solvedPos: 3 },
+    { id: 'L', src: '/Letters/L.svg', solvedPos: 4 },
+    { id: 'A', src: '/Letters/A.svg', solvedPos: 6 },
+    { id: 'G', src: '/Letters/G.svg', solvedPos: 7 },
+    { id: 'E2', src: '/Letters/E-red.svg', solvedPos: 8 },
+    { id: 'N', src: '/Letters/N.svg', solvedPos: 9 },
+    { id: 'C', src: '/Letters/C.svg', solvedPos: 10 },
+    { id: 'Y', src: '/Letters/Y.svg', solvedPos: 11 }
+  ]
+
+  function getAdjacentPositions(pos: number) {
+    const row = Math.floor(pos / COLS)
+    const col = pos % COLS
+    const adj: number[] = []
+    if (col > 0) adj.push(pos - 1)
+    if (col < COLS - 1) adj.push(pos + 1)
+    if (row > 0) adj.push(pos - COLS)
+    if (row < ROWS - 1) adj.push(pos + COLS)
+    return adj
+  }
+
+  function initPuzzle() {
+    const puzzleEl = document.getElementById('hero-puzzle')!
+    const taglineTop = document.getElementById('hero-tagline-top')!
+    const taglineBottom = document.getElementById('hero-tagline-bottom')!
+    const heroCta = document.getElementById('hero-cta')!
+    const vw = window.innerWidth
+    const sizeScale = HERO_PUZZLE_SCALE[HERO_PUZZLE_SIZE]
+
+    const baseGap = Math.min(9, Math.max(3, Math.round(vw * 0.006)))
+    const GAP = Math.max(2, Math.round(baseGap * sizeScale))
+
+    const basePuzzleW = Math.min(Math.round(vw * 0.55), 700)
+    const maxPuzzleW = Math.floor(vw * 0.92)
+    const PUZZLE_W = Math.min(Math.round(basePuzzleW * sizeScale), maxPuzzleW)
+    const TILE_SIZE = Math.floor((PUZZLE_W - (COLS - 1) * GAP) / COLS)
+    const PUZZLE_H = ROWS * TILE_SIZE + (ROWS - 1) * GAP
+
+    puzzleEl.style.width = `${PUZZLE_W}px`
+    puzzleEl.style.height = `${PUZZLE_H}px`
+
+    const baseTextGap = vw >= 1024 ? 32 : 24
+    const baseCtaGap = vw >= 1024 ? 32 : 16
+    taglineTop.style.marginBottom = `${Math.round(baseTextGap * sizeScale)}px`
+    taglineBottom.style.marginTop = `${Math.round(baseTextGap * sizeScale)}px`
+    heroCta.style.marginTop = `${Math.round(baseCtaGap * sizeScale)}px`
+
+    function gridToPixel(pos: number) {
+      return {
+        x: (pos % COLS) * (TILE_SIZE + GAP),
+        y: Math.floor(pos / COLS) * (TILE_SIZE + GAP)
+      }
+    }
+
+    const solvedState: (number | null)[] = new Array(COLS * ROWS).fill(null)
+    TILE_DEFS.forEach((def, idx) => {
+      solvedState[def.solvedPos] = idx
+    })
+
+    const SHUFFLE_MOVES = 10
+    const shuffledState = solvedState.slice()
+    const shuffleMoves: { fromPos: number; toPos: number }[] = []
+    let emptyPos = shuffledState.indexOf(null)
+    let prevEmpty = -1
+
+    for (let i = 0; i < SHUFFLE_MOVES; i++) {
+      const candidates = getAdjacentPositions(emptyPos).filter((p) => p !== prevEmpty)
+      const tilePos = candidates[Math.floor(Math.random() * candidates.length)]
+      shuffleMoves.push({ fromPos: tilePos, toPos: emptyPos })
+      shuffledState[emptyPos] = shuffledState[tilePos]
+      shuffledState[tilePos] = null
+      prevEmpty = emptyPos
+      emptyPos = tilePos
+    }
+
+    const solvingMoves = shuffleMoves
+      .slice()
+      .reverse()
+      .map((m) => ({ fromPos: m.toPos, toPos: m.fromPos }))
+
+    const tileEls: HTMLElement[] = TILE_DEFS.map((def) => {
+      const div = document.createElement('div')
+      div.style.position = 'absolute'
+      div.style.width = `${TILE_SIZE}px`
+      div.style.height = `${TILE_SIZE}px`
+      div.style.willChange = 'transform'
+      const img = document.createElement('img')
+      img.src = def.src
+      img.alt = def.id
+      img.draggable = false
+      img.style.width = '100%'
+      img.style.height = '100%'
+      img.style.display = 'block'
+      img.style.objectFit = 'fill'
+      img.style.pointerEvents = 'none'
+      div.appendChild(img)
+      puzzleEl.appendChild(div)
+      return div
+    })
+
+    shuffledState.forEach((tileIdx, gridPos) => {
+      if (tileIdx === null) return
+      const pos = gridToPixel(gridPos)
+      gsap.set(tileEls[tileIdx], { x: pos.x, y: pos.y })
+    })
+
+    const domGrid: (number | null)[] = shuffledState.slice()
+    const SOLVE_DURATION = 1
+    const moveDur = SOLVE_DURATION / solvingMoves.length
+    const solveTl = gsap.timeline({ delay: 0.3 })
+
+    solvingMoves.forEach((move, i) => {
+      const tileIdx = domGrid[move.fromPos]!
+      const pos = gridToPixel(move.toPos)
+      solveTl.to(tileEls[tileIdx], { x: pos.x, y: pos.y, duration: moveDur, ease: 'power2.inOut' }, i * moveDur)
+      domGrid[move.toPos] = domGrid[move.fromPos]
+      domGrid[move.fromPos] = null
+    })
+
+    solveTl.to(puzzleEl, {
+      scale: 1.015,
+      duration: 0.25,
+      ease: 'power2.out',
+      yoyo: true,
+      repeat: 1,
+      transformOrigin: 'center center'
+    })
+
+    solveTl.to([taglineTop, taglineBottom], {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power2.out'
+    })
+    solveTl.to(
+      heroCta,
+      {
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.out'
+      },
+      '-=0.25'
+    )
+  }
+
+  document.fonts.ready.then(() => {
+    initPuzzle()
+  })
+</script>
