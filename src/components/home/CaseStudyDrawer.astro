@@ -7,6 +7,7 @@ interface CaseStudyItem {
   image: ImageMetadata | string
   colour: string
   drawerPosition?: string
+  imageAltText?: string
 }
 
 interface Props {
@@ -19,7 +20,8 @@ const defaultItems: CaseStudyItem[] = featuredCaseStudies.map((cs) => ({
   slug: `/case-studies/${cs.slug}`,
   image: cs.drawerImage ?? cs.image,
   colour: cs.colour,
-  drawerPosition: cs.drawerPosition
+  drawerPosition: cs.drawerPosition,
+  imageAltText: cs.imageAltText
 }))
 
 const { items = defaultItems, size = 'default' } = Astro.props
@@ -64,7 +66,7 @@ const containerClass =
           <a href={item.slug} target="_blank" rel="noopener noreferrer" class="drawer-image block overflow-hidden">
             <img
               src={getImageSrc(item.image)}
-              alt={item.title}
+              alt={item.imageAltText || item.title}
               class={`w-full h-full object-cover transition-[filter] duration-300 ${item.drawerPosition ? `${item.drawerPosition}` : 'object-center'}`}
             />
             {/* class={`w-full h-full object-cover grayscale transition-[filter] duration-300 hover:grayscale-0 object-top`} */}

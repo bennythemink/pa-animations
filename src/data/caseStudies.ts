@@ -41,6 +41,7 @@ export interface CaseStudy {
   drawerPosition?: string // e.g. 'top', 'center', 'bottom'
   published: boolean
   featured: boolean
+  imageAltText?: string
 }
 
 export interface CaseStudyLink {
@@ -67,7 +68,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: true,
     imagePosition: 'object-top',
-    drawerPosition: 'object-[0%_0%]'
+    drawerPosition: 'object-[0%_0%]',
+    imageAltText: 'Better Health Network website case study'
   },
   {
     title: 'Dare Iced Coffee',
@@ -80,7 +82,8 @@ const caseStudies: CaseStudy[] = [
     image: dare,
     published: false,
     featured: false,
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Dare Iced Coffee website case study'
   },
   {
     title: 'Explorers Early Learning',
@@ -94,7 +97,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Explorers Early Learning website case study'
   },
   {
     title: 'Fletcher Insulation',
@@ -109,7 +113,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: true,
     imagePosition: 'object-top',
-    drawerPosition: 'object-[0%_0%]'
+    drawerPosition: 'object-[0%_0%]',
+    imageAltText: 'Fletcher Insulation website case study'
   },
   {
     title: 'Holmesglen Institute',
@@ -124,7 +129,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: true,
     imagePosition: 'object-top',
-    drawerPosition: 'object-[0%_0%]'
+    drawerPosition: 'object-[0%_0%]',
+    imageAltText: 'Holmesglen Institute project case study'
   },
   {
     title: 'VincentCare',
@@ -137,7 +143,8 @@ const caseStudies: CaseStudy[] = [
     published: false,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'VincentCare website case study'
   },
   {
     title: 'Yoplait',
@@ -152,7 +159,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: true,
     imagePosition: 'object-top',
-    drawerPosition: 'object-[0%_0%]'
+    drawerPosition: 'object-[0%_0%]',
+    imageAltText: 'Yoplait website case study'
   },
   {
     title: 'Swinburne University',
@@ -166,7 +174,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Swinburne University proposal case study'
   },
   {
     title: 'Farmers Union Greek Style Yogurt',
@@ -180,7 +189,8 @@ const caseStudies: CaseStudy[] = [
     published: false,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Farmers Union Greek Style Yogurt website case study'
   },
   {
     title: 'Simple.io',
@@ -194,7 +204,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Simple.io website case study'
   },
   {
     title: 'Toll Uncrewed Systems',
@@ -208,7 +219,8 @@ const caseStudies: CaseStudy[] = [
     published: false,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Toll Uncrewed Systems website case study'
   },
   {
     title: 'Mt Baw Baw',
@@ -222,7 +234,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Mt Baw Baw website case study'
   },
   {
     title: 'Cyprusays',
@@ -236,7 +249,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Cyprusays app + consulting case study'
   },
   {
     title: 'Jamala Properties',
@@ -250,7 +264,8 @@ const caseStudies: CaseStudy[] = [
     published: false,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Jamala Properties website case study'
   },
   {
     title: 'Miele Australia',
@@ -264,7 +279,8 @@ const caseStudies: CaseStudy[] = [
     published: false,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Miele Australia consulting case study'
   },
   {
     title: 'Fletcher Insulation Digital Asset Management Platform',
@@ -278,7 +294,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Fletcher Insulation Digital Asset Management Platform case study'
   },
   {
     title: 'Fletcher Insulation + Pixel Assist',
@@ -292,7 +309,8 @@ const caseStudies: CaseStudy[] = [
     published: false,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Fletcher Insulation + Pixel Assist case study'
   },
   {
     title: 'Sonata AI Acoustic Risk Calculator',
@@ -306,7 +324,8 @@ const caseStudies: CaseStudy[] = [
     published: false,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Sonata AI Acoustic Risk Calculator case study'
   },
   {
     title: 'PFG Australia',
@@ -319,7 +338,8 @@ const caseStudies: CaseStudy[] = [
     published: false,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'PFG Australia website case study'
   },
   {
     title: 'Fort Knox Self Storage',
@@ -332,7 +352,8 @@ const caseStudies: CaseStudy[] = [
     published: false,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Fort Knox Self Storage website case study'
   },
   {
     title: 'Pixel Assist',
@@ -346,7 +367,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'Pixel Assist AI knowledge assistant case study'
   },
   {
     title: 'Risk Calculator',
@@ -360,7 +382,8 @@ const caseStudies: CaseStudy[] = [
     published: true,
     featured: false,
     imagePosition: 'object-top',
-    drawerPosition: 'object-top'
+    drawerPosition: 'object-top',
+    imageAltText: 'AI Risk Calculator case study'
   }
 ]
 
