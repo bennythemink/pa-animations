@@ -1,0 +1,182 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Grid from '@components/Grid.astro'
+import ContactForm from '@components/ContactForm.astro'
+import ClientLogos from '@components/home/ClientLogos.astro'
+import { SitePage } from '@data/analyticsCaller'
+import CaseStudyDrawer, { mapCaseStudiesToItems } from '@components/home/CaseStudyDrawer.astro'
+import { melbourneCaseStudies } from '@data/caseStudies'
+import SectionCards from '@components/SectionCards.astro'
+import OurApproachSection from '@components/services/OurApproachSection.astro'
+import FeatureCards from '@components/services/FeatureCards.astro'
+
+/**
+ * SectionCards variables
+ */
+
+const sectionCardsTitle = { text: 'Our services', colour: 'pixel-rosy' }
+const sectionText = {
+  tagline: 'However you need to move forward, we have the right capability.',
+  description: [
+    'Whether you’re starting from scratch, improving something that exists, or navigating a complex digital challenge, there’s a service built for where you are right now.'
+  ],
+  colSpan: 3 as const
+}
+
+const sectionCards = [
+  {
+    title: 'Discovery + direction',
+    description: [
+      'Whether you’re starting from scratch, improving something that exists, or navigating a complex digital challenge, there’s a service built for where you are right now.'
+    ],
+    url: '/services/discovery',
+    colour: 'pixel-celestial',
+    linkText: 'Explore our discovery service →'
+  },
+  {
+    title: 'Design',
+    description: [
+      'Digital experiences that work for your customers, not just impress them. Brand, website, and product design driven by outcomes and grounded in how real people use digital products.'
+    ],
+    url: '/services/design',
+    colour: 'pixel-fawn',
+    linkText: 'Explore our web, brand, + app design →'
+  },
+  {
+    title: 'Development',
+    description: [
+      'Websites, apps, and systems built to last, robust, maintainable, and fit for purpose. Not over-engineered, not fragile.'
+    ],
+    url: '/services/development',
+    colour: 'pixel-rosy',
+    linkText: 'Explore our web, app + system development service →'
+  },
+  {
+    title: 'AI',
+    description: [
+      'AI-powered solutions that enhance your digital experiences, automate processes, and provide insights to drive better decision-making.'
+    ],
+    url: '/services/ai',
+    colour: 'pixel-teal',
+    linkText: 'Explore our AI service →'
+  },
+  {
+    title: 'Consulting',
+    description: [
+      'Senior guidance on strategy, delivery, and technical decisions, from people who have seen what good and bad looks like at scale, and will tell you the difference.'
+    ],
+    url: '/services/consulting',
+    colour: 'pixel-fire',
+    linkText: 'Explore our consulting service →'
+  }
+]
+
+/**
+ * FeatureCards variables
+ */
+const cardsTitle = { text: 'Benefits of working with a local team', colour: 'pixel-celestial' }
+const cards = [
+  {
+    title: 'Easier collaboration',
+    description: 'time zones, availability, and the ability to meet in person when it matters. '
+  },
+  { title: 'Not out-sourced', description: "don't suffer from mis-communication or lack of accountability" },
+  {
+    title: 'Shared context',
+    description: 'a local agency understands the market you operate in.'
+  },
+  { title: 'Accountability', description: 'there is a different dynamic when your agency is reachable.' },
+  { title: 'Relationship building', description: 'long-term partnerships are easier to maintain with proximity.' },
+  {
+    title: 'Supporting local business',
+    description: 'have a procurement policy that prioritizes local suppliers? Well we can help.'
+  }
+]
+---
+
+<Layout
+  title="Digital Agency Melbourne | Web, App + System Discovery, Design, Development, AI, & Consulting"
+  description="Melbourne digital agency specialising in web/app/system design, brand design, development, AI, and digital consulting. Senior practitioners, no sales layer. Serving businesses across Melbourne and Australia."
+>
+  <OurApproachSection label="Melbourne digital agency" labelColour="pixel-rosy">
+    We help Melbourne businesses create digital products and experiences that make a difference. Websites, apps,
+    systems, and brands designed and built to work for your customers and your business.
+  </OurApproachSection>
+
+  <FeatureCards title={cardsTitle} cards={cards} margin="pb-12 lg:pb-20" />
+
+  <Grid>
+    <div
+      class="col-span-12 lg:col-start-2 lg:col-span-4 my-12 lg:my-20 flex flex-col justify-start gap-6 mt-8 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
+    >
+      <p>
+        We are a Melbourne based digital agency, but we work with businesses across Australia and beyond. That means we
+        understand the local market and context, but also have experience with a wide range of industries and
+        challenges. We bring that experience to every project, ensuring our solutions are grounded in real-world
+        understanding and best practices.
+      </p>
+      <p>
+        Our team is made up of senior practitioners with deep expertise in their respective fields. We don’t have a
+        sales layer or junior staff, you work directly with the people doing the work, ensuring clear communication,
+        high standards, and a collaborative approach.
+      </p>
+    </div>
+
+    <div
+      class="col-span-12 lg:col-start-7 lg:col-span-4 flex flex-col justify-start gap-6 mt-8 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
+    >
+      <p>
+        We’ve worked with businesses across Melbourne and Australia, from startups to established enterprises, in
+        industries ranging from construction to education, farming to retail, automotive to fintech, and more. That
+        range means we adapt to your context without losing our standard of care. And it gives us the confidence to be
+        selective, honest, and deeply involved rather than stretched thin or transactional.
+      </p>
+      <p>
+        Wherever you are, our standard of care travels with us. The following case studies highlight our work with
+        Melbourne based clients, but we work with businesses across Australia and beyond.
+      </p>
+    </div>
+  </Grid>
+
+  <SectionCards text={sectionText} cards={sectionCards} displayTextBackground={false} />
+
+  <section id="experience" class="py-16 lg:py-24">
+    <Grid>
+      <p class="col-span-12 lg:col-start-2 lg:col-span-11 text-[40px] text-pixel-rosy">Our experience</p>
+      <h2 class="col-span-12 lg:col-start-2 lg:col-span-5 text-3xl lg:text-[80px] mt-8 lg:mt-0">
+        We've been here before, whatever 'here' looks like for you.
+      </h2>
+      <div
+        class="col-span-12 lg:col-start-8 lg:col-span-4 flex flex-col justify-start gap-6 mt-8 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
+      >
+        <p>
+          From startups finding their footing to established businesses navigating complex digital change, and global
+          organisations operating at scale, our team has worked across it all. Construction, education, farming, retail,
+          automotive, fintech, and more. Projects of every size and complexity.
+        </p>
+        <p>
+          That range means we adapt to your context without losing our standard of care. And it gives us the confidence
+          to be selective, honest, and deeply involved rather than stretched thin or transactional.
+        </p>
+        <p>
+          That range extends geographically too. We are based in <a href="/melbourne">Melbourne</a> and work with businesses
+          across Australia, including <a href="/sydney">Sydney</a>. The following case studies highlight our work with
+          Melbourne based clients. Wherever you are, our standard of care travels with us.
+        </p>
+      </div>
+    </Grid>
+
+    <Grid>
+      <div class="col-span-full col-start-1 lg:col-start-2 lg:col-span-10 my-6 mt-5 lg:mt-20">
+        <CaseStudyDrawer items={mapCaseStudiesToItems(melbourneCaseStudies)} />
+      </div>
+    </Grid>
+
+    <ClientLogos />
+  </section>
+
+  {/* ── Contact form (24px gap above) ── */}
+  <div class="mt-4 sm:mt-6">
+    <ContactForm title="Get in touch" displayDescription={false} caller={SitePage.CONTACT} />
+  </div>
+</Layout>

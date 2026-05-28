@@ -92,7 +92,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
       'Redesigned the website to drive 9% more centre tour bookings and a 24% increase in session time from prospective parents.',
-    colour: 'bg-pixel-poppy',
+    colour: 'bg-pixel-teal',
     image: eel,
     published: true,
     featured: false,
@@ -169,7 +169,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Discovery + direction', 'Design', 'Consulting'],
     overview:
       'Shaped a gamified online STEM learning concept for Swinburne University, with full desktop and mobile design and a complete tender response to anchor their national grant bid.',
-    colour: 'bg-pixel-poppy',
+    colour: 'bg-pixel-rosy',
     image: stemhub,
     published: true,
     featured: false,
@@ -392,6 +392,9 @@ const sorted = [...caseStudies].sort((a, b) => a.title.localeCompare(b.title))
 export const publishedCaseStudies = sorted.filter((cs) => cs.published)
 
 export const featuredCaseStudies = sorted.filter((cs) => cs.featured)
+
+const melbourneSlugs = ['bhn', 'holmesglen', 'eel', 'stemhub']
+export const melbourneCaseStudies = sorted.filter((cs) => melbourneSlugs.includes(cs.slug))
 
 export function getCaseStudyNav(slug: string): CaseStudyNav {
   const index = publishedCaseStudies.findIndex((cs) => cs.slug === slug)
