@@ -244,7 +244,7 @@ const caseStudies: CaseStudy[] = [
     services: ['Consulting'],
     overview:
       'Took an off-shore-built Greek Cypriot language app from rudderless to launched on iOS and Android, with the founders trained to run delivery themselves.',
-    colour: 'bg-pixel-teal',
+    colour: 'bg-pixel-celestial',
     image: cyprusays,
     published: true,
     featured: false,
@@ -395,6 +395,9 @@ export const featuredCaseStudies = sorted.filter((cs) => cs.featured)
 
 const melbourneSlugs = ['bhn', 'holmesglen', 'eel', 'stemhub']
 export const melbourneCaseStudies = sorted.filter((cs) => melbourneSlugs.includes(cs.slug))
+
+const sydneySlugs = ['cyprusays', 'insulation', 'fletcher-dam', 'simple']
+export const sydneyCaseStudies = sorted.filter((cs) => sydneySlugs.includes(cs.slug))
 
 export function getCaseStudyNav(slug: string): CaseStudyNav {
   const index = publishedCaseStudies.findIndex((cs) => cs.slug === slug)
