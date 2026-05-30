@@ -1,0 +1,367 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Grid from '@components/Grid.astro'
+import ContactForm from '@components/ContactForm.astro'
+import ClientLogos from '@components/home/ClientLogos.astro'
+import { SitePage } from '@data/analyticsCaller'
+import CaseStudyDrawer, { mapCaseStudiesToItems } from '@components/home/CaseStudyDrawer.astro'
+import { sydneyCaseStudies } from '@data/caseStudies'
+import SectionCards from '@components/SectionCards.astro'
+import OurApproachSection from '@components/services/OurApproachSection.astro'
+import FeatureCards from '@components/services/FeatureCards.astro'
+import CTA from '@components/CTA.astro'
+
+/**
+ * SectionCards variables
+ */
+
+const sectionCardsTitle = { text: 'Our services', colour: 'pixel-rosy' }
+const sectionText = {
+  tagline: 'However you need to move forward, we have the right capability.',
+  description: [
+    "Whether you're a Hobart business building from scratch, improving what already exists, or navigating a complex digital challenge, there's a service designed for where you are right now."
+  ],
+  colSpan: 3 as const
+}
+
+const sectionCards = [
+  {
+    title: 'Discovery + direction',
+    description: [
+      'We work with Hobart businesses to define the real problem, scope the right solution, and create a clear path forward before any money is committed to delivery.'
+    ],
+    url: '/services/discovery',
+    colour: 'pixel-celestial',
+    linkText: 'Explore our discovery service →'
+  },
+  {
+    title: 'Design',
+    description: [
+      'Digital experiences that work for your customers, not just impress them. Brand, website, and product design driven by outcomes and grounded in how real people use digital products.'
+    ],
+    url: '/services/design',
+    colour: 'pixel-fawn',
+    linkText: 'Explore our web, brand, + app design →'
+  },
+  {
+    title: 'Development',
+    description: [
+      'Hobart businesses need digital solutions that hold up under real-world pressure. We build websites, apps, and custom systems that are robust, maintainable, and built to last, not to hit a deadline and move on.'
+    ],
+    url: '/services/development',
+    colour: 'pixel-rosy',
+    linkText: 'Explore our web, app + system development service →'
+  },
+  {
+    title: 'AI',
+    description: [
+      'Practical AI for Australian businesses that want real results, not just experimentation. We help you identify where AI genuinely adds value and implement it properly.'
+    ],
+    url: '/services/ai',
+    colour: 'pixel-teal',
+    linkText: 'Explore our AI service →'
+  },
+  {
+    title: 'Consulting',
+    description: [
+      'Complex digital decisions need honest senior guidance, not a sales pitch. We work with Hobart businesses as a trusted advisor, virtual CTO, or delivery lead, wherever the challenge sits.'
+    ],
+    url: '/services/consulting',
+    colour: 'pixel-fire',
+    linkText: 'Explore our consulting service →'
+  }
+]
+
+/**
+ * FeatureCards variables
+ */
+const cardsTitle = { text: 'Benefits of working with an Australian based team', colour: 'pixel-celestial' }
+const cards = [
+  {
+    title: 'Easier collaboration',
+    description:
+      'same timezone, and willing to get on a plane when it matters. Working with an Australian agency means collaboration happens in real time, not across a 10-hour gap.'
+  },
+  {
+    title: 'Not out-sourced',
+    description:
+      'your project stays onshore with a team that communicates clearly, works in your timezone, and takes full ownership of the outcome from brief to launch.'
+  },
+  {
+    title: 'Shared context',
+    description:
+      'an Australian agency understands the local market, local competitors, and how Australian businesses and consumers actually behave. That context shapes better decisions.'
+  },
+  {
+    title: 'Accountability',
+    description:
+      'when your agency is reachable during Hobart business hours and prepared to show up in person, accountability looks different. We are.'
+  },
+  {
+    title: 'Relationship building',
+    description:
+      'good digital partnerships take time to build. Being Australian, available, and genuinely invested in your outcomes makes that significantly easier.'
+  },
+  {
+    title: 'Supporting local business',
+    description:
+      'have a procurement policy that prioritises Australian suppliers? We qualify as a Melbourne-based, Australian-owned agency.'
+  }
+]
+---
+
+<Layout
+  noMenuSpacer
+  title="Digital Agency Hobart | Web + App Design, Development, AI, & Consulting"
+  description="We are a digital agency working with Hobart businesses on web design, brand design, app development, AI, and consulting. Melbourne-based, Australian-owned, no sales layer. An agency that cares."
+>
+  <div id="site-content">
+    <section id="hero-puzzle-section" class="relative h-screen flex items-center justify-center">
+      <div id="hero-puzzle-content" class="text-center">
+        <h2
+          id="hero-tagline-top"
+          class="text-2xl sm:text-4xl lg:text-5xl mb-6 sm:mb-8 font-sans font-normal tracking-[-0.03em] opacity-0"
+        >
+          We are
+        </h2>
+        <div id="hero-puzzle" class="relative mx-auto"></div>
+        <p
+          id="hero-tagline-bottom"
+          class="text-2xl sm:text-4xl lg:text-5xl mt-6 sm:mt-8 font-sans font-normal tracking-[-0.03em] leading-[1.2] opacity-0"
+        >
+          a <span class="text-pixel-celestial underline underline-offset-4">refreshing</span> Hobart digital partner
+        </p>
+
+        <div id="hero-cta" class="mt-4 lg:mt-8 opacity-0">
+          <CTA label="Let's talk" url="/contact" />
+        </div>
+      </div>
+    </section>
+
+    <OurApproachSection label="Have a digital problem?" labelColour="pixel-fire">
+      Hobart businesses move with purpose. We help you move in the right direction. Websites, apps, systems, and brands
+      built with the clarity and care that complex markets demand, by a senior team that works directly with you, not
+      through layers of account management or sales.
+    </OurApproachSection>
+
+    <SectionCards title={sectionCardsTitle} text={sectionText} cards={sectionCards} displayTextBackground={false} />
+
+    <OurApproachSection label="Why us?" labelColour="pixel-teal" margin="my-16 lg:my-24">
+      Our senior team works directly with you. Based in Melbourne and fully available to Hobart businesses, we have no
+      sales layer or junior hand-off, so solutions stay practical, high quality, and grounded in real-world experience.
+    </OurApproachSection>
+
+    <FeatureCards title={cardsTitle} cards={cards} margin="my-12 lg:my-20" />
+
+    <section id="experience" class="my-16 lg:my-24">
+      <Grid>
+        <p class="col-span-12 lg:col-start-2 lg:col-span-11 text-2xl lg:text-4xl text-pixel-rosy font-sans font-light">
+          Our experience
+        </p>
+        <h2 class="col-span-12 lg:col-start-2 lg:col-span-5 text-3xl lg:text-[80px] mt-2 lg:mt-0">
+          We've been here before, whatever 'here' looks like for you.
+        </h2>
+        <div
+          class="col-span-12 lg:col-start-8 lg:col-span-4 flex flex-col justify-start gap-6 mt-8 lg:mt-0 text-[18px] lg:text-2xl leading-[0.76]"
+        >
+          <p>
+            From Hobart startups finding their footing to established businesses navigating complex digital change, and
+            global organisations operating at scale, our team has worked across it all. Construction, education,
+            farming, retail, automotive, fintech, and more. Projects of every size and complexity.
+          </p>
+          <p>
+            That range means we adapt to your context without losing our standard of care. And it gives us the
+            confidence to be selective, honest, and deeply involved rather than stretched thin or transactional.
+          </p>
+          <p>
+            That range extends geographically too. We are based in <a href="/melbourne">Melbourne</a> and work with Hobart
+            businesses regularly, whether remotely or in person when the work calls for it. The case studies below include
+            our <a href="/hobart">Hobart</a> client work. The distance is irrelevant. The standard of care is not.
+          </p>
+        </div>
+      </Grid>
+
+      <Grid>
+        <div class="col-span-full col-start-1 lg:col-start-2 lg:col-span-10 my-6 mt-5 lg:mt-20">
+          <CaseStudyDrawer items={mapCaseStudiesToItems(sydneyCaseStudies)} />
+        </div>
+      </Grid>
+
+      <ClientLogos />
+    </section>
+
+    {/* ── Contact form (24px gap above) ── */}
+    <div class="mt-4 sm:mt-6">
+      <ContactForm title="Get in touch" displayDescription={false} caller={SitePage.CONTACT} />
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap'
+
+  history.scrollRestoration = 'manual'
+  window.scrollTo(0, 0)
+
+  const COLS = 6
+  const ROWS = 2
+
+  const HERO_PUZZLE_SIZE: 'small' | 'medium' | 'large' = 'medium'
+  const HERO_PUZZLE_SCALE: Record<'small' | 'medium' | 'large', number> = {
+    small: 1,
+    medium: 1.25,
+    large: 1.5
+  }
+
+  const TILE_DEFS = [
+    { id: 'P', src: '/Letters/P.svg', solvedPos: 0 },
+    { id: 'I', src: '/Letters/I.svg', solvedPos: 1 },
+    { id: 'X', src: '/Letters/X.svg', solvedPos: 2 },
+    { id: 'E', src: '/Letters/E.svg', solvedPos: 3 },
+    { id: 'L', src: '/Letters/L.svg', solvedPos: 4 },
+    { id: 'A', src: '/Letters/A.svg', solvedPos: 6 },
+    { id: 'G', src: '/Letters/G.svg', solvedPos: 7 },
+    { id: 'E2', src: '/Letters/E-red.svg', solvedPos: 8 },
+    { id: 'N', src: '/Letters/N.svg', solvedPos: 9 },
+    { id: 'C', src: '/Letters/C.svg', solvedPos: 10 },
+    { id: 'Y', src: '/Letters/Y.svg', solvedPos: 11 }
+  ]
+
+  function getAdjacentPositions(pos: number) {
+    const row = Math.floor(pos / COLS)
+    const col = pos % COLS
+    const adj: number[] = []
+    if (col > 0) adj.push(pos - 1)
+    if (col < COLS - 1) adj.push(pos + 1)
+    if (row > 0) adj.push(pos - COLS)
+    if (row < ROWS - 1) adj.push(pos + COLS)
+    return adj
+  }
+
+  function initPuzzle() {
+    const puzzleEl = document.getElementById('hero-puzzle')!
+    const taglineTop = document.getElementById('hero-tagline-top')!
+    const taglineBottom = document.getElementById('hero-tagline-bottom')!
+    const heroCta = document.getElementById('hero-cta')!
+    const vw = window.innerWidth
+    const sizeScale = HERO_PUZZLE_SCALE[HERO_PUZZLE_SIZE]
+
+    const baseGap = Math.min(9, Math.max(3, Math.round(vw * 0.006)))
+    const GAP = Math.max(2, Math.round(baseGap * sizeScale))
+
+    const basePuzzleW = Math.min(Math.round(vw * 0.55), 700)
+    const maxPuzzleW = Math.floor(vw * 0.92)
+    const PUZZLE_W = Math.min(Math.round(basePuzzleW * sizeScale), maxPuzzleW)
+    const TILE_SIZE = Math.floor((PUZZLE_W - (COLS - 1) * GAP) / COLS)
+    const PUZZLE_H = ROWS * TILE_SIZE + (ROWS - 1) * GAP
+
+    puzzleEl.style.width = `${PUZZLE_W}px`
+    puzzleEl.style.height = `${PUZZLE_H}px`
+
+    const baseTextGap = vw >= 1024 ? 32 : 24
+    const baseCtaGap = vw >= 1024 ? 32 : 16
+    taglineTop.style.marginBottom = `${Math.round(baseTextGap * sizeScale)}px`
+    taglineBottom.style.marginTop = `${Math.round(baseTextGap * sizeScale)}px`
+    heroCta.style.marginTop = `${Math.round(baseCtaGap * sizeScale)}px`
+
+    function gridToPixel(pos: number) {
+      return {
+        x: (pos % COLS) * (TILE_SIZE + GAP),
+        y: Math.floor(pos / COLS) * (TILE_SIZE + GAP)
+      }
+    }
+
+    const solvedState: (number | null)[] = new Array(COLS * ROWS).fill(null)
+    TILE_DEFS.forEach((def, idx) => {
+      solvedState[def.solvedPos] = idx
+    })
+
+    const SHUFFLE_MOVES = 10
+    const shuffledState = solvedState.slice()
+    const shuffleMoves: { fromPos: number; toPos: number }[] = []
+    let emptyPos = shuffledState.indexOf(null)
+    let prevEmpty = -1
+
+    for (let i = 0; i < SHUFFLE_MOVES; i++) {
+      const candidates = getAdjacentPositions(emptyPos).filter((p) => p !== prevEmpty)
+      const tilePos = candidates[Math.floor(Math.random() * candidates.length)]
+      shuffleMoves.push({ fromPos: tilePos, toPos: emptyPos })
+      shuffledState[emptyPos] = shuffledState[tilePos]
+      shuffledState[tilePos] = null
+      prevEmpty = emptyPos
+      emptyPos = tilePos
+    }
+
+    const solvingMoves = shuffleMoves
+      .slice()
+      .reverse()
+      .map((m) => ({ fromPos: m.toPos, toPos: m.fromPos }))
+
+    const tileEls: HTMLElement[] = TILE_DEFS.map((def) => {
+      const div = document.createElement('div')
+      div.style.position = 'absolute'
+      div.style.width = `${TILE_SIZE}px`
+      div.style.height = `${TILE_SIZE}px`
+      div.style.willChange = 'transform'
+      const img = document.createElement('img')
+      img.src = def.src
+      img.alt = def.id
+      img.draggable = false
+      img.style.width = '100%'
+      img.style.height = '100%'
+      img.style.display = 'block'
+      img.style.objectFit = 'fill'
+      img.style.pointerEvents = 'none'
+      div.appendChild(img)
+      puzzleEl.appendChild(div)
+      return div
+    })
+
+    shuffledState.forEach((tileIdx, gridPos) => {
+      if (tileIdx === null) return
+      const pos = gridToPixel(gridPos)
+      gsap.set(tileEls[tileIdx], { x: pos.x, y: pos.y })
+    })
+
+    const domGrid: (number | null)[] = shuffledState.slice()
+    const SOLVE_DURATION = 1
+    const moveDur = SOLVE_DURATION / solvingMoves.length
+    const solveTl = gsap.timeline({ delay: 0.3 })
+
+    solvingMoves.forEach((move, i) => {
+      const tileIdx = domGrid[move.fromPos]!
+      const pos = gridToPixel(move.toPos)
+      solveTl.to(tileEls[tileIdx], { x: pos.x, y: pos.y, duration: moveDur, ease: 'power2.inOut' }, i * moveDur)
+      domGrid[move.toPos] = domGrid[move.fromPos]
+      domGrid[move.fromPos] = null
+    })
+
+    solveTl.to(puzzleEl, {
+      scale: 1.015,
+      duration: 0.25,
+      ease: 'power2.out',
+      yoyo: true,
+      repeat: 1,
+      transformOrigin: 'center center'
+    })
+
+    solveTl.to([taglineTop, taglineBottom], {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power2.out'
+    })
+    solveTl.to(
+      heroCta,
+      {
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.out'
+      },
+      '-=0.25'
+    )
+  }
+
+  document.fonts.ready.then(() => {
+    initPuzzle()
+  })
+</script>
