@@ -87,254 +87,258 @@ const { previous, next } = getCaseStudyNav('fletcher-dam')
             <CaseStudySectionText title="The approach">
               <p>
                 Off the back of the website work we'd already done together, Fletcher brought us in to scope and build
-                the DAM. We started with a discovery phase focused on the two pieces that would make or break the build:
-                the integrations with Fletcher's existing systems, and the custom approval workflow they actually
-                needed.
-              </p><br />
-              <p>
-                Discovery had to surface the real shape of the approval process from the people running it day-to-day,
-                not just the version that lived on paper. We mapped the asset types in scope, the user roles (internal
-                staff and approved partners), and the approval steps each asset would need to pass before it was
-                available for use.
+                the DAM. We started with a <a href="/services/discovery" class="underline-offset-2 underline"
+                  >discovery phase</a
+                > focused on the two pieces that would make or break the build: the integrations with Fletcher's existing
+                systems, and the custom approval workflow they actually needed.
+                <br />
+                <p>
+                  Discovery had to surface the real shape of the approval process from the people running it day-to-day,
+                  not just the version that lived on paper. We mapped the asset types in scope, the user roles (internal
+                  staff and approved partners), and the approval steps each asset would need to pass before it was
+                  available for use.
+                </p>
               </p>
+
+              <CaseStudySectionText title="The solution">
+                <p>
+                  We <a href="/services/design" class="underline-offset-2 underline">designed</a> and <a
+                    href="/services/development"
+                    class="underline-offset-2 underline">built</a
+                  > a custom DAM platform on the same technology stack as Fletcher's main website, so the in-house team could
+                  maintain it without having to learn a new system. The platform gives Fletcher employees and approved partners
+                  a controlled home for marketing materials, photography, product images, and logos, with the custom approval
+                  workflow baked into the publishing process. Integrations with the existing systems mean the DAM sits inside
+                  the broader operation rather than alongside it, and the structure makes self-service the default path for
+                  getting hold of an asset, rather than the marketing team's inbox.
+                </p>
+
+                <CaseStudySectionText title="The results">
+                  <p>
+                    A year in, the DAM has settled into its role as the central source of truth for Fletcher's marketing
+                    assets:
+                  </p>
+                  <CaseStudyResults
+                    results={[
+                      {
+                        title: '~15% drop in asset support requests',
+                        description: 'users now self-managing the assets they need',
+                        backgroundColour: 'pixel-solar'
+                      },
+                      {
+                        title: 'One source of truth',
+                        description: 'for marketing materials, photography, product images, and logos',
+                        backgroundColour: 'pixel-celestial'
+                      },
+                      {
+                        title: 'Custom approval workflow',
+                        description: 'ensuring only approved assets are in circulation',
+                        backgroundColour: 'pixel-rosy'
+                      },
+                      {
+                        title: 'Same stack',
+                        description: "as Fletcher's main website, no new system for the in-house team to learn",
+                        backgroundColour: 'pixel-teal'
+                      }
+                    ]}
+                  />
+
+                  <div class="mt-6 lg:mt-12"></div>
+
+                  <CaseStudyShout>
+                    Sometimes the right build is the one that fits how your team already works.
+                  </CaseStudyShout>
+                </CaseStudySectionText>
+
+                <CaseStudyMetaData
+                  client={{ name: 'Fletcher Insulation', url: 'https://www.insulation.com.au' }}
+                  industry={['Construction', 'Manufacturing']}
+                  serviceNames={['Discovery + direction', 'Design', 'Development']}
+                />
+              </CaseStudySectionText>
             </CaseStudySectionText>
-
-            <CaseStudySectionText title="The solution">
-              <p>
-                We designed and built a custom DAM platform on the same technology stack as Fletcher's main website, so
-                the in-house team could maintain it without having to learn a new system. The platform gives Fletcher
-                employees and approved partners a controlled home for marketing materials, photography, product images,
-                and logos, with the custom approval workflow baked into the publishing process. Integrations with the
-                existing systems mean the DAM sits inside the broader operation rather than alongside it, and the
-                structure makes self-service the default path for getting hold of an asset, rather than the marketing
-                team's inbox.
-              </p>
-            </CaseStudySectionText>
-
-            <CaseStudySectionText title="The results">
-              <p>
-                A year in, the DAM has settled into its role as the central source of truth for Fletcher's marketing
-                assets:
-              </p>
-              <CaseStudyResults
-                results={[
-                  {
-                    title: '~15% drop in asset support requests',
-                    description: 'users now self-managing the assets they need',
-                    backgroundColour: 'pixel-solar'
-                  },
-                  {
-                    title: 'One source of truth',
-                    description: 'for marketing materials, photography, product images, and logos',
-                    backgroundColour: 'pixel-celestial'
-                  },
-                  {
-                    title: 'Custom approval workflow',
-                    description: 'ensuring only approved assets are in circulation',
-                    backgroundColour: 'pixel-rosy'
-                  },
-                  {
-                    title: 'Same stack',
-                    description: "as Fletcher's main website, no new system for the in-house team to learn",
-                    backgroundColour: 'pixel-teal'
-                  }
-                ]}
-              />
-
-              <div class="mt-6 lg:mt-12"></div>
-
-              <CaseStudyShout>
-                Sometimes the right build is the one that fits how your team already works.
-              </CaseStudyShout>
-            </CaseStudySectionText>
-
-            <CaseStudyMetaData
-              client={{ name: 'Fletcher Insulation', url: 'https://www.insulation.com.au' }}
-              industry={['Construction', 'Manufacturing']}
-              serviceNames={['Discovery + direction', 'Design', 'Development']}
-            />
           </div>
         </div>
+
+        {/* Navigation section */}
+        <CaseStudyNav previousCaseStudy={previous} nextCaseStudy={next} />
+
+        <ContactForm
+          title="Discuss a similar challenge"
+          displayDescription={false}
+          caller={SitePage.CASE_STUDIES_FLETCHER_DAM}
+        />
       </Grid>
+
+      <style>
+        #case-study-page {
+          --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
+          --case-study-placeholder: var(--color-pixel-placeholder-grey);
+        }
+
+        @media (max-width: 1023px) {
+          .case-study-shell {
+            display: flex;
+            gap: 0;
+            overflow: clip;
+          }
+
+          .case-study-left-pane {
+            flex: 0 0 auto;
+            width: 100%;
+            max-height: 5000px;
+            opacity: 1;
+            transform: translateX(0);
+            transition:
+              width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+              max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 240ms ease,
+              transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: width, max-height, opacity, transform;
+          }
+
+          #case-study-page[data-panel-state='open'] .case-study-left-pane {
+            width: 0;
+            max-height: 0;
+            opacity: 0;
+            transform: translateX(-2rem);
+            pointer-events: none;
+          }
+
+          .case-study-right-pane {
+            flex: 0 0 auto;
+            width: 0;
+            max-height: 0;
+            opacity: 0;
+            overflow: clip;
+            transform: translateX(2rem);
+            transition:
+              width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+              max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 260ms ease,
+              transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: width, max-height, opacity, transform;
+          }
+
+          #case-study-page[data-panel-state='open'] .case-study-right-pane {
+            width: 100%;
+            max-height: 5000px;
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .case-study-shell {
+            display: flex;
+            gap: 0;
+            transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
+          }
+
+          #case-study-page[data-panel-state='open'] .case-study-shell {
+            gap: 1.25rem;
+          }
+
+          .case-study-left-pane,
+          .case-study-right-pane {
+            flex: 0 0 auto;
+            transition:
+              width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+              max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 260ms ease,
+              transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: width, max-height, opacity, transform;
+          }
+
+          .case-study-left-pane {
+            width: 100%;
+            max-height: 5000px;
+          }
+
+          .case-study-right-pane {
+            width: 0;
+            max-height: 0;
+            opacity: 0;
+            transform: translateX(2rem);
+            overflow: clip;
+            pointer-events: none;
+          }
+
+          #case-study-page[data-panel-state='open'] .case-study-left-pane {
+            width: calc(50% - 0.625rem);
+          }
+
+          #case-study-page[data-panel-state='open'] .case-study-right-pane {
+            width: calc(50% - 0.625rem);
+            max-height: 5000px;
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .case-study-shell,
+          .case-study-left-pane,
+          .case-study-right-pane {
+            transition: none;
+          }
+        }
+      </style>
+
+      <script>
+        function initCaseStudyPage() {
+          const page = document.getElementById('case-study-page')
+          const toggle = document.getElementById('case-study-toggle')
+          if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
+          const pageElement = page
+          const toggleButton = toggle
+
+          const mobileMedia = window.matchMedia('(max-width: 1023px)')
+
+          function setToggleTextColor() {
+            const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+            const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+            if (!match) return
+
+            let red = parseInt(match[1], 10) / 255
+            let green = parseInt(match[2], 10) / 255
+            let blue = parseInt(match[3], 10) / 255
+
+            red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
+            green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
+            blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
+
+            const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+            document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
+          }
+
+          function getDefaultState() {
+            return 'closed'
+          }
+
+          if (!pageElement.dataset.panelState) {
+            pageElement.dataset.panelState = getDefaultState()
+          }
+
+          function syncA11y() {
+            const isOpen = pageElement.dataset.panelState === 'open'
+            toggleButton.setAttribute('aria-expanded', String(isOpen))
+          }
+
+          setToggleTextColor()
+          syncA11y()
+
+          toggleButton.addEventListener('click', () => {
+            pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
+            syncA11y()
+          })
+        }
+
+        initCaseStudyPage()
+        document.addEventListener('astro:after-swap', initCaseStudyPage)
+      </script>
     </section>
-
-    {/* Navigation section */}
-    <CaseStudyNav previousCaseStudy={previous} nextCaseStudy={next} />
-
-    <ContactForm
-      title="Discuss a similar challenge"
-      displayDescription={false}
-      caller={SitePage.CASE_STUDIES_FLETCHER_DAM}
-    />
   </article>
-
-  <style>
-    #case-study-page {
-      --case-study-border: color-mix(in oklab, var(--color-black) 8%, transparent);
-      --case-study-placeholder: var(--color-pixel-placeholder-grey);
-    }
-
-    @media (max-width: 1023px) {
-      .case-study-shell {
-        display: flex;
-        gap: 0;
-        overflow: clip;
-      }
-
-      .case-study-left-pane {
-        flex: 0 0 auto;
-        width: 100%;
-        max-height: 5000px;
-        opacity: 1;
-        transform: translateX(0);
-        transition:
-          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
-          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
-          opacity 240ms ease,
-          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-        will-change: width, max-height, opacity, transform;
-      }
-
-      #case-study-page[data-panel-state='open'] .case-study-left-pane {
-        width: 0;
-        max-height: 0;
-        opacity: 0;
-        transform: translateX(-2rem);
-        pointer-events: none;
-      }
-
-      .case-study-right-pane {
-        flex: 0 0 auto;
-        width: 0;
-        max-height: 0;
-        opacity: 0;
-        overflow: clip;
-        transform: translateX(2rem);
-        transition:
-          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
-          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
-          opacity 260ms ease,
-          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-        will-change: width, max-height, opacity, transform;
-      }
-
-      #case-study-page[data-panel-state='open'] .case-study-right-pane {
-        width: 100%;
-        max-height: 5000px;
-        opacity: 1;
-        transform: translateX(0);
-        pointer-events: auto;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .case-study-shell {
-        display: flex;
-        gap: 0;
-        transition: gap 420ms cubic-bezier(0.22, 1, 0.36, 1);
-      }
-
-      #case-study-page[data-panel-state='open'] .case-study-shell {
-        gap: 1.25rem;
-      }
-
-      .case-study-left-pane,
-      .case-study-right-pane {
-        flex: 0 0 auto;
-        transition:
-          width 420ms cubic-bezier(0.22, 1, 0.36, 1),
-          max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
-          opacity 260ms ease,
-          transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-        will-change: width, max-height, opacity, transform;
-      }
-
-      .case-study-left-pane {
-        width: 100%;
-        max-height: 5000px;
-      }
-
-      .case-study-right-pane {
-        width: 0;
-        max-height: 0;
-        opacity: 0;
-        transform: translateX(2rem);
-        overflow: clip;
-        pointer-events: none;
-      }
-
-      #case-study-page[data-panel-state='open'] .case-study-left-pane {
-        width: calc(50% - 0.625rem);
-      }
-
-      #case-study-page[data-panel-state='open'] .case-study-right-pane {
-        width: calc(50% - 0.625rem);
-        max-height: 5000px;
-        opacity: 1;
-        transform: translateX(0);
-        pointer-events: auto;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .case-study-shell,
-      .case-study-left-pane,
-      .case-study-right-pane {
-        transition: none;
-      }
-    }
-  </style>
-
-  <script>
-    function initCaseStudyPage() {
-      const page = document.getElementById('case-study-page')
-      const toggle = document.getElementById('case-study-toggle')
-      if (!(page instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) return
-      const pageElement = page
-      const toggleButton = toggle
-
-      const mobileMedia = window.matchMedia('(max-width: 1023px)')
-
-      function setToggleTextColor() {
-        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
-        const match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
-        if (!match) return
-
-        let red = parseInt(match[1], 10) / 255
-        let green = parseInt(match[2], 10) / 255
-        let blue = parseInt(match[3], 10) / 255
-
-        red = red <= 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
-        green = green <= 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
-        blue = blue <= 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
-
-        const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
-        document.documentElement.style.setProperty('--case-study-toggle-text', luminance > 0.4 ? '#000' : '#fff')
-      }
-
-      function getDefaultState() {
-        return 'closed'
-      }
-
-      if (!pageElement.dataset.panelState) {
-        pageElement.dataset.panelState = getDefaultState()
-      }
-
-      function syncA11y() {
-        const isOpen = pageElement.dataset.panelState === 'open'
-        toggleButton.setAttribute('aria-expanded', String(isOpen))
-      }
-
-      setToggleTextColor()
-      syncA11y()
-
-      toggleButton.addEventListener('click', () => {
-        pageElement.dataset.panelState = pageElement.dataset.panelState === 'open' ? 'closed' : 'open'
-        syncA11y()
-      })
-    }
-
-    initCaseStudyPage()
-    document.addEventListener('astro:after-swap', initCaseStudyPage)
-  </script>
 </Layout>

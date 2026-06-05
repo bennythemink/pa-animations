@@ -102,28 +102,33 @@ const { previous, next } = getCaseStudyNav('ai-risk-calculator')
                 be credible to a professional audience.
               </p><br />
               <p>
-                From there we designed the system around a custom AI prediction model: a CatBoost gradient boosting
-                model trained on the relationship between building characteristics and risk outcomes. CatBoost was
-                chosen because it handles the structured, tabular nature of the design inputs well, performs strongly on
-                smaller training datasets, and produces calibrated confidence scores rather than the black-box guesses
-                you sometimes get from off-the-shelf AI.
+                From there we designed the system around a custom <a
+                  href="/services/ai"
+                  class="underline-offset-2 underline">AI prediction model</a
+                > prediction model: a CatBoost gradient boosting model trained on the relationship between building characteristics
+                and risk outcomes. CatBoost was chosen because it handles the structured, tabular nature of the design inputs
+                well, performs strongly on smaller training datasets, and produces calibrated confidence scores rather than
+                the black-box guesses you sometimes get from off-the-shelf AI.
               </p>
             </CaseStudySectionText>
 
             <CaseStudySectionText title="The solution">
               <p>
-                The Risk Tool is built as a self-contained, client-branded application that is designed to embed cleanly
-                inside the client website. The architecture is deliberately lightweight: a FastAPI and Pydantic backend
-                serving the trained CatBoost model, a client-branded front end for architects and designers, and a
-                single dedicated server hosting the model and API. No third-party AI services in the loop, no data
-                leaving the client's environment unnecessarily, and full control over the model and its training.
+                The Risk Tool is built as a self-contained, client-branded application that is <a
+                  href="/services/design"
+                  class="underline-offset-2 underline">designed</a
+                > to embed cleanly inside the client website. The architecture is deliberately lightweight: a FastAPI and
+                Pydantic backend serving the trained CatBoost model, a client-branded front end for architects and designers,
+                and a single dedicated server hosting the model and API. No third-party AI services in the loop, no data leaving
+                the client's environment unnecessarily, and full control over the model and its training.
               </p><br />
               <p>
                 A user steps through a short, considered set of inputs and the model returns a risk band (Low, Medium,
                 or High), a confidence score, and the factors that contributed most to the result, so the answer isn't
-                just a number but a starting point for a design conversation. Client products are surfaced as part of
-                the response where appropriate, putting the brand in front of architects at the exact moment they're
-                thinking about how to bring the risk down.
+                just a number but a starting point for a <a href="/services/design" class="underline-offset-2 underline"
+                  >design</a
+                > conversation. Client products are surfaced as part of the response where appropriate, putting the brand
+                in front of architects at the exact moment they're thinking about how to bring the risk down.
               </p>
             </CaseStudySectionText>
 
