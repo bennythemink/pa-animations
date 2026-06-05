@@ -1,15 +1,13 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config'
-
 import tailwindcss from '@tailwindcss/vite'
-
 import sitemap from '@astrojs/sitemap'
-
 import partytown from '@astrojs/partytown'
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.pixelagency.com.au',
+  trailingSlash: 'never',
   fonts: [
     {
       provider: fontProviders.google(),

@@ -24,6 +24,9 @@ const {
 } = Astro.props
 
 const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
+
+// This dynamically outputs: https://www.pixelagency.com.au/your-page-path
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
 <!doctype html>
@@ -36,8 +39,10 @@ const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Pixel Agency" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta name="apple-mobile-web-app-title" content="Pixel Agency" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <Font cssVariable="--font-ibm-plex-sans" />
