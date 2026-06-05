@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.pixelassist.ai"
+        }
+      ],
+      "destination": "/pixel-assist",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "pixelassist.ai"
+        }
+      ],
+      "destination": "/pixel-assist",
+      "permanent": true
+    }
+  ]
+}
