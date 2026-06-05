@@ -21,6 +21,28 @@
       ],
       "destination": "/pixel-assist",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.pixelassist.ai"
+        }
+      ],
+      "destination": "https://www.pixelagency.com.au/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "pixelassist.ai"
+        }
+      ],
+      "destination": "https://www.pixelagency.com.au/:path*",
+      "permanent": true
     }
   ]
 }
