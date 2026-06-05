@@ -11,6 +11,9 @@ import CaseStudyMetaData from '@components/case-studies/case-study/CaseStudyMeta
 import CaseStudyShout from '@components/case-studies/case-study/CaseStudyShout.astro'
 import CaseStudyNav from '@components/case-studies/case-study/CaseStudyNav.astro'
 import CaseStudyImages from '@components/case-studies/case-study/CaseStudyImages.astro'
+import { getCaseStudyNav } from '@data/caseStudies'
+
+const { previous, next } = getCaseStudyNav('toll')
 
 import hero from '@assets/case-studies/toll/hero.webp'
 import squareOne from '@assets/case-studies/toll/squareOne.svg'
@@ -22,7 +25,7 @@ import wideTwo from '@assets/case-studies/toll/wideTwo.webp'
 <Layout
   title="Toll Uncrewed Systems Case Study"
   description="Discovery, website design, and digital consulting for Toll Uncrewed Systems, the drone pilot training division of Toll Group, in the aviation training and uncrewed systems sector. Pixel Agency consolidated two legacy websites into a single unified brand and helped prepare the business case for head office approval."
-  published={false}
+  published={true}
 >
   <article id="case-study-page">
     <CaseStudyHeader>
@@ -144,10 +147,7 @@ import wideTwo from '@assets/case-studies/toll/wideTwo.webp'
     </section>
 
     {/* Navigation section */}
-    <CaseStudyNav
-      previousCaseStudy={{ name: 'Previous case study', slug: 'previous-case-study' }}
-      nextCaseStudy={{ name: 'Next case study', slug: 'next-case-study' }}
-    />
+    <CaseStudyNav previousCaseStudy={previous} nextCaseStudy={next} />
 
     <ContactForm
       title="Discuss a similar challenge"

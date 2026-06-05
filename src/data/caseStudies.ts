@@ -216,7 +216,7 @@ const caseStudies: CaseStudy[] = [
       'Two legacy sites consolidated into a unified brand, with discovery, design, and a head-office-ready business case delivered.',
     colour: 'bg-pixel-fire',
     image: toll,
-    published: false,
+    published: true,
     featured: false,
     imagePosition: 'object-top',
     drawerPosition: 'object-top',
