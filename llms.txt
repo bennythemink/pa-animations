@@ -21,9 +21,19 @@
 
 ## Case Studies
 * [Case Studies Directory](/case-studies): Real-world digital delivery across sectors including education, government, enterprise, and consumer brands.
-* [AI Risk Assessment Tool](/case-studies/ai-risk-calculator): A practical AI risk and compliance framework implementation.
-* [Holmesglen Institute](/case-studies/holmesglen): Digital platform and systems work in a complex education environment.
-* [Pixel Assist Case Study](/case-studies/pixel-assist): Managed AI assistant implementation focused on knowledge access and conversion.
+* [AI Risk Assessment Tool](/case-studies/ai-risk-calculator): Custom AI-powered risk calculator supporting faster, data-informed decision-making.
+* [Better Health Network](/case-studies/bhn): Unified the digital presence of three merging community health organisations.
+* [Cyprusays](/case-studies/cyprusays): Consulting-led launch of a Greek Cypriot language app across iOS and Android.
+* [Explorers Early Learning](/case-studies/eel): Improved parent engagement and increased centre tour bookings through digital redesign.
+* [Fletcher Insulation](/case-studies/insulation): Website rebuild that increased traffic, engagement, and reduced support load.
+* [Fletcher Insulation DAM Platform](/case-studies/fletcher-dam): Purpose-built digital asset management platform with custom approval workflows.
+* [Holmesglen Institute](/case-studies/holmesglen): Student-employer platform build delivering measurable year-one adoption and placements.
+* [Mt Baw Baw](/case-studies/bawbaw): Tourism website redesign improving customer satisfaction and bookings.
+* [Pixel Assist](/case-studies/pixel-assist): Managed AI knowledge assistant implementation focused on instant access to product information.
+* [Simple.io](/case-studies/simple): Website and brand refresh that lifted leads and session duration.
+* [Swinburne University (STEM Hub)](/case-studies/stemhub): Discovery, design, and consulting for a national STEM learning concept.
+* [Toll Uncrewed Systems](/case-studies/toll): Consolidated multiple legacy sites into a unified digital direction and design.
+* [Yoplait](/case-studies/yoplait): Digital transformation that increased traffic and onsite engagement.
 
 ## Compliance & Security
 * Australian-hosted infrastructure options and privacy-first implementation patterns.
