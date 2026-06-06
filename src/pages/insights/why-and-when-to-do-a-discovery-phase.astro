@@ -3,6 +3,10 @@ import LetsTalk from '@components/home/LetsTalk.astro'
 import Insight from '@components/insights/Insight.astro'
 import InsightSignoff from '@components/insights/InsightSignoff.astro'
 import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, next } = getInsightNav('why-and-when-to-do-a-discovery-phase')
 ---
 
 <Layout
@@ -32,6 +36,8 @@ import Layout from '@layouts/Layout.astro'
       <InsightSignoff />
     </span>
   </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
 
   <LetsTalk />
 </Layout>

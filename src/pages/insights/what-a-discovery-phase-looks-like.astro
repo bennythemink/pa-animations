@@ -1,8 +1,12 @@
 ---
 import LetsTalk from '@components/home/LetsTalk.astro'
 import Insight from '@components/insights/Insight.astro'
+import InsightNav from '@components/insights/InsightNav.astro'
 import InsightSignoff from '@components/insights/InsightSignoff.astro'
 import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+
+const { previous, next } = getInsightNav('what-a-discovery-phase-looks-like')
 ---
 
 <Layout
@@ -17,14 +21,14 @@ import Layout from '@layouts/Layout.astro'
         The purpose of a <a href="/services/discovery" class="underline underline-offset-2">Discovery</a> phase is to gather
         context, define requirements, and align stakeholders before starting a project. It typically involves activities such
         as workshops, stakeholder interviews, market/user research, competitive analysis, and more.
-      </p>
+      </p><br />
       <p>
         We find that the main activity is the <strong>Discovery Workshop</strong>. This is typically a 2 to 3 hour
         session (can be larger depending upon the project) with about 6 key stakeholders, e.g., a representative from
         your marketing team, IT team, sales team, and someone to represent the end user. Maybe more, depending upon
         business needs. This can be done in person or remotely, and frequently requires smaller follow-up workshops to
         dive deeper into specific areas.
-      </p>
+      </p><br />
       <p>
         The output of the Discovery phase is typically a comprehensive report that includes a summary of findings, a
         requirements document in the form of user stories and acceptance criteria, timelines, and itemised quote.
@@ -32,15 +36,16 @@ import Layout from '@layouts/Layout.astro'
         always necessary or appropriate depending upon the project. Basically you should be provided with everything you
         need to be able to hand this report to any competent design or development team and they should be able to pick
         it up and run with it.
-      </p>
+      </p><br />
       <p>
         Also, depending upon the payment structure, you should ideally aim to own the deliverables produced during the
         Discovery phase, so that if you decide to switch vendors or continue the project in-house, you have full control
         over the assets and insights generated.
-      </p>
+      </p><br />
       <InsightSignoff />
     </span>
   </Insight>
 
+  <InsightNav previousInsight={previous} nextInsight={next} />
   <LetsTalk />
 </Layout>

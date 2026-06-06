@@ -1,6 +1,7 @@
 export interface Insight {
   title: string
-  date: string
+  publishedAt: string
+  dateLabel: string
   summary: string
   slug: string
   published: boolean
@@ -21,7 +22,8 @@ export interface InsightNav {
 const insights: Insight[] = [
   {
     title: 'Why and When To Do A Discovery Phase',
-    date: 'June, 2026',
+    publishedAt: '2026-06-06',
+    dateLabel: 'June, 2026',
     summary: 'What is its purpose, what does it involve, and how can it help ensure the success of your project.',
     slug: 'why-and-when-to-do-a-discovery-phase',
     published: true,
@@ -30,7 +32,8 @@ const insights: Insight[] = [
   },
   {
     title: 'What a Discovery Phase Looks Like',
-    date: 'June, 2026',
+    publishedAt: '2026-06-06',
+    dateLabel: 'June, 2026',
     summary: 'What is typically involved in a Discovery phase, and what you should expect to receive at the end of it.',
     slug: 'what-a-discovery-phase-looks-like',
     published: true,
@@ -39,7 +42,8 @@ const insights: Insight[] = [
   }
 ]
 
-export const publishedInsights = insights.filter((insight) => insight.published)
+export const sortedInsights = [...insights].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+export const publishedInsights = sortedInsights.filter((insight) => insight.published)
 export const featuredInsights = publishedInsights.filter((insight) => insight.featured)
 
 export function getInsightNav(slug: string): InsightNav {

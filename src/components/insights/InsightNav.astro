@@ -1,0 +1,52 @@
+---
+import Grid from '@components/Grid.astro'
+
+interface InsightLink {
+  slug: string
+  title: string
+}
+
+interface Props {
+  previousInsight?: InsightLink
+  nextInsight?: InsightLink
+}
+
+const { previousInsight, nextInsight } = Astro.props as Props
+---
+
+<section class="pb-6 lg:pb-12 insight-nav-section">
+  <Grid>
+    <div
+      class="col-span-full flex items-start justify-between gap-4 border-t border-(--insight-border) pt-4 lg:col-start-2 lg:col-span-11 lg:gap-8"
+    >
+      {
+        previousInsight ? (
+          <a href={`/insights/${previousInsight.slug}`} class="flex min-w-0 flex-col gap-1">
+            <span class="font-sans text-base lg:text-[40px] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline">
+              Previous insight
+            </span>
+            <span class="text-base text-[color-mix(in_oklab,var(--color-black)_32%,transparent)] hover:underline-offset-2 hover:underline">
+              {previousInsight.title}
+            </span>
+          </a>
+        ) : (
+          <div />
+        )
+      }
+      {
+        nextInsight ? (
+          <a href={`/insights/${nextInsight.slug}`} class="flex min-w-0 flex-col gap-1 text-right lg:items-end">
+            <span class="font-sans text-base lg:text-[40px] leading-[0.95] tracking-[-0.035em] hover:underline-offset-4 hover:underline">
+              Next insight
+            </span>
+            <span class="text-base text-[color-mix(in_oklab,var(--color-black)_32%,transparent)] hover:underline-offset-2 hover:underline">
+              {nextInsight.title}
+            </span>
+          </a>
+        ) : (
+          <div />
+        )
+      }
+    </div>
+  </Grid>
+</section>
