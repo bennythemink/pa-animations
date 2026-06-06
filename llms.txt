@@ -1,0 +1,30 @@
+# Pixel Agency
+
+> Pixel Agency is a Melbourne-based digital design, development, consulting, and AI partner. We help organisations move from uncertainty to outcomes through clear thinking, honest advice, and carefully delivered digital work, all without the hassle of salespeople.
+
+## Core Capabilities
+* [Discovery + Direction](/services/discovery): Structured discovery, problem definition, and digital direction before delivery begins.
+* [Design](/services/design): Brand, website, app, and product design that balances visual quality with usability and business outcomes.
+* [Development](/services/development): Robust, maintainable websites, applications, and custom systems built for real-world use.
+* [AI](/services/ai): Practical AI strategy, custom AI tools, and workflow automation grounded in measurable outcomes.
+* [Consulting](/services/consulting): Senior digital leadership and advisory support for strategy, delivery, and complex technical decisions.
+
+## How Pixel Agency Works
+* Practitioner-led delivery: clients work directly with the people doing the thinking, design, and build.
+* No sales theatre: no sales layer, no account-manager handoffs, and no pressure-led recommendations.
+* Outcome-focused partnerships: long-term quality, clear trade-offs, and honest communication over short-term wins.
+
+## Product
+* [Pixel Assist](/pixel-assist): A fully managed AI-powered website knowledge assistant that gives instant answers, reduces repetitive enquiries, and helps convert more visitors.
+* Includes setup, content training, ongoing optimisation, and monthly insight reporting.
+* Privacy-first and hosted in Australia, with support for bring-your-own-model and CRM integration.
+
+## Case Studies
+* [Case Studies Directory](/case-studies): Real-world digital delivery across sectors including education, government, enterprise, and consumer brands.
+* [AI Risk Assessment Tool](/case-studies/ai-risk-calculator): A practical AI risk and compliance framework implementation.
+* [Holmesglen Institute](/case-studies/holmesglen): Digital platform and systems work in a complex education environment.
+* [Pixel Assist Case Study](/case-studies/pixel-assist): Managed AI assistant implementation focused on knowledge access and conversion.
+
+## Compliance & Security
+* Australian-hosted infrastructure options and privacy-first implementation patterns.
+* Strong focus on data ownership, sensitive information handling, and practical governance.
