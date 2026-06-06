@@ -1,0 +1,59 @@
+export interface Insight {
+  title: string
+  date: string
+  summary: string
+  slug: string
+  published: boolean
+  featured: boolean
+  tags: string[]
+}
+
+export interface InsightLink {
+  title: string
+  slug: string
+}
+
+export interface InsightNav {
+  previous?: InsightLink
+  next?: InsightLink
+}
+
+const insights: Insight[] = [
+  {
+    title: 'Why and When To Do A Discovery Phase',
+    date: 'June, 2026',
+    summary: 'What is its purpose, what does it involve, and how can it help ensure the success of your project.',
+    slug: 'why-and-when-to-do-a-discovery-phase',
+    published: true,
+    featured: true,
+    tags: ['discovery', 'project management']
+  },
+  {
+    title: 'What a Discovery Phase Looks Like',
+    date: 'June, 2026',
+    summary: 'What is typically involved in a Discovery phase, and what you should expect to receive at the end of it.',
+    slug: 'what-a-discovery-phase-looks-like',
+    published: true,
+    featured: true,
+    tags: ['discovery', 'project management']
+  }
+]
+
+export const publishedInsights = insights.filter((insight) => insight.published)
+export const featuredInsights = publishedInsights.filter((insight) => insight.featured)
+
+export function getInsightNav(slug: string): InsightNav {
+  const index = publishedInsights.findIndex((insight) => insight.slug === slug)
+  if (index === -1) {
+    throw new Error(`Insight with slug "${slug}" not found`)
+  }
+
+  const previous =
+    index > 0 ? { title: publishedInsights[index - 1].title, slug: publishedInsights[index - 1].slug } : undefined
+  const next =
+    index < publishedInsights.length - 1
+      ? { title: publishedInsights[index + 1].title, slug: publishedInsights[index + 1].slug }
+      : undefined
+
+  return { previous, next }
+}
