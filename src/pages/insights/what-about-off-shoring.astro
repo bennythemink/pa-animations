@@ -1,0 +1,102 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('what-about-off-shoring')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        You're probably expecting us to say that off-shoring is a bad idea, you should never do it, it's scary, etc. And
+        we should, as it is direct competition to our services. But the truth is, off-shoring can be a good idea in some
+        circumstances. That's why all the big four banks have been doing it for years. It's not inherently bad, it just
+        has to be managed well.
+      </p><br />
+      <p>
+        If you have the below skills/capabilities in-house, then off-shoring can be a good way to save money on
+        development costs:
+        <ul class="lg:mt-4">
+          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
+              style={`background-color: var(--accent-bgc);`}></span>
+            Time and ability to work with a team in a different timezone
+          </li>
+          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
+              style={`background-color: var(--accent-bgc);`}></span>
+            Understanding of cultural differences and communication styles
+          </li>
+          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
+              style={`background-color: var(--accent-bgc);`}></span>Strong project management skills
+          </li>
+          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
+              style={`background-color: var(--accent-bgc);`}></span>Ability to clearly define requirements and
+            expectations
+          </li>
+        </ul>
+      </p><br />
+
+      <p>
+        If you think you have the above capabilities and are prepared to manage the risks, then here are some tips for
+        you to help you succeed:
+        <ul class="lg:mt-4">
+          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
+              style={`background-color: var(--accent-bgc);`}></span>
+            Write your requirements in User Stories format and include acceptance criteria for each story. This will help
+            ensure that everyone has a clear understanding of what needs to be built and how it will be tested.
+          </li>
+          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
+              style={`background-color: var(--accent-bgc);`}></span>
+            Ensure you have access to the source code from day one. Download a copy of the codebase if not each day, then
+            each week at minimum.
+          </li>
+          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
+              style={`background-color: var(--accent-bgc);`}></span>Have the off-shore team provide you with the
+            technical documentation before starting the project. Have this reviewed by someone technical.
+          </li>
+          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
+              style={`background-color: var(--accent-bgc);`}></span>You'll generally have better results if you have the
+            design done locally and provide it to the off-shore team.
+          </li>
+          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+            <span
+              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
+              style={`background-color: var(--accent-bgc);`}></span>Ensure you have a contract in place that includes
+            clear deliverables, timelines, and payment terms.
+          </li>
+        </ul>
+      </p><br />
+
+      <p>
+        If you don't have those capabilities, or you need help managing the risks, then we can help consult so that you
+        are in a better position to succeed.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>

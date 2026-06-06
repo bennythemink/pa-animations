@@ -16,6 +16,7 @@ export interface InsightLink {
 
 export interface InsightNav {
   previous?: InsightLink
+  current?: Insight
   next?: InsightLink
 }
 
@@ -39,6 +40,16 @@ const insights: Insight[] = [
     published: true,
     featured: true,
     tags: ['discovery', 'project management']
+  },
+  {
+    title: 'What about off-shoring?',
+    publishedAt: '2026-06-06',
+    dateLabel: 'June, 2026',
+    summary: 'What are the considerations and potential challenges when off-shoring a project?',
+    slug: 'what-about-off-shoring',
+    published: true,
+    featured: true,
+    tags: ['off-shoring']
   }
 ]
 
@@ -59,5 +70,7 @@ export function getInsightNav(slug: string): InsightNav {
       ? { title: publishedInsights[index + 1].title, slug: publishedInsights[index + 1].slug }
       : undefined
 
-  return { previous, next }
+  const current = publishedInsights[index]
+
+  return { previous, current, next }
 }
