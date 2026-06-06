@@ -1,0 +1,41 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import { siteConfig } from '@config/site'
+import Layout from '@layouts/Layout.astro'
+---
+
+<Layout
+  title="Why and When To Do A Discovery Phase"
+  description="A short insight on the importance and timing of a discovery phase in project development."
+>
+  <Insight>
+    <span slot="insight-title">Why and When To Do A Discovery Phase</span>
+    <span slot="insight-text">
+      <p>
+        The purpose of a <a href="/services/discovery" class="underline underline-offset-2">discovery phase</a> is to gather
+        information, clarify objectives, and identify potential risks before starting a project. It helps ensure that everyone
+        involved has a clear understanding of the project's goals, target audience, and requirements. A discovery phase can
+        involve activities such as workshops, stakeholder interviews, market/user research, competitive analysis, and more.
+      </p><br />
+      <p>
+        If your project is not large or complex, and you already have a clear understanding (plus documentation) of
+        these, then in all honesty a full discovery phase is probably not necessary. Instead, a shorter scoping meeting
+        or workshop may be sufficient to align yourself and your chosen developer on objectives and scope.
+      </p><br />
+      <p>
+        However, if your project is large or complex, then you need a discovery phase that is tailored to your project's
+        specific needs and you should be wary of anyone that wants to jump straight into design or development without
+        understanding the full context.
+      </p><br />
+      <p>
+        Still have questions? Give us a <a href={`tel:${siteConfig.phone}`} class="underline underline-offset-2">call</a
+        > or
+        <a href="/contact" class="underline underline-offset-2">send us a message</a> to understand more without any pushy
+        sales tactics.
+      </p>
+    </span>
+  </Insight>
+
+  <LetsTalk />
+</Layout>

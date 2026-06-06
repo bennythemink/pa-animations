@@ -1,0 +1,19 @@
+---
+import Grid from '@components/Grid.astro'
+---
+
+<section id="pov" class="py-12 lg:py-20">
+  <Grid>
+    <div class="col-span-full lg:col-start-2">
+      <h2 class="section-header text-2xl lg:text-4xl" style="color: var(--accent-bgc);">Insight</h2>
+    </div>
+    <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
+      <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">
+        <slot name="insight-title" />
+      </h3>
+    </div>
+    <div class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col gap-6 mt-6 lg:mt-0">
+      <slot name="insight-text" />
+    </div>
+  </Grid>
+</section>

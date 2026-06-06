@@ -9,6 +9,7 @@ import ClientLogos from '@components/home/ClientLogos.astro'
 import PixelAssistChatbot from '@components/home/PixelAssistChatbot.astro'
 import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
 import CTA from '@components/CTA.astro'
+import LetsTalk from '@components/home/LetsTalk.astro'
 
 const assistConversation = [
   { role: 'user' as const, text: 'What is Pixel Assist and will it help convert visitors into customers?' },
@@ -590,36 +591,7 @@ const sectionCards = [
       </div>
     </section>
 
-    <section id="lets-talk">
-      <Grid>
-        <div
-          class="col-span-full grid grid-cols-12 gap-5 pt-7.5 lg:pt-20 lg:pb-36 my-2 lg:my-6"
-          style="background-color: var(--accent-bgc);"
-        >
-          <div class="col-start-2 lg:col-start-2 col-span-10 lg:col-span-5 mb-4 lg:mb-0">
-            <h2 class="text-xl lg:text-[80px] leading-[1.04] tracking-[-0.04em]">
-              Let&rsquo;s talk about what you&rsquo;re trying to&nbsp;achieve.
-            </h2>
-          </div>
-          <div
-            class="col-start-2 lg:col-start-8 col-span-10 lg:col-span-4 flex flex-col justify-start text-[18px] lg:text-2xl leading-[0.76] tracking-[-0.04em] mb-7.5 lg:mb-0"
-          >
-            <p class="">
-              Whether you've got a detailed brief or just a rough idea, we're happy to have a conversation.
-            </p>
-            <p class="mt-4">
-              No pitch, no pressure, just a straight talk about what you're working on and whether we're the
-              right&nbsp;fit.
-            </p>
-            <a
-              href="/contact"
-              class="mt-6 font-sans font-normal text-[18px] inline-block w-fit bg-white/50 px-4 py-2 hover:underline"
-              >Let&rsquo;s talk</a
-            >
-          </div>
-        </div>
-      </Grid>
-    </section>
+    <LetsTalk />
   </div><!-- end #site-content -->
 </Layout>
 
