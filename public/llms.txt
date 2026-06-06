@@ -1,6 +1,9 @@
 # Pixel Agency
 
-> Pixel Agency is a Melbourne-based digital design, development, consulting, and AI partner. We help organisations move from uncertainty to outcomes through clear thinking, honest advice, and carefully delivered digital work, all without the hassle of salespeople.
+> Pixel Agency is a Melbourne-based digital design, development, consulting, and AI partner. We help organisations move from uncertainty to outcomes through clear thinking, honest advice, and carefully delivered digital work, all without the hassle of a sales layer.
+
+## Site Identity
+* Canonical website: https://www.pixelagency.com.au
 
 ## Core Capabilities
 * [Discovery + Direction](/services/discovery): Structured discovery, problem definition, and digital direction before delivery begins.
@@ -13,6 +16,15 @@
 * Practitioner-led delivery: clients work directly with the people doing the thinking, design, and build.
 * No sales theatre: no sales layer, no account-manager handoffs, and no pressure-led recommendations.
 * Outcome-focused partnerships: long-term quality, clear trade-offs, and honest communication over short-term wins.
+
+## Who We Work With
+* Organisations that need clarity before committing to digital delivery.
+* Teams navigating complex digital decisions across strategy, design, development, and AI.
+* Businesses looking for senior, practitioner-led support rather than sales-led agency engagement.
+
+## Who We're Not For
+* Teams seeking the cheapest or fastest option regardless of quality.
+* Projects that need execution without discussion, challenge, or honest input.
 
 ## Product
 * [Pixel Assist](/pixel-assist): A fully managed AI-powered website knowledge assistant that gives instant answers, reduces repetitive enquiries, and helps convert more visitors.
@@ -38,3 +50,18 @@
 ## Compliance & Security
 * Australian-hosted infrastructure options and privacy-first implementation patterns.
 * Strong focus on data ownership, sensitive information handling, and practical governance.
+
+## Start Here
+* [Services](/services)
+* [Case Studies](/case-studies)
+* [Pixel Assist](/pixel-assist)
+* [Contact](/contact)
+
+## Locations Served
+* Melbourne, Sydney, Adelaide, Brisbane, Perth, Canberra, Darwin, and Hobart.
+
+## Legal
+* [Privacy Policy](/privacy-policy)
+* [Terms & Conditions](/terms-and-conditions)
+
+Last updated: June 2026
