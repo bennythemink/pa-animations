@@ -11,6 +11,9 @@ import Grid from '@components/Grid.astro'
       <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">
         <slot name="insight-title" />
       </h3>
+      <h4 class="tracking-[-0.02em] text-black/40">
+        <slot name="insight-subtitle" />
+      </h4>
     </div>
     <div class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col gap-6 mt-6 lg:mt-0">
       <slot name="insight-text" />

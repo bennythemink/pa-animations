@@ -1,7 +1,7 @@
 ---
 import LetsTalk from '@components/home/LetsTalk.astro'
 import Insight from '@components/insights/Insight.astro'
-import { siteConfig } from '@config/site'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
 import Layout from '@layouts/Layout.astro'
 ---
 
@@ -11,6 +11,7 @@ import Layout from '@layouts/Layout.astro'
 >
   <Insight>
     <span slot="insight-title">Why and When To Do A Discovery Phase</span>
+    <span slot="insight-subtitle">June, 2026</span>
     <span slot="insight-text">
       <p>
         The purpose of a <a href="/services/discovery" class="underline underline-offset-2">discovery phase</a> is to gather
@@ -28,12 +29,7 @@ import Layout from '@layouts/Layout.astro'
         specific needs and you should be wary of anyone that wants to jump straight into design or development without
         understanding the full context.
       </p><br />
-      <p>
-        Still have questions? Give us a <a href={`tel:${siteConfig.phone}`} class="underline underline-offset-2">call</a
-        > or
-        <a href="/contact" class="underline underline-offset-2">send us a message</a> to understand more without any pushy
-        sales tactics.
-      </p>
+      <InsightSignoff />
     </span>
   </Insight>
 
