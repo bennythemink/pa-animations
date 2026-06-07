@@ -7,6 +7,7 @@ export interface Insight {
   published: boolean
   featured: boolean
   tags: string[]
+  colour: string
 }
 
 export interface InsightLink {
@@ -29,7 +30,8 @@ const insights: Insight[] = [
     slug: 'why-and-when-to-do-a-discovery-phase',
     published: true,
     featured: true,
-    tags: ['discovery', 'project management']
+    tags: ['discovery', 'project management'],
+    colour: 'pixel-solar'
   },
   {
     title: 'What a Discovery Phase Looks Like',
@@ -39,7 +41,8 @@ const insights: Insight[] = [
     slug: 'what-a-discovery-phase-looks-like',
     published: true,
     featured: true,
-    tags: ['discovery', 'project management']
+    tags: ['discovery', 'project management'],
+    colour: 'pixel-celestial'
   },
   {
     title: 'What about off-shoring?',
@@ -49,7 +52,8 @@ const insights: Insight[] = [
     slug: 'what-about-off-shoring',
     published: true,
     featured: true,
-    tags: ['off-shoring']
+    tags: ['off-shoring'],
+    colour: 'pixel-rosy'
   }
 ]
 

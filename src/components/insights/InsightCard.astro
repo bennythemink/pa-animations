@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string
+  summary: string
+  dateLabel: string
+  href: string
+  backgroundColor: string
+}
+
+const { title, summary, dateLabel, href, backgroundColor } = Astro.props as Props
+---
+
+<a
+  href={href}
+  class="insight-card block h-full p-5 lg:p-7 transition-[transform,filter] duration-200 ease-out hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/80"
+  style={`background-color: ${backgroundColor};`}
+>
+  <div class="flex h-full flex-col gap-4">
+    <p class="font-sans text-xs tracking-widest uppercase text-black/60">{dateLabel}</p>
+    <h2 class="text-2xl lg:text-4xl leading-[0.95] tracking-[-0.03em]">{title}</h2>
+    <p class="mt-auto font-serif text-base leading-relaxed text-black/80">{summary}</p>
+  </div>
+</a>
