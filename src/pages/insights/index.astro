@@ -6,6 +6,7 @@ import InsightCard from '@components/insights/InsightCard.astro'
 import Callout from '@components/case-studies/CallOut.astro'
 import { publishedInsights } from '@data/insights'
 import { resolvePixelColour } from '@config/colours'
+import Plus from '@components/signs/Plus.astro'
 
 const insightItems = publishedInsights.map((insight) => ({
   title: insight.title,
@@ -20,7 +21,12 @@ const insightItems = publishedInsights.map((insight) => ({
   <Grid>
     <PageHeading>
       <span slot="heading-title">Insights</span>
-      <span slot="heading-text">A collection of insights on various topics related to project development.</span>
+      <span slot="heading-text"
+        >A collection of insights on various topics related to project discovery, design, development <Plus
+          size={24}
+          desktopSize={34}
+        /> management.</span
+      >
     </PageHeading>
 
     <div class="col-span-full lg:col-start-2 lg:col-span-10">
