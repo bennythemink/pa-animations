@@ -51,7 +51,7 @@ const insights: Insight[] = [
     summary: 'What are the considerations and potential challenges when off-shoring a project?',
     slug: 'what-about-off-shoring',
     published: true,
-    featured: true,
+    featured: false,
     tags: ['off-shoring'],
     colour: 'pixel-rosy'
   },
@@ -74,7 +74,7 @@ const insights: Insight[] = [
       'How to coordinate and manage multiple agencies working on the same project to ensure a successful outcome.',
     slug: 'how-to-manage-multiple-agencies-working-on-the-same-project',
     published: true,
-    featured: true,
+    featured: false,
     tags: ['project management'],
     colour: 'pixel-fawn'
   }
