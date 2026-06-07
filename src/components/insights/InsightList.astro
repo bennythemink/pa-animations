@@ -1,0 +1,25 @@
+---
+interface Props {
+  items?: string[]
+}
+
+const {
+  items = [
+    'Time and ability to work with a team in a different timezone',
+    'Understanding of cultural differences and communication styles',
+    'Strong project management skills',
+    'Ability to clearly define requirements and expectations'
+  ]
+} = Astro.props as Props
+---
+
+<ul class="lg:mt-4">
+  {
+    items.map((item) => (
+      <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+        <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`} />
+        {item}
+      </li>
+    ))
+  }
+</ul>

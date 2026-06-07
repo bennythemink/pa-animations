@@ -5,8 +5,24 @@ import InsightSignoff from '@components/insights/InsightSignoff.astro'
 import Layout from '@layouts/Layout.astro'
 import { getInsightNav } from '@data/insights'
 import InsightNav from '@components/insights/InsightNav.astro'
+import InsightList from '@components/insights/InsightList.astro'
 
 const { previous, current, next } = getInsightNav('what-about-off-shoring')
+
+const offshoreCapabilities = [
+  'Time and ability to work with a team in a different timezone',
+  'Understanding of cultural differences and communication styles',
+  'Strong project management skills',
+  'Ability to clearly define requirements and expectations'
+]
+
+const offshoreTips = [
+  'Write your requirements in User Stories format and include acceptance criteria for each story. This will help ensure that everyone has a clear understanding of what needs to be built and how it will be tested.',
+  'Ensure you have access to the source code from day one. Download a copy of the codebase if not each day, then each week at minimum.',
+  'Have the off-shore team provide you with the technical documentation before starting the project. Have this reviewed by someone technical.',
+  "You'll generally have better results if you have the design done locally and provide it to the off-shore team.",
+  'Ensure you have a contract in place that includes clear deliverables, timelines, and payment terms.'
+]
 ---
 
 <Layout title={current?.title} description={current?.summary}>
@@ -23,75 +39,31 @@ const { previous, current, next } = getInsightNav('what-about-off-shoring')
       <p>
         If you have the below skills/capabilities in-house, then off-shoring can be a good way to save money on
         development costs:
-        <ul class="lg:mt-4">
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span
-              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
-              style={`background-color: var(--accent-bgc);`}></span>
-            Time and ability to work with a team in a different timezone
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span
-              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
-              style={`background-color: var(--accent-bgc);`}></span>
-            Understanding of cultural differences and communication styles
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span
-              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
-              style={`background-color: var(--accent-bgc);`}></span>Strong project management skills
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span
-              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
-              style={`background-color: var(--accent-bgc);`}></span>Ability to clearly define requirements and
-            expectations
-          </li>
-        </ul>
-      </p><br />
+      </p>
+
+      <InsightList items={offshoreCapabilities} />
+
+      <br />
+      <br />
 
       <p>
         If you think you have the above capabilities and are prepared to manage the risks, then here are some tips for
         you to help you succeed:
-        <ul class="lg:mt-4">
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span
-              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
-              style={`background-color: var(--accent-bgc);`}></span>
-            Write your requirements in User Stories format and include acceptance criteria for each story. This will help
-            ensure that everyone has a clear understanding of what needs to be built and how it will be tested.
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span
-              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
-              style={`background-color: var(--accent-bgc);`}></span>
-            Ensure you have access to the source code from day one. Download a copy of the codebase if not each day, then
-            each week at minimum.
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span
-              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
-              style={`background-color: var(--accent-bgc);`}></span>Have the off-shore team provide you with the
-            technical documentation before starting the project. Have this reviewed by someone technical.
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span
-              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
-              style={`background-color: var(--accent-bgc);`}></span>You'll generally have better results if you have the
-            design done locally and provide it to the off-shore team.
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span
-              class="shrink-0 w-[12px] h-[12px] mt-[2.5px] lg:mt-[5px]"
-              style={`background-color: var(--accent-bgc);`}></span>Ensure you have a contract in place that includes
-            clear deliverables, timelines, and payment terms.
-          </li>
-        </ul>
-      </p><br />
+      </p>
+
+      <InsightList items={offshoreTips} />
+
+      <br />
+      <br />
 
       <p>
-        If you don't have those capabilities, or you need help managing the risks, then we can help consult so that you
-        are in a better position to succeed.
+        If you don't have those capabilities, or you need help managing the risks, then we can help <a
+          href="/services/consulting"
+          class="underline underline-offset-2">consult</a
+        > so that you are in a better position to succeed. Check out the <a
+          href="/case-studies/cyprusays"
+          class="underline underline-offset-2">Cyprusays case study</a
+        > for an example of how we helped a client successfully manage an off-shoring relationship.
       </p><br />
       <InsightSignoff />
     </span>
