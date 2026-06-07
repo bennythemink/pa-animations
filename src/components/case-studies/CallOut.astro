@@ -1,0 +1,27 @@
+---
+import Grid from '@components/Grid.astro'
+import CTA from '@components/CTA.astro'
+
+interface Props {
+  text?: string
+  ctaLabel?: string
+}
+
+const {
+  text = "If you're facing a similar challenge, we'd be happy to talk it through.",
+  ctaLabel = 'Discuss a problem'
+} = Astro.props
+---
+
+<section id="callout" class="py-16 lg:py-24">
+  <Grid>
+    <div class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-col gap-6">
+      <p class="font-sans font-normal text-3xl lg:text-[80px] leading-[1.04] tracking-[-0.03em]">
+        {text}
+      </p>
+      <div class="mt-6">
+        <CTA label={ctaLabel} />
+      </div>
+    </div>
+  </Grid>
+</section>

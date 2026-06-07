@@ -45,7 +45,7 @@ const insights: Insight[] = [
     colour: 'pixel-celestial'
   },
   {
-    title: 'What about off-shoring?',
+    title: 'What About Off-shoring?',
     publishedAt: '2026-06-06',
     dateLabel: 'June, 2026',
     summary: 'What are the considerations and potential challenges when off-shoring a project?',
@@ -54,6 +54,29 @@ const insights: Insight[] = [
     featured: true,
     tags: ['off-shoring'],
     colour: 'pixel-rosy'
+  },
+  {
+    title: 'What a Good Brief Looks Like',
+    publishedAt: '2026-06-06',
+    dateLabel: 'June, 2026',
+    summary: 'What to know what to include in a project brief?',
+    slug: 'what-a-good-brief-looks-like',
+    published: true,
+    featured: true,
+    tags: ['discovery'],
+    colour: 'pixel-teal'
+  },
+  {
+    title: 'How To Manage Multiple Agencies Working On The Same Project',
+    publishedAt: '2026-06-06',
+    dateLabel: 'June, 2026',
+    summary:
+      'How to coordinate and manage multiple agencies working on the same project to ensure a successful outcome.',
+    slug: 'how-to-manage-multiple-agencies-working-on-the-same-project',
+    published: true,
+    featured: true,
+    tags: ['project management'],
+    colour: 'pixel-fawn'
   }
 ]
 

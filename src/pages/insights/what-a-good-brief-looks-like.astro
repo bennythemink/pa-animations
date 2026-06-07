@@ -1,0 +1,51 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+import InsightList from '@components/insights/InsightList.astro'
+
+const { previous, current, next } = getInsightNav('what-a-good-brief-looks-like')
+
+const listItems = [
+  'Business context — who you are, what you do, and any relevant background',
+  'The objective — what the project is meant to achieve, e.g., increase sales, reduce support enquiries, modernise the brand',
+  'The end user — even a rough description of who will use the solution is enough to start with',
+  'The reason — some basis for why the project is needed now, whether that is data, a clear business event, or the honest acknowledgement that the solution is years out of date',
+  'Post-launch thinking — how will the solution be marketed or driven to? A solution with no traffic plan cannot solve a business problem',
+  'References — sites/apps you like, sites/apps you hate, and a sense of what "good" looks like for your audience',
+  'The budget and timeline — even if you have no idea, just be honest about that.'
+]
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        A brief does not need to have all the answers. It needs to clearly define the problem. Here is what a good one
+        covers:
+      </p><br />
+
+      <InsightList items={listItems} />
+      <br />
+
+      <p>
+        The brief does not need to go into exhaustive detail on all of the above. A lot of the finer points will surface
+        during <a href="/services/discovery" class="underline underline-offset-2">discovery or scoping</a>, that is
+        exactly what those phases are for. What matters is that a team reading your brief understands the problem
+        clearly enough to start asking the right questions.
+      </p>
+
+      <br />
+
+      <InsightSignoff />
+    </span>
+  </Insight>
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>

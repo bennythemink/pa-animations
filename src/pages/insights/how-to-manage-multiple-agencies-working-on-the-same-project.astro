@@ -1,0 +1,63 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+import InsightList from '@components/insights/InsightList.astro'
+
+const { previous, current, next } = getInsightNav('how-to-manage-multiple-agencies-working-on-the-same-project')
+
+const listItems = [
+  'Who is responsible for what, with no overlap or ambiguity',
+  'What each party expects to receive from the other, in what format and file type',
+  'Handover timelines, and what a delay means for each party downstream',
+  'The escalation process — if one agency is waiting on the other and the contact goes quiet, who is next point of call and how quickly should they respond',
+  'Expected response times and any agreed penalties'
+]
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Multiple agencies on the same project is not inherently a problem. Issues arise when the client expects multiple
+        separate companies to collaborate without clear guidance on who owns what, and what happens when things fall
+        through the cracks.
+      </p><br />
+
+      <p>
+        Before work starts, define scope with each agency independently, then bring everyone together for a joint
+        kickoff that covers:
+      </p><br />
+
+      <InsightList items={listItems} />
+      <br />
+
+      <p>
+        Whoever chairs this meeting matters. Ideally the client runs it, but if they are new to managing agencies then
+        it is worth paying the agency with the most experience additional project management time to coordinate
+        throughout.
+      </p><br />
+
+      <p>
+        Even with the right setup, problems can surface when one agency is operating outside their core competency. A
+        branding team designing web or app UI without sufficient digital experience is a common one, the gaps only
+        become visible once development starts, and neither party has scoped them. That is when clients get caught off
+        guard. If you are not sure how to structure this, <a href="/consulting" class="underline underline-offset-2"
+          >consulting</a
+        > early is usually cheaper than untangling it later.
+      </p>
+
+      <br />
+
+      <InsightSignoff />
+    </span>
+  </Insight>
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>

@@ -3,6 +3,7 @@ import Grid from '@components/Grid.astro'
 import Layout from '@layouts/Layout.astro'
 import PageHeading from '@components/case-studies/PageHeading.astro'
 import InsightCard from '@components/insights/InsightCard.astro'
+import Callout from '@components/case-studies/CallOut.astro'
 import { publishedInsights } from '@data/insights'
 import { resolvePixelColour } from '@config/colours'
 
@@ -23,7 +24,7 @@ const insightItems = publishedInsights.map((insight) => ({
     </PageHeading>
 
     <div class="col-span-full lg:col-start-2 lg:col-span-10">
-      <div class="grid grid-cols-1 gap-5 lg:hidden">
+      <div class="grid grid-cols-1 gap-0 lg:hidden">
         {
           insightItems.map((insight) => (
             <InsightCard
@@ -37,7 +38,7 @@ const insightItems = publishedInsights.map((insight) => ({
         }
       </div>
 
-      <div id="insights-puzzle" class="relative hidden lg:block" data-count={insightItems.length}>
+      <div id="insights-puzzle" class="relative hidden lg:block pb-12 lg:pb-20" data-count={insightItems.length}>
         {
           insightItems.map((insight, index) => (
             <div class="insight-tile absolute" data-index={index}>
@@ -54,11 +55,13 @@ const insightItems = publishedInsights.map((insight) => ({
       </div>
     </div>
   </Grid>
+
+  <Callout text="See something that sparked your interest? We are happy to talk." ctaLabel="Let's discuss" />
 </Layout>
 
 <style>
   #insights-puzzle {
-    min-height: 300px;
+    min-height: 200px;
   }
 
   #insights-puzzle .insight-tile {
@@ -86,11 +89,11 @@ const insightItems = publishedInsights.map((insight) => ({
     const cols = 2
     const totalSlots = tileCount + 1
     const rows = Math.ceil(totalSlots / cols)
-    const gap = 20
+    const gap = 0
 
     const puzzleWidth = puzzle.clientWidth
     const tileWidth = Math.floor((puzzleWidth - gap) / cols)
-    const tileHeight = Math.max(220, Math.floor(tileWidth * 0.72))
+    const tileHeight = Math.max(110, Math.floor(tileWidth * 0.36))
     puzzle.style.height = `${rows * tileHeight + (rows - 1) * gap}px`
 
     const slotToPoint = (slot: number) => ({
@@ -122,7 +125,7 @@ const insightItems = publishedInsights.map((insight) => ({
     let emptyPos = totalSlots - 1
     let prevEmpty = -1
     const shuffleMoves: number[] = []
-    const moveCount = Math.max(14, tileCount * 6)
+    const moveCount = Math.min(5, Math.max(3, tileCount + 1))
 
     for (let i = 0; i < moveCount; i++) {
       const candidates = getAdjacent(emptyPos).filter((pos) => pos !== prevEmpty)
@@ -147,7 +150,7 @@ const insightItems = publishedInsights.map((insight) => ({
     if (reduceMotion) return
 
     const solveMoves = shuffleMoves.slice().reverse()
-    const timeline = gsap.timeline({ delay: 0.15 })
+    const timeline = gsap.timeline({ delay: 0.075 })
 
     solveMoves.forEach((tileId) => {
       const fromPos = state.findIndex((v) => v === tileId)
@@ -160,7 +163,7 @@ const insightItems = publishedInsights.map((insight) => ({
       timeline.to(tile, {
         x: point.x,
         y: point.y,
-        duration: 0.22,
+        duration: 0.11,
         ease: 'power2.inOut'
       })
 
