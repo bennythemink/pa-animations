@@ -77,6 +77,17 @@ const insights: Insight[] = [
     featured: false,
     tags: ['project management'],
     colour: 'pixel-fawn'
+  },
+  {
+    title: 'What Good Communication Looks Like On A Digital Project',
+    publishedAt: '2026-06-08',
+    dateLabel: 'June, 2026',
+    summary: 'How clear documentation, stage gates, and proactive updates keep digital projects on track.',
+    slug: 'what-good-communication-looks-like-on-a-digital-project',
+    published: true,
+    featured: false,
+    tags: ['project management', 'communication'],
+    colour: 'pixel-fire'
   }
 ]
 

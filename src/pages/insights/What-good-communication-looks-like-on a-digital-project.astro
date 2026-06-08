@@ -1,0 +1,61 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+import InsightList from '@components/insights/InsightList.astro'
+
+const { previous, current, next } = getInsightNav('what-good-communication-looks-like-on-a-digital-project')
+
+const communicationSignals = [
+  'Clear stage gates so you know when to expect designs, feedback windows, builds, and sign-offs',
+  'A defined update cadence - a weekly check-in by email or call is a reasonable baseline',
+  'Updates that track progress against the agreed timeline, not just a list of what the team has been doing',
+  'Risks called out early with a mitigation plan, not surprises at the end of a phase',
+  "Visibility into where the project sits versus where it should be - this does not mean access to the agency's internal tools, but progress should move visibly each week"
+]
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Good communication on a digital project does not mean constant availability or weekly calls for the sake of
+        them. It starts before a line of code is written, and it is mostly about documentation and visibility.
+      </p>
+      <br />
+
+      <p>
+        Before work begins, both sides should be confident they understand what is being built and why. Good
+        documentation from a <a href="/services/discovery" class="underline underline-offset-2"
+          >scoping or discovery phase</a
+        >
+        removes most of the ambiguity that leads to miscommunication later. If you are not clear on what is being built, that
+        is the first problem to solve.
+      </p>
+      <br />
+
+      <p>Once the project is underway, good communication from an agency looks like:</p>
+      <br />
+
+      <InsightList items={communicationSignals} />
+      <br />
+
+      <p>
+        If you are not getting this from your current agency, ask for it directly. A good agency will have a process for
+        this already. If they do not, that is useful information to have early.
+      </p>
+      <br />
+
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>
