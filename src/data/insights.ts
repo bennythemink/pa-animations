@@ -88,6 +88,17 @@ const insights: Insight[] = [
     featured: false,
     tags: ['project management', 'communication'],
     colour: 'pixel-fire'
+  },
+  {
+    title: 'How To Evaluate The Technology Your Agency Recommends',
+    publishedAt: '2026-06-08',
+    dateLabel: 'June, 2026',
+    summary: 'Practical questions non-technical clients can ask before committing to a proposed tech stack.',
+    slug: 'how-to-evaluate-the-technology-your-agency-recommends',
+    published: true,
+    featured: false,
+    tags: ['consulting', 'technology'],
+    colour: 'pixel-solar'
   }
 ]
 
