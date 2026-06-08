@@ -98,7 +98,7 @@ const insights: Insight[] = [
     published: true,
     featured: false,
     tags: ['consulting', 'technology'],
-    colour: 'pixel-solar'
+    colour: 'pixel-fawn'
   }
 ]
 
