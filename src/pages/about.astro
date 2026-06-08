@@ -12,7 +12,7 @@ import ContactForm from '@components/ContactForm.astro'
 import { SitePage } from '@data/analyticsCaller'
 import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
 import extended from '@assets/pa-extended.svg'
-import FeaturedInsights from '@components/insights/FeaturedInsights.astro'
+import Insights from '@components/insights/Insights.astro'
 
 /**
  * WhoSection variables
@@ -404,7 +404,32 @@ const sectionCards = [
 
   <ClientLogos />
 
-  <FeaturedInsights />
+  <section id="insights" class="pt-12 lg:pt-20">
+    <Grid>
+      <div class="col-span-full lg:col-start-2">
+        <h2 class="section-header text-pixel-drk-celestial text-2xl lg:text-4xl">Insights</h2>
+      </div>
+      <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
+        <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">Digital perspectives.</h3>
+      </div>
+      <div class="col-span-full lg:col-start-7 lg:col-span-5 flex flex-col gap-6 mt-6 lg:mt-0">
+        <p>
+          When to do a Discovery? Off-shore developers? What to provide and when? Our team share some short, practical
+          insights, without the jargon and sales pitch.
+        </p>
+        <a
+          href="/insights"
+          class="text-pixel-celestial underline underline-offset-2 font-sans font-extralight text-base"
+          >Explore our insights →</a
+        >
+      </div>
+    </Grid>
+    <Grid>
+      <div class="col-span-full lg:col-start-2 lg:col-span-10 mt-8 lg:mt-12">
+        <Insights featuredOnly={true} />
+      </div>
+    </Grid>
+  </section>
 
   <WhoSection
     forTitle="We work best with organisations that"

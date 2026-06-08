@@ -10,6 +10,7 @@ import PixelAssistChatbot from '@components/home/PixelAssistChatbot.astro'
 import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
 import CTA from '@components/CTA.astro'
 import LetsTalk from '@components/home/LetsTalk.astro'
+import Insights from '@components/insights/Insights.astro'
 
 const assistConversation = [
   { role: 'user' as const, text: 'What is Pixel Assist and will it help convert visitors into customers?' },
@@ -589,6 +590,33 @@ const sectionCards = [
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="insights" class="pt-12 lg:my-20">
+      <Grid>
+        <div class="col-span-full lg:col-start-2">
+          <h2 class="section-header text-pixel-fire text-2xl lg:text-4xl">Insights</h2>
+        </div>
+        <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
+          <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">Digital perspectives.</h3>
+        </div>
+        <div class="col-span-full lg:col-start-8 lg:col-span-4 flex flex-col gap-6 mt-6 lg:mt-0">
+          <p>
+            When to do a Discovery phase? Should I use off-shore developers? What to provide and when? Our team share
+            some short, practical insights, without the jargon and sales pitch.
+          </p>
+          <a
+            href="/insights"
+            class="text-pixel-celestial underline underline-offset-2 font-sans font-extralight text-base"
+            >Explore our insights →</a
+          >
+        </div>
+      </Grid>
+      <Grid>
+        <div class="col-span-full lg:col-start-2 lg:col-span-10 mt-8 lg:mt-12">
+          <Insights featuredOnly={true} />
+        </div>
+      </Grid>
     </section>
 
     <LetsTalk />

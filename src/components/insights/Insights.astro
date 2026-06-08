@@ -1,0 +1,222 @@
+---
+import InsightCard from '@components/insights/InsightCard.astro'
+import { featuredInsights, publishedInsights } from '@data/insights'
+import { resolvePixelColour } from '@config/colours'
+
+interface Props {
+  animate?: boolean
+  featuredOnly?: boolean
+}
+
+const { animate = true, featuredOnly = true } = Astro.props as Props
+
+const sourceInsights = featuredOnly ? featuredInsights : publishedInsights
+
+const insightItems = sourceInsights.map((insight) => ({
+  title: insight.title,
+  summary: insight.summary,
+  dateLabel: insight.dateLabel,
+  href: `/insights/${insight.slug}`,
+  backgroundColor: resolvePixelColour(insight.colour)
+}))
+---
+
+<div class="insights-component" data-animate={String(animate)}>
+  <div class="grid grid-cols-1 gap-0 lg:hidden">
+    {
+      insightItems.map((insight) => (
+        <InsightCard
+          title={insight.title}
+          summary={insight.summary}
+          dateLabel={insight.dateLabel}
+          href={insight.href}
+          backgroundColor={insight.backgroundColor}
+        />
+      ))
+    }
+  </div>
+
+  <div class="insights-component-puzzle relative hidden lg:block" data-count={insightItems.length}>
+    {
+      insightItems.map((insight, index) => (
+        <div class="insights-component-tile absolute" data-index={index}>
+          <InsightCard
+            title={insight.title}
+            summary={insight.summary}
+            dateLabel={insight.dateLabel}
+            href={insight.href}
+            backgroundColor={insight.backgroundColor}
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .insights-component-puzzle {
+    min-height: 200px;
+  }
+
+  .insights-component-puzzle .insights-component-tile {
+    will-change: transform;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap'
+
+  type TileMap = Map<number, HTMLElement>
+
+  function getAdjacentPositions(emptyPos: number, cols: number, rows: number): number[] {
+    const col = emptyPos % cols
+    const row = Math.floor(emptyPos / cols)
+    const candidates: number[] = []
+    if (col > 0) candidates.push(emptyPos - 1)
+    if (col < cols - 1) candidates.push(emptyPos + 1)
+    if (row > 0) candidates.push(emptyPos - cols)
+    if (row < rows - 1) candidates.push(emptyPos + cols)
+    return candidates
+  }
+
+  function applyTileSizing(puzzle: HTMLElement, tiles: HTMLElement[], cols: number, rows: number, gap: number) {
+    const puzzleWidth = puzzle.clientWidth
+    const tileWidth = Math.floor((puzzleWidth - gap) / cols)
+    const tileHeight = Math.max(110, Math.floor(tileWidth * 0.36))
+    puzzle.style.height = `${rows * tileHeight + (rows - 1) * gap}px`
+
+    tiles.forEach((tile) => {
+      tile.style.width = `${tileWidth}px`
+      tile.style.height = `${tileHeight}px`
+    })
+
+    return { tileWidth, tileHeight }
+  }
+
+  function slotToPoint(slot: number, cols: number, tileWidth: number, tileHeight: number, gap: number) {
+    return {
+      x: (slot % cols) * (tileWidth + gap),
+      y: Math.floor(slot / cols) * (tileHeight + gap)
+    }
+  }
+
+  function setBoardPositions(
+    state: Array<number | null>,
+    tileById: TileMap,
+    cols: number,
+    tileWidth: number,
+    tileHeight: number,
+    gap: number
+  ) {
+    state.forEach((tileId, slot) => {
+      if (tileId === null) return
+      const tile = tileById.get(tileId)
+      if (!tile) return
+      const point = slotToPoint(slot, cols, tileWidth, tileHeight, gap)
+      gsap.set(tile, { x: point.x, y: point.y })
+    })
+  }
+
+  function initInsightsComponent() {
+    const wrappers = Array.from(document.querySelectorAll<HTMLElement>('.insights-component'))
+    if (!wrappers.length) return
+
+    wrappers.forEach((wrapper) => {
+      const puzzle = wrapper.querySelector<HTMLElement>('.insights-component-puzzle')
+      if (!puzzle) return
+
+      const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+      if (!isDesktop) return
+
+      const tiles = Array.from(puzzle.querySelectorAll<HTMLElement>('.insights-component-tile'))
+      const tileCount = tiles.length
+      if (!tileCount) return
+
+      const cols = 2
+      const totalSlots = tileCount + 1
+      const rows = Math.ceil(totalSlots / cols)
+      const gap = 0
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const animate = wrapper.dataset.animate === 'true'
+
+      const tileById: TileMap = new Map()
+      tiles.forEach((tile, index) => {
+        tileById.set(index, tile)
+      })
+
+      const { tileWidth, tileHeight } = applyTileSizing(puzzle, tiles, cols, rows, gap)
+      const solvedState: Array<number | null> = Array.from({ length: totalSlots }, (_, i) => (i < tileCount ? i : null))
+
+      if (!animate || reduceMotion) {
+        setBoardPositions(solvedState, tileById, cols, tileWidth, tileHeight, gap)
+        return
+      }
+
+      const state = solvedState.slice()
+      let emptyPos = totalSlots - 1
+      let prevEmpty = -1
+      const shuffleMoves: number[] = []
+      const moveCount = Math.min(5, Math.max(3, tileCount + 1))
+
+      for (let i = 0; i < moveCount; i++) {
+        const candidates = getAdjacentPositions(emptyPos, cols, rows).filter((pos) => pos !== prevEmpty)
+        const moveFrom = candidates[Math.floor(Math.random() * candidates.length)]
+        const tileId = state[moveFrom]
+        if (tileId === null) continue
+        state[emptyPos] = tileId
+        state[moveFrom] = null
+        prevEmpty = emptyPos
+        emptyPos = moveFrom
+        shuffleMoves.push(tileId)
+      }
+
+      setBoardPositions(state, tileById, cols, tileWidth, tileHeight, gap)
+
+      if (wrapper.dataset.insightsAnimated === 'true') return
+
+      const playSolve = () => {
+        if (wrapper.dataset.insightsAnimated === 'true') return
+        wrapper.dataset.insightsAnimated = 'true'
+
+        const solveMoves = shuffleMoves.slice().reverse()
+        const timeline = gsap.timeline({ delay: 0.075 })
+
+        solveMoves.forEach((tileId) => {
+          const fromPos = state.findIndex((v) => v === tileId)
+          const toPos = state.findIndex((v) => v === null)
+          if (fromPos === -1 || toPos === -1) return
+          const tile = tileById.get(tileId)
+          if (!tile) return
+
+          const point = slotToPoint(toPos, cols, tileWidth, tileHeight, gap)
+          timeline.to(tile, {
+            x: point.x,
+            y: point.y,
+            duration: 0.11,
+            ease: 'power2.inOut'
+          })
+
+          state[toPos] = tileId
+          state[fromPos] = null
+        })
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0]
+          if (!entry?.isIntersecting) return
+          playSolve()
+          observer.disconnect()
+        },
+        {
+          threshold: 0.35
+        }
+      )
+
+      observer.observe(wrapper)
+    })
+  }
+
+  initInsightsComponent()
+  document.addEventListener('astro:after-swap', initInsightsComponent)
+</script>
