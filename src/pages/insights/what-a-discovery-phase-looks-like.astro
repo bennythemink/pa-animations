@@ -6,16 +6,16 @@ import InsightSignoff from '@components/insights/InsightSignoff.astro'
 import Layout from '@layouts/Layout.astro'
 import { getInsightNav } from '@data/insights'
 
-const { previous, next } = getInsightNav('what-a-discovery-phase-looks-like')
+const { previous, current, next } = getInsightNav('what-a-discovery-phase-looks-like')
 ---
 
 <Layout
-  title="What a Discovery Phase Looks Like"
+  title={current.title}
   description="A short insight on the activities and outcomes of a discovery phase in project development."
 >
   <Insight>
-    <span slot="insight-title">What a Discovery Phase Looks Like</span>
-    <span slot="insight-subtitle">June, 2026</span>
+    <span slot="insight-title">{current.title}</span>
+    <span slot="insight-subtitle">{current.dateLabel}</span>
     <span slot="insight-text">
       <p>
         The purpose of a <a href="/services/discovery" class="underline underline-offset-2">Discovery</a> phase is to gather
