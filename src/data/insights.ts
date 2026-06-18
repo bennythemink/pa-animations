@@ -25,7 +25,7 @@ const insights: Insight[] = [
   {
     title: 'Why and When To Do A Discovery Phase',
     publishedAt: '2026-06-06',
-    dateLabel: 'June, 2026',
+    dateLabel: '6th June, 2026',
     summary: 'What is its purpose, what does it involve, and how can it help ensure the success of your project.',
     slug: 'why-and-when-to-do-a-discovery-phase',
     published: true,
@@ -36,7 +36,7 @@ const insights: Insight[] = [
   {
     title: 'What a Discovery Phase Looks Like',
     publishedAt: '2026-06-06',
-    dateLabel: 'June, 2026',
+    dateLabel: '6th June, 2026',
     summary: 'What is typically involved in a Discovery phase, and what you should expect to receive at the end of it.',
     slug: 'what-a-discovery-phase-looks-like',
     published: true,
@@ -46,8 +46,8 @@ const insights: Insight[] = [
   },
   {
     title: 'What About Off-shoring?',
-    publishedAt: '2026-06-06',
-    dateLabel: 'June, 2026',
+    publishedAt: '2026-06-07',
+    dateLabel: '7th June, 2026',
     summary: 'What are the considerations and potential challenges when off-shoring a project?',
     slug: 'what-about-off-shoring',
     published: true,
@@ -57,8 +57,8 @@ const insights: Insight[] = [
   },
   {
     title: 'What a Good Brief Looks Like',
-    publishedAt: '2026-06-06',
-    dateLabel: 'June, 2026',
+    publishedAt: '2026-06-07',
+    dateLabel: '7th June, 2026',
     summary: 'What to know what to include in a project brief?',
     slug: 'what-a-good-brief-looks-like',
     published: true,
@@ -68,8 +68,8 @@ const insights: Insight[] = [
   },
   {
     title: 'How To Manage Multiple Agencies Working On The Same Project',
-    publishedAt: '2026-06-06',
-    dateLabel: 'June, 2026',
+    publishedAt: '2026-06-07',
+    dateLabel: '7th June, 2026',
     summary:
       'How to coordinate and manage multiple agencies working on the same project to ensure a successful outcome.',
     slug: 'how-to-manage-multiple-agencies-working-on-the-same-project',
@@ -81,7 +81,7 @@ const insights: Insight[] = [
   {
     title: 'What Good Communication Looks Like On A Digital Project',
     publishedAt: '2026-06-08',
-    dateLabel: 'June, 2026',
+    dateLabel: '8th June, 2026',
     summary: 'How clear documentation, stage gates, and proactive updates keep digital projects on track.',
     slug: 'what-good-communication-looks-like-on-a-digital-project',
     published: true,
@@ -92,13 +92,24 @@ const insights: Insight[] = [
   {
     title: 'How To Evaluate The Technology Your Agency Recommends',
     publishedAt: '2026-06-08',
-    dateLabel: 'June, 2026',
+    dateLabel: '8th June, 2026',
     summary: 'Practical questions non-technical clients can ask before committing to a proposed tech stack.',
     slug: 'how-to-evaluate-the-technology-your-agency-recommends',
     published: true,
     featured: false,
     tags: ['consulting', 'technology'],
     colour: 'pixel-fawn'
+  },
+  {
+    title: 'Does AI Have a Sustainable Business Model?',
+    publishedAt: '2026-06-18',
+    dateLabel: '18th June, 2026',
+    summary: 'No. And we tell you why.',
+    slug: 'does-ai-have-a-sustainable-business-model',
+    published: true,
+    featured: false,
+    tags: ['AI', 'technology'],
+    colour: 'pixel-solar'
   }
 ]
 

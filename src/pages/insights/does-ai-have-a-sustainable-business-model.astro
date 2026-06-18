@@ -1,0 +1,85 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightNav from '@components/insights/InsightNav.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+
+const { previous, current, next } = getInsightNav('does-ai-have-a-sustainable-business-model')
+---
+
+<Layout
+  title="Does AI Have a Sustainable Business Model?"
+  description="An insight into the sustainability of AI business models and their long-term viability."
+>
+  <Insight>
+    <span slot="insight-title">{current.title}</span>
+    <span slot="insight-subtitle">{current.dateLabel}</span>
+    <span slot="insight-text">
+      <p>Nope. Thank you for coming to my Ted Talk. Okay, but seriously, this one will have a lot of source references. </p><br />
+      <p>
+        The current <a href="/services/ai" 
+        class="underline underline-offset-2">AI</a> 
+        business model is not sustainable. No major AI provider has publicly
+        demonstrated a profitable business model. Training costs remain enormous, and the cost of inference has never
+        been confirmed as profitable by any provider. If it were, they would say so. Consumer subscriptions are heavily
+        subsidised; the actual compute cost to Anthropic of serving a heavy Claude user significantly exceeds the $20
+        monthly price. <a
+          href="https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code/"
+          class="underline underline-offset-2">Uber burned through its entire 2026 AI tools budget in four months</a
+        >, with the COO publicly stating the link between AI usage and measurable business outcomes was "not there yet."
+        That is a company with 5,000 engineers, 95% of them using AI tools monthly.
+      </p><br />
+
+      <p>
+        The infrastructure required to sustain the industry is also under serious strain. <a
+          href="https://www.techradar.com/pro/if-one-piece-of-your-supply-chain-is-delayed-then-your-whole-project-cant-deliver-nearly-half-of-us-data-centers-planned-for-2026-canceled-or-delayed-and-things-could-soon-get-much-worse"
+          class="underline underline-offset-2"
+          >Nearly half of planned US data center builds for 2026 have been canceled or delayed</a
+        >, held back by power infrastructure shortages and supply chain failures. <a
+          href="https://www.tomshardware.com/tech-industry/artificial-intelligence/more-than-75-data-center-build-outs-worth-usd130-billion-have-been-successfully-blocked-in-the-first-four-months-of-2026-bipartisan-opposition-mounts-nationwide-over-fears-of-soaring-power-and-water-costs"
+          class="underline underline-offset-2">More than 75 projects worth $130 billion were blocked in Q1 2026 alone</a
+        >, with opposition groups active in 49 US states, driven by electricity costs, water consumption, noise, and
+        scale. Data centers take 18 to 24 months to build, and <a
+          href="https://www.manufacturingdive.com/news/opinion-omdia-ai-semiconductor-chip-scarcity/817172/"
+          class="underline underline-offset-2">chips are purchased at the start of construction</a
+        >, meaning the hardware can already be a generation behind before the facility goes live. <a
+          href="https://intuitionlabs.ai/articles/oracle-openai-300b-deal-analysis"
+          class="underline underline-offset-2"
+          >Oracle is building data centers for OpenAI under a $300 billion agreement</a> contingent on OpenAI reaching
+          revenue targets that <a href="https://fortune.com/2025/11/26/is-openai-profitable-forecast-data-center-200-billion-shortfall-hsbc/" class="underline underline-offset-2"
+          >HSBC describes as unrealistic</a>, with OpenAI projected to burn $27 billion in 2026 and $63
+          billion in 2027.
+        </a><br />
+
+        <p>
+          Public sentiment is shifting. <a href="https://fortune.com/2026/06/15/stanford-students-protest-sundar-pichai-google-graduation-speech/" 
+          class="underline underline-offset-2">Hundreds of Stanford graduates walked out of their 2026 commencement 
+          ceremony when Google's CEO took the stage.</a> 
+          Community opposition to data center construction has moved from fringe to mainstream, driven by the real 
+          costs these facilities impose on the areas that host them.
+        </p><br />
+
+        <p>
+          For AI to become commercially sustainable, two things likely need to happen: a meaningful hardware breakthrough 
+          that makes training and inference significantly less energy intensive, and on the software side, a leap in 
+          inference efficiency that 
+          produces the same outputs from substantially less compute. Neither is guaranteed or imminent. 
+          Apple has a structural advantage most providers do not: the ability to run models locally on billions of 
+          devices at near-zero marginal cost. Enterprises are likely to look at deploying models on their own hardware, 
+          where costs are controllable and predictable. What becomes of the dominant providers in their current form we don't know. 
+          The ones that survive will be those that can close the gap between what it costs to serve a request and what a 
+          customer is willing to pay. Right now, that gap is billions of dollars wide.
+        </p><br />
+
+        <InsightSignoff />
+      </p>
+    </span>
+
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>
