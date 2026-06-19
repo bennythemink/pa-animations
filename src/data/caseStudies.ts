@@ -61,7 +61,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Health', 'Community'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
-      'Unified three merging community health organisations online, achieving a 115% increase in total visitors within six months of launch.',
+      'Unified three merging community health organisations online, achieving a +15% increase in total visitors within six months of launch.',
     colour: 'bg-pixel-celestial',
     image: bhn,
     drawerImage: bhnDrawer,
@@ -391,13 +391,13 @@ const sorted = [...caseStudies].sort((a, b) => a.title.localeCompare(b.title))
 
 export const publishedCaseStudies = sorted.filter((cs) => cs.published)
 
-export const featuredCaseStudies = sorted.filter((cs) => cs.featured)
+export const featuredCaseStudies = publishedCaseStudies.filter((cs) => cs.featured)
 
 const melbourneSlugs = ['bhn', 'holmesglen', 'eel', 'stemhub']
-export const melbourneCaseStudies = sorted.filter((cs) => melbourneSlugs.includes(cs.slug))
+export const melbourneCaseStudies = publishedCaseStudies.filter((cs) => melbourneSlugs.includes(cs.slug))
 
 const sydneySlugs = ['cyprusays', 'insulation', 'fletcher-dam', 'simple']
-export const sydneyCaseStudies = sorted.filter((cs) => sydneySlugs.includes(cs.slug))
+export const sydneyCaseStudies = publishedCaseStudies.filter((cs) => sydneySlugs.includes(cs.slug))
 
 export function getCaseStudyNav(slug: string): CaseStudyNav {
   const index = publishedCaseStudies.findIndex((cs) => cs.slug === slug)
