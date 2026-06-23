@@ -1,0 +1,79 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightNav from '@components/insights/InsightNav.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import { siteConfig } from '@config/site'
+
+const { previous, current, next } = getInsightNav('why-you-should-consider-using-your-own-ai-model')
+---
+
+<Layout title={current?.title} description="">
+  <Insight>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Open-source AI models have closed the gap with proprietary frontier models fast. In 2026, models including
+        <a href="https://llama.meta.com/" class="underline underline-offset-2" target="_blank">Meta's Llama 4</a>, <a
+          href="https://www.alibabacloud.com/en/solutions/generative-ai/qwen"
+          class="underline underline-offset-2"
+          target="_blank">Alibaba's Qwen 3</a
+        >, and <a href="https://mistral.ai/news/mistral-3/" class="underline underline-offset-2" target="_blank"
+          >Mistral Large 3</a
+        > are <a
+          href="https://discretestack.com/blog/beyond-the-frontier-2026-open-weight-leaders"
+          class="underline underline-offset-2"
+          target="_blank">competitive across most business use cases</a
+        >, and they can be deployed on infrastructure you own and control.
+      </p><br />
+      <p>
+        When you run your own model, you control the version, the uptime, and the data. You can predict your costs, you
+        are not subject to rate limits imposed by a provider managing millions of simultaneous users, and your data does
+        not leave your environment. You are also not exposed to decisions a third-party provider makes about pricing,
+        access, or availability, decisions that can change without notice and without your input.
+      </p><br />
+
+      <p>
+        That last point became very concrete only this month. On the 9th of June, <a
+          href="https://thenewstack.io/us-gov-orders-anthropic-to-pull-fable-5-and-mythos-5-three-days-after-launch/"
+          class="underline underline-offset-2"
+          target="_blank">Anthropic launched Fable 5 and its sister model Mythos 5</a
+        >, which Anthropic described as their most advanced models to date. Three days later, the White House called
+        Anthropic, told them the models posed a national security threat, and <a
+          href="https://www.businesstoday.in/technology/artificial-intelligence/story/anthropic-had-90-minutes-to-restrict-claude-fable-5-as-white-house-feared-chinese-access-537095-2026-06-16"
+          class="underline underline-offset-2"
+          target="_blank">had them take both models offline</a
+        >. Because the directive banned use by any foreign national anywhere in the world, including Anthropic's own
+        non-citizen employees, the company could not partially comply. They pulled both models for everyone. A jailbreak
+        capable of bypassing the models' safety classifiers had <a
+          href="https://fortune.com/2026/06/14/how-a-warning-from-amazon-led-the-white-house-to-shut-down-anthropics-mythos-model/"
+          class="underline underline-offset-2"
+          target="_blank">reportedly been flagged to the Commerce Department by Amazon</a
+        >, which is both a major investor in Anthropic and a direct competitor in the AI market. It was the <a
+          href="https://theconversation.com/why-the-us-government-shut-down-anthropics-latest-claude-ai-model-285223"
+          class="underline underline-offset-2"
+          target="_blank">first time a government forced a leading AI company to retract its models from public use</a
+        >. If your business had been built on either of those models, your product went dark with 90 minutes' notice.
+      </p><br />
+
+      <p>
+        Self-hosting is not the right answer for every situation. The absolute frontier of model capability still sits
+        with the proprietary providers, and running your own model requires more technical capability than calling an
+        API. But for any business-critical application, it is worth asking whether the marginal performance difference
+        justifies building on infrastructure you have no control over.
+      </p><br />
+
+      <p>
+        Interested in learning what local <a href="/services/ai" class="underline underline-offset-2">AI</a> can do for your
+        business? Give us a <a href={`tel:${siteConfig.phone}`} class="underline underline-offset-2">call</a> or
+        <a href="/contact" class="underline underline-offset-2">send us a message</a> to understand more without any pushy
+        sales tactics.
+      </p>
+    </span>
+  </Insight>
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>

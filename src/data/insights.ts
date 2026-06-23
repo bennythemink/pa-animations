@@ -110,6 +110,17 @@ const insights: Insight[] = [
     featured: false,
     tags: ['AI', 'technology'],
     colour: 'pixel-solar'
+  },
+  {
+    title: 'Why You Should Consider Using Your Own AI Model',
+    publishedAt: '2026-06-23',
+    dateLabel: '23rd June, 2026',
+    summary: 'The case for self-hosting AI models instead of relying on third-party APIs.',
+    slug: 'why-you-should-consider-using-your-own-ai-model',
+    published: true,
+    featured: false,
+    tags: ['AI', 'technology'],
+    colour: 'pixel-celestial'
   }
 ]
 
