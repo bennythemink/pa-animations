@@ -106,7 +106,7 @@ const caseStudies: CaseStudy[] = [
     industry: ['Construction', 'Manufacturing'],
     services: ['Discovery + direction', 'Design', 'Development'],
     overview:
-      'A full website rebuild that drove a 40% lift in visitors and 300%+ increase in session time, while cutting support requests by 30%.',
+      'A full website rebuild that increased average sessions times, reduced bounce rates, while significantly cutting support requests.',
     colour: 'bg-pixel-teal',
     image: insulation,
     drawerImage: insulationDrawer,
