@@ -121,6 +121,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['AI', 'technology'],
     colour: 'pixel-celestial'
+  },
+  {
+    title: 'Open Knowledge Format: A Format For Company Knowledge That Your Team And Your AI Can Both Use',
+    publishedAt: '2026-06-30',
+    dateLabel: '30th June, 2026',
+    summary:
+      'A new open standard for storing company knowledge in a format that works for your team today and your AI systems tomorrow.',
+    slug: 'open-knowledge-format-a-format-for-company-knowledge-that-your-team-and-your-ai-can-both-use',
+    published: true,
+    featured: false,
+    tags: ['AI', 'technology'],
+    colour: 'pixel-teal'
   }
 ]
 

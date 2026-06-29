@@ -1,0 +1,68 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightNav from '@components/insights/InsightNav.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+
+const { previous, current, next } = getInsightNav(
+  'open-knowledge-format-a-format-for-company-knowledge-that-your-team-and-your-ai-can-both-use'
+)
+---
+
+<Layout
+  title="Open Knowledge Format: A Format For Company Knowledge That Your Team And Your AI Can Both Use"
+  description="A new open standard for storing company knowledge in a format that works for your team today and your AI systems tomorrow."
+>
+  <Insight>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Most company knowledge ends up trapped inside tools you do not own. Notion, Confluence, SharePoint, a wiki that
+        nobody updates. The information is technically there, but moving it, sharing it, or doing anything useful with
+        it outside the original platform is harder than it should be.
+      </p><br />
+      <p>
+        Google recently published the <a
+          href="https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing"
+          class="underline underline-offset-2"
+          target="_blank">Open Knowledge Format (OKF)</a
+        >, a specification that takes the opposite approach. Knowledge is stored as plain markdown files with a thin
+        layer of YAML metadata. It can be read without any tooling, versioned in git, and moved between systems without
+        a migration project. It is currently a version 0.1 draft, but the thinking behind it is sound.
+      </p><br />
+
+      <p>
+        The more interesting angle is what OKF implies about how businesses should treat their knowledge. Most
+        organisations accumulate information rather than maintain it. Documents get created, rarely get updated, and
+        slowly become unreliable. OKF treats knowledge as something worth designing: structured, tagged, cross-linked,
+        with a clear type and a modification timestamp. That discipline, knowing what you know, keeping it current, and
+        making it findable, is the actual value. The format is just the container.
+      </p><br />
+
+      <p>
+        Where this connects to AI is practical rather than theoretical. RAG-based systems like <a
+          href="/pixel-assist"
+          class="underline underline-offset-2"
+          target="_blank">Pixel Assist</a
+        > answer questions by retrieving content from your own documents. Before that works well, your knowledge needs to
+        be in reasonable shape. Part of what we do when onboarding clients to Pixel Assist is exactly this cleanup work. OKF
+        does not automate that process, but it gives you a sensible target format, one that benefits employees and customers
+        before AI is even part of the picture.
+      </p><br />
+
+      <p>
+        That said, OKF is not a silver bullet. A well-structured knowledge base that nobody maintains will drift out of
+        date just as quickly as a poorly structured one. The format makes the job easier. It does not do the job for
+        you.
+      </p><br />
+
+      <InsightSignoff />
+    </span>
+  </Insight>
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>
