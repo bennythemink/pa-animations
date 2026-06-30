@@ -84,6 +84,28 @@ const whoNotFor = [
   title="Design"
   description="Web, brand, and app design for Australian businesses. We design digital experiences that are clear, considered, and built around the people who use them. We are an agency who cares."
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Web + App Design',
+        description:
+          'Human-centred digital experiences. We design brands, websites, and applications that are clear, considered, and enjoyable to use, balancing visual expression with usability and purpose.',
+        url: 'https://www.pixelagency.com.au/services/design',
+        provider: {
+          '@id': 'https://www.pixelagency.com.au/#organisation'
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'Australia'
+        },
+        serviceType: 'Web Design, App Design, Brand Design'
+      })}
+    />
+  </Fragment>
+
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
 
   <CaseStudiesSection first={first} second={second} />

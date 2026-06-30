@@ -90,6 +90,28 @@ const bulletPoints = [
   title="Discovery + direction"
   description="Digital discovery workshops for Australian businesses. We clarify the problem, define the path forward, and reduce risk before you commit to delivery. An agency that cares."
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Discovery + Direction',
+        description:
+          'Clarity before commitment. We help organisations define the problem, the solution, and the investment required before committing to delivery. Establishing shared understanding and a clear, defensible path forward.',
+        url: 'https://www.pixelagency.com.au/services/discovery',
+        provider: {
+          '@id': 'https://www.pixelagency.com.au/#organisation'
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'Australia'
+        },
+        serviceType: 'Digital Discovery + Strategy'
+      })}
+    />
+  </Fragment>
+
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} stack={false} />
 
   <CaseStudiesSection first={first} second={second} />

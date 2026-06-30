@@ -93,6 +93,28 @@ const whoNotFor = [
   title="Digital Consulting Services"
   description="Digital consulting for Australian businesses. Virtual CTO, strategy, and delivery leadership from senior practitioners who give honest advice when the decisions matter most. An agency that cares."
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Digital Consulting',
+        description:
+          'Strategy, leadership, and clarity at every stage. Senior guidance on digital strategy, delivery, and technical decisions — whether as a virtual CTO, delivery lead, or trusted advisor.',
+        url: 'https://www.pixelagency.com.au/services/consulting',
+        provider: {
+          '@id': 'https://www.pixelagency.com.au/#organisation'
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'Australia'
+        },
+        serviceType: 'Digital Consulting, Virtual CTO, Technology Advisory'
+      })}
+    />
+  </Fragment>
+
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} stack={false} />
   <CaseStudiesSection first={first} second={second} />
 

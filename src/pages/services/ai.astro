@@ -95,6 +95,28 @@ const whoNotFor = [
   title="AI Strategy, Custom AI Builds & Automation"
   description="AI strategy and implementation for Australian businesses. Practical AI solutions that drive efficiency, reduce manual work, and deliver measurable results. An agency that cares."
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'AI Strategy + Implementation',
+        description:
+          'Practical AI solutions for Australian businesses. We help organisations leverage AI through strategy and advisory, custom AI builds, and workflow automation — grounded in real business problems, not hype.',
+        url: 'https://www.pixelagency.com.au/services/ai',
+        provider: {
+          '@id': 'https://www.pixelagency.com.au/#organisation'
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'Australia'
+        },
+        serviceType: 'AI Strategy, AI Implementation, Workflow Automation'
+      })}
+    />
+  </Fragment>
+
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} />
   <CaseStudiesSection first={first} second={second} />
 

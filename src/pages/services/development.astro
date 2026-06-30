@@ -97,6 +97,28 @@ const whoNotFor = ['Projects where speed is the only priority and stability can 
   title="Website & Application Development Services"
   description="Web and app development for Australian businesses. Websites, applications, and custom systems built to be reliable, maintainable, and fit for the real world. An agency that cares."
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Web + App Development',
+        description:
+          'Reliable, scalable digital solutions. From websites to applications and custom systems, we build digital products that are robust, maintainable, and fit for real-world use. Not over-engineered, not fragile.',
+        url: 'https://www.pixelagency.com.au/services/development',
+        provider: {
+          '@id': 'https://www.pixelagency.com.au/#organisation'
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'Australia'
+        },
+        serviceType: 'Web Development, App Development, Custom Software'
+      })}
+    />
+  </Fragment>
+
   <HeroSection title={pageTitle} tagline={tagline} paragraphs={paragraphs} stack={false} />
 
   <CaseStudiesSection first={first} second={second} />
