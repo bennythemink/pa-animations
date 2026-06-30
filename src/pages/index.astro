@@ -1,8 +1,5 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import plusSvg from '@assets/plus.svg?url'
-import equalsSvg from '@assets/equals.svg?url'
-import vectorSvg from '@assets/vector.svg?url'
 import Grid from '@components/Grid.astro'
 import SectionCards from '@components/SectionCards.astro'
 import ClientLogos from '@components/home/ClientLogos.astro'
@@ -115,9 +112,12 @@ const sectionCards = [
               class="inline-block w-[0.22em] h-[0.22em] bg-pixel-teal ml-[0.08em] rounded-none"
               style="vertical-align: baseline;"></span>
           </span>
+          <span id="hero-tagline-sub" class="block opacity-0">
+            <br />A Melbourne digital agency for web & app design, development, + AI.
+          </span>
         </h1>
 
-        <div id="hero-cta" class="mt-4 lg:mt-8 opacity-0">
+        <div id="hero-cta" class="mt-6 lg:mt-8 opacity-0">
           <CTA label="Let's talk" />
         </div>
       </div>
@@ -811,6 +811,7 @@ const sectionCards = [
     const puzzleEl = document.getElementById('hero-puzzle')!
     const taglineTop = document.getElementById('hero-tagline-top')!
     const taglineBottom = document.getElementById('hero-tagline-bottom')!
+    const taglineSub = document.getElementById('hero-tagline-sub')!
     const heroCta = document.getElementById('hero-cta')!
     const vw = window.innerWidth
     const sizeScale = HERO_PUZZLE_SCALE[HERO_PUZZLE_SIZE]
@@ -924,7 +925,7 @@ const sectionCards = [
 
     // Fade in surrounding text + CTA after solve completes
 
-    solveTl.to([taglineTop, taglineBottom], {
+    solveTl.to([taglineTop, taglineBottom, taglineSub], {
       opacity: 1,
       duration: 0.5,
       ease: 'power2.out'
