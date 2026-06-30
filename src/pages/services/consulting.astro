@@ -98,19 +98,31 @@ const whoNotFor = [
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: 'Digital Consulting',
-        description:
-          'Strategy, leadership, and clarity at every stage. Senior guidance on digital strategy, delivery, and technical decisions — whether as a virtual CTO, delivery lead, or trusted advisor.',
-        url: 'https://www.pixelagency.com.au/services/consulting',
-        provider: {
-          '@id': 'https://www.pixelagency.com.au/#organisation'
-        },
-        areaServed: {
-          '@type': 'Country',
-          name: 'Australia'
-        },
-        serviceType: 'Digital Consulting, Virtual CTO, Technology Advisory'
+        '@graph': [
+          {
+            '@type': 'Service',
+            name: 'Digital Consulting',
+            description:
+              'Strategy, leadership, and clarity at every stage. Senior guidance on digital strategy, delivery, and technical decisions — whether as a virtual CTO, delivery lead, or trusted advisor.',
+            url: 'https://www.pixelagency.com.au/services/consulting',
+            provider: { '@id': 'https://www.pixelagency.com.au/#organisation' },
+            areaServed: { '@type': 'Country', name: 'Australia' },
+            serviceType: 'Digital Consulting, Virtual CTO, Technology Advisory'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.pixelagency.com.au' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.pixelagency.com.au/services' },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: 'Consulting',
+                item: 'https://www.pixelagency.com.au/services/consulting'
+              }
+            ]
+          }
+        ]
       })}
     />
   </Fragment>

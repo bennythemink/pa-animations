@@ -100,19 +100,26 @@ const whoNotFor = [
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: 'AI Strategy + Implementation',
-        description:
-          'Practical AI solutions for Australian businesses. We help organisations leverage AI through strategy and advisory, custom AI builds, and workflow automation — grounded in real business problems, not hype.',
-        url: 'https://www.pixelagency.com.au/services/ai',
-        provider: {
-          '@id': 'https://www.pixelagency.com.au/#organisation'
-        },
-        areaServed: {
-          '@type': 'Country',
-          name: 'Australia'
-        },
-        serviceType: 'AI Strategy, AI Implementation, Workflow Automation'
+        '@graph': [
+          {
+            '@type': 'Service',
+            name: 'AI Strategy + Implementation',
+            description:
+              'Practical AI solutions for Australian businesses. We help organisations leverage AI through strategy and advisory, custom AI builds, and workflow automation — grounded in real business problems, not hype.',
+            url: 'https://www.pixelagency.com.au/services/ai',
+            provider: { '@id': 'https://www.pixelagency.com.au/#organisation' },
+            areaServed: { '@type': 'Country', name: 'Australia' },
+            serviceType: 'AI Strategy, AI Implementation, Workflow Automation'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.pixelagency.com.au' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.pixelagency.com.au/services' },
+              { '@type': 'ListItem', position: 3, name: 'AI', item: 'https://www.pixelagency.com.au/services/ai' }
+            ]
+          }
+        ]
       })}
     />
   </Fragment>

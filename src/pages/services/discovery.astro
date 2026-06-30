@@ -95,19 +95,31 @@ const bulletPoints = [
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: 'Discovery + Direction',
-        description:
-          'Clarity before commitment. We help organisations define the problem, the solution, and the investment required before committing to delivery. Establishing shared understanding and a clear, defensible path forward.',
-        url: 'https://www.pixelagency.com.au/services/discovery',
-        provider: {
-          '@id': 'https://www.pixelagency.com.au/#organisation'
-        },
-        areaServed: {
-          '@type': 'Country',
-          name: 'Australia'
-        },
-        serviceType: 'Digital Discovery + Strategy'
+        '@graph': [
+          {
+            '@type': 'Service',
+            name: 'Discovery + Direction',
+            description:
+              'Clarity before commitment. We help organisations define the problem, the solution, and the investment required before committing to delivery. Establishing shared understanding and a clear, defensible path forward.',
+            url: 'https://www.pixelagency.com.au/services/discovery',
+            provider: { '@id': 'https://www.pixelagency.com.au/#organisation' },
+            areaServed: { '@type': 'Country', name: 'Australia' },
+            serviceType: 'Digital Discovery + Strategy'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.pixelagency.com.au' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.pixelagency.com.au/services' },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: 'Discovery + Direction',
+                item: 'https://www.pixelagency.com.au/services/discovery'
+              }
+            ]
+          }
+        ]
       })}
     />
   </Fragment>

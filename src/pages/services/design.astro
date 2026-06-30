@@ -89,19 +89,31 @@ const whoNotFor = [
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: 'Web + App Design',
-        description:
-          'Human-centred digital experiences. We design brands, websites, and applications that are clear, considered, and enjoyable to use, balancing visual expression with usability and purpose.',
-        url: 'https://www.pixelagency.com.au/services/design',
-        provider: {
-          '@id': 'https://www.pixelagency.com.au/#organisation'
-        },
-        areaServed: {
-          '@type': 'Country',
-          name: 'Australia'
-        },
-        serviceType: 'Web Design, App Design, Brand Design'
+        '@graph': [
+          {
+            '@type': 'Service',
+            name: 'Web, App + Brand Design',
+            description:
+              'Human-centred digital experiences. We design brands, websites, and applications that are clear, considered, and enjoyable to use, balancing visual expression with usability and purpose.',
+            url: 'https://www.pixelagency.com.au/services/design',
+            provider: { '@id': 'https://www.pixelagency.com.au/#organisation' },
+            areaServed: { '@type': 'Country', name: 'Australia' },
+            serviceType: 'Web Design, App Design, Brand Design'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.pixelagency.com.au' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.pixelagency.com.au/services' },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: 'Design',
+                item: 'https://www.pixelagency.com.au/services/design'
+              }
+            ]
+          }
+        ]
       })}
     />
   </Fragment>

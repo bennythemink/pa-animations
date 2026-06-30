@@ -102,19 +102,31 @@ const whoNotFor = ['Projects where speed is the only priority and stability can 
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: 'Web + App Development',
-        description:
-          'Reliable, scalable digital solutions. From websites to applications and custom systems, we build digital products that are robust, maintainable, and fit for real-world use. Not over-engineered, not fragile.',
-        url: 'https://www.pixelagency.com.au/services/development',
-        provider: {
-          '@id': 'https://www.pixelagency.com.au/#organisation'
-        },
-        areaServed: {
-          '@type': 'Country',
-          name: 'Australia'
-        },
-        serviceType: 'Web Development, App Development, Custom Software'
+        '@graph': [
+          {
+            '@type': 'Service',
+            name: 'Web + App Development',
+            description:
+              'Reliable, scalable digital solutions. From websites to applications and custom systems, we build digital products that are robust, maintainable, and fit for real-world use. Not over-engineered, not fragile.',
+            url: 'https://www.pixelagency.com.au/services/development',
+            provider: { '@id': 'https://www.pixelagency.com.au/#organisation' },
+            areaServed: { '@type': 'Country', name: 'Australia' },
+            serviceType: 'Web Development, App Development, Custom Software'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.pixelagency.com.au' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.pixelagency.com.au/services' },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: 'Development',
+                item: 'https://www.pixelagency.com.au/services/development'
+              }
+            ]
+          }
+        ]
       })}
     />
   </Fragment>
