@@ -115,6 +115,42 @@ const cards = [
   title="Digital Agency Brisbane | Web + App Design, Development, AI, & Consulting"
   description="We are a digital agency working with Brisbane businesses on web design, brand design, app development, AI, and consulting for one of Australia's fastest-growing business markets. Melbourne-based, Australian-owned, no sales layer. An agency that cares."
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Service',
+            name: 'Digital Agency Services — Brisbane',
+            description:
+              'Digital agency working with Brisbane businesses on web, app & brand design, web & app development, AI solutions, and digital consulting. Melbourne-based, Australian-owned, no sales layer.',
+            url: 'https://www.pixelagency.com.au/brisbane',
+            provider: { '@id': 'https://www.pixelagency.com.au/#organisation' },
+            areaServed: {
+              '@type': 'City',
+              name: 'Brisbane',
+              containedInPlace: {
+                '@type': 'State',
+                name: 'Queensland',
+                containedInPlace: { '@type': 'Country', name: 'Australia' }
+              }
+            },
+            serviceType: 'Web Design, App Development, AI, Digital Consulting'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.pixelagency.com.au' },
+              { '@type': 'ListItem', position: 2, name: 'Brisbane', item: 'https://www.pixelagency.com.au/brisbane' }
+            ]
+          }
+        ]
+      })}
+    />
+  </Fragment>
+
   <div id="site-content">
     <section id="hero-puzzle-section" class="relative h-screen flex items-center justify-center">
       <div id="hero-puzzle-content" class="text-center">

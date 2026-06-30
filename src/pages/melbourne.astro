@@ -100,6 +100,42 @@ const cards = [
   title="Digital Agency Melbourne | Web + App Design, Development, AI, & Consulting"
   description="Melbourne digital agency specialising in web/app/system design, brand design, development, AI, and digital consulting. Senior practitioners, no sales layer. Serving businesses across Melbourne and Australia."
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Service',
+            name: 'Digital Agency Services — Melbourne',
+            description:
+              'Melbourne digital agency specialising in web, app & brand design, web & app development, AI solutions, and digital consulting. Senior practitioners, no sales layer, working directly with Melbourne businesses.',
+            url: 'https://www.pixelagency.com.au/melbourne',
+            provider: { '@id': 'https://www.pixelagency.com.au/#organisation' },
+            areaServed: {
+              '@type': 'City',
+              name: 'Melbourne',
+              containedInPlace: {
+                '@type': 'State',
+                name: 'Victoria',
+                containedInPlace: { '@type': 'Country', name: 'Australia' }
+              }
+            },
+            serviceType: 'Web Design, App Development, AI, Digital Consulting'
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.pixelagency.com.au' },
+              { '@type': 'ListItem', position: 2, name: 'Melbourne', item: 'https://www.pixelagency.com.au/melbourne' }
+            ]
+          }
+        ]
+      })}
+    />
+  </Fragment>
+
   <div id="site-content">
     <section id="hero-puzzle-section" class="relative h-screen flex items-center justify-center">
       <div id="hero-puzzle-content" class="text-center">
