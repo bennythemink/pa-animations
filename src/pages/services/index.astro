@@ -67,9 +67,125 @@ const services = [
 ---
 
 <Layout
-  title="Digital Services for Clear, Outcome-Focused Delivery"
+  title="Web & App Design, Web & App Development, Digital Consulting & AI Services Melbourne & Australia"
   description="Explore Pixel Agency’s digital services: from discovery and design to development, consulting and AI. A senior digital partner helping organisations move from uncertainty to outcomes."
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Pixel Agency Services',
+        description:
+          'Digital services for clear, outcome-focused delivery. Web design, app development, AI solutions, and digital consulting for Australian businesses.',
+        url: 'https://www.pixelagency.com.au/services',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            item: {
+              '@type': 'Service',
+              name: 'Discovery + Direction',
+              description:
+                'Clarity before commitment. For organisations that know something needs to change but need help defining the problem, the solution, and the investment required. Discovery and direction establishes shared understanding, reduces uncertainty, and creates a clear, defensible path forward before committing to delivery.',
+              url: 'https://www.pixelagency.com.au/services/discovery',
+              provider: {
+                '@type': 'Organization',
+                name: 'Pixel Agency',
+                url: 'https://www.pixelagency.com.au'
+              },
+              areaServed: {
+                '@type': 'Country',
+                name: 'Australia'
+              }
+            }
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            item: {
+              '@type': 'Service',
+              name: 'Web + App Design',
+              description:
+                'Human-centred digital experiences. We design brands, websites, and applications that are clear, considered, and enjoyable to use, balancing visual expression with usability and purpose.',
+              url: 'https://www.pixelagency.com.au/services/design',
+              provider: {
+                '@type': 'Organization',
+                name: 'Pixel Agency',
+                url: 'https://www.pixelagency.com.au'
+              },
+              areaServed: {
+                '@type': 'Country',
+                name: 'Australia'
+              }
+            }
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            item: {
+              '@type': 'Service',
+              name: 'Web + App Development',
+              description:
+                'Reliable, scalable digital solutions. From websites to applications and custom systems, we build digital products that are robust, maintainable, and fit for real-world use.',
+              url: 'https://www.pixelagency.com.au/services/development',
+              provider: {
+                '@type': 'Organization',
+                name: 'Pixel Agency',
+                url: 'https://www.pixelagency.com.au'
+              },
+              areaServed: {
+                '@type': 'Country',
+                name: 'Australia'
+              }
+            }
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
+            item: {
+              '@type': 'Service',
+              name: 'AI Strategy + Implementation',
+              description:
+                'Practical AI solutions for business. We help organisations leverage AI to drive innovation, improve efficiency, and make data-driven decisions. Services include strategy, advisory, custom AI builds, and workflow automation.',
+              url: 'https://www.pixelagency.com.au/services/ai',
+              provider: {
+                '@type': 'Organization',
+                name: 'Pixel Agency',
+                url: 'https://www.pixelagency.com.au'
+              },
+              areaServed: {
+                '@type': 'Country',
+                name: 'Australia'
+              }
+            }
+          },
+          {
+            '@type': 'ListItem',
+            position: 5,
+            item: {
+              '@type': 'Service',
+              name: 'Digital Consulting',
+              description:
+                'Strategy, leadership, and clarity at every stage. We provide experienced digital leadership to support strategy, delivery, and long-term decision-making — whether as a virtual CTO, delivery lead, or trusted advisor.',
+              url: 'https://www.pixelagency.com.au/services/consulting',
+              provider: {
+                '@type': 'Organization',
+                name: 'Pixel Agency',
+                url: 'https://www.pixelagency.com.au'
+              },
+              areaServed: {
+                '@type': 'Country',
+                name: 'Australia'
+              }
+            }
+          }
+        ]
+      })}
+    />
+  </Fragment>
+
   {/* ── Hero ── */}
   <section class="pt-10 pb-8 lg:pt-16 lg:pb-20">
     <Grid>

@@ -119,6 +119,66 @@ const benefitsCards = [
   description="Turn your website into an expert. Pixel Assist is a managed, AI-powered knowledge assistant that answers customer questions instantly, reduces support load, and speeds up decisions."
   noMenuSpacer
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'What is Pixel Assist?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Pixel Assist is a managed, AI-powered knowledge assistant for websites. It learns your content and answers customer questions instantly, helping people make faster decisions while reducing repetitive support work for your team.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'How does Pixel Assist work?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'We work with you to ingest your website content, documents, and resources, then train the assistant on your terminology, products, and processes. We deploy it directly into your website experience and provide monthly insights reports, ongoing performance monitoring, and continuous optimisation.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: "What are Pixel Assist's features?",
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Pixel Assist includes a custom UI matched to your brand, managed setup and hosting, bring-your-own-model AI (OpenAI, Claude, etc. at cost price), CRM integration, no personal data storage, Australian-based dedicated hosting, ongoing optimisation, data ownership, and monthly reporting on trends and insights.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Who is Pixel Assist for?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Pixel Assist is ideal for organisations with large knowledge bases, detailed or technical products, compliance or policy documentation, complex services, or frequent support questions. Common examples include manufacturers and wholesalers, education and training providers, professional services firms, SaaS and technology platforms, and internal knowledge bases and portals.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'How much does Pixel Assist cost?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Pixel Assist starts from $599 per month plus a one-time onboarding fee scoped to the size and complexity of your knowledge base. Every implementation includes setup and training, Australian-based hosting, ongoing optimisation, monitoring and maintenance, and monthly reporting.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Is my data secure with Pixel Assist?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes. Pixel Assist does not store any personal data, is hosted on dedicated Australian-based servers, and does not use your data to train other models. You retain full ownership of your data.'
+            }
+          }
+        ]
+      })}
+    />
+  </Fragment>
+
   {/* ── Hero: pinned scroll section with parallax chat bubbles ── */}
   <section id="pa-hero" class="relative h-screen overflow-hidden">
     {/* ── Back bubble layer (z-1, behind text) ── */}

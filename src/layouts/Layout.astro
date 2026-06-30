@@ -17,7 +17,7 @@ interface Props {
 
 const {
   title = 'Pixel Agency',
-  description = 'Pixel Agency — digital strategy, design, and development studio based in Melbourne, Australia.',
+  description = 'Melbourne digital agency specialising in web design, app development, and AI. Working with businesses across Australia. You talk to the people doing the work.',
   noMenuSpacer = false,
   logoColors,
   published = true
@@ -96,6 +96,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
       })(window, document, 'script', 'dataLayer', 'GTM-TSXFMXLV')
     </script>
     <!-- End Google Tag Manager -->
+
+    <slot name="head" />
   </head>
   <body class="m-0 min-h-screen bg-pixel-lte-platinum">
     <Menu logoColors={logoColors} />
