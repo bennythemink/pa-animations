@@ -30,7 +30,7 @@ const insights: Insight[] = [
     slug: 'why-and-when-to-do-a-discovery-phase',
     published: true,
     featured: true,
-    tags: ['discovery', 'project management'],
+    tags: ['Discovery', 'Project Management'],
     colour: 'pixel-solar'
   },
   {
@@ -41,7 +41,7 @@ const insights: Insight[] = [
     slug: 'what-a-discovery-phase-looks-like',
     published: true,
     featured: true,
-    tags: ['discovery', 'project management'],
+    tags: ['Discovery', 'Project Management'],
     colour: 'pixel-celestial'
   },
   {
@@ -52,7 +52,7 @@ const insights: Insight[] = [
     slug: 'what-about-off-shoring',
     published: true,
     featured: false,
-    tags: ['off-shoring'],
+    tags: ['Off-shoring'],
     colour: 'pixel-rosy'
   },
   {
@@ -63,7 +63,7 @@ const insights: Insight[] = [
     slug: 'what-a-good-brief-looks-like',
     published: true,
     featured: true,
-    tags: ['discovery'],
+    tags: ['Discovery'],
     colour: 'pixel-teal'
   },
   {
@@ -75,7 +75,7 @@ const insights: Insight[] = [
     slug: 'how-to-manage-multiple-agencies-working-on-the-same-project',
     published: true,
     featured: false,
-    tags: ['project management'],
+    tags: ['Project Management'],
     colour: 'pixel-fawn'
   },
   {
@@ -86,7 +86,7 @@ const insights: Insight[] = [
     slug: 'what-good-communication-looks-like-on-a-digital-project',
     published: true,
     featured: false,
-    tags: ['project management', 'communication'],
+    tags: ['Project Management'],
     colour: 'pixel-fire'
   },
   {
@@ -97,7 +97,7 @@ const insights: Insight[] = [
     slug: 'how-to-evaluate-the-technology-your-agency-recommends',
     published: true,
     featured: false,
-    tags: ['consulting', 'technology'],
+    tags: ['Consulting', 'Technology'],
     colour: 'pixel-fawn'
   },
   {
@@ -108,7 +108,7 @@ const insights: Insight[] = [
     slug: 'does-ai-have-a-sustainable-business-model',
     published: true,
     featured: false,
-    tags: ['AI', 'technology'],
+    tags: ['AI', 'Business'],
     colour: 'pixel-solar'
   },
   {
@@ -119,7 +119,7 @@ const insights: Insight[] = [
     slug: 'why-you-should-consider-using-your-own-ai-model',
     published: true,
     featured: false,
-    tags: ['AI', 'technology'],
+    tags: ['AI'],
     colour: 'pixel-celestial'
   },
   {
@@ -131,7 +131,7 @@ const insights: Insight[] = [
     slug: 'open-knowledge-format-a-format-for-company-knowledge-that-your-team-and-your-ai-can-both-use',
     published: true,
     featured: false,
-    tags: ['AI', 'technology'],
+    tags: ['AI', 'Knowledge Management'],
     colour: 'pixel-teal'
   }
 ]
