@@ -1,0 +1,123 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightNav from '@components/insights/InsightNav.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+
+const { previous, current, next } = getInsightNav('lets-derisk-your-project-delivery')
+---
+
+<Layout
+  title="Let's Derisk Your Project Delivery"
+  description="An insight into strategies for derisking project delivery and ensuring successful outcomes."
+>
+  <Insight>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        It can be risky to start a new project with a new company that you've never used before. You would obviously
+        want to ensure your project is as successful as possible from the very start. This is where our experience and
+        insights can help, whomever your provider is.
+      </p><br />
+      <p>
+        We have seen projects fail in two ways: the solution gets built but nobody uses it because the idea was never
+        properly validated, or the delivery itself falls apart. Both are largely avoidable with the right process.
+      </p><br />
+
+      <p>
+        To validate the idea in the first place, you need to do some market research and creates an MVP of the project
+        rather than the entire solution all at once. This won't guarantee success, but it'll reduce the risk of failure.
+      </p><br />
+
+      <p>
+        To avoid the delivery itself falling apart, you need to ensure that your provider has a proper project delivery
+        process. For non-agile projects, this process generally looks like the below:
+      </p><br />
+
+      <p>
+        <ul class="list-disc pl-6">
+          <li>
+            <strong><a href="/services/discovery" class="underline underline-offset-2">Discovery</a>:</strong> Before anything
+            gets designed or built, your provider should spend real time understanding the problem, i.e., stakeholders, the
+            business need, the user need, current process, target process, and constraints. You should receive a detailed
+            scope in plain language and sign off on it before a dollar is spent on the following stages.
+          </li>
+          <li>
+            <strong><a href="/services/design" class="underline underline-offset-2">Design</a>:</strong> Wireframes first,
+            approved by you before full-colour designs begin. Two separate approval points, not one handoff at the end. Then
+            onto development.
+          </li>
+
+          <li>
+            <strong><a href="/services/development" class="underline underline-offset-2">Development</a>:</strong> The solution
+            is built in a series of milestones, with each milestone being a complete feature that can be tested and approved
+            by you before moving onto the next milestone.
+          </li>
+
+          <li>
+            <strong>Beta and UAT reviews:</strong> You should test the solution at least twice before it goes live, once at
+            beta stage and once at near-final. Each should come with a structured feedback session and your sign-off before
+            work continues.
+          </li>
+
+          <li>
+            <strong>Deployment:</strong> The solution is deployed to your live environment, with all necessary configurations
+            and monitoring in place.
+          </li>
+
+          <li>
+            <strong>Post-launch support:</strong> After launch, bugs happen. You should have a defined period where issues
+            are logged, triaged by severity, and resolved in a final build with your sign-off.
+          </li>
+        </ul>
+      </p><br /><br />
+
+      <p>Some other de-risking strategies can include:</p><br />
+      <p>
+        <ul class="list-disc pl-6">
+          <li>
+            <strong>Vertical Slice:</strong> Rather than waiting months for a full build before you see anything, a good agency
+            will build one complete feature end to end early in development. You get to test the real solution quickly, and
+            that early feedback shapes everything that follows.
+          </li>
+          <li>
+            <strong>Regular updates:</strong> Weekly. Not just when there is something to show. Video calls at key milestones,
+            email check-ins during periods of deep work. Regular progress reports in writing, not just an email, but a formal
+            report. A one-pager is generally sufficient.
+          </li>
+          <li>
+            <strong>Staged payments:</strong> Each phase should be a payment milestone. You pay for work you have seen and
+            approved. If your provider wants large upfront payments with no clear delivery gates, that is a red flag.
+          </li>
+          <li>
+            <strong>Clear IP Ownership:</strong> All IP, assets, and code should be owned by you. If your provider wants to
+            retain ownership of anything, that is a red flag.
+          </li>
+        </ul>
+      </p><br />
+
+      <p>
+        None of this is complicated, but plenty of agencies skip steps, combine stages, or keep the process opaque. A
+        clear process protects you. If a provider cannot explain theirs, ask why.
+      </p><br />
+
+      <p>
+        It might also be worthwhile considering the use of a <a
+          href="/how-to-evaluate-the-technology-your-agency-recommends"
+          class="underline underline-offset-2">virtual CTO to evaluate the technology your provider is recommending</a
+        >. This is a third-party technical consultant who can assess the proposed solution and provide an independent
+        opinion on whether it is a sensible fit for your needs, budget, and long-term goals. This can be a valuable step
+        in derisking your project delivery, especially if you are not technically inclined or if the project is
+        particularly complex.
+      </p><br />
+
+      <InsightSignoff />
+    </span>
+  </Insight>
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>

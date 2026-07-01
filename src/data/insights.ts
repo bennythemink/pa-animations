@@ -133,6 +133,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['AI', 'Knowledge Management'],
     colour: 'pixel-teal'
+  },
+  {
+    title: 'Lets Derisk Your Project Delivery',
+    publishedAt: '2026-07-01',
+    dateLabel: '1st July, 2026',
+    summary:
+      'A clear process, a good brief, and a well-defined scope are the best ways to derisk your project delivery.',
+    slug: 'lets-derisk-your-project-delivery',
+    published: true,
+    featured: false,
+    tags: ['Risk Management'],
+    colour: 'pixel-rosy'
   }
 ]
 

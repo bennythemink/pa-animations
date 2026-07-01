@@ -14,8 +14,8 @@ const { previous, current, next } = getInsightNav('does-ai-have-a-sustainable-bu
   description="An insight into the sustainability of AI business models and their long-term viability."
 >
   <Insight>
-    <span slot="insight-title">{current.title}</span>
-    <span slot="insight-subtitle">{current.dateLabel}</span>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
     <span slot="insight-text">
       <p>
         Nope. Thank you for coming to my Ted Talk. Okay, but seriously, this one will have a lot of source references.
