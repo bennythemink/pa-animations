@@ -100,6 +100,60 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <!-- End Google Tag Manager -->
 
     <slot name="head" />
+
+    <script>
+      ;(function (c, h, k, o, u, t) {
+        c[u] = c[u] || {
+          q: [],
+          push: function (a) {
+            this.q.push(a)
+          }
+        }
+        if (c[u].__s || h.querySelector('script[data-chkout-tag]')) return
+        c[u].__s = 1
+        c[u].channel = t
+        function pt() {
+          var meta = h.querySelector('meta[name="chkout:page-type"]')
+          if (meta) {
+            var c = meta.getAttribute('content')
+            if (c && /^[pclmao]$/.test(c)) return c
+          }
+          var p = h.location.pathname
+          if (/\/products?\//i.test(p)) return 'p'
+          if (/\/(collections?|categor(?:y|ies))\//i.test(p)) return 'c'
+          if (/\/(blog|articles?|news)\//i.test(p)) return 'a'
+          if (/\/listings?\//i.test(p)) return 'l'
+          return 'o'
+        }
+        function rd(n) {
+          try {
+            var m = h.cookie.match(new RegExp('(?:^|; ?)' + n + '=([^;]*)'))
+            return m ? m[1] : ''
+          } catch (e) {
+            return ''
+          }
+        }
+        var V = rd('chkvid'),
+          I = rd('chksid'),
+          P = rd('chkpid')
+        var s = h.createElement(o)
+        s.async = 1
+        s.setAttribute('data-chkout-tag', '1')
+        s.src =
+          k +
+          '/c/' +
+          t +
+          '/tag.js?t=' +
+          pt() +
+          '&u=' +
+          encodeURIComponent(h.location.pathname + h.location.search) +
+          (V ? '&v=' + V : '') +
+          (I ? '&i=' + I : '') +
+          (P ? '&p=' + P : '')
+        s.crossOrigin = 'anonymous'
+        ;(h.head || h.getElementsByTagName(o)[0].parentNode).appendChild(s)
+      })(window, document, 'https://cdn-dev.chkout.dev', 'script', 'chkout', '019f1bb0-0289-7d64-a72f-6afa5bbfe43c')
+    </script>
   </head>
   <body class="m-0 min-h-screen bg-pixel-lte-platinum">
     <Menu logoColors={logoColors} />
