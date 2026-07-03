@@ -1,4 +1,4 @@
-# new-insight
+# pixel-insight
 
 Create a new Insight article for the Pixel Agency website (pixelagency.com.au).
 
