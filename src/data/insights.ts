@@ -145,6 +145,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Risk Management'],
     colour: 'pixel-rosy'
+  },
+  {
+    title: 'What Happens to Your Website, App or Solution if Your Agency Closes',
+    publishedAt: '2026-07-03',
+    dateLabel: '3rd July, 2026',
+    summary:
+      'Practical steps to protect your hosting, domain, plugin licences, and agency relationship if your agency shuts down.',
+    slug: 'what-happens-to-your-website-app-or-solution-if-your-agency-closes',
+    published: true,
+    featured: false,
+    tags: ['Risk Management', 'Business'],
+    colour: 'pixel-teal'
   }
 ]
 

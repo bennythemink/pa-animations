@@ -1,0 +1,98 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('what-happens-to-your-website-app-or-solution-if-your-agency-closes')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Pixel Agency was founded by a <a href="/about" class="underline underline-offset-2">team</a> that had been through
+        exactly this. Before we started Pixel Agency, several of us were employees at another agency that failed due to mismanagement
+        by its owner. We saw firsthand what that meant for clients who were not prepared for it. If we were to advise clients
+        on what to do to reduce their risk if their agency closes, here’s what we would say:
+      </p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Host your website yourself:</strong> The most dangerous situation is having your website hosted by your
+            agency. If the agency closes and the hosting bills stop being paid, your site goes offline. Ideally, you should
+            own and manage your own hosting. If that is not practical, make sure you receive regular backups (every time your
+            website/app is updated) of your files and database, so you can move quickly if you need to.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Own your app store credentials:</strong> If your app is published on an app store, make sure you own the
+            developer account and credentials. Your developer should be invited to the account as a collaborator, not given
+            the keys to the house. If the agency closes and you don’t have access, you won’t be able to update or manage your
+            app.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Own your code:</strong> If your website or app is custom built, make sure you have access to the source
+            code. If the agency closes and you don’t have the code, you can’t maintain or update your website. If the agency
+            refuses to give you the code, that’s a red flag. You should be able to get a copy of the code at any time, even
+            if you are not paying for ongoing support.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Own your content:</strong> If your website or app has content that is not stored in the code (e.g. images,
+            videos, documents), make sure you have access to that content. If the agency closes and you don’t have the content,
+            you can’t maintain or update your website. Ideally, you should have a copy of all content stored in a separate
+            location from the website itself.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Own your domain:</strong> Your domain needs to be registered in your name and managed by you, not your
+            agency. If the agency manages your domain and stops paying the renewal, your domain lapses. Even a perfect copy
+            of your website is useless without it.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Own your plugin licences:</strong> Many websites rely on paid plugins, and agencies sometimes manage those
+            licences on the client's behalf. If those licences are in the agency's account and payments stop, the plugins
+            fail and the website breaks. Know which plugins your site uses, who holds the licences, and what it would take
+            to transfer them.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Have a real contact inside the agency:</strong> This sounds like common sense, but it matters. If you
+            have a relationship with someone on the team, not just a ticketing system, you are more likely to get early warning
+            if something is going wrong. That lead time can make a real difference.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        None of these require a technical background. They are questions you can ask your agency at any time, and a good
+        one will give you clear answers.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>
