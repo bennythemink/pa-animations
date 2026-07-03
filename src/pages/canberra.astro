@@ -154,19 +154,24 @@ const cards = [
   <div id="site-content">
     <section id="hero-puzzle-section" class="relative h-screen flex items-center justify-center">
       <div id="hero-puzzle-content" class="text-center">
-        <h2
-          id="hero-tagline-top"
-          class="text-2xl sm:text-4xl lg:text-5xl mb-6 sm:mb-8 font-sans font-normal tracking-[-0.03em] opacity-0"
-        >
-          We are
-        </h2>
-        <div id="hero-puzzle" class="relative mx-auto"></div>
-        <p
-          id="hero-tagline-bottom"
-          class="text-2xl sm:text-4xl lg:text-5xl mt-6 sm:mt-8 font-sans font-normal tracking-[-0.03em] leading-[1.2] opacity-0"
-        >
-          a <span class="text-pixel-celestial underline underline-offset-4">refreshing</span> Canberra digital partner
-        </p>
+        <h1>
+          <span
+            id="hero-tagline-top"
+            class="block text-2xl sm:text-4xl lg:text-5xl mb-6 sm:mb-8 font-sans font-normal tracking-[-0.03em] opacity-0"
+          >
+            We are
+          </span>
+          <span id="hero-puzzle" class="block relative mx-auto"></span>
+          <span
+            id="hero-tagline-bottom"
+            class="block text-2xl sm:text-4xl lg:text-5xl mt-6 sm:mt-8 font-sans font-normal tracking-[-0.03em] leading-[1.2] opacity-0"
+          >
+            a <span class="text-pixel-celestial underline underline-offset-4">refreshing</span> Canberra digital partner
+          </span>
+          <span id="hero-tagline-sub" class="block opacity-0">
+            <br />A Canberra digital agency for web &amp; app design, development, + AI.
+          </span>
+        </h1>
 
         <div id="hero-cta" class="mt-4 lg:mt-8 opacity-0">
           <CTA label="Let's talk" url="/contact" />
@@ -282,6 +287,7 @@ const cards = [
     const puzzleEl = document.getElementById('hero-puzzle')!
     const taglineTop = document.getElementById('hero-tagline-top')!
     const taglineBottom = document.getElementById('hero-tagline-bottom')!
+    const taglineSub = document.getElementById('hero-tagline-sub')!
     const heroCta = document.getElementById('hero-cta')!
     const vw = window.innerWidth
     const sizeScale = HERO_PUZZLE_SCALE[HERO_PUZZLE_SIZE]
@@ -385,7 +391,7 @@ const cards = [
       transformOrigin: 'center center'
     })
 
-    solveTl.to([taglineTop, taglineBottom], {
+    solveTl.to([taglineTop, taglineBottom, taglineSub], {
       opacity: 1,
       duration: 0.5,
       ease: 'power2.out'
