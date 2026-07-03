@@ -22,7 +22,8 @@ const allTags = [...new Set(publishedInsights.flatMap((insight) => insight.tags)
 
 function monthLabel(publishedAt: string): string {
   const date = new Date(`${publishedAt}T00:00:00`)
-  return date.toLocaleString('en-US', { month: 'long', year: 'numeric' })
+  const month = date.toLocaleString('en-US', { month: 'long' })
+  return `${month}, ${date.getFullYear()}`
 }
 
 const monthGroups: { key: string; label: string; insights: typeof insightItems }[] = []
