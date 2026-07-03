@@ -27,6 +27,7 @@ const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
 
 // This dynamically outputs: https://www.pixelagency.com.au/your-page-path
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const ogImageURL = new URL('/og-image.png', Astro.site)
 ---
 
 <!doctype html>
@@ -45,6 +46,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <meta name="apple-mobile-web-app-title" content="Pixel Agency" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+
+    <!-- Open Graph (LinkedIn, Facebook, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pixel Agency" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="627" />
+
     <Font cssVariable="--font-ibm-plex-sans" />
     <Font cssVariable="--font-lateef" />
     <title>{pageTitle}</title>
