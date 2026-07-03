@@ -156,7 +156,7 @@ const insights: Insight[] = [
     published: true,
     featured: false,
     tags: ['Risk Management', 'Business'],
-    colour: 'pixel-teal'
+    colour: 'pixel-fire'
   }
 ]
 

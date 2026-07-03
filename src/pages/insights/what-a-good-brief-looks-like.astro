@@ -21,7 +21,7 @@ const listItems = [
 ---
 
 <Layout title={current?.title} description={current?.summary}>
-  <Insight>
+  <Insight tags={current?.tags}>
     <span slot="insight-title">{current?.title}</span>
     <span slot="insight-subtitle">{current?.dateLabel}</span>
     <span slot="insight-text">

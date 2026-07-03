@@ -1,5 +1,11 @@
 ---
 import Grid from '@components/Grid.astro'
+
+interface Props {
+  tags?: string[]
+}
+
+const { tags = [] } = Astro.props as Props
 ---
 
 <section id="pov" class="py-12 lg:py-20">
@@ -11,12 +17,33 @@ import Grid from '@components/Grid.astro'
       <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">
         <slot name="insight-title" />
       </h3>
-      <h4 class="tracking-[-0.02em] text-black/40">
+      <h4 class="tracking-[-0.02em] text-black/40 lg:mt-4">
         <slot name="insight-subtitle" />
       </h4>
+      {
+        tags.length > 0 && (
+          <div class="flex flex-wrap items-center gap-2 lg:mt-2">
+            {tags.map((tag) => (
+              <span class="tag-pill text-[12px] lg:text-base">{tag}</span>
+            ))}
+          </div>
+        )
+      }
     </div>
     <div class="col-span-full lg:col-start-7 lg:col-span-6 flex flex-col gap-6 mt-6 lg:mt-0">
       <slot name="insight-text" />
     </div>
   </Grid>
 </section>
+
+<style>
+  .tag-pill {
+    color: var(--color-black);
+    background-color: color-mix(in oklab, var(--color-black) 12%, transparent);
+    padding-block: calc(var(--spacing) * 1);
+    padding-inline: calc(var(--spacing) * 2);
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+</style>

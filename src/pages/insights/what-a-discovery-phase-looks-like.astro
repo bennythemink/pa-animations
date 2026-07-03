@@ -13,7 +13,7 @@ const { previous, current, next } = getInsightNav('what-a-discovery-phase-looks-
   title={current.title}
   description="A short insight on the activities and outcomes of a discovery phase in project development."
 >
-  <Insight>
+  <Insight tags={current?.tags}>
     <span slot="insight-title">{current.title}</span>
     <span slot="insight-subtitle">{current.dateLabel}</span>
     <span slot="insight-text">
