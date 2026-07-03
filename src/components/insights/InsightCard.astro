@@ -24,7 +24,7 @@ const { title, summary, dateLabel, href, backgroundColor, tags = [] } = Astro.pr
     <p class="font-sans text-xs tracking-widest uppercase text-black/60">{dateLabel}</p>
     {
       tags.length > 0 && (
-        <div class="flex flex-wrap items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
           {tags.map((tag) => (
             <span class="tag-pill text-[12px] lg:text-base">{tag}</span>
           ))}
