@@ -9,7 +9,7 @@ import { siteConfig } from '@config/site'
 const { previous, current, next } = getInsightNav('why-you-should-consider-using-your-own-ai-model')
 ---
 
-<Layout title={current?.title} description="">
+<Layout title={current?.title} description={current?.summary}>
   <Insight>
     <span slot="insight-title">{current?.title}</span>
     <span slot="insight-subtitle">{current?.dateLabel}</span>
