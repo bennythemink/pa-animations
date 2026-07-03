@@ -126,39 +126,37 @@ const benefitsCards = [
         '@context': 'https://schema.org',
         '@graph': [
           {
-            '@type': 'SoftwareApplication',
+            '@type': 'Service',
+            '@id': 'https://www.pixelagency.com.au/pixel-assist#service',
             name: 'Pixel Assist',
-            applicationCategory: 'BusinessApplication',
-            operatingSystem: 'Web',
+            serviceType: 'AI Knowledge Assistant Integration',
             description:
               'A managed, AI-powered knowledge assistant for websites. Pixel Assist learns your content and answers customer questions instantly, reducing support load and speeding up decisions. Australian-hosted, fully managed, with no markup on AI usage.',
             url: 'https://www.pixelagency.com.au/pixel-assist',
             provider: {
               '@id': 'https://www.pixelagency.com.au/#organisation'
             },
-            offers: {
-              '@type': 'Offer',
-              price: '599',
-              priceCurrency: 'AUD',
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                price: '599',
-                priceCurrency: 'AUD',
-                unitText: 'MONTH'
-              }
+            // Nesting the software application property correctly
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: 'Pixel Assist Pricing',
+              itemListElement: [
+                {
+                  '@type': 'Offer',
+                  price: '599',
+                  priceCurrency: 'AUD',
+                  availability: 'https://schema.org/InStock',
+                  priceSpecification: {
+                    '@type': 'UnitPriceSpecification',
+                    price: '599',
+                    priceCurrency: 'AUD',
+                    unitText: 'MONTH',
+                    priceUnitType: 'https://schema.org/Recurring'
+                  }
+                }
+              ]
             },
-            featureList: [
-              'Custom UI matched to your brand',
-              'Fully managed setup, training and hosting',
-              'Bring your own AI model at cost price (OpenAI, Claude, etc.)',
-              'CRM integration',
-              'No personal data stored',
-              'Australian-based dedicated hosting',
-              'Ongoing optimisation and performance monitoring',
-              'Monthly insights reports',
-              'Full data ownership',
-              'No model training on your data'
-            ],
+            // Supported properties for Service types
             audience: {
               '@type': 'BusinessAudience',
               audienceType: 'B2B'

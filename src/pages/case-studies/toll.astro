@@ -43,10 +43,16 @@ import wideTwo from '@assets/case-studies/toll/wideTwo.webp'
         <div id="case-study-shell" class="case-study-shell col-span-full">
           <div class="case-study-left-pane min-w-0 overflow-hidden">
             <CaseStudyImages
-              heroImage={{ src: hero }}
+              heroImage={{ src: hero, alt: 'Hero shot of the drone website concept' }}
               summary="How Pixel Agency helped Toll Uncrewed Systems consolidate two legacy websites into a single unified brand, with discovery, design, and a business case ready for head office approval."
-              squareImages={[{ src: squareOne }, { src: squareTwo }]}
-              wideImages={[{ src: wideOne }, { src: wideTwo }]}
+              squareImages={[
+                { src: squareOne, alt: 'Toll logo' },
+                { src: squareTwo, alt: 'A girl flying a drone' }
+              ]}
+              wideImages={[
+                { src: wideOne, alt: 'Ariel mapping user interface' },
+                { src: wideTwo, alt: 'Drone certifications' }
+              ]}
             />
           </div>
 
