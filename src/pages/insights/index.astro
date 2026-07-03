@@ -12,9 +12,29 @@ const insightItems = publishedInsights.map((insight) => ({
   title: insight.title,
   summary: insight.summary,
   dateLabel: insight.dateLabel,
+  publishedAt: insight.publishedAt,
+  tags: insight.tags,
   href: `/insights/${insight.slug}`,
   backgroundColor: resolvePixelColour(insight.colour)
 }))
+
+const allTags = [...new Set(publishedInsights.flatMap((insight) => insight.tags))].sort()
+
+function monthLabel(publishedAt: string): string {
+  const date = new Date(`${publishedAt}T00:00:00`)
+  return date.toLocaleString('en-US', { month: 'long', year: 'numeric' })
+}
+
+const monthGroups: { key: string; label: string; insights: typeof insightItems }[] = []
+for (const insight of insightItems) {
+  const key = insight.publishedAt.slice(0, 7)
+  let group = monthGroups.find((g) => g.key === key)
+  if (!group) {
+    group = { key, label: monthLabel(insight.publishedAt), insights: [] }
+    monthGroups.push(group)
+  }
+  group.insights.push(insight)
+}
 ---
 
 <Layout title="Insights" description="A collection of insights on various topics related to project development.">
@@ -29,155 +49,107 @@ const insightItems = publishedInsights.map((insight) => ({
       >
     </PageHeading>
 
-    <div class="col-span-full lg:col-start-2 lg:col-span-10">
-      <div class="grid grid-cols-1 gap-0 lg:hidden">
-        {
-          insightItems.map((insight) => (
-            <InsightCard
-              title={insight.title}
-              summary={insight.summary}
-              dateLabel={insight.dateLabel}
-              href={insight.href}
-              backgroundColor={insight.backgroundColor}
-            />
-          ))
-        }
-      </div>
+    {/* tag filters */}
+    <div
+      id="tag-filters"
+      class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-wrap justify-end gap-3 mb-2"
+    >
+      {
+        allTags.map((tag) => (
+          <label class="tag-filter cursor-pointer hover:underline hover:underline-offset-2 font-sans font-normal inline-block bg-white px-4 py-2 text-[18px] transition-colors select-none">
+            <input type="checkbox" value={tag} class="tag-checkbox sr-only" />
+            {tag}
+          </label>
+        ))
+      }
+    </div>
 
-      <div id="insights-puzzle" class="relative hidden lg:block pb-12 lg:pb-20" data-count={insightItems.length}>
-        {
-          insightItems.map((insight, index) => (
-            <div class="insight-tile absolute" data-index={index}>
-              <InsightCard
-                title={insight.title}
-                summary={insight.summary}
-                dateLabel={insight.dateLabel}
-                href={insight.href}
-                backgroundColor={insight.backgroundColor}
-              />
+    <div class="col-span-full lg:col-start-2 lg:col-span-10 flex justify-end -mt-2">
+      <button
+        id="clear-tag-filters"
+        type="button"
+        class="font-sans text-[18px] underline underline-offset-2 hover:opacity-70 transition-opacity hover:cursor-pointer"
+        >clear</button
+      >
+    </div>
+
+    <div class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-col gap-12 lg:gap-20 mt-6 pb-12 lg:pb-20">
+      {
+        monthGroups.map((group) => (
+          <div class="month-section" data-month={group.key}>
+            <h2 class="text-xl lg:text-3xl font-light mb-4">Insights for {group.label}</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+              {group.insights.map((insight) => (
+                <div class="insight-grid-item" data-tags={JSON.stringify(insight.tags)}>
+                  <InsightCard
+                    title={insight.title}
+                    summary={insight.summary}
+                    dateLabel={insight.dateLabel}
+                    href={insight.href}
+                    backgroundColor={insight.backgroundColor}
+                  />
+                </div>
+              ))}
             </div>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
     </div>
   </Grid>
 
   <Callout text="See something that sparked your interest? We are happy to talk." ctaLabel="Let's discuss" />
-</Layout>
 
-<style>
-  #insights-puzzle {
-    min-height: 200px;
-  }
-
-  #insights-puzzle .insight-tile {
-    will-change: transform;
-  }
-</style>
-
-<script>
-  import { gsap } from 'gsap'
-
-  type TileMap = Map<number, HTMLElement>
-
-  function initInsightsPuzzle() {
-    const puzzle = document.getElementById('insights-puzzle')
-    if (!puzzle) return
-
-    const isDesktop = window.matchMedia('(min-width: 1024px)').matches
-    if (!isDesktop) return
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const tiles = Array.from(puzzle.querySelectorAll<HTMLElement>('.insight-tile'))
-    const tileCount = tiles.length
-    if (!tileCount) return
-
-    const cols = 2
-    const totalSlots = tileCount + 1
-    const rows = Math.ceil(totalSlots / cols)
-    const gap = 0
-
-    const puzzleWidth = puzzle.clientWidth
-    const tileWidth = Math.floor((puzzleWidth - gap) / cols)
-    const tileHeight = Math.max(110, Math.floor(tileWidth * 0.36))
-    puzzle.style.height = `${rows * tileHeight + (rows - 1) * gap}px`
-
-    const slotToPoint = (slot: number) => ({
-      x: (slot % cols) * (tileWidth + gap),
-      y: Math.floor(slot / cols) * (tileHeight + gap)
-    })
-
-    const getAdjacent = (emptyPos: number) => {
-      const col = emptyPos % cols
-      const row = Math.floor(emptyPos / cols)
-      const candidates: number[] = []
-      if (col > 0) candidates.push(emptyPos - 1)
-      if (col < cols - 1) candidates.push(emptyPos + 1)
-      if (row > 0) candidates.push(emptyPos - cols)
-      if (row < rows - 1) candidates.push(emptyPos + cols)
-      return candidates
+  <style>
+    .tag-filter:hover,
+    .tag-filter.active {
+      background-color: #cac0b8;
+      color: #fff;
     }
+  </style>
 
-    const tileById: TileMap = new Map()
-    tiles.forEach((tile, index) => {
-      tile.style.width = `${tileWidth}px`
-      tile.style.height = `${tileHeight}px`
-      tileById.set(index, tile)
-    })
+  <script>
+    function initTagFilters() {
+      const checkboxes = document.querySelectorAll<HTMLInputElement>('.tag-checkbox')
+      const items = document.querySelectorAll<HTMLElement>('.insight-grid-item')
+      const monthSections = document.querySelectorAll<HTMLElement>('.month-section')
 
-    const solvedState: Array<number | null> = Array.from({ length: totalSlots }, (_, i) => (i < tileCount ? i : null))
+      function applyFilters() {
+        const selected = Array.from(checkboxes)
+          .filter((cb) => cb.checked)
+          .map((cb) => cb.value)
 
-    const state = solvedState.slice()
-    let emptyPos = totalSlots - 1
-    let prevEmpty = -1
-    const shuffleMoves: number[] = []
-    const moveCount = Math.min(5, Math.max(3, tileCount + 1))
+        checkboxes.forEach((cb) => {
+          const label = cb.closest('.tag-filter')
+          if (label) {
+            label.classList.toggle('active', cb.checked)
+          }
+        })
 
-    for (let i = 0; i < moveCount; i++) {
-      const candidates = getAdjacent(emptyPos).filter((pos) => pos !== prevEmpty)
-      const moveFrom = candidates[Math.floor(Math.random() * candidates.length)]
-      const tileId = state[moveFrom]
-      if (tileId === null) continue
-      state[emptyPos] = tileId
-      state[moveFrom] = null
-      prevEmpty = emptyPos
-      emptyPos = moveFrom
-      shuffleMoves.push(tileId)
-    }
+        items.forEach((item) => {
+          const tags: string[] = JSON.parse(item.dataset.tags || '[]')
+          const match = selected.length === 0 || selected.some((s) => tags.includes(s))
+          item.style.display = match ? '' : 'none'
+        })
 
-    state.forEach((tileId, slot) => {
-      if (tileId === null) return
-      const tile = tileById.get(tileId)
-      if (!tile) return
-      const point = slotToPoint(slot)
-      gsap.set(tile, { x: point.x, y: point.y })
-    })
+        monthSections.forEach((section) => {
+          const sectionItems = section.querySelectorAll<HTMLElement>('.insight-grid-item')
+          const anyVisible = Array.from(sectionItems).some((item) => item.style.display !== 'none')
+          section.style.display = anyVisible ? '' : 'none'
+        })
+      }
 
-    if (reduceMotion) return
+      checkboxes.forEach((cb) => cb.addEventListener('change', applyFilters))
 
-    const solveMoves = shuffleMoves.slice().reverse()
-    const timeline = gsap.timeline({ delay: 0.075 })
-
-    solveMoves.forEach((tileId) => {
-      const fromPos = state.findIndex((v) => v === tileId)
-      const toPos = state.findIndex((v) => v === null)
-      if (fromPos === -1 || toPos === -1) return
-      const tile = tileById.get(tileId)
-      if (!tile) return
-
-      const point = slotToPoint(toPos)
-      timeline.to(tile, {
-        x: point.x,
-        y: point.y,
-        duration: 0.11,
-        ease: 'power2.inOut'
+      const clearBtn = document.querySelector<HTMLButtonElement>('#clear-tag-filters')
+      clearBtn?.addEventListener('click', () => {
+        checkboxes.forEach((cb) => {
+          cb.checked = false
+        })
+        applyFilters()
       })
+    }
 
-      state[toPos] = tileId
-      state[fromPos] = null
-    })
-  }
-
-  initInsightsPuzzle()
-  document.addEventListener('astro:after-swap', initInsightsPuzzle)
-</script>
+    initTagFilters()
+    document.addEventListener('astro:after-swap', initTagFilters)
+  </script>
+</Layout>
