@@ -5,9 +5,10 @@ interface Props {
   dateLabel: string
   href: string
   backgroundColor: string
+  tags?: string[]
 }
 
-const { title, summary, dateLabel, href, backgroundColor } = Astro.props as Props
+const { title, summary, dateLabel, href, backgroundColor, tags = [] } = Astro.props as Props
 ---
 
 <div class="insight-card h-full p-4 lg:p-5" style={`background-color: ${backgroundColor};`}>
@@ -21,6 +22,27 @@ const { title, summary, dateLabel, href, backgroundColor } = Astro.props as Prop
       </a>
     </h2>
     <p class="font-sans text-xs tracking-widest uppercase text-black/60">{dateLabel}</p>
+    {
+      tags.length > 0 && (
+        <div class="flex flex-wrap items-center gap-2">
+          {tags.map((tag) => (
+            <span class="tag-pill text-[12px] lg:text-base">{tag}</span>
+          ))}
+        </div>
+      )
+    }
     <p class="mt-auto font-serif text-lg lg:text-2xl leading-[0.84] text-black/80">{summary}</p>
   </div>
 </div>
+
+<style>
+  .tag-pill {
+    color: var(--color-black);
+    background-color: color-mix(in oklab, var(--color-black) 12%, transparent);
+    padding-block: calc(var(--spacing) * 1);
+    padding-inline: calc(var(--spacing) * 2);
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+</style>
