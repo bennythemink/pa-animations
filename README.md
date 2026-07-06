@@ -88,3 +88,43 @@ For SEO purposes not all case studies are published on site launch. It is better
 ## Moving To Production
 
 Make sure you update the robots.txt file! In the public directory, open the robots.txt file and change the line `Disallow: /` to `Allow: /`
+
+## Troubleshooting
+
+### `npm run build` completes with "0 page(s) built" and an empty `dist/`
+
+**Symptom:** `astro build` finishes with no errors, but `dist/` only contains copied static assets and a generated sitemap — no `index.html`, no route pages at all. The log ends with something like:
+
+```
+[build] 0 page(s) built in 2.25s
+[build] Complete!
+```
+
+**Cause:** `package.json` has a top-level `overrides.vite` entry that pins Vite to a specific version. Astro has its own hard (non-peer) dependency on a specific Vite major version. If the override pins Vite to a version older than what the installed Astro version requires, `npm install` still succeeds and `astro build` still runs, but the prerender step silently fails partway through instead of throwing — leaving a half-finished `dist/.prerender/` directory of unconsumed SSR chunk modules and zero rendered pages.
+
+This most often happens after upgrading (or reverting) Astro without also updating the `overrides.vite` entry to match — a stale override is easy to miss because `npm install` and `npm ls` don't flag it as broken, and the build doesn't throw.
+
+**Fix:**
+
+1. Check what Vite version the installed Astro actually requires:
+   ```
+   cat node_modules/astro/package.json | grep '"vite"'
+   ```
+2. Update `overrides.vite` in `package.json` to match that version (not an arbitrary older pin).
+3. Reinstall clean and clear stale build output:
+   ```
+   rm -rf node_modules package-lock.json dist .astro
+   npm install
+   ```
+4. Confirm there's a single deduplicated Vite version across the tree:
+   ```
+   npm ls vite
+   ```
+5. Rebuild and confirm the page count matches the number of routes under `src/pages/`:
+   ```
+   npm run build
+   ```
+6. Optionally, reproduce Vercel's exact build pipeline locally before deploying:
+   ```
+   npx vercel build
+   ```
