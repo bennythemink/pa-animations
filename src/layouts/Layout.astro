@@ -13,6 +13,8 @@ interface Props {
   /** Override the random logo colour pair. Pass { p: '#hex', a: '#hex' }. */
   logoColors?: { p: string; a: string }
   published?: boolean
+  /** When published is false, follow links on the page anyway (noindex, follow instead of noindex, nofollow). */
+  follow?: boolean
 }
 
 const {
@@ -20,7 +22,8 @@ const {
   description = 'Melbourne digital agency specialising in web design, app development, and AI. Working with businesses across Australia. You talk to the people doing the work.',
   noMenuSpacer = false,
   logoColors,
-  published = true
+  published = true,
+  follow = false
 } = Astro.props
 
 const pageTitle = title === 'Pixel Agency' ? title : `${title} | Pixel Agency`
@@ -34,7 +37,7 @@ const ogImageURL = new URL('/og-image.png', Astro.site)
 <html lang="en-AU" class="h-full m-0">
   <head>
     <meta charset="UTF-8" />
-    {!published && <meta name="robots" content="noindex, nofollow" />}
+    {!published && <meta name="robots" content={`noindex, ${follow ? 'follow' : 'nofollow'}`} />}
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
