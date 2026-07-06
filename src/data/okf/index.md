@@ -12,5 +12,6 @@ and AI systems (including a future WebMCP server for this site).
 
 * [Company](/company/index.md) - Who Pixel Agency is and how to contact us.
 * [Services](/services/index.md) - The services Pixel Agency offers.
+* [Products](/products/index.md) - Pixel Agency's own products.
 * [Case Studies](/case-studies/index.md) - Published client case studies.
 * [Insights](/insights/index.md) - Published articles on discovery, delivery, and AI.

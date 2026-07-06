@@ -1,3 +1,4 @@
 # Company
 
-* [Pixel Agency](/company/about.md) - Who we are, how we work, and how to contact us.
+* [Pixel Agency](/company/about.md) - Who we are and how we work.
+* [Contact](/company/contact.md) - Phone, email, address, and social details.
