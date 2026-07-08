@@ -23,10 +23,61 @@ const {
         <h4 class="text-[24px] lg:text-[40px] leading-[1.15] tracking-[-0.02em]">
           {calloutText}
         </h4>
-        <a href={url} class="mt-6 font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base hover:underline"
-          >{ctaText}</a
-        >
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href={url} class="font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base hover:underline"
+            >{ctaText}</a
+          >
+          <span class="font-sans font-normal text-base">or</span>
+          <button
+            type="button"
+            data-cal-link="pixel-agency-uz3y2d/30min"
+            data-cal-namespace="30min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+            class="font-sans font-normal text-base underline underline-offset-2 cursor-pointer">Book a call</button
+          >
+        </div>
       </div>
     </div>
   </Grid>
 </section>
+
+<script>
+  ;(function (C, A, L) {
+    let p = function (a, ar) {
+      a.q.push(ar)
+    }
+    let d = C.document
+    C.Cal =
+      C.Cal ||
+      function () {
+        let cal = C.Cal
+        let ar = arguments
+        if (!cal.loaded) {
+          cal.ns = {}
+          cal.q = cal.q || []
+          d.head.appendChild(d.createElement('script')).src = A
+          cal.loaded = true
+        }
+        if (ar[0] === L) {
+          const api = function () {
+            p(api, arguments)
+          }
+          const namespace = ar[1]
+          api.q = api.q || []
+          if (typeof namespace === 'string') {
+            cal.ns[namespace] = cal.ns[namespace] || api
+            p(cal.ns[namespace], ar)
+            p(cal, ['initNamespace', namespace])
+          } else p(cal, ar)
+          return
+        }
+        p(cal, ar)
+      }
+  })(window, 'https://app.cal.com/embed/embed.js', 'init')
+
+  Cal('init', '30min', { origin: 'https://app.cal.com' })
+  Cal.config = Cal.config || {}
+  Cal.config.forwardQueryParams = true
+
+  Cal.ns['30min']('ui', { hideEventTypeDetails: false, layout: 'month_view' })
+</script>
