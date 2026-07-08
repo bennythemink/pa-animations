@@ -1,6 +1,7 @@
 ---
 import Grid from './Grid.astro'
 import { DEFAULT_CALLER, type Caller } from '@data/analyticsCaller'
+import CalEmbed from '@components/CalEmbed.astro'
 
 interface Props {
   /** Heading text, e.g. "Discuss a similar challenge" */
@@ -53,9 +54,19 @@ const uid = Math.random().toString(36).slice(2, 8)
     {
       displayDescription && (
         <p
-          class="col-start-2 col-span-10 lg:col-start-9 lg:col-span-3 -mt-6 lg:mt-0 mb-10 lg:mb-12 self-end"
+          class="col-start-2 col-span-10 lg:col-start-9 lg:col-span-3 -mt-6 lg:mt-0 self-end"
           set:html={description}
         />
+        <p
+          class="col-start-2 col-span-10 lg:col-start-9 lg:col-span-3 mb-10 lg:mb-12 self-end"
+        >Prefer a quick call instead? <a
+            id="book"
+            href="https://cal.com/pixel-agency-uz3y2d/30min"
+            data-cal-link="pixel-agency-uz3y2d/30min"
+            data-cal-namespace="30min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+            class="underline underline-offset-2 hover:cursor-pointer">Book a call.</a
+          ></p>
       )
     }
 
@@ -177,6 +188,8 @@ const uid = Math.random().toString(36).slice(2, 8)
     </p>
   </div>
 </Grid>
+
+{displayDescription && <CalEmbed />}
 
 <script>
   document.querySelectorAll<HTMLFormElement>('form[data-contact-form]').forEach((form) => {

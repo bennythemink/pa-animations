@@ -72,6 +72,12 @@ const ogImageURL = new URL('/og-image.png', Astro.site)
       var key = colorKeys[Math.floor(Math.random() * colorKeys.length)]
       document.documentElement.dataset.accentColor = key
       document.documentElement.style.setProperty('--accent-bgc', colorsRGB[key])
+
+      var inverseKeys = colorKeys.filter(function (k) {
+        return k !== key
+      })
+      var inverseKey = inverseKeys[Math.floor(Math.random() * inverseKeys.length)]
+      document.documentElement.style.setProperty('--inverse-accent-bgc', colorsRGB[inverseKey])
     </script>
 
     {/* Structured data for SEO */}

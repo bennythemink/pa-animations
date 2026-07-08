@@ -37,4 +37,14 @@
   Cal.config.forwardQueryParams = true
 
   Cal.ns['30min']('ui', { hideEventTypeDetails: false, layout: 'month_view' })
+
+  // Cal's own click handling only takes over once its embed script has finished
+  // loading. Anchors used as triggers have a real href for no-JS/new-tab fallback,
+  // so without this a fast click can navigate away before Cal intercepts it.
+  document.addEventListener('click', function (e) {
+    const target = e.target as HTMLElement | null
+    if (target?.closest('a[data-cal-link]')) {
+      e.preventDefault()
+    }
+  })
 </script>
