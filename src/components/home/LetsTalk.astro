@@ -23,7 +23,8 @@ const showBookACall = buttons !== 'message'
 const order: LetsTalkButton[] = primaryCta === 'bookACall' ? ['bookACall', 'message'] : ['message', 'bookACall']
 const activeButtons = order.filter((button) => (button === 'message' ? showMessage : showBookACall))
 
-const primaryClasses = 'font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base hover:underline'
+const primaryClasses =
+  'font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base hover:underline cursor-pointer'
 const secondaryClasses = 'font-sans font-normal text-base underline underline-offset-2 cursor-pointer'
 ---
 

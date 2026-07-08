@@ -10,12 +10,12 @@ const { previous, current, next } = getInsightNav('what-a-discovery-phase-looks-
 ---
 
 <Layout
-  title={current.title}
+  title={current?.title}
   description="A short insight on the activities and outcomes of a discovery phase in project development."
 >
   <Insight tags={current?.tags}>
-    <span slot="insight-title">{current.title}</span>
-    <span slot="insight-subtitle">{current.dateLabel}</span>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
     <span slot="insight-text">
       <p>
         The purpose of a <a href="/services/discovery" class="underline underline-offset-2">Discovery</a> phase is to gather
@@ -47,5 +47,5 @@ const { previous, current, next } = getInsightNav('what-a-discovery-phase-looks-
   </Insight>
 
   <InsightNav previousInsight={previous} nextInsight={next} />
-  <LetsTalk />
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
 </Layout>
