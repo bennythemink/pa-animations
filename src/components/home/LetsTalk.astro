@@ -23,8 +23,8 @@ const showBookACall = buttons !== 'message'
 const order: LetsTalkButton[] = primaryCta === 'bookACall' ? ['bookACall', 'message'] : ['message', 'bookACall']
 const activeButtons = order.filter((button) => (button === 'message' ? showMessage : showBookACall))
 
-const primaryClasses = 'font-sans font-normal text-[18px] inline-block w-fit bg-white/50 px-4 py-2 hover:underline'
-const secondaryClasses = 'font-sans font-normal underline underline-offset-2 cursor-pointer'
+const primaryClasses = 'font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base hover:underline'
+const secondaryClasses = 'font-sans font-normal text-base underline underline-offset-2 cursor-pointer'
 ---
 
 <section id="lets-talk">
@@ -49,10 +49,10 @@ const secondaryClasses = 'font-sans font-normal underline underline-offset-2 cur
           {
             activeButtons.map((button, index) => (
               <>
-                {index > 0 && <span class="font-sans font-normal">or</span>}
+                {index > 0 && <span class="font-sans font-normal text-base">or</span>}
                 {button === 'message' ? (
                   <a href="/contact" class={index === 0 ? primaryClasses : secondaryClasses}>
-                    Message us
+                    Message us →
                   </a>
                 ) : (
                   <BookACallButton class={index === 0 ? primaryClasses : secondaryClasses} />
