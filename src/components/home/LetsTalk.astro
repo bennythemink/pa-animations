@@ -1,5 +1,30 @@
 ---
 import Grid from '@components/Grid.astro'
+import BookACallButton from '@components/BookACallButton.astro'
+import CalEmbed from '@components/CalEmbed.astro'
+
+type LetsTalkButton = 'message' | 'bookACall'
+
+interface LetsTalkConfig {
+  buttons?: LetsTalkButton | 'both'
+  primaryCta?: LetsTalkButton
+}
+
+interface Props {
+  config?: LetsTalkConfig
+}
+
+const { config = {} } = Astro.props
+const { buttons = 'message', primaryCta = 'message' } = config
+
+const showMessage = buttons !== 'bookACall'
+const showBookACall = buttons !== 'message'
+
+const order: LetsTalkButton[] = primaryCta === 'bookACall' ? ['bookACall', 'message'] : ['message', 'bookACall']
+const activeButtons = order.filter((button) => (button === 'message' ? showMessage : showBookACall))
+
+const primaryClasses = 'font-sans font-normal text-[18px] inline-block w-fit bg-white/50 px-4 py-2 hover:underline'
+const secondaryClasses = 'font-sans font-normal underline underline-offset-2 cursor-pointer'
 ---
 
 <section id="lets-talk">
@@ -20,12 +45,25 @@ import Grid from '@components/Grid.astro'
         <p class="mt-4">
           No pitch, no pressure, just a straight talk about what you're working on and whether we're the right&nbsp;fit.
         </p>
-        <a
-          href="/contact"
-          class="mt-6 font-sans font-normal text-[18px] inline-block w-fit bg-white/50 px-4 py-2 hover:underline"
-          >Let&rsquo;s talk</a
-        >
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          {
+            activeButtons.map((button, index) => (
+              <>
+                {index > 0 && <span class="font-sans font-normal">or</span>}
+                {button === 'message' ? (
+                  <a href="/contact" class={index === 0 ? primaryClasses : secondaryClasses}>
+                    Message us
+                  </a>
+                ) : (
+                  <BookACallButton class={index === 0 ? primaryClasses : secondaryClasses} />
+                )}
+              </>
+            ))
+          }
+        </div>
       </div>
     </div>
   </Grid>
 </section>
+
+{showBookACall && <CalEmbed />}

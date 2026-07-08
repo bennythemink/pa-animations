@@ -1,0 +1,14 @@
+---
+interface Props {
+  class?: string
+}
+const { class: className } = Astro.props
+---
+
+<button
+  type="button"
+  data-cal-link="pixel-agency-uz3y2d/30min"
+  data-cal-namespace="30min"
+  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+  class={className}>Book a call</button
+>
