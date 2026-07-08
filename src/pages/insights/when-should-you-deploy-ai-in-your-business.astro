@@ -1,0 +1,107 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('when-should-you-deploy-ai-in-your-business')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Getting those AI cravings? Sitting there worried: "what if my competitors are 10x their business with it?", "Am
+        I already too late?", "what if its just another lame duck?". All valid, just don't let them drive you to make
+        rash decisions. Quickly jumping into AI without a clear problem to solve is a recipe for wasted time and money.
+        Remember the Blockchain and NFTs? AI might not even be the right tool for your business yet. Businesses that get
+        the most from AI all started with a specific problem they needed to solve, not a general desire to modernise or
+        pressure from a competitor. The projects that deliver real value work backwards from the problem to the right
+        solution, and sometimes that solution is AI, sometimes it is not.
+      </p><br />
+      <p>Here are the problems where AI tends to be a genuinely good fit:</p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You have expertise that does not scale:</strong> A specialist in the business makes assessments or decisions
+            that only they can make. AI can turn that expert knowledge into something anyone can use: a calculator, a decision
+            support tool, or a structured recommendation.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You answer the same questions over and over:</strong> Staff time is going on repetitive queries from customers
+            or internal teams. The knowledge exists, but accessing it requires a person in the loop every time. A <a
+              href="/pixel-assist"
+              class="underline underline-offset-2 cursor-pointer">knowledge agent</a
+            > can handle this at scale without adding headcount.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You have a manual process that should not be manual:</strong> High-volume, repetitive tasks where someone
+            is reading, copying, classifying, or routing information: invoice processing, form handling, email triage. The
+            task is well-defined, it just takes too long with a human doing every instance.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Your content takes too long to produce:</strong> Product descriptions, reports, proposals, or responses
+            at volume where the structure is the same but the details change each time. AI drafts, a human reviews.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Your customers cannot find what they need:</strong> High call or support volume about things already answered
+            in your documentation. Customers are contacting you instead of self-serving because finding the answer is harder
+            than asking a person.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Onboarding new staff takes too long:</strong> Knowledge lives in people’s heads or in documents nobody
+            can find. New starters spend weeks asking questions that should be answerable without pulling someone away from
+            their work.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You lose time chasing information across meetings and emails:</strong> Decisions and actions get discussed
+            but not captured. People spend time reconstructing what was agreed rather than acting on it. Meeting transcription
+            with automatic action item extraction helps here.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You are making decisions without good information:</strong> Data exists in the business but is not surfaced
+            in a usable way. Someone has to manually pull reports or dig through spreadsheets. AI can summarise, flag anomalies,
+            and turn raw data into something a non-analyst can act on.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        If your problem fits one of these patterns, AI is worth exploring. If it does not, it is probably not the right
+        tool yet, and that is also a useful thing to know. The businesses that get the most from AI are not the ones who
+        adopted it earliest. They are the ones who were clear about the problem before they started.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>

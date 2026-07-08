@@ -157,6 +157,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Risk Management', 'Business'],
     colour: 'pixel-fire'
+  },
+  {
+    title: 'When Should You Deploy AI In Your Business',
+    publishedAt: '2026-07-08',
+    dateLabel: '8th July, 2026',
+    summary:
+      'AI works best when it solves a specific problem. Here are the eight problems where it tends to be a genuinely good fit for small and medium businesses.',
+    slug: 'when-should-you-deploy-ai-in-your-business',
+    published: true,
+    featured: false,
+    tags: ['AI', 'Business'],
+    colour: 'pixel-fawn'
   }
 ]
 
