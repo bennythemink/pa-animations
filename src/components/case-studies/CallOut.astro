@@ -1,6 +1,8 @@
 ---
 import Grid from '@components/Grid.astro'
 import CTA from '@components/CTA.astro'
+import BookACallButton from '@components/BookACallButton.astro'
+import CalEmbed from '@components/CalEmbed.astro'
 
 interface Props {
   text?: string
@@ -21,7 +23,11 @@ const {
       </p>
       <div class="mt-6">
         <CTA label={ctaLabel} />
+        <span class="font-sans font-normal text-base">&nbsp;&nbsp;or&nbsp;&nbsp;</span>
+        <BookACallButton class="font-sans font-normal text-base underline underline-offset-2 cursor-pointer" />
       </div>
     </div>
   </Grid>
 </section>
+
+<CalEmbed />

@@ -5,6 +5,8 @@ import CTA from '@components/CTA.astro'
 import CaseStudyCard from '@components/case-studies/CaseStudyCard.astro'
 import Plus from '@components/signs/Plus.astro'
 import { publishedCaseStudies as caseStudies } from '@data/caseStudies'
+import BookACallButton from '@components/BookACallButton.astro'
+import CalEmbed from '@components/CalEmbed.astro'
 
 const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sort()
 ---
@@ -82,11 +84,15 @@ const allIndustries = [...new Set(caseStudies.flatMap((cs) => cs.industry))].sor
           If you're facing a similar challenge, we'd be happy to talk it through.
         </p>
         <div class="mt-6">
-          <CTA label="Discuss a problem" />
+          <CTA label="Send a message →" />
+          <span class="font-sans font-normal text-base">&nbsp;&nbsp;or&nbsp;&nbsp;</span>
+          <BookACallButton class="font-sans font-normal text-base underline underline-offset-2 cursor-pointer" />
         </div>
       </div>
     </Grid>
   </section>
+
+  <CalEmbed />
 
   <style>
     .industry-filter:hover {

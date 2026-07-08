@@ -3,7 +3,9 @@ import Layout from '@layouts/Layout.astro'
 import Grid from '@components/Grid.astro'
 import Equals from '@components/signs/Equals.astro'
 import CTA from '@components/CTA.astro'
+import BookACallButton from '@components/BookACallButton.astro'
 import { resolvePixelColour } from '@config/colours'
+import CalEmbed from '@components/CalEmbed.astro'
 
 import { Image } from 'astro:assets'
 import servicesHero from '@assets/pa-services-placeholder.png'
@@ -343,6 +345,8 @@ const services = [
         </p>
         <div class="mt-6">
           <CTA label="Let's find a path forward →" />
+          <span class="font-sans font-normal text-base">&nbsp;&nbsp;or&nbsp;&nbsp;</span>
+          <BookACallButton class="font-sans font-normal text-base underline underline-offset-2 cursor-pointer" />
         </div>
 
         <!-- <a href="/contact" class="font-sans self-start underline underline-offset-2 hover:no-underline transition-all">
@@ -351,6 +355,7 @@ const services = [
       </div>
     </Grid>
   </section>
+  <CalEmbed />
 </Layout>
 
 <style>

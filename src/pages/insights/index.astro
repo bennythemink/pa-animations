@@ -51,10 +51,7 @@ for (const insight of insightItems) {
     </PageHeading>
 
     {/* tag filters */}
-    <div
-      id="tag-filters"
-      class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-wrap justify-end gap-3 mb-2"
-    >
+    <div id="tag-filters" class="col-span-full lg:col-start-2 lg:col-span-10 flex flex-wrap justify-end gap-3 mb-2">
       {
         allTags.map((tag) => (
           <label class="tag-filter cursor-pointer hover:underline hover:underline-offset-2 font-sans font-normal inline-block bg-white px-4 py-2 text-[18px] transition-colors select-none">
@@ -99,7 +96,7 @@ for (const insight of insightItems) {
     </div>
   </Grid>
 
-  <Callout text="See something that sparked your interest? We are happy to talk." ctaLabel="Let's discuss" />
+  <Callout text="See something that sparked your interest? We are happy to talk." ctaLabel="Send a message →" />
 
   <style>
     .tag-filter:hover,
