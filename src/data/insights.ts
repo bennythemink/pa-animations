@@ -181,6 +181,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['AI', 'Knowledge Management'],
     colour: 'pixel-solar'
+  },
+  {
+    title: 'POC vs MVP: What They Are and When to Use Them',
+    publishedAt: '2026-07-16',
+    dateLabel: '16th July, 2026',
+    summary:
+      'POC and MVP are not just buzz-words and are not the same thing. Here is what each one is, when to use it, and how to keep feature creep from turning both into something they were never meant to be.',
+    slug: 'poc-vs-mvp-what-they-are-and-when-to-use-them',
+    published: true,
+    featured: false,
+    tags: ['Project Management', 'Business'],
+    colour: 'pixel-celestial'
   }
 ]
 

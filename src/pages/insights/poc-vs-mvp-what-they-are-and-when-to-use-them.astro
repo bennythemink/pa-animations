@@ -1,0 +1,65 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('poc-vs-mvp-what-they-are-and-when-to-use-them')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        These two terms sound "buzzy" and get used interchangeably, but they are not just more corporate jargon, they
+        mean different things and serve different purposes. Mixing them up early in a project can send you down the
+        wrong path before a line of code has been written.
+      </p><br />
+      <p>
+        <strong>POC (Proof of Concept):</strong> A quick build to show that something is technically possible. It is intended
+        for internal stakeholders, not end users, and it does not need to be fully functional, just enough to demonstrate
+        that the concept can work. The only question it needs to answer is: can this be done? When Swinburne University needed
+        to anchor a government grant tender with a compelling digital concept, we produced an <a
+          href="/case-studies/stemhub"
+          class="underline underline-offset-2"
+          target="_blank">interactive design</a
+        > to make the vision tangible for the assessors. Not a working product, but enough to show what was possible.
+      </p><br />
+      <p>
+        <strong>MVP (Minimum Viable Product):</strong> The smallest version of your product that a real user can get genuine
+        value from. Think of it as a vertical slice of the full solution: one complete feature working end to end, rather
+        than all features built at reduced quality. When Better Health Network needed to communicate the merger of three community
+        health organisations, waiting for the full site was not an option. Patients needed clear information immediately.
+        We launched a <a href="/case-studies/bhn" class="underline underline-offset-2" target="_blank"
+          >focused information mini-site</a
+        > first, solving the immediate problem while the full site was built behind it.
+      </p><br />
+      <p>
+        <strong>The common problem with both:</strong> Feature creep. Once something starts taking shape, the temptation to
+        add more is hard to resist. It is human nature to worry that what you have built is too rough or incomplete. The result
+        is clients ending up with something smaller than the full solution, but not nearly small enough to qualify as a POC
+        or MVP.
+      </p><br />
+      <p>
+        <strong>The test:</strong> When a new feature is proposed, ask whether it is required to solve the core problem. If
+        the POC or MVP works without it, it is a nice-to-have, not a must-have. It goes on the backlog, not the current build.
+      </p><br />
+      <p>
+        Getting this right before development starts is exactly what a <a
+          href="/services/discovery"
+          class="underline underline-offset-2"
+          target="_blank">discovery phase</a
+        > is for. It means you are not making these calls under pressure once the build is already underway.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>
