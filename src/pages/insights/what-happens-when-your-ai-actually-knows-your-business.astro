@@ -1,0 +1,64 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('what-happens-when-your-ai-actually-knows-your-business')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        By default, most AI conversations start from zero. Some tools (e.g., <a
+          href="https://claude.ai/"
+          class="underline underline-offset-2"
+          target="_blank">Claude</a
+        >) offer memory features or can read from a connected folder, but they work with what you choose to share in
+        that moment, not the full depth of knowledge your business has built up over time.
+      </p><br />
+      <p>
+        A different approach is starting to emerge. Tools like <a
+          href="https://obsidian.md"
+          class="underline underline-offset-2"
+          target="_blank">Obsidian</a
+        > (note-taking application), combined with local AI models running on your own machine, make it possible to build
+        a knowledge base your AI can actually query. Not a chat session, but a persistent store of structured notes: budgets,
+        supplier research, process documentation, meeting outcomes, decisions made and why. When you ask a question, the AI
+        searches that store and answers from your own accumulated knowledge before reaching for anything else.
+      </p><br />
+      <p>
+        The practical difference is real. When we were scoping the PII scrubbing functionality for <a
+          href="/pixel-assist"
+          class="underline underline-offset-2">Pixel Assist</a
+        >, we described what we were building to our vault-connected AI. It flagged that we had tackled something
+        similar for a previous client and asked if we wanted to reuse the research from that project: the libraries that
+        had worked best, the data flow requirements we had already worked through, the lessons from that engagement.
+        Work that would have taken days to reconstruct was available in minutes. Your data also stays on your machine.
+        Nothing is sent to a third-party server, which matters when the notes contain client information or sensitive
+        business thinking.
+      </p><br />
+      <p>
+        The setup is not simple. <a href="https://obsidian.md" class="underline underline-offset-2" target="_blank"
+          >Obsidian</a
+        > handles the notes, <a href="https://ollama.com" class="underline underline-offset-2" target="_blank">Ollama</a
+        > handles the local model, and
+        <a href="https://hermes-agent.nousresearch.com" class="underline underline-offset-2" target="_blank">Hermes</a> (AI
+        Agent) connects them. Getting all three working together takes some patience, and choosing the right model for your
+        machine is not obvious. But the direction is clear: this kind of capability will become easier to package and deploy.
+        When it does, the question worth asking is whether your knowledge is in good enough shape to be worth querying. That
+        is a problem worth solving now, regardless of the tooling.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>

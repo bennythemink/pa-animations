@@ -169,6 +169,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['AI', 'Business'],
     colour: 'pixel-fawn'
+  },
+  {
+    title: 'What Happens When Your AI Actually Knows Your Business',
+    publishedAt: '2026-07-14',
+    dateLabel: '14th July, 2026',
+    summary:
+      'When your AI can query your own accumulated knowledge, the answers it gives are entirely different. Here is what that looks like in practice.',
+    slug: 'what-happens-when-your-ai-actually-knows-your-business',
+    published: true,
+    featured: false,
+    tags: ['AI', 'Knowledge Management'],
+    colour: 'pixel-solar'
   }
 ]
 
