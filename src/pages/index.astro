@@ -1425,7 +1425,8 @@ const sectionCards = [
     const chatCenterOffset = chatPanel.offsetLeft + chatPanel.offsetWidth / 2
     const xToChatCenter = Math.min(totalTravel, Math.max(0, chatCenterOffset - vwNow / 2))
     const xAfterChat = totalTravel - xToChatCenter
-    const chatPauseDist = vwNow * 4.8
+    // Safari never pauses on the chat (it's shown pre-completed), so it gets no extra scroll distance for it.
+    const chatPauseDist = isSafari ? 0 : vwNow * 4.8
     const assistScrollDist = totalTravel + chatPauseDist
     const durPre = totalTravel > 0 ? xToChatCenter / assistScrollDist : 0
     const durPause = chatPauseDist / assistScrollDist
