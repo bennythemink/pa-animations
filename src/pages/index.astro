@@ -113,7 +113,7 @@ const sectionCards = [
               style="vertical-align: baseline;"></span>
           </span>
           <span id="hero-tagline-sub" class="block opacity-0">
-            <br />An Australian digital agency for web & app design, development, + AI.
+            <br />An Australian digital agency for AI, web & app design + development.
           </span>
         </h1>
 
@@ -715,6 +715,15 @@ const sectionCards = [
   // Prevent the browser from restoring the previous scroll position on reload
   history.scrollRestoration = 'manual'
   window.scrollTo(0, 0)
+
+  // Safari (desktop + iOS) treats the chatbot demo as already finished — no
+  // typing animation, no skip buttons — while every other browser gets the
+  // full scroll-driven build-up. Feature detection doesn't exist for "is
+  // this Safari", so UA sniffing is the only reliable option here. Chrome,
+  // Firefox and Edge on iOS all include "Safari" in their UA too (they run
+  // on WebKit but aren't Safari), so those tokens must be excluded as well.
+  const isSafari =
+    /safari/i.test(navigator.userAgent) && !/chrome|crios|fxios|edgios|opios|opr\//i.test(navigator.userAgent)
 
   const lenis = new Lenis()
 
@@ -1447,63 +1456,73 @@ const sectionCards = [
     const pauseStart = durPre
     const pauseEnd = durPre + durPause
 
-    // Skip button: scroll to where the full chat has been shown
     const skipBtn = document.getElementById('assist-skip')
-    if (skipBtn) {
-      skipBtn.addEventListener('click', () => {
-        const st = assistST ?? assistTl.scrollTrigger
-        if (!st) return
-        const targetScroll = st.start + pauseEnd * assistScrollDist
-        lenis.scrollTo(targetScroll, { duration: 1.2 })
-      })
-    }
-
-    // Skip to beginning button
     const skipBackBtn = document.getElementById('assist-skip-back')
-    if (skipBackBtn) {
-      skipBackBtn.addEventListener('click', () => {
-        const st = assistST ?? assistTl.scrollTrigger
-        if (!st) return
-        const targetScroll = st.start + pauseStart * assistScrollDist
-        const chatEl = document.getElementById('assist-chatbot') as any
-        if (chatEl?.setProgress) chatEl.setProgress(0)
-        lenis.scrollTo(targetScroll, { duration: 1.2 })
-      })
-    }
 
-    ScrollTrigger.create({
-      trigger: '#assist-wrapper',
-      scrub: 1,
-      start: 'top top',
-      end: () => `+=${assistScrollDist}`,
-      onUpdate(self) {
-        const p = self.progress
-        const skipBack = document.getElementById('assist-skip-back') as HTMLElement | null
-        if (p >= pauseStart && p <= pauseEnd && durPause > 0) {
-          const chatP = (p - pauseStart) / durPause
-          const chatEl = document.getElementById('assist-chatbot') as any
-          if (chatEl?.setProgress) chatEl.setProgress(chatP)
-          if (skipBack) {
-            skipBack.style.opacity = '1'
-            skipBack.style.pointerEvents = 'auto'
-          }
-        } else if (p < pauseStart) {
+    if (isSafari) {
+      // Safari: chat is always shown fully complete, no skip buttons.
+      // Scroll pacing/pinning is left untouched so page length matches other browsers.
+      const chatEl = document.getElementById('assist-chatbot') as any
+      if (chatEl?.setProgress) chatEl.setProgress(1)
+      skipBtn?.style.setProperty('display', 'none')
+      skipBackBtn?.style.setProperty('display', 'none')
+    } else {
+      // Skip button: scroll to where the full chat has been shown
+      if (skipBtn) {
+        skipBtn.addEventListener('click', () => {
+          const st = assistST ?? assistTl.scrollTrigger
+          if (!st) return
+          const targetScroll = st.start + pauseEnd * assistScrollDist
+          lenis.scrollTo(targetScroll, { duration: 1.2 })
+        })
+      }
+
+      // Skip to beginning button
+      if (skipBackBtn) {
+        skipBackBtn.addEventListener('click', () => {
+          const st = assistST ?? assistTl.scrollTrigger
+          if (!st) return
+          const targetScroll = st.start + pauseStart * assistScrollDist
           const chatEl = document.getElementById('assist-chatbot') as any
           if (chatEl?.setProgress) chatEl.setProgress(0)
-          if (skipBack) {
-            skipBack.style.opacity = '0'
-            skipBack.style.pointerEvents = 'none'
-          }
-        } else {
-          const chatEl = document.getElementById('assist-chatbot') as any
-          if (chatEl?.setProgress) chatEl.setProgress(1)
-          if (skipBack) {
-            skipBack.style.opacity = '1'
-            skipBack.style.pointerEvents = 'auto'
+          lenis.scrollTo(targetScroll, { duration: 1.2 })
+        })
+      }
+
+      ScrollTrigger.create({
+        trigger: '#assist-wrapper',
+        scrub: 1,
+        start: 'top top',
+        end: () => `+=${assistScrollDist}`,
+        onUpdate(self) {
+          const p = self.progress
+          const skipBack = document.getElementById('assist-skip-back') as HTMLElement | null
+          if (p >= pauseStart && p <= pauseEnd && durPause > 0) {
+            const chatP = (p - pauseStart) / durPause
+            const chatEl = document.getElementById('assist-chatbot') as any
+            if (chatEl?.setProgress) chatEl.setProgress(chatP)
+            if (skipBack) {
+              skipBack.style.opacity = '1'
+              skipBack.style.pointerEvents = 'auto'
+            }
+          } else if (p < pauseStart) {
+            const chatEl = document.getElementById('assist-chatbot') as any
+            if (chatEl?.setProgress) chatEl.setProgress(0)
+            if (skipBack) {
+              skipBack.style.opacity = '0'
+              skipBack.style.pointerEvents = 'none'
+            }
+          } else {
+            const chatEl = document.getElementById('assist-chatbot') as any
+            if (chatEl?.setProgress) chatEl.setProgress(1)
+            if (skipBack) {
+              skipBack.style.opacity = '1'
+              skipBack.style.pointerEvents = 'auto'
+            }
           }
         }
-      }
-    })
+      })
+    }
 
     // ── OUR PROCESS horizontal scroll ──
     const processTrack = document.getElementById('process-track')!
