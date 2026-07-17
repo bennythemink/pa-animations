@@ -22,7 +22,7 @@ const insightItems = sourceInsights.map((insight) => ({
 ---
 
 <div class="insights-component" data-animate={String(animate)}>
-  <div class="grid grid-cols-1 gap-0 lg:hidden">
+  <div class="insights-mobile-list grid grid-cols-1 gap-0 lg:hidden">
     {
       insightItems.map((insight) => (
         <InsightCard
@@ -117,9 +117,35 @@ const insightItems = sourceInsights.map((insight) => ({
     })
   }
 
+  // Mobile cards are stacked in a single-column grid where each row sizes to its
+  // own content, so a short summary and a long one end up visibly different heights.
+  // Match every card to the tallest one instead.
+  function equalizeMobileCardHeights(wrapper: HTMLElement) {
+    const list = wrapper.querySelector<HTMLElement>('.insights-mobile-list')
+    if (!list) return
+
+    const cards = Array.from(list.querySelectorAll<HTMLElement>('.insight-card'))
+    if (!cards.length) return
+
+    cards.forEach((card) => (card.style.minHeight = ''))
+
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+    if (isDesktop) return
+
+    const maxHeight = Math.max(...cards.map((card) => card.getBoundingClientRect().height))
+    cards.forEach((card) => (card.style.minHeight = `${maxHeight}px`))
+  }
+
+  function equalizeAllMobileCardHeights() {
+    document.querySelectorAll<HTMLElement>('.insights-component').forEach(equalizeMobileCardHeights)
+  }
+
   function initInsightsComponent() {
     const wrappers = Array.from(document.querySelectorAll<HTMLElement>('.insights-component'))
     if (!wrappers.length) return
+
+    equalizeAllMobileCardHeights()
+    document.fonts?.ready?.then(equalizeAllMobileCardHeights)
 
     wrappers.forEach((wrapper) => {
       const puzzle = wrapper.querySelector<HTMLElement>('.insights-component-puzzle')
@@ -219,4 +245,10 @@ const insightItems = sourceInsights.map((insight) => ({
 
   initInsightsComponent()
   document.addEventListener('astro:after-swap', initInsightsComponent)
+
+  let resizeTimer: ReturnType<typeof setTimeout>
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(equalizeAllMobileCardHeights, 150)
+  })
 </script>
