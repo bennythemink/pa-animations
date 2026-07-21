@@ -204,6 +204,17 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Technology', 'Business'],
     colour: 'pixel-rosy'
+  },
+  {
+    title: 'How A Good AI Development Process Actually Works',
+    publishedAt: '2026-07-21',
+    dateLabel: '21st July, 2026',
+    summary: 'Describes the steps in a good software development process',
+    slug: 'how-a-good-ai-development-process-actually-works',
+    published: true,
+    featured: false,
+    tags: ['AI', 'Technology'],
+    colour: 'pixel-teal'
   }
 ]
 

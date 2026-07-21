@@ -1,0 +1,90 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('how-a-good-ai-development-process-actually-works')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Ask a developer how they use AI in their development process and many will describe the same thing: open a
+        chat window, describe what you want, see what comes back. This works fine for small, isolated features, but
+        not when you want to broaden the scope to functionality that touches multiple software layers.
+      </p><br />
+      <p>
+        A mature software development process, integrating AI, is very possible, and at a high level, does not change
+        from the traditional approach. You need to set clear goals, define where the project at a high level is
+        heading, then break down this goal into tasks which agents implement, most importantly test, and repeat.
+      </p><br />
+      <p>
+        A toolkit in the form of AI skills greatly helps with this. It allows developers to standardise AI
+        instructions, processes, and assets. Rather than write your own from scratch, the open source community have
+        released various options. The most popular being the skills library maintained by developer <a
+          href="https://github.com/mattpocock/skills"
+          class="underline underline-offset-2"
+          target="_blank">Matt Pocock</a
+        >. The AI software development cycle with these skills becomes:
+      </p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Discovery + define:</strong> Before any code gets written, we use the <strong>"grill-with-docs"</strong>
+            skill to interrogate the idea properly. The purpose is to get a shared understanding between the agent and
+            the developer. The use of other skills such as "Wayfinder" or "Prototype" can also aid in the definition
+            of the scope.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Specification:</strong> Once we have mapped out the desired functionality, we need to document it
+            as a specification. This is where the <strong>"to-scope"</strong> skill comes in. It turns the ideas into
+            a proper specification: what's being built and why, blending technical and non-technical detail into one
+            shared target.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Tickets:</strong> Next we need to turn the specification into actionable items. <strong
+              >"to-tickets"</strong
+            > splits the spec into tickets small enough to finish in a single session, so a large build can be spread
+            safely across many sessions or people. Tickets can be Github issues, local files, or pretty much whatever
+            you want them to be.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Implement:</strong> The <strong>"implement"</strong> skill works on one ticket at a time. It uses Red/Green
+            TDD methodology to ensure generated code works and does not break previous implementations.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Code review:</strong> Once a ticket is done, the <strong>"code-review"</strong> skill runs two checks
+            in parallel: does the code meet the team's own documented standards, and does it faithfully deliver what the
+            spec asked for.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>So, AI can produce quality code, as long as there is a process to achieve and reinforce it.</p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>
