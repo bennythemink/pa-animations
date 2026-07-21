@@ -22,6 +22,27 @@ const nextSteps = [
 ]
 
 /**
+ * "5 things to know?" FeatureCards variables
+ */
+const fiveThingsToKnow = [
+  {
+    title: '1. Domain',
+    description: 'Do you own your domain name outright, registered to your business, not your agency?'
+  },
+  { title: '2. Hosting', description: 'Do you have direct login access to your hosting account?' },
+  { title: '3. CMS', description: "Do you have admin access to your website's CMS?" },
+  {
+    title: '4. Code',
+    description: "Do you have access to your website's source code, or a current backup of it?"
+  },
+  {
+    title: '5. Email',
+    description:
+      'Is your business email independent of your website hosting, so it keeps working even if your site goes down?'
+  }
+]
+
+/**
  * FAQs
  */
 const faqs = [
@@ -167,40 +188,17 @@ const faqs = [
             class="underline underline-offset-2">how to protect your business in case your agency closes</a
           >.
         </p>
-        <ul class="lg:mt-4 flex flex-col gap-4">
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
-            <span>Do you own your domain name outright, registered to your business, not your agency?</span>
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
-            <span>Do you own your domain name outright, registered to your business, not your agency?</span>
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
-            <span>Do you have admin access to your website's CMS?</span>
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
-            <span>Do you have access to your website's source code, or a current backup of it?</span>
-          </li>
-          <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
-            <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
-            <span
-              >Is your business email independent of your website hosting, so it keeps working even if your site goes
-              down?</span
-            >
-          </li>
-        </ul>
         <p class="mt-4">
-          If you answered yes to all five, great, you're in a really strong position. However, if you answered no to any
-          of these, it's worth taking a look into. Even if you never talk to us.
+          If you answer yes to all five of the below, great, you're in a really strong position. However, if you answer
+          no to any of these, it's worth taking a look into. Even if you never talk to us.
         </p>
       </div>
     </Grid>
   </section>
 
-  <section id="faqs" class="pb-12 lg:pb-20">
+  <FeatureCards cards={fiveThingsToKnow} style="left-aligned" margin="pb-6 lg:pb-10" />
+
+  <section id="faqs" class="pb-12 lg:pb-20 lg:mt-20">
     <Grid>
       <div class="col-span-full lg:col-start-2 lg:col-span-4">
         <h2 class="section-header text-pixel-drk-celestial text-2xl lg:text-4xl">FAQs</h2>
