@@ -198,7 +198,8 @@ const insights: Insight[] = [
     title: 'When Should You Rebuild Your Website?',
     publishedAt: '2026-07-21',
     dateLabel: '21st July, 2026',
-    summary: 'Not every website problem needs a full rebuild. Here is how to tell when it does and when something more targeted will do the job.',
+    summary:
+      'Not every website problem needs a full rebuild. Here is how to tell when it does and when something more targeted will do the job.',
     slug: 'when-should-you-rebuild-your-website',
     published: true,
     featured: false,
@@ -207,8 +208,8 @@ const insights: Insight[] = [
   },
   {
     title: 'How A Good AI Development Process Actually Works',
-    publishedAt: '2026-07-21',
-    dateLabel: '21st July, 2026',
+    publishedAt: '2026-07-23',
+    dateLabel: '23rd July, 2026',
     summary: 'Describes the steps in a good software development process',
     slug: 'how-a-good-ai-development-process-actually-works',
     published: true,
