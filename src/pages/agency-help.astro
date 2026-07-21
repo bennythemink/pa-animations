@@ -6,6 +6,7 @@ import FeatureCards from '@components/services/FeatureCards.astro'
 import BlurbPoints from '@components/services/BlurbPoints.astro'
 import ContactForm from '@components/ContactForm.astro'
 import { SitePage } from '@data/analyticsCaller'
+import Callout from '@components/Callout.astro'
 
 /**
  * "What happens next?" FeatureCards variables
@@ -91,7 +92,7 @@ const faqs = [
   <section id="scenario" class="pb-12 lg:pb-20 lg:my-20">
     <Grid>
       <div class="col-span-full lg:col-start-2 mb-6 lg:mb-10">
-        <h2 class="section-header text-pixel-poppy text-2xl lg:text-4xl">Which one sounds like you?</h2>
+        <h2 class="section-header text-pixel-drk-poppy text-2xl lg:text-4xl">Which one sounds like you?</h2>
       </div>
       <div class="col-span-full lg:col-start-2 lg:col-span-10 grid grid-cols-1 lg:grid-cols-3 gap-5">
         <article class="bg-pixel-poppy p-8 flex flex-col gap-3 lg:min-h-[400px] lg:justify-between">
@@ -112,10 +113,30 @@ const faqs = [
     </Grid>
   </section>
 
-  <section id="about-us" class="pb-12 lg:pb-20">
+  <section id="fix" class="pb-12 lg:pb-20">
     <Grid>
       <div class="col-span-full lg:col-start-2">
-        <h2 class="section-header text-pixel-teal text-2xl lg:text-4xl">Why us?</h2>
+        <h2 class="section-header text-pixel-celestial text-2xl lg:text-4xl">How do we fix this?</h2>
+      </div>
+
+      <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
+        <h3 class="text-[40px] lg:text-[80px] leading-[1.04] tracking-[-0.04em]">Through four simple steps.</h3>
+      </div>
+    </Grid>
+  </section>
+
+  <FeatureCards cards={nextSteps} style="left-aligned" margin="pb-6 lg:pb-10" />
+
+  <Callout
+    calloutText="Interested already? Let\'s jump to the contact form to open a conversation, or schedule a call."
+    ctaText="Message us →"
+    url="#contact-form"
+  />
+
+  <section id="about-us" class="pb-12 lg:pb-20 lg:mt-20">
+    <Grid>
+      <div class="col-span-full lg:col-start-2">
+        <h2 class="section-header text-pixel-teal text-2xl lg:text-4xl">Why trust us?</h2>
       </div>
 
       <div class="col-span-full lg:col-start-2 lg:col-span-4 flex flex-col gap-4">
@@ -135,8 +156,6 @@ const faqs = [
       </div>
     </Grid>
   </section>
-
-  <FeatureCards title={nextStepsTitle} cards={nextSteps} style="left-aligned" margin="pb-6 lg:pb-10" />
 
   <section id="next-cta" class="pb-12 lg:pb-20">
     <Grid>
