@@ -71,6 +71,7 @@ src/
 │   ├── about.astro
 │   ├── contact.astro
 │   ├── pixel-assist.astro       # Pixel Assist AI product landing page
+│   ├── agency-help.astro        # Landing page for prospects whose current agency has gone quiet/stopped delivering
 │   ├── privacy-policy.astro
 │   ├── terms-and-conditions.astro
 │   ├── sitemap.astro
@@ -285,4 +286,4 @@ When opening a PR that changes any of the following, update this file as part of
 
 ---
 
-*Last updated: 2026-07-03*
+*Last updated: 2026-07-21*

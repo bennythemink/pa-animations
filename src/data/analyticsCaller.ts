@@ -4,6 +4,7 @@ export enum SitePage {
   ABOUT = '/about',
   CONTACT = '/contact',
   PIXEL_ASSIST = '/pixel-assist',
+  AGENCY_HELP = '/agency-help',
   PRIVACY_POLICY = '/privacy-policy',
   SITEMAP = '/sitemap',
   TERMS_AND_CONDITIONS = '/terms-and-conditions',
