@@ -3,10 +3,10 @@ import Layout from '@layouts/Layout.astro'
 import Grid from '@components/Grid.astro'
 import BookACallButton from '@components/BookACallButton.astro'
 import FeatureCards from '@components/services/FeatureCards.astro'
-import BlurbPoints from '@components/services/BlurbPoints.astro'
 import ContactForm from '@components/ContactForm.astro'
 import { SitePage } from '@data/analyticsCaller'
 import Callout from '@components/Callout.astro'
+import Testimonials from '@components/Testimonials.astro'
 
 /**
  * "What happens next?" FeatureCards variables
@@ -39,32 +39,6 @@ const fiveThingsToKnow = [
     title: '5. Email',
     description:
       'Is your business email independent of your website hosting, so it keeps working even if your site goes down?'
-  }
-]
-
-/**
- * FAQs
- */
-const faqs = [
-  {
-    q: 'Will this cost more than my old agency?',
-    a: "Not necessarily. We'll give you an honest cost estimate upfront, no obligation to proceed."
-  },
-  {
-    q: 'What happens to my domain and hosting?',
-    a: 'That depends on what you currently have access to, working that out together is part of the free review.'
-  },
-  {
-    q: 'How fast can you actually move?',
-    a: 'For urgent situations we can usually start within days. For a considered switch, at your pace.'
-  },
-  {
-    q: 'Do I need to sign a long contract?',
-    a: 'No lock-in contracts.'
-  },
-  {
-    q: "My current agency is still around, they're just not delivering, can you still help?",
-    a: 'Yes. Plenty of people we talk to are in exactly this position, nothing needs to have gone wrong for it to be worth a second opinion.'
   }
 ]
 ---
@@ -166,7 +140,9 @@ const faqs = [
     </Grid>
   </section>
 
-  <section id="testimonial"></section>
+  <section id="testimonial">
+    <Testimonials />
+  </section>
 
   <section id="tips" class="pb-12 lg:pb-20 lg:mt-20">
     <Grid>
