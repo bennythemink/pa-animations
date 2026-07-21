@@ -77,10 +77,10 @@ const faqs = [
         <div class="mt-2 flex flex-wrap items-center gap-3">
           <BookACallButton
             text="Book a call"
-            class="font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base transition-colors hover:underline cursor-pointer"
+            class="ah-accent-cta font-sans font-normal inline-block w-fit bg-white px-4 py-2 text-base transition-colors hover:underline cursor-pointer"
           />
           <span class="font-sans font-normal text-base">or</span>
-          <a href="/contact" class="font-sans font-normal text-base underline underline-offset-2 cursor-pointer"
+          <a href="#contact-form" class="font-sans font-normal text-base underline underline-offset-2 cursor-pointer"
             >Message us →</a
           >
         </div>
@@ -196,3 +196,32 @@ const faqs = [
 
   <ContactForm title="Let's talk about what's happening with your agency." caller={SitePage.AGENCY_HELP} />
 </Layout>
+
+<style is:global>
+  /* Scoped to this page only via the unique .ah-accent-cta class — mirrors CTA.astro's
+     accent-fill hover treatment without touching the shared component. */
+  .ah-accent-cta:hover {
+    background-color: var(--accent-bgc);
+    color: var(--ah-accent-cta-hover-text, #fff);
+  }
+</style>
+
+<script is:inline>
+  ;(function () {
+    function setAccentCtaHoverText() {
+      var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-bgc').trim()
+      var match = accent.match(/(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/)
+      if (!match) return
+      var r = parseInt(match[1]) / 255
+      var g = parseInt(match[2]) / 255
+      var b = parseInt(match[3]) / 255
+      // sRGB relative luminance
+      r = r <= 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4)
+      g = g <= 0.03928 ? g / 12.92 : Math.pow((g + 0.055) / 1.055, 2.4)
+      b = b <= 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4)
+      var L = 0.2126 * r + 0.7152 * g + 0.0722 * b
+      document.documentElement.style.setProperty('--ah-accent-cta-hover-text', L > 0.4 ? '#000' : '#fff')
+    }
+    setAccentCtaHoverText()
+  })()
+</script>
