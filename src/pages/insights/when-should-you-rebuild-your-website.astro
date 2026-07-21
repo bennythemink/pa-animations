@@ -1,0 +1,95 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('when-should-you-rebuild-your-website')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Before committing to a website rebuild, it is worth asking why you think you need one. A rebuild is a
+        significant investment, and the right answer is not always obvious. Sometimes the problem that feels like it
+        needs a rebuild is actually something more targeted. And sometimes what looks manageable is actually overdue
+        for replacement. Here is how to tell the difference.
+      </p><br />
+      <p><strong>Signs a rebuild is warranted:</strong></p>
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>The tech stack is deprecated or unsupported:</strong> If the platform or framework your site is built
+            on no longer receives updates, you are accumulating risk. Security vulnerabilities, broken integrations, and
+            incompatible plugins become increasingly expensive to manage the longer you leave it.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>The code is blocking business value:</strong> If making changes that should be simple requires significant
+            developer effort, or the site actively prevents you from implementing things that would help the business,
+            the underlying architecture is the problem.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>The UX and data flow are fundamentally wrong:</strong> Surface-level fixes cannot repair a site where
+            the structure itself sends users in the wrong direction.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Maintenance costs are compounding:</strong> When the annual cost of keeping the current site running
+            is approaching or exceeding what a rebuild would cost, the economics have shifted.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p><strong>Signs a rebuild probably is not the answer:</strong></p>
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>The design feels dated but the structure works:</strong> A template refresh, updated imagery, or revised
+            copy can make a significant difference without touching the underlying site.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>One integration is broken:</strong> A proper fix to a broken integration is not a reason to rebuild the
+            entire site.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You have not tested the actual problem:</strong> Low traffic or conversion rates are not automatically
+            a website problem. Before attributing them to poor UX, check whether your SEO is working and whether the site
+            has actually been tested with a meaningful volume of visitors.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        Diagnosis matters here. A <a href="/services/discovery" class="underline underline-offset-2">discovery phase</a>
+        or a <a href="/services/consulting" class="underline underline-offset-2">consulting conversation</a> is often the
+        most cost-effective first step, it helps you make this call with evidence rather than instinct.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>

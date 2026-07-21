@@ -193,6 +193,17 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Project Management', 'Business'],
     colour: 'pixel-celestial'
+  },
+  {
+    title: 'When Should You Rebuild Your Website?',
+    publishedAt: '2026-07-21',
+    dateLabel: '21st July, 2026',
+    summary: 'Not every website problem needs a full rebuild. Here is how to tell when it does and when something more targeted will do the job.',
+    slug: 'when-should-you-rebuild-your-website',
+    published: true,
+    featured: false,
+    tags: ['Technology', 'Business'],
+    colour: 'pixel-rosy'
   }
 ]
 
