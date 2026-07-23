@@ -107,7 +107,7 @@ const insights: Insight[] = [
     summary: 'No. And we tell you why.',
     slug: 'does-ai-have-a-sustainable-business-model',
     published: true,
-    featured: false,
+    featured: true,
     tags: ['AI', 'Business'],
     colour: 'pixel-solar'
   },
@@ -154,7 +154,7 @@ const insights: Insight[] = [
       'Practical steps to protect your hosting, domain, plugin licences, and agency relationship if your agency shuts down.',
     slug: 'how-to-protect-your-business-in-case-your-agency-closes',
     published: true,
-    featured: false,
+    featured: true,
     tags: ['Risk Management', 'Business'],
     colour: 'pixel-fire'
   },
