@@ -19,11 +19,13 @@ const { text, author, role, organisation, organisationUrl, colour } = Astro.prop
   class="shrink-0 w-[260px] sm:w-[280px] lg:w-[320px] min-h-[420px] lg:min-h-[460px] p-6 lg:p-8 flex flex-col justify-between"
   style={`background-color: ${resolvePixelColour(colour)};`}
 >
-  <div class="flex flex-col gap-6 lg:gap-8">
-    <Image src={quote} alt="" class="w-6 lg:w-7 h-auto" />
-    <p class="font-sans italic text-base lg:text-lg leading-[1.35] tracking-[-0.01em]">&ldquo;{text}&rdquo;</p>
+  <div class="flex flex-row items-start gap-4 lg:gap-5">
+    <Image src={quote} alt="" class="w-6 lg:w-7 h-auto shrink-0" />
+    <p class="flex-1 min-w-0 font-sans italic text-base lg:text-lg leading-[1.35] tracking-[-0.01em]">
+      &ldquo;{text}&rdquo;
+    </p>
   </div>
-  <div class="font-sans text-base lg:text-lg leading-[1.3]">
+  <div class="font-sans text-base leading-[1.3] lg:pl-12">
     <p>{author}</p>
     <p>{role}</p>
     <a href={organisationUrl} class="underline underline-offset-2" target="_blank">{organisation}</a>
