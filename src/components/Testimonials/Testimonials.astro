@@ -17,7 +17,7 @@ interface Props {
   blurb?: string
 }
 
-const { title = 'Our testimonials', titleColour = 'pixel-rosy', blurb = 'What people say about us' } = Astro.props
+const { title = 'Our testimonials', titleColour = 'pixel-fire', blurb = 'What people say about us' } = Astro.props
 
 const testimonials: TestimonialData[] = [
   {
@@ -25,49 +25,49 @@ const testimonials: TestimonialData[] = [
     author: 'O. Wells',
     role: 'Marketing Manager',
     organisation: 'PFG Australia',
-    organisationUrl: '/case-studies/pfg'
+    organisationUrl: 'https://www.pfgaustralia.com.au'
   },
   {
     text: 'On time, on budget, and guided us through the whole experience. Pixel went above what was asked of them, helping with additional art assets and providing a landing page while the project was being developed. Exactly what you want from a partner.',
     author: 'K. Hills',
     role: 'Marketing Manager',
     organisation: 'Sonata',
-    organisationUrl: '/case-studies/sonata-ai'
+    organisationUrl: 'https://sonataacousticpanels.com.au'
   },
   {
     text: "Strategic thinking, creative design, technical expertise and exceptional service – everything you'd want in a trusted digital partner.",
     author: 'C. Smithson',
     role: 'Marketing Manager',
     organisation: 'Fletcher Insulation',
-    organisationUrl: '/case-studies/insulation'
+    organisationUrl: 'https://insulation.com.au'
   },
   {
     text: 'The Pixel team produced a beautiful website and application to help connect employers with graduates, benefiting the local community. Pixel guided us through the entire process, was proactive, and we would highly recommend them to anyone looking for a digital solution.',
     author: 'A. Nicholson',
     role: 'Dean of Education',
     organisation: 'Holmesglen',
-    organisationUrl: '/case-studies/holmesglen'
+    organisationUrl: 'https://www.holmesglen.edu.au'
   },
   {
     text: "Pixel built us a website that genuinely reflects the quality of our work, and the ongoing support has been just as impressive. They're responsive, knowledgeable, and incredibly easy to work with. I wouldn't hesitate to recommend Pixel to anyone looking for a partner they can trust.",
     author: 'T. Jewell',
     role: 'Creative Director',
     organisation: 'LUMP Studios',
-    organisationUrl: '#'
+    organisationUrl: 'https://www.lump.com.au'
   },
   {
     text: "Pixel successfully consulted on a data piece, helping to map out technical aspects that would have otherwise taken the client's team years to discover, if at all!",
     author: 'H. Nguyen',
     role: 'CTO',
     organisation: 'Howatson + Co.',
-    organisationUrl: '#'
+    organisationUrl: 'https://howatsonco.com.au'
   }
 ]
 ---
 
 <section id="testimonials" class="py-12 lg:py-20">
   <Grid>
-    <div class="col-span-full lg:col-start-2 lg:col-span-6 mb-8 lg:mb-12">
+    <div class="col-span-full lg:col-start-2 lg:col-span-5 mb-8 lg:mb-12">
       <h2 class="section-header text-2xl lg:text-4xl" style={`color: ${resolvePixelColour(titleColour)};`}>
         {title}
       </h2>
@@ -75,7 +75,7 @@ const testimonials: TestimonialData[] = [
     </div>
   </Grid>
 
-  <div id="testimonials-scroll" class="w-full overflow-x-auto flex gap-8 lg:gap-10">
+  <div id="testimonials-scroll" class="w-full overflow-x-auto flex gap-8 lg:gap-10 lg:mt-6">
     {
       testimonials.map((t, i) => (
         <Testimonial
