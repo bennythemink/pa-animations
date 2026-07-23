@@ -1594,6 +1594,16 @@ const sectionCards = [
 
       processRects.forEach((rect) => {
         const { fromVars, toVars } = buildRectVars(rect)
+
+        if (isSafari) {
+          // Safari: skip the grow/opacity reveal animation entirely — render every
+          // rectangle already in its end state so there's nothing left to animate
+          // and the section just scrolls like normal content. See isSafari comment
+          // above for why UA sniffing is used here.
+          gsap.set(rect, toVars)
+          return
+        }
+
         gsap.set(rect, fromVars)
 
         const rectBox = rect.getBoundingClientRect()
@@ -1632,14 +1642,17 @@ const sectionCards = [
       const distNow = getProcessScrollDist()
       if (distNow <= 0) {
         gsap.set(processTrack, { x: 0 })
-        syncProcessReveals(0)
+        if (!isSafari) syncProcessReveals(0)
         return
       }
 
       const rect = processWrapper.getBoundingClientRect()
       const progress = gsap.utils.clamp(0, 1, -rect.top / distNow)
       gsap.set(processTrack, { x: -progress * distNow })
-      syncProcessReveals(progress)
+      // Safari never populates processRevealState (rects are pre-set to their end
+      // state in buildProcessRevealState), so this is a no-op there — skip the
+      // call outright to avoid the per-tick reveal/tween overhead entirely.
+      if (!isSafari) syncProcessReveals(progress)
     }
 
     updateProcessLayout()
