@@ -58,12 +58,12 @@ export function hexToRgb(hex: string): { r: number; g: number; b: number } {
 /** Colour keys used by the flow-field accent system. Subset of brand palette. */
 export const ACCENT_COLOUR_KEYS: PixelColourKey[] = [
   'pixel-celestial',
-  'pixel-drk-celestial',
   'pixel-poppy',
   'pixel-rosy',
   'pixel-fire',
   'pixel-solar',
   'pixel-teal',
+  'pixel-drk-celestial',
   'pixel-drk-teal',
   'pixel-fawn'
 ]

@@ -8,6 +8,7 @@ import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
 import CTA from '@components/CTA.astro'
 import LetsTalk from '@components/home/LetsTalk.astro'
 import Insights from '@components/insights/Insights.astro'
+import Testimonials from '@components/Testimonials/Testimonials.astro'
 
 const assistConversation = [
   { role: 'user' as const, text: 'What is Pixel Assist and will it help convert visitors into customers?' },
@@ -316,6 +317,8 @@ const sectionCards = [
       </Grid>
 
       <ClientLogos />
+
+      <Testimonials />
     </section>
 
     <!-- ══════ OUR PROCESS — horizontal scroll ══════ -->
