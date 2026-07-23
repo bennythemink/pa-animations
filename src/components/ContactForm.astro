@@ -11,6 +11,7 @@ interface Props {
   displayDescription?: boolean
   description?: string
   caller?: Caller
+  placeholder?: string
 }
 
 const {
@@ -18,15 +19,14 @@ const {
   backgroundColor,
   displayDescription = true,
   description = `Whether you've got a detailed brief or just a rough idea, we're happy to have a conversation.<br /><br />No pitch, no pressure, just a straight talk about what you're working on and whether we're the right fit.`,
-  caller = DEFAULT_CALLER
+  caller = DEFAULT_CALLER,
+  placeholder = "Tell us a bit about what's prompting you to get in touch, what you're hoping to change, and any timing that matters.",
 } = Astro.props
 
 const analyticsCaller = caller
 
 // ── Replace with your deployed Google Apps Script web app URL ──
 
-// const FORM_ENDPOINT =
-//   'https://script.google.com/macros/s/AKfycbw9bAQXui4ZUFw4-Rp1QCmb-Hepg6DAbjGIavaf3PQg3FN_9bazUx4ESt73zYw87zt5/exec'
 const FORM_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbyAAT40MAj-CUmMgeYzK0nlxAETe07dOC1ak5PNbqCyrmYOTEqy0-KnzpmTV9SYZ6Z0/exec'
 
@@ -89,11 +89,12 @@ const uid = Math.random().toString(36).slice(2, 8)
           type="text"
           id={`cf-${uid}-name`}
           name="name"
-          placeholder="Full name"
+          placeholder="Full name *"
           autocomplete="name"
           aria-required="true"
           aria-describedby={`cf-${uid}-name-err`}
           class="bg-white/20 px-4 py-3 text-black placeholder:text-black/50 outline-none focus:bg-white/30 transition-colors"
+          required
         />
         <p id={`cf-${uid}-name-err`} data-error="name" role="alert" class="hidden text-xs text-black/80">
           Please enter your name.*
@@ -120,10 +121,12 @@ const uid = Math.random().toString(36).slice(2, 8)
           type="email"
           id={`cf-${uid}-email`}
           name="email"
-          placeholder="Email address"
+          placeholder="Email address *"
           autocomplete="email"
+          aria-required="true"
           aria-describedby={`cf-${uid}-email-err`}
           class="bg-white/20 px-4 py-3 text-black placeholder:text-black/50 outline-none focus:bg-white/30 transition-colors"
+          required
         />
         <p id={`cf-${uid}-email-err`} data-error="email" role="alert" class="hidden text-xs text-black/80">
           Please enter an email address or phone number.*
@@ -153,7 +156,7 @@ const uid = Math.random().toString(36).slice(2, 8)
         <textarea
           id={`cf-${uid}-message`}
           name="message"
-          placeholder="Tell us a bit about what's prompting you to get in touch, what you're hoping to change, and any timing that matters."
+          placeholder={placeholder}
           rows="6"
           class="bg-white/20 px-4 py-3 text-black placeholder:text-black/50 outline-none focus:bg-white/30 transition-colors resize-none"
         ></textarea>
