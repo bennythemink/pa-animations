@@ -1,0 +1,112 @@
+---
+import Grid from '@components/Grid.astro'
+import Testimonial from './Testimonial.astro'
+import { ACCENT_COLOUR_KEYS, resolvePixelColour } from '@config/colours'
+
+interface TestimonialData {
+  text: string
+  author: string
+  role: string
+  organisation: string
+  organisationUrl: string
+}
+
+interface Props {
+  title?: string
+  titleColour?: string
+  blurb?: string
+}
+
+const { title = 'Our testimonials', titleColour = 'pixel-rosy', blurb = 'What people say about us' } = Astro.props
+
+const testimonials: TestimonialData[] = [
+  {
+    text: "The Pixel team are incredibly responsive, knowledgeable, and always quick to resolve any website issues that come up. It's reassuring to know the Pixel team is only an email away.",
+    author: 'O. Wells',
+    role: 'Marketing Manager',
+    organisation: 'PFG Australia',
+    organisationUrl: '/case-studies/pfg'
+  },
+  {
+    text: 'On time, on budget, and guided us through the whole experience. Pixel went above what was asked of them, helping with additional art assets and providing a landing page while the project was being developed. Exactly what you want from a partner.',
+    author: 'K. Hills',
+    role: 'Marketing Manager',
+    organisation: 'Sonata',
+    organisationUrl: '/case-studies/sonata-ai'
+  },
+  {
+    text: "Strategic thinking, creative design, technical expertise and exceptional service – everything you'd want in a trusted digital partner.",
+    author: 'C. Smithson',
+    role: 'Marketing Manager',
+    organisation: 'Fletcher Insulation',
+    organisationUrl: '/case-studies/insulation'
+  },
+  {
+    text: 'The Pixel team produced a beautiful website and application to help connect employers with graduates, benefiting the local community. Pixel guided us through the entire process, was proactive, and we would highly recommend them to anyone looking for a digital solution.',
+    author: 'A. Nicholson',
+    role: 'Dean of Education',
+    organisation: 'Holmesglen',
+    organisationUrl: '/case-studies/holmesglen'
+  },
+  {
+    text: "Pixel built us a website that genuinely reflects the quality of our work, and the ongoing support has been just as impressive. They're responsive, knowledgeable, and incredibly easy to work with. I wouldn't hesitate to recommend Pixel to anyone looking for a partner they can trust.",
+    author: 'T. Jewell',
+    role: 'Creative Director',
+    organisation: 'LUMP Studios',
+    organisationUrl: '#'
+  },
+  {
+    text: "Pixel successfully consulted on a data piece, helping to map out technical aspects that would have otherwise taken the client's team years to discover, if at all!",
+    author: 'H. Nguyen',
+    role: 'CTO',
+    organisation: 'Howatson + Co.',
+    organisationUrl: '#'
+  }
+]
+---
+
+<section id="testimonials" class="py-12 lg:py-20">
+  <Grid>
+    <div class="col-span-full lg:col-start-2 lg:col-span-6 mb-8 lg:mb-12">
+      <h2 class="section-header text-2xl lg:text-4xl" style={`color: ${resolvePixelColour(titleColour)};`}>
+        {title}
+      </h2>
+      <h3 class="text-4xl lg:text-[80px] leading-[1.04] tracking-[-0.04em] mt-4 lg:mt-6">{blurb}</h3>
+    </div>
+  </Grid>
+
+  <div id="testimonials-scroll" class="w-full overflow-x-auto flex gap-8 lg:gap-10">
+    {
+      testimonials.map((t, i) => (
+        <Testimonial
+          text={t.text}
+          author={t.author}
+          role={t.role}
+          organisation={t.organisation}
+          organisationUrl={t.organisationUrl}
+          colour={ACCENT_COLOUR_KEYS[i % ACCENT_COLOUR_KEYS.length]}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  #testimonials-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #testimonials-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    /* Aligns the first card's left edge with the shared Grid's col-2 start
+       (col-1 width + 1 gap), while this row itself stays full-bleed so later
+       cards can scroll flush to the browser's true left edge. */
+    #testimonials-scroll {
+      padding-left: calc((100% - 260px) / 12 + 40px);
+    }
+  }
+</style>
