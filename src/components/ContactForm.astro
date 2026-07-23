@@ -197,7 +197,6 @@ const uid = Math.random().toString(36).slice(2, 8)
   document.querySelectorAll<HTMLFormElement>('form[data-contact-form]').forEach((form) => {
     const root = form.closest<HTMLElement>('[data-contact-form-root]')!
     const endpoint = form.dataset.endpoint!
-    const callerValue = form.dataset.caller || 'not_supplied'
 
     const nameInput = form.querySelector<HTMLInputElement>('[name="name"]')!
     const emailInput = form.querySelector<HTMLInputElement>('[name="email"]')!
@@ -206,6 +205,7 @@ const uid = Math.random().toString(36).slice(2, 8)
     const msgInput = form.querySelector<HTMLTextAreaElement>('[name="message"]')
     const submitBtn = form.querySelector<HTMLButtonElement>('[type="submit"]')!
     const submitLbl = submitBtn.querySelector<HTMLElement>('[data-submit-label]')!
+    const callerInput = form.querySelector<HTMLInputElement>('[name="caller"]')!
 
     const nameErr = form.querySelector<HTMLElement>('[data-error="name"]')!
     const emailErr = form.querySelector<HTMLElement>('[data-error="email"]')!
@@ -261,13 +261,15 @@ const uid = Math.random().toString(36).slice(2, 8)
         const nameValue = nameInput.value.trim()
         const emailValue = emailInput.value.trim()
         const phoneValue = phoneInput.value.trim()
+        const callerValue = callerInput.value.trim()
 
         const data = new URLSearchParams({
           name: nameValue,
           organisation: org ? org : 'N/A',
           email: emailValue ? emailValue : 'N/A',
           phone: phoneValue ? phoneValue : 'N/A',
-          message: msgInput?.value.trim() ?? ''
+          message: msgInput?.value.trim() ?? '',
+          caller: callerValue
         })
 
         await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: data })
