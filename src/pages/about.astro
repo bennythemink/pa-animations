@@ -13,6 +13,7 @@ import { SitePage } from '@data/analyticsCaller'
 import CaseStudyDrawer from '@components/home/CaseStudyDrawer.astro'
 import extended from '@assets/pa-extended.svg'
 import Insights from '@components/insights/Insights.astro'
+import Testimonials from '@components/Testimonials/Testimonials.astro'
 
 /**
  * WhoSection variables
@@ -431,6 +432,10 @@ const sectionCards = [
   </section>
 
   <ClientLogos />
+
+  <section id="testimonials">
+    <Testimonials />
+  </section>
 
   <section id="insights" class="pt-12 lg:pt-20">
     <Grid>
