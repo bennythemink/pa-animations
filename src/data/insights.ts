@@ -216,6 +216,17 @@ const insights: Insight[] = [
     featured: false,
     tags: ['AI', 'Technology'],
     colour: 'pixel-teal'
+  },
+  {
+    title: 'Signs your website needs a redesign',
+    publishedAt: '2026-07-27',
+    dateLabel: '27th July, 2026',
+    summary: "The concrete signs that tell you it's time for a redesign or redevelopment.",
+    slug: 'signs-your-website-needs-a-redesign',
+    published: true,
+    featured: false,
+    tags: ['Web Design', 'Business'],
+    colour: 'pixel-fire'
   }
 ]
 

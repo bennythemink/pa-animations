@@ -1,0 +1,117 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('signs-your-website-needs-a-redesign')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Wondering if you need to redesign your website? Well if more than a couple of the points below sound familiar,
+        then yeah, you probably do.
+      </p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Poor to no mobile optimisation:</strong> if the site is hard to use, slow, or broken on a phone, you are
+            failing most of your visitors before they even see what you offer.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Confusing navigation:</strong> menus that are too large, too deep, or unclear about where things live.
+            If a visitor cannot find your services or contact details in a couple of clicks, they will leave.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Accessibility and readability problems:</strong> text with too little contrast against the background,
+            or key information like opening hours hidden behind a drawer or extra click. If people have to work to read your
+            site, most will not bother.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>It does not look like your brand:</strong> either the site was never built to match your actual brand,
+            or your brand has moved on since and the site is still running the old logo, colours, or fonts.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Stock photography that looks like stock photography:</strong> the same handshake and open-plan office
+            photos everyone else is using. It tells visitors nothing about your actual business.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Messaging that is out of date:</strong> advertising a service you no longer offer, or describing a business
+            that has since changed direction.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>It is generic:</strong> swap the logo and it could be any business in your industry. Nothing on the site
+            tells a visitor why you, specifically.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>It is chasing a trend that has already dated:</strong> the wave of black-and-purple AI-generated sites
+            is a good current example. It looked modern for about six months, and now every visitor recognises it as a template.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You hesitate before sending someone the link:</strong> if you are embarrassed to share your own website,
+            that is not a small thing, that is the clearest signal on this list.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Your competitors look better than you:</strong> not a reason to panic, but worth an honest look if you
+            have not compared recently.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>High bounce rate, or traffic with no leads:</strong> bounce rate is a percentage, so it does not matter
+            whether you get 100 visitors a month or 10,000. If most people land and leave straight away, or if traffic is
+            healthy but nothing is converting, that is a signal about the site, not about your marketing spend.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        If you recognised your site in several of these, that is worth taking seriously. It does not automatically mean
+        a full rebuild. Sometimes it is one or two of these, and a scoped fix solves it. Sometimes it is most of the
+        list, and a redevelopment is the more honest answer. If you are not sure which one you are looking at, that is
+        exactly what a <a href="/services/discovery" class="underline underline-offset-2">discovery phase</a>
+        is for.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>
