@@ -1691,4 +1691,15 @@ const sectionCards = [
     ScrollTrigger.refresh()
     lenis.resize()
   })
+
+  // Fonts resolve before images (case studies, testimonials, client logos)
+  // finish loading. If those images land after the fonts.ready refresh above,
+  // page height grows but ScrollTrigger's pin spacer (from #assist-wrapper)
+  // stays baked in at the old height — Safari then caps max scroll right at
+  // that pin boundary, just before #process-wrapper. Re-measure once
+  // everything has actually loaded to catch that case.
+  window.addEventListener('load', () => {
+    sizeAllTracks()
+    ScrollTrigger.refresh()
+  })
 </script>

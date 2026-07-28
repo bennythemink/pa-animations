@@ -109,7 +109,7 @@ const insights: Insight[] = [
     published: true,
     featured: true,
     tags: ['AI', 'Business'],
-    colour: 'pixel-solar'
+    colour: 'pixel-rosy'
   },
   {
     title: 'Why You Should Consider Using Your Own AI Model',
