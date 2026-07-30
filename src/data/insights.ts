@@ -227,6 +227,17 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Web Design', 'Business'],
     colour: 'pixel-fire'
+  },
+  {
+    title: 'How much does a website or app actually cost in Australia?',
+    publishedAt: '2026-07-30',
+    dateLabel: '30th July, 2026',
+    summary: 'A breakdown of real build price ranges for websites and apps in Australia',
+    slug: 'how-much-does-a-website-or-app-actually-cost-in-australia',
+    published: true,
+    featured: false,
+    tags: ['websites', 'apps', 'design', 'development'],
+    colour: 'pixel-fawn'
   }
 ]
 

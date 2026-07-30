@@ -1,0 +1,156 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('how-much-does-a-website-or-app-actually-cost-in-australia')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Ask what a website or app costs and you will get "it depends" from almost every agency, us included. That answer
+        is true, but it is not particularly useful when you are trying to budget for a real project. Here is what those
+        numbers actually look like, broken down by project type.
+      </p><br />
+      <p><strong>Websites:</strong></p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Brochure or marketing site ($5K to $20K+):</strong> at the bottom of this range, you are generally looking
+            at a template or AI-generated build. These can work for a very small business, but they tend to look generic,
+            because hundreds of other businesses are running the same template. Once you move into custom design and development,
+            you are at $20K and up.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Content-heavy site ($20K+):</strong> blogs, resource hubs, or publications where the CMS is doing real
+            work, structured content types and editorial workflows, not just a handful of static pages.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>E-commerce site ($20K+):</strong> product catalog, cart, checkout, payment gateway, and inventory sync.
+            The integrations are what push this above a standard brochure site.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Web app or customer portal ($30K+):</strong> logins, dashboards, user-specific data, and real business
+            logic. This is where "website" pricing starts turning into "app" pricing.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Complex or enterprise site ($80K+):</strong> a large business with many products, technical data sheets,
+            calculators, and integrations with internal systems like an ERP or CRM, sometimes across multiple languages.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p><strong>Apps:</strong></p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>MVP or proof of concept app ($2K+):</strong> a stripped-down build to test whether an idea is worth building
+            properly, before you commit to the full thing.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Simple, single-purpose app ($10K+):</strong> one core feature, minimal or no backend, built for a single
+            platform.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Custom business app, both platforms ($30K+):</strong> standard functionality, user accounts, a proper
+            backend, built for both iOS and Android. On cross-platform frameworks, the gap with native has mostly closed for
+            standard functionality. Native is still the better choice if you want the very best possible UX.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>E-commerce or marketplace app ($70K+):</strong> product catalog, cart, payments, and often two-sided logic
+            for buyers and sellers, or users and providers. The backend and integration load is heavier than a standard business
+            app.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Complex or enterprise app ($100K+):</strong> heavy backend work, integrations with internal systems, complex
+            user roles and permissions, and sometimes offline support or real-time data.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p><strong>Ongoing costs:</strong></p><br />
+      <p>
+        The build price is not the whole picture. Once the site or app is live, there are a few ongoing costs worth
+        budgeting for:
+      </p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Hosting ($0 to $400+ a month):</strong> this varies a lot depending on traffic and the technology behind
+            it. Most standard business sites and apps sit well under that upper figure. You would only approach $400 a month
+            with unusually high traffic or demand.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Maintenance and support (roughly 10% of build cost a year):</strong> this is not fixed, and it can be
+            $0 for a while, but a site or app you never touch again eventually becomes a problem: security patches lapse,
+            platforms move on, and browsers change. Budgeting around 10% of the build cost per year is a reasonable rule of
+            thumb.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Domain:</strong> genuinely cheap, a minor line item compared to everything else here.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Content updates:</strong> for most builds, this is something you or your team can handle yourselves once
+            the site is live. It is rarely a recurring cost you need to pay an agency for.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        These are ranges, not quotes. The number that actually matters is the one built around your specific features,
+        not a generic tier. If you are not sure which of these fits what you are planning, give us a <a
+          href="tel:+61399432429"
+          class="underline underline-offset-2">call</a
+        >.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>
