@@ -39,7 +39,7 @@
 * [Explorers Early Learning](/case-studies/eel): Improved parent engagement and increased centre tour bookings through digital redesign.
 * [Fletcher Insulation](/case-studies/insulation): Website rebuild that increased traffic, engagement, and reduced support load.
 * [Fletcher Insulation DAM Platform](/case-studies/fletcher-dam): Purpose-built digital asset management platform with custom approval workflows.
-* [Holmesglen Institute](/case-studies/holmesglen): Student-employer platform build delivering measurable year-one adoption and placements.
+<!-- * [Holmesglen Institute](/case-studies/holmesglen): Student-employer platform build delivering measurable year-one adoption and placements. -->
 * [Mt Baw Baw](/case-studies/bawbaw): Tourism website redesign improving customer satisfaction and bookings.
 * [Pixel Assist](/case-studies/pixel-assist): Managed AI knowledge assistant implementation focused on instant access to product information.
 * [Simple.io](/case-studies/simple): Website and brand refresh that lifted leads and session duration.
