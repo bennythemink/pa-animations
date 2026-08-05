@@ -238,6 +238,17 @@ const insights: Insight[] = [
     featured: false,
     tags: ['websites', 'apps', 'design', 'development'],
     colour: 'pixel-fawn'
+  },
+  {
+    title: 'Questions to ask before you hire a digital agency',
+    publishedAt: '2026-08-05',
+    dateLabel: '5th August, 2026',
+    summary: 'The questions worth asking before hiring a digital agency or developer.',
+    slug: 'questions-to-ask-before-you-hire-a-digital-agency',
+    published: true,
+    featured: false,
+    tags: ['Consulting', 'Risk Management', 'Technology'],
+    colour: 'pixel-solar'
   }
 ]
 

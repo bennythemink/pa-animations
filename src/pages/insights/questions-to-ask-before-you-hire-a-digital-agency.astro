@@ -1,0 +1,109 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('questions-to-ask-before-you-hire-a-digital-agency')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Picking an agency mostly comes down to trust before you have any real proof. The questions below will not
+        remove all the risk, but they will surface a lot of it before you have signed anything or spent a dollar.
+      </p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>What would you actually do if you have not solved this exact problem before?</strong> Every agency
+            runs into things they have not built before, that is normal. What matters is whether they have a real process
+            for figuring it out, discovery, prototyping, technical testing, or whether they just reach for whatever they
+            already know regardless of fit.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>What technology are you actually using, and does it match what you are being quoted for?</strong> We
+            once had a client come to us with a quote from another agency for a native iOS and Android app. When we looked
+            into it, the technology behind the quote was actually a cross-platform framework, not native. The client was
+            being charged native app pricing for a lower-tier build. Ask directly, and ask them to explain the tradeoffs
+            of their recommendation in plain language, not just the name of the technology. If you want a deeper read on
+            this, we cover it in
+            <a
+              href="/insights/how-to-evaluate-the-technology-your-agency-recommends"
+              class="underline underline-offset-2">how to evaluate the technology your agency recommends</a
+            >.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Who will actually be doing the work?</strong> Senior staff in the pitch meeting, then a junior or outsourced
+            team on delivery, is a common pattern. Ask who is actually assigned before you sign anything.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Where is the delivery team actually based?</strong> This affects response times, working-hour overlap,
+            potential language barriers, and whether the team is familiar with local technical or regulatory requirements,
+            things like Australian accessibility standards or local payment providers. Off-shoring is not automatically a
+            problem, we have written about
+            <a href="/insights/what-about-off-shoring" class="underline underline-offset-2">when it works</a>, but it is
+            something you should know upfront rather than discover later.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Who owns the IP?</strong> The code, the designs, the content, all of it. Some agencies build in a way
+            that quietly keeps you dependent on them rather than in full ownership of what you paid for.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Is there anything in the solution that comes with a recurring fee, and who does it go to?</strong> A
+            hosting fee is normal. A recurring fee that goes straight to the agency for something you could otherwise own
+            outright is worth asking more about. It might be entirely justified. It might also be a way of keeping you
+            locked in.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Can they show you references from something a similar size and complexity to your project?</strong> A
+            portfolio full of small brochure sites tells you very little about how an agency handles a complex build.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>How fast did the quote come, and how many real questions came before it?</strong> A number that arrives
+            before anyone has asked about your actual requirements is not a considered estimate.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        None of these questions guarantee a good outcome on their own, but an agency that answers them clearly and
+        without getting defensive is telling you something useful. If you would rather have a second opinion on a
+        quote or proposal before you commit to it, that is exactly the kind of thing a consulting engagement can help
+        with.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk />
+</Layout>
