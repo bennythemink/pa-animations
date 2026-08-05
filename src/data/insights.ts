@@ -218,7 +218,7 @@ const insights: Insight[] = [
     colour: 'pixel-teal'
   },
   {
-    title: 'Signs your website needs a redesign',
+    title: 'Signs Your Website Needs A Redesign',
     publishedAt: '2026-07-27',
     dateLabel: '27th July, 2026',
     summary: "The concrete signs that tell you it's time for a redesign or redevelopment.",
@@ -229,7 +229,7 @@ const insights: Insight[] = [
     colour: 'pixel-fire'
   },
   {
-    title: 'How much does a website or app actually cost in Australia?',
+    title: 'How Much Does A Website Or App Actually Cost In Australia?',
     publishedAt: '2026-07-30',
     dateLabel: '30th July, 2026',
     summary: 'A breakdown of real build price ranges for websites and apps in Australia',
@@ -240,7 +240,7 @@ const insights: Insight[] = [
     colour: 'pixel-fawn'
   },
   {
-    title: 'Questions to ask before you hire a digital agency',
+    title: 'Questions To Ask Before You Hire A Digital Agency',
     publishedAt: '2026-08-05',
     dateLabel: '5th August, 2026',
     summary: 'The questions worth asking before hiring a digital agency or developer.',

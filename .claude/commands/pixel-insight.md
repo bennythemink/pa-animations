@@ -17,6 +17,10 @@ Create a new Insight article for the Pixel Agency website (pixelagency.com.au).
 
 ## Step 1 — Derive metadata
 
+**title**
+Capitalise every word in the title (Title Case), not just the first word. This keeps titles consistent with the rest of `src/data/insights.ts`.
+Example: "Signs your website needs a redesign" → `"Signs Your Website Needs A Redesign"`
+
 **slug**
 Lowercase the title, strip all punctuation except hyphens, replace spaces with `-`.
 Example: "What a Good Brief Looks Like" → `what-a-good-brief-looks-like`
