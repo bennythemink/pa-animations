@@ -261,6 +261,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['App Development', 'Web Design', 'Technology'],
     colour: 'pixel-celestial'
+  },
+  {
+    title: 'Can I Build My Website Myself With Wix Or Squarespace, Or Do I Need A Developer?',
+    publishedAt: '2026-08-14',
+    dateLabel: '14th August, 2026',
+    summary:
+      'An honest breakdown of when a DIY website builder like Wix or Squarespace is genuinely the right call, and when it starts costing more than it saves.',
+    slug: 'can-i-build-my-website-myself-with-wix-or-squarespace-or-do-i-need-a-developer',
+    published: true,
+    featured: false,
+    tags: ['Web'],
+    colour: 'pixel-rosy'
   }
 ]
 

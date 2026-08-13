@@ -1,0 +1,104 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav(
+  'can-i-build-my-website-myself-with-wix-or-squarespace-or-do-i-need-a-developer'
+)
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        You would be forgiven for expecting us to say no, always hire a developer, since DIY platforms are direct
+        competition for the smaller end of what we do. But the honest answer is that Wix and Squarespace are
+        genuinely the right call for a lot of businesses. The trick is knowing which kind of business you actually
+        are before you commit to one.
+      </p><br />
+      <p><strong>DIY works well when:</strong></p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You are still validating the idea.</strong> If the business might look completely different in
+            a year, or might not exist at all, spending real money on a custom build does not make sense yet.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>The site is simple and a template genuinely covers it.</strong> A local service business, a personal
+            site, an event page. If a template already does what you need, there is no reason to pay for custom work.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You are willing to actually invest the time.</strong> DIY is not free, it trades money for your
+            own hours. That is a fair trade if you have the time and not the budget, but it stops being a saving if
+            you do not.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p><strong>It stops being the right call when:</strong></p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You need something the template and its plugin marketplace do not already offer.</strong> Custom
+            functionality, unique interactions, integrations with other systems.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You expect to grow into something more complex within a year or two.</strong> Building on Wix or
+            Squarespace now and needing a rebuild later means paying for two websites instead of one.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Platform lock-in matters to you.</strong> These builders are proprietary. Migrating off them later
+            is harder than migrating off something like WordPress, you usually cannot cleanly export the site, you
+            start again from scratch.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Differentiation matters competitively.</strong> Template constraints tend to produce the same generic
+            look and feel across businesses. If your website needs to set you apart from a competitor using the same
+            platform, that is a real limitation, not a small one.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>SEO and performance need to hold up at scale.</strong> Fine for a five-page brochure site, more of
+            a ceiling once you have a lot of pages or a real product catalog.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        We have had people come to us after outgrowing a DIY site, and people we have told honestly that DIY was still
+        the right call for where they are at. Neither answer makes us more money in the short term, but it is the
+        honest one.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>
