@@ -1,0 +1,62 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('do-i-need-a-mobile-app-or-is-a-mobile-friendly-website-enough')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Every business owner asks this eventually: build a proper app, or keep everything on a mobile-friendly
+        website? The answer is usually the website, but there are a handful of situations where an app is genuinely
+        the right call.
+      </p><br />
+      <p>
+        How often will someone actually use it? If this is something people touch once or twice a year, like
+        checking your hours or filling out a contact form, a website wins. If it is something people would open
+        daily, an app starts to make sense.
+      </p><br />
+      <p>
+        Does it need to work without a reliable connection? Apps can cache data and function offline. A website
+        generally cannot, unless it is built as a progressive web app. This matters most for people working in the
+        field: tradespeople, warehouse staff, delivery drivers.
+      </p><br />
+      <p>
+        Does it need access to hardware a browser cannot reach? Camera, GPS, Bluetooth, biometrics, background
+        location. If the product genuinely depends on this, a website cannot do it properly. Push notifications
+        fall into this category too: web push exists, but adoption and reliability, especially on iOS, still lag
+        well behind native push.
+      </p><br />
+      <p>
+        How will people actually find it? Websites get found through search. Apps get found through app stores, or
+        because someone was told to go and download it. A website delivers value the moment someone clicks a link.
+        An app requires someone to decide to install something before they get anything at all, which is a much
+        higher barrier.
+      </p><br />
+      <p>
+        Would someone actually want this on their home screen? People are genuinely reluctant to install an app for
+        something minor. If you cannot clearly answer why someone would want your icon sitting on their phone, that
+        is usually a sign you do not need one.
+      </p><br />
+      <p>
+        There is also a middle ground most businesses do not know about: a progressive web app can offer an
+        install-to-homescreen icon and some offline capability, without the cost or complexity of building and
+        maintaining a full native app. If you are weighing this up for your own business, that is exactly the kind
+        of decision worth talking through before you commit to a build, through a short consulting conversation.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>

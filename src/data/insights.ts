@@ -249,6 +249,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Consulting', 'Risk Management', 'Technology'],
     colour: 'pixel-solar'
+  },
+  {
+    title: 'Do I Need A Mobile App Or Is A Mobile-Friendly Website Enough?',
+    publishedAt: '2026-08-13',
+    dateLabel: '13th August, 2026',
+    summary:
+      'A decision framework for whether a business actually needs a native app or whether a mobile-friendly website is enough.',
+    slug: 'do-i-need-a-mobile-app-or-is-a-mobile-friendly-website-enough',
+    published: true,
+    featured: false,
+    tags: ['App Development', 'Web Design', 'Technology'],
+    colour: 'pixel-celestial'
   }
 ]
 
