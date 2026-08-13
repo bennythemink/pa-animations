@@ -39,10 +39,20 @@ const { previous, current, next } = getInsightNav('do-i-need-a-mobile-app-or-is-
         <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
           <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
           <span>
-            <strong>Does it need access to hardware a browser cannot reach?</strong> Camera, GPS, Bluetooth,
-            biometrics, background location. If the product genuinely depends on this, a website cannot do it
-            properly. Push notifications fall into this category too: web push exists, but adoption and
-            reliability, especially on iOS, still lag well behind native push.
+            <strong>Does it need access to hardware a browser cannot reach?</strong> A PWA can use a camera and GPS
+            reasonably well today. What it still cannot do, at least on iPhone, is reach Bluetooth peripherals, NFC,
+            or USB accessories, and it has only limited access to sensors beyond the basics. If the product
+            genuinely depends on that kind of hardware, a website cannot do it properly.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Do you need push notifications to bring people back?</strong> PWAs have been able to send push
+            notifications on iPhone since iOS 16.4, so the capability itself is not the gap anymore. The gap is
+            reach: someone first has to manually add the site to their home screen before they can even be asked to
+            allow notifications, and once you account for that whole process, the realistic reachable audience for
+            web push ends up far smaller than native, in the order of 10 to 15 times smaller by some estimates.
           </span>
         </li>
         <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
@@ -65,10 +75,12 @@ const { previous, current, next } = getInsightNav('do-i-need-a-mobile-app-or-is-
       </ul>
       <br />
       <p>
-        There is also a middle ground most businesses do not know about: a progressive web app can offer an
-        install-to-homescreen icon and some offline capability, without the cost or complexity of building and
-        maintaining a full native app. If you are weighing this up for your own business, that is exactly the kind
-        of decision worth talking through before you commit to a build, through a short consulting conversation.
+        There is also a middle ground worth knowing about: a progressive web app can offer an install-to-home-screen
+        icon, offline caching, and now push notifications on most devices, without the cost or complexity of
+        building and maintaining a full native app. What is left of the gap is deeper hardware access and how many
+        people you can actually reach with notifications, not the basic feature set anymore. If you are weighing
+        this up for your own business, that is exactly the kind of decision worth talking through before you commit
+        to a build, through a short consulting conversation.
       </p><br />
       <InsightSignoff />
     </span>
