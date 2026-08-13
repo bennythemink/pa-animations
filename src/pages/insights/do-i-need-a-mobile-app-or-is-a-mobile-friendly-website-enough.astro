@@ -17,7 +17,9 @@ const { previous, current, next } = getInsightNav('do-i-need-a-mobile-app-or-is-
       <p>
         Every business owner asks this eventually: build a proper app, or keep everything on a mobile-friendly
         website? The answer is usually the website, but there are a handful of situations where an app is genuinely
-        the right call.
+        the right call. There is also a third option worth knowing from the start: a progressive web app, or PWA,
+        which installs straight from the browser without going through an app store and sits somewhere between the
+        two.
       </p><br />
       <ul class="lg:mt-4 flex flex-col gap-4">
         <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
@@ -31,9 +33,9 @@ const { previous, current, next } = getInsightNav('do-i-need-a-mobile-app-or-is-
         <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
           <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
           <span>
-            <strong>Does it need to work without a reliable connection?</strong> Apps can cache data and function
-            offline. A website generally cannot, unless it is built as a progressive web app. This matters most for
-            people working in the field: tradespeople, warehouse staff, delivery drivers.
+            <strong>Does it need to work without a reliable connection?</strong> Apps, including PWAs, can cache data
+            and function offline. A standard website generally cannot. This matters most for people working in the
+            field: tradespeople, warehouse staff, delivery drivers.
           </span>
         </li>
         <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
@@ -42,7 +44,19 @@ const { previous, current, next } = getInsightNav('do-i-need-a-mobile-app-or-is-
             <strong>Does it need access to hardware a browser cannot reach?</strong> A PWA can use a camera and GPS
             reasonably well today. What it still cannot do, at least on iPhone, is reach Bluetooth peripherals, NFC,
             or USB accessories, and it has only limited access to sensors beyond the basics. If the product
-            genuinely depends on that kind of hardware, a website cannot do it properly.
+            genuinely depends on that kind of hardware, a website cannot do it properly, and a PWA will not close
+            that gap either.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Does the experience itself need to feel top-tier?</strong> This is where native still wins. A
+            native app is built with the platform's own UI library, UIKit or SwiftUI on iOS, Jetpack Compose on
+            Android, so every component, gesture, and animation matches exactly how the rest of the phone behaves,
+            and it runs compiled directly on the device rather than inside a browser engine. A website or PWA can
+            get close, but if the experience itself needs to feel genuinely polished and platform-native, that is
+            still native's advantage.
           </span>
         </li>
         <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
@@ -75,12 +89,12 @@ const { previous, current, next } = getInsightNav('do-i-need-a-mobile-app-or-is-
       </ul>
       <br />
       <p>
-        There is also a middle ground worth knowing about: a progressive web app can offer an install-to-home-screen
-        icon, offline caching, and now push notifications on most devices, without the cost or complexity of
-        building and maintaining a full native app. What is left of the gap is deeper hardware access and how many
-        people you can actually reach with notifications, not the basic feature set anymore. If you are weighing
-        this up for your own business, that is exactly the kind of decision worth talking through before you commit
-        to a build, through a short consulting conversation.
+        A PWA is worth strongly considering before you commit to a full native build. It covers an
+        install-to-home-screen icon, offline caching, and now push notifications on most devices, without the cost
+        or complexity of maintaining a native app. What is left of the gap is deeper hardware access, top-tier UX
+        polish, and how many people you can actually reach with notifications, not the basic feature set anymore.
+        If you are weighing this up for your own business, that is exactly the kind of decision worth talking
+        through before you commit to a build, through a short consulting conversation.
       </p><br />
       <InsightSignoff />
     </span>
