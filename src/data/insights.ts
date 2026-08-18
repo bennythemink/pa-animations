@@ -273,6 +273,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Web'],
     colour: 'pixel-rosy'
+  },
+  {
+    title: 'How Do I Migrate My Website To A New Agency Without Losing Everything?',
+    publishedAt: '2026-08-18',
+    dateLabel: '18th August, 2026',
+    summary:
+      'A checklist of what to secure, domain, hosting, source code, analytics, and DNS, before switching web agencies, so nothing gets lost or broken in the handover.',
+    slug: 'how-do-i-migrate-my-website-to-a-new-agency-without-losing-everything',
+    published: true,
+    featured: false,
+    tags: ['Risk Management', 'Project Management'],
+    colour: 'pixel-teal'
   }
 ]
 

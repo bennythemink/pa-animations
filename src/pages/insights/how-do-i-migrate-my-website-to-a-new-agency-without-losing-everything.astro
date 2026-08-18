@@ -1,0 +1,102 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav(
+  'how-do-i-migrate-my-website-to-a-new-agency-without-losing-everything'
+)
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Switching agencies is a completely normal thing to do, and it does not need to be complicated if you have the
+        right things in hand before you start. We have written before about
+        <a
+          href="/insights/how-to-protect-your-business-in-case-your-agency-closes"
+          class="underline underline-offset-2">protecting yourself in case an agency shuts down unexpectedly</a
+        >, this is the version for when you are the one making the call to leave.
+      </p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Domain registrar access:</strong> you need to actually control this yourself, not just have the
+            domain pointed somewhere by the old agency. If they own it outright, that is a serious problem on its own,
+            and one worth resolving before you do anything else.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Hosting access:</strong> full admin access, not a limited FTP login that only lets you upload
+            files.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>CMS or platform admin access:</strong> the real, full-permission account, not a restricted editor
+            login.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Source code access:</strong> if the site or app is custom-built, you need the actual repository,
+            not just what happens to be running live on the server.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Analytics and Search Console:</strong> losing years of historical traffic data and search performance
+            is one of the most common, and most painful, losses in a switch. Make sure these accounts are under your
+            own ownership, not the agency's.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>DNS records, documented:</strong> get a full export of these before anything changes. A DNS mistake
+            during a handover is one of the most common ways a site or business email goes down without warning.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Third-party accounts and API keys:</strong> payment gateway, email marketing platform, CRM
+            integrations, anything the site talks to.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>A short overlap period:</strong> do not cut ties the moment you have decided to leave. Get
+            everything confirmed and working with the new agency first, and only let the old agency's access lapse
+            once that is done.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        A good agency will make this easy and will not push back on handing any of it over. If they do push back,
+        that tells you something too. If you are not sure what you currently have access to, or want a second set of
+        eyes on a handover before it happens, that is exactly the kind of thing a consulting conversation can help
+        with.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>
