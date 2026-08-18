@@ -1,0 +1,102 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('what-is-a-headless-cms-and-do-i-actually-need-one')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        A headless CMS is one of those terms agencies throw around without much explanation. Here is what it
+        actually means, and the honest answer on whether you need one.
+      </p><br />
+      <p>
+        A normal CMS, a standard WordPress site is the classic example, bundles two things together: where your
+        content lives, and how it gets displayed. A headless CMS splits those apart. The CMS only stores and serves
+        content through an API, "headless" because it has no front-end attached, and a separate system decides how
+        that content actually gets shown, a website, an app, or something else entirely.
+      </p><br />
+      <p><strong>Worth it when:</strong></p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>The same content needs to show up in more than one place:</strong> a website, a mobile app, maybe
+            digital signage, all pulling from a single source instead of duplicating content management across
+            separate systems.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Your content structure is genuinely complex:</strong> products, locations, articles, each needing
+            different structured fields that a normal page-and-post CMS starts to strain against.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Front-end performance matters a lot:</strong> headless setups are usually built as fast, modern
+            front-ends rather than constrained by a CMS's own templating system.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p><strong>Probably not worth it when:</strong></p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You only have one website and no plans for another channel:</strong> this is usually solving a
+            problem you do not have.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>You want your team to update content without a developer:</strong> editors often lose the simple
+            "edit it and see exactly how it looks" experience, since content is decoupled from how it is displayed,
+            unless extra tooling gets built specifically for that.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Budget and timeline are tight:</strong> you are building the entire front-end from scratch instead
+            of using an existing theme, which costs more and takes longer than a standard CMS build.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Structural changes need to happen without a developer involved:</strong> with a headless setup,
+            that usually is not possible. With a normal CMS, someone in-house can often rearrange things themselves
+            with a page builder.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        For most small and medium businesses running a single website, a standard CMS is still the right call.
+        Headless earns its complexity once you actually have multiple channels to feed, or content structured enough
+        to need it. If you are not sure which camp you fall into, that is exactly the kind of thing worth talking
+        through in a
+        <a href="/services/discovery" class="underline underline-offset-2">discovery phase</a> before you commit to
+        either approach.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>

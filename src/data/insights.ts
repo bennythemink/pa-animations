@@ -285,6 +285,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Risk Management', 'Project Management'],
     colour: 'pixel-teal'
+  },
+  {
+    title: 'What Is A Headless CMS, And Do I Actually Need One?',
+    publishedAt: '2026-08-18',
+    dateLabel: '18th August, 2026',
+    summary:
+      'A plain-language explanation of what a headless CMS actually is, and an honest answer on when it is worth the extra cost and complexity, versus when a standard CMS is still the right call.',
+    slug: 'what-is-a-headless-cms-and-do-i-actually-need-one',
+    published: true,
+    featured: false,
+    tags: ['Technology'],
+    colour: 'pixel-fire'
   }
 ]
 
