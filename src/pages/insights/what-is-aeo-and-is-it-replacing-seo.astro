@@ -1,0 +1,78 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('what-is-aeo-and-is-it-replacing-seo')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        We are not an SEO company, but we find that our clients are increasingly asking us about this: AEO is not
+        replacing SEO, it is building on top of it. If you are optimising for one and ignoring the other, you are being
+        overtaken.
+      </p><br />
+      <p>
+        Answer Engine Optimization is the practice of structuring content so that AI answer engines, Google's AI
+        Overviews, ChatGPT Search, etc., can pull it directly into a synthesised answer rather than just linking to it
+        [1]. Traditional SEO still works at the page level: titles, keywords, backlinks, getting a page to rank. AEO
+        works closer to the fact level: clear definitions, citable statistics, and sections structured so an AI system
+        can lift them out cleanly and attribute them back to you [2]. This matters because a large and growing share of
+        searches now end without a single click, with AI-generated answers satisfying the query directly on the results
+        page [3].
+      </p><br />
+      <p>
+        The practical takeaway is not to abandon your existing SEO work and chase AEO instead. It is to make sure your
+        content is written in a way that both a search engine and an AI system can use: clear structure, direct answers
+        near the top, facts stated plainly enough to be quoted. If your website content still reads like it was written
+        purely to rank rather than to actually answer a question, that is the gap worth closing first.
+      </p><br />
+      <p><strong>Citations:</strong></p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            [1] <a
+              href="https://cxl.com/blog/answer-engine-optimization-aeo-the-comprehensive-guide/"
+              class="underline underline-offset-2"
+              target="_blank">Answer Engine Optimization (AEO): The Comprehensive Guide</a
+            >
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            [2] <a
+              href="https://www.frase.io/blog/what-is-answer-engine-optimization-the-complete-guide-to-getting-cited-by-ai"
+              class="underline underline-offset-2"
+              target="_blank">What Is Answer Engine Optimization</a
+            >
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            [3] <a
+              href="https://writer.com/blog/geo-aeo-optimization/"
+              class="underline underline-offset-2"
+              target="_blank">GEO, AEO, and SEO in 2026: The Enterprise Guide to AI Visibility</a
+            >
+          </span>
+        </li>
+      </ul>
+      <br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>

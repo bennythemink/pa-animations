@@ -297,6 +297,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Technology'],
     colour: 'pixel-fire'
+  },
+  {
+    title: 'What Is AEO, And Is It Replacing SEO?',
+    publishedAt: '2026-08-25',
+    dateLabel: '25th August, 2026',
+    summary:
+      'Answer Engine Optimization: what it actually is, how it differs from traditional SEO, and why the two now work together rather than compete.',
+    slug: 'what-is-aeo-and-is-it-replacing-seo',
+    published: true,
+    featured: false,
+    tags: ['Marketing'],
+    colour: 'pixel-fawn'
   }
 ]
 
