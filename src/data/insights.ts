@@ -309,6 +309,17 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Marketing'],
     colour: 'pixel-fawn'
+  },
+  {
+    title: 'What Data Privacy Rules Actually Apply To My Business Website In Australia?',
+    publishedAt: '2026-08-26',
+    dateLabel: '26th August, 2026',
+    summary: 'A plain-language look at when the Privacy Act actually applies to an Australian business website',
+    slug: 'what-data-privacy-rules-actually-apply-to-my-business-website-in-australia',
+    published: true,
+    featured: false,
+    tags: ['Risk Management'],
+    colour: 'pixel-solar'
   }
 ]
 

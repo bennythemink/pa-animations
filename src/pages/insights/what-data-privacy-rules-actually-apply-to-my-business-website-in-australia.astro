@@ -1,0 +1,150 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav(
+  'what-data-privacy-rules-actually-apply-to-my-business-website-in-australia'
+)
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Most business owners assume privacy law does not apply to them if they are small, and right now, for most of
+        them, that assumption happens to be correct. But "right now" is doing some heavy lifting in that sentence.
+        This is general information, not legal advice, if you want a definitive answer for your specific business,
+        talk to a lawyer.
+      </p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>The core law is the Privacy Act 1988, and the main test is turnover.</strong> If your business has
+            annual turnover over $3 million, the Act applies to you, and you need to comply with the 13 Australian Privacy
+            Principles, covering things like what you collect, how you tell people about it, how you store it, and how
+            long you keep it [1].
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Turnover is not the only test.</strong> Regardless of size, the Act applies if you are a health service
+            provider, if you trade in personal information, for example selling a customer list, if you are a Commonwealth
+            contractor, a credit reporting body, or you have voluntarily opted in. A lot of small businesses assume they
+            are automatically exempt and are wrong [1].
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>The exemption is currently under review.</strong> The Government formally agreed in principle in 2023
+            to remove or narrow the $3 million exemption. It has not happened yet, the first round of reforms in 2024 left
+            it untouched, but the direction is clear enough that building your website and systems as if it is coming is
+            a reasonable bet [2].
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong
+              >Cookies and tracking are already covered by privacy guidance, separate from the turnover question
+              entirely.</strong
+            > If your website uses tracking pixels or similar tools to collect information about visitors, the OAIC has specific
+            guidance on what that means for your obligations [3].
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>A statutory tort for serious invasions of privacy has existed since June 2025.</strong> This gives individuals
+            the right to personally sue over a serious privacy invasion, independent of any regulator action, regardless
+            of whether your business is otherwise covered by the Act [4].
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>A Children's Online Privacy Code is coming.</strong> If your website or app could reasonably be used
+            by children or teenagers, new obligations are being finalised and are due to be registered by December 2026 [5].
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        Even if your business technically sits under the threshold today, that is a legal answer, not necessarily a
+        business one. Customers increasingly expect the same standard of care regardless of your turnover, and the
+        rules are only moving in one direction. If you are building or redesigning a website, this is exactly the kind
+        of requirement worth raising during
+        <a href="/services/discovery" class="underline underline-offset-2">discovery</a>, rather than retrofitting it
+        after launch. For anything specific to your own business, get proper advice from a lawyer, we are not one.
+      </p><br />
+      <p><strong>Citations:</strong></p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            [1] <a
+              href="https://www.oaic.gov.au/privacy/privacy-guidance-for-organisations-and-government-agencies/organisations/small-business"
+              class="underline underline-offset-2"
+              target="_blank">OAIC — Small business</a
+            >
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            [2] <a
+              href="https://www.ag.gov.au/rights-and-protections/publications/government-response-privacy-act-review-report"
+              class="underline underline-offset-2"
+              target="_blank">Attorney-General's Department — Government response to the Privacy Act Review Report</a
+            >
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            [3] <a
+              href="https://www.oaic.gov.au/privacy/privacy-guidance-for-organisations-and-government-agencies/organisations/tracking-pixels-and-privacy-obligations"
+              class="underline underline-offset-2"
+              target="_blank">OAIC — Tracking pixels and privacy obligations</a
+            >
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            [4] <a
+              href="https://www.corrs.com.au/insights/australias-ongoing-privacy-reforms-bolstering-australias-privacy-regulatory-framework"
+              class="underline underline-offset-2"
+              target="_blank"
+              >Corrs — Australia's ongoing privacy reforms: bolstering Australia's privacy regulatory framework</a
+            >
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            [5] <a
+              href="https://www.oaic.gov.au/privacy/privacy-registers/privacy-codes/childrens-online-privacy-code"
+              class="underline underline-offset-2"
+              target="_blank">OAIC — Children's Online Privacy Code</a
+            >
+          </span>
+        </li>
+      </ul>
+      <br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>
