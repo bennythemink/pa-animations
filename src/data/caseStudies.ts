@@ -332,10 +332,11 @@ const caseStudies: CaseStudy[] = [
     slug: 'pfg',
     industry: ['Agricultural Machinery'],
     services: ['Discovery + direction', 'Design', 'Development'],
-    overview: 'TBD',
+    overview:
+      "Restructured Australia's largest independent agricultural machinery distributor around its 15+ sub-brand portfolio, lifting dealer and product enquiries.",
     colour: 'bg-pixel-teal',
     image: pfg,
-    published: false,
+    published: true,
     featured: false,
     imagePosition: 'object-top',
     drawerPosition: 'object-top',
