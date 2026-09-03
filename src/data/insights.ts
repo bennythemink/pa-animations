@@ -332,6 +332,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Business', 'R&D Tax Incentive'],
     colour: 'pixel-celestial'
+  },
+  {
+    title: 'What Are The Essential Steps To Launch A Small Business Website?',
+    publishedAt: '2026-09-03',
+    dateLabel: '3rd September, 2026',
+    summary:
+      "Design and build are only part of it. Here's what actually separates small business websites that work from ones that quietly go nowhere.",
+    slug: 'what-are-the-essential-steps-to-launch-a-small-business-website',
+    published: true,
+    featured: false,
+    tags: ['Business', 'Marketing'],
+    colour: 'pixel-rosy'
   }
 ]
 

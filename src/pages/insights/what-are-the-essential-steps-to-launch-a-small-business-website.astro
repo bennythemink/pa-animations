@@ -1,0 +1,84 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('what-are-the-essential-steps-to-launch-a-small-business-website')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Most people think the steps are: design it, build it, launch it. That's part of it, but the businesses that
+        actually get results out of a new website do a few things most people skip.
+      </p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Know what the site actually needs to do.</strong> Not "we need a website," but a real answer to what
+            it should achieve and how it's different from the three competitors your customers are already looking at. If
+            you can't answer that, neither can we, and the site ends up generic. This is what
+            <a href="/insights/what-a-good-brief-looks-like" class="underline underline-offset-2">a good brief</a> is for.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Sort your domain and business name before anything gets built.</strong> We still see people start a project
+            without the domain locked in, only to find out later it's taken, or worse, tied up with someone else's trademark.
+            Get this done in week one, not week ten.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Don't wait on content to start design.</strong> Most clients don't have their copy and images ready when
+            we start, and that's fine. It's genuinely easier to write good copy once you can see where it's going to live.
+            Chasing a client for content before there's anything to react to just stalls the project.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Pick your platform based on what you actually need, not what's trendy.</strong> If you need real customisation,
+            WordPress. If you want something that runs itself with minimal fuss, Shopify. Most small business owners don't
+            have a strong opinion here, and that's the right instinct, let whoever's building it make the call based on your
+            needs.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Have a marketing plan before launch, not after.</strong> This is the one that actually determines whether
+            the project feels successful six months later. A good site with no traffic looks exactly like a bad site: nobody's
+            using it. We've seen clients launch, check their analytics a few months in, and see visitors who land on the site
+            convert well, there just aren't enough of them. At that point it's obvious the site was never the problem. Most
+            business owners have some sense of their audience, but few have a real SEO plan, and almost none are thinking
+            about GEO,
+            <a href="/insights/what-is-aeo-and-is-it-replacing-seo" class="underline underline-offset-2"
+              >how their business shows up in AI-generated answers</a
+            >, which is becoming just as relevant.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        None of this needs to happen in a strict order, and a good agency will help you work through most of it. But
+        the businesses that skip the marketing question entirely are the ones who come back a few months later confused
+        about why a website they're happy with isn't doing anything for them.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>
