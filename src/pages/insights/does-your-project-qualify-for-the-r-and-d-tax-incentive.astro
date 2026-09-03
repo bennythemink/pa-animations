@@ -1,0 +1,83 @@
+---
+import LetsTalk from '@components/home/LetsTalk.astro'
+import Insight from '@components/insights/Insight.astro'
+import InsightSignoff from '@components/insights/InsightSignoff.astro'
+import Layout from '@layouts/Layout.astro'
+import { getInsightNav } from '@data/insights'
+import InsightNav from '@components/insights/InsightNav.astro'
+
+const { previous, current, next } = getInsightNav('does-your-project-qualify-for-the-r-and-d-tax-incentive')
+---
+
+<Layout title={current?.title} description={current?.summary}>
+  <Insight tags={current?.tags}>
+    <span slot="insight-title">{current?.title}</span>
+    <span slot="insight-subtitle">{current?.dateLabel}</span>
+    <span slot="insight-text">
+      <p>
+        Every founder we talk to has the wrong idea about this one. Some think it is only for biotech and people in lab
+        coats. Others think building anything new automatically qualifies. Both are wrong. It has nothing to do with
+        what you built. It is about whether you were solving something with a genuinely uncertain outcome, and whether
+        you can prove it after the fact.
+      </p><br />
+      <p>Before you even call an accountant, run your project through this:</p><br />
+      <ul class="lg:mt-4 flex flex-col gap-4">
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Did you actually know how to solve it going in?</strong> If a decent developer could look at the problem
+            and see the path, it is not R&amp;D. Doesn't matter how new or flashy the feature sounds.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Did you hit real dead ends?</strong> A claim needs experimentation. Trying something, watching it not
+            work, and changing approach because of that is the whole point. If your build went in a straight line from start
+            to finish, that is a hard sell.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Was the uncertainty technical, or was it just "will people use this"?</strong> Not knowing if customers
+            will like a feature is a business bet, not R&amp;D. The unknown has to be about whether the software could actually
+            do what you needed it to do.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Did you write anything down at the time?</strong> Notes, commit messages, a Slack thread arguing about
+            why an approach failed, anything dated from when it actually happened. If you are trying to reconstruct it six
+            months later from memory, you have already lost the claim.
+          </span>
+        </li>
+        <li class="flex items-start gap-3 ml-2 lg:ml-4 lg:my-1">
+          <span class="shrink-0 w-3 h-3 mt-[2.5px] lg:mt-1.25" style={`background-color: var(--accent-bgc);`}></span>
+          <span>
+            <strong>Can you separate the experimental bit from the rest?</strong> Most projects are mostly ordinary work
+            with one hard problem buried in the middle. The standard integrations and CRUD screens next to it don't count
+            just because they're in the same codebase. You need to isolate the actual hours.
+          </span>
+        </li>
+      </ul>
+      <br />
+      <p>
+        Here is the part that trips people up most: a plain looking website can have a legitimate claim buried in it
+        if part of the build genuinely stumped you, and a shiny new framework can have zero claimable R&amp;D if the
+        path to build it was obvious the whole time. The label on the project means nothing. What happened while you
+        were building it is what matters.
+      </p><br />
+      <p>
+        One more thing: this is not tax advice, it is a starting point. If a few of these hit close to home, get a
+        proper R&amp;D tax advisor involved before you register anything.
+      </p><br />
+      <InsightSignoff />
+    </span>
+  </Insight>
+
+  <InsightNav previousInsight={previous} nextInsight={next} />
+
+  <LetsTalk config={{ buttons: 'both', primaryCta: 'message' }} />
+</Layout>

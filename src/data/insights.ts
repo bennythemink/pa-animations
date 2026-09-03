@@ -320,6 +320,18 @@ const insights: Insight[] = [
     featured: false,
     tags: ['Risk Management'],
     colour: 'pixel-solar'
+  },
+  {
+    title: 'Does Your Project Qualify For The R&D Tax Incentive?',
+    publishedAt: '2026-09-03',
+    dateLabel: '3rd September, 2026',
+    summary:
+      'Most people assume "new website" doesn\'t qualify and "new tech" automatically does. Here\'s the actual test, and a checklist to run your project through before you talk to an accountant.',
+    slug: 'does-your-project-qualify-for-the-r-and-d-tax-incentive',
+    published: true,
+    featured: false,
+    tags: ['Business', 'R&D Tax Incentive'],
+    colour: 'pixel-celestial'
   }
 ]
 
